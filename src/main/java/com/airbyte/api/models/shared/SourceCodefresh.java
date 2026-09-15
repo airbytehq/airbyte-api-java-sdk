@@ -17,27 +17,32 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceCodefresh {
 
     @JsonProperty("account_id")
     private String accountId;
 
+
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("report_date_range")
     private Optional<? extends List<Object>> reportDateRange;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("report_granularity")
     private Optional<String> reportGranularity;
 
+
     @JsonProperty("sourceType")
     private Codefresh sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -66,7 +71,8 @@ public class SourceCodefresh {
             String accountId,
             String apiKey,
             OffsetDateTime startDate) {
-        this(accountId, apiKey, Optional.empty(), Optional.empty(), startDate);
+        this(accountId, apiKey, Optional.empty(),
+            Optional.empty(), startDate);
     }
 
     @JsonIgnore
@@ -100,9 +106,10 @@ public class SourceCodefresh {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceCodefresh withAccountId(String accountId) {
         Utils.checkNotNull(accountId, "accountId");
@@ -122,6 +129,7 @@ public class SourceCodefresh {
         return this;
     }
 
+
     public SourceCodefresh withReportDateRange(Optional<? extends List<Object>> reportDateRange) {
         Utils.checkNotNull(reportDateRange, "reportDateRange");
         this.reportDateRange = reportDateRange;
@@ -133,6 +141,7 @@ public class SourceCodefresh {
         this.reportGranularity = Optional.ofNullable(reportGranularity);
         return this;
     }
+
 
     public SourceCodefresh withReportGranularity(Optional<String> reportGranularity) {
         Utils.checkNotNull(reportGranularity, "reportGranularity");
@@ -146,7 +155,6 @@ public class SourceCodefresh {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -157,23 +165,19 @@ public class SourceCodefresh {
         }
         SourceCodefresh other = (SourceCodefresh) o;
         return 
-            Objects.deepEquals(this.accountId, other.accountId) &&
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.reportDateRange, other.reportDateRange) &&
-            Objects.deepEquals(this.reportGranularity, other.reportGranularity) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.accountId, other.accountId) &&
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.reportDateRange, other.reportDateRange) &&
+            Utils.enhancedDeepEquals(this.reportGranularity, other.reportGranularity) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountId,
-            apiKey,
-            reportDateRange,
-            reportGranularity,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            accountId, apiKey, reportDateRange,
+            reportGranularity, sourceType, startDate);
     }
     
     @Override
@@ -186,22 +190,24 @@ public class SourceCodefresh {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accountId;
- 
+
         private String apiKey;
- 
+
         private Optional<? extends List<Object>> reportDateRange = Optional.empty();
- 
+
         private Optional<String> reportGranularity = Optional.empty();
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder accountId(String accountId) {
             Utils.checkNotNull(accountId, "accountId");
@@ -209,11 +215,13 @@ public class SourceCodefresh {
             return this;
         }
 
+
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         public Builder reportDateRange(List<Object> reportDateRange) {
             Utils.checkNotNull(reportDateRange, "reportDateRange");
@@ -227,6 +235,7 @@ public class SourceCodefresh {
             return this;
         }
 
+
         public Builder reportGranularity(String reportGranularity) {
             Utils.checkNotNull(reportGranularity, "reportGranularity");
             this.reportGranularity = Optional.ofNullable(reportGranularity);
@@ -239,20 +248,20 @@ public class SourceCodefresh {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceCodefresh build() {
+
             return new SourceCodefresh(
-                accountId,
-                apiKey,
-                reportDateRange,
-                reportGranularity,
-                startDate);
+                accountId, apiKey, reportDateRange,
+                reportGranularity, startDate);
         }
+
 
         private static final LazySingletonValue<Codefresh> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum SourceModeMode {
     @JsonValue
     private final String value;
 
-    private SourceModeMode(String value) {
+    SourceModeMode(String value) {
         this.value = value;
     }
     

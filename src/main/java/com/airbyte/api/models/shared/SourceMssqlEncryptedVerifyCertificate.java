@@ -13,7 +13,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -22,7 +21,6 @@ import java.util.Optional;
  * <p>Verify and use the certificate provided by the server.
  */
 public class SourceMssqlEncryptedVerifyCertificate {
-
     /**
      * certificate of the server, or of the CA that signed the server certificate
      */
@@ -31,11 +29,13 @@ public class SourceMssqlEncryptedVerifyCertificate {
     private Optional<String> certificate;
 
     /**
-     * Specifies the host name of the server. The value of this property must match the subject property of the certificate.
+     * Specifies the host name of the server. The value of this property must match the subject property of
+     * the certificate.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("hostNameInCertificate")
     private Optional<String> hostNameInCertificate;
+
 
     @JsonProperty("ssl_method")
     private SourceMssqlSchemasSslMethodSslMethod sslMethod;
@@ -64,7 +64,8 @@ public class SourceMssqlEncryptedVerifyCertificate {
     }
 
     /**
-     * Specifies the host name of the server. The value of this property must match the subject property of the certificate.
+     * Specifies the host name of the server. The value of this property must match the subject property of
+     * the certificate.
      */
     @JsonIgnore
     public Optional<String> hostNameInCertificate() {
@@ -76,9 +77,10 @@ public class SourceMssqlEncryptedVerifyCertificate {
         return sslMethod;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * certificate of the server, or of the CA that signed the server certificate
@@ -88,6 +90,7 @@ public class SourceMssqlEncryptedVerifyCertificate {
         this.certificate = Optional.ofNullable(certificate);
         return this;
     }
+
 
     /**
      * certificate of the server, or of the CA that signed the server certificate
@@ -99,7 +102,8 @@ public class SourceMssqlEncryptedVerifyCertificate {
     }
 
     /**
-     * Specifies the host name of the server. The value of this property must match the subject property of the certificate.
+     * Specifies the host name of the server. The value of this property must match the subject property of
+     * the certificate.
      */
     public SourceMssqlEncryptedVerifyCertificate withHostNameInCertificate(String hostNameInCertificate) {
         Utils.checkNotNull(hostNameInCertificate, "hostNameInCertificate");
@@ -107,8 +111,10 @@ public class SourceMssqlEncryptedVerifyCertificate {
         return this;
     }
 
+
     /**
-     * Specifies the host name of the server. The value of this property must match the subject property of the certificate.
+     * Specifies the host name of the server. The value of this property must match the subject property of
+     * the certificate.
      */
     public SourceMssqlEncryptedVerifyCertificate withHostNameInCertificate(Optional<String> hostNameInCertificate) {
         Utils.checkNotNull(hostNameInCertificate, "hostNameInCertificate");
@@ -116,7 +122,6 @@ public class SourceMssqlEncryptedVerifyCertificate {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -127,17 +132,15 @@ public class SourceMssqlEncryptedVerifyCertificate {
         }
         SourceMssqlEncryptedVerifyCertificate other = (SourceMssqlEncryptedVerifyCertificate) o;
         return 
-            Objects.deepEquals(this.certificate, other.certificate) &&
-            Objects.deepEquals(this.hostNameInCertificate, other.hostNameInCertificate) &&
-            Objects.deepEquals(this.sslMethod, other.sslMethod);
+            Utils.enhancedDeepEquals(this.certificate, other.certificate) &&
+            Utils.enhancedDeepEquals(this.hostNameInCertificate, other.hostNameInCertificate) &&
+            Utils.enhancedDeepEquals(this.sslMethod, other.sslMethod);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            certificate,
-            hostNameInCertificate,
-            sslMethod);
+        return Utils.enhancedHash(
+            certificate, hostNameInCertificate, sslMethod);
     }
     
     @Override
@@ -147,16 +150,18 @@ public class SourceMssqlEncryptedVerifyCertificate {
                 "hostNameInCertificate", hostNameInCertificate,
                 "sslMethod", sslMethod);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> certificate = Optional.empty();
- 
+
         private Optional<String> hostNameInCertificate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * certificate of the server, or of the CA that signed the server certificate
@@ -176,8 +181,10 @@ public class SourceMssqlEncryptedVerifyCertificate {
             return this;
         }
 
+
         /**
-         * Specifies the host name of the server. The value of this property must match the subject property of the certificate.
+         * Specifies the host name of the server. The value of this property must match the subject property of
+         * the certificate.
          */
         public Builder hostNameInCertificate(String hostNameInCertificate) {
             Utils.checkNotNull(hostNameInCertificate, "hostNameInCertificate");
@@ -186,19 +193,21 @@ public class SourceMssqlEncryptedVerifyCertificate {
         }
 
         /**
-         * Specifies the host name of the server. The value of this property must match the subject property of the certificate.
+         * Specifies the host name of the server. The value of this property must match the subject property of
+         * the certificate.
          */
         public Builder hostNameInCertificate(Optional<String> hostNameInCertificate) {
             Utils.checkNotNull(hostNameInCertificate, "hostNameInCertificate");
             this.hostNameInCertificate = hostNameInCertificate;
             return this;
         }
-        
+
         public SourceMssqlEncryptedVerifyCertificate build() {
+
             return new SourceMssqlEncryptedVerifyCertificate(
-                certificate,
-                hostNameInCertificate);
+                certificate, hostNameInCertificate);
         }
+
 
         private static final LazySingletonValue<SourceMssqlSchemasSslMethodSslMethod> _SINGLETON_VALUE_SslMethod =
                 new LazySingletonValue<>(

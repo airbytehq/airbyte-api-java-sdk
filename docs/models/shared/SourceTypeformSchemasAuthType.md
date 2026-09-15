@@ -1,5 +1,13 @@
 # SourceTypeformSchemasAuthType
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceTypeformSchemasAuthType;
+
+SourceTypeformSchemasAuthType value = SourceTypeformSchemasAuthType.ACCESS_TOKEN;
+```
+
 
 ## Values
 

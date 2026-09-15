@@ -14,7 +14,7 @@ public enum Codefresh {
     @JsonValue
     private final String value;
 
-    private Codefresh(String value) {
+    Codefresh(String value) {
         this.value = value;
     }
     

@@ -5,41 +5,91 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
+import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+import java.lang.SuppressWarnings;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
+/**
+ * NoTunnel
+ * 
+ * <p>No ssh tunnel needed to connect to database
+ */
 public class NoTunnel {
 
-    /**
-     * No ssh tunnel needed to connect to database
-     */
+    @JsonIgnore
+    private Map<String, Object> additionalProperties;
+
+
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
-    private TunnelMethod tunnelMethod;
+    private Optional<? extends TunnelMethod> tunnelMethod;
 
     @JsonCreator
-    public NoTunnel() {
-        
-        this.tunnelMethod = Builder._SINGLETON_VALUE_TunnelMethod.value();
+    public NoTunnel(
+            @JsonProperty("tunnel_method") Optional<? extends TunnelMethod> tunnelMethod) {
+        Utils.checkNotNull(tunnelMethod, "tunnelMethod");
+        this.additionalProperties = new HashMap<>();
+        this.tunnelMethod = tunnelMethod;
     }
-
-    /**
-     * No ssh tunnel needed to connect to database
-     */
-    @JsonIgnore
-    public TunnelMethod tunnelMethod() {
-        return tunnelMethod;
-    }
-
-    public final static Builder builder() {
-        return new Builder();
-    }    
-
     
+    public NoTunnel() {
+        this(Optional.empty());
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> additionalProperties() {
+        return additionalProperties;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<TunnelMethod> tunnelMethod() {
+        return (Optional<TunnelMethod>) tunnelMethod;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+
+    @JsonAnySetter
+    public NoTunnel withAdditionalProperty(String key, Object value) {
+        // note that value can be null because of the way JsonAnySetter works
+        Utils.checkNotNull(key, "key");
+        additionalProperties.put(key, value); 
+        return this;
+    }
+    public NoTunnel withAdditionalProperties(Map<String, Object> additionalProperties) {
+        Utils.checkNotNull(additionalProperties, "additionalProperties");
+        this.additionalProperties = additionalProperties;
+        return this;
+    }
+
+    public NoTunnel withTunnelMethod(TunnelMethod tunnelMethod) {
+        Utils.checkNotNull(tunnelMethod, "tunnelMethod");
+        this.tunnelMethod = Optional.ofNullable(tunnelMethod);
+        return this;
+    }
+
+
+    public NoTunnel withTunnelMethod(Optional<? extends TunnelMethod> tunnelMethod) {
+        Utils.checkNotNull(tunnelMethod, "tunnelMethod");
+        this.tunnelMethod = tunnelMethod;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -50,36 +100,78 @@ public class NoTunnel {
         }
         NoTunnel other = (NoTunnel) o;
         return 
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            tunnelMethod);
+        return Utils.enhancedHash(
+            additionalProperties, tunnelMethod);
     }
     
     @Override
     public String toString() {
         return Utils.toString(NoTunnel.class,
+                "additionalProperties", additionalProperties,
                 "tunnelMethod", tunnelMethod);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
+        private Map<String, Object> additionalProperties = new HashMap<>();
+
+        private Optional<? extends TunnelMethod> tunnelMethod;
+
         private Builder() {
           // force use of static builder() method
         }
-        
-        public NoTunnel build() {
-            return new NoTunnel(
-                );
+
+        public Builder additionalProperty(String key, Object value) {
+            Utils.checkNotNull(key, "key");
+            // we could be strict about null values (force the user
+            // to pass `JsonNullable.of(null)`) but likely to be a bit 
+            // annoying for additional properties building so we'll 
+            // relax preconditions.
+            this.additionalProperties.put(key, value);
+            return this;
         }
 
-        private static final LazySingletonValue<TunnelMethod> _SINGLETON_VALUE_TunnelMethod =
+        public Builder additionalProperties(Map<String, Object> additionalProperties) {
+            Utils.checkNotNull(additionalProperties, "additionalProperties");
+            this.additionalProperties = additionalProperties;
+            return this;
+        }
+
+
+        public Builder tunnelMethod(TunnelMethod tunnelMethod) {
+            Utils.checkNotNull(tunnelMethod, "tunnelMethod");
+            this.tunnelMethod = Optional.ofNullable(tunnelMethod);
+            return this;
+        }
+
+        public Builder tunnelMethod(Optional<? extends TunnelMethod> tunnelMethod) {
+            Utils.checkNotNull(tunnelMethod, "tunnelMethod");
+            this.tunnelMethod = tunnelMethod;
+            return this;
+        }
+
+        public NoTunnel build() {
+            if (tunnelMethod == null) {
+                tunnelMethod = _SINGLETON_VALUE_TunnelMethod.value();
+            }
+
+            return new NoTunnel(
+                tunnelMethod)
+                .withAdditionalProperties(additionalProperties);
+        }
+
+
+        private static final LazySingletonValue<Optional<? extends TunnelMethod>> _SINGLETON_VALUE_TunnelMethod =
                 new LazySingletonValue<>(
                         "tunnel_method",
                         "\"NO_TUNNEL\"",
-                        new TypeReference<TunnelMethod>() {});
+                        new TypeReference<Optional<? extends TunnelMethod>>() {});
     }
 }

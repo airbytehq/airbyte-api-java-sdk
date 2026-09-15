@@ -11,7 +11,8 @@ import java.util.Optional;
 /**
  * TheTargetedActionResourceForTheFetch
  * 
- * <p>Note - Different targets have different attribute enum requirements, please refer actions sections in https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Welcome.html
+ * <p>Note - Different targets have different attribute enum requirements, please refer actions sections
+ * in https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Welcome.html
  */
 public enum TheTargetedActionResourceForTheFetch {
     GET_QUEUE_ATTRIBUTES("GetQueueAttributes"),
@@ -20,7 +21,7 @@ public enum TheTargetedActionResourceForTheFetch {
     @JsonValue
     private final String value;
 
-    private TheTargetedActionResourceForTheFetch(String value) {
+    TheTargetedActionResourceForTheFetch(String value) {
         this.value = value;
     }
     

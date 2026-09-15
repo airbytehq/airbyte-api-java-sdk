@@ -11,12 +11,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter1Int64Value {
 
     @JsonProperty("value")
     private String value;
+
 
     @JsonProperty("value_type")
     private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter1ExpressionsFilterValueType valueType;
@@ -39,9 +40,10 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMe
         return valueType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter1Int64Value withValue(String value) {
         Utils.checkNotNull(value, "value");
@@ -49,7 +51,6 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMe
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -60,15 +61,14 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMe
         }
         SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter1Int64Value other = (SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter1Int64Value) o;
         return 
-            Objects.deepEquals(this.value, other.value) &&
-            Objects.deepEquals(this.valueType, other.valueType);
+            Utils.enhancedDeepEquals(this.value, other.value) &&
+            Utils.enhancedDeepEquals(this.valueType, other.valueType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            value,
-            valueType);
+        return Utils.enhancedHash(
+            value, valueType);
     }
     
     @Override
@@ -77,25 +77,29 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMe
                 "value", value,
                 "valueType", valueType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String value;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(String value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
             return this;
         }
-        
+
         public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter1Int64Value build() {
+
             return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter1Int64Value(
                 value);
         }
+
 
         private static final LazySingletonValue<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter1ExpressionsFilterValueType> _SINGLETON_VALUE_ValueType =
                 new LazySingletonValue<>(

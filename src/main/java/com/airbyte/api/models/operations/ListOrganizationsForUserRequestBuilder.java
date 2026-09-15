@@ -3,18 +3,26 @@
  */
 package com.airbyte.api.models.operations;
 
-import java.lang.Exception;
+import static com.airbyte.api.operations.Operations.RequestlessOperation;
+
+import com.airbyte.api.SDKConfiguration;
+import com.airbyte.api.operations.ListOrganizationsForUser;
+import com.airbyte.api.utils.Headers;
 
 public class ListOrganizationsForUserRequestBuilder {
 
-    private final SDKMethodInterfaces.MethodCallListOrganizationsForUser sdk;
+    private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
-    public ListOrganizationsForUserRequestBuilder(SDKMethodInterfaces.MethodCallListOrganizationsForUser sdk) {
-        this.sdk = sdk;
+    public ListOrganizationsForUserRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
-    public ListOrganizationsForUserResponse call() throws Exception {
+    public ListOrganizationsForUserResponse call() {
+        
+        RequestlessOperation<ListOrganizationsForUserResponse> operation
+            = new ListOrganizationsForUser.Sync(sdkConfiguration, _headers);
 
-        return sdk.listOrganizationsForUserDirect();
+        return operation.handleResponse(operation.doRequest());
     }
 }

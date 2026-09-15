@@ -14,7 +14,7 @@ public enum CoinApi {
     @JsonValue
     private final String value;
 
-    private CoinApi(String value) {
+    CoinApi(String value) {
         this.value = value;
     }
     

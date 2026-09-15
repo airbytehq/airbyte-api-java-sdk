@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 /**
  * DestinationPineconeIndexing
@@ -17,7 +16,6 @@ import java.util.Objects;
  * <p>Pinecone is a popular vector store that can be used to store and retrieve embeddings.
  */
 public class DestinationPineconeIndexing {
-
     /**
      * Pinecone index in your project to load data into
      */
@@ -73,9 +71,10 @@ public class DestinationPineconeIndexing {
         return pineconeKey;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Pinecone index in your project to load data into
@@ -104,7 +103,6 @@ public class DestinationPineconeIndexing {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -115,17 +113,15 @@ public class DestinationPineconeIndexing {
         }
         DestinationPineconeIndexing other = (DestinationPineconeIndexing) o;
         return 
-            Objects.deepEquals(this.index, other.index) &&
-            Objects.deepEquals(this.pineconeEnvironment, other.pineconeEnvironment) &&
-            Objects.deepEquals(this.pineconeKey, other.pineconeKey);
+            Utils.enhancedDeepEquals(this.index, other.index) &&
+            Utils.enhancedDeepEquals(this.pineconeEnvironment, other.pineconeEnvironment) &&
+            Utils.enhancedDeepEquals(this.pineconeKey, other.pineconeKey);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            index,
-            pineconeEnvironment,
-            pineconeKey);
+        return Utils.enhancedHash(
+            index, pineconeEnvironment, pineconeKey);
     }
     
     @Override
@@ -135,18 +131,20 @@ public class DestinationPineconeIndexing {
                 "pineconeEnvironment", pineconeEnvironment,
                 "pineconeKey", pineconeKey);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String index;
- 
+
         private String pineconeEnvironment;
- 
+
         private String pineconeKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Pinecone index in your project to load data into
@@ -157,6 +155,7 @@ public class DestinationPineconeIndexing {
             return this;
         }
 
+
         /**
          * Pinecone Cloud environment to use
          */
@@ -166,6 +165,7 @@ public class DestinationPineconeIndexing {
             return this;
         }
 
+
         /**
          * The Pinecone API key to use matching the environment (copy from Pinecone console)
          */
@@ -174,12 +174,12 @@ public class DestinationPineconeIndexing {
             this.pineconeKey = pineconeKey;
             return this;
         }
-        
+
         public DestinationPineconeIndexing build() {
+
             return new DestinationPineconeIndexing(
-                index,
-                pineconeEnvironment,
-                pineconeKey);
+                index, pineconeEnvironment, pineconeKey);
         }
+
     }
 }

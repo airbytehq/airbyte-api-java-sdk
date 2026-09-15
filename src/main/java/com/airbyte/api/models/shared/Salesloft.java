@@ -14,7 +14,7 @@ public enum Salesloft {
     @JsonValue
     private final String value;
 
-    private Salesloft(String value) {
+    Salesloft(String value) {
         this.value = value;
     }
     

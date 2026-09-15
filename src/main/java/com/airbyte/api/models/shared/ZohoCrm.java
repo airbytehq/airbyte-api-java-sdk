@@ -14,7 +14,7 @@ public enum ZohoCrm {
     @JsonValue
     private final String value;
 
-    private ZohoCrm(String value) {
+    ZohoCrm(String value) {
         this.value = value;
     }
     

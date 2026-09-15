@@ -14,7 +14,7 @@ public enum Vercel {
     @JsonValue
     private final String value;
 
-    private Vercel(String value) {
+    Vercel(String value) {
         this.value = value;
     }
     

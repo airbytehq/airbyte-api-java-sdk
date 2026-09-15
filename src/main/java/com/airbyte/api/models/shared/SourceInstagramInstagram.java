@@ -14,7 +14,7 @@ public enum SourceInstagramInstagram {
     @JsonValue
     private final String value;
 
-    private SourceInstagramInstagram(String value) {
+    SourceInstagramInstagram(String value) {
         this.value = value;
     }
     

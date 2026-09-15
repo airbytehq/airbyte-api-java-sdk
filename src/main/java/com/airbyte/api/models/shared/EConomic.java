@@ -14,7 +14,7 @@ public enum EConomic {
     @JsonValue
     private final String value;
 
-    private EConomic(String value) {
+    EConomic(String value) {
         this.value = value;
     }
     

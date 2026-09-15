@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceGcsProcessing
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class SourceGcsProcessing {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceGcsProcessing(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class SourceGcsProcessing {
 
     public static SourceGcsProcessing of(SourceGcsLocal value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGcsProcessing(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGcsLocal>(){}));
+        return new SourceGcsProcessing(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceGcsProcessing of(ViaAPI value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGcsProcessing(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ViaAPI>(){}));
+        return new SourceGcsProcessing(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class SourceGcsProcessing {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class SourceGcsProcessing {
             return false;
         }
         SourceGcsProcessing other = (SourceGcsProcessing) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,8 +84,8 @@ public class SourceGcsProcessing {
 
         public _Deserializer() {
             super(SourceGcsProcessing.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<ViaAPI>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGcsLocal>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceGcsLocal>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<ViaAPI>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -95,6 +94,6 @@ public class SourceGcsProcessing {
         return Utils.toString(SourceGcsProcessing.class,
                 "value", value);
     }
- 
+
 }
 

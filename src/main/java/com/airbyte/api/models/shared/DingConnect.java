@@ -14,7 +14,7 @@ public enum DingConnect {
     @JsonValue
     private final String value;
 
-    private DingConnect(String value) {
+    DingConnect(String value) {
         this.value = value;
     }
     

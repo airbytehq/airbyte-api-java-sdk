@@ -2,6 +2,14 @@
 
 Attribution window for views.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.ViewAttributionWindow;
+
+ViewAttributionWindow value = ViewAttributionWindow.ONE_HOUR;
+```
+
 
 ## Values
 

@@ -14,7 +14,7 @@ public enum GooglePagespeedInsights {
     @JsonValue
     private final String value;
 
-    private GooglePagespeedInsights(String value) {
+    GooglePagespeedInsights(String value) {
         this.value = value;
     }
     

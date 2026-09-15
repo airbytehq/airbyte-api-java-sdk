@@ -13,20 +13,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceServiceNow {
 
     @JsonProperty("base_url")
     private String baseUrl;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
     private Optional<String> password;
 
+
     @JsonProperty("sourceType")
     private ServiceNow sourceType;
+
 
     @JsonProperty("username")
     private String username;
@@ -71,9 +74,10 @@ public class SourceServiceNow {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceServiceNow withBaseUrl(String baseUrl) {
         Utils.checkNotNull(baseUrl, "baseUrl");
@@ -87,6 +91,7 @@ public class SourceServiceNow {
         return this;
     }
 
+
     public SourceServiceNow withPassword(Optional<String> password) {
         Utils.checkNotNull(password, "password");
         this.password = password;
@@ -99,7 +104,6 @@ public class SourceServiceNow {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -110,18 +114,16 @@ public class SourceServiceNow {
         }
         SourceServiceNow other = (SourceServiceNow) o;
         return 
-            Objects.deepEquals(this.baseUrl, other.baseUrl) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.baseUrl, other.baseUrl) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            baseUrl,
-            password,
-            sourceType,
+        return Utils.enhancedHash(
+            baseUrl, password, sourceType,
             username);
     }
     
@@ -133,24 +135,27 @@ public class SourceServiceNow {
                 "sourceType", sourceType,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String baseUrl;
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder baseUrl(String baseUrl) {
             Utils.checkNotNull(baseUrl, "baseUrl");
             this.baseUrl = baseUrl;
             return this;
         }
+
 
         public Builder password(String password) {
             Utils.checkNotNull(password, "password");
@@ -164,18 +169,19 @@ public class SourceServiceNow {
             return this;
         }
 
+
         public Builder username(String username) {
             Utils.checkNotNull(username, "username");
             this.username = username;
             return this;
         }
-        
+
         public SourceServiceNow build() {
+
             return new SourceServiceNow(
-                baseUrl,
-                password,
-                username);
+                baseUrl, password, username);
         }
+
 
         private static final LazySingletonValue<ServiceNow> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

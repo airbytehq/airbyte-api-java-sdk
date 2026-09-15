@@ -14,7 +14,7 @@ public enum SourceSftpBulkSchemasStreamsFormatFormatFiletype {
     @JsonValue
     private final String value;
 
-    private SourceSftpBulkSchemasStreamsFormatFormatFiletype(String value) {
+    SourceSftpBulkSchemasStreamsFormatFormatFiletype(String value) {
         this.value = value;
     }
     

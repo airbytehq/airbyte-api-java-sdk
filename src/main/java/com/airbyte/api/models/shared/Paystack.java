@@ -14,7 +14,7 @@ public enum Paystack {
     @JsonValue
     private final String value;
 
-    private Paystack(String value) {
+    Paystack(String value) {
         this.value = value;
     }
     

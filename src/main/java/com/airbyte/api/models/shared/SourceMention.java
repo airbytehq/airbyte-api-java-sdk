@@ -16,16 +16,18 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceMention {
 
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonProperty("sourceType")
     private Mention sourceType;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("stats_end_date")
@@ -37,6 +39,7 @@ public class SourceMention {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("stats_interval")
     private Optional<? extends StatisticsInterval> statsInterval;
+
 
     @JsonProperty("stats_start_date")
     private OffsetDateTime statsStartDate;
@@ -61,7 +64,8 @@ public class SourceMention {
     public SourceMention(
             String apiKey,
             OffsetDateTime statsStartDate) {
-        this(apiKey, Optional.empty(), Optional.empty(), statsStartDate);
+        this(apiKey, Optional.empty(), Optional.empty(),
+            statsStartDate);
     }
 
     @JsonIgnore
@@ -93,9 +97,10 @@ public class SourceMention {
         return statsStartDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceMention withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -108,6 +113,7 @@ public class SourceMention {
         this.statsEndDate = Optional.ofNullable(statsEndDate);
         return this;
     }
+
 
     public SourceMention withStatsEndDate(Optional<LocalDate> statsEndDate) {
         Utils.checkNotNull(statsEndDate, "statsEndDate");
@@ -124,6 +130,7 @@ public class SourceMention {
         return this;
     }
 
+
     /**
      * Periodicity of statistics returned. it may be daily(P1D), weekly(P1W) or monthly(P1M).
      */
@@ -139,7 +146,6 @@ public class SourceMention {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -150,21 +156,18 @@ public class SourceMention {
         }
         SourceMention other = (SourceMention) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.statsEndDate, other.statsEndDate) &&
-            Objects.deepEquals(this.statsInterval, other.statsInterval) &&
-            Objects.deepEquals(this.statsStartDate, other.statsStartDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.statsEndDate, other.statsEndDate) &&
+            Utils.enhancedDeepEquals(this.statsInterval, other.statsInterval) &&
+            Utils.enhancedDeepEquals(this.statsStartDate, other.statsStartDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            statsEndDate,
-            statsInterval,
-            statsStartDate);
+        return Utils.enhancedHash(
+            apiKey, sourceType, statsEndDate,
+            statsInterval, statsStartDate);
     }
     
     @Override
@@ -176,26 +179,29 @@ public class SourceMention {
                 "statsInterval", statsInterval,
                 "statsStartDate", statsStartDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<LocalDate> statsEndDate = Optional.empty();
- 
+
         private Optional<? extends StatisticsInterval> statsInterval;
- 
+
         private OffsetDateTime statsStartDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         public Builder statsEndDate(LocalDate statsEndDate) {
             Utils.checkNotNull(statsEndDate, "statsEndDate");
@@ -208,6 +214,7 @@ public class SourceMention {
             this.statsEndDate = statsEndDate;
             return this;
         }
+
 
         /**
          * Periodicity of statistics returned. it may be daily(P1D), weekly(P1W) or monthly(P1M).
@@ -227,22 +234,23 @@ public class SourceMention {
             return this;
         }
 
+
         public Builder statsStartDate(OffsetDateTime statsStartDate) {
             Utils.checkNotNull(statsStartDate, "statsStartDate");
             this.statsStartDate = statsStartDate;
             return this;
         }
-        
+
         public SourceMention build() {
             if (statsInterval == null) {
                 statsInterval = _SINGLETON_VALUE_StatsInterval.value();
             }
+
             return new SourceMention(
-                apiKey,
-                statsEndDate,
-                statsInterval,
+                apiKey, statsEndDate, statsInterval,
                 statsStartDate);
         }
+
 
         private static final LazySingletonValue<Mention> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

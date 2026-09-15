@@ -14,17 +14,17 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceGoogleAnalyticsDataApiAuthenticateViaGoogleOauth {
 
+public class SourceGoogleAnalyticsDataApiAuthenticateViaGoogleOauth {
     /**
      * Access Token for making authenticated requests.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("access_token")
     private Optional<String> accessToken;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
@@ -69,7 +69,8 @@ public class SourceGoogleAnalyticsDataApiAuthenticateViaGoogleOauth {
             String clientId,
             String clientSecret,
             String refreshToken) {
-        this(Optional.empty(), clientId, clientSecret, refreshToken);
+        this(Optional.empty(), clientId, clientSecret,
+            refreshToken);
     }
 
     /**
@@ -110,9 +111,10 @@ public class SourceGoogleAnalyticsDataApiAuthenticateViaGoogleOauth {
         return refreshToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Access Token for making authenticated requests.
@@ -122,6 +124,7 @@ public class SourceGoogleAnalyticsDataApiAuthenticateViaGoogleOauth {
         this.accessToken = Optional.ofNullable(accessToken);
         return this;
     }
+
 
     /**
      * Access Token for making authenticated requests.
@@ -159,7 +162,6 @@ public class SourceGoogleAnalyticsDataApiAuthenticateViaGoogleOauth {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -170,21 +172,18 @@ public class SourceGoogleAnalyticsDataApiAuthenticateViaGoogleOauth {
         }
         SourceGoogleAnalyticsDataApiAuthenticateViaGoogleOauth other = (SourceGoogleAnalyticsDataApiAuthenticateViaGoogleOauth) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            authType,
-            clientId,
-            clientSecret,
-            refreshToken);
+        return Utils.enhancedHash(
+            accessToken, authType, clientId,
+            clientSecret, refreshToken);
     }
     
     @Override
@@ -196,20 +195,22 @@ public class SourceGoogleAnalyticsDataApiAuthenticateViaGoogleOauth {
                 "clientSecret", clientSecret,
                 "refreshToken", refreshToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> accessToken = Optional.empty();
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String refreshToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Access Token for making authenticated requests.
@@ -229,6 +230,7 @@ public class SourceGoogleAnalyticsDataApiAuthenticateViaGoogleOauth {
             return this;
         }
 
+
         /**
          * The Client ID of your Google Analytics developer application.
          */
@@ -237,6 +239,7 @@ public class SourceGoogleAnalyticsDataApiAuthenticateViaGoogleOauth {
             this.clientId = clientId;
             return this;
         }
+
 
         /**
          * The Client Secret of your Google Analytics developer application.
@@ -247,6 +250,7 @@ public class SourceGoogleAnalyticsDataApiAuthenticateViaGoogleOauth {
             return this;
         }
 
+
         /**
          * The token for obtaining a new access token.
          */
@@ -255,14 +259,14 @@ public class SourceGoogleAnalyticsDataApiAuthenticateViaGoogleOauth {
             this.refreshToken = refreshToken;
             return this;
         }
-        
+
         public SourceGoogleAnalyticsDataApiAuthenticateViaGoogleOauth build() {
+
             return new SourceGoogleAnalyticsDataApiAuthenticateViaGoogleOauth(
-                accessToken,
-                clientId,
-                clientSecret,
+                accessToken, clientId, clientSecret,
                 refreshToken);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceGoogleAnalyticsDataApiAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

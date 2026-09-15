@@ -15,24 +15,28 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourcePingdom {
 
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("probes")
     private Optional<String> probes;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("resolution")
     private Optional<? extends Resolution> resolution;
 
+
     @JsonProperty("sourceType")
     private Pingdom sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -57,7 +61,8 @@ public class SourcePingdom {
     public SourcePingdom(
             String apiKey,
             OffsetDateTime startDate) {
-        this(apiKey, Optional.empty(), Optional.empty(), startDate);
+        this(apiKey, Optional.empty(), Optional.empty(),
+            startDate);
     }
 
     @JsonIgnore
@@ -86,9 +91,10 @@ public class SourcePingdom {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourcePingdom withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -102,6 +108,7 @@ public class SourcePingdom {
         return this;
     }
 
+
     public SourcePingdom withProbes(Optional<String> probes) {
         Utils.checkNotNull(probes, "probes");
         this.probes = probes;
@@ -113,6 +120,7 @@ public class SourcePingdom {
         this.resolution = Optional.ofNullable(resolution);
         return this;
     }
+
 
     public SourcePingdom withResolution(Optional<? extends Resolution> resolution) {
         Utils.checkNotNull(resolution, "resolution");
@@ -126,7 +134,6 @@ public class SourcePingdom {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -137,21 +144,18 @@ public class SourcePingdom {
         }
         SourcePingdom other = (SourcePingdom) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.probes, other.probes) &&
-            Objects.deepEquals(this.resolution, other.resolution) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.probes, other.probes) &&
+            Utils.enhancedDeepEquals(this.resolution, other.resolution) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            probes,
-            resolution,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKey, probes, resolution,
+            sourceType, startDate);
     }
     
     @Override
@@ -163,26 +167,29 @@ public class SourcePingdom {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> probes = Optional.empty();
- 
+
         private Optional<? extends Resolution> resolution;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         public Builder probes(String probes) {
             Utils.checkNotNull(probes, "probes");
@@ -196,6 +203,7 @@ public class SourcePingdom {
             return this;
         }
 
+
         public Builder resolution(Resolution resolution) {
             Utils.checkNotNull(resolution, "resolution");
             this.resolution = Optional.ofNullable(resolution);
@@ -208,22 +216,23 @@ public class SourcePingdom {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourcePingdom build() {
             if (resolution == null) {
                 resolution = _SINGLETON_VALUE_Resolution.value();
             }
+
             return new SourcePingdom(
-                apiKey,
-                probes,
-                resolution,
+                apiKey, probes, resolution,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Optional<? extends Resolution>> _SINGLETON_VALUE_Resolution =
                 new LazySingletonValue<>(

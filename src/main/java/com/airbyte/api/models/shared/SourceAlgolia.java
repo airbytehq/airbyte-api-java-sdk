@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceAlgolia {
 
@@ -36,14 +36,17 @@ public class SourceAlgolia {
     private Optional<String> objectId;
 
     /**
-     * Search query to be used with indexes_query stream with format defined in `https://www.algolia.com/doc/rest-api/search/#tag/Search/operation/searchSingleIndex`
+     * Search query to be used with indexes_query stream with format defined in
+     * `https://www.algolia.com/doc/rest-api/search/#tag/Search/operation/searchSingleIndex`
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("search_query")
     private Optional<String> searchQuery;
 
+
     @JsonProperty("sourceType")
     private Algolia sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -72,7 +75,8 @@ public class SourceAlgolia {
             String apiKey,
             String applicationId,
             OffsetDateTime startDate) {
-        this(apiKey, applicationId, Optional.empty(), Optional.empty(), startDate);
+        this(apiKey, applicationId, Optional.empty(),
+            Optional.empty(), startDate);
     }
 
     @JsonIgnore
@@ -97,7 +101,8 @@ public class SourceAlgolia {
     }
 
     /**
-     * Search query to be used with indexes_query stream with format defined in `https://www.algolia.com/doc/rest-api/search/#tag/Search/operation/searchSingleIndex`
+     * Search query to be used with indexes_query stream with format defined in
+     * `https://www.algolia.com/doc/rest-api/search/#tag/Search/operation/searchSingleIndex`
      */
     @JsonIgnore
     public Optional<String> searchQuery() {
@@ -114,9 +119,10 @@ public class SourceAlgolia {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceAlgolia withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -142,6 +148,7 @@ public class SourceAlgolia {
         return this;
     }
 
+
     /**
      * Object ID within index for search queries
      */
@@ -152,7 +159,8 @@ public class SourceAlgolia {
     }
 
     /**
-     * Search query to be used with indexes_query stream with format defined in `https://www.algolia.com/doc/rest-api/search/#tag/Search/operation/searchSingleIndex`
+     * Search query to be used with indexes_query stream with format defined in
+     * `https://www.algolia.com/doc/rest-api/search/#tag/Search/operation/searchSingleIndex`
      */
     public SourceAlgolia withSearchQuery(String searchQuery) {
         Utils.checkNotNull(searchQuery, "searchQuery");
@@ -160,8 +168,10 @@ public class SourceAlgolia {
         return this;
     }
 
+
     /**
-     * Search query to be used with indexes_query stream with format defined in `https://www.algolia.com/doc/rest-api/search/#tag/Search/operation/searchSingleIndex`
+     * Search query to be used with indexes_query stream with format defined in
+     * `https://www.algolia.com/doc/rest-api/search/#tag/Search/operation/searchSingleIndex`
      */
     public SourceAlgolia withSearchQuery(Optional<String> searchQuery) {
         Utils.checkNotNull(searchQuery, "searchQuery");
@@ -175,7 +185,6 @@ public class SourceAlgolia {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -186,23 +195,19 @@ public class SourceAlgolia {
         }
         SourceAlgolia other = (SourceAlgolia) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.applicationId, other.applicationId) &&
-            Objects.deepEquals(this.objectId, other.objectId) &&
-            Objects.deepEquals(this.searchQuery, other.searchQuery) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.applicationId, other.applicationId) &&
+            Utils.enhancedDeepEquals(this.objectId, other.objectId) &&
+            Utils.enhancedDeepEquals(this.searchQuery, other.searchQuery) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            applicationId,
-            objectId,
-            searchQuery,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKey, applicationId, objectId,
+            searchQuery, sourceType, startDate);
     }
     
     @Override
@@ -215,28 +220,31 @@ public class SourceAlgolia {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String applicationId;
- 
+
         private Optional<String> objectId;
- 
+
         private Optional<String> searchQuery;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * The application ID for your application found in settings
@@ -246,6 +254,7 @@ public class SourceAlgolia {
             this.applicationId = applicationId;
             return this;
         }
+
 
         /**
          * Object ID within index for search queries
@@ -265,8 +274,10 @@ public class SourceAlgolia {
             return this;
         }
 
+
         /**
-         * Search query to be used with indexes_query stream with format defined in `https://www.algolia.com/doc/rest-api/search/#tag/Search/operation/searchSingleIndex`
+         * Search query to be used with indexes_query stream with format defined in
+         * `https://www.algolia.com/doc/rest-api/search/#tag/Search/operation/searchSingleIndex`
          */
         public Builder searchQuery(String searchQuery) {
             Utils.checkNotNull(searchQuery, "searchQuery");
@@ -275,7 +286,8 @@ public class SourceAlgolia {
         }
 
         /**
-         * Search query to be used with indexes_query stream with format defined in `https://www.algolia.com/doc/rest-api/search/#tag/Search/operation/searchSingleIndex`
+         * Search query to be used with indexes_query stream with format defined in
+         * `https://www.algolia.com/doc/rest-api/search/#tag/Search/operation/searchSingleIndex`
          */
         public Builder searchQuery(Optional<String> searchQuery) {
             Utils.checkNotNull(searchQuery, "searchQuery");
@@ -283,12 +295,13 @@ public class SourceAlgolia {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceAlgolia build() {
             if (objectId == null) {
                 objectId = _SINGLETON_VALUE_ObjectId.value();
@@ -296,13 +309,12 @@ public class SourceAlgolia {
             if (searchQuery == null) {
                 searchQuery = _SINGLETON_VALUE_SearchQuery.value();
             }
+
             return new SourceAlgolia(
-                apiKey,
-                applicationId,
-                objectId,
-                searchQuery,
-                startDate);
+                apiKey, applicationId, objectId,
+                searchQuery, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_ObjectId =
                 new LazySingletonValue<>(

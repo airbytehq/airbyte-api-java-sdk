@@ -22,7 +22,7 @@ public enum JobTypeEnum {
     @JsonValue
     private final String value;
 
-    private JobTypeEnum(String value) {
+    JobTypeEnum(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum SourceOracleEnterpriseSchemasCursorMethod {
     @JsonValue
     private final String value;
 
-    private SourceOracleEnterpriseSchemasCursorMethod(String value) {
+    SourceOracleEnterpriseSchemasCursorMethod(String value) {
         this.value = value;
     }
     

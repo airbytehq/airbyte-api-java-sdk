@@ -14,7 +14,7 @@ public enum Airbyte {
     @JsonValue
     private final String value;
 
-    private Airbyte(String value) {
+    Airbyte(String value) {
         this.value = value;
     }
     

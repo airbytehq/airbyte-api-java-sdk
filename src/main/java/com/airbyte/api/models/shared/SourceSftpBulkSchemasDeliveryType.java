@@ -14,7 +14,7 @@ public enum SourceSftpBulkSchemasDeliveryType {
     @JsonValue
     private final String value;
 
-    private SourceSftpBulkSchemasDeliveryType(String value) {
+    SourceSftpBulkSchemasDeliveryType(String value) {
         this.value = value;
     }
     

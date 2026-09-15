@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -25,22 +24,34 @@ public class AirbyteApiConnectionSchedule {
     @JsonProperty("cronExpression")
     private Optional<String> cronExpression;
 
+    /**
+     * Supported timezone ID or fixed offset for the cron schedule; defaults to UTC and cannot start with
+     * Etc.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("cronTimeZone")
+    private Optional<String> cronTimeZone;
+
+
     @JsonProperty("scheduleType")
     private ScheduleTypeEnum scheduleType;
 
     @JsonCreator
     public AirbyteApiConnectionSchedule(
             @JsonProperty("cronExpression") Optional<String> cronExpression,
+            @JsonProperty("cronTimeZone") Optional<String> cronTimeZone,
             @JsonProperty("scheduleType") ScheduleTypeEnum scheduleType) {
         Utils.checkNotNull(cronExpression, "cronExpression");
+        Utils.checkNotNull(cronTimeZone, "cronTimeZone");
         Utils.checkNotNull(scheduleType, "scheduleType");
         this.cronExpression = cronExpression;
+        this.cronTimeZone = cronTimeZone;
         this.scheduleType = scheduleType;
     }
     
     public AirbyteApiConnectionSchedule(
             ScheduleTypeEnum scheduleType) {
-        this(Optional.empty(), scheduleType);
+        this(Optional.empty(), Optional.empty(), scheduleType);
     }
 
     @JsonIgnore
@@ -48,14 +59,24 @@ public class AirbyteApiConnectionSchedule {
         return cronExpression;
     }
 
+    /**
+     * Supported timezone ID or fixed offset for the cron schedule; defaults to UTC and cannot start with
+     * Etc.
+     */
+    @JsonIgnore
+    public Optional<String> cronTimeZone() {
+        return cronTimeZone;
+    }
+
     @JsonIgnore
     public ScheduleTypeEnum scheduleType() {
         return scheduleType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AirbyteApiConnectionSchedule withCronExpression(String cronExpression) {
         Utils.checkNotNull(cronExpression, "cronExpression");
@@ -63,9 +84,31 @@ public class AirbyteApiConnectionSchedule {
         return this;
     }
 
+
     public AirbyteApiConnectionSchedule withCronExpression(Optional<String> cronExpression) {
         Utils.checkNotNull(cronExpression, "cronExpression");
         this.cronExpression = cronExpression;
+        return this;
+    }
+
+    /**
+     * Supported timezone ID or fixed offset for the cron schedule; defaults to UTC and cannot start with
+     * Etc.
+     */
+    public AirbyteApiConnectionSchedule withCronTimeZone(String cronTimeZone) {
+        Utils.checkNotNull(cronTimeZone, "cronTimeZone");
+        this.cronTimeZone = Optional.ofNullable(cronTimeZone);
+        return this;
+    }
+
+
+    /**
+     * Supported timezone ID or fixed offset for the cron schedule; defaults to UTC and cannot start with
+     * Etc.
+     */
+    public AirbyteApiConnectionSchedule withCronTimeZone(Optional<String> cronTimeZone) {
+        Utils.checkNotNull(cronTimeZone, "cronTimeZone");
+        this.cronTimeZone = cronTimeZone;
         return this;
     }
 
@@ -75,7 +118,6 @@ public class AirbyteApiConnectionSchedule {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -86,33 +128,38 @@ public class AirbyteApiConnectionSchedule {
         }
         AirbyteApiConnectionSchedule other = (AirbyteApiConnectionSchedule) o;
         return 
-            Objects.deepEquals(this.cronExpression, other.cronExpression) &&
-            Objects.deepEquals(this.scheduleType, other.scheduleType);
+            Utils.enhancedDeepEquals(this.cronExpression, other.cronExpression) &&
+            Utils.enhancedDeepEquals(this.cronTimeZone, other.cronTimeZone) &&
+            Utils.enhancedDeepEquals(this.scheduleType, other.scheduleType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            cronExpression,
-            scheduleType);
+        return Utils.enhancedHash(
+            cronExpression, cronTimeZone, scheduleType);
     }
     
     @Override
     public String toString() {
         return Utils.toString(AirbyteApiConnectionSchedule.class,
                 "cronExpression", cronExpression,
+                "cronTimeZone", cronTimeZone,
                 "scheduleType", scheduleType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> cronExpression = Optional.empty();
- 
+
+        private Optional<String> cronTimeZone = Optional.empty();
+
         private ScheduleTypeEnum scheduleType;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder cronExpression(String cronExpression) {
             Utils.checkNotNull(cronExpression, "cronExpression");
@@ -126,16 +173,39 @@ public class AirbyteApiConnectionSchedule {
             return this;
         }
 
+
+        /**
+         * Supported timezone ID or fixed offset for the cron schedule; defaults to UTC and cannot start with
+         * Etc.
+         */
+        public Builder cronTimeZone(String cronTimeZone) {
+            Utils.checkNotNull(cronTimeZone, "cronTimeZone");
+            this.cronTimeZone = Optional.ofNullable(cronTimeZone);
+            return this;
+        }
+
+        /**
+         * Supported timezone ID or fixed offset for the cron schedule; defaults to UTC and cannot start with
+         * Etc.
+         */
+        public Builder cronTimeZone(Optional<String> cronTimeZone) {
+            Utils.checkNotNull(cronTimeZone, "cronTimeZone");
+            this.cronTimeZone = cronTimeZone;
+            return this;
+        }
+
+
         public Builder scheduleType(ScheduleTypeEnum scheduleType) {
             Utils.checkNotNull(scheduleType, "scheduleType");
             this.scheduleType = scheduleType;
             return this;
         }
-        
+
         public AirbyteApiConnectionSchedule build() {
+
             return new AirbyteApiConnectionSchedule(
-                cronExpression,
-                scheduleType);
+                cronExpression, cronTimeZone, scheduleType);
         }
+
     }
 }

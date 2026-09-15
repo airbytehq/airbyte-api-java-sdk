@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * CohortReports
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class CohortReports {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private CohortReports(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class CohortReports {
 
     public static CohortReports of(SourceGoogleAnalyticsDataApiDisabled value) {
         Utils.checkNotNull(value, "value");
-        return new CohortReports(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiDisabled>(){}));
+        return new CohortReports(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CohortReports of(SourceGoogleAnalyticsDataApiSchemasEnabled value) {
         Utils.checkNotNull(value, "value");
-        return new CohortReports(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasEnabled>(){}));
+        return new CohortReports(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class CohortReports {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class CohortReports {
             return false;
         }
         CohortReports other = (CohortReports) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,8 +84,8 @@ public class CohortReports {
 
         public _Deserializer() {
             super(CohortReports.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasEnabled>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiDisabled>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiDisabled>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasEnabled>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -95,6 +94,6 @@ public class CohortReports {
         return Utils.toString(CohortReports.class,
                 "value", value);
     }
- 
+
 }
 

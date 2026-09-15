@@ -14,7 +14,7 @@ public enum Imagga {
     @JsonValue
     private final String value;
 
-    private Imagga(String value) {
+    Imagga(String value) {
         this.value = value;
     }
     

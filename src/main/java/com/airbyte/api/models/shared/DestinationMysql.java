@@ -16,22 +16,23 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationMysql {
 
+public class DestinationMysql {
     /**
      * Name of the database.
      */
     @JsonProperty("database")
     private String database;
 
+
     @JsonProperty("destinationType")
     private Mysql destinationType;
 
     /**
-     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there
+     * are no guarantees that other metadata columns will remain the same in future versions
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("disable_type_dedupe")
@@ -44,7 +45,9 @@ public class DestinationMysql {
     private String host;
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("jdbc_url_params")
@@ -79,7 +82,8 @@ public class DestinationMysql {
     private Optional<Boolean> ssl;
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
@@ -130,7 +134,10 @@ public class DestinationMysql {
             String database,
             String host,
             String username) {
-        this(database, Optional.empty(), host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+        this(database, Optional.empty(), host,
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            username);
     }
 
     /**
@@ -147,7 +154,8 @@ public class DestinationMysql {
     }
 
     /**
-     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there
+     * are no guarantees that other metadata columns will remain the same in future versions
      */
     @JsonIgnore
     public Optional<Boolean> disableTypeDedupe() {
@@ -163,7 +171,9 @@ public class DestinationMysql {
     }
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     @JsonIgnore
     public Optional<String> jdbcUrlParams() {
@@ -203,7 +213,8 @@ public class DestinationMysql {
     }
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -219,9 +230,10 @@ public class DestinationMysql {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Name of the database.
@@ -233,7 +245,8 @@ public class DestinationMysql {
     }
 
     /**
-     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there
+     * are no guarantees that other metadata columns will remain the same in future versions
      */
     public DestinationMysql withDisableTypeDedupe(boolean disableTypeDedupe) {
         Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
@@ -241,8 +254,10 @@ public class DestinationMysql {
         return this;
     }
 
+
     /**
-     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there
+     * are no guarantees that other metadata columns will remain the same in future versions
      */
     public DestinationMysql withDisableTypeDedupe(Optional<Boolean> disableTypeDedupe) {
         Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
@@ -260,7 +275,9 @@ public class DestinationMysql {
     }
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     public DestinationMysql withJdbcUrlParams(String jdbcUrlParams) {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -268,8 +285,11 @@ public class DestinationMysql {
         return this;
     }
 
+
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     public DestinationMysql withJdbcUrlParams(Optional<String> jdbcUrlParams) {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -285,6 +305,7 @@ public class DestinationMysql {
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     /**
      * Password associated with the username.
@@ -304,6 +325,7 @@ public class DestinationMysql {
         return this;
     }
 
+
     /**
      * Port of the database.
      */
@@ -321,6 +343,7 @@ public class DestinationMysql {
         this.rawDataSchema = Optional.ofNullable(rawDataSchema);
         return this;
     }
+
 
     /**
      * The database to write raw tables into
@@ -340,6 +363,7 @@ public class DestinationMysql {
         return this;
     }
 
+
     /**
      * Encrypt data using SSL.
      */
@@ -350,7 +374,8 @@ public class DestinationMysql {
     }
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     public DestinationMysql withTunnelMethod(DestinationMysqlSSHTunnelMethod tunnelMethod) {
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -358,8 +383,10 @@ public class DestinationMysql {
         return this;
     }
 
+
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     public DestinationMysql withTunnelMethod(Optional<? extends DestinationMysqlSSHTunnelMethod> tunnelMethod) {
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -376,7 +403,6 @@ public class DestinationMysql {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -387,33 +413,26 @@ public class DestinationMysql {
         }
         DestinationMysql other = (DestinationMysql) o;
         return 
-            Objects.deepEquals(this.database, other.database) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.disableTypeDedupe, other.disableTypeDedupe) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.rawDataSchema, other.rawDataSchema) &&
-            Objects.deepEquals(this.ssl, other.ssl) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.database, other.database) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.disableTypeDedupe, other.disableTypeDedupe) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.rawDataSchema, other.rawDataSchema) &&
+            Utils.enhancedDeepEquals(this.ssl, other.ssl) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            database,
-            destinationType,
-            disableTypeDedupe,
-            host,
-            jdbcUrlParams,
-            password,
-            port,
-            rawDataSchema,
-            ssl,
-            tunnelMethod,
-            username);
+        return Utils.enhancedHash(
+            database, destinationType, disableTypeDedupe,
+            host, jdbcUrlParams, password,
+            port, rawDataSchema, ssl,
+            tunnelMethod, username);
     }
     
     @Override
@@ -431,32 +450,34 @@ public class DestinationMysql {
                 "tunnelMethod", tunnelMethod,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String database;
- 
+
         private Optional<Boolean> disableTypeDedupe;
- 
+
         private String host;
- 
+
         private Optional<String> jdbcUrlParams = Optional.empty();
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private Optional<Long> port;
- 
+
         private Optional<String> rawDataSchema = Optional.empty();
- 
+
         private Optional<Boolean> ssl;
- 
+
         private Optional<? extends DestinationMysqlSSHTunnelMethod> tunnelMethod = Optional.empty();
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Name of the database.
@@ -467,8 +488,10 @@ public class DestinationMysql {
             return this;
         }
 
+
         /**
-         * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+         * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there
+         * are no guarantees that other metadata columns will remain the same in future versions
          */
         public Builder disableTypeDedupe(boolean disableTypeDedupe) {
             Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
@@ -477,13 +500,15 @@ public class DestinationMysql {
         }
 
         /**
-         * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+         * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there
+         * are no guarantees that other metadata columns will remain the same in future versions
          */
         public Builder disableTypeDedupe(Optional<Boolean> disableTypeDedupe) {
             Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
             this.disableTypeDedupe = disableTypeDedupe;
             return this;
         }
+
 
         /**
          * Hostname of the database.
@@ -494,8 +519,11 @@ public class DestinationMysql {
             return this;
         }
 
+
         /**
-         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+         * 'key=value' pairs separated by the symbol '&amp;'. (example:
+         * key1=value1&amp;key2=value2&amp;key3=value3).
          */
         public Builder jdbcUrlParams(String jdbcUrlParams) {
             Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -504,13 +532,16 @@ public class DestinationMysql {
         }
 
         /**
-         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+         * 'key=value' pairs separated by the symbol '&amp;'. (example:
+         * key1=value1&amp;key2=value2&amp;key3=value3).
          */
         public Builder jdbcUrlParams(Optional<String> jdbcUrlParams) {
             Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
             this.jdbcUrlParams = jdbcUrlParams;
             return this;
         }
+
 
         /**
          * Password associated with the username.
@@ -530,6 +561,7 @@ public class DestinationMysql {
             return this;
         }
 
+
         /**
          * Port of the database.
          */
@@ -547,6 +579,7 @@ public class DestinationMysql {
             this.port = port;
             return this;
         }
+
 
         /**
          * The database to write raw tables into
@@ -566,6 +599,7 @@ public class DestinationMysql {
             return this;
         }
 
+
         /**
          * Encrypt data using SSL.
          */
@@ -584,8 +618,10 @@ public class DestinationMysql {
             return this;
         }
 
+
         /**
-         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+         * authentication to use.
          */
         public Builder tunnelMethod(DestinationMysqlSSHTunnelMethod tunnelMethod) {
             Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -594,13 +630,15 @@ public class DestinationMysql {
         }
 
         /**
-         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+         * authentication to use.
          */
         public Builder tunnelMethod(Optional<? extends DestinationMysqlSSHTunnelMethod> tunnelMethod) {
             Utils.checkNotNull(tunnelMethod, "tunnelMethod");
             this.tunnelMethod = tunnelMethod;
             return this;
         }
+
 
         /**
          * Username to use to access the database.
@@ -610,7 +648,7 @@ public class DestinationMysql {
             this.username = username;
             return this;
         }
-        
+
         public DestinationMysql build() {
             if (disableTypeDedupe == null) {
                 disableTypeDedupe = _SINGLETON_VALUE_DisableTypeDedupe.value();
@@ -621,18 +659,14 @@ public class DestinationMysql {
             if (ssl == null) {
                 ssl = _SINGLETON_VALUE_Ssl.value();
             }
+
             return new DestinationMysql(
-                database,
-                disableTypeDedupe,
-                host,
-                jdbcUrlParams,
-                password,
-                port,
-                rawDataSchema,
-                ssl,
-                tunnelMethod,
+                database, disableTypeDedupe, host,
+                jdbcUrlParams, password, port,
+                rawDataSchema, ssl, tunnelMethod,
                 username);
         }
+
 
         private static final LazySingletonValue<Mysql> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum Uppromote {
     @JsonValue
     private final String value;
 
-    private Uppromote(String value) {
+    Uppromote(String value) {
         this.value = value;
     }
     

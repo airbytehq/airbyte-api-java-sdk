@@ -15,19 +15,21 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceNexiopay {
 
+public class SourceNexiopay {
     /**
-     * Your Nexio API key (password). You can find it in the Nexio Dashboard under Settings &gt; User Management. Select the API user and copy the API key.
+     * Your Nexio API key (password). You can find it in the Nexio Dashboard under Settings &gt; User
+     * Management. Select the API user and copy the API key.
      */
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonProperty("sourceType")
     private Nexiopay sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -40,7 +42,8 @@ public class SourceNexiopay {
     private Optional<? extends Subdomain> subdomain;
 
     /**
-     * Your Nexio API username. You can find it in the Nexio Dashboard under Settings &gt; User Management. Select the API user and copy the username.
+     * Your Nexio API username. You can find it in the Nexio Dashboard under Settings &gt; User Management.
+     * Select the API user and copy the username.
      */
     @JsonProperty("username")
     private String username;
@@ -66,11 +69,13 @@ public class SourceNexiopay {
             String apiKey,
             OffsetDateTime startDate,
             String username) {
-        this(apiKey, startDate, Optional.empty(), username);
+        this(apiKey, startDate, Optional.empty(),
+            username);
     }
 
     /**
-     * Your Nexio API key (password). You can find it in the Nexio Dashboard under Settings &gt; User Management. Select the API user and copy the API key.
+     * Your Nexio API key (password). You can find it in the Nexio Dashboard under Settings &gt; User
+     * Management. Select the API user and copy the API key.
      */
     @JsonIgnore
     public String apiKey() {
@@ -97,19 +102,22 @@ public class SourceNexiopay {
     }
 
     /**
-     * Your Nexio API username. You can find it in the Nexio Dashboard under Settings &gt; User Management. Select the API user and copy the username.
+     * Your Nexio API username. You can find it in the Nexio Dashboard under Settings &gt; User Management.
+     * Select the API user and copy the username.
      */
     @JsonIgnore
     public String username() {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Your Nexio API key (password). You can find it in the Nexio Dashboard under Settings &gt; User Management. Select the API user and copy the API key.
+     * Your Nexio API key (password). You can find it in the Nexio Dashboard under Settings &gt; User
+     * Management. Select the API user and copy the API key.
      */
     public SourceNexiopay withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -132,6 +140,7 @@ public class SourceNexiopay {
         return this;
     }
 
+
     /**
      * The subdomain for the Nexio API environment, such as 'nexiopaysandbox' or 'nexiopay'.
      */
@@ -142,7 +151,8 @@ public class SourceNexiopay {
     }
 
     /**
-     * Your Nexio API username. You can find it in the Nexio Dashboard under Settings &gt; User Management. Select the API user and copy the username.
+     * Your Nexio API username. You can find it in the Nexio Dashboard under Settings &gt; User Management.
+     * Select the API user and copy the username.
      */
     public SourceNexiopay withUsername(String username) {
         Utils.checkNotNull(username, "username");
@@ -150,7 +160,6 @@ public class SourceNexiopay {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -161,21 +170,18 @@ public class SourceNexiopay {
         }
         SourceNexiopay other = (SourceNexiopay) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.subdomain, other.subdomain) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.subdomain, other.subdomain) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            startDate,
-            subdomain,
-            username);
+        return Utils.enhancedHash(
+            apiKey, sourceType, startDate,
+            subdomain, username);
     }
     
     @Override
@@ -187,23 +193,26 @@ public class SourceNexiopay {
                 "subdomain", subdomain,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private OffsetDateTime startDate;
- 
+
         private Optional<? extends Subdomain> subdomain;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Your Nexio API key (password). You can find it in the Nexio Dashboard under Settings &gt; User Management. Select the API user and copy the API key.
+         * Your Nexio API key (password). You can find it in the Nexio Dashboard under Settings &gt; User
+         * Management. Select the API user and copy the API key.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -211,11 +220,13 @@ public class SourceNexiopay {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * The subdomain for the Nexio API environment, such as 'nexiopaysandbox' or 'nexiopay'.
@@ -235,25 +246,27 @@ public class SourceNexiopay {
             return this;
         }
 
+
         /**
-         * Your Nexio API username. You can find it in the Nexio Dashboard under Settings &gt; User Management. Select the API user and copy the username.
+         * Your Nexio API username. You can find it in the Nexio Dashboard under Settings &gt; User Management.
+         * Select the API user and copy the username.
          */
         public Builder username(String username) {
             Utils.checkNotNull(username, "username");
             this.username = username;
             return this;
         }
-        
+
         public SourceNexiopay build() {
             if (subdomain == null) {
                 subdomain = _SINGLETON_VALUE_Subdomain.value();
             }
+
             return new SourceNexiopay(
-                apiKey,
-                startDate,
-                subdomain,
+                apiKey, startDate, subdomain,
                 username);
         }
+
 
         private static final LazySingletonValue<Nexiopay> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -12,18 +12,22 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class Source100ms {
-
     /**
-     * The management token used for authenticating API requests. You can find or generate this token in your 100ms dashboard under the API section. Refer to the documentation at https://www.100ms.live/docs/concepts/v2/concepts/security-and-tokens#management-token-for-rest-api for more details.
+     * The management token used for authenticating API requests. You can find or generate this token in
+     * your 100ms dashboard under the API section. Refer to the documentation at
+     * https://www.100ms.live/docs/concepts/v2/concepts/security-and-tokens#management-token-for-rest-api
+     * for more details.
      */
     @JsonProperty("management_token")
     private String managementToken;
 
+
     @JsonProperty("sourceType")
     private OneHundredms sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -40,7 +44,10 @@ public class Source100ms {
     }
 
     /**
-     * The management token used for authenticating API requests. You can find or generate this token in your 100ms dashboard under the API section. Refer to the documentation at https://www.100ms.live/docs/concepts/v2/concepts/security-and-tokens#management-token-for-rest-api for more details.
+     * The management token used for authenticating API requests. You can find or generate this token in
+     * your 100ms dashboard under the API section. Refer to the documentation at
+     * https://www.100ms.live/docs/concepts/v2/concepts/security-and-tokens#management-token-for-rest-api
+     * for more details.
      */
     @JsonIgnore
     public String managementToken() {
@@ -57,12 +64,16 @@ public class Source100ms {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The management token used for authenticating API requests. You can find or generate this token in your 100ms dashboard under the API section. Refer to the documentation at https://www.100ms.live/docs/concepts/v2/concepts/security-and-tokens#management-token-for-rest-api for more details.
+     * The management token used for authenticating API requests. You can find or generate this token in
+     * your 100ms dashboard under the API section. Refer to the documentation at
+     * https://www.100ms.live/docs/concepts/v2/concepts/security-and-tokens#management-token-for-rest-api
+     * for more details.
      */
     public Source100ms withManagementToken(String managementToken) {
         Utils.checkNotNull(managementToken, "managementToken");
@@ -76,7 +87,6 @@ public class Source100ms {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -87,17 +97,15 @@ public class Source100ms {
         }
         Source100ms other = (Source100ms) o;
         return 
-            Objects.deepEquals(this.managementToken, other.managementToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.managementToken, other.managementToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            managementToken,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            managementToken, sourceType, startDate);
     }
     
     @Override
@@ -107,19 +115,24 @@ public class Source100ms {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String managementToken;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The management token used for authenticating API requests. You can find or generate this token in your 100ms dashboard under the API section. Refer to the documentation at https://www.100ms.live/docs/concepts/v2/concepts/security-and-tokens#management-token-for-rest-api for more details.
+         * The management token used for authenticating API requests. You can find or generate this token in
+         * your 100ms dashboard under the API section. Refer to the documentation at
+         * https://www.100ms.live/docs/concepts/v2/concepts/security-and-tokens#management-token-for-rest-api
+         * for more details.
          */
         public Builder managementToken(String managementToken) {
             Utils.checkNotNull(managementToken, "managementToken");
@@ -127,17 +140,19 @@ public class Source100ms {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public Source100ms build() {
+
             return new Source100ms(
-                managementToken,
-                startDate);
+                managementToken, startDate);
         }
+
 
         private static final LazySingletonValue<OneHundredms> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

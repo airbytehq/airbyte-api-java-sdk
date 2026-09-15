@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationMilvusTextSplitter
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class DestinationMilvusTextSplitter {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationMilvusTextSplitter(TypedObject value) {
         this.value = value;
@@ -33,17 +32,17 @@ public class DestinationMilvusTextSplitter {
 
     public static DestinationMilvusTextSplitter of(DestinationMilvusBySeparator value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationMilvusTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationMilvusBySeparator>(){}));
+        return new DestinationMilvusTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationMilvusTextSplitter of(DestinationMilvusByMarkdownHeader value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationMilvusTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationMilvusByMarkdownHeader>(){}));
+        return new DestinationMilvusTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationMilvusTextSplitter of(DestinationMilvusByProgrammingLanguage value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationMilvusTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationMilvusByProgrammingLanguage>(){}));
+        return new DestinationMilvusTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +66,7 @@ public class DestinationMilvusTextSplitter {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +77,12 @@ public class DestinationMilvusTextSplitter {
             return false;
         }
         DestinationMilvusTextSplitter other = (DestinationMilvusTextSplitter) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -92,8 +91,8 @@ public class DestinationMilvusTextSplitter {
         public _Deserializer() {
             super(DestinationMilvusTextSplitter.class, false,
                   TypeReferenceWithShape.of(new TypeReference<DestinationMilvusBySeparator>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationMilvusByProgrammingLanguage>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationMilvusByMarkdownHeader>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationMilvusByMarkdownHeader>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationMilvusByProgrammingLanguage>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -102,6 +101,6 @@ public class DestinationMilvusTextSplitter {
         return Utils.toString(DestinationMilvusTextSplitter.class,
                 "value", value);
     }
- 
+
 }
 

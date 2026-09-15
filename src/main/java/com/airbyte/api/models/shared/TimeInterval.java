@@ -20,7 +20,7 @@ public enum TimeInterval {
     @JsonValue
     private final String value;
 
-    private TimeInterval(String value) {
+    TimeInterval(String value) {
         this.value = value;
     }
     

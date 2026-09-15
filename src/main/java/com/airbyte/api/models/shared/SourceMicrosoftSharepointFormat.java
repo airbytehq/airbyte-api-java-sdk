@@ -14,18 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceMicrosoftSharepointFormat
  * 
- * <p>The configuration options that are used to alter how to read incoming files that deviate from the standard formatting.
+ * <p>The configuration options that are used to alter how to read incoming files that deviate from the
+ * standard formatting.
  */
 @JsonDeserialize(using = SourceMicrosoftSharepointFormat._Deserializer.class)
 public class SourceMicrosoftSharepointFormat {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceMicrosoftSharepointFormat(TypedObject value) {
         this.value = value;
@@ -33,32 +33,32 @@ public class SourceMicrosoftSharepointFormat {
 
     public static SourceMicrosoftSharepointFormat of(SourceMicrosoftSharepointAvroFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMicrosoftSharepointFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMicrosoftSharepointAvroFormat>(){}));
+        return new SourceMicrosoftSharepointFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceMicrosoftSharepointFormat of(SourceMicrosoftSharepointCSVFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMicrosoftSharepointFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMicrosoftSharepointCSVFormat>(){}));
+        return new SourceMicrosoftSharepointFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceMicrosoftSharepointFormat of(SourceMicrosoftSharepointJsonlFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMicrosoftSharepointFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMicrosoftSharepointJsonlFormat>(){}));
+        return new SourceMicrosoftSharepointFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceMicrosoftSharepointFormat of(SourceMicrosoftSharepointParquetFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMicrosoftSharepointFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMicrosoftSharepointParquetFormat>(){}));
+        return new SourceMicrosoftSharepointFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceMicrosoftSharepointFormat of(SourceMicrosoftSharepointUnstructuredDocumentFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMicrosoftSharepointFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMicrosoftSharepointUnstructuredDocumentFormat>(){}));
+        return new SourceMicrosoftSharepointFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceMicrosoftSharepointFormat of(SourceMicrosoftSharepointExcelFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMicrosoftSharepointFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMicrosoftSharepointExcelFormat>(){}));
+        return new SourceMicrosoftSharepointFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -85,7 +85,7 @@ public class SourceMicrosoftSharepointFormat {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -96,12 +96,12 @@ public class SourceMicrosoftSharepointFormat {
             return false;
         }
         SourceMicrosoftSharepointFormat other = (SourceMicrosoftSharepointFormat) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -109,12 +109,12 @@ public class SourceMicrosoftSharepointFormat {
 
         public _Deserializer() {
             super(SourceMicrosoftSharepointFormat.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepointCSVFormat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepointUnstructuredDocumentFormat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepointParquetFormat>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepointAvroFormat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepointExcelFormat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepointJsonlFormat>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepointCSVFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepointJsonlFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepointParquetFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepointUnstructuredDocumentFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepointExcelFormat>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -123,6 +123,6 @@ public class SourceMicrosoftSharepointFormat {
         return Utils.toString(SourceMicrosoftSharepointFormat.class,
                 "value", value);
     }
- 
+
 }
 

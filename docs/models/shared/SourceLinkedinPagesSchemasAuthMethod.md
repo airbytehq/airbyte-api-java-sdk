@@ -1,5 +1,13 @@
 # SourceLinkedinPagesSchemasAuthMethod
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceLinkedinPagesSchemasAuthMethod;
+
+SourceLinkedinPagesSchemasAuthMethod value = SourceLinkedinPagesSchemasAuthMethod.ACCESS_TOKEN;
+```
+
 
 ## Values
 

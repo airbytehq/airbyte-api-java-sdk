@@ -15,8 +15,8 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class DestinationOracle {
 
@@ -28,7 +28,7 @@ public class DestinationOracle {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("encryption")
-    private Optional<? extends DestinationOracleEncryption> encryption;
+    private Optional<? extends Encryption> encryption;
 
     /**
      * The hostname of the database.
@@ -37,7 +37,9 @@ public class DestinationOracle {
     private String host;
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("jdbc_url_params")
@@ -65,20 +67,25 @@ public class DestinationOracle {
     private Optional<String> rawDataSchema;
 
     /**
-     * The default schema is used as the target schema for all statements issued from the connection that do not explicitly specify a schema name. The usual value for this field is "airbyte".  In Oracle, schemas and users are the same thing, so the "user" parameter is used as the login credentials and this is used for the default Airbyte message schema.
+     * The default schema is used as the target schema for all statements issued from the connection that
+     * do not explicitly specify a schema name. The usual value for this field is "airbyte". In Oracle,
+     * schemas and users are the same thing, so the "user" parameter is used as the login credentials and
+     * this is used for the default Airbyte message schema.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("schema")
     private Optional<String> schema;
 
     /**
-     * The System Identifier uniquely distinguishes the instance from any other instance on the same computer.
+     * The System Identifier uniquely distinguishes the instance from any other instance on the same
+     * computer.
      */
     @JsonProperty("sid")
     private String sid;
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
@@ -92,7 +99,7 @@ public class DestinationOracle {
 
     @JsonCreator
     public DestinationOracle(
-            @JsonProperty("encryption") Optional<? extends DestinationOracleEncryption> encryption,
+            @JsonProperty("encryption") Optional<? extends Encryption> encryption,
             @JsonProperty("host") String host,
             @JsonProperty("jdbc_url_params") Optional<String> jdbcUrlParams,
             @JsonProperty("password") Optional<String> password,
@@ -129,7 +136,10 @@ public class DestinationOracle {
             String host,
             String sid,
             String username) {
-        this(Optional.empty(), host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), sid, Optional.empty(), username);
+        this(Optional.empty(), host, Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), sid, Optional.empty(),
+            username);
     }
 
     @JsonIgnore
@@ -142,8 +152,8 @@ public class DestinationOracle {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<DestinationOracleEncryption> encryption() {
-        return (Optional<DestinationOracleEncryption>) encryption;
+    public Optional<Encryption> encryption() {
+        return (Optional<Encryption>) encryption;
     }
 
     /**
@@ -155,7 +165,9 @@ public class DestinationOracle {
     }
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     @JsonIgnore
     public Optional<String> jdbcUrlParams() {
@@ -187,7 +199,10 @@ public class DestinationOracle {
     }
 
     /**
-     * The default schema is used as the target schema for all statements issued from the connection that do not explicitly specify a schema name. The usual value for this field is "airbyte".  In Oracle, schemas and users are the same thing, so the "user" parameter is used as the login credentials and this is used for the default Airbyte message schema.
+     * The default schema is used as the target schema for all statements issued from the connection that
+     * do not explicitly specify a schema name. The usual value for this field is "airbyte". In Oracle,
+     * schemas and users are the same thing, so the "user" parameter is used as the login credentials and
+     * this is used for the default Airbyte message schema.
      */
     @JsonIgnore
     public Optional<String> schema() {
@@ -195,7 +210,8 @@ public class DestinationOracle {
     }
 
     /**
-     * The System Identifier uniquely distinguishes the instance from any other instance on the same computer.
+     * The System Identifier uniquely distinguishes the instance from any other instance on the same
+     * computer.
      */
     @JsonIgnore
     public String sid() {
@@ -203,7 +219,8 @@ public class DestinationOracle {
     }
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -219,23 +236,25 @@ public class DestinationOracle {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The encryption method which is used when communicating with the database.
      */
-    public DestinationOracle withEncryption(DestinationOracleEncryption encryption) {
+    public DestinationOracle withEncryption(Encryption encryption) {
         Utils.checkNotNull(encryption, "encryption");
         this.encryption = Optional.ofNullable(encryption);
         return this;
     }
 
+
     /**
      * The encryption method which is used when communicating with the database.
      */
-    public DestinationOracle withEncryption(Optional<? extends DestinationOracleEncryption> encryption) {
+    public DestinationOracle withEncryption(Optional<? extends Encryption> encryption) {
         Utils.checkNotNull(encryption, "encryption");
         this.encryption = encryption;
         return this;
@@ -251,7 +270,9 @@ public class DestinationOracle {
     }
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     public DestinationOracle withJdbcUrlParams(String jdbcUrlParams) {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -259,8 +280,11 @@ public class DestinationOracle {
         return this;
     }
 
+
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     public DestinationOracle withJdbcUrlParams(Optional<String> jdbcUrlParams) {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -276,6 +300,7 @@ public class DestinationOracle {
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     /**
      * The password associated with the username.
@@ -295,6 +320,7 @@ public class DestinationOracle {
         return this;
     }
 
+
     /**
      * The port of the database.
      */
@@ -313,6 +339,7 @@ public class DestinationOracle {
         return this;
     }
 
+
     /**
      * The schema to write raw tables into (default: airbyte_internal)
      */
@@ -323,7 +350,10 @@ public class DestinationOracle {
     }
 
     /**
-     * The default schema is used as the target schema for all statements issued from the connection that do not explicitly specify a schema name. The usual value for this field is "airbyte".  In Oracle, schemas and users are the same thing, so the "user" parameter is used as the login credentials and this is used for the default Airbyte message schema.
+     * The default schema is used as the target schema for all statements issued from the connection that
+     * do not explicitly specify a schema name. The usual value for this field is "airbyte". In Oracle,
+     * schemas and users are the same thing, so the "user" parameter is used as the login credentials and
+     * this is used for the default Airbyte message schema.
      */
     public DestinationOracle withSchema(String schema) {
         Utils.checkNotNull(schema, "schema");
@@ -331,8 +361,12 @@ public class DestinationOracle {
         return this;
     }
 
+
     /**
-     * The default schema is used as the target schema for all statements issued from the connection that do not explicitly specify a schema name. The usual value for this field is "airbyte".  In Oracle, schemas and users are the same thing, so the "user" parameter is used as the login credentials and this is used for the default Airbyte message schema.
+     * The default schema is used as the target schema for all statements issued from the connection that
+     * do not explicitly specify a schema name. The usual value for this field is "airbyte". In Oracle,
+     * schemas and users are the same thing, so the "user" parameter is used as the login credentials and
+     * this is used for the default Airbyte message schema.
      */
     public DestinationOracle withSchema(Optional<String> schema) {
         Utils.checkNotNull(schema, "schema");
@@ -341,7 +375,8 @@ public class DestinationOracle {
     }
 
     /**
-     * The System Identifier uniquely distinguishes the instance from any other instance on the same computer.
+     * The System Identifier uniquely distinguishes the instance from any other instance on the same
+     * computer.
      */
     public DestinationOracle withSid(String sid) {
         Utils.checkNotNull(sid, "sid");
@@ -350,7 +385,8 @@ public class DestinationOracle {
     }
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     public DestinationOracle withTunnelMethod(DestinationOracleSSHTunnelMethod tunnelMethod) {
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -358,8 +394,10 @@ public class DestinationOracle {
         return this;
     }
 
+
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     public DestinationOracle withTunnelMethod(Optional<? extends DestinationOracleSSHTunnelMethod> tunnelMethod) {
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -376,7 +414,6 @@ public class DestinationOracle {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -387,33 +424,26 @@ public class DestinationOracle {
         }
         DestinationOracle other = (DestinationOracle) o;
         return 
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.encryption, other.encryption) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.rawDataSchema, other.rawDataSchema) &&
-            Objects.deepEquals(this.schema, other.schema) &&
-            Objects.deepEquals(this.sid, other.sid) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.encryption, other.encryption) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.rawDataSchema, other.rawDataSchema) &&
+            Utils.enhancedDeepEquals(this.schema, other.schema) &&
+            Utils.enhancedDeepEquals(this.sid, other.sid) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            destinationType,
-            encryption,
-            host,
-            jdbcUrlParams,
-            password,
-            port,
-            rawDataSchema,
-            schema,
-            sid,
-            tunnelMethod,
-            username);
+        return Utils.enhancedHash(
+            destinationType, encryption, host,
+            jdbcUrlParams, password, port,
+            rawDataSchema, schema, sid,
+            tunnelMethod, username);
     }
     
     @Override
@@ -431,37 +461,39 @@ public class DestinationOracle {
                 "tunnelMethod", tunnelMethod,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
-        private Optional<? extends DestinationOracleEncryption> encryption = Optional.empty();
- 
+
+        private Optional<? extends Encryption> encryption = Optional.empty();
+
         private String host;
- 
+
         private Optional<String> jdbcUrlParams = Optional.empty();
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private Optional<Long> port;
- 
+
         private Optional<String> rawDataSchema = Optional.empty();
- 
+
         private Optional<String> schema;
- 
+
         private String sid;
- 
+
         private Optional<? extends DestinationOracleSSHTunnelMethod> tunnelMethod = Optional.empty();
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
          * The encryption method which is used when communicating with the database.
          */
-        public Builder encryption(DestinationOracleEncryption encryption) {
+        public Builder encryption(Encryption encryption) {
             Utils.checkNotNull(encryption, "encryption");
             this.encryption = Optional.ofNullable(encryption);
             return this;
@@ -470,11 +502,12 @@ public class DestinationOracle {
         /**
          * The encryption method which is used when communicating with the database.
          */
-        public Builder encryption(Optional<? extends DestinationOracleEncryption> encryption) {
+        public Builder encryption(Optional<? extends Encryption> encryption) {
             Utils.checkNotNull(encryption, "encryption");
             this.encryption = encryption;
             return this;
         }
+
 
         /**
          * The hostname of the database.
@@ -485,8 +518,11 @@ public class DestinationOracle {
             return this;
         }
 
+
         /**
-         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+         * 'key=value' pairs separated by the symbol '&amp;'. (example:
+         * key1=value1&amp;key2=value2&amp;key3=value3).
          */
         public Builder jdbcUrlParams(String jdbcUrlParams) {
             Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -495,13 +531,16 @@ public class DestinationOracle {
         }
 
         /**
-         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+         * 'key=value' pairs separated by the symbol '&amp;'. (example:
+         * key1=value1&amp;key2=value2&amp;key3=value3).
          */
         public Builder jdbcUrlParams(Optional<String> jdbcUrlParams) {
             Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
             this.jdbcUrlParams = jdbcUrlParams;
             return this;
         }
+
 
         /**
          * The password associated with the username.
@@ -521,6 +560,7 @@ public class DestinationOracle {
             return this;
         }
 
+
         /**
          * The port of the database.
          */
@@ -538,6 +578,7 @@ public class DestinationOracle {
             this.port = port;
             return this;
         }
+
 
         /**
          * The schema to write raw tables into (default: airbyte_internal)
@@ -557,8 +598,12 @@ public class DestinationOracle {
             return this;
         }
 
+
         /**
-         * The default schema is used as the target schema for all statements issued from the connection that do not explicitly specify a schema name. The usual value for this field is "airbyte".  In Oracle, schemas and users are the same thing, so the "user" parameter is used as the login credentials and this is used for the default Airbyte message schema.
+         * The default schema is used as the target schema for all statements issued from the connection that
+         * do not explicitly specify a schema name. The usual value for this field is "airbyte". In Oracle,
+         * schemas and users are the same thing, so the "user" parameter is used as the login credentials and
+         * this is used for the default Airbyte message schema.
          */
         public Builder schema(String schema) {
             Utils.checkNotNull(schema, "schema");
@@ -567,7 +612,10 @@ public class DestinationOracle {
         }
 
         /**
-         * The default schema is used as the target schema for all statements issued from the connection that do not explicitly specify a schema name. The usual value for this field is "airbyte".  In Oracle, schemas and users are the same thing, so the "user" parameter is used as the login credentials and this is used for the default Airbyte message schema.
+         * The default schema is used as the target schema for all statements issued from the connection that
+         * do not explicitly specify a schema name. The usual value for this field is "airbyte". In Oracle,
+         * schemas and users are the same thing, so the "user" parameter is used as the login credentials and
+         * this is used for the default Airbyte message schema.
          */
         public Builder schema(Optional<String> schema) {
             Utils.checkNotNull(schema, "schema");
@@ -575,8 +623,10 @@ public class DestinationOracle {
             return this;
         }
 
+
         /**
-         * The System Identifier uniquely distinguishes the instance from any other instance on the same computer.
+         * The System Identifier uniquely distinguishes the instance from any other instance on the same
+         * computer.
          */
         public Builder sid(String sid) {
             Utils.checkNotNull(sid, "sid");
@@ -584,8 +634,10 @@ public class DestinationOracle {
             return this;
         }
 
+
         /**
-         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+         * authentication to use.
          */
         public Builder tunnelMethod(DestinationOracleSSHTunnelMethod tunnelMethod) {
             Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -594,13 +646,15 @@ public class DestinationOracle {
         }
 
         /**
-         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+         * authentication to use.
          */
         public Builder tunnelMethod(Optional<? extends DestinationOracleSSHTunnelMethod> tunnelMethod) {
             Utils.checkNotNull(tunnelMethod, "tunnelMethod");
             this.tunnelMethod = tunnelMethod;
             return this;
         }
+
 
         /**
          * The username to access the database. This user must have CREATE USER privileges in the database.
@@ -610,7 +664,7 @@ public class DestinationOracle {
             this.username = username;
             return this;
         }
-        
+
         public DestinationOracle build() {
             if (port == null) {
                 port = _SINGLETON_VALUE_Port.value();
@@ -618,18 +672,14 @@ public class DestinationOracle {
             if (schema == null) {
                 schema = _SINGLETON_VALUE_Schema.value();
             }
+
             return new DestinationOracle(
-                encryption,
-                host,
-                jdbcUrlParams,
-                password,
-                port,
-                rawDataSchema,
-                schema,
-                sid,
-                tunnelMethod,
+                encryption, host, jdbcUrlParams,
+                password, port, rawDataSchema,
+                schema, sid, tunnelMethod,
                 username);
         }
+
 
         private static final LazySingletonValue<Oracle> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

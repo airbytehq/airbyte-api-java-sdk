@@ -2,6 +2,14 @@
 
 The range of prices to be queried.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.Range;
+
+Range value = Range.ONED;
+```
+
 
 ## Values
 

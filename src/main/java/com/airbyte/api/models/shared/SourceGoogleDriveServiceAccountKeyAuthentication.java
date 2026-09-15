@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceGoogleDriveServiceAccountKeyAuthentication {
 
@@ -24,7 +24,8 @@ public class SourceGoogleDriveServiceAccountKeyAuthentication {
     private Optional<? extends SourceGoogleDriveSchemasAuthType> authType;
 
     /**
-     * The JSON key of the service account to use for authorization. Read more &lt;a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys"&gt;here&lt;/a&gt;.
+     * The JSON key of the service account to use for authorization. Read more <a
+     * href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys">here</a>.
      */
     @JsonProperty("service_account_info")
     private String serviceAccountInfo;
@@ -44,19 +45,22 @@ public class SourceGoogleDriveServiceAccountKeyAuthentication {
     }
 
     /**
-     * The JSON key of the service account to use for authorization. Read more &lt;a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys"&gt;here&lt;/a&gt;.
+     * The JSON key of the service account to use for authorization. Read more <a
+     * href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys">here</a>.
      */
     @JsonIgnore
     public String serviceAccountInfo() {
         return serviceAccountInfo;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The JSON key of the service account to use for authorization. Read more &lt;a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys"&gt;here&lt;/a&gt;.
+     * The JSON key of the service account to use for authorization. Read more <a
+     * href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys">here</a>.
      */
     public SourceGoogleDriveServiceAccountKeyAuthentication withServiceAccountInfo(String serviceAccountInfo) {
         Utils.checkNotNull(serviceAccountInfo, "serviceAccountInfo");
@@ -64,7 +68,6 @@ public class SourceGoogleDriveServiceAccountKeyAuthentication {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -75,15 +78,14 @@ public class SourceGoogleDriveServiceAccountKeyAuthentication {
         }
         SourceGoogleDriveServiceAccountKeyAuthentication other = (SourceGoogleDriveServiceAccountKeyAuthentication) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.serviceAccountInfo, other.serviceAccountInfo);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.serviceAccountInfo, other.serviceAccountInfo);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            serviceAccountInfo);
+        return Utils.enhancedHash(
+            authType, serviceAccountInfo);
     }
     
     @Override
@@ -92,28 +94,33 @@ public class SourceGoogleDriveServiceAccountKeyAuthentication {
                 "authType", authType,
                 "serviceAccountInfo", serviceAccountInfo);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String serviceAccountInfo;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The JSON key of the service account to use for authorization. Read more &lt;a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys"&gt;here&lt;/a&gt;.
+         * The JSON key of the service account to use for authorization. Read more <a
+         * href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys">here</a>.
          */
         public Builder serviceAccountInfo(String serviceAccountInfo) {
             Utils.checkNotNull(serviceAccountInfo, "serviceAccountInfo");
             this.serviceAccountInfo = serviceAccountInfo;
             return this;
         }
-        
+
         public SourceGoogleDriveServiceAccountKeyAuthentication build() {
+
             return new SourceGoogleDriveServiceAccountKeyAuthentication(
                 serviceAccountInfo);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceGoogleDriveSchemasAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

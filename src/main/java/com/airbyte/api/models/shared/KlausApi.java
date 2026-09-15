@@ -14,7 +14,7 @@ public enum KlausApi {
     @JsonValue
     private final String value;
 
-    private KlausApi(String value) {
+    KlausApi(String value) {
         this.value = value;
     }
     

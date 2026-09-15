@@ -1,0 +1,11 @@
+# SourceThriveLearning
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `password`                                                                                | *Optional\<String>*                                                                       | :heavy_minus_sign:                                                                        | N/A                                                                                       |
+| `sourceType`                                                                              | [ThriveLearning](../../models/shared/ThriveLearning.md)                                   | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `startDate`                                                                               | [OffsetDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html) | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `username`                                                                                | *String*                                                                                  | :heavy_check_mark:                                                                        | Your website Tenant ID (eu-west-000000 please contact support for your tenant)            |

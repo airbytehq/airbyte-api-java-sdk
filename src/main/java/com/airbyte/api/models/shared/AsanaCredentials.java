@@ -11,14 +11,15 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class AsanaCredentials {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_id")
     private Optional<String> clientId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_secret")
@@ -48,15 +49,17 @@ public class AsanaCredentials {
         return clientSecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AsanaCredentials withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
         this.clientId = Optional.ofNullable(clientId);
         return this;
     }
+
 
     public AsanaCredentials withClientId(Optional<String> clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -70,13 +73,13 @@ public class AsanaCredentials {
         return this;
     }
 
+
     public AsanaCredentials withClientSecret(Optional<String> clientSecret) {
         Utils.checkNotNull(clientSecret, "clientSecret");
         this.clientSecret = clientSecret;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -87,15 +90,14 @@ public class AsanaCredentials {
         }
         AsanaCredentials other = (AsanaCredentials) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret);
+        return Utils.enhancedHash(
+            clientId, clientSecret);
     }
     
     @Override
@@ -104,16 +106,18 @@ public class AsanaCredentials {
                 "clientId", clientId,
                 "clientSecret", clientSecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> clientId = Optional.empty();
- 
+
         private Optional<String> clientSecret = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -127,6 +131,7 @@ public class AsanaCredentials {
             return this;
         }
 
+
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = Optional.ofNullable(clientSecret);
@@ -138,11 +143,12 @@ public class AsanaCredentials {
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public AsanaCredentials build() {
+
             return new AsanaCredentials(
-                clientId,
-                clientSecret);
+                clientId, clientSecret);
         }
+
     }
 }

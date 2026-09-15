@@ -14,7 +14,7 @@ public enum Quickbooks {
     @JsonValue
     private final String value;
 
-    private Quickbooks(String value) {
+    Quickbooks(String value) {
         this.value = value;
     }
     

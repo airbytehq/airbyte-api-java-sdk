@@ -14,7 +14,7 @@ public enum ZendeskSunshine {
     @JsonValue
     private final String value;
 
-    private ZendeskSunshine(String value) {
+    ZendeskSunshine(String value) {
         this.value = value;
     }
     

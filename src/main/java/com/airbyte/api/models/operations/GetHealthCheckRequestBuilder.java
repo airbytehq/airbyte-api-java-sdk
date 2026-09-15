@@ -3,18 +3,26 @@
  */
 package com.airbyte.api.models.operations;
 
-import java.lang.Exception;
+import static com.airbyte.api.operations.Operations.RequestlessOperation;
+
+import com.airbyte.api.SDKConfiguration;
+import com.airbyte.api.operations.GetHealthCheck;
+import com.airbyte.api.utils.Headers;
 
 public class GetHealthCheckRequestBuilder {
 
-    private final SDKMethodInterfaces.MethodCallGetHealthCheck sdk;
+    private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
-    public GetHealthCheckRequestBuilder(SDKMethodInterfaces.MethodCallGetHealthCheck sdk) {
-        this.sdk = sdk;
+    public GetHealthCheckRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
-    public GetHealthCheckResponse call() throws Exception {
+    public GetHealthCheckResponse call() {
+        
+        RequestlessOperation<GetHealthCheckResponse> operation
+            = new GetHealthCheck.Sync(sdkConfiguration, _headers);
 
-        return sdk.getHealthCheckDirect();
+        return operation.handleResponse(operation.doRequest());
     }
 }

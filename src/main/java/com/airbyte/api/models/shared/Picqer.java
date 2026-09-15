@@ -14,7 +14,7 @@ public enum Picqer {
     @JsonValue
     private final String value;
 
-    private Picqer(String value) {
+    Picqer(String value) {
         this.value = value;
     }
     

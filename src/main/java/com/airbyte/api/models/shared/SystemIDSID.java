@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -27,6 +26,7 @@ public class SystemIDSID {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("connection_type")
     private Optional<? extends SourceOracleConnectionType> connectionType;
+
 
     @JsonProperty("sid")
     private String sid;
@@ -50,9 +50,10 @@ public class SystemIDSID {
         return sid;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SystemIDSID withSid(String sid) {
         Utils.checkNotNull(sid, "sid");
@@ -60,7 +61,6 @@ public class SystemIDSID {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -71,15 +71,14 @@ public class SystemIDSID {
         }
         SystemIDSID other = (SystemIDSID) o;
         return 
-            Objects.deepEquals(this.connectionType, other.connectionType) &&
-            Objects.deepEquals(this.sid, other.sid);
+            Utils.enhancedDeepEquals(this.connectionType, other.connectionType) &&
+            Utils.enhancedDeepEquals(this.sid, other.sid);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            connectionType,
-            sid);
+        return Utils.enhancedHash(
+            connectionType, sid);
     }
     
     @Override
@@ -88,25 +87,29 @@ public class SystemIDSID {
                 "connectionType", connectionType,
                 "sid", sid);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String sid;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder sid(String sid) {
             Utils.checkNotNull(sid, "sid");
             this.sid = sid;
             return this;
         }
-        
+
         public SystemIDSID build() {
+
             return new SystemIDSID(
                 sid);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceOracleConnectionType>> _SINGLETON_VALUE_ConnectionType =
                 new LazySingletonValue<>(

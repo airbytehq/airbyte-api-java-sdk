@@ -14,7 +14,7 @@ public enum SourceAuth0SchemasCredentialsAuthenticationMethod {
     @JsonValue
     private final String value;
 
-    private SourceAuth0SchemasCredentialsAuthenticationMethod(String value) {
+    SourceAuth0SchemasCredentialsAuthenticationMethod(String value) {
         this.value = value;
     }
     

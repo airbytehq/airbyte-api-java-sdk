@@ -11,13 +11,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class PutSourceRequest {
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private Optional<? extends SourcePutRequest> sourcePutRequest;
+
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=sourceId")
     private String sourceId;
@@ -48,15 +49,17 @@ public class PutSourceRequest {
         return sourceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public PutSourceRequest withSourcePutRequest(SourcePutRequest sourcePutRequest) {
         Utils.checkNotNull(sourcePutRequest, "sourcePutRequest");
         this.sourcePutRequest = Optional.ofNullable(sourcePutRequest);
         return this;
     }
+
 
     public PutSourceRequest withSourcePutRequest(Optional<? extends SourcePutRequest> sourcePutRequest) {
         Utils.checkNotNull(sourcePutRequest, "sourcePutRequest");
@@ -70,7 +73,6 @@ public class PutSourceRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -81,15 +83,14 @@ public class PutSourceRequest {
         }
         PutSourceRequest other = (PutSourceRequest) o;
         return 
-            Objects.deepEquals(this.sourcePutRequest, other.sourcePutRequest) &&
-            Objects.deepEquals(this.sourceId, other.sourceId);
+            Utils.enhancedDeepEquals(this.sourcePutRequest, other.sourcePutRequest) &&
+            Utils.enhancedDeepEquals(this.sourceId, other.sourceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            sourcePutRequest,
-            sourceId);
+        return Utils.enhancedHash(
+            sourcePutRequest, sourceId);
     }
     
     @Override
@@ -98,16 +99,18 @@ public class PutSourceRequest {
                 "sourcePutRequest", sourcePutRequest,
                 "sourceId", sourceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourcePutRequest> sourcePutRequest = Optional.empty();
- 
+
         private String sourceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder sourcePutRequest(SourcePutRequest sourcePutRequest) {
             Utils.checkNotNull(sourcePutRequest, "sourcePutRequest");
@@ -121,16 +124,18 @@ public class PutSourceRequest {
             return this;
         }
 
+
         public Builder sourceId(String sourceId) {
             Utils.checkNotNull(sourceId, "sourceId");
             this.sourceId = sourceId;
             return this;
         }
-        
+
         public PutSourceRequest build() {
+
             return new PutSourceRequest(
-                sourcePutRequest,
-                sourceId);
+                sourcePutRequest, sourceId);
         }
+
     }
 }

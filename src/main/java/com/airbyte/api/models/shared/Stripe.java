@@ -14,7 +14,7 @@ public enum Stripe {
     @JsonValue
     private final String value;
 
-    private Stripe(String value) {
+    Stripe(String value) {
         this.value = value;
     }
     

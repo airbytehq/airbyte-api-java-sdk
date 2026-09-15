@@ -14,7 +14,7 @@ public enum Secoda {
     @JsonValue
     private final String value;
 
-    private Secoda(String value) {
+    Secoda(String value) {
         this.value = value;
     }
     

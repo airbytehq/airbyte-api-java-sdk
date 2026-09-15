@@ -12,12 +12,12 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceMerge {
-
     /**
-     * Link your other integrations with account credentials on accounts section to get account token (ref - https://app.merge.dev/linked-accounts/accounts)
+     * Link your other integrations with account credentials on accounts section to get account token (ref
+     * - https://app.merge.dev/linked-accounts/accounts)
      */
     @JsonProperty("account_token")
     private String accountToken;
@@ -27,6 +27,7 @@ public class SourceMerge {
      */
     @JsonProperty("api_token")
     private String apiToken;
+
 
     @JsonProperty("sourceType")
     private Merge sourceType;
@@ -52,7 +53,8 @@ public class SourceMerge {
     }
 
     /**
-     * Link your other integrations with account credentials on accounts section to get account token (ref - https://app.merge.dev/linked-accounts/accounts)
+     * Link your other integrations with account credentials on accounts section to get account token (ref
+     * - https://app.merge.dev/linked-accounts/accounts)
      */
     @JsonIgnore
     public String accountToken() {
@@ -80,12 +82,14 @@ public class SourceMerge {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Link your other integrations with account credentials on accounts section to get account token (ref - https://app.merge.dev/linked-accounts/accounts)
+     * Link your other integrations with account credentials on accounts section to get account token (ref
+     * - https://app.merge.dev/linked-accounts/accounts)
      */
     public SourceMerge withAccountToken(String accountToken) {
         Utils.checkNotNull(accountToken, "accountToken");
@@ -111,7 +115,6 @@ public class SourceMerge {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -122,18 +125,16 @@ public class SourceMerge {
         }
         SourceMerge other = (SourceMerge) o;
         return 
-            Objects.deepEquals(this.accountToken, other.accountToken) &&
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.accountToken, other.accountToken) &&
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountToken,
-            apiToken,
-            sourceType,
+        return Utils.enhancedHash(
+            accountToken, apiToken, sourceType,
             startDate);
     }
     
@@ -145,27 +146,31 @@ public class SourceMerge {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accountToken;
- 
+
         private String apiToken;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Link your other integrations with account credentials on accounts section to get account token (ref - https://app.merge.dev/linked-accounts/accounts)
+         * Link your other integrations with account credentials on accounts section to get account token (ref
+         * - https://app.merge.dev/linked-accounts/accounts)
          */
         public Builder accountToken(String accountToken) {
             Utils.checkNotNull(accountToken, "accountToken");
             this.accountToken = accountToken;
             return this;
         }
+
 
         /**
          * API token can be seen at  https://app.merge.dev/keys
@@ -176,6 +181,7 @@ public class SourceMerge {
             return this;
         }
 
+
         /**
          * Date time filter for incremental filter, Specify which date to extract from.
          */
@@ -184,13 +190,13 @@ public class SourceMerge {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceMerge build() {
+
             return new SourceMerge(
-                accountToken,
-                apiToken,
-                startDate);
+                accountToken, apiToken, startDate);
         }
+
 
         private static final LazySingletonValue<Merge> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

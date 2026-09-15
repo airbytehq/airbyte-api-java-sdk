@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceDrift {
 
@@ -29,6 +29,7 @@ public class SourceDrift {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("email")
     private Optional<String> email;
+
 
     @JsonProperty("sourceType")
     private SourceDriftDrift sourceType;
@@ -67,15 +68,17 @@ public class SourceDrift {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceDrift withCredentials(SourceDriftAuthorizationMethod credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = Optional.ofNullable(credentials);
         return this;
     }
+
 
     public SourceDrift withCredentials(Optional<? extends SourceDriftAuthorizationMethod> credentials) {
         Utils.checkNotNull(credentials, "credentials");
@@ -92,6 +95,7 @@ public class SourceDrift {
         return this;
     }
 
+
     /**
      * Email used as parameter for contacts stream
      */
@@ -101,7 +105,6 @@ public class SourceDrift {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -112,17 +115,15 @@ public class SourceDrift {
         }
         SourceDrift other = (SourceDrift) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.email, other.email) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.email, other.email) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            email,
-            sourceType);
+        return Utils.enhancedHash(
+            credentials, email, sourceType);
     }
     
     @Override
@@ -132,16 +133,18 @@ public class SourceDrift {
                 "email", email,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourceDriftAuthorizationMethod> credentials = Optional.empty();
- 
+
         private Optional<String> email;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder credentials(SourceDriftAuthorizationMethod credentials) {
             Utils.checkNotNull(credentials, "credentials");
@@ -154,6 +157,7 @@ public class SourceDrift {
             this.credentials = credentials;
             return this;
         }
+
 
         /**
          * Email used as parameter for contacts stream
@@ -172,15 +176,16 @@ public class SourceDrift {
             this.email = email;
             return this;
         }
-        
+
         public SourceDrift build() {
             if (email == null) {
                 email = _SINGLETON_VALUE_Email.value();
             }
+
             return new SourceDrift(
-                credentials,
-                email);
+                credentials, email);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Email =
                 new LazySingletonValue<>(

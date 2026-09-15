@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceSftpBulkProcessing
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class SourceSftpBulkProcessing {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceSftpBulkProcessing(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class SourceSftpBulkProcessing {
 
     public static SourceSftpBulkProcessing of(SourceSftpBulkLocal value) {
         Utils.checkNotNull(value, "value");
-        return new SourceSftpBulkProcessing(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSftpBulkLocal>(){}));
+        return new SourceSftpBulkProcessing(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceSftpBulkProcessing of(SourceSftpBulkViaAPI value) {
         Utils.checkNotNull(value, "value");
-        return new SourceSftpBulkProcessing(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSftpBulkViaAPI>(){}));
+        return new SourceSftpBulkProcessing(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class SourceSftpBulkProcessing {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class SourceSftpBulkProcessing {
             return false;
         }
         SourceSftpBulkProcessing other = (SourceSftpBulkProcessing) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,8 +84,8 @@ public class SourceSftpBulkProcessing {
 
         public _Deserializer() {
             super(SourceSftpBulkProcessing.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceSftpBulkViaAPI>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSftpBulkLocal>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceSftpBulkLocal>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSftpBulkViaAPI>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -95,6 +94,6 @@ public class SourceSftpBulkProcessing {
         return Utils.toString(SourceSftpBulkProcessing.class,
                 "value", value);
     }
- 
+
 }
 

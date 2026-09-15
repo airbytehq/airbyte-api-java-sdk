@@ -15,11 +15,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceEbayFinance {
 
+public class SourceEbayFinance {
     /**
      * https://apiz.sandbox.ebay.com for sandbox &amp; https://apiz.ebay.com for production
      */
@@ -34,17 +33,22 @@ public class SourceEbayFinance {
     @JsonProperty("password")
     private Optional<String> password;
 
+
     @JsonProperty("redirect_uri")
     private String redirectUri;
+
 
     @JsonProperty("refresh_token")
     private String refreshToken;
 
+
     @JsonProperty("sourceType")
     private EbayFinance sourceType;
 
+
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("token_refresh_endpoint")
@@ -87,7 +91,9 @@ public class SourceEbayFinance {
             String refreshToken,
             OffsetDateTime startDate,
             String username) {
-        this(Optional.empty(), Optional.empty(), redirectUri, refreshToken, startDate, Optional.empty(), username);
+        this(Optional.empty(), Optional.empty(), redirectUri,
+            refreshToken, startDate, Optional.empty(),
+            username);
     }
 
     /**
@@ -141,9 +147,10 @@ public class SourceEbayFinance {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * https://apiz.sandbox.ebay.com for sandbox &amp; https://apiz.ebay.com for production
@@ -153,6 +160,7 @@ public class SourceEbayFinance {
         this.apiHost = Optional.ofNullable(apiHost);
         return this;
     }
+
 
     /**
      * https://apiz.sandbox.ebay.com for sandbox &amp; https://apiz.ebay.com for production
@@ -171,6 +179,7 @@ public class SourceEbayFinance {
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     /**
      * Ebay Client Secret
@@ -205,6 +214,7 @@ public class SourceEbayFinance {
         return this;
     }
 
+
     public SourceEbayFinance withTokenRefreshEndpoint(Optional<? extends RefreshTokenEndpoint> tokenRefreshEndpoint) {
         Utils.checkNotNull(tokenRefreshEndpoint, "tokenRefreshEndpoint");
         this.tokenRefreshEndpoint = tokenRefreshEndpoint;
@@ -220,7 +230,6 @@ public class SourceEbayFinance {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -231,27 +240,22 @@ public class SourceEbayFinance {
         }
         SourceEbayFinance other = (SourceEbayFinance) o;
         return 
-            Objects.deepEquals(this.apiHost, other.apiHost) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.redirectUri, other.redirectUri) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.tokenRefreshEndpoint, other.tokenRefreshEndpoint) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.apiHost, other.apiHost) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.redirectUri, other.redirectUri) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.tokenRefreshEndpoint, other.tokenRefreshEndpoint) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiHost,
-            password,
-            redirectUri,
-            refreshToken,
-            sourceType,
-            startDate,
-            tokenRefreshEndpoint,
-            username);
+        return Utils.enhancedHash(
+            apiHost, password, redirectUri,
+            refreshToken, sourceType, startDate,
+            tokenRefreshEndpoint, username);
     }
     
     @Override
@@ -266,26 +270,28 @@ public class SourceEbayFinance {
                 "tokenRefreshEndpoint", tokenRefreshEndpoint,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends APIHost> apiHost;
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private String redirectUri;
- 
+
         private String refreshToken;
- 
+
         private OffsetDateTime startDate;
- 
+
         private Optional<? extends RefreshTokenEndpoint> tokenRefreshEndpoint;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * https://apiz.sandbox.ebay.com for sandbox &amp; https://apiz.ebay.com for production
@@ -305,6 +311,7 @@ public class SourceEbayFinance {
             return this;
         }
 
+
         /**
          * Ebay Client Secret
          */
@@ -323,11 +330,13 @@ public class SourceEbayFinance {
             return this;
         }
 
+
         public Builder redirectUri(String redirectUri) {
             Utils.checkNotNull(redirectUri, "redirectUri");
             this.redirectUri = redirectUri;
             return this;
         }
+
 
         public Builder refreshToken(String refreshToken) {
             Utils.checkNotNull(refreshToken, "refreshToken");
@@ -335,11 +344,13 @@ public class SourceEbayFinance {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
+
 
         public Builder tokenRefreshEndpoint(RefreshTokenEndpoint tokenRefreshEndpoint) {
             Utils.checkNotNull(tokenRefreshEndpoint, "tokenRefreshEndpoint");
@@ -353,6 +364,7 @@ public class SourceEbayFinance {
             return this;
         }
 
+
         /**
          * Ebay Developer Client ID
          */
@@ -361,7 +373,7 @@ public class SourceEbayFinance {
             this.username = username;
             return this;
         }
-        
+
         public SourceEbayFinance build() {
             if (apiHost == null) {
                 apiHost = _SINGLETON_VALUE_ApiHost.value();
@@ -369,15 +381,13 @@ public class SourceEbayFinance {
             if (tokenRefreshEndpoint == null) {
                 tokenRefreshEndpoint = _SINGLETON_VALUE_TokenRefreshEndpoint.value();
             }
+
             return new SourceEbayFinance(
-                apiHost,
-                password,
-                redirectUri,
-                refreshToken,
-                startDate,
-                tokenRefreshEndpoint,
+                apiHost, password, redirectUri,
+                refreshToken, startDate, tokenRefreshEndpoint,
                 username);
         }
+
 
         private static final LazySingletonValue<Optional<? extends APIHost>> _SINGLETON_VALUE_ApiHost =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum Deepset {
     @JsonValue
     private final String value;
 
-    private Deepset(String value) {
+    Deepset(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum Mixmax {
     @JsonValue
     private final String value;
 
-    private Mixmax(String value) {
+    Mixmax(String value) {
         this.value = value;
     }
     

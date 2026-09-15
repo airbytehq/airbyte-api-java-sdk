@@ -1,5 +1,13 @@
 # DestinationRedshiftMethod
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DestinationRedshiftMethod;
+
+DestinationRedshiftMethod value = DestinationRedshiftMethod.S3_STAGING;
+```
+
 
 ## Values
 

@@ -14,7 +14,7 @@ public enum Onesignal {
     @JsonValue
     private final String value;
 
-    private Onesignal(String value) {
+    Onesignal(String value) {
         this.value = value;
     }
     

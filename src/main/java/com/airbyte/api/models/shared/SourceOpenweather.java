@@ -15,11 +15,10 @@ import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceOpenweather {
 
+public class SourceOpenweather {
     /**
      * API KEY
      */
@@ -27,20 +26,24 @@ public class SourceOpenweather {
     private String appid;
 
     /**
-     * You can use lang parameter to get the output in your language. The contents of the description field will be translated. See &lt;a href="https://openweathermap.org/api/one-call-api#multi"&gt;here&lt;/a&gt; for the list of supported languages.
+     * You can use lang parameter to get the output in your language. The contents of the description field
+     * will be translated. See <a href="https://openweathermap.org/api/one-call-api#multi">here</a> for the
+     * list of supported languages.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("lang")
     private Optional<? extends Lang> lang;
 
     /**
-     * Latitude, decimal (-90; 90). If you need the geocoder to automatic convert city names and zip-codes to geo coordinates and the other way around, please use the OpenWeather Geocoding API
+     * Latitude, decimal (-90; 90). If you need the geocoder to automatic convert city names and zip-codes
+     * to geo coordinates and the other way around, please use the OpenWeather Geocoding API
      */
     @JsonProperty("lat")
     private String lat;
 
     /**
-     * Longitude, decimal (-180; 180). If you need the geocoder to automatic convert city names and zip-codes to geo coordinates and the other way around, please use the OpenWeather Geocoding API
+     * Longitude, decimal (-180; 180). If you need the geocoder to automatic convert city names and
+     * zip-codes to geo coordinates and the other way around, please use the OpenWeather Geocoding API
      */
     @JsonProperty("lon")
     private String lon;
@@ -52,11 +55,13 @@ public class SourceOpenweather {
     @JsonProperty("only_current")
     private Optional<Boolean> onlyCurrent;
 
+
     @JsonProperty("sourceType")
     private Openweather sourceType;
 
     /**
-     * Units of measurement. standard, metric and imperial units are available. If you do not use the units parameter, standard units will be applied by default.
+     * Units of measurement. standard, metric and imperial units are available. If you do not use the units
+     * parameter, standard units will be applied by default.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("units")
@@ -89,7 +94,8 @@ public class SourceOpenweather {
             String appid,
             String lat,
             String lon) {
-        this(appid, Optional.empty(), lat, lon, Optional.empty(), Optional.empty());
+        this(appid, Optional.empty(), lat,
+            lon, Optional.empty(), Optional.empty());
     }
 
     /**
@@ -101,7 +107,9 @@ public class SourceOpenweather {
     }
 
     /**
-     * You can use lang parameter to get the output in your language. The contents of the description field will be translated. See &lt;a href="https://openweathermap.org/api/one-call-api#multi"&gt;here&lt;/a&gt; for the list of supported languages.
+     * You can use lang parameter to get the output in your language. The contents of the description field
+     * will be translated. See <a href="https://openweathermap.org/api/one-call-api#multi">here</a> for the
+     * list of supported languages.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -110,7 +118,8 @@ public class SourceOpenweather {
     }
 
     /**
-     * Latitude, decimal (-90; 90). If you need the geocoder to automatic convert city names and zip-codes to geo coordinates and the other way around, please use the OpenWeather Geocoding API
+     * Latitude, decimal (-90; 90). If you need the geocoder to automatic convert city names and zip-codes
+     * to geo coordinates and the other way around, please use the OpenWeather Geocoding API
      */
     @JsonIgnore
     public String lat() {
@@ -118,7 +127,8 @@ public class SourceOpenweather {
     }
 
     /**
-     * Longitude, decimal (-180; 180). If you need the geocoder to automatic convert city names and zip-codes to geo coordinates and the other way around, please use the OpenWeather Geocoding API
+     * Longitude, decimal (-180; 180). If you need the geocoder to automatic convert city names and
+     * zip-codes to geo coordinates and the other way around, please use the OpenWeather Geocoding API
      */
     @JsonIgnore
     public String lon() {
@@ -139,7 +149,8 @@ public class SourceOpenweather {
     }
 
     /**
-     * Units of measurement. standard, metric and imperial units are available. If you do not use the units parameter, standard units will be applied by default.
+     * Units of measurement. standard, metric and imperial units are available. If you do not use the units
+     * parameter, standard units will be applied by default.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -147,9 +158,10 @@ public class SourceOpenweather {
         return (Optional<Units>) units;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API KEY
@@ -161,7 +173,9 @@ public class SourceOpenweather {
     }
 
     /**
-     * You can use lang parameter to get the output in your language. The contents of the description field will be translated. See &lt;a href="https://openweathermap.org/api/one-call-api#multi"&gt;here&lt;/a&gt; for the list of supported languages.
+     * You can use lang parameter to get the output in your language. The contents of the description field
+     * will be translated. See <a href="https://openweathermap.org/api/one-call-api#multi">here</a> for the
+     * list of supported languages.
      */
     public SourceOpenweather withLang(Lang lang) {
         Utils.checkNotNull(lang, "lang");
@@ -169,8 +183,11 @@ public class SourceOpenweather {
         return this;
     }
 
+
     /**
-     * You can use lang parameter to get the output in your language. The contents of the description field will be translated. See &lt;a href="https://openweathermap.org/api/one-call-api#multi"&gt;here&lt;/a&gt; for the list of supported languages.
+     * You can use lang parameter to get the output in your language. The contents of the description field
+     * will be translated. See <a href="https://openweathermap.org/api/one-call-api#multi">here</a> for the
+     * list of supported languages.
      */
     public SourceOpenweather withLang(Optional<? extends Lang> lang) {
         Utils.checkNotNull(lang, "lang");
@@ -179,7 +196,8 @@ public class SourceOpenweather {
     }
 
     /**
-     * Latitude, decimal (-90; 90). If you need the geocoder to automatic convert city names and zip-codes to geo coordinates and the other way around, please use the OpenWeather Geocoding API
+     * Latitude, decimal (-90; 90). If you need the geocoder to automatic convert city names and zip-codes
+     * to geo coordinates and the other way around, please use the OpenWeather Geocoding API
      */
     public SourceOpenweather withLat(String lat) {
         Utils.checkNotNull(lat, "lat");
@@ -188,7 +206,8 @@ public class SourceOpenweather {
     }
 
     /**
-     * Longitude, decimal (-180; 180). If you need the geocoder to automatic convert city names and zip-codes to geo coordinates and the other way around, please use the OpenWeather Geocoding API
+     * Longitude, decimal (-180; 180). If you need the geocoder to automatic convert city names and
+     * zip-codes to geo coordinates and the other way around, please use the OpenWeather Geocoding API
      */
     public SourceOpenweather withLon(String lon) {
         Utils.checkNotNull(lon, "lon");
@@ -205,6 +224,7 @@ public class SourceOpenweather {
         return this;
     }
 
+
     /**
      * True for particular day
      */
@@ -215,7 +235,8 @@ public class SourceOpenweather {
     }
 
     /**
-     * Units of measurement. standard, metric and imperial units are available. If you do not use the units parameter, standard units will be applied by default.
+     * Units of measurement. standard, metric and imperial units are available. If you do not use the units
+     * parameter, standard units will be applied by default.
      */
     public SourceOpenweather withUnits(Units units) {
         Utils.checkNotNull(units, "units");
@@ -223,8 +244,10 @@ public class SourceOpenweather {
         return this;
     }
 
+
     /**
-     * Units of measurement. standard, metric and imperial units are available. If you do not use the units parameter, standard units will be applied by default.
+     * Units of measurement. standard, metric and imperial units are available. If you do not use the units
+     * parameter, standard units will be applied by default.
      */
     public SourceOpenweather withUnits(Optional<? extends Units> units) {
         Utils.checkNotNull(units, "units");
@@ -232,7 +255,6 @@ public class SourceOpenweather {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -243,24 +265,20 @@ public class SourceOpenweather {
         }
         SourceOpenweather other = (SourceOpenweather) o;
         return 
-            Objects.deepEquals(this.appid, other.appid) &&
-            Objects.deepEquals(this.lang, other.lang) &&
-            Objects.deepEquals(this.lat, other.lat) &&
-            Objects.deepEquals(this.lon, other.lon) &&
-            Objects.deepEquals(this.onlyCurrent, other.onlyCurrent) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.units, other.units);
+            Utils.enhancedDeepEquals(this.appid, other.appid) &&
+            Utils.enhancedDeepEquals(this.lang, other.lang) &&
+            Utils.enhancedDeepEquals(this.lat, other.lat) &&
+            Utils.enhancedDeepEquals(this.lon, other.lon) &&
+            Utils.enhancedDeepEquals(this.onlyCurrent, other.onlyCurrent) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.units, other.units);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            appid,
-            lang,
-            lat,
-            lon,
-            onlyCurrent,
-            sourceType,
+        return Utils.enhancedHash(
+            appid, lang, lat,
+            lon, onlyCurrent, sourceType,
             units);
     }
     
@@ -275,24 +293,26 @@ public class SourceOpenweather {
                 "sourceType", sourceType,
                 "units", units);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String appid;
- 
+
         private Optional<? extends Lang> lang = Optional.empty();
- 
+
         private String lat;
- 
+
         private String lon;
- 
+
         private Optional<Boolean> onlyCurrent = Optional.empty();
- 
+
         private Optional<? extends Units> units = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API KEY
@@ -303,8 +323,11 @@ public class SourceOpenweather {
             return this;
         }
 
+
         /**
-         * You can use lang parameter to get the output in your language. The contents of the description field will be translated. See &lt;a href="https://openweathermap.org/api/one-call-api#multi"&gt;here&lt;/a&gt; for the list of supported languages.
+         * You can use lang parameter to get the output in your language. The contents of the description field
+         * will be translated. See <a href="https://openweathermap.org/api/one-call-api#multi">here</a> for the
+         * list of supported languages.
          */
         public Builder lang(Lang lang) {
             Utils.checkNotNull(lang, "lang");
@@ -313,7 +336,9 @@ public class SourceOpenweather {
         }
 
         /**
-         * You can use lang parameter to get the output in your language. The contents of the description field will be translated. See &lt;a href="https://openweathermap.org/api/one-call-api#multi"&gt;here&lt;/a&gt; for the list of supported languages.
+         * You can use lang parameter to get the output in your language. The contents of the description field
+         * will be translated. See <a href="https://openweathermap.org/api/one-call-api#multi">here</a> for the
+         * list of supported languages.
          */
         public Builder lang(Optional<? extends Lang> lang) {
             Utils.checkNotNull(lang, "lang");
@@ -321,8 +346,10 @@ public class SourceOpenweather {
             return this;
         }
 
+
         /**
-         * Latitude, decimal (-90; 90). If you need the geocoder to automatic convert city names and zip-codes to geo coordinates and the other way around, please use the OpenWeather Geocoding API
+         * Latitude, decimal (-90; 90). If you need the geocoder to automatic convert city names and zip-codes
+         * to geo coordinates and the other way around, please use the OpenWeather Geocoding API
          */
         public Builder lat(String lat) {
             Utils.checkNotNull(lat, "lat");
@@ -330,14 +357,17 @@ public class SourceOpenweather {
             return this;
         }
 
+
         /**
-         * Longitude, decimal (-180; 180). If you need the geocoder to automatic convert city names and zip-codes to geo coordinates and the other way around, please use the OpenWeather Geocoding API
+         * Longitude, decimal (-180; 180). If you need the geocoder to automatic convert city names and
+         * zip-codes to geo coordinates and the other way around, please use the OpenWeather Geocoding API
          */
         public Builder lon(String lon) {
             Utils.checkNotNull(lon, "lon");
             this.lon = lon;
             return this;
         }
+
 
         /**
          * True for particular day
@@ -357,8 +387,10 @@ public class SourceOpenweather {
             return this;
         }
 
+
         /**
-         * Units of measurement. standard, metric and imperial units are available. If you do not use the units parameter, standard units will be applied by default.
+         * Units of measurement. standard, metric and imperial units are available. If you do not use the units
+         * parameter, standard units will be applied by default.
          */
         public Builder units(Units units) {
             Utils.checkNotNull(units, "units");
@@ -367,23 +399,22 @@ public class SourceOpenweather {
         }
 
         /**
-         * Units of measurement. standard, metric and imperial units are available. If you do not use the units parameter, standard units will be applied by default.
+         * Units of measurement. standard, metric and imperial units are available. If you do not use the units
+         * parameter, standard units will be applied by default.
          */
         public Builder units(Optional<? extends Units> units) {
             Utils.checkNotNull(units, "units");
             this.units = units;
             return this;
         }
-        
+
         public SourceOpenweather build() {
+
             return new SourceOpenweather(
-                appid,
-                lang,
-                lat,
-                lon,
-                onlyCurrent,
-                units);
+                appid, lang, lat,
+                lon, onlyCurrent, units);
         }
+
 
         private static final LazySingletonValue<Openweather> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -2,6 +2,14 @@
 
 The name of the the object derives from the ReportRequest object. You can find it in Bing Ads Api docs - Reporting API - Reporting Data Objects.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.ReportingDataObject;
+
+ReportingDataObject value = ReportingDataObject.ACCOUNT_PERFORMANCE_REPORT_REQUEST;
+```
+
 
 ## Values
 

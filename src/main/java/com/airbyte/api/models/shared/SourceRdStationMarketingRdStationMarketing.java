@@ -14,7 +14,7 @@ public enum SourceRdStationMarketingRdStationMarketing {
     @JsonValue
     private final String value;
 
-    private SourceRdStationMarketingRdStationMarketing(String value) {
+    SourceRdStationMarketingRdStationMarketing(String value) {
         this.value = value;
     }
     

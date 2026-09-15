@@ -14,13 +14,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = SourceZendeskChatAuthorizationMethod._Deserializer.class)
 public class SourceZendeskChatAuthorizationMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceZendeskChatAuthorizationMethod(TypedObject value) {
         this.value = value;
@@ -28,12 +27,12 @@ public class SourceZendeskChatAuthorizationMethod {
 
     public static SourceZendeskChatAuthorizationMethod of(SourceZendeskChatOAuth20 value) {
         Utils.checkNotNull(value, "value");
-        return new SourceZendeskChatAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZendeskChatOAuth20>(){}));
+        return new SourceZendeskChatAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceZendeskChatAuthorizationMethod of(SourceZendeskChatAccessToken value) {
         Utils.checkNotNull(value, "value");
-        return new SourceZendeskChatAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZendeskChatAccessToken>(){}));
+        return new SourceZendeskChatAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -56,7 +55,7 @@ public class SourceZendeskChatAuthorizationMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -67,12 +66,12 @@ public class SourceZendeskChatAuthorizationMethod {
             return false;
         }
         SourceZendeskChatAuthorizationMethod other = (SourceZendeskChatAuthorizationMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -90,6 +89,6 @@ public class SourceZendeskChatAuthorizationMethod {
         return Utils.toString(SourceZendeskChatAuthorizationMethod.class,
                 "value", value);
     }
- 
+
 }
 

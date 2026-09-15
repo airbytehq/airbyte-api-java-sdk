@@ -14,7 +14,7 @@ public enum K6Cloud {
     @JsonValue
     private final String value;
 
-    private K6Cloud(String value) {
+    K6Cloud(String value) {
         this.value = value;
     }
     

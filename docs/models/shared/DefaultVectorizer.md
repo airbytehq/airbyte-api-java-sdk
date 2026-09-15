@@ -2,6 +2,14 @@
 
 The vectorizer to use if new classes need to be created
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DefaultVectorizer;
+
+DefaultVectorizer value = DefaultVectorizer.NONE;
+```
+
 
 ## Values
 

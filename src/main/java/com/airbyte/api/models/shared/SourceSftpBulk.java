@@ -17,7 +17,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -27,12 +26,12 @@ import java.util.Optional;
  * that are needed when users configure a file-based source.
  */
 public class SourceSftpBulk {
-
     /**
      * Credentials for connecting to the SFTP Server
      */
     @JsonProperty("credentials")
     private SourceSftpBulkAuthentication credentials;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("delivery_method")
@@ -58,18 +57,23 @@ public class SourceSftpBulk {
     @JsonProperty("port")
     private Optional<Long> port;
 
+
     @JsonProperty("sourceType")
     private SftpBulk sourceType;
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will
+     * not be replicated.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
     private Optional<OffsetDateTime> startDate;
 
     /**
-     * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
+     * Each instance of this configuration defines a <a
+     * href="https://docs.airbyte.com/cloud/core-concepts#stream">stream</a>. Use this to define which
+     * files belong in the stream, their format, and how they should be parsed and validated. When sending
+     * data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
      */
     @JsonProperty("streams")
     private List<SourceSftpBulkFileBasedStreamConfig> streams;
@@ -114,7 +118,9 @@ public class SourceSftpBulk {
             String host,
             List<SourceSftpBulkFileBasedStreamConfig> streams,
             String username) {
-        this(credentials, Optional.empty(), Optional.empty(), host, Optional.empty(), Optional.empty(), streams, username);
+        this(credentials, Optional.empty(), Optional.empty(),
+            host, Optional.empty(), Optional.empty(),
+            streams, username);
     }
 
     /**
@@ -161,7 +167,8 @@ public class SourceSftpBulk {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will
+     * not be replicated.
      */
     @JsonIgnore
     public Optional<OffsetDateTime> startDate() {
@@ -169,7 +176,10 @@ public class SourceSftpBulk {
     }
 
     /**
-     * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
+     * Each instance of this configuration defines a <a
+     * href="https://docs.airbyte.com/cloud/core-concepts#stream">stream</a>. Use this to define which
+     * files belong in the stream, their format, and how they should be parsed and validated. When sending
+     * data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
      */
     @JsonIgnore
     public List<SourceSftpBulkFileBasedStreamConfig> streams() {
@@ -184,9 +194,10 @@ public class SourceSftpBulk {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Credentials for connecting to the SFTP Server
@@ -203,6 +214,7 @@ public class SourceSftpBulk {
         return this;
     }
 
+
     public SourceSftpBulk withDeliveryMethod(Optional<? extends SourceSftpBulkDeliveryMethod> deliveryMethod) {
         Utils.checkNotNull(deliveryMethod, "deliveryMethod");
         this.deliveryMethod = deliveryMethod;
@@ -217,6 +229,7 @@ public class SourceSftpBulk {
         this.folderPath = Optional.ofNullable(folderPath);
         return this;
     }
+
 
     /**
      * The directory to search files for sync
@@ -245,6 +258,7 @@ public class SourceSftpBulk {
         return this;
     }
 
+
     /**
      * The server port
      */
@@ -255,7 +269,8 @@ public class SourceSftpBulk {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will
+     * not be replicated.
      */
     public SourceSftpBulk withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -263,8 +278,10 @@ public class SourceSftpBulk {
         return this;
     }
 
+
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will
+     * not be replicated.
      */
     public SourceSftpBulk withStartDate(Optional<OffsetDateTime> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -273,7 +290,10 @@ public class SourceSftpBulk {
     }
 
     /**
-     * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
+     * Each instance of this configuration defines a <a
+     * href="https://docs.airbyte.com/cloud/core-concepts#stream">stream</a>. Use this to define which
+     * files belong in the stream, their format, and how they should be parsed and validated. When sending
+     * data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
      */
     public SourceSftpBulk withStreams(List<SourceSftpBulkFileBasedStreamConfig> streams) {
         Utils.checkNotNull(streams, "streams");
@@ -290,7 +310,6 @@ public class SourceSftpBulk {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -301,29 +320,23 @@ public class SourceSftpBulk {
         }
         SourceSftpBulk other = (SourceSftpBulk) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.deliveryMethod, other.deliveryMethod) &&
-            Objects.deepEquals(this.folderPath, other.folderPath) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.streams, other.streams) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.deliveryMethod, other.deliveryMethod) &&
+            Utils.enhancedDeepEquals(this.folderPath, other.folderPath) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.streams, other.streams) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            deliveryMethod,
-            folderPath,
-            host,
-            port,
-            sourceType,
-            startDate,
-            streams,
-            username);
+        return Utils.enhancedHash(
+            credentials, deliveryMethod, folderPath,
+            host, port, sourceType,
+            startDate, streams, username);
     }
     
     @Override
@@ -339,28 +352,30 @@ public class SourceSftpBulk {
                 "streams", streams,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private SourceSftpBulkAuthentication credentials;
- 
+
         private Optional<? extends SourceSftpBulkDeliveryMethod> deliveryMethod = Optional.empty();
- 
+
         private Optional<String> folderPath;
- 
+
         private String host;
- 
+
         private Optional<Long> port;
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
- 
+
         private List<SourceSftpBulkFileBasedStreamConfig> streams;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Credentials for connecting to the SFTP Server
@@ -370,6 +385,7 @@ public class SourceSftpBulk {
             this.credentials = credentials;
             return this;
         }
+
 
         public Builder deliveryMethod(SourceSftpBulkDeliveryMethod deliveryMethod) {
             Utils.checkNotNull(deliveryMethod, "deliveryMethod");
@@ -382,6 +398,7 @@ public class SourceSftpBulk {
             this.deliveryMethod = deliveryMethod;
             return this;
         }
+
 
         /**
          * The directory to search files for sync
@@ -401,6 +418,7 @@ public class SourceSftpBulk {
             return this;
         }
 
+
         /**
          * The server host address
          */
@@ -409,6 +427,7 @@ public class SourceSftpBulk {
             this.host = host;
             return this;
         }
+
 
         /**
          * The server port
@@ -428,8 +447,10 @@ public class SourceSftpBulk {
             return this;
         }
 
+
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will
+         * not be replicated.
          */
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -438,7 +459,8 @@ public class SourceSftpBulk {
         }
 
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will
+         * not be replicated.
          */
         public Builder startDate(Optional<OffsetDateTime> startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -446,14 +468,19 @@ public class SourceSftpBulk {
             return this;
         }
 
+
         /**
-         * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
+         * Each instance of this configuration defines a <a
+         * href="https://docs.airbyte.com/cloud/core-concepts#stream">stream</a>. Use this to define which
+         * files belong in the stream, their format, and how they should be parsed and validated. When sending
+         * data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
          */
         public Builder streams(List<SourceSftpBulkFileBasedStreamConfig> streams) {
             Utils.checkNotNull(streams, "streams");
             this.streams = streams;
             return this;
         }
+
 
         /**
          * The server user
@@ -463,7 +490,7 @@ public class SourceSftpBulk {
             this.username = username;
             return this;
         }
-        
+
         public SourceSftpBulk build() {
             if (folderPath == null) {
                 folderPath = _SINGLETON_VALUE_FolderPath.value();
@@ -471,16 +498,13 @@ public class SourceSftpBulk {
             if (port == null) {
                 port = _SINGLETON_VALUE_Port.value();
             }
+
             return new SourceSftpBulk(
-                credentials,
-                deliveryMethod,
-                folderPath,
-                host,
-                port,
-                startDate,
-                streams,
-                username);
+                credentials, deliveryMethod, folderPath,
+                host, port, startDate,
+                streams, username);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_FolderPath =
                 new LazySingletonValue<>(

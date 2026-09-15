@@ -14,7 +14,7 @@ public enum Sftp {
     @JsonValue
     private final String value;
 
-    private Sftp(String value) {
+    Sftp(String value) {
         this.value = value;
     }
     

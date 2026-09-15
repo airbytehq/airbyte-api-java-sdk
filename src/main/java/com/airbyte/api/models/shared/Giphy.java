@@ -14,7 +14,7 @@ public enum Giphy {
     @JsonValue
     private final String value;
 
-    private Giphy(String value) {
+    Giphy(String value) {
         this.value = value;
     }
     

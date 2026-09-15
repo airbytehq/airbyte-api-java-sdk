@@ -14,13 +14,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * DestinationAstra
  * 
- * <p>The configuration model for the Vector DB based destinations. This model is used to generate the UI for the destination configuration,
+ * <p>The configuration model for the Vector DB based destinations. This model is used to generate the UI
+ * for the destination configuration,
  * as well as to provide type safety for the configuration passed to the destination.
  * 
  * <p>The configuration model is composed of four parts:
@@ -29,7 +29,8 @@ import java.util.Optional;
  * * Indexing configuration
  * * Advanced configuration
  * 
- * <p>Processing, embedding and advanced configuration are provided by this base class, while the indexing configuration is provided by the destination connector in the sub class.
+ * <p>Processing, embedding and advanced configuration are provided by this base class, while the indexing
+ * configuration is provided by the destination connector in the sub class.
  */
 public class DestinationAstra {
 
@@ -43,17 +44,21 @@ public class DestinationAstra {
     private Embedding embedding;
 
     /**
-     * Astra DB gives developers the APIs, real-time data and ecosystem integrations to put accurate RAG and Gen AI apps with fewer hallucinations in production.
+     * Astra DB gives developers the APIs, real-time data and ecosystem integrations to put accurate RAG
+     * and Gen AI apps with fewer hallucinations in production.
      */
     @JsonProperty("indexing")
     private Indexing indexing;
 
     /**
-     * Do not store the text that gets embedded along with the vector and the metadata in the destination. If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use cases needs to be retrieved from another source.
+     * Do not store the text that gets embedded along with the vector and the metadata in the destination.
+     * If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use
+     * cases needs to be retrieved from another source.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("omit_raw_text")
     private Optional<Boolean> omitRawText;
+
 
     @JsonProperty("processing")
     private ProcessingConfigModel processing;
@@ -79,7 +84,8 @@ public class DestinationAstra {
             Embedding embedding,
             Indexing indexing,
             ProcessingConfigModel processing) {
-        this(embedding, indexing, Optional.empty(), processing);
+        this(embedding, indexing, Optional.empty(),
+            processing);
     }
 
     @JsonIgnore
@@ -96,7 +102,8 @@ public class DestinationAstra {
     }
 
     /**
-     * Astra DB gives developers the APIs, real-time data and ecosystem integrations to put accurate RAG and Gen AI apps with fewer hallucinations in production.
+     * Astra DB gives developers the APIs, real-time data and ecosystem integrations to put accurate RAG
+     * and Gen AI apps with fewer hallucinations in production.
      */
     @JsonIgnore
     public Indexing indexing() {
@@ -104,7 +111,9 @@ public class DestinationAstra {
     }
 
     /**
-     * Do not store the text that gets embedded along with the vector and the metadata in the destination. If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use cases needs to be retrieved from another source.
+     * Do not store the text that gets embedded along with the vector and the metadata in the destination.
+     * If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use
+     * cases needs to be retrieved from another source.
      */
     @JsonIgnore
     public Optional<Boolean> omitRawText() {
@@ -116,9 +125,10 @@ public class DestinationAstra {
         return processing;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Embedding configuration
@@ -130,7 +140,8 @@ public class DestinationAstra {
     }
 
     /**
-     * Astra DB gives developers the APIs, real-time data and ecosystem integrations to put accurate RAG and Gen AI apps with fewer hallucinations in production.
+     * Astra DB gives developers the APIs, real-time data and ecosystem integrations to put accurate RAG
+     * and Gen AI apps with fewer hallucinations in production.
      */
     public DestinationAstra withIndexing(Indexing indexing) {
         Utils.checkNotNull(indexing, "indexing");
@@ -139,7 +150,9 @@ public class DestinationAstra {
     }
 
     /**
-     * Do not store the text that gets embedded along with the vector and the metadata in the destination. If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use cases needs to be retrieved from another source.
+     * Do not store the text that gets embedded along with the vector and the metadata in the destination.
+     * If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use
+     * cases needs to be retrieved from another source.
      */
     public DestinationAstra withOmitRawText(boolean omitRawText) {
         Utils.checkNotNull(omitRawText, "omitRawText");
@@ -147,8 +160,11 @@ public class DestinationAstra {
         return this;
     }
 
+
     /**
-     * Do not store the text that gets embedded along with the vector and the metadata in the destination. If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use cases needs to be retrieved from another source.
+     * Do not store the text that gets embedded along with the vector and the metadata in the destination.
+     * If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use
+     * cases needs to be retrieved from another source.
      */
     public DestinationAstra withOmitRawText(Optional<Boolean> omitRawText) {
         Utils.checkNotNull(omitRawText, "omitRawText");
@@ -162,7 +178,6 @@ public class DestinationAstra {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -173,21 +188,18 @@ public class DestinationAstra {
         }
         DestinationAstra other = (DestinationAstra) o;
         return 
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.embedding, other.embedding) &&
-            Objects.deepEquals(this.indexing, other.indexing) &&
-            Objects.deepEquals(this.omitRawText, other.omitRawText) &&
-            Objects.deepEquals(this.processing, other.processing);
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.embedding, other.embedding) &&
+            Utils.enhancedDeepEquals(this.indexing, other.indexing) &&
+            Utils.enhancedDeepEquals(this.omitRawText, other.omitRawText) &&
+            Utils.enhancedDeepEquals(this.processing, other.processing);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            destinationType,
-            embedding,
-            indexing,
-            omitRawText,
-            processing);
+        return Utils.enhancedHash(
+            destinationType, embedding, indexing,
+            omitRawText, processing);
     }
     
     @Override
@@ -199,20 +211,22 @@ public class DestinationAstra {
                 "omitRawText", omitRawText,
                 "processing", processing);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Embedding embedding;
- 
+
         private Indexing indexing;
- 
+
         private Optional<Boolean> omitRawText;
- 
+
         private ProcessingConfigModel processing;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Embedding configuration
@@ -223,8 +237,10 @@ public class DestinationAstra {
             return this;
         }
 
+
         /**
-         * Astra DB gives developers the APIs, real-time data and ecosystem integrations to put accurate RAG and Gen AI apps with fewer hallucinations in production.
+         * Astra DB gives developers the APIs, real-time data and ecosystem integrations to put accurate RAG
+         * and Gen AI apps with fewer hallucinations in production.
          */
         public Builder indexing(Indexing indexing) {
             Utils.checkNotNull(indexing, "indexing");
@@ -232,8 +248,11 @@ public class DestinationAstra {
             return this;
         }
 
+
         /**
-         * Do not store the text that gets embedded along with the vector and the metadata in the destination. If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use cases needs to be retrieved from another source.
+         * Do not store the text that gets embedded along with the vector and the metadata in the destination.
+         * If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use
+         * cases needs to be retrieved from another source.
          */
         public Builder omitRawText(boolean omitRawText) {
             Utils.checkNotNull(omitRawText, "omitRawText");
@@ -242,7 +261,9 @@ public class DestinationAstra {
         }
 
         /**
-         * Do not store the text that gets embedded along with the vector and the metadata in the destination. If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use cases needs to be retrieved from another source.
+         * Do not store the text that gets embedded along with the vector and the metadata in the destination.
+         * If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use
+         * cases needs to be retrieved from another source.
          */
         public Builder omitRawText(Optional<Boolean> omitRawText) {
             Utils.checkNotNull(omitRawText, "omitRawText");
@@ -250,22 +271,23 @@ public class DestinationAstra {
             return this;
         }
 
+
         public Builder processing(ProcessingConfigModel processing) {
             Utils.checkNotNull(processing, "processing");
             this.processing = processing;
             return this;
         }
-        
+
         public DestinationAstra build() {
             if (omitRawText == null) {
                 omitRawText = _SINGLETON_VALUE_OmitRawText.value();
             }
+
             return new DestinationAstra(
-                embedding,
-                indexing,
-                omitRawText,
+                embedding, indexing, omitRawText,
                 processing);
         }
+
 
         private static final LazySingletonValue<Astra> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

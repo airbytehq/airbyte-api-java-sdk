@@ -1,5 +1,13 @@
 # SourceMondaySchemasAuthType
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceMondaySchemasAuthType;
+
+SourceMondaySchemasAuthType value = SourceMondaySchemasAuthType.API_TOKEN;
+```
+
 
 ## Values
 

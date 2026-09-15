@@ -15,13 +15,15 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceInstagram {
 
+public class SourceInstagram {
     /**
-     * The value of the access token generated with &lt;b&gt;instagram_basic, instagram_manage_insights, pages_show_list, pages_read_engagement, Instagram Public Content Access&lt;/b&gt; permissions. See the &lt;a href="https://docs.airbyte.com/integrations/sources/instagram/#step-1-set-up-instagram"&gt;docs&lt;/a&gt; for more information
+     * The value of the access token generated with <b>instagram_basic, instagram_manage_insights,
+     * pages_show_list, pages_read_engagement, Instagram Public Content Access</b> permissions. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/instagram/#step-1-set-up-instagram">docs</a> for
+     * more information
      */
     @JsonProperty("access_token")
     private String accessToken;
@@ -47,11 +49,14 @@ public class SourceInstagram {
     @JsonProperty("num_workers")
     private Optional<Long> numWorkers;
 
+
     @JsonProperty("sourceType")
     private SourceInstagramInstagram sourceType;
 
     /**
-     * The date from which you'd like to replicate data for User Insights, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. If left blank, the start date will be set to 2 years before the present date.
+     * The date from which you'd like to replicate data for User Insights, in the format
+     * YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. If left blank, the
+     * start date will be set to 2 years before the present date.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
@@ -79,11 +84,15 @@ public class SourceInstagram {
     
     public SourceInstagram(
             String accessToken) {
-        this(accessToken, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(accessToken, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty());
     }
 
     /**
-     * The value of the access token generated with &lt;b&gt;instagram_basic, instagram_manage_insights, pages_show_list, pages_read_engagement, Instagram Public Content Access&lt;/b&gt; permissions. See the &lt;a href="https://docs.airbyte.com/integrations/sources/instagram/#step-1-set-up-instagram"&gt;docs&lt;/a&gt; for more information
+     * The value of the access token generated with <b>instagram_basic, instagram_manage_insights,
+     * pages_show_list, pages_read_engagement, Instagram Public Content Access</b> permissions. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/instagram/#step-1-set-up-instagram">docs</a> for
+     * more information
      */
     @JsonIgnore
     public String accessToken() {
@@ -120,19 +129,25 @@ public class SourceInstagram {
     }
 
     /**
-     * The date from which you'd like to replicate data for User Insights, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. If left blank, the start date will be set to 2 years before the present date.
+     * The date from which you'd like to replicate data for User Insights, in the format
+     * YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. If left blank, the
+     * start date will be set to 2 years before the present date.
      */
     @JsonIgnore
     public Optional<OffsetDateTime> startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The value of the access token generated with &lt;b&gt;instagram_basic, instagram_manage_insights, pages_show_list, pages_read_engagement, Instagram Public Content Access&lt;/b&gt; permissions. See the &lt;a href="https://docs.airbyte.com/integrations/sources/instagram/#step-1-set-up-instagram"&gt;docs&lt;/a&gt; for more information
+     * The value of the access token generated with <b>instagram_basic, instagram_manage_insights,
+     * pages_show_list, pages_read_engagement, Instagram Public Content Access</b> permissions. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/instagram/#step-1-set-up-instagram">docs</a> for
+     * more information
      */
     public SourceInstagram withAccessToken(String accessToken) {
         Utils.checkNotNull(accessToken, "accessToken");
@@ -148,6 +163,7 @@ public class SourceInstagram {
         this.clientId = Optional.ofNullable(clientId);
         return this;
     }
+
 
     /**
      * The Client ID for your Oauth application
@@ -167,6 +183,7 @@ public class SourceInstagram {
         return this;
     }
 
+
     /**
      * The Client Secret for your Oauth application
      */
@@ -185,6 +202,7 @@ public class SourceInstagram {
         return this;
     }
 
+
     /**
      * The number of worker threads to use for the sync.
      */
@@ -195,7 +213,9 @@ public class SourceInstagram {
     }
 
     /**
-     * The date from which you'd like to replicate data for User Insights, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. If left blank, the start date will be set to 2 years before the present date.
+     * The date from which you'd like to replicate data for User Insights, in the format
+     * YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. If left blank, the
+     * start date will be set to 2 years before the present date.
      */
     public SourceInstagram withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -203,8 +223,11 @@ public class SourceInstagram {
         return this;
     }
 
+
     /**
-     * The date from which you'd like to replicate data for User Insights, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. If left blank, the start date will be set to 2 years before the present date.
+     * The date from which you'd like to replicate data for User Insights, in the format
+     * YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. If left blank, the
+     * start date will be set to 2 years before the present date.
      */
     public SourceInstagram withStartDate(Optional<OffsetDateTime> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -212,7 +235,6 @@ public class SourceInstagram {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -223,23 +245,19 @@ public class SourceInstagram {
         }
         SourceInstagram other = (SourceInstagram) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.numWorkers, other.numWorkers) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.numWorkers, other.numWorkers) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            clientId,
-            clientSecret,
-            numWorkers,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            accessToken, clientId, clientSecret,
+            numWorkers, sourceType, startDate);
     }
     
     @Override
@@ -252,31 +270,37 @@ public class SourceInstagram {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private Optional<String> clientId = Optional.empty();
- 
+
         private Optional<String> clientSecret = Optional.empty();
- 
+
         private Optional<Long> numWorkers;
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The value of the access token generated with &lt;b&gt;instagram_basic, instagram_manage_insights, pages_show_list, pages_read_engagement, Instagram Public Content Access&lt;/b&gt; permissions. See the &lt;a href="https://docs.airbyte.com/integrations/sources/instagram/#step-1-set-up-instagram"&gt;docs&lt;/a&gt; for more information
+         * The value of the access token generated with <b>instagram_basic, instagram_manage_insights,
+         * pages_show_list, pages_read_engagement, Instagram Public Content Access</b> permissions. See the <a
+         * href="https://docs.airbyte.com/integrations/sources/instagram/#step-1-set-up-instagram">docs</a> for
+         * more information
          */
         public Builder accessToken(String accessToken) {
             Utils.checkNotNull(accessToken, "accessToken");
             this.accessToken = accessToken;
             return this;
         }
+
 
         /**
          * The Client ID for your Oauth application
@@ -296,6 +320,7 @@ public class SourceInstagram {
             return this;
         }
 
+
         /**
          * The Client Secret for your Oauth application
          */
@@ -313,6 +338,7 @@ public class SourceInstagram {
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         /**
          * The number of worker threads to use for the sync.
@@ -332,8 +358,11 @@ public class SourceInstagram {
             return this;
         }
 
+
         /**
-         * The date from which you'd like to replicate data for User Insights, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. If left blank, the start date will be set to 2 years before the present date.
+         * The date from which you'd like to replicate data for User Insights, in the format
+         * YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. If left blank, the
+         * start date will be set to 2 years before the present date.
          */
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -342,25 +371,26 @@ public class SourceInstagram {
         }
 
         /**
-         * The date from which you'd like to replicate data for User Insights, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. If left blank, the start date will be set to 2 years before the present date.
+         * The date from which you'd like to replicate data for User Insights, in the format
+         * YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. If left blank, the
+         * start date will be set to 2 years before the present date.
          */
         public Builder startDate(Optional<OffsetDateTime> startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceInstagram build() {
             if (numWorkers == null) {
                 numWorkers = _SINGLETON_VALUE_NumWorkers.value();
             }
+
             return new SourceInstagram(
-                accessToken,
-                clientId,
-                clientSecret,
-                numWorkers,
-                startDate);
+                accessToken, clientId, clientSecret,
+                numWorkers, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_NumWorkers =
                 new LazySingletonValue<>(

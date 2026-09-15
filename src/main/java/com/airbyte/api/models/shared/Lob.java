@@ -14,7 +14,7 @@ public enum Lob {
     @JsonValue
     private final String value;
 
-    private Lob(String value) {
+    Lob(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum DestinationBigqueryMethod {
     @JsonValue
     private final String value;
 
-    private DestinationBigqueryMethod(String value) {
+    DestinationBigqueryMethod(String value) {
         this.value = value;
     }
     

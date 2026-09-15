@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceBraintree {
 
+public class SourceBraintree {
     /**
      * Environment specifies where the data will come from.
      */
@@ -26,28 +25,36 @@ public class SourceBraintree {
     private SourceBraintreeEnvironment environment;
 
     /**
-     * The unique identifier for your entire gateway account. See the &lt;a href="https://docs.airbyte.com/integrations/sources/braintree"&gt;docs&lt;/a&gt; for more information on how to obtain this ID.
+     * The unique identifier for your entire gateway account. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/braintree">docs</a> for more information on how
+     * to obtain this ID.
      */
     @JsonProperty("merchant_id")
     private String merchantId;
 
     /**
-     * Braintree Private Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/braintree"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+     * Braintree Private Key. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/braintree">docs</a> for more information on how
+     * to obtain this key.
      */
     @JsonProperty("private_key")
     private String privateKey;
 
     /**
-     * Braintree Public Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/braintree"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+     * Braintree Public Key. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/braintree">docs</a> for more information on how
+     * to obtain this key.
      */
     @JsonProperty("public_key")
     private String publicKey;
+
 
     @JsonProperty("sourceType")
     private Braintree sourceType;
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
@@ -78,7 +85,8 @@ public class SourceBraintree {
             String merchantId,
             String privateKey,
             String publicKey) {
-        this(environment, merchantId, privateKey, publicKey, Optional.empty());
+        this(environment, merchantId, privateKey,
+            publicKey, Optional.empty());
     }
 
     /**
@@ -90,7 +98,9 @@ public class SourceBraintree {
     }
 
     /**
-     * The unique identifier for your entire gateway account. See the &lt;a href="https://docs.airbyte.com/integrations/sources/braintree"&gt;docs&lt;/a&gt; for more information on how to obtain this ID.
+     * The unique identifier for your entire gateway account. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/braintree">docs</a> for more information on how
+     * to obtain this ID.
      */
     @JsonIgnore
     public String merchantId() {
@@ -98,7 +108,9 @@ public class SourceBraintree {
     }
 
     /**
-     * Braintree Private Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/braintree"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+     * Braintree Private Key. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/braintree">docs</a> for more information on how
+     * to obtain this key.
      */
     @JsonIgnore
     public String privateKey() {
@@ -106,7 +118,9 @@ public class SourceBraintree {
     }
 
     /**
-     * Braintree Public Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/braintree"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+     * Braintree Public Key. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/braintree">docs</a> for more information on how
+     * to obtain this key.
      */
     @JsonIgnore
     public String publicKey() {
@@ -119,16 +133,18 @@ public class SourceBraintree {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     @JsonIgnore
     public Optional<OffsetDateTime> startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Environment specifies where the data will come from.
@@ -140,7 +156,9 @@ public class SourceBraintree {
     }
 
     /**
-     * The unique identifier for your entire gateway account. See the &lt;a href="https://docs.airbyte.com/integrations/sources/braintree"&gt;docs&lt;/a&gt; for more information on how to obtain this ID.
+     * The unique identifier for your entire gateway account. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/braintree">docs</a> for more information on how
+     * to obtain this ID.
      */
     public SourceBraintree withMerchantId(String merchantId) {
         Utils.checkNotNull(merchantId, "merchantId");
@@ -149,7 +167,9 @@ public class SourceBraintree {
     }
 
     /**
-     * Braintree Private Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/braintree"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+     * Braintree Private Key. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/braintree">docs</a> for more information on how
+     * to obtain this key.
      */
     public SourceBraintree withPrivateKey(String privateKey) {
         Utils.checkNotNull(privateKey, "privateKey");
@@ -158,7 +178,9 @@ public class SourceBraintree {
     }
 
     /**
-     * Braintree Public Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/braintree"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+     * Braintree Public Key. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/braintree">docs</a> for more information on how
+     * to obtain this key.
      */
     public SourceBraintree withPublicKey(String publicKey) {
         Utils.checkNotNull(publicKey, "publicKey");
@@ -167,7 +189,8 @@ public class SourceBraintree {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     public SourceBraintree withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -175,8 +198,10 @@ public class SourceBraintree {
         return this;
     }
 
+
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     public SourceBraintree withStartDate(Optional<OffsetDateTime> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -184,7 +209,6 @@ public class SourceBraintree {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -195,23 +219,19 @@ public class SourceBraintree {
         }
         SourceBraintree other = (SourceBraintree) o;
         return 
-            Objects.deepEquals(this.environment, other.environment) &&
-            Objects.deepEquals(this.merchantId, other.merchantId) &&
-            Objects.deepEquals(this.privateKey, other.privateKey) &&
-            Objects.deepEquals(this.publicKey, other.publicKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.environment, other.environment) &&
+            Utils.enhancedDeepEquals(this.merchantId, other.merchantId) &&
+            Utils.enhancedDeepEquals(this.privateKey, other.privateKey) &&
+            Utils.enhancedDeepEquals(this.publicKey, other.publicKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            environment,
-            merchantId,
-            privateKey,
-            publicKey,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            environment, merchantId, privateKey,
+            publicKey, sourceType, startDate);
     }
     
     @Override
@@ -224,22 +244,24 @@ public class SourceBraintree {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private SourceBraintreeEnvironment environment;
- 
+
         private String merchantId;
- 
+
         private String privateKey;
- 
+
         private String publicKey;
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Environment specifies where the data will come from.
@@ -250,8 +272,11 @@ public class SourceBraintree {
             return this;
         }
 
+
         /**
-         * The unique identifier for your entire gateway account. See the &lt;a href="https://docs.airbyte.com/integrations/sources/braintree"&gt;docs&lt;/a&gt; for more information on how to obtain this ID.
+         * The unique identifier for your entire gateway account. See the <a
+         * href="https://docs.airbyte.com/integrations/sources/braintree">docs</a> for more information on how
+         * to obtain this ID.
          */
         public Builder merchantId(String merchantId) {
             Utils.checkNotNull(merchantId, "merchantId");
@@ -259,8 +284,11 @@ public class SourceBraintree {
             return this;
         }
 
+
         /**
-         * Braintree Private Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/braintree"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+         * Braintree Private Key. See the <a
+         * href="https://docs.airbyte.com/integrations/sources/braintree">docs</a> for more information on how
+         * to obtain this key.
          */
         public Builder privateKey(String privateKey) {
             Utils.checkNotNull(privateKey, "privateKey");
@@ -268,8 +296,11 @@ public class SourceBraintree {
             return this;
         }
 
+
         /**
-         * Braintree Public Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/braintree"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+         * Braintree Public Key. See the <a
+         * href="https://docs.airbyte.com/integrations/sources/braintree">docs</a> for more information on how
+         * to obtain this key.
          */
         public Builder publicKey(String publicKey) {
             Utils.checkNotNull(publicKey, "publicKey");
@@ -277,8 +308,10 @@ public class SourceBraintree {
             return this;
         }
 
+
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+         * replicated.
          */
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -287,22 +320,22 @@ public class SourceBraintree {
         }
 
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+         * replicated.
          */
         public Builder startDate(Optional<OffsetDateTime> startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceBraintree build() {
+
             return new SourceBraintree(
-                environment,
-                merchantId,
-                privateKey,
-                publicKey,
-                startDate);
+                environment, merchantId, privateKey,
+                publicKey, startDate);
         }
+
 
         private static final LazySingletonValue<Braintree> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

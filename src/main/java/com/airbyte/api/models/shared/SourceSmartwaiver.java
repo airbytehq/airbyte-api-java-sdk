@@ -14,23 +14,26 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceSmartwaiver {
 
+public class SourceSmartwaiver {
     /**
-     * You can retrieve your token by visiting your dashboard then click on My Account then click on API keys.
+     * You can retrieve your token by visiting your dashboard then click on My Account then click on API
+     * keys.
      */
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonProperty("sourceType")
     private Smartwaiver sourceType;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
     private Optional<String> startDate;
+
 
     @JsonProperty("start_date_2")
     private OffsetDateTime startDate2;
@@ -56,7 +59,8 @@ public class SourceSmartwaiver {
     }
 
     /**
-     * You can retrieve your token by visiting your dashboard then click on My Account then click on API keys.
+     * You can retrieve your token by visiting your dashboard then click on My Account then click on API
+     * keys.
      */
     @JsonIgnore
     public String apiKey() {
@@ -78,12 +82,14 @@ public class SourceSmartwaiver {
         return startDate2;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * You can retrieve your token by visiting your dashboard then click on My Account then click on API keys.
+     * You can retrieve your token by visiting your dashboard then click on My Account then click on API
+     * keys.
      */
     public SourceSmartwaiver withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -97,6 +103,7 @@ public class SourceSmartwaiver {
         return this;
     }
 
+
     public SourceSmartwaiver withStartDate(Optional<String> startDate) {
         Utils.checkNotNull(startDate, "startDate");
         this.startDate = startDate;
@@ -109,7 +116,6 @@ public class SourceSmartwaiver {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,18 +126,16 @@ public class SourceSmartwaiver {
         }
         SourceSmartwaiver other = (SourceSmartwaiver) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.startDate2, other.startDate2);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.startDate2, other.startDate2);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            startDate,
+        return Utils.enhancedHash(
+            apiKey, sourceType, startDate,
             startDate2);
     }
     
@@ -143,27 +147,31 @@ public class SourceSmartwaiver {
                 "startDate", startDate,
                 "startDate2", startDate2);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> startDate;
- 
+
         private OffsetDateTime startDate2;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * You can retrieve your token by visiting your dashboard then click on My Account then click on API keys.
+         * You can retrieve your token by visiting your dashboard then click on My Account then click on API
+         * keys.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         public Builder startDate(String startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -177,21 +185,22 @@ public class SourceSmartwaiver {
             return this;
         }
 
+
         public Builder startDate2(OffsetDateTime startDate2) {
             Utils.checkNotNull(startDate2, "startDate2");
             this.startDate2 = startDate2;
             return this;
         }
-        
+
         public SourceSmartwaiver build() {
             if (startDate == null) {
                 startDate = _SINGLETON_VALUE_StartDate.value();
             }
+
             return new SourceSmartwaiver(
-                apiKey,
-                startDate,
-                startDate2);
+                apiKey, startDate, startDate2);
         }
+
 
         private static final LazySingletonValue<Smartwaiver> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

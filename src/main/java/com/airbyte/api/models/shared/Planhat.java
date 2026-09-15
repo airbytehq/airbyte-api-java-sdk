@@ -14,7 +14,7 @@ public enum Planhat {
     @JsonValue
     private final String value;
 
-    private Planhat(String value) {
+    Planhat(String value) {
         this.value = value;
     }
     

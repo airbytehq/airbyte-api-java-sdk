@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -75,7 +74,8 @@ public class SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth {
             String clientId,
             String clientSecret,
             String tenantId) {
-        this(clientId, clientSecret, Optional.empty(), tenantId);
+        this(clientId, clientSecret, Optional.empty(),
+            tenantId);
     }
 
     @SuppressWarnings("unchecked")
@@ -116,9 +116,10 @@ public class SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth {
         return tenantId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Client ID of your Microsoft developer application
@@ -147,6 +148,7 @@ public class SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth {
         return this;
     }
 
+
     /**
      * Refresh Token of your Microsoft developer application
      */
@@ -165,7 +167,6 @@ public class SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -176,21 +177,18 @@ public class SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth {
         }
         SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth other = (SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken) &&
-            Objects.deepEquals(this.tenantId, other.tenantId);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.tenantId, other.tenantId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            clientId,
-            clientSecret,
-            refreshToken,
-            tenantId);
+        return Utils.enhancedHash(
+            authType, clientId, clientSecret,
+            refreshToken, tenantId);
     }
     
     @Override
@@ -202,20 +200,22 @@ public class SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth {
                 "refreshToken", refreshToken,
                 "tenantId", tenantId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private Optional<String> refreshToken = Optional.empty();
- 
+
         private String tenantId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Client ID of your Microsoft developer application
@@ -226,6 +226,7 @@ public class SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth {
             return this;
         }
 
+
         /**
          * Client Secret of your Microsoft developer application
          */
@@ -234,6 +235,7 @@ public class SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth {
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         /**
          * Refresh Token of your Microsoft developer application
@@ -253,6 +255,7 @@ public class SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth {
             return this;
         }
 
+
         /**
          * Tenant ID of the Microsoft SharePoint user
          */
@@ -261,14 +264,14 @@ public class SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth {
             this.tenantId = tenantId;
             return this;
         }
-        
+
         public SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth build() {
+
             return new SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth(
-                clientId,
-                clientSecret,
-                refreshToken,
+                clientId, clientSecret, refreshToken,
                 tenantId);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceMicrosoftSharepointAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

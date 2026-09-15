@@ -20,8 +20,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class Throttled {
 
@@ -33,6 +33,7 @@ public class Throttled {
      */
     @JsonProperty("millis_per_record")
     private long millisPerRecord;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("test_destination_type")
@@ -73,9 +74,10 @@ public class Throttled {
         return (Optional<DestinationDevNullSchemasTestDestinationType>) testDestinationType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public Throttled withAdditionalProperty(String key, Object value) {
@@ -83,8 +85,7 @@ public class Throttled {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public Throttled withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -106,13 +107,13 @@ public class Throttled {
         return this;
     }
 
+
     public Throttled withTestDestinationType(Optional<? extends DestinationDevNullSchemasTestDestinationType> testDestinationType) {
         Utils.checkNotNull(testDestinationType, "testDestinationType");
         this.testDestinationType = testDestinationType;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -123,17 +124,15 @@ public class Throttled {
         }
         Throttled other = (Throttled) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.millisPerRecord, other.millisPerRecord) &&
-            Objects.deepEquals(this.testDestinationType, other.testDestinationType);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.millisPerRecord, other.millisPerRecord) &&
+            Utils.enhancedDeepEquals(this.testDestinationType, other.testDestinationType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            millisPerRecord,
-            testDestinationType);
+        return Utils.enhancedHash(
+            additionalProperties, millisPerRecord, testDestinationType);
     }
     
     @Override
@@ -143,15 +142,16 @@ public class Throttled {
                 "millisPerRecord", millisPerRecord,
                 "testDestinationType", testDestinationType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Long millisPerRecord;
- 
+
         private Optional<? extends DestinationDevNullSchemasTestDestinationType> testDestinationType;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -172,6 +172,7 @@ public class Throttled {
             return this;
         }
 
+
         /**
          * The number of milliseconds to wait between each record.
          */
@@ -180,6 +181,7 @@ public class Throttled {
             this.millisPerRecord = millisPerRecord;
             return this;
         }
+
 
         public Builder testDestinationType(DestinationDevNullSchemasTestDestinationType testDestinationType) {
             Utils.checkNotNull(testDestinationType, "testDestinationType");
@@ -192,16 +194,17 @@ public class Throttled {
             this.testDestinationType = testDestinationType;
             return this;
         }
-        
+
         public Throttled build() {
             if (testDestinationType == null) {
                 testDestinationType = _SINGLETON_VALUE_TestDestinationType.value();
             }
+
             return new Throttled(
-                millisPerRecord,
-                testDestinationType)
+                millisPerRecord, testDestinationType)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationDevNullSchemasTestDestinationType>> _SINGLETON_VALUE_TestDestinationType =
                 new LazySingletonValue<>(

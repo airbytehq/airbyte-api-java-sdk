@@ -14,7 +14,7 @@ public enum Pipedrive {
     @JsonValue
     private final String value;
 
-    private Pipedrive(String value) {
+    Pipedrive(String value) {
         this.value = value;
     }
     

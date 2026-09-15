@@ -14,7 +14,7 @@ public enum SourceSlackOptionTitle {
     @JsonValue
     private final String value;
 
-    private SourceSlackOptionTitle(String value) {
+    SourceSlackOptionTitle(String value) {
         this.value = value;
     }
     

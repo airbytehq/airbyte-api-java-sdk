@@ -14,7 +14,7 @@ public enum Pretix {
     @JsonValue
     private final String value;
 
-    private Pretix(String value) {
+    Pretix(String value) {
         this.value = value;
     }
     

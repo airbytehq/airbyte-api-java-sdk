@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceCin7 {
-
     /**
      * The ID associated with your account.
      */
@@ -26,6 +25,7 @@ public class SourceCin7 {
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Cin7 sourceType;
@@ -62,9 +62,10 @@ public class SourceCin7 {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The ID associated with your account.
@@ -84,7 +85,6 @@ public class SourceCin7 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourceCin7 {
         }
         SourceCin7 other = (SourceCin7) o;
         return 
-            Objects.deepEquals(this.accountid, other.accountid) &&
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.accountid, other.accountid) &&
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountid,
-            apiKey,
-            sourceType);
+        return Utils.enhancedHash(
+            accountid, apiKey, sourceType);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SourceCin7 {
                 "apiKey", apiKey,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accountid;
- 
+
         private String apiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The ID associated with your account.
@@ -135,6 +135,7 @@ public class SourceCin7 {
             return this;
         }
 
+
         /**
          * The API key associated with your account.
          */
@@ -143,12 +144,13 @@ public class SourceCin7 {
             this.apiKey = apiKey;
             return this;
         }
-        
+
         public SourceCin7 build() {
+
             return new SourceCin7(
-                accountid,
-                apiKey);
+                accountid, apiKey);
         }
+
 
         private static final LazySingletonValue<Cin7> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

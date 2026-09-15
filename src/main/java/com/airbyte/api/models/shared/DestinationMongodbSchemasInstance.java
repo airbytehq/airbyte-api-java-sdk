@@ -14,7 +14,7 @@ public enum DestinationMongodbSchemasInstance {
     @JsonValue
     private final String value;
 
-    private DestinationMongodbSchemasInstance(String value) {
+    DestinationMongodbSchemasInstance(String value) {
         this.value = value;
     }
     

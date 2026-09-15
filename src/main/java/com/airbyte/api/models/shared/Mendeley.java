@@ -14,7 +14,7 @@ public enum Mendeley {
     @JsonValue
     private final String value;
 
-    private Mendeley(String value) {
+    Mendeley(String value) {
         this.value = value;
     }
     
