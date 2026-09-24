@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class DestinationSftpJson {
 
@@ -78,7 +78,8 @@ public class DestinationSftpJson {
             String host,
             String password,
             String username) {
-        this(destinationPath, host, password, Optional.empty(), username);
+        this(destinationPath, host, password,
+            Optional.empty(), username);
     }
 
     @JsonIgnore
@@ -126,9 +127,10 @@ public class DestinationSftpJson {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Path to the directory where json files will be written.
@@ -166,6 +168,7 @@ public class DestinationSftpJson {
         return this;
     }
 
+
     /**
      * Port of the SFTP server.
      */
@@ -184,7 +187,6 @@ public class DestinationSftpJson {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -195,23 +197,19 @@ public class DestinationSftpJson {
         }
         DestinationSftpJson other = (DestinationSftpJson) o;
         return 
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.destinationPath, other.destinationPath) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.destinationPath, other.destinationPath) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            destinationType,
-            destinationPath,
-            host,
-            password,
-            port,
-            username);
+        return Utils.enhancedHash(
+            destinationType, destinationPath, host,
+            password, port, username);
     }
     
     @Override
@@ -224,22 +222,24 @@ public class DestinationSftpJson {
                 "port", port,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String destinationPath;
- 
+
         private String host;
- 
+
         private String password;
- 
+
         private Optional<Long> port;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Path to the directory where json files will be written.
@@ -250,6 +250,7 @@ public class DestinationSftpJson {
             return this;
         }
 
+
         /**
          * Hostname of the SFTP server.
          */
@@ -259,6 +260,7 @@ public class DestinationSftpJson {
             return this;
         }
 
+
         /**
          * Password associated with the username.
          */
@@ -267,6 +269,7 @@ public class DestinationSftpJson {
             this.password = password;
             return this;
         }
+
 
         /**
          * Port of the SFTP server.
@@ -286,6 +289,7 @@ public class DestinationSftpJson {
             return this;
         }
 
+
         /**
          * Username to use to access the SFTP server.
          */
@@ -294,18 +298,17 @@ public class DestinationSftpJson {
             this.username = username;
             return this;
         }
-        
+
         public DestinationSftpJson build() {
             if (port == null) {
                 port = _SINGLETON_VALUE_Port.value();
             }
+
             return new DestinationSftpJson(
-                destinationPath,
-                host,
-                password,
-                port,
-                username);
+                destinationPath, host, password,
+                port, username);
         }
+
 
         private static final LazySingletonValue<SftpJson> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

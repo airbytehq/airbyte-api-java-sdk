@@ -14,18 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceMssqlSSHTunnelMethod
  * 
- * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+ * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+ * authentication to use.
  */
 @JsonDeserialize(using = SourceMssqlSSHTunnelMethod._Deserializer.class)
 public class SourceMssqlSSHTunnelMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceMssqlSSHTunnelMethod(TypedObject value) {
         this.value = value;
@@ -33,17 +33,17 @@ public class SourceMssqlSSHTunnelMethod {
 
     public static SourceMssqlSSHTunnelMethod of(SourceMssqlNoTunnel value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMssqlSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMssqlNoTunnel>(){}));
+        return new SourceMssqlSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceMssqlSSHTunnelMethod of(SourceMssqlSSHKeyAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMssqlSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMssqlSSHKeyAuthentication>(){}));
+        return new SourceMssqlSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceMssqlSSHTunnelMethod of(SourceMssqlPasswordAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMssqlSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMssqlPasswordAuthentication>(){}));
+        return new SourceMssqlSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +67,7 @@ public class SourceMssqlSSHTunnelMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +78,12 @@ public class SourceMssqlSSHTunnelMethod {
             return false;
         }
         SourceMssqlSSHTunnelMethod other = (SourceMssqlSSHTunnelMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -91,9 +91,9 @@ public class SourceMssqlSSHTunnelMethod {
 
         public _Deserializer() {
             super(SourceMssqlSSHTunnelMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceMssqlPasswordAuthentication>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMssqlNoTunnel>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceMssqlSSHKeyAuthentication>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMssqlNoTunnel>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceMssqlPasswordAuthentication>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -102,6 +102,6 @@ public class SourceMssqlSSHTunnelMethod {
         return Utils.toString(SourceMssqlSSHTunnelMethod.class,
                 "value", value);
     }
- 
+
 }
 

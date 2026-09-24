@@ -15,8 +15,8 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceZendeskChat {
 
@@ -24,17 +24,21 @@ public class SourceZendeskChat {
     @JsonProperty("credentials")
     private Optional<? extends SourceZendeskChatAuthorizationMethod> credentials;
 
+
     @JsonProperty("sourceType")
     private ZendeskChat sourceType;
 
     /**
-     * The date from which you'd like to replicate data for Zendesk Chat API, in the format YYYY-MM-DDT00:00:00Z.
+     * The date from which you'd like to replicate data for Zendesk Chat API, in the format
+     * YYYY-MM-DDT00:00:00Z.
      */
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
 
     /**
-     * The unique subdomain of your Zendesk account (without https://). &lt;a href=\"https://support.zendesk.com/hc/en-us/articles/4409381383578-Where-can-I-find-my-Zendesk-subdomain\"&gt;See the Zendesk docs to find your subdomain&lt;/a&gt;.
+     * The unique subdomain of your Zendesk account (without https://). &lt;a
+     * href=\"https://support.zendesk.com/hc/en-us/articles/4409381383578-Where-can-I-find-my-Zendesk-subdomain\"&gt;See
+     * the Zendesk docs to find your subdomain&lt;/a&gt;.
      */
     @JsonProperty("subdomain")
     private String subdomain;
@@ -71,7 +75,8 @@ public class SourceZendeskChat {
     }
 
     /**
-     * The date from which you'd like to replicate data for Zendesk Chat API, in the format YYYY-MM-DDT00:00:00Z.
+     * The date from which you'd like to replicate data for Zendesk Chat API, in the format
+     * YYYY-MM-DDT00:00:00Z.
      */
     @JsonIgnore
     public OffsetDateTime startDate() {
@@ -79,22 +84,26 @@ public class SourceZendeskChat {
     }
 
     /**
-     * The unique subdomain of your Zendesk account (without https://). &lt;a href=\"https://support.zendesk.com/hc/en-us/articles/4409381383578-Where-can-I-find-my-Zendesk-subdomain\"&gt;See the Zendesk docs to find your subdomain&lt;/a&gt;.
+     * The unique subdomain of your Zendesk account (without https://). &lt;a
+     * href=\"https://support.zendesk.com/hc/en-us/articles/4409381383578-Where-can-I-find-my-Zendesk-subdomain\"&gt;See
+     * the Zendesk docs to find your subdomain&lt;/a&gt;.
      */
     @JsonIgnore
     public String subdomain() {
         return subdomain;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceZendeskChat withCredentials(SourceZendeskChatAuthorizationMethod credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = Optional.ofNullable(credentials);
         return this;
     }
+
 
     public SourceZendeskChat withCredentials(Optional<? extends SourceZendeskChatAuthorizationMethod> credentials) {
         Utils.checkNotNull(credentials, "credentials");
@@ -103,7 +112,8 @@ public class SourceZendeskChat {
     }
 
     /**
-     * The date from which you'd like to replicate data for Zendesk Chat API, in the format YYYY-MM-DDT00:00:00Z.
+     * The date from which you'd like to replicate data for Zendesk Chat API, in the format
+     * YYYY-MM-DDT00:00:00Z.
      */
     public SourceZendeskChat withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -112,7 +122,9 @@ public class SourceZendeskChat {
     }
 
     /**
-     * The unique subdomain of your Zendesk account (without https://). &lt;a href=\"https://support.zendesk.com/hc/en-us/articles/4409381383578-Where-can-I-find-my-Zendesk-subdomain\"&gt;See the Zendesk docs to find your subdomain&lt;/a&gt;.
+     * The unique subdomain of your Zendesk account (without https://). &lt;a
+     * href=\"https://support.zendesk.com/hc/en-us/articles/4409381383578-Where-can-I-find-my-Zendesk-subdomain\"&gt;See
+     * the Zendesk docs to find your subdomain&lt;/a&gt;.
      */
     public SourceZendeskChat withSubdomain(String subdomain) {
         Utils.checkNotNull(subdomain, "subdomain");
@@ -120,7 +132,6 @@ public class SourceZendeskChat {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -131,18 +142,16 @@ public class SourceZendeskChat {
         }
         SourceZendeskChat other = (SourceZendeskChat) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.subdomain, other.subdomain);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.subdomain, other.subdomain);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            sourceType,
-            startDate,
+        return Utils.enhancedHash(
+            credentials, sourceType, startDate,
             subdomain);
     }
     
@@ -154,18 +163,20 @@ public class SourceZendeskChat {
                 "startDate", startDate,
                 "subdomain", subdomain);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourceZendeskChatAuthorizationMethod> credentials = Optional.empty();
- 
+
         private OffsetDateTime startDate;
- 
+
         private String subdomain;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder credentials(SourceZendeskChatAuthorizationMethod credentials) {
             Utils.checkNotNull(credentials, "credentials");
@@ -179,8 +190,10 @@ public class SourceZendeskChat {
             return this;
         }
 
+
         /**
-         * The date from which you'd like to replicate data for Zendesk Chat API, in the format YYYY-MM-DDT00:00:00Z.
+         * The date from which you'd like to replicate data for Zendesk Chat API, in the format
+         * YYYY-MM-DDT00:00:00Z.
          */
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -188,21 +201,24 @@ public class SourceZendeskChat {
             return this;
         }
 
+
         /**
-         * The unique subdomain of your Zendesk account (without https://). &lt;a href=\"https://support.zendesk.com/hc/en-us/articles/4409381383578-Where-can-I-find-my-Zendesk-subdomain\"&gt;See the Zendesk docs to find your subdomain&lt;/a&gt;.
+         * The unique subdomain of your Zendesk account (without https://). &lt;a
+         * href=\"https://support.zendesk.com/hc/en-us/articles/4409381383578-Where-can-I-find-my-Zendesk-subdomain\"&gt;See
+         * the Zendesk docs to find your subdomain&lt;/a&gt;.
          */
         public Builder subdomain(String subdomain) {
             Utils.checkNotNull(subdomain, "subdomain");
             this.subdomain = subdomain;
             return this;
         }
-        
+
         public SourceZendeskChat build() {
+
             return new SourceZendeskChat(
-                credentials,
-                startDate,
-                subdomain);
+                credentials, startDate, subdomain);
         }
+
 
         private static final LazySingletonValue<ZendeskChat> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

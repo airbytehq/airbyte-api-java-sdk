@@ -11,15 +11,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceCoassemble {
 
     @JsonProperty("sourceType")
     private Coassemble sourceType;
 
+
     @JsonProperty("user_id")
     private String userId;
+
 
     @JsonProperty("user_token")
     private String userToken;
@@ -50,9 +52,10 @@ public class SourceCoassemble {
         return userToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceCoassemble withUserId(String userId) {
         Utils.checkNotNull(userId, "userId");
@@ -66,7 +69,6 @@ public class SourceCoassemble {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -77,17 +79,15 @@ public class SourceCoassemble {
         }
         SourceCoassemble other = (SourceCoassemble) o;
         return 
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.userId, other.userId) &&
-            Objects.deepEquals(this.userToken, other.userToken);
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.userId, other.userId) &&
+            Utils.enhancedDeepEquals(this.userToken, other.userToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            sourceType,
-            userId,
-            userToken);
+        return Utils.enhancedHash(
+            sourceType, userId, userToken);
     }
     
     @Override
@@ -97,16 +97,18 @@ public class SourceCoassemble {
                 "userId", userId,
                 "userToken", userToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String userId;
- 
+
         private String userToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder userId(String userId) {
             Utils.checkNotNull(userId, "userId");
@@ -114,17 +116,19 @@ public class SourceCoassemble {
             return this;
         }
 
+
         public Builder userToken(String userToken) {
             Utils.checkNotNull(userToken, "userToken");
             this.userToken = userToken;
             return this;
         }
-        
+
         public SourceCoassemble build() {
+
             return new SourceCoassemble(
-                userId,
-                userToken);
+                userId, userToken);
         }
+
 
         private static final LazySingletonValue<Coassemble> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -16,8 +16,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceTypeform {
 
@@ -25,17 +25,23 @@ public class SourceTypeform {
     private SourceTypeformAuthorizationMethod credentials;
 
     /**
-     * When this parameter is set, the connector will replicate data only from the input forms. Otherwise, all forms in your Typeform account will be replicated. You can find form IDs in your form URLs. For example, in the URL "https://mysite.typeform.com/to/u6nXL7" the form_id is u6nXL7. You can find form URLs on Share panel
+     * When this parameter is set, the connector will replicate data only from the input forms. Otherwise,
+     * all forms in your Typeform account will be replicated. You can find form IDs in your form URLs.
+     * 
+     * <p>For example, in the URL "https://mysite.typeform.com/to/u6nXL7" the form_id is u6nXL7. You can find
+     * form URLs on Share panel
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("form_ids")
     private Optional<? extends List<String>> formIds;
 
+
     @JsonProperty("sourceType")
     private SourceTypeformTypeform sourceType;
 
     /**
-     * The date from which you'd like to replicate data for Typeform API, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
+     * The date from which you'd like to replicate data for Typeform API, in the format
+     * YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
@@ -66,7 +72,11 @@ public class SourceTypeform {
     }
 
     /**
-     * When this parameter is set, the connector will replicate data only from the input forms. Otherwise, all forms in your Typeform account will be replicated. You can find form IDs in your form URLs. For example, in the URL "https://mysite.typeform.com/to/u6nXL7" the form_id is u6nXL7. You can find form URLs on Share panel
+     * When this parameter is set, the connector will replicate data only from the input forms. Otherwise,
+     * all forms in your Typeform account will be replicated. You can find form IDs in your form URLs.
+     * 
+     * <p>For example, in the URL "https://mysite.typeform.com/to/u6nXL7" the form_id is u6nXL7. You can find
+     * form URLs on Share panel
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -80,16 +90,18 @@ public class SourceTypeform {
     }
 
     /**
-     * The date from which you'd like to replicate data for Typeform API, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
+     * The date from which you'd like to replicate data for Typeform API, in the format
+     * YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
      */
     @JsonIgnore
     public Optional<OffsetDateTime> startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceTypeform withCredentials(SourceTypeformAuthorizationMethod credentials) {
         Utils.checkNotNull(credentials, "credentials");
@@ -98,7 +110,11 @@ public class SourceTypeform {
     }
 
     /**
-     * When this parameter is set, the connector will replicate data only from the input forms. Otherwise, all forms in your Typeform account will be replicated. You can find form IDs in your form URLs. For example, in the URL "https://mysite.typeform.com/to/u6nXL7" the form_id is u6nXL7. You can find form URLs on Share panel
+     * When this parameter is set, the connector will replicate data only from the input forms. Otherwise,
+     * all forms in your Typeform account will be replicated. You can find form IDs in your form URLs.
+     * 
+     * <p>For example, in the URL "https://mysite.typeform.com/to/u6nXL7" the form_id is u6nXL7. You can find
+     * form URLs on Share panel
      */
     public SourceTypeform withFormIds(List<String> formIds) {
         Utils.checkNotNull(formIds, "formIds");
@@ -106,8 +122,13 @@ public class SourceTypeform {
         return this;
     }
 
+
     /**
-     * When this parameter is set, the connector will replicate data only from the input forms. Otherwise, all forms in your Typeform account will be replicated. You can find form IDs in your form URLs. For example, in the URL "https://mysite.typeform.com/to/u6nXL7" the form_id is u6nXL7. You can find form URLs on Share panel
+     * When this parameter is set, the connector will replicate data only from the input forms. Otherwise,
+     * all forms in your Typeform account will be replicated. You can find form IDs in your form URLs.
+     * 
+     * <p>For example, in the URL "https://mysite.typeform.com/to/u6nXL7" the form_id is u6nXL7. You can find
+     * form URLs on Share panel
      */
     public SourceTypeform withFormIds(Optional<? extends List<String>> formIds) {
         Utils.checkNotNull(formIds, "formIds");
@@ -116,7 +137,8 @@ public class SourceTypeform {
     }
 
     /**
-     * The date from which you'd like to replicate data for Typeform API, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
+     * The date from which you'd like to replicate data for Typeform API, in the format
+     * YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
      */
     public SourceTypeform withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -124,8 +146,10 @@ public class SourceTypeform {
         return this;
     }
 
+
     /**
-     * The date from which you'd like to replicate data for Typeform API, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
+     * The date from which you'd like to replicate data for Typeform API, in the format
+     * YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
      */
     public SourceTypeform withStartDate(Optional<OffsetDateTime> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -133,7 +157,6 @@ public class SourceTypeform {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -144,18 +167,16 @@ public class SourceTypeform {
         }
         SourceTypeform other = (SourceTypeform) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.formIds, other.formIds) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.formIds, other.formIds) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            formIds,
-            sourceType,
+        return Utils.enhancedHash(
+            credentials, formIds, sourceType,
             startDate);
     }
     
@@ -167,18 +188,20 @@ public class SourceTypeform {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private SourceTypeformAuthorizationMethod credentials;
- 
+
         private Optional<? extends List<String>> formIds = Optional.empty();
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder credentials(SourceTypeformAuthorizationMethod credentials) {
             Utils.checkNotNull(credentials, "credentials");
@@ -186,8 +209,13 @@ public class SourceTypeform {
             return this;
         }
 
+
         /**
-         * When this parameter is set, the connector will replicate data only from the input forms. Otherwise, all forms in your Typeform account will be replicated. You can find form IDs in your form URLs. For example, in the URL "https://mysite.typeform.com/to/u6nXL7" the form_id is u6nXL7. You can find form URLs on Share panel
+         * When this parameter is set, the connector will replicate data only from the input forms. Otherwise,
+         * all forms in your Typeform account will be replicated. You can find form IDs in your form URLs.
+         * 
+         * <p>For example, in the URL "https://mysite.typeform.com/to/u6nXL7" the form_id is u6nXL7. You can find
+         * form URLs on Share panel
          */
         public Builder formIds(List<String> formIds) {
             Utils.checkNotNull(formIds, "formIds");
@@ -196,7 +224,11 @@ public class SourceTypeform {
         }
 
         /**
-         * When this parameter is set, the connector will replicate data only from the input forms. Otherwise, all forms in your Typeform account will be replicated. You can find form IDs in your form URLs. For example, in the URL "https://mysite.typeform.com/to/u6nXL7" the form_id is u6nXL7. You can find form URLs on Share panel
+         * When this parameter is set, the connector will replicate data only from the input forms. Otherwise,
+         * all forms in your Typeform account will be replicated. You can find form IDs in your form URLs.
+         * 
+         * <p>For example, in the URL "https://mysite.typeform.com/to/u6nXL7" the form_id is u6nXL7. You can find
+         * form URLs on Share panel
          */
         public Builder formIds(Optional<? extends List<String>> formIds) {
             Utils.checkNotNull(formIds, "formIds");
@@ -204,8 +236,10 @@ public class SourceTypeform {
             return this;
         }
 
+
         /**
-         * The date from which you'd like to replicate data for Typeform API, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
+         * The date from which you'd like to replicate data for Typeform API, in the format
+         * YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
          */
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -214,20 +248,21 @@ public class SourceTypeform {
         }
 
         /**
-         * The date from which you'd like to replicate data for Typeform API, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
+         * The date from which you'd like to replicate data for Typeform API, in the format
+         * YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
          */
         public Builder startDate(Optional<OffsetDateTime> startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceTypeform build() {
+
             return new SourceTypeform(
-                credentials,
-                formIds,
-                startDate);
+                credentials, formIds, startDate);
         }
+
 
         private static final LazySingletonValue<SourceTypeformTypeform> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

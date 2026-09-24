@@ -14,7 +14,7 @@ public enum Pgvector {
     @JsonValue
     private final String value;
 
-    private Pgvector(String value) {
+    Pgvector(String value) {
         this.value = value;
     }
     

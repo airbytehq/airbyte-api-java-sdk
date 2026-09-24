@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class Gzip {
 
@@ -40,9 +40,10 @@ public class Gzip {
         return (Optional<DestinationGcsCompressionType>) compressionType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public Gzip withCompressionType(DestinationGcsCompressionType compressionType) {
         Utils.checkNotNull(compressionType, "compressionType");
@@ -50,13 +51,13 @@ public class Gzip {
         return this;
     }
 
+
     public Gzip withCompressionType(Optional<? extends DestinationGcsCompressionType> compressionType) {
         Utils.checkNotNull(compressionType, "compressionType");
         this.compressionType = compressionType;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -67,12 +68,12 @@ public class Gzip {
         }
         Gzip other = (Gzip) o;
         return 
-            Objects.deepEquals(this.compressionType, other.compressionType);
+            Utils.enhancedDeepEquals(this.compressionType, other.compressionType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             compressionType);
     }
     
@@ -81,14 +82,16 @@ public class Gzip {
         return Utils.toString(Gzip.class,
                 "compressionType", compressionType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends DestinationGcsCompressionType> compressionType;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder compressionType(DestinationGcsCompressionType compressionType) {
             Utils.checkNotNull(compressionType, "compressionType");
@@ -101,14 +104,16 @@ public class Gzip {
             this.compressionType = compressionType;
             return this;
         }
-        
+
         public Gzip build() {
             if (compressionType == null) {
                 compressionType = _SINGLETON_VALUE_CompressionType.value();
             }
+
             return new Gzip(
                 compressionType);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationGcsCompressionType>> _SINGLETON_VALUE_CompressionType =
                 new LazySingletonValue<>(

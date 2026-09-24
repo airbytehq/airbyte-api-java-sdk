@@ -1,5 +1,13 @@
 # EbayFinance
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.EbayFinance;
+
+EbayFinance value = EbayFinance.EBAY_FINANCE;
+```
+
 
 ## Values
 

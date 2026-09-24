@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationS3CompressionCodec
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class DestinationS3CompressionCodec {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationS3CompressionCodec(TypedObject value) {
         this.value = value;
@@ -33,32 +32,32 @@ public class DestinationS3CompressionCodec {
 
     public static DestinationS3CompressionCodec of(DestinationS3SchemasFormatNoCompression value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationS3CompressionCodec(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationS3SchemasFormatNoCompression>(){}));
+        return new DestinationS3CompressionCodec(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationS3CompressionCodec of(DestinationS3Deflate value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationS3CompressionCodec(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationS3Deflate>(){}));
+        return new DestinationS3CompressionCodec(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationS3CompressionCodec of(DestinationS3Bzip2 value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationS3CompressionCodec(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationS3Bzip2>(){}));
+        return new DestinationS3CompressionCodec(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationS3CompressionCodec of(DestinationS3Xz value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationS3CompressionCodec(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationS3Xz>(){}));
+        return new DestinationS3CompressionCodec(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationS3CompressionCodec of(DestinationS3Zstandard value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationS3CompressionCodec(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationS3Zstandard>(){}));
+        return new DestinationS3CompressionCodec(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationS3CompressionCodec of(DestinationS3Snappy value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationS3CompressionCodec(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationS3Snappy>(){}));
+        return new DestinationS3CompressionCodec(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -85,7 +84,7 @@ public class DestinationS3CompressionCodec {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -96,12 +95,12 @@ public class DestinationS3CompressionCodec {
             return false;
         }
         DestinationS3CompressionCodec other = (DestinationS3CompressionCodec) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -109,12 +108,12 @@ public class DestinationS3CompressionCodec {
 
         public _Deserializer() {
             super(DestinationS3CompressionCodec.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DestinationS3Zstandard>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationS3Xz>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationS3SchemasFormatNoCompression>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationS3Deflate>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationS3Snappy>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationS3Bzip2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationS3SchemasFormatNoCompression>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationS3Xz>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationS3Zstandard>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationS3Snappy>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -123,6 +122,6 @@ public class DestinationS3CompressionCodec {
         return Utils.toString(DestinationS3CompressionCodec.class,
                 "value", value);
     }
- 
+
 }
 

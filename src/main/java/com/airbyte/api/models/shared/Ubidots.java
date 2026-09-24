@@ -14,7 +14,7 @@ public enum Ubidots {
     @JsonValue
     private final String value;
 
-    private Ubidots(String value) {
+    Ubidots(String value) {
         this.value = value;
     }
     

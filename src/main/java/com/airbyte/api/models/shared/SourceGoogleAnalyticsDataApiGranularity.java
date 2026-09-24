@@ -11,7 +11,8 @@ import java.util.Optional;
 /**
  * SourceGoogleAnalyticsDataApiGranularity
  * 
- * <p>The granularity used to interpret the startOffset and endOffset for the extended reporting date range for a cohort report.
+ * <p>The granularity used to interpret the startOffset and endOffset for the extended reporting date
+ * range for a cohort report.
  */
 public enum SourceGoogleAnalyticsDataApiGranularity {
     GRANULARITY_UNSPECIFIED("GRANULARITY_UNSPECIFIED"),
@@ -22,7 +23,7 @@ public enum SourceGoogleAnalyticsDataApiGranularity {
     @JsonValue
     private final String value;
 
-    private SourceGoogleAnalyticsDataApiGranularity(String value) {
+    SourceGoogleAnalyticsDataApiGranularity(String value) {
         this.value = value;
     }
     

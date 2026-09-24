@@ -1,5 +1,13 @@
 # SourceSapHanaEnterpriseSchemasEncryptionEncryptionMethod
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceSapHanaEnterpriseSchemasEncryptionEncryptionMethod;
+
+SourceSapHanaEnterpriseSchemasEncryptionEncryptionMethod value = SourceSapHanaEnterpriseSchemasEncryptionEncryptionMethod.ENCRYPTED_VERIFY_CERTIFICATE;
+```
+
 
 ## Values
 

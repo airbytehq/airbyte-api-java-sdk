@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceSmaily {
-
     /**
      * API user password. See https://smaily.com/help/api/general/create-api-user/
      */
@@ -32,6 +31,7 @@ public class SourceSmaily {
      */
     @JsonProperty("api_username")
     private String apiUsername;
+
 
     @JsonProperty("sourceType")
     private Smaily sourceType;
@@ -79,9 +79,10 @@ public class SourceSmaily {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API user password. See https://smaily.com/help/api/general/create-api-user/
@@ -110,7 +111,6 @@ public class SourceSmaily {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -121,18 +121,16 @@ public class SourceSmaily {
         }
         SourceSmaily other = (SourceSmaily) o;
         return 
-            Objects.deepEquals(this.apiPassword, other.apiPassword) &&
-            Objects.deepEquals(this.apiSubdomain, other.apiSubdomain) &&
-            Objects.deepEquals(this.apiUsername, other.apiUsername) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiPassword, other.apiPassword) &&
+            Utils.enhancedDeepEquals(this.apiSubdomain, other.apiSubdomain) &&
+            Utils.enhancedDeepEquals(this.apiUsername, other.apiUsername) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiPassword,
-            apiSubdomain,
-            apiUsername,
+        return Utils.enhancedHash(
+            apiPassword, apiSubdomain, apiUsername,
             sourceType);
     }
     
@@ -144,18 +142,20 @@ public class SourceSmaily {
                 "apiUsername", apiUsername,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiPassword;
- 
+
         private String apiSubdomain;
- 
+
         private String apiUsername;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API user password. See https://smaily.com/help/api/general/create-api-user/
@@ -166,6 +166,7 @@ public class SourceSmaily {
             return this;
         }
 
+
         /**
          * API Subdomain. See https://smaily.com/help/api/general/create-api-user/
          */
@@ -175,6 +176,7 @@ public class SourceSmaily {
             return this;
         }
 
+
         /**
          * API user username. See https://smaily.com/help/api/general/create-api-user/
          */
@@ -183,13 +185,13 @@ public class SourceSmaily {
             this.apiUsername = apiUsername;
             return this;
         }
-        
+
         public SourceSmaily build() {
+
             return new SourceSmaily(
-                apiPassword,
-                apiSubdomain,
-                apiUsername);
+                apiPassword, apiSubdomain, apiUsername);
         }
+
 
         private static final LazySingletonValue<Smaily> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum Revenuecat {
     @JsonValue
     private final String value;
 
-    private Revenuecat(String value) {
+    Revenuecat(String value) {
         this.value = value;
     }
     

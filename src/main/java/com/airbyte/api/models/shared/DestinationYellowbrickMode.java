@@ -14,7 +14,7 @@ public enum DestinationYellowbrickMode {
     @JsonValue
     private final String value;
 
-    private DestinationYellowbrickMode(String value) {
+    DestinationYellowbrickMode(String value) {
         this.value = value;
     }
     

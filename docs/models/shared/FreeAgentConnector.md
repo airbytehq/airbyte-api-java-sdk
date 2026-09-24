@@ -1,5 +1,13 @@
 # FreeAgentConnector
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.FreeAgentConnector;
+
+FreeAgentConnector value = FreeAgentConnector.FREE_AGENT_CONNECTOR;
+```
+
 
 ## Values
 

@@ -11,15 +11,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayBetweenFilter {
 
     @JsonProperty("filter_name")
     private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter1ExpressionsFilterFilterFilterName filterName;
 
+
     @JsonProperty("fromValue")
     private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayFromValue fromValue;
+
 
     @JsonProperty("toValue")
     private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayToValue toValue;
@@ -50,9 +52,10 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayBetweenFilter 
         return toValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayBetweenFilter withFromValue(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayFromValue fromValue) {
         Utils.checkNotNull(fromValue, "fromValue");
@@ -66,7 +69,6 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayBetweenFilter 
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -77,17 +79,15 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayBetweenFilter 
         }
         SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayBetweenFilter other = (SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayBetweenFilter) o;
         return 
-            Objects.deepEquals(this.filterName, other.filterName) &&
-            Objects.deepEquals(this.fromValue, other.fromValue) &&
-            Objects.deepEquals(this.toValue, other.toValue);
+            Utils.enhancedDeepEquals(this.filterName, other.filterName) &&
+            Utils.enhancedDeepEquals(this.fromValue, other.fromValue) &&
+            Utils.enhancedDeepEquals(this.toValue, other.toValue);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            filterName,
-            fromValue,
-            toValue);
+        return Utils.enhancedHash(
+            filterName, fromValue, toValue);
     }
     
     @Override
@@ -97,16 +97,18 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayBetweenFilter 
                 "fromValue", fromValue,
                 "toValue", toValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayFromValue fromValue;
- 
+
         private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayToValue toValue;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder fromValue(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayFromValue fromValue) {
             Utils.checkNotNull(fromValue, "fromValue");
@@ -114,17 +116,19 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayBetweenFilter 
             return this;
         }
 
+
         public Builder toValue(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayToValue toValue) {
             Utils.checkNotNull(toValue, "toValue");
             this.toValue = toValue;
             return this;
         }
-        
+
         public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayBetweenFilter build() {
+
             return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayBetweenFilter(
-                fromValue,
-                toValue);
+                fromValue, toValue);
         }
+
 
         private static final LazySingletonValue<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter1ExpressionsFilterFilterFilterName> _SINGLETON_VALUE_FilterName =
                 new LazySingletonValue<>(

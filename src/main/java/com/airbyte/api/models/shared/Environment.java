@@ -20,7 +20,7 @@ public enum Environment {
     @JsonValue
     private final String value;
 
-    private Environment(String value) {
+    Environment(String value) {
         this.value = value;
     }
     

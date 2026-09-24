@@ -13,13 +13,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceTyntecSms {
 
+public class SourceTyntecSms {
     /**
-     * Your Tyntec API Key. See &lt;a href="https://www.tyntec.com/docs/docs-center-sms-api-quick-start"&gt;here&lt;/a&gt;
+     * Your Tyntec API Key. See <a
+     * href="https://www.tyntec.com/docs/docs-center-sms-api-quick-start">here</a>
      */
     @JsonProperty("api_key")
     private String apiKey;
@@ -36,6 +36,7 @@ public class SourceTyntecSms {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("message")
     private Optional<String> message;
+
 
     @JsonProperty("sourceType")
     private TyntecSms sourceType;
@@ -67,11 +68,13 @@ public class SourceTyntecSms {
             String apiKey,
             String from,
             String to) {
-        this(apiKey, from, Optional.empty(), to);
+        this(apiKey, from, Optional.empty(),
+            to);
     }
 
     /**
-     * Your Tyntec API Key. See &lt;a href="https://www.tyntec.com/docs/docs-center-sms-api-quick-start"&gt;here&lt;/a&gt;
+     * Your Tyntec API Key. See <a
+     * href="https://www.tyntec.com/docs/docs-center-sms-api-quick-start">here</a>
      */
     @JsonIgnore
     public String apiKey() {
@@ -107,12 +110,14 @@ public class SourceTyntecSms {
         return to;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Your Tyntec API Key. See &lt;a href="https://www.tyntec.com/docs/docs-center-sms-api-quick-start"&gt;here&lt;/a&gt;
+     * Your Tyntec API Key. See <a
+     * href="https://www.tyntec.com/docs/docs-center-sms-api-quick-start">here</a>
      */
     public SourceTyntecSms withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -138,6 +143,7 @@ public class SourceTyntecSms {
         return this;
     }
 
+
     /**
      * The content of the SMS message to be sent.
      */
@@ -156,7 +162,6 @@ public class SourceTyntecSms {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -167,21 +172,18 @@ public class SourceTyntecSms {
         }
         SourceTyntecSms other = (SourceTyntecSms) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.from, other.from) &&
-            Objects.deepEquals(this.message, other.message) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.to, other.to);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.from, other.from) &&
+            Utils.enhancedDeepEquals(this.message, other.message) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.to, other.to);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            from,
-            message,
-            sourceType,
-            to);
+        return Utils.enhancedHash(
+            apiKey, from, message,
+            sourceType, to);
     }
     
     @Override
@@ -193,29 +195,33 @@ public class SourceTyntecSms {
                 "sourceType", sourceType,
                 "to", to);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String from;
- 
+
         private Optional<String> message = Optional.empty();
- 
+
         private String to;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Your Tyntec API Key. See &lt;a href="https://www.tyntec.com/docs/docs-center-sms-api-quick-start"&gt;here&lt;/a&gt;
+         * Your Tyntec API Key. See <a
+         * href="https://www.tyntec.com/docs/docs-center-sms-api-quick-start">here</a>
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * The phone number of the SMS message sender (international).
@@ -225,6 +231,7 @@ public class SourceTyntecSms {
             this.from = from;
             return this;
         }
+
 
         /**
          * The content of the SMS message to be sent.
@@ -244,6 +251,7 @@ public class SourceTyntecSms {
             return this;
         }
 
+
         /**
          * The phone number of the SMS message recipient (international).
          */
@@ -252,14 +260,14 @@ public class SourceTyntecSms {
             this.to = to;
             return this;
         }
-        
+
         public SourceTyntecSms build() {
+
             return new SourceTyntecSms(
-                apiKey,
-                from,
-                message,
+                apiKey, from, message,
                 to);
         }
+
 
         private static final LazySingletonValue<TyntecSms> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

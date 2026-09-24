@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -23,7 +22,6 @@ import java.util.Optional;
  * <p>Verify-ca SSL mode.
  */
 public class DestinationYellowbrickVerifyCa {
-
     /**
      * CA certificate
      */
@@ -31,11 +29,13 @@ public class DestinationYellowbrickVerifyCa {
     private String caCertificate;
 
     /**
-     * Password for keystorage. This field is optional. If you do not add it - the password will be generated automatically.
+     * Password for keystorage. This field is optional. If you do not add it - the password will be
+     * generated automatically.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_key_password")
     private Optional<String> clientKeyPassword;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
@@ -66,7 +66,8 @@ public class DestinationYellowbrickVerifyCa {
     }
 
     /**
-     * Password for keystorage. This field is optional. If you do not add it - the password will be generated automatically.
+     * Password for keystorage. This field is optional. If you do not add it - the password will be
+     * generated automatically.
      */
     @JsonIgnore
     public Optional<String> clientKeyPassword() {
@@ -79,9 +80,10 @@ public class DestinationYellowbrickVerifyCa {
         return (Optional<DestinationYellowbrickSchemasSSLModeSSLModes5Mode>) mode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * CA certificate
@@ -93,7 +95,8 @@ public class DestinationYellowbrickVerifyCa {
     }
 
     /**
-     * Password for keystorage. This field is optional. If you do not add it - the password will be generated automatically.
+     * Password for keystorage. This field is optional. If you do not add it - the password will be
+     * generated automatically.
      */
     public DestinationYellowbrickVerifyCa withClientKeyPassword(String clientKeyPassword) {
         Utils.checkNotNull(clientKeyPassword, "clientKeyPassword");
@@ -101,8 +104,10 @@ public class DestinationYellowbrickVerifyCa {
         return this;
     }
 
+
     /**
-     * Password for keystorage. This field is optional. If you do not add it - the password will be generated automatically.
+     * Password for keystorage. This field is optional. If you do not add it - the password will be
+     * generated automatically.
      */
     public DestinationYellowbrickVerifyCa withClientKeyPassword(Optional<String> clientKeyPassword) {
         Utils.checkNotNull(clientKeyPassword, "clientKeyPassword");
@@ -110,7 +115,6 @@ public class DestinationYellowbrickVerifyCa {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -121,17 +125,15 @@ public class DestinationYellowbrickVerifyCa {
         }
         DestinationYellowbrickVerifyCa other = (DestinationYellowbrickVerifyCa) o;
         return 
-            Objects.deepEquals(this.caCertificate, other.caCertificate) &&
-            Objects.deepEquals(this.clientKeyPassword, other.clientKeyPassword) &&
-            Objects.deepEquals(this.mode, other.mode);
+            Utils.enhancedDeepEquals(this.caCertificate, other.caCertificate) &&
+            Utils.enhancedDeepEquals(this.clientKeyPassword, other.clientKeyPassword) &&
+            Utils.enhancedDeepEquals(this.mode, other.mode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            caCertificate,
-            clientKeyPassword,
-            mode);
+        return Utils.enhancedHash(
+            caCertificate, clientKeyPassword, mode);
     }
     
     @Override
@@ -141,16 +143,18 @@ public class DestinationYellowbrickVerifyCa {
                 "clientKeyPassword", clientKeyPassword,
                 "mode", mode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String caCertificate;
- 
+
         private Optional<String> clientKeyPassword = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * CA certificate
@@ -161,8 +165,10 @@ public class DestinationYellowbrickVerifyCa {
             return this;
         }
 
+
         /**
-         * Password for keystorage. This field is optional. If you do not add it - the password will be generated automatically.
+         * Password for keystorage. This field is optional. If you do not add it - the password will be
+         * generated automatically.
          */
         public Builder clientKeyPassword(String clientKeyPassword) {
             Utils.checkNotNull(clientKeyPassword, "clientKeyPassword");
@@ -171,19 +177,21 @@ public class DestinationYellowbrickVerifyCa {
         }
 
         /**
-         * Password for keystorage. This field is optional. If you do not add it - the password will be generated automatically.
+         * Password for keystorage. This field is optional. If you do not add it - the password will be
+         * generated automatically.
          */
         public Builder clientKeyPassword(Optional<String> clientKeyPassword) {
             Utils.checkNotNull(clientKeyPassword, "clientKeyPassword");
             this.clientKeyPassword = clientKeyPassword;
             return this;
         }
-        
+
         public DestinationYellowbrickVerifyCa build() {
+
             return new DestinationYellowbrickVerifyCa(
-                caCertificate,
-                clientKeyPassword);
+                caCertificate, clientKeyPassword);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationYellowbrickSchemasSSLModeSSLModes5Mode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class Bzip2 {
 
@@ -40,9 +40,10 @@ public class Bzip2 {
         return (Optional<DestinationGcsSchemasCodec>) codec;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public Bzip2 withCodec(DestinationGcsSchemasCodec codec) {
         Utils.checkNotNull(codec, "codec");
@@ -50,13 +51,13 @@ public class Bzip2 {
         return this;
     }
 
+
     public Bzip2 withCodec(Optional<? extends DestinationGcsSchemasCodec> codec) {
         Utils.checkNotNull(codec, "codec");
         this.codec = codec;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -67,12 +68,12 @@ public class Bzip2 {
         }
         Bzip2 other = (Bzip2) o;
         return 
-            Objects.deepEquals(this.codec, other.codec);
+            Utils.enhancedDeepEquals(this.codec, other.codec);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             codec);
     }
     
@@ -81,14 +82,16 @@ public class Bzip2 {
         return Utils.toString(Bzip2.class,
                 "codec", codec);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends DestinationGcsSchemasCodec> codec;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder codec(DestinationGcsSchemasCodec codec) {
             Utils.checkNotNull(codec, "codec");
@@ -101,14 +104,16 @@ public class Bzip2 {
             this.codec = codec;
             return this;
         }
-        
+
         public Bzip2 build() {
             if (codec == null) {
                 codec = _SINGLETON_VALUE_Codec.value();
             }
+
             return new Bzip2(
                 codec);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationGcsSchemasCodec>> _SINGLETON_VALUE_Codec =
                 new LazySingletonValue<>(

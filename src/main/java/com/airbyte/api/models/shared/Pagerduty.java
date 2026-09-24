@@ -14,7 +14,7 @@ public enum Pagerduty {
     @JsonValue
     private final String value;
 
-    private Pagerduty(String value) {
+    Pagerduty(String value) {
         this.value = value;
     }
     

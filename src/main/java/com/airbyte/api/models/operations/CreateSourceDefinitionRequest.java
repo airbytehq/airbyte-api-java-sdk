@@ -10,12 +10,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class CreateSourceDefinitionRequest {
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private CreateDefinitionRequest createDefinitionRequest;
+
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspaceId")
     private String workspaceId;
@@ -40,9 +41,10 @@ public class CreateSourceDefinitionRequest {
         return workspaceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public CreateSourceDefinitionRequest withCreateDefinitionRequest(CreateDefinitionRequest createDefinitionRequest) {
         Utils.checkNotNull(createDefinitionRequest, "createDefinitionRequest");
@@ -56,7 +58,6 @@ public class CreateSourceDefinitionRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -67,15 +68,14 @@ public class CreateSourceDefinitionRequest {
         }
         CreateSourceDefinitionRequest other = (CreateSourceDefinitionRequest) o;
         return 
-            Objects.deepEquals(this.createDefinitionRequest, other.createDefinitionRequest) &&
-            Objects.deepEquals(this.workspaceId, other.workspaceId);
+            Utils.enhancedDeepEquals(this.createDefinitionRequest, other.createDefinitionRequest) &&
+            Utils.enhancedDeepEquals(this.workspaceId, other.workspaceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            createDefinitionRequest,
-            workspaceId);
+        return Utils.enhancedHash(
+            createDefinitionRequest, workspaceId);
     }
     
     @Override
@@ -84,16 +84,18 @@ public class CreateSourceDefinitionRequest {
                 "createDefinitionRequest", createDefinitionRequest,
                 "workspaceId", workspaceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private CreateDefinitionRequest createDefinitionRequest;
- 
+
         private String workspaceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder createDefinitionRequest(CreateDefinitionRequest createDefinitionRequest) {
             Utils.checkNotNull(createDefinitionRequest, "createDefinitionRequest");
@@ -101,16 +103,18 @@ public class CreateSourceDefinitionRequest {
             return this;
         }
 
+
         public Builder workspaceId(String workspaceId) {
             Utils.checkNotNull(workspaceId, "workspaceId");
             this.workspaceId = workspaceId;
             return this;
         }
-        
+
         public CreateSourceDefinitionRequest build() {
+
             return new CreateSourceDefinitionRequest(
-                createDefinitionRequest,
-                workspaceId);
+                createDefinitionRequest, workspaceId);
         }
+
     }
 }

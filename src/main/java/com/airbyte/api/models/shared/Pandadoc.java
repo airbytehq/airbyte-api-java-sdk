@@ -14,7 +14,7 @@ public enum Pandadoc {
     @JsonValue
     private final String value;
 
-    private Pandadoc(String value) {
+    Pandadoc(String value) {
         this.value = value;
     }
     

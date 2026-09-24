@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class Snappy {
 
@@ -40,9 +40,10 @@ public class Snappy {
         return (Optional<DestinationGcsSchemasFormatOutputFormat1Codec>) codec;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public Snappy withCodec(DestinationGcsSchemasFormatOutputFormat1Codec codec) {
         Utils.checkNotNull(codec, "codec");
@@ -50,13 +51,13 @@ public class Snappy {
         return this;
     }
 
+
     public Snappy withCodec(Optional<? extends DestinationGcsSchemasFormatOutputFormat1Codec> codec) {
         Utils.checkNotNull(codec, "codec");
         this.codec = codec;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -67,12 +68,12 @@ public class Snappy {
         }
         Snappy other = (Snappy) o;
         return 
-            Objects.deepEquals(this.codec, other.codec);
+            Utils.enhancedDeepEquals(this.codec, other.codec);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             codec);
     }
     
@@ -81,14 +82,16 @@ public class Snappy {
         return Utils.toString(Snappy.class,
                 "codec", codec);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends DestinationGcsSchemasFormatOutputFormat1Codec> codec;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder codec(DestinationGcsSchemasFormatOutputFormat1Codec codec) {
             Utils.checkNotNull(codec, "codec");
@@ -101,14 +104,16 @@ public class Snappy {
             this.codec = codec;
             return this;
         }
-        
+
         public Snappy build() {
             if (codec == null) {
                 codec = _SINGLETON_VALUE_Codec.value();
             }
+
             return new Snappy(
                 codec);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationGcsSchemasFormatOutputFormat1Codec>> _SINGLETON_VALUE_Codec =
                 new LazySingletonValue<>(

@@ -19,7 +19,7 @@ public enum DestinationElasticsearchSchemasTunnelMethod {
     @JsonValue
     private final String value;
 
-    private DestinationElasticsearchSchemasTunnelMethod(String value) {
+    DestinationElasticsearchSchemasTunnelMethod(String value) {
         this.value = value;
     }
     

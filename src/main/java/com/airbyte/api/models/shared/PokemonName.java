@@ -42,10 +42,10 @@ public enum PokemonName {
     RAICHU("raichu"),
     SANDSHREW("sandshrew"),
     SANDSLASH("sandslash"),
-    NIDORANF("nidoranf"),
+    NIDORAN_F("nidoran-f"),
     NIDORINA("nidorina"),
     NIDOQUEEN("nidoqueen"),
-    NIDORANM("nidoranm"),
+    NIDORAN_M("nidoran-m"),
     NIDORINO("nidorino"),
     NIDOKING("nidoking"),
     CLEFAIRY("clefairy"),
@@ -916,7 +916,7 @@ public enum PokemonName {
     @JsonValue
     private final String value;
 
-    private PokemonName(String value) {
+    PokemonName(String value) {
         this.value = value;
     }
     

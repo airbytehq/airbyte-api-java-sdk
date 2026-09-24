@@ -1,5 +1,4 @@
 # Connections
-(*connections()*)
 
 ## Overview
 
@@ -15,8 +14,9 @@
 
 Create a connection
 
-### Example Usage
+### Example Usage: Connection Creation Request Example
 
+<!-- UsageSnippet language="java" operationID="createConnection" method="post" path="/connections" example="Connection Creation Request Example" -->
 ```java
 package hello.world;
 
@@ -42,6 +42,7 @@ public class Application {
                 .destinationId("e478de0d-a3a0-475c-b019-25f7dd29e281")
                 .sourceId("95e66a59-8045-4307-9678-63bc3c9b8c93")
                 .name("Postgres-to-Bigquery")
+                .namespaceFormat("${SOURCE_NAMESPACE}")
                 .build();
 
         CreateConnectionResponse res = sdk.connections().createConnection()
@@ -49,7 +50,47 @@ public class Application {
                 .call();
 
         if (res.connectionResponse().isPresent()) {
-            // handle response
+            System.out.println(res.connectionResponse().get());
+        }
+    }
+}
+```
+### Example Usage: Connection Creation Response Example
+
+<!-- UsageSnippet language="java" operationID="createConnection" method="post" path="/connections" example="Connection Creation Response Example" -->
+```java
+package hello.world;
+
+import com.airbyte.api.Airbyte;
+import com.airbyte.api.models.operations.CreateConnectionResponse;
+import com.airbyte.api.models.shared.*;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        Airbyte sdk = Airbyte.builder()
+                .security(Security.builder()
+                    .basicAuth(SchemeBasicAuth.builder()
+                        .password("")
+                        .username("")
+                        .build())
+                    .build())
+            .build();
+
+        ConnectionCreateRequest req = ConnectionCreateRequest.builder()
+                .destinationId("d446b90a-b83f-41d9-b1d6-eaa82f6b9713")
+                .sourceId("a2bab3d3-7c90-4e49-ad1d-f4e1db27c748")
+                .namespaceFormat("${SOURCE_NAMESPACE}")
+                .build();
+
+        CreateConnectionResponse res = sdk.connections().createConnection()
+                .request(req)
+                .call();
+
+        if (res.connectionResponse().isPresent()) {
+            System.out.println(res.connectionResponse().get());
         }
     }
 }
@@ -77,6 +118,7 @@ Delete a Connection
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="deleteConnection" method="delete" path="/connections/{connectionId}" -->
 ```java
 package hello.world;
 
@@ -135,6 +177,7 @@ Get Connection details
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="getConnection" method="get" path="/connections/{connectionId}" example="Connection Get Response Example" -->
 ```java
 package hello.world;
 
@@ -167,7 +210,7 @@ public class Application {
                 .call();
 
         if (res.connectionResponse().isPresent()) {
-            // handle response
+            System.out.println(res.connectionResponse().get());
         }
     }
 }
@@ -195,6 +238,7 @@ List connections
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="listConnections" method="get" path="/connections" -->
 ```java
 package hello.world;
 
@@ -226,7 +270,7 @@ public class Application {
                 .call();
 
         if (res.connectionsResponse().isPresent()) {
-            // handle response
+            System.out.println(res.connectionsResponse().get());
         }
     }
 }
@@ -252,8 +296,51 @@ public class Application {
 
 Update Connection details
 
-### Example Usage
+### Example Usage: Connection Get Response Example
 
+<!-- UsageSnippet language="java" operationID="patchConnection" method="patch" path="/connections/{connectionId}" example="Connection Get Response Example" -->
+```java
+package hello.world;
+
+import com.airbyte.api.Airbyte;
+import com.airbyte.api.models.operations.PatchConnectionRequest;
+import com.airbyte.api.models.operations.PatchConnectionResponse;
+import com.airbyte.api.models.shared.*;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        Airbyte sdk = Airbyte.builder()
+                .security(Security.builder()
+                    .basicAuth(SchemeBasicAuth.builder()
+                        .password("")
+                        .username("")
+                        .build())
+                    .build())
+            .build();
+
+        PatchConnectionRequest req = PatchConnectionRequest.builder()
+                .connectionPatchRequest(ConnectionPatchRequest.builder()
+                    .namespaceFormat("${SOURCE_NAMESPACE}")
+                    .build())
+                .connectionId("<value>")
+                .build();
+
+        PatchConnectionResponse res = sdk.connections().patchConnection()
+                .request(req)
+                .call();
+
+        if (res.connectionResponse().isPresent()) {
+            System.out.println(res.connectionResponse().get());
+        }
+    }
+}
+```
+### Example Usage: Connection Update Request Example
+
+<!-- UsageSnippet language="java" operationID="patchConnection" method="patch" path="/connections/{connectionId}" example="Connection Update Request Example" -->
 ```java
 package hello.world;
 
@@ -279,6 +366,7 @@ public class Application {
         PatchConnectionRequest req = PatchConnectionRequest.builder()
                 .connectionPatchRequest(ConnectionPatchRequest.builder()
                     .name("Postgres-to-Bigquery")
+                    .namespaceFormat("${SOURCE_NAMESPACE}")
                     .build())
                 .connectionId("<value>")
                 .build();
@@ -288,7 +376,7 @@ public class Application {
                 .call();
 
         if (res.connectionResponse().isPresent()) {
-            // handle response
+            System.out.println(res.connectionResponse().get());
         }
     }
 }

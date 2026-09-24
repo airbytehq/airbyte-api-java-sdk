@@ -14,7 +14,7 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
+
 
 public class AuthenticateViaOAuth20 {
 
@@ -82,9 +82,10 @@ public class AuthenticateViaOAuth20 {
         return refreshToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public AuthenticateViaOAuth20 withAdditionalProperty(String key, Object value) {
@@ -92,8 +93,7 @@ public class AuthenticateViaOAuth20 {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public AuthenticateViaOAuth20 withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -127,7 +127,6 @@ public class AuthenticateViaOAuth20 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -138,18 +137,16 @@ public class AuthenticateViaOAuth20 {
         }
         AuthenticateViaOAuth20 other = (AuthenticateViaOAuth20) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            clientId,
-            clientSecret,
+        return Utils.enhancedHash(
+            additionalProperties, clientId, clientSecret,
             refreshToken);
     }
     
@@ -161,17 +158,18 @@ public class AuthenticateViaOAuth20 {
                 "clientSecret", clientSecret,
                 "refreshToken", refreshToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String refreshToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -192,6 +190,7 @@ public class AuthenticateViaOAuth20 {
             return this;
         }
 
+
         /**
          * The Client ID of your developer application
          */
@@ -200,6 +199,7 @@ public class AuthenticateViaOAuth20 {
             this.clientId = clientId;
             return this;
         }
+
 
         /**
          * The client secret of your developer application
@@ -210,6 +210,7 @@ public class AuthenticateViaOAuth20 {
             return this;
         }
 
+
         /**
          * A refresh token generated using the above client ID and secret
          */
@@ -218,13 +219,13 @@ public class AuthenticateViaOAuth20 {
             this.refreshToken = refreshToken;
             return this;
         }
-        
+
         public AuthenticateViaOAuth20 build() {
+
             return new AuthenticateViaOAuth20(
-                clientId,
-                clientSecret,
-                refreshToken)
+                clientId, clientSecret, refreshToken)
                 .withAdditionalProperties(additionalProperties);
         }
+
     }
 }

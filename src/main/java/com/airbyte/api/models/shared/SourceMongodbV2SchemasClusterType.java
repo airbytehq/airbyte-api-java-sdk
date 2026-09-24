@@ -14,7 +14,7 @@ public enum SourceMongodbV2SchemasClusterType {
     @JsonValue
     private final String value;
 
-    private SourceMongodbV2SchemasClusterType(String value) {
+    SourceMongodbV2SchemasClusterType(String value) {
         this.value = value;
     }
     

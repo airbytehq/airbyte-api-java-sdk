@@ -17,7 +17,7 @@ public enum TargetsType {
     @JsonValue
     private final String value;
 
-    private TargetsType(String value) {
+    TargetsType(String value) {
         this.value = value;
     }
     

@@ -1,5 +1,13 @@
 # SourceSnapchatMarketingSnapchatMarketing
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceSnapchatMarketingSnapchatMarketing;
+
+SourceSnapchatMarketingSnapchatMarketing value = SourceSnapchatMarketingSnapchatMarketing.SNAPCHAT_MARKETING;
+```
+
 
 ## Values
 

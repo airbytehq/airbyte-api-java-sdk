@@ -14,16 +14,16 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceTypeformPrivateToken {
 
+public class SourceTypeformPrivateToken {
     /**
      * Log into your Typeform account and then generate a personal Access Token.
      */
     @JsonProperty("access_token")
     private String accessToken;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
@@ -51,9 +51,10 @@ public class SourceTypeformPrivateToken {
         return (Optional<SourceTypeformSchemasAuthType>) authType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Log into your Typeform account and then generate a personal Access Token.
@@ -64,7 +65,6 @@ public class SourceTypeformPrivateToken {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -75,15 +75,14 @@ public class SourceTypeformPrivateToken {
         }
         SourceTypeformPrivateToken other = (SourceTypeformPrivateToken) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.authType, other.authType);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            authType);
+        return Utils.enhancedHash(
+            accessToken, authType);
     }
     
     @Override
@@ -92,14 +91,16 @@ public class SourceTypeformPrivateToken {
                 "accessToken", accessToken,
                 "authType", authType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Log into your Typeform account and then generate a personal Access Token.
@@ -109,11 +110,13 @@ public class SourceTypeformPrivateToken {
             this.accessToken = accessToken;
             return this;
         }
-        
+
         public SourceTypeformPrivateToken build() {
+
             return new SourceTypeformPrivateToken(
                 accessToken);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceTypeformSchemasAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

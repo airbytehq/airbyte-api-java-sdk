@@ -14,7 +14,7 @@ public enum SourceBigqueryBigquery {
     @JsonValue
     private final String value;
 
-    private SourceBigqueryBigquery(String value) {
+    SourceBigqueryBigquery(String value) {
         this.value = value;
     }
     

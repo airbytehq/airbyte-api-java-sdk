@@ -14,7 +14,7 @@ public enum Waiteraid {
     @JsonValue
     private final String value;
 
-    private Waiteraid(String value) {
+    Waiteraid(String value) {
         this.value = value;
     }
     

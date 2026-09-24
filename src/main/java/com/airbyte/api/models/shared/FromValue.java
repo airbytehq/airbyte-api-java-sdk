@@ -14,13 +14,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = FromValue._Deserializer.class)
 public class FromValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private FromValue(TypedObject value) {
         this.value = value;
@@ -28,12 +27,12 @@ public class FromValue {
 
     public static FromValue of(SourceGoogleAnalyticsDataApiInt64Value value) {
         Utils.checkNotNull(value, "value");
-        return new FromValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiInt64Value>(){}));
+        return new FromValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static FromValue of(SourceGoogleAnalyticsDataApiDoubleValue value) {
         Utils.checkNotNull(value, "value");
-        return new FromValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiDoubleValue>(){}));
+        return new FromValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -56,7 +55,7 @@ public class FromValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -67,12 +66,12 @@ public class FromValue {
             return false;
         }
         FromValue other = (FromValue) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -80,8 +79,8 @@ public class FromValue {
 
         public _Deserializer() {
             super(FromValue.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiDoubleValue>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiInt64Value>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiInt64Value>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiDoubleValue>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -90,6 +89,6 @@ public class FromValue {
         return Utils.toString(FromValue.class,
                 "value", value);
     }
- 
+
 }
 

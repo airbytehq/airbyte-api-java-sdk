@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * AuthenticationMechanism
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class AuthenticationMechanism {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private AuthenticationMechanism(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class AuthenticationMechanism {
 
     public static AuthenticationMechanism of(AuthenticateViaAsanaOauth value) {
         Utils.checkNotNull(value, "value");
-        return new AuthenticationMechanism(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AuthenticateViaAsanaOauth>(){}));
+        return new AuthenticationMechanism(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AuthenticationMechanism of(AuthenticateWithPersonalAccessToken value) {
         Utils.checkNotNull(value, "value");
-        return new AuthenticationMechanism(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AuthenticateWithPersonalAccessToken>(){}));
+        return new AuthenticationMechanism(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class AuthenticationMechanism {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class AuthenticationMechanism {
             return false;
         }
         AuthenticationMechanism other = (AuthenticationMechanism) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -95,6 +94,6 @@ public class AuthenticationMechanism {
         return Utils.toString(AuthenticationMechanism.class,
                 "value", value);
     }
- 
+
 }
 

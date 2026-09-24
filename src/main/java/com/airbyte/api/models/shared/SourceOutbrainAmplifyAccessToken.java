@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceOutbrainAmplifyAccessToken {
-
     /**
      * Access Token for making authenticated requests.
      */
     @JsonProperty("access_token")
     private String accessToken;
+
 
     @JsonProperty("type")
     private AccessTokenIsRequiredForAuthenticationRequests type;
@@ -45,9 +45,10 @@ public class SourceOutbrainAmplifyAccessToken {
         return type;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Access Token for making authenticated requests.
@@ -58,7 +59,6 @@ public class SourceOutbrainAmplifyAccessToken {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceOutbrainAmplifyAccessToken {
         }
         SourceOutbrainAmplifyAccessToken other = (SourceOutbrainAmplifyAccessToken) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.type, other.type);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.type, other.type);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            type);
+        return Utils.enhancedHash(
+            accessToken, type);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourceOutbrainAmplifyAccessToken {
                 "accessToken", accessToken,
                 "type", type);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Access Token for making authenticated requests.
@@ -103,11 +104,13 @@ public class SourceOutbrainAmplifyAccessToken {
             this.accessToken = accessToken;
             return this;
         }
-        
+
         public SourceOutbrainAmplifyAccessToken build() {
+
             return new SourceOutbrainAmplifyAccessToken(
                 accessToken);
         }
+
 
         private static final LazySingletonValue<AccessTokenIsRequiredForAuthenticationRequests> _SINGLETON_VALUE_Type =
                 new LazySingletonValue<>(

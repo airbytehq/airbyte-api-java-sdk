@@ -11,16 +11,18 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class Applications {
 
     @JsonProperty("app_api_key")
     private String appApiKey;
 
+
     @JsonProperty("app_id")
     private String appId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("app_name")
@@ -60,9 +62,10 @@ public class Applications {
         return appName;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public Applications withAppApiKey(String appApiKey) {
         Utils.checkNotNull(appApiKey, "appApiKey");
@@ -82,13 +85,13 @@ public class Applications {
         return this;
     }
 
+
     public Applications withAppName(Optional<String> appName) {
         Utils.checkNotNull(appName, "appName");
         this.appName = appName;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -99,17 +102,15 @@ public class Applications {
         }
         Applications other = (Applications) o;
         return 
-            Objects.deepEquals(this.appApiKey, other.appApiKey) &&
-            Objects.deepEquals(this.appId, other.appId) &&
-            Objects.deepEquals(this.appName, other.appName);
+            Utils.enhancedDeepEquals(this.appApiKey, other.appApiKey) &&
+            Utils.enhancedDeepEquals(this.appId, other.appId) &&
+            Utils.enhancedDeepEquals(this.appName, other.appName);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            appApiKey,
-            appId,
-            appName);
+        return Utils.enhancedHash(
+            appApiKey, appId, appName);
     }
     
     @Override
@@ -119,18 +120,20 @@ public class Applications {
                 "appId", appId,
                 "appName", appName);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String appApiKey;
- 
+
         private String appId;
- 
+
         private Optional<String> appName = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder appApiKey(String appApiKey) {
             Utils.checkNotNull(appApiKey, "appApiKey");
@@ -138,11 +141,13 @@ public class Applications {
             return this;
         }
 
+
         public Builder appId(String appId) {
             Utils.checkNotNull(appId, "appId");
             this.appId = appId;
             return this;
         }
+
 
         public Builder appName(String appName) {
             Utils.checkNotNull(appName, "appName");
@@ -155,12 +160,12 @@ public class Applications {
             this.appName = appName;
             return this;
         }
-        
+
         public Applications build() {
+
             return new Applications(
-                appApiKey,
-                appId,
-                appName);
+                appApiKey, appId, appName);
         }
+
     }
 }

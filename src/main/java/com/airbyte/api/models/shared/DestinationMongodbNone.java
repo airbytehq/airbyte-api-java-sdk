@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 /**
  * DestinationMongodbNone
@@ -25,7 +24,6 @@ public class DestinationMongodbNone {
 
     @JsonCreator
     public DestinationMongodbNone() {
-        
         this.authorization = Builder._SINGLETON_VALUE_Authorization.value();
     }
 
@@ -34,11 +32,11 @@ public class DestinationMongodbNone {
         return authorization;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -49,12 +47,12 @@ public class DestinationMongodbNone {
         }
         DestinationMongodbNone other = (DestinationMongodbNone) o;
         return 
-            Objects.deepEquals(this.authorization, other.authorization);
+            Utils.enhancedDeepEquals(this.authorization, other.authorization);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             authorization);
     }
     
@@ -63,17 +61,20 @@ public class DestinationMongodbNone {
         return Utils.toString(DestinationMongodbNone.class,
                 "authorization", authorization);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public DestinationMongodbNone build() {
+
             return new DestinationMongodbNone(
                 );
         }
+
 
         private static final LazySingletonValue<DestinationMongodbSchemasAuthorization> _SINGLETON_VALUE_Authorization =
                 new LazySingletonValue<>(

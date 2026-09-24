@@ -16,36 +16,43 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceKlaviyo {
 
+public class SourceKlaviyo {
     /**
-     * Klaviyo API Key. See our &lt;a href="https://docs.airbyte.com/integrations/sources/klaviyo"&gt;docs&lt;/a&gt; if you need help finding this key.
+     * Klaviyo API Key. See our <a href="https://docs.airbyte.com/integrations/sources/klaviyo">docs</a> if
+     * you need help finding this key.
      */
     @JsonProperty("api_key")
     private String apiKey;
 
     /**
-     * Certain streams like the profiles stream can retrieve predictive analytics data from Klaviyo's API. However, at high volume, this can lead to service availability issues on the API which can be improved by not fetching this field. WARNING: Enabling this setting will stop the  "predictive_analytics" column from being populated in your downstream destination.
+     * Certain streams like the profiles stream can retrieve predictive analytics data from Klaviyo's API.
+     * However, at high volume, this can lead to service availability issues on the API which can be
+     * improved by not fetching this field. WARNING: Enabling this setting will stop the
+     * "predictive_analytics" column from being populated in your downstream destination.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("disable_fetching_predictive_analytics")
     private Optional<Boolean> disableFetchingPredictiveAnalytics;
 
     /**
-     * The number of worker threads to use for the sync. The performance upper boundary is based on the limit of your Klaviyo plan. More info about the rate limit plan tiers can be found on Klaviyo's API &lt;a href="https://developers.klaviyo.com/en/docs/rate_limits_and_error_handling"&gt;docs&lt;/a&gt;.
+     * The number of worker threads to use for the sync. The performance upper boundary is based on the
+     * limit of your Klaviyo plan. More info about the rate limit plan tiers can be found on Klaviyo's API
+     * <a href="https://developers.klaviyo.com/en/docs/rate_limits_and_error_handling">docs</a>.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("num_workers")
     private Optional<Long> numWorkers;
 
+
     @JsonProperty("sourceType")
     private Klaviyo sourceType;
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. This field is optional - if not provided, all data will be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated. This field is optional - if not provided, all data will be replicated.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
@@ -70,11 +77,13 @@ public class SourceKlaviyo {
     
     public SourceKlaviyo(
             String apiKey) {
-        this(apiKey, Optional.empty(), Optional.empty(), Optional.empty());
+        this(apiKey, Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     /**
-     * Klaviyo API Key. See our &lt;a href="https://docs.airbyte.com/integrations/sources/klaviyo"&gt;docs&lt;/a&gt; if you need help finding this key.
+     * Klaviyo API Key. See our <a href="https://docs.airbyte.com/integrations/sources/klaviyo">docs</a> if
+     * you need help finding this key.
      */
     @JsonIgnore
     public String apiKey() {
@@ -82,7 +91,10 @@ public class SourceKlaviyo {
     }
 
     /**
-     * Certain streams like the profiles stream can retrieve predictive analytics data from Klaviyo's API. However, at high volume, this can lead to service availability issues on the API which can be improved by not fetching this field. WARNING: Enabling this setting will stop the  "predictive_analytics" column from being populated in your downstream destination.
+     * Certain streams like the profiles stream can retrieve predictive analytics data from Klaviyo's API.
+     * However, at high volume, this can lead to service availability issues on the API which can be
+     * improved by not fetching this field. WARNING: Enabling this setting will stop the
+     * "predictive_analytics" column from being populated in your downstream destination.
      */
     @JsonIgnore
     public Optional<Boolean> disableFetchingPredictiveAnalytics() {
@@ -90,7 +102,9 @@ public class SourceKlaviyo {
     }
 
     /**
-     * The number of worker threads to use for the sync. The performance upper boundary is based on the limit of your Klaviyo plan. More info about the rate limit plan tiers can be found on Klaviyo's API &lt;a href="https://developers.klaviyo.com/en/docs/rate_limits_and_error_handling"&gt;docs&lt;/a&gt;.
+     * The number of worker threads to use for the sync. The performance upper boundary is based on the
+     * limit of your Klaviyo plan. More info about the rate limit plan tiers can be found on Klaviyo's API
+     * <a href="https://developers.klaviyo.com/en/docs/rate_limits_and_error_handling">docs</a>.
      */
     @JsonIgnore
     public Optional<Long> numWorkers() {
@@ -103,19 +117,22 @@ public class SourceKlaviyo {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. This field is optional - if not provided, all data will be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated. This field is optional - if not provided, all data will be replicated.
      */
     @JsonIgnore
     public Optional<OffsetDateTime> startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Klaviyo API Key. See our &lt;a href="https://docs.airbyte.com/integrations/sources/klaviyo"&gt;docs&lt;/a&gt; if you need help finding this key.
+     * Klaviyo API Key. See our <a href="https://docs.airbyte.com/integrations/sources/klaviyo">docs</a> if
+     * you need help finding this key.
      */
     public SourceKlaviyo withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -124,7 +141,10 @@ public class SourceKlaviyo {
     }
 
     /**
-     * Certain streams like the profiles stream can retrieve predictive analytics data from Klaviyo's API. However, at high volume, this can lead to service availability issues on the API which can be improved by not fetching this field. WARNING: Enabling this setting will stop the  "predictive_analytics" column from being populated in your downstream destination.
+     * Certain streams like the profiles stream can retrieve predictive analytics data from Klaviyo's API.
+     * However, at high volume, this can lead to service availability issues on the API which can be
+     * improved by not fetching this field. WARNING: Enabling this setting will stop the
+     * "predictive_analytics" column from being populated in your downstream destination.
      */
     public SourceKlaviyo withDisableFetchingPredictiveAnalytics(boolean disableFetchingPredictiveAnalytics) {
         Utils.checkNotNull(disableFetchingPredictiveAnalytics, "disableFetchingPredictiveAnalytics");
@@ -132,8 +152,12 @@ public class SourceKlaviyo {
         return this;
     }
 
+
     /**
-     * Certain streams like the profiles stream can retrieve predictive analytics data from Klaviyo's API. However, at high volume, this can lead to service availability issues on the API which can be improved by not fetching this field. WARNING: Enabling this setting will stop the  "predictive_analytics" column from being populated in your downstream destination.
+     * Certain streams like the profiles stream can retrieve predictive analytics data from Klaviyo's API.
+     * However, at high volume, this can lead to service availability issues on the API which can be
+     * improved by not fetching this field. WARNING: Enabling this setting will stop the
+     * "predictive_analytics" column from being populated in your downstream destination.
      */
     public SourceKlaviyo withDisableFetchingPredictiveAnalytics(Optional<Boolean> disableFetchingPredictiveAnalytics) {
         Utils.checkNotNull(disableFetchingPredictiveAnalytics, "disableFetchingPredictiveAnalytics");
@@ -142,7 +166,9 @@ public class SourceKlaviyo {
     }
 
     /**
-     * The number of worker threads to use for the sync. The performance upper boundary is based on the limit of your Klaviyo plan. More info about the rate limit plan tiers can be found on Klaviyo's API &lt;a href="https://developers.klaviyo.com/en/docs/rate_limits_and_error_handling"&gt;docs&lt;/a&gt;.
+     * The number of worker threads to use for the sync. The performance upper boundary is based on the
+     * limit of your Klaviyo plan. More info about the rate limit plan tiers can be found on Klaviyo's API
+     * <a href="https://developers.klaviyo.com/en/docs/rate_limits_and_error_handling">docs</a>.
      */
     public SourceKlaviyo withNumWorkers(long numWorkers) {
         Utils.checkNotNull(numWorkers, "numWorkers");
@@ -150,8 +176,11 @@ public class SourceKlaviyo {
         return this;
     }
 
+
     /**
-     * The number of worker threads to use for the sync. The performance upper boundary is based on the limit of your Klaviyo plan. More info about the rate limit plan tiers can be found on Klaviyo's API &lt;a href="https://developers.klaviyo.com/en/docs/rate_limits_and_error_handling"&gt;docs&lt;/a&gt;.
+     * The number of worker threads to use for the sync. The performance upper boundary is based on the
+     * limit of your Klaviyo plan. More info about the rate limit plan tiers can be found on Klaviyo's API
+     * <a href="https://developers.klaviyo.com/en/docs/rate_limits_and_error_handling">docs</a>.
      */
     public SourceKlaviyo withNumWorkers(Optional<Long> numWorkers) {
         Utils.checkNotNull(numWorkers, "numWorkers");
@@ -160,7 +189,8 @@ public class SourceKlaviyo {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. This field is optional - if not provided, all data will be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated. This field is optional - if not provided, all data will be replicated.
      */
     public SourceKlaviyo withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -168,8 +198,10 @@ public class SourceKlaviyo {
         return this;
     }
 
+
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. This field is optional - if not provided, all data will be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated. This field is optional - if not provided, all data will be replicated.
      */
     public SourceKlaviyo withStartDate(Optional<OffsetDateTime> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -177,7 +209,6 @@ public class SourceKlaviyo {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -188,21 +219,18 @@ public class SourceKlaviyo {
         }
         SourceKlaviyo other = (SourceKlaviyo) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.disableFetchingPredictiveAnalytics, other.disableFetchingPredictiveAnalytics) &&
-            Objects.deepEquals(this.numWorkers, other.numWorkers) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.disableFetchingPredictiveAnalytics, other.disableFetchingPredictiveAnalytics) &&
+            Utils.enhancedDeepEquals(this.numWorkers, other.numWorkers) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            disableFetchingPredictiveAnalytics,
-            numWorkers,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKey, disableFetchingPredictiveAnalytics, numWorkers,
+            sourceType, startDate);
     }
     
     @Override
@@ -214,23 +242,26 @@ public class SourceKlaviyo {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<Boolean> disableFetchingPredictiveAnalytics = Optional.empty();
- 
+
         private Optional<Long> numWorkers;
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Klaviyo API Key. See our &lt;a href="https://docs.airbyte.com/integrations/sources/klaviyo"&gt;docs&lt;/a&gt; if you need help finding this key.
+         * Klaviyo API Key. See our <a href="https://docs.airbyte.com/integrations/sources/klaviyo">docs</a> if
+         * you need help finding this key.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -238,8 +269,12 @@ public class SourceKlaviyo {
             return this;
         }
 
+
         /**
-         * Certain streams like the profiles stream can retrieve predictive analytics data from Klaviyo's API. However, at high volume, this can lead to service availability issues on the API which can be improved by not fetching this field. WARNING: Enabling this setting will stop the  "predictive_analytics" column from being populated in your downstream destination.
+         * Certain streams like the profiles stream can retrieve predictive analytics data from Klaviyo's API.
+         * However, at high volume, this can lead to service availability issues on the API which can be
+         * improved by not fetching this field. WARNING: Enabling this setting will stop the
+         * "predictive_analytics" column from being populated in your downstream destination.
          */
         public Builder disableFetchingPredictiveAnalytics(boolean disableFetchingPredictiveAnalytics) {
             Utils.checkNotNull(disableFetchingPredictiveAnalytics, "disableFetchingPredictiveAnalytics");
@@ -248,7 +283,10 @@ public class SourceKlaviyo {
         }
 
         /**
-         * Certain streams like the profiles stream can retrieve predictive analytics data from Klaviyo's API. However, at high volume, this can lead to service availability issues on the API which can be improved by not fetching this field. WARNING: Enabling this setting will stop the  "predictive_analytics" column from being populated in your downstream destination.
+         * Certain streams like the profiles stream can retrieve predictive analytics data from Klaviyo's API.
+         * However, at high volume, this can lead to service availability issues on the API which can be
+         * improved by not fetching this field. WARNING: Enabling this setting will stop the
+         * "predictive_analytics" column from being populated in your downstream destination.
          */
         public Builder disableFetchingPredictiveAnalytics(Optional<Boolean> disableFetchingPredictiveAnalytics) {
             Utils.checkNotNull(disableFetchingPredictiveAnalytics, "disableFetchingPredictiveAnalytics");
@@ -256,8 +294,11 @@ public class SourceKlaviyo {
             return this;
         }
 
+
         /**
-         * The number of worker threads to use for the sync. The performance upper boundary is based on the limit of your Klaviyo plan. More info about the rate limit plan tiers can be found on Klaviyo's API &lt;a href="https://developers.klaviyo.com/en/docs/rate_limits_and_error_handling"&gt;docs&lt;/a&gt;.
+         * The number of worker threads to use for the sync. The performance upper boundary is based on the
+         * limit of your Klaviyo plan. More info about the rate limit plan tiers can be found on Klaviyo's API
+         * <a href="https://developers.klaviyo.com/en/docs/rate_limits_and_error_handling">docs</a>.
          */
         public Builder numWorkers(long numWorkers) {
             Utils.checkNotNull(numWorkers, "numWorkers");
@@ -266,7 +307,9 @@ public class SourceKlaviyo {
         }
 
         /**
-         * The number of worker threads to use for the sync. The performance upper boundary is based on the limit of your Klaviyo plan. More info about the rate limit plan tiers can be found on Klaviyo's API &lt;a href="https://developers.klaviyo.com/en/docs/rate_limits_and_error_handling"&gt;docs&lt;/a&gt;.
+         * The number of worker threads to use for the sync. The performance upper boundary is based on the
+         * limit of your Klaviyo plan. More info about the rate limit plan tiers can be found on Klaviyo's API
+         * <a href="https://developers.klaviyo.com/en/docs/rate_limits_and_error_handling">docs</a>.
          */
         public Builder numWorkers(Optional<Long> numWorkers) {
             Utils.checkNotNull(numWorkers, "numWorkers");
@@ -274,8 +317,10 @@ public class SourceKlaviyo {
             return this;
         }
 
+
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. This field is optional - if not provided, all data will be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+         * replicated. This field is optional - if not provided, all data will be replicated.
          */
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -284,24 +329,25 @@ public class SourceKlaviyo {
         }
 
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. This field is optional - if not provided, all data will be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+         * replicated. This field is optional - if not provided, all data will be replicated.
          */
         public Builder startDate(Optional<OffsetDateTime> startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceKlaviyo build() {
             if (numWorkers == null) {
                 numWorkers = _SINGLETON_VALUE_NumWorkers.value();
             }
+
             return new SourceKlaviyo(
-                apiKey,
-                disableFetchingPredictiveAnalytics,
-                numWorkers,
+                apiKey, disableFetchingPredictiveAnalytics, numWorkers,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_NumWorkers =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum SourceJotformApiEndpoint {
     @JsonValue
     private final String value;
 
-    private SourceJotformApiEndpoint(String value) {
+    SourceJotformApiEndpoint(String value) {
         this.value = value;
     }
     

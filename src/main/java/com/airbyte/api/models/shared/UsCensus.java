@@ -14,7 +14,7 @@ public enum UsCensus {
     @JsonValue
     private final String value;
 
-    private UsCensus(String value) {
+    UsCensus(String value) {
         this.value = value;
     }
     

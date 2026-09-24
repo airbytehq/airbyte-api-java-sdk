@@ -16,11 +16,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class ConnectionCreateRequest {
 
+public class ConnectionCreateRequest {
     /**
      * A list of configured stream options for a connection.
      */
@@ -30,12 +29,13 @@ public class ConnectionCreateRequest {
 
     /**
      * 
-     * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. This will be supported on Cloud until May 31, at which time all connections will use the dataResidency of their associated workspace..
+     * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. All connections will use the dataResidency of their associated workspace..
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dataResidency")
     @Deprecated
     private Optional<String> dataResidency;
+
 
     @JsonProperty("destinationId")
     private String destinationId;
@@ -55,7 +55,8 @@ public class ConnectionCreateRequest {
     private Optional<? extends NamespaceDefinitionEnum> namespaceDefinition;
 
     /**
-     * Used when namespaceDefinition is 'custom_format'. If blank then behaves like namespaceDefinition = 'destination'. If "${SOURCE_NAMESPACE}" then behaves like namespaceDefinition = 'source'.
+     * Used when namespaceDefinition is 'custom_format'. If blank then behaves like namespaceDefinition =
+     * 'destination'. If "${SOURCE_NAMESPACE}" then behaves like namespaceDefinition = 'source'.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("namespaceFormat")
@@ -69,7 +70,8 @@ public class ConnectionCreateRequest {
     private Optional<? extends NonBreakingSchemaUpdatesBehaviorEnum> nonBreakingSchemaUpdatesBehavior;
 
     /**
-     * Prefix that will be prepended to the name of each stream when it is written to the destination (ex. “airbyte_” causes “projects” =&gt; “airbyte_projects”).
+     * Prefix that will be prepended to the name of each stream when it is written to the destination (ex.
+     * “airbyte_” causes “projects” =&gt; “airbyte_projects”).
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("prefix")
@@ -82,12 +84,15 @@ public class ConnectionCreateRequest {
     @JsonProperty("schedule")
     private Optional<? extends AirbyteApiConnectionSchedule> schedule;
 
+
     @JsonProperty("sourceId")
     private String sourceId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("status")
     private Optional<? extends ConnectionStatusEnum> status;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tags")
@@ -136,7 +141,10 @@ public class ConnectionCreateRequest {
     public ConnectionCreateRequest(
             String destinationId,
             String sourceId) {
-        this(Optional.empty(), Optional.empty(), destinationId, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), sourceId, Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), destinationId,
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            sourceId, Optional.empty(), Optional.empty());
     }
 
     /**
@@ -150,7 +158,7 @@ public class ConnectionCreateRequest {
 
     /**
      * 
-     * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. This will be supported on Cloud until May 31, at which time all connections will use the dataResidency of their associated workspace..
+     * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. All connections will use the dataResidency of their associated workspace..
      */
     @Deprecated
     @JsonIgnore
@@ -181,7 +189,8 @@ public class ConnectionCreateRequest {
     }
 
     /**
-     * Used when namespaceDefinition is 'custom_format'. If blank then behaves like namespaceDefinition = 'destination'. If "${SOURCE_NAMESPACE}" then behaves like namespaceDefinition = 'source'.
+     * Used when namespaceDefinition is 'custom_format'. If blank then behaves like namespaceDefinition =
+     * 'destination'. If "${SOURCE_NAMESPACE}" then behaves like namespaceDefinition = 'source'.
      */
     @JsonIgnore
     public Optional<String> namespaceFormat() {
@@ -198,7 +207,8 @@ public class ConnectionCreateRequest {
     }
 
     /**
-     * Prefix that will be prepended to the name of each stream when it is written to the destination (ex. “airbyte_” causes “projects” =&gt; “airbyte_projects”).
+     * Prefix that will be prepended to the name of each stream when it is written to the destination (ex.
+     * “airbyte_” causes “projects” =&gt; “airbyte_projects”).
      */
     @JsonIgnore
     public Optional<String> prefix() {
@@ -231,9 +241,10 @@ public class ConnectionCreateRequest {
         return (Optional<List<Tag>>) tags;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * A list of configured stream options for a connection.
@@ -243,6 +254,7 @@ public class ConnectionCreateRequest {
         this.configurations = Optional.ofNullable(configurations);
         return this;
     }
+
 
     /**
      * A list of configured stream options for a connection.
@@ -255,7 +267,7 @@ public class ConnectionCreateRequest {
 
     /**
      * 
-     * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. This will be supported on Cloud until May 31, at which time all connections will use the dataResidency of their associated workspace..
+     * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. All connections will use the dataResidency of their associated workspace..
      */
     @Deprecated
     public ConnectionCreateRequest withDataResidency(String dataResidency) {
@@ -264,9 +276,10 @@ public class ConnectionCreateRequest {
         return this;
     }
 
+
     /**
      * 
-     * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. This will be supported on Cloud until May 31, at which time all connections will use the dataResidency of their associated workspace..
+     * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. All connections will use the dataResidency of their associated workspace..
      */
     @Deprecated
     public ConnectionCreateRequest withDataResidency(Optional<String> dataResidency) {
@@ -290,6 +303,7 @@ public class ConnectionCreateRequest {
         return this;
     }
 
+
     /**
      * Optional name of the connection
      */
@@ -308,6 +322,7 @@ public class ConnectionCreateRequest {
         return this;
     }
 
+
     /**
      * Define the location where the data will be stored in the destination
      */
@@ -318,7 +333,8 @@ public class ConnectionCreateRequest {
     }
 
     /**
-     * Used when namespaceDefinition is 'custom_format'. If blank then behaves like namespaceDefinition = 'destination'. If "${SOURCE_NAMESPACE}" then behaves like namespaceDefinition = 'source'.
+     * Used when namespaceDefinition is 'custom_format'. If blank then behaves like namespaceDefinition =
+     * 'destination'. If "${SOURCE_NAMESPACE}" then behaves like namespaceDefinition = 'source'.
      */
     public ConnectionCreateRequest withNamespaceFormat(String namespaceFormat) {
         Utils.checkNotNull(namespaceFormat, "namespaceFormat");
@@ -326,8 +342,10 @@ public class ConnectionCreateRequest {
         return this;
     }
 
+
     /**
-     * Used when namespaceDefinition is 'custom_format'. If blank then behaves like namespaceDefinition = 'destination'. If "${SOURCE_NAMESPACE}" then behaves like namespaceDefinition = 'source'.
+     * Used when namespaceDefinition is 'custom_format'. If blank then behaves like namespaceDefinition =
+     * 'destination'. If "${SOURCE_NAMESPACE}" then behaves like namespaceDefinition = 'source'.
      */
     public ConnectionCreateRequest withNamespaceFormat(Optional<String> namespaceFormat) {
         Utils.checkNotNull(namespaceFormat, "namespaceFormat");
@@ -344,6 +362,7 @@ public class ConnectionCreateRequest {
         return this;
     }
 
+
     /**
      * Set how Airbyte handles syncs when it detects a non-breaking schema change in the source
      */
@@ -354,7 +373,8 @@ public class ConnectionCreateRequest {
     }
 
     /**
-     * Prefix that will be prepended to the name of each stream when it is written to the destination (ex. “airbyte_” causes “projects” =&gt; “airbyte_projects”).
+     * Prefix that will be prepended to the name of each stream when it is written to the destination (ex.
+     * “airbyte_” causes “projects” =&gt; “airbyte_projects”).
      */
     public ConnectionCreateRequest withPrefix(String prefix) {
         Utils.checkNotNull(prefix, "prefix");
@@ -362,8 +382,10 @@ public class ConnectionCreateRequest {
         return this;
     }
 
+
     /**
-     * Prefix that will be prepended to the name of each stream when it is written to the destination (ex. “airbyte_” causes “projects” =&gt; “airbyte_projects”).
+     * Prefix that will be prepended to the name of each stream when it is written to the destination (ex.
+     * “airbyte_” causes “projects” =&gt; “airbyte_projects”).
      */
     public ConnectionCreateRequest withPrefix(Optional<String> prefix) {
         Utils.checkNotNull(prefix, "prefix");
@@ -379,6 +401,7 @@ public class ConnectionCreateRequest {
         this.schedule = Optional.ofNullable(schedule);
         return this;
     }
+
 
     /**
      * schedule for when the the connection should run, per the schedule type
@@ -401,6 +424,7 @@ public class ConnectionCreateRequest {
         return this;
     }
 
+
     public ConnectionCreateRequest withStatus(Optional<? extends ConnectionStatusEnum> status) {
         Utils.checkNotNull(status, "status");
         this.status = status;
@@ -413,13 +437,13 @@ public class ConnectionCreateRequest {
         return this;
     }
 
+
     public ConnectionCreateRequest withTags(Optional<? extends List<Tag>> tags) {
         Utils.checkNotNull(tags, "tags");
         this.tags = tags;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -430,35 +454,27 @@ public class ConnectionCreateRequest {
         }
         ConnectionCreateRequest other = (ConnectionCreateRequest) o;
         return 
-            Objects.deepEquals(this.configurations, other.configurations) &&
-            Objects.deepEquals(this.dataResidency, other.dataResidency) &&
-            Objects.deepEquals(this.destinationId, other.destinationId) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.namespaceDefinition, other.namespaceDefinition) &&
-            Objects.deepEquals(this.namespaceFormat, other.namespaceFormat) &&
-            Objects.deepEquals(this.nonBreakingSchemaUpdatesBehavior, other.nonBreakingSchemaUpdatesBehavior) &&
-            Objects.deepEquals(this.prefix, other.prefix) &&
-            Objects.deepEquals(this.schedule, other.schedule) &&
-            Objects.deepEquals(this.sourceId, other.sourceId) &&
-            Objects.deepEquals(this.status, other.status) &&
-            Objects.deepEquals(this.tags, other.tags);
+            Utils.enhancedDeepEquals(this.configurations, other.configurations) &&
+            Utils.enhancedDeepEquals(this.dataResidency, other.dataResidency) &&
+            Utils.enhancedDeepEquals(this.destinationId, other.destinationId) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.namespaceDefinition, other.namespaceDefinition) &&
+            Utils.enhancedDeepEquals(this.namespaceFormat, other.namespaceFormat) &&
+            Utils.enhancedDeepEquals(this.nonBreakingSchemaUpdatesBehavior, other.nonBreakingSchemaUpdatesBehavior) &&
+            Utils.enhancedDeepEquals(this.prefix, other.prefix) &&
+            Utils.enhancedDeepEquals(this.schedule, other.schedule) &&
+            Utils.enhancedDeepEquals(this.sourceId, other.sourceId) &&
+            Utils.enhancedDeepEquals(this.status, other.status) &&
+            Utils.enhancedDeepEquals(this.tags, other.tags);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            configurations,
-            dataResidency,
-            destinationId,
-            name,
-            namespaceDefinition,
-            namespaceFormat,
-            nonBreakingSchemaUpdatesBehavior,
-            prefix,
-            schedule,
-            sourceId,
-            status,
-            tags);
+        return Utils.enhancedHash(
+            configurations, dataResidency, destinationId,
+            name, namespaceDefinition, namespaceFormat,
+            nonBreakingSchemaUpdatesBehavior, prefix, schedule,
+            sourceId, status, tags);
     }
     
     @Override
@@ -477,37 +493,39 @@ public class ConnectionCreateRequest {
                 "status", status,
                 "tags", tags);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends StreamConfigurationsInput> configurations = Optional.empty();
- 
+
         @Deprecated
         private Optional<String> dataResidency = Optional.empty();
- 
+
         private String destinationId;
- 
+
         private Optional<String> name = Optional.empty();
- 
+
         private Optional<? extends NamespaceDefinitionEnum> namespaceDefinition;
- 
+
         private Optional<String> namespaceFormat;
- 
+
         private Optional<? extends NonBreakingSchemaUpdatesBehaviorEnum> nonBreakingSchemaUpdatesBehavior;
- 
+
         private Optional<String> prefix;
- 
+
         private Optional<? extends AirbyteApiConnectionSchedule> schedule = Optional.empty();
- 
+
         private String sourceId;
- 
+
         private Optional<? extends ConnectionStatusEnum> status = Optional.empty();
- 
+
         private Optional<? extends List<Tag>> tags = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * A list of configured stream options for a connection.
@@ -527,9 +545,10 @@ public class ConnectionCreateRequest {
             return this;
         }
 
+
         /**
          * 
-         * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. This will be supported on Cloud until May 31, at which time all connections will use the dataResidency of their associated workspace..
+         * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. All connections will use the dataResidency of their associated workspace..
          */
         @Deprecated
         public Builder dataResidency(String dataResidency) {
@@ -540,7 +559,7 @@ public class ConnectionCreateRequest {
 
         /**
          * 
-         * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. This will be supported on Cloud until May 31, at which time all connections will use the dataResidency of their associated workspace..
+         * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. All connections will use the dataResidency of their associated workspace..
          */
         @Deprecated
         public Builder dataResidency(Optional<String> dataResidency) {
@@ -549,11 +568,13 @@ public class ConnectionCreateRequest {
             return this;
         }
 
+
         public Builder destinationId(String destinationId) {
             Utils.checkNotNull(destinationId, "destinationId");
             this.destinationId = destinationId;
             return this;
         }
+
 
         /**
          * Optional name of the connection
@@ -573,6 +594,7 @@ public class ConnectionCreateRequest {
             return this;
         }
 
+
         /**
          * Define the location where the data will be stored in the destination
          */
@@ -591,8 +613,10 @@ public class ConnectionCreateRequest {
             return this;
         }
 
+
         /**
-         * Used when namespaceDefinition is 'custom_format'. If blank then behaves like namespaceDefinition = 'destination'. If "${SOURCE_NAMESPACE}" then behaves like namespaceDefinition = 'source'.
+         * Used when namespaceDefinition is 'custom_format'. If blank then behaves like namespaceDefinition =
+         * 'destination'. If "${SOURCE_NAMESPACE}" then behaves like namespaceDefinition = 'source'.
          */
         public Builder namespaceFormat(String namespaceFormat) {
             Utils.checkNotNull(namespaceFormat, "namespaceFormat");
@@ -601,13 +625,15 @@ public class ConnectionCreateRequest {
         }
 
         /**
-         * Used when namespaceDefinition is 'custom_format'. If blank then behaves like namespaceDefinition = 'destination'. If "${SOURCE_NAMESPACE}" then behaves like namespaceDefinition = 'source'.
+         * Used when namespaceDefinition is 'custom_format'. If blank then behaves like namespaceDefinition =
+         * 'destination'. If "${SOURCE_NAMESPACE}" then behaves like namespaceDefinition = 'source'.
          */
         public Builder namespaceFormat(Optional<String> namespaceFormat) {
             Utils.checkNotNull(namespaceFormat, "namespaceFormat");
             this.namespaceFormat = namespaceFormat;
             return this;
         }
+
 
         /**
          * Set how Airbyte handles syncs when it detects a non-breaking schema change in the source
@@ -627,8 +653,10 @@ public class ConnectionCreateRequest {
             return this;
         }
 
+
         /**
-         * Prefix that will be prepended to the name of each stream when it is written to the destination (ex. “airbyte_” causes “projects” =&gt; “airbyte_projects”).
+         * Prefix that will be prepended to the name of each stream when it is written to the destination (ex.
+         * “airbyte_” causes “projects” =&gt; “airbyte_projects”).
          */
         public Builder prefix(String prefix) {
             Utils.checkNotNull(prefix, "prefix");
@@ -637,13 +665,15 @@ public class ConnectionCreateRequest {
         }
 
         /**
-         * Prefix that will be prepended to the name of each stream when it is written to the destination (ex. “airbyte_” causes “projects” =&gt; “airbyte_projects”).
+         * Prefix that will be prepended to the name of each stream when it is written to the destination (ex.
+         * “airbyte_” causes “projects” =&gt; “airbyte_projects”).
          */
         public Builder prefix(Optional<String> prefix) {
             Utils.checkNotNull(prefix, "prefix");
             this.prefix = prefix;
             return this;
         }
+
 
         /**
          * schedule for when the the connection should run, per the schedule type
@@ -663,11 +693,13 @@ public class ConnectionCreateRequest {
             return this;
         }
 
+
         public Builder sourceId(String sourceId) {
             Utils.checkNotNull(sourceId, "sourceId");
             this.sourceId = sourceId;
             return this;
         }
+
 
         public Builder status(ConnectionStatusEnum status) {
             Utils.checkNotNull(status, "status");
@@ -681,6 +713,7 @@ public class ConnectionCreateRequest {
             return this;
         }
 
+
         public Builder tags(List<Tag> tags) {
             Utils.checkNotNull(tags, "tags");
             this.tags = Optional.ofNullable(tags);
@@ -692,7 +725,7 @@ public class ConnectionCreateRequest {
             this.tags = tags;
             return this;
         }
-        
+
         public ConnectionCreateRequest build() {
             if (namespaceDefinition == null) {
                 namespaceDefinition = _SINGLETON_VALUE_NamespaceDefinition.value();
@@ -706,20 +739,14 @@ public class ConnectionCreateRequest {
             if (prefix == null) {
                 prefix = _SINGLETON_VALUE_Prefix.value();
             }
+
             return new ConnectionCreateRequest(
-                configurations,
-                dataResidency,
-                destinationId,
-                name,
-                namespaceDefinition,
-                namespaceFormat,
-                nonBreakingSchemaUpdatesBehavior,
-                prefix,
-                schedule,
-                sourceId,
-                status,
-                tags);
+                configurations, dataResidency, destinationId,
+                name, namespaceDefinition, namespaceFormat,
+                nonBreakingSchemaUpdatesBehavior, prefix, schedule,
+                sourceId, status, tags);
         }
+
 
         private static final LazySingletonValue<Optional<? extends NamespaceDefinitionEnum>> _SINGLETON_VALUE_NamespaceDefinition =
                 new LazySingletonValue<>(

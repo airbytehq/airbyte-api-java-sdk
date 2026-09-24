@@ -12,18 +12,21 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceStatsig {
 
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonProperty("end_date")
     private OffsetDateTime endDate;
 
+
     @JsonProperty("sourceType")
     private Statsig sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -62,9 +65,10 @@ public class SourceStatsig {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceStatsig withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -84,7 +88,6 @@ public class SourceStatsig {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,18 +98,16 @@ public class SourceStatsig {
         }
         SourceStatsig other = (SourceStatsig) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            endDate,
-            sourceType,
+        return Utils.enhancedHash(
+            apiKey, endDate, sourceType,
             startDate);
     }
     
@@ -118,18 +119,20 @@ public class SourceStatsig {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private OffsetDateTime endDate;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -137,24 +140,26 @@ public class SourceStatsig {
             return this;
         }
 
+
         public Builder endDate(OffsetDateTime endDate) {
             Utils.checkNotNull(endDate, "endDate");
             this.endDate = endDate;
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceStatsig build() {
+
             return new SourceStatsig(
-                apiKey,
-                endDate,
-                startDate);
+                apiKey, endDate, startDate);
         }
+
 
         private static final LazySingletonValue<Statsig> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

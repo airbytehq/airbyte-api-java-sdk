@@ -15,17 +15,17 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceAirtableOAuth20 {
 
+public class SourceAirtableOAuth20 {
     /**
      * Access Token for making authenticated requests.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("access_token")
     private Optional<String> accessToken;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_method")
@@ -80,7 +80,8 @@ public class SourceAirtableOAuth20 {
             String clientId,
             String clientSecret,
             String refreshToken) {
-        this(Optional.empty(), clientId, clientSecret, refreshToken, Optional.empty());
+        this(Optional.empty(), clientId, clientSecret,
+            refreshToken, Optional.empty());
     }
 
     /**
@@ -129,9 +130,10 @@ public class SourceAirtableOAuth20 {
         return tokenExpiryDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Access Token for making authenticated requests.
@@ -141,6 +143,7 @@ public class SourceAirtableOAuth20 {
         this.accessToken = Optional.ofNullable(accessToken);
         return this;
     }
+
 
     /**
      * Access Token for making authenticated requests.
@@ -187,6 +190,7 @@ public class SourceAirtableOAuth20 {
         return this;
     }
 
+
     /**
      * The date-time when the access token should be refreshed.
      */
@@ -196,7 +200,6 @@ public class SourceAirtableOAuth20 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -207,23 +210,19 @@ public class SourceAirtableOAuth20 {
         }
         SourceAirtableOAuth20 other = (SourceAirtableOAuth20) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.authMethod, other.authMethod) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken) &&
-            Objects.deepEquals(this.tokenExpiryDate, other.tokenExpiryDate);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.authMethod, other.authMethod) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.tokenExpiryDate, other.tokenExpiryDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            authMethod,
-            clientId,
-            clientSecret,
-            refreshToken,
-            tokenExpiryDate);
+        return Utils.enhancedHash(
+            accessToken, authMethod, clientId,
+            clientSecret, refreshToken, tokenExpiryDate);
     }
     
     @Override
@@ -236,22 +235,24 @@ public class SourceAirtableOAuth20 {
                 "refreshToken", refreshToken,
                 "tokenExpiryDate", tokenExpiryDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> accessToken = Optional.empty();
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String refreshToken;
- 
+
         private Optional<OffsetDateTime> tokenExpiryDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Access Token for making authenticated requests.
@@ -271,6 +272,7 @@ public class SourceAirtableOAuth20 {
             return this;
         }
 
+
         /**
          * The client ID of the Airtable developer application.
          */
@@ -279,6 +281,7 @@ public class SourceAirtableOAuth20 {
             this.clientId = clientId;
             return this;
         }
+
 
         /**
          * The client secret of the Airtable developer application.
@@ -289,6 +292,7 @@ public class SourceAirtableOAuth20 {
             return this;
         }
 
+
         /**
          * The key to refresh the expired access token.
          */
@@ -297,6 +301,7 @@ public class SourceAirtableOAuth20 {
             this.refreshToken = refreshToken;
             return this;
         }
+
 
         /**
          * The date-time when the access token should be refreshed.
@@ -315,15 +320,14 @@ public class SourceAirtableOAuth20 {
             this.tokenExpiryDate = tokenExpiryDate;
             return this;
         }
-        
+
         public SourceAirtableOAuth20 build() {
+
             return new SourceAirtableOAuth20(
-                accessToken,
-                clientId,
-                clientSecret,
-                refreshToken,
-                tokenExpiryDate);
+                accessToken, clientId, clientSecret,
+                refreshToken, tokenExpiryDate);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceAirtableSchemasAuthMethod>> _SINGLETON_VALUE_AuthMethod =
                 new LazySingletonValue<>(

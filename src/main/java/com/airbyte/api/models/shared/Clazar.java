@@ -14,7 +14,7 @@ public enum Clazar {
     @JsonValue
     private final String value;
 
-    private Clazar(String value) {
+    Clazar(String value) {
         this.value = value;
     }
     

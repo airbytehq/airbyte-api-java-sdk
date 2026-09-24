@@ -14,18 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationRedisSSHTunnelMethod
  * 
- * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+ * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+ * authentication to use.
  */
 @JsonDeserialize(using = DestinationRedisSSHTunnelMethod._Deserializer.class)
 public class DestinationRedisSSHTunnelMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationRedisSSHTunnelMethod(TypedObject value) {
         this.value = value;
@@ -33,17 +33,17 @@ public class DestinationRedisSSHTunnelMethod {
 
     public static DestinationRedisSSHTunnelMethod of(DestinationRedisNoTunnel value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationRedisSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationRedisNoTunnel>(){}));
+        return new DestinationRedisSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationRedisSSHTunnelMethod of(DestinationRedisSSHKeyAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationRedisSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationRedisSSHKeyAuthentication>(){}));
+        return new DestinationRedisSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationRedisSSHTunnelMethod of(DestinationRedisPasswordAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationRedisSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationRedisPasswordAuthentication>(){}));
+        return new DestinationRedisSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +67,7 @@ public class DestinationRedisSSHTunnelMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +78,12 @@ public class DestinationRedisSSHTunnelMethod {
             return false;
         }
         DestinationRedisSSHTunnelMethod other = (DestinationRedisSSHTunnelMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -91,9 +91,9 @@ public class DestinationRedisSSHTunnelMethod {
 
         public _Deserializer() {
             super(DestinationRedisSSHTunnelMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DestinationRedisPasswordAuthentication>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationRedisNoTunnel>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationRedisSSHKeyAuthentication>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationRedisNoTunnel>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationRedisPasswordAuthentication>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -102,6 +102,6 @@ public class DestinationRedisSSHTunnelMethod {
         return Utils.toString(DestinationRedisSSHTunnelMethod.class,
                 "value", value);
     }
- 
+
 }
 

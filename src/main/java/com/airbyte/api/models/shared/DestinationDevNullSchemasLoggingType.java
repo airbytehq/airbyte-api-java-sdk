@@ -14,7 +14,7 @@ public enum DestinationDevNullSchemasLoggingType {
     @JsonValue
     private final String value;
 
-    private DestinationDevNullSchemasLoggingType(String value) {
+    DestinationDevNullSchemasLoggingType(String value) {
         this.value = value;
     }
     

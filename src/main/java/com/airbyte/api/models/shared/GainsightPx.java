@@ -14,7 +14,7 @@ public enum GainsightPx {
     @JsonValue
     private final String value;
 
-    private GainsightPx(String value) {
+    GainsightPx(String value) {
         this.value = value;
     }
     

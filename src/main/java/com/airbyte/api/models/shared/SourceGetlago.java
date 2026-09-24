@@ -13,13 +13,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceGetlago {
 
+public class SourceGetlago {
     /**
-     * Your API Key. See &lt;a href="https://doc.getlago.com/docs/api/intro"&gt;here&lt;/a&gt;.
+     * Your API Key. See <a href="https://doc.getlago.com/docs/api/intro">here</a>.
      */
     @JsonProperty("api_key")
     private String apiKey;
@@ -30,6 +29,7 @@ public class SourceGetlago {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("api_url")
     private Optional<String> apiUrl;
+
 
     @JsonProperty("sourceType")
     private Getlago sourceType;
@@ -51,7 +51,7 @@ public class SourceGetlago {
     }
 
     /**
-     * Your API Key. See &lt;a href="https://doc.getlago.com/docs/api/intro"&gt;here&lt;/a&gt;.
+     * Your API Key. See <a href="https://doc.getlago.com/docs/api/intro">here</a>.
      */
     @JsonIgnore
     public String apiKey() {
@@ -71,12 +71,13 @@ public class SourceGetlago {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Your API Key. See &lt;a href="https://doc.getlago.com/docs/api/intro"&gt;here&lt;/a&gt;.
+     * Your API Key. See <a href="https://doc.getlago.com/docs/api/intro">here</a>.
      */
     public SourceGetlago withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -93,6 +94,7 @@ public class SourceGetlago {
         return this;
     }
 
+
     /**
      * Your Lago API URL
      */
@@ -102,7 +104,6 @@ public class SourceGetlago {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,17 +114,15 @@ public class SourceGetlago {
         }
         SourceGetlago other = (SourceGetlago) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.apiUrl, other.apiUrl) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.apiUrl, other.apiUrl) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            apiUrl,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, apiUrl, sourceType);
     }
     
     @Override
@@ -133,25 +132,28 @@ public class SourceGetlago {
                 "apiUrl", apiUrl,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> apiUrl;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Your API Key. See &lt;a href="https://doc.getlago.com/docs/api/intro"&gt;here&lt;/a&gt;.
+         * Your API Key. See <a href="https://doc.getlago.com/docs/api/intro">here</a>.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Your Lago API URL
@@ -170,15 +172,16 @@ public class SourceGetlago {
             this.apiUrl = apiUrl;
             return this;
         }
-        
+
         public SourceGetlago build() {
             if (apiUrl == null) {
                 apiUrl = _SINGLETON_VALUE_ApiUrl.value();
             }
+
             return new SourceGetlago(
-                apiKey,
-                apiUrl);
+                apiKey, apiUrl);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_ApiUrl =
                 new LazySingletonValue<>(

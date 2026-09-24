@@ -14,7 +14,7 @@ public enum SourceFacebookMarketingFacebookMarketing {
     @JsonValue
     private final String value;
 
-    private SourceFacebookMarketingFacebookMarketing(String value) {
+    SourceFacebookMarketingFacebookMarketing(String value) {
         this.value = value;
     }
     

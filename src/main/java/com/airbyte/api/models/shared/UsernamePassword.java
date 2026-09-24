@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 /**
  * UsernamePassword
@@ -67,9 +66,10 @@ public class UsernamePassword {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Basic auth password to access a secure Elasticsearch server
@@ -89,7 +89,6 @@ public class UsernamePassword {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,17 +99,15 @@ public class UsernamePassword {
         }
         UsernamePassword other = (UsernamePassword) o;
         return 
-            Objects.deepEquals(this.method, other.method) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.method, other.method) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            method,
-            password,
-            username);
+        return Utils.enhancedHash(
+            method, password, username);
     }
     
     @Override
@@ -120,16 +117,18 @@ public class UsernamePassword {
                 "password", password,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String password;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Basic auth password to access a secure Elasticsearch server
@@ -140,6 +139,7 @@ public class UsernamePassword {
             return this;
         }
 
+
         /**
          * Basic auth username to access a secure Elasticsearch server
          */
@@ -148,12 +148,13 @@ public class UsernamePassword {
             this.username = username;
             return this;
         }
-        
+
         public UsernamePassword build() {
+
             return new UsernamePassword(
-                password,
-                username);
+                password, username);
         }
+
 
         private static final LazySingletonValue<DestinationElasticsearchSchemasAuthenticationMethodMethod> _SINGLETON_VALUE_Method =
                 new LazySingletonValue<>(

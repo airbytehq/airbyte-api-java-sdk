@@ -14,7 +14,7 @@ public enum SourceGcsFiletype {
     @JsonValue
     private final String value;
 
-    private SourceGcsFiletype(String value) {
+    SourceGcsFiletype(String value) {
         this.value = value;
     }
     

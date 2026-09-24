@@ -14,7 +14,7 @@ public enum SourceMicrosoftTeamsSchemasAuthType {
     @JsonValue
     private final String value;
 
-    private SourceMicrosoftTeamsSchemasAuthType(String value) {
+    SourceMicrosoftTeamsSchemasAuthType(String value) {
         this.value = value;
     }
     

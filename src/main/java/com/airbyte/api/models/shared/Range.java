@@ -29,7 +29,7 @@ public enum Range {
     @JsonValue
     private final String value;
 
-    private Range(String value) {
+    Range(String value) {
         this.value = value;
     }
     

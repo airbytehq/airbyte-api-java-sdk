@@ -14,7 +14,7 @@ public enum Sendgrid {
     @JsonValue
     private final String value;
 
-    private Sendgrid(String value) {
+    Sendgrid(String value) {
         this.value = value;
     }
     

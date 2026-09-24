@@ -14,7 +14,7 @@ public enum WikipediaPageviews {
     @JsonValue
     private final String value;
 
-    private WikipediaPageviews(String value) {
+    WikipediaPageviews(String value) {
         this.value = value;
     }
     

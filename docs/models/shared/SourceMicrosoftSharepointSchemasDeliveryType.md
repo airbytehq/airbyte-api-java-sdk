@@ -1,5 +1,13 @@
 # SourceMicrosoftSharepointSchemasDeliveryType
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceMicrosoftSharepointSchemasDeliveryType;
+
+SourceMicrosoftSharepointSchemasDeliveryType value = SourceMicrosoftSharepointSchemasDeliveryType.USE_FILE_TRANSFER;
+```
+
 
 ## Values
 

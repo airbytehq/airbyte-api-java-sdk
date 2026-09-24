@@ -16,35 +16,44 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceTrello {
 
+public class SourceTrello {
     /**
-     * IDs of the boards to replicate data from. If left empty, data from all boards to which you have access will be replicated. Please note that this is not the 8-character ID in the board's shortLink (URL of the board). Rather, what is required here is the 24-character ID usually returned by the API
+     * IDs of the boards to replicate data from. If left empty, data from all boards to which you have
+     * access will be replicated. Please note that this is not the 8-character ID in the board's shortLink
+     * (URL of the board).
+     * 
+     * <p>Rather, what is required here is the 24-character ID usually returned by the API
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("board_ids")
     private Optional<? extends List<String>> boardIds;
 
     /**
-     * Trello API key. See the &lt;a href="https://developer.atlassian.com/cloud/trello/guides/rest-api/authorization/#using-basic-oauth"&gt;docs&lt;/a&gt; for instructions on how to generate it.
+     * Trello API key. See the <a
+     * href="https://developer.atlassian.com/cloud/trello/guides/rest-api/authorization/#using-basic-oauth">docs</a>
+     * for instructions on how to generate it.
      */
     @JsonProperty("key")
     private String key;
+
 
     @JsonProperty("sourceType")
     private Trello sourceType;
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
 
     /**
-     * Trello API token. See the &lt;a href="https://developer.atlassian.com/cloud/trello/guides/rest-api/authorization/#using-basic-oauth"&gt;docs&lt;/a&gt; for instructions on how to generate it.
+     * Trello API token. See the <a
+     * href="https://developer.atlassian.com/cloud/trello/guides/rest-api/authorization/#using-basic-oauth">docs</a>
+     * for instructions on how to generate it.
      */
     @JsonProperty("token")
     private String token;
@@ -70,11 +79,16 @@ public class SourceTrello {
             String key,
             OffsetDateTime startDate,
             String token) {
-        this(Optional.empty(), key, startDate, token);
+        this(Optional.empty(), key, startDate,
+            token);
     }
 
     /**
-     * IDs of the boards to replicate data from. If left empty, data from all boards to which you have access will be replicated. Please note that this is not the 8-character ID in the board's shortLink (URL of the board). Rather, what is required here is the 24-character ID usually returned by the API
+     * IDs of the boards to replicate data from. If left empty, data from all boards to which you have
+     * access will be replicated. Please note that this is not the 8-character ID in the board's shortLink
+     * (URL of the board).
+     * 
+     * <p>Rather, what is required here is the 24-character ID usually returned by the API
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -83,7 +97,9 @@ public class SourceTrello {
     }
 
     /**
-     * Trello API key. See the &lt;a href="https://developer.atlassian.com/cloud/trello/guides/rest-api/authorization/#using-basic-oauth"&gt;docs&lt;/a&gt; for instructions on how to generate it.
+     * Trello API key. See the <a
+     * href="https://developer.atlassian.com/cloud/trello/guides/rest-api/authorization/#using-basic-oauth">docs</a>
+     * for instructions on how to generate it.
      */
     @JsonIgnore
     public String key() {
@@ -96,7 +112,8 @@ public class SourceTrello {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     @JsonIgnore
     public OffsetDateTime startDate() {
@@ -104,19 +121,26 @@ public class SourceTrello {
     }
 
     /**
-     * Trello API token. See the &lt;a href="https://developer.atlassian.com/cloud/trello/guides/rest-api/authorization/#using-basic-oauth"&gt;docs&lt;/a&gt; for instructions on how to generate it.
+     * Trello API token. See the <a
+     * href="https://developer.atlassian.com/cloud/trello/guides/rest-api/authorization/#using-basic-oauth">docs</a>
+     * for instructions on how to generate it.
      */
     @JsonIgnore
     public String token() {
         return token;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * IDs of the boards to replicate data from. If left empty, data from all boards to which you have access will be replicated. Please note that this is not the 8-character ID in the board's shortLink (URL of the board). Rather, what is required here is the 24-character ID usually returned by the API
+     * IDs of the boards to replicate data from. If left empty, data from all boards to which you have
+     * access will be replicated. Please note that this is not the 8-character ID in the board's shortLink
+     * (URL of the board).
+     * 
+     * <p>Rather, what is required here is the 24-character ID usually returned by the API
      */
     public SourceTrello withBoardIds(List<String> boardIds) {
         Utils.checkNotNull(boardIds, "boardIds");
@@ -124,8 +148,13 @@ public class SourceTrello {
         return this;
     }
 
+
     /**
-     * IDs of the boards to replicate data from. If left empty, data from all boards to which you have access will be replicated. Please note that this is not the 8-character ID in the board's shortLink (URL of the board). Rather, what is required here is the 24-character ID usually returned by the API
+     * IDs of the boards to replicate data from. If left empty, data from all boards to which you have
+     * access will be replicated. Please note that this is not the 8-character ID in the board's shortLink
+     * (URL of the board).
+     * 
+     * <p>Rather, what is required here is the 24-character ID usually returned by the API
      */
     public SourceTrello withBoardIds(Optional<? extends List<String>> boardIds) {
         Utils.checkNotNull(boardIds, "boardIds");
@@ -134,7 +163,9 @@ public class SourceTrello {
     }
 
     /**
-     * Trello API key. See the &lt;a href="https://developer.atlassian.com/cloud/trello/guides/rest-api/authorization/#using-basic-oauth"&gt;docs&lt;/a&gt; for instructions on how to generate it.
+     * Trello API key. See the <a
+     * href="https://developer.atlassian.com/cloud/trello/guides/rest-api/authorization/#using-basic-oauth">docs</a>
+     * for instructions on how to generate it.
      */
     public SourceTrello withKey(String key) {
         Utils.checkNotNull(key, "key");
@@ -143,7 +174,8 @@ public class SourceTrello {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     public SourceTrello withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -152,7 +184,9 @@ public class SourceTrello {
     }
 
     /**
-     * Trello API token. See the &lt;a href="https://developer.atlassian.com/cloud/trello/guides/rest-api/authorization/#using-basic-oauth"&gt;docs&lt;/a&gt; for instructions on how to generate it.
+     * Trello API token. See the <a
+     * href="https://developer.atlassian.com/cloud/trello/guides/rest-api/authorization/#using-basic-oauth">docs</a>
+     * for instructions on how to generate it.
      */
     public SourceTrello withToken(String token) {
         Utils.checkNotNull(token, "token");
@@ -160,7 +194,6 @@ public class SourceTrello {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -171,21 +204,18 @@ public class SourceTrello {
         }
         SourceTrello other = (SourceTrello) o;
         return 
-            Objects.deepEquals(this.boardIds, other.boardIds) &&
-            Objects.deepEquals(this.key, other.key) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.token, other.token);
+            Utils.enhancedDeepEquals(this.boardIds, other.boardIds) &&
+            Utils.enhancedDeepEquals(this.key, other.key) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.token, other.token);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            boardIds,
-            key,
-            sourceType,
-            startDate,
-            token);
+        return Utils.enhancedHash(
+            boardIds, key, sourceType,
+            startDate, token);
     }
     
     @Override
@@ -197,23 +227,29 @@ public class SourceTrello {
                 "startDate", startDate,
                 "token", token);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends List<String>> boardIds = Optional.empty();
- 
+
         private String key;
- 
+
         private OffsetDateTime startDate;
- 
+
         private String token;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * IDs of the boards to replicate data from. If left empty, data from all boards to which you have access will be replicated. Please note that this is not the 8-character ID in the board's shortLink (URL of the board). Rather, what is required here is the 24-character ID usually returned by the API
+         * IDs of the boards to replicate data from. If left empty, data from all boards to which you have
+         * access will be replicated. Please note that this is not the 8-character ID in the board's shortLink
+         * (URL of the board).
+         * 
+         * <p>Rather, what is required here is the 24-character ID usually returned by the API
          */
         public Builder boardIds(List<String> boardIds) {
             Utils.checkNotNull(boardIds, "boardIds");
@@ -222,7 +258,11 @@ public class SourceTrello {
         }
 
         /**
-         * IDs of the boards to replicate data from. If left empty, data from all boards to which you have access will be replicated. Please note that this is not the 8-character ID in the board's shortLink (URL of the board). Rather, what is required here is the 24-character ID usually returned by the API
+         * IDs of the boards to replicate data from. If left empty, data from all boards to which you have
+         * access will be replicated. Please note that this is not the 8-character ID in the board's shortLink
+         * (URL of the board).
+         * 
+         * <p>Rather, what is required here is the 24-character ID usually returned by the API
          */
         public Builder boardIds(Optional<? extends List<String>> boardIds) {
             Utils.checkNotNull(boardIds, "boardIds");
@@ -230,8 +270,11 @@ public class SourceTrello {
             return this;
         }
 
+
         /**
-         * Trello API key. See the &lt;a href="https://developer.atlassian.com/cloud/trello/guides/rest-api/authorization/#using-basic-oauth"&gt;docs&lt;/a&gt; for instructions on how to generate it.
+         * Trello API key. See the <a
+         * href="https://developer.atlassian.com/cloud/trello/guides/rest-api/authorization/#using-basic-oauth">docs</a>
+         * for instructions on how to generate it.
          */
         public Builder key(String key) {
             Utils.checkNotNull(key, "key");
@@ -239,8 +282,10 @@ public class SourceTrello {
             return this;
         }
 
+
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+         * replicated.
          */
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -248,22 +293,25 @@ public class SourceTrello {
             return this;
         }
 
+
         /**
-         * Trello API token. See the &lt;a href="https://developer.atlassian.com/cloud/trello/guides/rest-api/authorization/#using-basic-oauth"&gt;docs&lt;/a&gt; for instructions on how to generate it.
+         * Trello API token. See the <a
+         * href="https://developer.atlassian.com/cloud/trello/guides/rest-api/authorization/#using-basic-oauth">docs</a>
+         * for instructions on how to generate it.
          */
         public Builder token(String token) {
             Utils.checkNotNull(token, "token");
             this.token = token;
             return this;
         }
-        
+
         public SourceTrello build() {
+
             return new SourceTrello(
-                boardIds,
-                key,
-                startDate,
+                boardIds, key, startDate,
                 token);
         }
+
 
         private static final LazySingletonValue<Trello> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

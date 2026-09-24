@@ -14,7 +14,7 @@ public enum DestinationGoogleSheetsAuthType {
     @JsonValue
     private final String value;
 
-    private DestinationGoogleSheetsAuthType(String value) {
+    DestinationGoogleSheetsAuthType(String value) {
         this.value = value;
     }
     

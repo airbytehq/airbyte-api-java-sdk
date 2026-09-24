@@ -14,7 +14,7 @@ public enum JustSift {
     @JsonValue
     private final String value;
 
-    private JustSift(String value) {
+    JustSift(String value) {
         this.value = value;
     }
     

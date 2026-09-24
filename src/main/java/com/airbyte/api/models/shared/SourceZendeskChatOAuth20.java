@@ -13,11 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceZendeskChatOAuth20 {
 
+public class SourceZendeskChatOAuth20 {
     /**
      * Access Token for making authenticated requests.
      */
@@ -38,6 +37,7 @@ public class SourceZendeskChatOAuth20 {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_secret")
     private Optional<String> clientSecret;
+
 
     @JsonProperty("credentials")
     private SourceZendeskChatCredentials credentials;
@@ -67,7 +67,8 @@ public class SourceZendeskChatOAuth20 {
     }
     
     public SourceZendeskChatOAuth20() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -107,9 +108,10 @@ public class SourceZendeskChatOAuth20 {
         return refreshToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Access Token for making authenticated requests.
@@ -119,6 +121,7 @@ public class SourceZendeskChatOAuth20 {
         this.accessToken = Optional.ofNullable(accessToken);
         return this;
     }
+
 
     /**
      * Access Token for making authenticated requests.
@@ -138,6 +141,7 @@ public class SourceZendeskChatOAuth20 {
         return this;
     }
 
+
     /**
      * The Client ID of your OAuth application
      */
@@ -155,6 +159,7 @@ public class SourceZendeskChatOAuth20 {
         this.clientSecret = Optional.ofNullable(clientSecret);
         return this;
     }
+
 
     /**
      * The Client Secret of your OAuth application.
@@ -174,6 +179,7 @@ public class SourceZendeskChatOAuth20 {
         return this;
     }
 
+
     /**
      * Refresh Token to obtain new Access Token, when it's expired.
      */
@@ -183,7 +189,6 @@ public class SourceZendeskChatOAuth20 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -194,21 +199,18 @@ public class SourceZendeskChatOAuth20 {
         }
         SourceZendeskChatOAuth20 other = (SourceZendeskChatOAuth20) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            clientId,
-            clientSecret,
-            credentials,
-            refreshToken);
+        return Utils.enhancedHash(
+            accessToken, clientId, clientSecret,
+            credentials, refreshToken);
     }
     
     @Override
@@ -220,20 +222,22 @@ public class SourceZendeskChatOAuth20 {
                 "credentials", credentials,
                 "refreshToken", refreshToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> accessToken = Optional.empty();
- 
+
         private Optional<String> clientId = Optional.empty();
- 
+
         private Optional<String> clientSecret = Optional.empty();
- 
+
         private Optional<String> refreshToken = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Access Token for making authenticated requests.
@@ -253,6 +257,7 @@ public class SourceZendeskChatOAuth20 {
             return this;
         }
 
+
         /**
          * The Client ID of your OAuth application
          */
@@ -270,6 +275,7 @@ public class SourceZendeskChatOAuth20 {
             this.clientId = clientId;
             return this;
         }
+
 
         /**
          * The Client Secret of your OAuth application.
@@ -289,6 +295,7 @@ public class SourceZendeskChatOAuth20 {
             return this;
         }
 
+
         /**
          * Refresh Token to obtain new Access Token, when it's expired.
          */
@@ -306,14 +313,14 @@ public class SourceZendeskChatOAuth20 {
             this.refreshToken = refreshToken;
             return this;
         }
-        
+
         public SourceZendeskChatOAuth20 build() {
+
             return new SourceZendeskChatOAuth20(
-                accessToken,
-                clientId,
-                clientSecret,
+                accessToken, clientId, clientSecret,
                 refreshToken);
         }
+
 
         private static final LazySingletonValue<SourceZendeskChatCredentials> _SINGLETON_VALUE_Credentials =
                 new LazySingletonValue<>(

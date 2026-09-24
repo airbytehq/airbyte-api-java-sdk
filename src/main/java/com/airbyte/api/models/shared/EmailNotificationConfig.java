@@ -12,7 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -42,9 +41,10 @@ public class EmailNotificationConfig {
         return enabled;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public EmailNotificationConfig withEnabled(boolean enabled) {
         Utils.checkNotNull(enabled, "enabled");
@@ -52,13 +52,13 @@ public class EmailNotificationConfig {
         return this;
     }
 
+
     public EmailNotificationConfig withEnabled(Optional<Boolean> enabled) {
         Utils.checkNotNull(enabled, "enabled");
         this.enabled = enabled;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,12 +69,12 @@ public class EmailNotificationConfig {
         }
         EmailNotificationConfig other = (EmailNotificationConfig) o;
         return 
-            Objects.deepEquals(this.enabled, other.enabled);
+            Utils.enhancedDeepEquals(this.enabled, other.enabled);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             enabled);
     }
     
@@ -83,14 +83,16 @@ public class EmailNotificationConfig {
         return Utils.toString(EmailNotificationConfig.class,
                 "enabled", enabled);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> enabled = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder enabled(boolean enabled) {
             Utils.checkNotNull(enabled, "enabled");
@@ -103,10 +105,12 @@ public class EmailNotificationConfig {
             this.enabled = enabled;
             return this;
         }
-        
+
         public EmailNotificationConfig build() {
+
             return new EmailNotificationConfig(
                 enabled);
         }
+
     }
 }

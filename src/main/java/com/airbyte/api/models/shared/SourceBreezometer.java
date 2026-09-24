@@ -14,13 +14,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceBreezometer {
 
+public class SourceBreezometer {
     /**
-     * Your API Access Key. See &lt;a href="https://docs.breezometer.com/api-documentation/introduction/#authentication/"&gt;here&lt;/a&gt;.
+     * Your API Access Key. See <a
+     * href="https://docs.breezometer.com/api-documentation/introduction/#authentication/">here</a>.
      */
     @JsonProperty("api_key")
     private String apiKey;
@@ -65,6 +65,7 @@ public class SourceBreezometer {
     @JsonProperty("radius")
     private Optional<Long> radius;
 
+
     @JsonProperty("sourceType")
     private Breezometer sourceType;
 
@@ -98,11 +99,14 @@ public class SourceBreezometer {
             String apiKey,
             String latitude,
             String longitude) {
-        this(apiKey, Optional.empty(), Optional.empty(), Optional.empty(), latitude, longitude, Optional.empty());
+        this(apiKey, Optional.empty(), Optional.empty(),
+            Optional.empty(), latitude, longitude,
+            Optional.empty());
     }
 
     /**
-     * Your API Access Key. See &lt;a href="https://docs.breezometer.com/api-documentation/introduction/#authentication/"&gt;here&lt;/a&gt;.
+     * Your API Access Key. See <a
+     * href="https://docs.breezometer.com/api-documentation/introduction/#authentication/">here</a>.
      */
     @JsonIgnore
     public String apiKey() {
@@ -162,12 +166,14 @@ public class SourceBreezometer {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Your API Access Key. See &lt;a href="https://docs.breezometer.com/api-documentation/introduction/#authentication/"&gt;here&lt;/a&gt;.
+     * Your API Access Key. See <a
+     * href="https://docs.breezometer.com/api-documentation/introduction/#authentication/">here</a>.
      */
     public SourceBreezometer withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -183,6 +189,7 @@ public class SourceBreezometer {
         this.daysToForecast = Optional.ofNullable(daysToForecast);
         return this;
     }
+
 
     /**
      * Number of days to forecast. Minimum 1, maximum 3. Valid for Polen and Weather Forecast streams.
@@ -202,6 +209,7 @@ public class SourceBreezometer {
         return this;
     }
 
+
     /**
      * Number of hours retireve from Air Quality History stream. Minimum 1, maximum 720.
      */
@@ -219,6 +227,7 @@ public class SourceBreezometer {
         this.hoursToForecast = Optional.ofNullable(hoursToForecast);
         return this;
     }
+
 
     /**
      * Number of hours to forecast. Minimum 1, maximum 96. Valid for Air Quality Forecast stream.
@@ -256,6 +265,7 @@ public class SourceBreezometer {
         return this;
     }
 
+
     /**
      * Desired radius from the location provided. Minimum 5, maximum 100. Valid for Wildfires streams.
      */
@@ -265,7 +275,6 @@ public class SourceBreezometer {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -276,27 +285,22 @@ public class SourceBreezometer {
         }
         SourceBreezometer other = (SourceBreezometer) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.daysToForecast, other.daysToForecast) &&
-            Objects.deepEquals(this.historicHours, other.historicHours) &&
-            Objects.deepEquals(this.hoursToForecast, other.hoursToForecast) &&
-            Objects.deepEquals(this.latitude, other.latitude) &&
-            Objects.deepEquals(this.longitude, other.longitude) &&
-            Objects.deepEquals(this.radius, other.radius) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.daysToForecast, other.daysToForecast) &&
+            Utils.enhancedDeepEquals(this.historicHours, other.historicHours) &&
+            Utils.enhancedDeepEquals(this.hoursToForecast, other.hoursToForecast) &&
+            Utils.enhancedDeepEquals(this.latitude, other.latitude) &&
+            Utils.enhancedDeepEquals(this.longitude, other.longitude) &&
+            Utils.enhancedDeepEquals(this.radius, other.radius) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            daysToForecast,
-            historicHours,
-            hoursToForecast,
-            latitude,
-            longitude,
-            radius,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, daysToForecast, historicHours,
+            hoursToForecast, latitude, longitude,
+            radius, sourceType);
     }
     
     @Override
@@ -311,35 +315,39 @@ public class SourceBreezometer {
                 "radius", radius,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<Long> daysToForecast = Optional.empty();
- 
+
         private Optional<Long> historicHours = Optional.empty();
- 
+
         private Optional<Long> hoursToForecast = Optional.empty();
- 
+
         private String latitude;
- 
+
         private String longitude;
- 
+
         private Optional<Long> radius = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Your API Access Key. See &lt;a href="https://docs.breezometer.com/api-documentation/introduction/#authentication/"&gt;here&lt;/a&gt;.
+         * Your API Access Key. See <a
+         * href="https://docs.breezometer.com/api-documentation/introduction/#authentication/">here</a>.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Number of days to forecast. Minimum 1, maximum 3. Valid for Polen and Weather Forecast streams.
@@ -359,6 +367,7 @@ public class SourceBreezometer {
             return this;
         }
 
+
         /**
          * Number of hours retireve from Air Quality History stream. Minimum 1, maximum 720.
          */
@@ -376,6 +385,7 @@ public class SourceBreezometer {
             this.historicHours = historicHours;
             return this;
         }
+
 
         /**
          * Number of hours to forecast. Minimum 1, maximum 96. Valid for Air Quality Forecast stream.
@@ -395,6 +405,7 @@ public class SourceBreezometer {
             return this;
         }
 
+
         /**
          * Latitude of the monitored location.
          */
@@ -404,6 +415,7 @@ public class SourceBreezometer {
             return this;
         }
 
+
         /**
          * Longitude of the monitored location.
          */
@@ -412,6 +424,7 @@ public class SourceBreezometer {
             this.longitude = longitude;
             return this;
         }
+
 
         /**
          * Desired radius from the location provided. Minimum 5, maximum 100. Valid for Wildfires streams.
@@ -430,17 +443,15 @@ public class SourceBreezometer {
             this.radius = radius;
             return this;
         }
-        
+
         public SourceBreezometer build() {
+
             return new SourceBreezometer(
-                apiKey,
-                daysToForecast,
-                historicHours,
-                hoursToForecast,
-                latitude,
-                longitude,
+                apiKey, daysToForecast, historicHours,
+                hoursToForecast, latitude, longitude,
                 radius);
         }
+
 
         private static final LazySingletonValue<Breezometer> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

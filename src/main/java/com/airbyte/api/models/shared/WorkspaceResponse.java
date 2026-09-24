@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 /**
  * WorkspaceResponse
@@ -21,6 +20,7 @@ public class WorkspaceResponse {
     @JsonProperty("dataResidency")
     private String dataResidency;
 
+
     @JsonProperty("name")
     private String name;
 
@@ -29,6 +29,7 @@ public class WorkspaceResponse {
      */
     @JsonProperty("notifications")
     private NotificationsConfig notifications;
+
 
     @JsonProperty("workspaceId")
     private String workspaceId;
@@ -72,9 +73,10 @@ public class WorkspaceResponse {
         return workspaceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public WorkspaceResponse withDataResidency(String dataResidency) {
         Utils.checkNotNull(dataResidency, "dataResidency");
@@ -103,7 +105,6 @@ public class WorkspaceResponse {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -114,18 +115,16 @@ public class WorkspaceResponse {
         }
         WorkspaceResponse other = (WorkspaceResponse) o;
         return 
-            Objects.deepEquals(this.dataResidency, other.dataResidency) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.notifications, other.notifications) &&
-            Objects.deepEquals(this.workspaceId, other.workspaceId);
+            Utils.enhancedDeepEquals(this.dataResidency, other.dataResidency) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.notifications, other.notifications) &&
+            Utils.enhancedDeepEquals(this.workspaceId, other.workspaceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            dataResidency,
-            name,
-            notifications,
+        return Utils.enhancedHash(
+            dataResidency, name, notifications,
             workspaceId);
     }
     
@@ -137,20 +136,22 @@ public class WorkspaceResponse {
                 "notifications", notifications,
                 "workspaceId", workspaceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String dataResidency;
- 
+
         private String name;
- 
+
         private NotificationsConfig notifications;
- 
+
         private String workspaceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder dataResidency(String dataResidency) {
             Utils.checkNotNull(dataResidency, "dataResidency");
@@ -158,11 +159,13 @@ public class WorkspaceResponse {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = name;
             return this;
         }
+
 
         /**
          * Configures workspace notifications.
@@ -173,18 +176,19 @@ public class WorkspaceResponse {
             return this;
         }
 
+
         public Builder workspaceId(String workspaceId) {
             Utils.checkNotNull(workspaceId, "workspaceId");
             this.workspaceId = workspaceId;
             return this;
         }
-        
+
         public WorkspaceResponse build() {
+
             return new WorkspaceResponse(
-                dataResidency,
-                name,
-                notifications,
+                dataResidency, name, notifications,
                 workspaceId);
         }
+
     }
 }

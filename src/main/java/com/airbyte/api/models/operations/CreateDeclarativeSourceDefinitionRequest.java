@@ -9,12 +9,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class CreateDeclarativeSourceDefinitionRequest {
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private com.airbyte.api.models.shared.CreateDeclarativeSourceDefinitionRequest createDeclarativeSourceDefinitionRequest;
+
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspaceId")
     private String workspaceId;
@@ -39,9 +40,10 @@ public class CreateDeclarativeSourceDefinitionRequest {
         return workspaceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public CreateDeclarativeSourceDefinitionRequest withCreateDeclarativeSourceDefinitionRequest(com.airbyte.api.models.shared.CreateDeclarativeSourceDefinitionRequest createDeclarativeSourceDefinitionRequest) {
         Utils.checkNotNull(createDeclarativeSourceDefinitionRequest, "createDeclarativeSourceDefinitionRequest");
@@ -55,7 +57,6 @@ public class CreateDeclarativeSourceDefinitionRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -66,15 +67,14 @@ public class CreateDeclarativeSourceDefinitionRequest {
         }
         CreateDeclarativeSourceDefinitionRequest other = (CreateDeclarativeSourceDefinitionRequest) o;
         return 
-            Objects.deepEquals(this.createDeclarativeSourceDefinitionRequest, other.createDeclarativeSourceDefinitionRequest) &&
-            Objects.deepEquals(this.workspaceId, other.workspaceId);
+            Utils.enhancedDeepEquals(this.createDeclarativeSourceDefinitionRequest, other.createDeclarativeSourceDefinitionRequest) &&
+            Utils.enhancedDeepEquals(this.workspaceId, other.workspaceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            createDeclarativeSourceDefinitionRequest,
-            workspaceId);
+        return Utils.enhancedHash(
+            createDeclarativeSourceDefinitionRequest, workspaceId);
     }
     
     @Override
@@ -83,16 +83,18 @@ public class CreateDeclarativeSourceDefinitionRequest {
                 "createDeclarativeSourceDefinitionRequest", createDeclarativeSourceDefinitionRequest,
                 "workspaceId", workspaceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private com.airbyte.api.models.shared.CreateDeclarativeSourceDefinitionRequest createDeclarativeSourceDefinitionRequest;
- 
+
         private String workspaceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder createDeclarativeSourceDefinitionRequest(com.airbyte.api.models.shared.CreateDeclarativeSourceDefinitionRequest createDeclarativeSourceDefinitionRequest) {
             Utils.checkNotNull(createDeclarativeSourceDefinitionRequest, "createDeclarativeSourceDefinitionRequest");
@@ -100,16 +102,18 @@ public class CreateDeclarativeSourceDefinitionRequest {
             return this;
         }
 
+
         public Builder workspaceId(String workspaceId) {
             Utils.checkNotNull(workspaceId, "workspaceId");
             this.workspaceId = workspaceId;
             return this;
         }
-        
+
         public CreateDeclarativeSourceDefinitionRequest build() {
+
             return new CreateDeclarativeSourceDefinitionRequest(
-                createDeclarativeSourceDefinitionRequest,
-                workspaceId);
+                createDeclarativeSourceDefinitionRequest, workspaceId);
         }
+
     }
 }

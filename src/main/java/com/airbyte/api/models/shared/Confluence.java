@@ -14,7 +14,7 @@ public enum Confluence {
     @JsonValue
     private final String value;
 
-    private Confluence(String value) {
+    Confluence(String value) {
         this.value = value;
     }
     

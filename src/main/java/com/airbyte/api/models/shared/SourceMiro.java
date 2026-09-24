@@ -11,12 +11,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceMiro {
 
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Miro sourceType;
@@ -39,9 +40,10 @@ public class SourceMiro {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceMiro withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -49,7 +51,6 @@ public class SourceMiro {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -60,15 +61,14 @@ public class SourceMiro {
         }
         SourceMiro other = (SourceMiro) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, sourceType);
     }
     
     @Override
@@ -77,25 +77,29 @@ public class SourceMiro {
                 "apiKey", apiKey,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
-        
+
         public SourceMiro build() {
+
             return new SourceMiro(
                 apiKey);
         }
+
 
         private static final LazySingletonValue<Miro> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

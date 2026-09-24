@@ -16,16 +16,16 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class StandaloneMongoDbInstance {
 
+public class StandaloneMongoDbInstance {
     /**
      * The Host of a Mongo database to be replicated.
      */
     @JsonProperty("host")
     private String host;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("instance")
@@ -39,7 +39,9 @@ public class StandaloneMongoDbInstance {
     private Optional<Long> port;
 
     /**
-     * Indicates whether TLS encryption protocol will be used to connect to MongoDB. It is recommended to use TLS connection if possible. For more information see &lt;a href="https://docs.airbyte.com/integrations/sources/mongodb-v2"&gt;documentation&lt;/a&gt;.
+     * Indicates whether TLS encryption protocol will be used to connect to MongoDB. It is recommended to
+     * use TLS connection if possible. For more information see <a
+     * href="https://docs.airbyte.com/integrations/sources/mongodb-v2">documentation</a>.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tls")
@@ -63,7 +65,8 @@ public class StandaloneMongoDbInstance {
     
     public StandaloneMongoDbInstance(
             String host) {
-        this(host, Optional.empty(), Optional.empty(), Optional.empty());
+        this(host, Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -89,16 +92,19 @@ public class StandaloneMongoDbInstance {
     }
 
     /**
-     * Indicates whether TLS encryption protocol will be used to connect to MongoDB. It is recommended to use TLS connection if possible. For more information see &lt;a href="https://docs.airbyte.com/integrations/sources/mongodb-v2"&gt;documentation&lt;/a&gt;.
+     * Indicates whether TLS encryption protocol will be used to connect to MongoDB. It is recommended to
+     * use TLS connection if possible. For more information see <a
+     * href="https://docs.airbyte.com/integrations/sources/mongodb-v2">documentation</a>.
      */
     @JsonIgnore
     public Optional<Boolean> tls() {
         return tls;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Host of a Mongo database to be replicated.
@@ -115,6 +121,7 @@ public class StandaloneMongoDbInstance {
         return this;
     }
 
+
     public StandaloneMongoDbInstance withInstance(Optional<? extends Instance> instance) {
         Utils.checkNotNull(instance, "instance");
         this.instance = instance;
@@ -130,6 +137,7 @@ public class StandaloneMongoDbInstance {
         return this;
     }
 
+
     /**
      * The Port of a Mongo database to be replicated.
      */
@@ -140,7 +148,9 @@ public class StandaloneMongoDbInstance {
     }
 
     /**
-     * Indicates whether TLS encryption protocol will be used to connect to MongoDB. It is recommended to use TLS connection if possible. For more information see &lt;a href="https://docs.airbyte.com/integrations/sources/mongodb-v2"&gt;documentation&lt;/a&gt;.
+     * Indicates whether TLS encryption protocol will be used to connect to MongoDB. It is recommended to
+     * use TLS connection if possible. For more information see <a
+     * href="https://docs.airbyte.com/integrations/sources/mongodb-v2">documentation</a>.
      */
     public StandaloneMongoDbInstance withTls(boolean tls) {
         Utils.checkNotNull(tls, "tls");
@@ -148,8 +158,11 @@ public class StandaloneMongoDbInstance {
         return this;
     }
 
+
     /**
-     * Indicates whether TLS encryption protocol will be used to connect to MongoDB. It is recommended to use TLS connection if possible. For more information see &lt;a href="https://docs.airbyte.com/integrations/sources/mongodb-v2"&gt;documentation&lt;/a&gt;.
+     * Indicates whether TLS encryption protocol will be used to connect to MongoDB. It is recommended to
+     * use TLS connection if possible. For more information see <a
+     * href="https://docs.airbyte.com/integrations/sources/mongodb-v2">documentation</a>.
      */
     public StandaloneMongoDbInstance withTls(Optional<Boolean> tls) {
         Utils.checkNotNull(tls, "tls");
@@ -157,7 +170,6 @@ public class StandaloneMongoDbInstance {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -168,18 +180,16 @@ public class StandaloneMongoDbInstance {
         }
         StandaloneMongoDbInstance other = (StandaloneMongoDbInstance) o;
         return 
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.instance, other.instance) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.tls, other.tls);
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.instance, other.instance) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.tls, other.tls);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            host,
-            instance,
-            port,
+        return Utils.enhancedHash(
+            host, instance, port,
             tls);
     }
     
@@ -191,20 +201,22 @@ public class StandaloneMongoDbInstance {
                 "port", port,
                 "tls", tls);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String host;
- 
+
         private Optional<? extends Instance> instance;
- 
+
         private Optional<Long> port;
- 
+
         private Optional<Boolean> tls;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Host of a Mongo database to be replicated.
@@ -214,6 +226,7 @@ public class StandaloneMongoDbInstance {
             this.host = host;
             return this;
         }
+
 
         public Builder instance(Instance instance) {
             Utils.checkNotNull(instance, "instance");
@@ -226,6 +239,7 @@ public class StandaloneMongoDbInstance {
             this.instance = instance;
             return this;
         }
+
 
         /**
          * The Port of a Mongo database to be replicated.
@@ -245,8 +259,11 @@ public class StandaloneMongoDbInstance {
             return this;
         }
 
+
         /**
-         * Indicates whether TLS encryption protocol will be used to connect to MongoDB. It is recommended to use TLS connection if possible. For more information see &lt;a href="https://docs.airbyte.com/integrations/sources/mongodb-v2"&gt;documentation&lt;/a&gt;.
+         * Indicates whether TLS encryption protocol will be used to connect to MongoDB. It is recommended to
+         * use TLS connection if possible. For more information see <a
+         * href="https://docs.airbyte.com/integrations/sources/mongodb-v2">documentation</a>.
          */
         public Builder tls(boolean tls) {
             Utils.checkNotNull(tls, "tls");
@@ -255,14 +272,16 @@ public class StandaloneMongoDbInstance {
         }
 
         /**
-         * Indicates whether TLS encryption protocol will be used to connect to MongoDB. It is recommended to use TLS connection if possible. For more information see &lt;a href="https://docs.airbyte.com/integrations/sources/mongodb-v2"&gt;documentation&lt;/a&gt;.
+         * Indicates whether TLS encryption protocol will be used to connect to MongoDB. It is recommended to
+         * use TLS connection if possible. For more information see <a
+         * href="https://docs.airbyte.com/integrations/sources/mongodb-v2">documentation</a>.
          */
         public Builder tls(Optional<Boolean> tls) {
             Utils.checkNotNull(tls, "tls");
             this.tls = tls;
             return this;
         }
-        
+
         public StandaloneMongoDbInstance build() {
             if (instance == null) {
                 instance = _SINGLETON_VALUE_Instance.value();
@@ -273,12 +292,12 @@ public class StandaloneMongoDbInstance {
             if (tls == null) {
                 tls = _SINGLETON_VALUE_Tls.value();
             }
+
             return new StandaloneMongoDbInstance(
-                host,
-                instance,
-                port,
+                host, instance, port,
                 tls);
         }
+
 
         private static final LazySingletonValue<Optional<? extends Instance>> _SINGLETON_VALUE_Instance =
                 new LazySingletonValue<>(

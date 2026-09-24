@@ -15,7 +15,7 @@ public enum APIServer {
     @JsonValue
     private final String value;
 
-    private APIServer(String value) {
+    APIServer(String value) {
         this.value = value;
     }
     

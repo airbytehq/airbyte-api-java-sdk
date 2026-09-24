@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceSapHanaEnterpriseEncryption
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class SourceSapHanaEnterpriseEncryption {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceSapHanaEnterpriseEncryption(TypedObject value) {
         this.value = value;
@@ -33,17 +32,17 @@ public class SourceSapHanaEnterpriseEncryption {
 
     public static SourceSapHanaEnterpriseEncryption of(SourceSapHanaEnterpriseUnencrypted value) {
         Utils.checkNotNull(value, "value");
-        return new SourceSapHanaEnterpriseEncryption(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSapHanaEnterpriseUnencrypted>(){}));
+        return new SourceSapHanaEnterpriseEncryption(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceSapHanaEnterpriseEncryption of(SourceSapHanaEnterpriseNativeNetworkEncryptionNNE value) {
         Utils.checkNotNull(value, "value");
-        return new SourceSapHanaEnterpriseEncryption(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSapHanaEnterpriseNativeNetworkEncryptionNNE>(){}));
+        return new SourceSapHanaEnterpriseEncryption(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceSapHanaEnterpriseEncryption of(SourceSapHanaEnterpriseTLSEncryptedVerifyCertificate value) {
         Utils.checkNotNull(value, "value");
-        return new SourceSapHanaEnterpriseEncryption(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSapHanaEnterpriseTLSEncryptedVerifyCertificate>(){}));
+        return new SourceSapHanaEnterpriseEncryption(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +66,7 @@ public class SourceSapHanaEnterpriseEncryption {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +77,12 @@ public class SourceSapHanaEnterpriseEncryption {
             return false;
         }
         SourceSapHanaEnterpriseEncryption other = (SourceSapHanaEnterpriseEncryption) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -91,9 +90,9 @@ public class SourceSapHanaEnterpriseEncryption {
 
         public _Deserializer() {
             super(SourceSapHanaEnterpriseEncryption.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceSapHanaEnterpriseTLSEncryptedVerifyCertificate>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSapHanaEnterpriseUnencrypted>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceSapHanaEnterpriseNativeNetworkEncryptionNNE>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSapHanaEnterpriseUnencrypted>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceSapHanaEnterpriseTLSEncryptedVerifyCertificate>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -102,6 +101,6 @@ public class SourceSapHanaEnterpriseEncryption {
         return Utils.toString(SourceSapHanaEnterpriseEncryption.class,
                 "value", value);
     }
- 
+
 }
 

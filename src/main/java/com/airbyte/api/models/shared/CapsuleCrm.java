@@ -14,7 +14,7 @@ public enum CapsuleCrm {
     @JsonValue
     private final String value;
 
-    private CapsuleCrm(String value) {
+    CapsuleCrm(String value) {
         this.value = value;
     }
     

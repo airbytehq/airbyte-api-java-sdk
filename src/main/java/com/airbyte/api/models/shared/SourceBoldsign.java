@@ -12,18 +12,20 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceBoldsign {
-
     /**
-     * Your BoldSign API key. You can generate it by navigating to the API menu in the BoldSign app, selecting 'API Key', and clicking 'Generate API Key'. Copy the generated key and paste it here.
+     * Your BoldSign API key. You can generate it by navigating to the API menu in the BoldSign app,
+     * selecting 'API Key', and clicking 'Generate API Key'. Copy the generated key and paste it here.
      */
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonProperty("sourceType")
     private Boldsign sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -40,7 +42,8 @@ public class SourceBoldsign {
     }
 
     /**
-     * Your BoldSign API key. You can generate it by navigating to the API menu in the BoldSign app, selecting 'API Key', and clicking 'Generate API Key'. Copy the generated key and paste it here.
+     * Your BoldSign API key. You can generate it by navigating to the API menu in the BoldSign app,
+     * selecting 'API Key', and clicking 'Generate API Key'. Copy the generated key and paste it here.
      */
     @JsonIgnore
     public String apiKey() {
@@ -57,12 +60,14 @@ public class SourceBoldsign {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Your BoldSign API key. You can generate it by navigating to the API menu in the BoldSign app, selecting 'API Key', and clicking 'Generate API Key'. Copy the generated key and paste it here.
+     * Your BoldSign API key. You can generate it by navigating to the API menu in the BoldSign app,
+     * selecting 'API Key', and clicking 'Generate API Key'. Copy the generated key and paste it here.
      */
     public SourceBoldsign withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -76,7 +81,6 @@ public class SourceBoldsign {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -87,17 +91,15 @@ public class SourceBoldsign {
         }
         SourceBoldsign other = (SourceBoldsign) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKey, sourceType, startDate);
     }
     
     @Override
@@ -107,19 +109,22 @@ public class SourceBoldsign {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Your BoldSign API key. You can generate it by navigating to the API menu in the BoldSign app, selecting 'API Key', and clicking 'Generate API Key'. Copy the generated key and paste it here.
+         * Your BoldSign API key. You can generate it by navigating to the API menu in the BoldSign app,
+         * selecting 'API Key', and clicking 'Generate API Key'. Copy the generated key and paste it here.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -127,17 +132,19 @@ public class SourceBoldsign {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceBoldsign build() {
+
             return new SourceBoldsign(
-                apiKey,
-                startDate);
+                apiKey, startDate);
         }
+
 
         private static final LazySingletonValue<Boldsign> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

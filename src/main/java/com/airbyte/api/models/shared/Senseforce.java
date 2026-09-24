@@ -14,7 +14,7 @@ public enum Senseforce {
     @JsonValue
     private final String value;
 
-    private Senseforce(String value) {
+    Senseforce(String value) {
         this.value = value;
     }
     

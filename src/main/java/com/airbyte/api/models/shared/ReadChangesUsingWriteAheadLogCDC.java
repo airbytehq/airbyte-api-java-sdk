@@ -20,13 +20,14 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * ReadChangesUsingWriteAheadLogCDC
  * 
- * <p>&lt;i&gt;Recommended&lt;/i&gt; - Incrementally reads new inserts, updates, and deletes using the Postgres &lt;a href="https://docs.airbyte.com/integrations/sources/postgres/#cdc"&gt;write-ahead log (WAL)&lt;/a&gt;. This needs to be configured on the source database itself. Recommended for tables of any size.
+ * <p><i>Recommended</i> - Incrementally reads new inserts, updates, and deletes using the Postgres <a
+ * href="https://docs.airbyte.com/integrations/sources/postgres/#cdc">write-ahead log (WAL)</a>. This
+ * needs to be configured on the source database itself. Recommended for tables of any size.
  */
 public class ReadChangesUsingWriteAheadLogCDC {
 
@@ -34,7 +35,10 @@ public class ReadChangesUsingWriteAheadLogCDC {
     private Map<String, Object> additionalProperties;
 
     /**
-     * Specifies a query that the connector executes on the source database when the connector sends a heartbeat message. Please see the &lt;a href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-wal-disk-consumption-and-heartbeat-action-query"&gt;setup guide&lt;/a&gt; for how and when to configure this setting.
+     * Specifies a query that the connector executes on the source database when the connector sends a
+     * heartbeat message. Please see the <a
+     * href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-wal-disk-consumption-and-heartbeat-action-query">setup
+     * guide</a> for how and when to configure this setting.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("heartbeat_action_query")
@@ -48,25 +52,36 @@ public class ReadChangesUsingWriteAheadLogCDC {
     private Optional<Long> initialLoadTimeoutHours;
 
     /**
-     * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 1200 seconds. Valid range: 120 seconds to 2400 seconds. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-setting-up-initial-cdc-waiting-time"&gt;initial waiting time&lt;/a&gt;.
+     * The amount of time the connector will wait when it launches to determine if there is new data to
+     * sync or not. Defaults to 1200 seconds. Valid range: 120 seconds to 2400 seconds.
+     * 
+     * <p>Read about <a
+     * href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-setting-up-initial-cdc-waiting-time">initial
+     * waiting time</a>.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("initial_waiting_seconds")
     private Optional<Long> initialWaitingSeconds;
 
     /**
-     * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
+     * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into
+     * the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being
+     * able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a
+     * refresh but could lead to higher cloud costs and data loss.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("invalid_cdc_cursor_position_behavior")
     private Optional<? extends SourcePostgresInvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior;
 
     /**
-     * Determines when Airbyte should flush the LSN of processed WAL logs in the source database. `After loading Data in the destination` is default. If `While reading Data` is selected, in case of a downstream failure (while loading data into the destination), next sync would result in a full sync.
+     * Determines when Airbyte should flush the LSN of processed WAL logs in the source database. `After
+     * loading Data in the destination` is default. If `While reading Data` is selected, in case of a
+     * downstream failure (while loading data into the destination), next sync would result in a full sync.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("lsn_commit_behaviour")
     private Optional<? extends LSNCommitBehaviour> lsnCommitBehaviour;
+
 
     @JsonProperty("method")
     private SourcePostgresMethod method;
@@ -79,20 +94,25 @@ public class ReadChangesUsingWriteAheadLogCDC {
     private Optional<? extends Plugin> plugin;
 
     /**
-     * A Postgres publication used for consuming changes. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/postgres#step-4-create-publications-and-replication-identities-for-tables"&gt;publications and replication identities&lt;/a&gt;.
+     * A Postgres publication used for consuming changes. Read about <a
+     * href="https://docs.airbyte.com/integrations/sources/postgres#step-4-create-publications-and-replication-identities-for-tables">publications
+     * and replication identities</a>.
      */
     @JsonProperty("publication")
     private String publication;
 
     /**
-     * The size of the internal queue. This may interfere with memory consumption and efficiency of the connector, please be careful.
+     * The size of the internal queue. This may interfere with memory consumption and efficiency of the
+     * connector, please be careful.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("queue_size")
     private Optional<Long> queueSize;
 
     /**
-     * A plugin logical replication slot. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/postgres#step-3-create-replication-slot"&gt;replication slots&lt;/a&gt;.
+     * A plugin logical replication slot. Read about <a
+     * href="https://docs.airbyte.com/integrations/sources/postgres#step-3-create-replication-slot">replication
+     * slots</a>.
      */
     @JsonProperty("replication_slot")
     private String replicationSlot;
@@ -133,7 +153,9 @@ public class ReadChangesUsingWriteAheadLogCDC {
     public ReadChangesUsingWriteAheadLogCDC(
             String publication,
             String replicationSlot) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), publication, Optional.empty(), replicationSlot);
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            publication, Optional.empty(), replicationSlot);
     }
 
     @JsonAnyGetter
@@ -142,7 +164,10 @@ public class ReadChangesUsingWriteAheadLogCDC {
     }
 
     /**
-     * Specifies a query that the connector executes on the source database when the connector sends a heartbeat message. Please see the &lt;a href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-wal-disk-consumption-and-heartbeat-action-query"&gt;setup guide&lt;/a&gt; for how and when to configure this setting.
+     * Specifies a query that the connector executes on the source database when the connector sends a
+     * heartbeat message. Please see the <a
+     * href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-wal-disk-consumption-and-heartbeat-action-query">setup
+     * guide</a> for how and when to configure this setting.
      */
     @JsonIgnore
     public Optional<String> heartbeatActionQuery() {
@@ -158,7 +183,12 @@ public class ReadChangesUsingWriteAheadLogCDC {
     }
 
     /**
-     * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 1200 seconds. Valid range: 120 seconds to 2400 seconds. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-setting-up-initial-cdc-waiting-time"&gt;initial waiting time&lt;/a&gt;.
+     * The amount of time the connector will wait when it launches to determine if there is new data to
+     * sync or not. Defaults to 1200 seconds. Valid range: 120 seconds to 2400 seconds.
+     * 
+     * <p>Read about <a
+     * href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-setting-up-initial-cdc-waiting-time">initial
+     * waiting time</a>.
      */
     @JsonIgnore
     public Optional<Long> initialWaitingSeconds() {
@@ -166,7 +196,10 @@ public class ReadChangesUsingWriteAheadLogCDC {
     }
 
     /**
-     * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
+     * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into
+     * the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being
+     * able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a
+     * refresh but could lead to higher cloud costs and data loss.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -175,7 +208,9 @@ public class ReadChangesUsingWriteAheadLogCDC {
     }
 
     /**
-     * Determines when Airbyte should flush the LSN of processed WAL logs in the source database. `After loading Data in the destination` is default. If `While reading Data` is selected, in case of a downstream failure (while loading data into the destination), next sync would result in a full sync.
+     * Determines when Airbyte should flush the LSN of processed WAL logs in the source database. `After
+     * loading Data in the destination` is default. If `While reading Data` is selected, in case of a
+     * downstream failure (while loading data into the destination), next sync would result in a full sync.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -198,7 +233,9 @@ public class ReadChangesUsingWriteAheadLogCDC {
     }
 
     /**
-     * A Postgres publication used for consuming changes. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/postgres#step-4-create-publications-and-replication-identities-for-tables"&gt;publications and replication identities&lt;/a&gt;.
+     * A Postgres publication used for consuming changes. Read about <a
+     * href="https://docs.airbyte.com/integrations/sources/postgres#step-4-create-publications-and-replication-identities-for-tables">publications
+     * and replication identities</a>.
      */
     @JsonIgnore
     public String publication() {
@@ -206,7 +243,8 @@ public class ReadChangesUsingWriteAheadLogCDC {
     }
 
     /**
-     * The size of the internal queue. This may interfere with memory consumption and efficiency of the connector, please be careful.
+     * The size of the internal queue. This may interfere with memory consumption and efficiency of the
+     * connector, please be careful.
      */
     @JsonIgnore
     public Optional<Long> queueSize() {
@@ -214,16 +252,19 @@ public class ReadChangesUsingWriteAheadLogCDC {
     }
 
     /**
-     * A plugin logical replication slot. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/postgres#step-3-create-replication-slot"&gt;replication slots&lt;/a&gt;.
+     * A plugin logical replication slot. Read about <a
+     * href="https://docs.airbyte.com/integrations/sources/postgres#step-3-create-replication-slot">replication
+     * slots</a>.
      */
     @JsonIgnore
     public String replicationSlot() {
         return replicationSlot;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public ReadChangesUsingWriteAheadLogCDC withAdditionalProperty(String key, Object value) {
@@ -231,8 +272,7 @@ public class ReadChangesUsingWriteAheadLogCDC {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public ReadChangesUsingWriteAheadLogCDC withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -240,7 +280,10 @@ public class ReadChangesUsingWriteAheadLogCDC {
     }
 
     /**
-     * Specifies a query that the connector executes on the source database when the connector sends a heartbeat message. Please see the &lt;a href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-wal-disk-consumption-and-heartbeat-action-query"&gt;setup guide&lt;/a&gt; for how and when to configure this setting.
+     * Specifies a query that the connector executes on the source database when the connector sends a
+     * heartbeat message. Please see the <a
+     * href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-wal-disk-consumption-and-heartbeat-action-query">setup
+     * guide</a> for how and when to configure this setting.
      */
     public ReadChangesUsingWriteAheadLogCDC withHeartbeatActionQuery(String heartbeatActionQuery) {
         Utils.checkNotNull(heartbeatActionQuery, "heartbeatActionQuery");
@@ -248,8 +291,12 @@ public class ReadChangesUsingWriteAheadLogCDC {
         return this;
     }
 
+
     /**
-     * Specifies a query that the connector executes on the source database when the connector sends a heartbeat message. Please see the &lt;a href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-wal-disk-consumption-and-heartbeat-action-query"&gt;setup guide&lt;/a&gt; for how and when to configure this setting.
+     * Specifies a query that the connector executes on the source database when the connector sends a
+     * heartbeat message. Please see the <a
+     * href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-wal-disk-consumption-and-heartbeat-action-query">setup
+     * guide</a> for how and when to configure this setting.
      */
     public ReadChangesUsingWriteAheadLogCDC withHeartbeatActionQuery(Optional<String> heartbeatActionQuery) {
         Utils.checkNotNull(heartbeatActionQuery, "heartbeatActionQuery");
@@ -266,6 +313,7 @@ public class ReadChangesUsingWriteAheadLogCDC {
         return this;
     }
 
+
     /**
      * The amount of time an initial load is allowed to continue for before catching up on CDC logs.
      */
@@ -276,7 +324,12 @@ public class ReadChangesUsingWriteAheadLogCDC {
     }
 
     /**
-     * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 1200 seconds. Valid range: 120 seconds to 2400 seconds. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-setting-up-initial-cdc-waiting-time"&gt;initial waiting time&lt;/a&gt;.
+     * The amount of time the connector will wait when it launches to determine if there is new data to
+     * sync or not. Defaults to 1200 seconds. Valid range: 120 seconds to 2400 seconds.
+     * 
+     * <p>Read about <a
+     * href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-setting-up-initial-cdc-waiting-time">initial
+     * waiting time</a>.
      */
     public ReadChangesUsingWriteAheadLogCDC withInitialWaitingSeconds(long initialWaitingSeconds) {
         Utils.checkNotNull(initialWaitingSeconds, "initialWaitingSeconds");
@@ -284,8 +337,14 @@ public class ReadChangesUsingWriteAheadLogCDC {
         return this;
     }
 
+
     /**
-     * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 1200 seconds. Valid range: 120 seconds to 2400 seconds. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-setting-up-initial-cdc-waiting-time"&gt;initial waiting time&lt;/a&gt;.
+     * The amount of time the connector will wait when it launches to determine if there is new data to
+     * sync or not. Defaults to 1200 seconds. Valid range: 120 seconds to 2400 seconds.
+     * 
+     * <p>Read about <a
+     * href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-setting-up-initial-cdc-waiting-time">initial
+     * waiting time</a>.
      */
     public ReadChangesUsingWriteAheadLogCDC withInitialWaitingSeconds(Optional<Long> initialWaitingSeconds) {
         Utils.checkNotNull(initialWaitingSeconds, "initialWaitingSeconds");
@@ -294,7 +353,10 @@ public class ReadChangesUsingWriteAheadLogCDC {
     }
 
     /**
-     * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
+     * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into
+     * the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being
+     * able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a
+     * refresh but could lead to higher cloud costs and data loss.
      */
     public ReadChangesUsingWriteAheadLogCDC withInvalidCdcCursorPositionBehavior(SourcePostgresInvalidCDCPositionBehaviorAdvanced invalidCdcCursorPositionBehavior) {
         Utils.checkNotNull(invalidCdcCursorPositionBehavior, "invalidCdcCursorPositionBehavior");
@@ -302,8 +364,12 @@ public class ReadChangesUsingWriteAheadLogCDC {
         return this;
     }
 
+
     /**
-     * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
+     * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into
+     * the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being
+     * able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a
+     * refresh but could lead to higher cloud costs and data loss.
      */
     public ReadChangesUsingWriteAheadLogCDC withInvalidCdcCursorPositionBehavior(Optional<? extends SourcePostgresInvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior) {
         Utils.checkNotNull(invalidCdcCursorPositionBehavior, "invalidCdcCursorPositionBehavior");
@@ -312,7 +378,9 @@ public class ReadChangesUsingWriteAheadLogCDC {
     }
 
     /**
-     * Determines when Airbyte should flush the LSN of processed WAL logs in the source database. `After loading Data in the destination` is default. If `While reading Data` is selected, in case of a downstream failure (while loading data into the destination), next sync would result in a full sync.
+     * Determines when Airbyte should flush the LSN of processed WAL logs in the source database. `After
+     * loading Data in the destination` is default. If `While reading Data` is selected, in case of a
+     * downstream failure (while loading data into the destination), next sync would result in a full sync.
      */
     public ReadChangesUsingWriteAheadLogCDC withLsnCommitBehaviour(LSNCommitBehaviour lsnCommitBehaviour) {
         Utils.checkNotNull(lsnCommitBehaviour, "lsnCommitBehaviour");
@@ -320,8 +388,11 @@ public class ReadChangesUsingWriteAheadLogCDC {
         return this;
     }
 
+
     /**
-     * Determines when Airbyte should flush the LSN of processed WAL logs in the source database. `After loading Data in the destination` is default. If `While reading Data` is selected, in case of a downstream failure (while loading data into the destination), next sync would result in a full sync.
+     * Determines when Airbyte should flush the LSN of processed WAL logs in the source database. `After
+     * loading Data in the destination` is default. If `While reading Data` is selected, in case of a
+     * downstream failure (while loading data into the destination), next sync would result in a full sync.
      */
     public ReadChangesUsingWriteAheadLogCDC withLsnCommitBehaviour(Optional<? extends LSNCommitBehaviour> lsnCommitBehaviour) {
         Utils.checkNotNull(lsnCommitBehaviour, "lsnCommitBehaviour");
@@ -338,6 +409,7 @@ public class ReadChangesUsingWriteAheadLogCDC {
         return this;
     }
 
+
     /**
      * A logical decoding plugin installed on the PostgreSQL server.
      */
@@ -348,7 +420,9 @@ public class ReadChangesUsingWriteAheadLogCDC {
     }
 
     /**
-     * A Postgres publication used for consuming changes. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/postgres#step-4-create-publications-and-replication-identities-for-tables"&gt;publications and replication identities&lt;/a&gt;.
+     * A Postgres publication used for consuming changes. Read about <a
+     * href="https://docs.airbyte.com/integrations/sources/postgres#step-4-create-publications-and-replication-identities-for-tables">publications
+     * and replication identities</a>.
      */
     public ReadChangesUsingWriteAheadLogCDC withPublication(String publication) {
         Utils.checkNotNull(publication, "publication");
@@ -357,7 +431,8 @@ public class ReadChangesUsingWriteAheadLogCDC {
     }
 
     /**
-     * The size of the internal queue. This may interfere with memory consumption and efficiency of the connector, please be careful.
+     * The size of the internal queue. This may interfere with memory consumption and efficiency of the
+     * connector, please be careful.
      */
     public ReadChangesUsingWriteAheadLogCDC withQueueSize(long queueSize) {
         Utils.checkNotNull(queueSize, "queueSize");
@@ -365,8 +440,10 @@ public class ReadChangesUsingWriteAheadLogCDC {
         return this;
     }
 
+
     /**
-     * The size of the internal queue. This may interfere with memory consumption and efficiency of the connector, please be careful.
+     * The size of the internal queue. This may interfere with memory consumption and efficiency of the
+     * connector, please be careful.
      */
     public ReadChangesUsingWriteAheadLogCDC withQueueSize(Optional<Long> queueSize) {
         Utils.checkNotNull(queueSize, "queueSize");
@@ -375,7 +452,9 @@ public class ReadChangesUsingWriteAheadLogCDC {
     }
 
     /**
-     * A plugin logical replication slot. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/postgres#step-3-create-replication-slot"&gt;replication slots&lt;/a&gt;.
+     * A plugin logical replication slot. Read about <a
+     * href="https://docs.airbyte.com/integrations/sources/postgres#step-3-create-replication-slot">replication
+     * slots</a>.
      */
     public ReadChangesUsingWriteAheadLogCDC withReplicationSlot(String replicationSlot) {
         Utils.checkNotNull(replicationSlot, "replicationSlot");
@@ -383,7 +462,6 @@ public class ReadChangesUsingWriteAheadLogCDC {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -394,33 +472,26 @@ public class ReadChangesUsingWriteAheadLogCDC {
         }
         ReadChangesUsingWriteAheadLogCDC other = (ReadChangesUsingWriteAheadLogCDC) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.heartbeatActionQuery, other.heartbeatActionQuery) &&
-            Objects.deepEquals(this.initialLoadTimeoutHours, other.initialLoadTimeoutHours) &&
-            Objects.deepEquals(this.initialWaitingSeconds, other.initialWaitingSeconds) &&
-            Objects.deepEquals(this.invalidCdcCursorPositionBehavior, other.invalidCdcCursorPositionBehavior) &&
-            Objects.deepEquals(this.lsnCommitBehaviour, other.lsnCommitBehaviour) &&
-            Objects.deepEquals(this.method, other.method) &&
-            Objects.deepEquals(this.plugin, other.plugin) &&
-            Objects.deepEquals(this.publication, other.publication) &&
-            Objects.deepEquals(this.queueSize, other.queueSize) &&
-            Objects.deepEquals(this.replicationSlot, other.replicationSlot);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.heartbeatActionQuery, other.heartbeatActionQuery) &&
+            Utils.enhancedDeepEquals(this.initialLoadTimeoutHours, other.initialLoadTimeoutHours) &&
+            Utils.enhancedDeepEquals(this.initialWaitingSeconds, other.initialWaitingSeconds) &&
+            Utils.enhancedDeepEquals(this.invalidCdcCursorPositionBehavior, other.invalidCdcCursorPositionBehavior) &&
+            Utils.enhancedDeepEquals(this.lsnCommitBehaviour, other.lsnCommitBehaviour) &&
+            Utils.enhancedDeepEquals(this.method, other.method) &&
+            Utils.enhancedDeepEquals(this.plugin, other.plugin) &&
+            Utils.enhancedDeepEquals(this.publication, other.publication) &&
+            Utils.enhancedDeepEquals(this.queueSize, other.queueSize) &&
+            Utils.enhancedDeepEquals(this.replicationSlot, other.replicationSlot);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            heartbeatActionQuery,
-            initialLoadTimeoutHours,
-            initialWaitingSeconds,
-            invalidCdcCursorPositionBehavior,
-            lsnCommitBehaviour,
-            method,
-            plugin,
-            publication,
-            queueSize,
-            replicationSlot);
+        return Utils.enhancedHash(
+            additionalProperties, heartbeatActionQuery, initialLoadTimeoutHours,
+            initialWaitingSeconds, invalidCdcCursorPositionBehavior, lsnCommitBehaviour,
+            method, plugin, publication,
+            queueSize, replicationSlot);
     }
     
     @Override
@@ -438,29 +509,30 @@ public class ReadChangesUsingWriteAheadLogCDC {
                 "queueSize", queueSize,
                 "replicationSlot", replicationSlot);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<String> heartbeatActionQuery;
- 
+
         private Optional<Long> initialLoadTimeoutHours;
- 
+
         private Optional<Long> initialWaitingSeconds;
- 
+
         private Optional<? extends SourcePostgresInvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior;
- 
+
         private Optional<? extends LSNCommitBehaviour> lsnCommitBehaviour;
- 
+
         private Optional<? extends Plugin> plugin;
- 
+
         private String publication;
- 
+
         private Optional<Long> queueSize;
- 
+
         private String replicationSlot;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -481,8 +553,12 @@ public class ReadChangesUsingWriteAheadLogCDC {
             return this;
         }
 
+
         /**
-         * Specifies a query that the connector executes on the source database when the connector sends a heartbeat message. Please see the &lt;a href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-wal-disk-consumption-and-heartbeat-action-query"&gt;setup guide&lt;/a&gt; for how and when to configure this setting.
+         * Specifies a query that the connector executes on the source database when the connector sends a
+         * heartbeat message. Please see the <a
+         * href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-wal-disk-consumption-and-heartbeat-action-query">setup
+         * guide</a> for how and when to configure this setting.
          */
         public Builder heartbeatActionQuery(String heartbeatActionQuery) {
             Utils.checkNotNull(heartbeatActionQuery, "heartbeatActionQuery");
@@ -491,13 +567,17 @@ public class ReadChangesUsingWriteAheadLogCDC {
         }
 
         /**
-         * Specifies a query that the connector executes on the source database when the connector sends a heartbeat message. Please see the &lt;a href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-wal-disk-consumption-and-heartbeat-action-query"&gt;setup guide&lt;/a&gt; for how and when to configure this setting.
+         * Specifies a query that the connector executes on the source database when the connector sends a
+         * heartbeat message. Please see the <a
+         * href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-wal-disk-consumption-and-heartbeat-action-query">setup
+         * guide</a> for how and when to configure this setting.
          */
         public Builder heartbeatActionQuery(Optional<String> heartbeatActionQuery) {
             Utils.checkNotNull(heartbeatActionQuery, "heartbeatActionQuery");
             this.heartbeatActionQuery = heartbeatActionQuery;
             return this;
         }
+
 
         /**
          * The amount of time an initial load is allowed to continue for before catching up on CDC logs.
@@ -517,8 +597,14 @@ public class ReadChangesUsingWriteAheadLogCDC {
             return this;
         }
 
+
         /**
-         * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 1200 seconds. Valid range: 120 seconds to 2400 seconds. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-setting-up-initial-cdc-waiting-time"&gt;initial waiting time&lt;/a&gt;.
+         * The amount of time the connector will wait when it launches to determine if there is new data to
+         * sync or not. Defaults to 1200 seconds. Valid range: 120 seconds to 2400 seconds.
+         * 
+         * <p>Read about <a
+         * href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-setting-up-initial-cdc-waiting-time">initial
+         * waiting time</a>.
          */
         public Builder initialWaitingSeconds(long initialWaitingSeconds) {
             Utils.checkNotNull(initialWaitingSeconds, "initialWaitingSeconds");
@@ -527,7 +613,12 @@ public class ReadChangesUsingWriteAheadLogCDC {
         }
 
         /**
-         * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 1200 seconds. Valid range: 120 seconds to 2400 seconds. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-setting-up-initial-cdc-waiting-time"&gt;initial waiting time&lt;/a&gt;.
+         * The amount of time the connector will wait when it launches to determine if there is new data to
+         * sync or not. Defaults to 1200 seconds. Valid range: 120 seconds to 2400 seconds.
+         * 
+         * <p>Read about <a
+         * href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-setting-up-initial-cdc-waiting-time">initial
+         * waiting time</a>.
          */
         public Builder initialWaitingSeconds(Optional<Long> initialWaitingSeconds) {
             Utils.checkNotNull(initialWaitingSeconds, "initialWaitingSeconds");
@@ -535,8 +626,12 @@ public class ReadChangesUsingWriteAheadLogCDC {
             return this;
         }
 
+
         /**
-         * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
+         * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into
+         * the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being
+         * able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a
+         * refresh but could lead to higher cloud costs and data loss.
          */
         public Builder invalidCdcCursorPositionBehavior(SourcePostgresInvalidCDCPositionBehaviorAdvanced invalidCdcCursorPositionBehavior) {
             Utils.checkNotNull(invalidCdcCursorPositionBehavior, "invalidCdcCursorPositionBehavior");
@@ -545,7 +640,10 @@ public class ReadChangesUsingWriteAheadLogCDC {
         }
 
         /**
-         * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
+         * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into
+         * the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being
+         * able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a
+         * refresh but could lead to higher cloud costs and data loss.
          */
         public Builder invalidCdcCursorPositionBehavior(Optional<? extends SourcePostgresInvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior) {
             Utils.checkNotNull(invalidCdcCursorPositionBehavior, "invalidCdcCursorPositionBehavior");
@@ -553,8 +651,11 @@ public class ReadChangesUsingWriteAheadLogCDC {
             return this;
         }
 
+
         /**
-         * Determines when Airbyte should flush the LSN of processed WAL logs in the source database. `After loading Data in the destination` is default. If `While reading Data` is selected, in case of a downstream failure (while loading data into the destination), next sync would result in a full sync.
+         * Determines when Airbyte should flush the LSN of processed WAL logs in the source database. `After
+         * loading Data in the destination` is default. If `While reading Data` is selected, in case of a
+         * downstream failure (while loading data into the destination), next sync would result in a full sync.
          */
         public Builder lsnCommitBehaviour(LSNCommitBehaviour lsnCommitBehaviour) {
             Utils.checkNotNull(lsnCommitBehaviour, "lsnCommitBehaviour");
@@ -563,13 +664,16 @@ public class ReadChangesUsingWriteAheadLogCDC {
         }
 
         /**
-         * Determines when Airbyte should flush the LSN of processed WAL logs in the source database. `After loading Data in the destination` is default. If `While reading Data` is selected, in case of a downstream failure (while loading data into the destination), next sync would result in a full sync.
+         * Determines when Airbyte should flush the LSN of processed WAL logs in the source database. `After
+         * loading Data in the destination` is default. If `While reading Data` is selected, in case of a
+         * downstream failure (while loading data into the destination), next sync would result in a full sync.
          */
         public Builder lsnCommitBehaviour(Optional<? extends LSNCommitBehaviour> lsnCommitBehaviour) {
             Utils.checkNotNull(lsnCommitBehaviour, "lsnCommitBehaviour");
             this.lsnCommitBehaviour = lsnCommitBehaviour;
             return this;
         }
+
 
         /**
          * A logical decoding plugin installed on the PostgreSQL server.
@@ -589,8 +693,11 @@ public class ReadChangesUsingWriteAheadLogCDC {
             return this;
         }
 
+
         /**
-         * A Postgres publication used for consuming changes. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/postgres#step-4-create-publications-and-replication-identities-for-tables"&gt;publications and replication identities&lt;/a&gt;.
+         * A Postgres publication used for consuming changes. Read about <a
+         * href="https://docs.airbyte.com/integrations/sources/postgres#step-4-create-publications-and-replication-identities-for-tables">publications
+         * and replication identities</a>.
          */
         public Builder publication(String publication) {
             Utils.checkNotNull(publication, "publication");
@@ -598,8 +705,10 @@ public class ReadChangesUsingWriteAheadLogCDC {
             return this;
         }
 
+
         /**
-         * The size of the internal queue. This may interfere with memory consumption and efficiency of the connector, please be careful.
+         * The size of the internal queue. This may interfere with memory consumption and efficiency of the
+         * connector, please be careful.
          */
         public Builder queueSize(long queueSize) {
             Utils.checkNotNull(queueSize, "queueSize");
@@ -608,7 +717,8 @@ public class ReadChangesUsingWriteAheadLogCDC {
         }
 
         /**
-         * The size of the internal queue. This may interfere with memory consumption and efficiency of the connector, please be careful.
+         * The size of the internal queue. This may interfere with memory consumption and efficiency of the
+         * connector, please be careful.
          */
         public Builder queueSize(Optional<Long> queueSize) {
             Utils.checkNotNull(queueSize, "queueSize");
@@ -616,15 +726,18 @@ public class ReadChangesUsingWriteAheadLogCDC {
             return this;
         }
 
+
         /**
-         * A plugin logical replication slot. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/postgres#step-3-create-replication-slot"&gt;replication slots&lt;/a&gt;.
+         * A plugin logical replication slot. Read about <a
+         * href="https://docs.airbyte.com/integrations/sources/postgres#step-3-create-replication-slot">replication
+         * slots</a>.
          */
         public Builder replicationSlot(String replicationSlot) {
             Utils.checkNotNull(replicationSlot, "replicationSlot");
             this.replicationSlot = replicationSlot;
             return this;
         }
-        
+
         public ReadChangesUsingWriteAheadLogCDC build() {
             if (heartbeatActionQuery == null) {
                 heartbeatActionQuery = _SINGLETON_VALUE_HeartbeatActionQuery.value();
@@ -647,18 +760,14 @@ public class ReadChangesUsingWriteAheadLogCDC {
             if (queueSize == null) {
                 queueSize = _SINGLETON_VALUE_QueueSize.value();
             }
+
             return new ReadChangesUsingWriteAheadLogCDC(
-                heartbeatActionQuery,
-                initialLoadTimeoutHours,
-                initialWaitingSeconds,
-                invalidCdcCursorPositionBehavior,
-                lsnCommitBehaviour,
-                plugin,
-                publication,
-                queueSize,
-                replicationSlot)
+                heartbeatActionQuery, initialLoadTimeoutHours, initialWaitingSeconds,
+                invalidCdcCursorPositionBehavior, lsnCommitBehaviour, plugin,
+                publication, queueSize, replicationSlot)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_HeartbeatActionQuery =
                 new LazySingletonValue<>(

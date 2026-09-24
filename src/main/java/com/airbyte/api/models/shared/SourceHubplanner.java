@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceHubplanner {
-
     /**
      * Hubplanner API key. See https://github.com/hubplanner/API#authentication for more details.
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Hubplanner sourceType;
@@ -45,9 +45,10 @@ public class SourceHubplanner {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Hubplanner API key. See https://github.com/hubplanner/API#authentication for more details.
@@ -58,7 +59,6 @@ public class SourceHubplanner {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceHubplanner {
         }
         SourceHubplanner other = (SourceHubplanner) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, sourceType);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourceHubplanner {
                 "apiKey", apiKey,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Hubplanner API key. See https://github.com/hubplanner/API#authentication for more details.
@@ -103,11 +104,13 @@ public class SourceHubplanner {
             this.apiKey = apiKey;
             return this;
         }
-        
+
         public SourceHubplanner build() {
+
             return new SourceHubplanner(
                 apiKey);
         }
+
 
         private static final LazySingletonValue<Hubplanner> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

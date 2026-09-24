@@ -14,13 +14,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFromValue._Deserializer.class)
 public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFromValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFromValue(TypedObject value) {
         this.value = value;
@@ -28,12 +27,12 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilte
 
     public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFromValue of(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterInt64Value value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFromValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterInt64Value>(){}));
+        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFromValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFromValue of(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDoubleValue value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFromValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDoubleValue>(){}));
+        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFromValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -56,7 +55,7 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilte
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -67,12 +66,12 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilte
             return false;
         }
         SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFromValue other = (SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFromValue) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -80,8 +79,8 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilte
 
         public _Deserializer() {
             super(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFromValue.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDoubleValue>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterInt64Value>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterInt64Value>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDoubleValue>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -90,6 +89,6 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilte
         return Utils.toString(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFromValue.class,
                 "value", value);
     }
- 
+
 }
 

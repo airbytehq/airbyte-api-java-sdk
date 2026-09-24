@@ -16,11 +16,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceNetsuite {
 
+public class SourceNetsuite {
     /**
      * Consumer key associated with your integration
      */
@@ -34,7 +33,8 @@ public class SourceNetsuite {
     private String consumerSecret;
 
     /**
-     * The API names of the Netsuite objects you want to sync. Setting this speeds up the connection setup process by limiting the number of schemas that need to be retrieved from Netsuite.
+     * The API names of the Netsuite objects you want to sync. Setting this speeds up the connection setup
+     * process by limiting the number of schemas that need to be retrieved from Netsuite.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("object_types")
@@ -45,6 +45,7 @@ public class SourceNetsuite {
      */
     @JsonProperty("realm")
     private String realm;
+
 
     @JsonProperty("sourceType")
     private Netsuite sourceType;
@@ -68,7 +69,8 @@ public class SourceNetsuite {
     private String tokenSecret;
 
     /**
-     * The amount of days used to query the data with date chunks. Set smaller value, if you have lots of data.
+     * The amount of days used to query the data with date chunks. Set smaller value, if you have lots of
+     * data.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("window_in_days")
@@ -110,7 +112,9 @@ public class SourceNetsuite {
             String startDatetime,
             String tokenKey,
             String tokenSecret) {
-        this(consumerKey, consumerSecret, Optional.empty(), realm, startDatetime, tokenKey, tokenSecret, Optional.empty());
+        this(consumerKey, consumerSecret, Optional.empty(),
+            realm, startDatetime, tokenKey,
+            tokenSecret, Optional.empty());
     }
 
     /**
@@ -130,7 +134,8 @@ public class SourceNetsuite {
     }
 
     /**
-     * The API names of the Netsuite objects you want to sync. Setting this speeds up the connection setup process by limiting the number of schemas that need to be retrieved from Netsuite.
+     * The API names of the Netsuite objects you want to sync. Setting this speeds up the connection setup
+     * process by limiting the number of schemas that need to be retrieved from Netsuite.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -176,16 +181,18 @@ public class SourceNetsuite {
     }
 
     /**
-     * The amount of days used to query the data with date chunks. Set smaller value, if you have lots of data.
+     * The amount of days used to query the data with date chunks. Set smaller value, if you have lots of
+     * data.
      */
     @JsonIgnore
     public Optional<Long> windowInDays() {
         return windowInDays;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Consumer key associated with your integration
@@ -206,7 +213,8 @@ public class SourceNetsuite {
     }
 
     /**
-     * The API names of the Netsuite objects you want to sync. Setting this speeds up the connection setup process by limiting the number of schemas that need to be retrieved from Netsuite.
+     * The API names of the Netsuite objects you want to sync. Setting this speeds up the connection setup
+     * process by limiting the number of schemas that need to be retrieved from Netsuite.
      */
     public SourceNetsuite withObjectTypes(List<String> objectTypes) {
         Utils.checkNotNull(objectTypes, "objectTypes");
@@ -214,8 +222,10 @@ public class SourceNetsuite {
         return this;
     }
 
+
     /**
-     * The API names of the Netsuite objects you want to sync. Setting this speeds up the connection setup process by limiting the number of schemas that need to be retrieved from Netsuite.
+     * The API names of the Netsuite objects you want to sync. Setting this speeds up the connection setup
+     * process by limiting the number of schemas that need to be retrieved from Netsuite.
      */
     public SourceNetsuite withObjectTypes(Optional<? extends List<String>> objectTypes) {
         Utils.checkNotNull(objectTypes, "objectTypes");
@@ -260,7 +270,8 @@ public class SourceNetsuite {
     }
 
     /**
-     * The amount of days used to query the data with date chunks. Set smaller value, if you have lots of data.
+     * The amount of days used to query the data with date chunks. Set smaller value, if you have lots of
+     * data.
      */
     public SourceNetsuite withWindowInDays(long windowInDays) {
         Utils.checkNotNull(windowInDays, "windowInDays");
@@ -268,8 +279,10 @@ public class SourceNetsuite {
         return this;
     }
 
+
     /**
-     * The amount of days used to query the data with date chunks. Set smaller value, if you have lots of data.
+     * The amount of days used to query the data with date chunks. Set smaller value, if you have lots of
+     * data.
      */
     public SourceNetsuite withWindowInDays(Optional<Long> windowInDays) {
         Utils.checkNotNull(windowInDays, "windowInDays");
@@ -277,7 +290,6 @@ public class SourceNetsuite {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -288,29 +300,23 @@ public class SourceNetsuite {
         }
         SourceNetsuite other = (SourceNetsuite) o;
         return 
-            Objects.deepEquals(this.consumerKey, other.consumerKey) &&
-            Objects.deepEquals(this.consumerSecret, other.consumerSecret) &&
-            Objects.deepEquals(this.objectTypes, other.objectTypes) &&
-            Objects.deepEquals(this.realm, other.realm) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDatetime, other.startDatetime) &&
-            Objects.deepEquals(this.tokenKey, other.tokenKey) &&
-            Objects.deepEquals(this.tokenSecret, other.tokenSecret) &&
-            Objects.deepEquals(this.windowInDays, other.windowInDays);
+            Utils.enhancedDeepEquals(this.consumerKey, other.consumerKey) &&
+            Utils.enhancedDeepEquals(this.consumerSecret, other.consumerSecret) &&
+            Utils.enhancedDeepEquals(this.objectTypes, other.objectTypes) &&
+            Utils.enhancedDeepEquals(this.realm, other.realm) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDatetime, other.startDatetime) &&
+            Utils.enhancedDeepEquals(this.tokenKey, other.tokenKey) &&
+            Utils.enhancedDeepEquals(this.tokenSecret, other.tokenSecret) &&
+            Utils.enhancedDeepEquals(this.windowInDays, other.windowInDays);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            consumerKey,
-            consumerSecret,
-            objectTypes,
-            realm,
-            sourceType,
-            startDatetime,
-            tokenKey,
-            tokenSecret,
-            windowInDays);
+        return Utils.enhancedHash(
+            consumerKey, consumerSecret, objectTypes,
+            realm, sourceType, startDatetime,
+            tokenKey, tokenSecret, windowInDays);
     }
     
     @Override
@@ -326,28 +332,30 @@ public class SourceNetsuite {
                 "tokenSecret", tokenSecret,
                 "windowInDays", windowInDays);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String consumerKey;
- 
+
         private String consumerSecret;
- 
+
         private Optional<? extends List<String>> objectTypes = Optional.empty();
- 
+
         private String realm;
- 
+
         private String startDatetime;
- 
+
         private String tokenKey;
- 
+
         private String tokenSecret;
- 
+
         private Optional<Long> windowInDays;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Consumer key associated with your integration
@@ -358,6 +366,7 @@ public class SourceNetsuite {
             return this;
         }
 
+
         /**
          * Consumer secret associated with your integration
          */
@@ -367,8 +376,10 @@ public class SourceNetsuite {
             return this;
         }
 
+
         /**
-         * The API names of the Netsuite objects you want to sync. Setting this speeds up the connection setup process by limiting the number of schemas that need to be retrieved from Netsuite.
+         * The API names of the Netsuite objects you want to sync. Setting this speeds up the connection setup
+         * process by limiting the number of schemas that need to be retrieved from Netsuite.
          */
         public Builder objectTypes(List<String> objectTypes) {
             Utils.checkNotNull(objectTypes, "objectTypes");
@@ -377,13 +388,15 @@ public class SourceNetsuite {
         }
 
         /**
-         * The API names of the Netsuite objects you want to sync. Setting this speeds up the connection setup process by limiting the number of schemas that need to be retrieved from Netsuite.
+         * The API names of the Netsuite objects you want to sync. Setting this speeds up the connection setup
+         * process by limiting the number of schemas that need to be retrieved from Netsuite.
          */
         public Builder objectTypes(Optional<? extends List<String>> objectTypes) {
             Utils.checkNotNull(objectTypes, "objectTypes");
             this.objectTypes = objectTypes;
             return this;
         }
+
 
         /**
          * Netsuite realm e.g. 2344535, as for `production` or 2344535_SB1, as for the `sandbox`
@@ -394,6 +407,7 @@ public class SourceNetsuite {
             return this;
         }
 
+
         /**
          * Starting point for your data replication, in format of "YYYY-MM-DDTHH:mm:ssZ"
          */
@@ -402,6 +416,7 @@ public class SourceNetsuite {
             this.startDatetime = startDatetime;
             return this;
         }
+
 
         /**
          * Access token key
@@ -412,6 +427,7 @@ public class SourceNetsuite {
             return this;
         }
 
+
         /**
          * Access token secret
          */
@@ -421,8 +437,10 @@ public class SourceNetsuite {
             return this;
         }
 
+
         /**
-         * The amount of days used to query the data with date chunks. Set smaller value, if you have lots of data.
+         * The amount of days used to query the data with date chunks. Set smaller value, if you have lots of
+         * data.
          */
         public Builder windowInDays(long windowInDays) {
             Utils.checkNotNull(windowInDays, "windowInDays");
@@ -431,28 +449,26 @@ public class SourceNetsuite {
         }
 
         /**
-         * The amount of days used to query the data with date chunks. Set smaller value, if you have lots of data.
+         * The amount of days used to query the data with date chunks. Set smaller value, if you have lots of
+         * data.
          */
         public Builder windowInDays(Optional<Long> windowInDays) {
             Utils.checkNotNull(windowInDays, "windowInDays");
             this.windowInDays = windowInDays;
             return this;
         }
-        
+
         public SourceNetsuite build() {
             if (windowInDays == null) {
                 windowInDays = _SINGLETON_VALUE_WindowInDays.value();
             }
+
             return new SourceNetsuite(
-                consumerKey,
-                consumerSecret,
-                objectTypes,
-                realm,
-                startDatetime,
-                tokenKey,
-                tokenSecret,
-                windowInDays);
+                consumerKey, consumerSecret, objectTypes,
+                realm, startDatetime, tokenKey,
+                tokenSecret, windowInDays);
         }
+
 
         private static final LazySingletonValue<Netsuite> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum Aviationstack {
     @JsonValue
     private final String value;
 
-    private Aviationstack(String value) {
+    Aviationstack(String value) {
         this.value = value;
     }
     

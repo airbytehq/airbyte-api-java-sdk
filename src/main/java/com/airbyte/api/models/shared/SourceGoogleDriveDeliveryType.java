@@ -14,7 +14,7 @@ public enum SourceGoogleDriveDeliveryType {
     @JsonValue
     private final String value;
 
-    private SourceGoogleDriveDeliveryType(String value) {
+    SourceGoogleDriveDeliveryType(String value) {
         this.value = value;
     }
     

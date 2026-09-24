@@ -12,10 +12,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceAircall {
-
     /**
      * App ID found at settings https://dashboard.aircall.io/integrations/api-keys
      */
@@ -27,6 +26,7 @@ public class SourceAircall {
      */
     @JsonProperty("api_token")
     private String apiToken;
+
 
     @JsonProperty("sourceType")
     private Aircall sourceType;
@@ -80,9 +80,10 @@ public class SourceAircall {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * App ID found at settings https://dashboard.aircall.io/integrations/api-keys
@@ -111,7 +112,6 @@ public class SourceAircall {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -122,18 +122,16 @@ public class SourceAircall {
         }
         SourceAircall other = (SourceAircall) o;
         return 
-            Objects.deepEquals(this.apiId, other.apiId) &&
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiId, other.apiId) &&
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiId,
-            apiToken,
-            sourceType,
+        return Utils.enhancedHash(
+            apiId, apiToken, sourceType,
             startDate);
     }
     
@@ -145,18 +143,20 @@ public class SourceAircall {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiId;
- 
+
         private String apiToken;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * App ID found at settings https://dashboard.aircall.io/integrations/api-keys
@@ -167,6 +167,7 @@ public class SourceAircall {
             return this;
         }
 
+
         /**
          * App token found at settings (Ref- https://dashboard.aircall.io/integrations/api-keys)
          */
@@ -176,6 +177,7 @@ public class SourceAircall {
             return this;
         }
 
+
         /**
          * Date time filter for incremental filter, Specify which date to extract from.
          */
@@ -184,13 +186,13 @@ public class SourceAircall {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceAircall build() {
+
             return new SourceAircall(
-                apiId,
-                apiToken,
-                startDate);
+                apiId, apiToken, startDate);
         }
+
 
         private static final LazySingletonValue<Aircall> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum Persona {
     @JsonValue
     private final String value;
 
-    private Persona(String value) {
+    Persona(String value) {
         this.value = value;
     }
     

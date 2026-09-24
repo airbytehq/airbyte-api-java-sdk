@@ -1,0 +1,9 @@
+# DestinationHubspotNone
+
+
+## Fields
+
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `additionalProperties`                                                                           | Map\<String, *Object*>                                                                           | :heavy_minus_sign:                                                                               | N/A                                                                                              |
+| `storageType`                                                                                    | [Optional\<DestinationHubspotStorageType>](../../models/shared/DestinationHubspotStorageType.md) | :heavy_minus_sign:                                                                               | N/A                                                                                              |

@@ -14,7 +14,7 @@ public enum Cin7 {
     @JsonValue
     private final String value;
 
-    private Cin7(String value) {
+    Cin7(String value) {
         this.value = value;
     }
     

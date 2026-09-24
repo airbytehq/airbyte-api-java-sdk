@@ -14,16 +14,17 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class AccessToken {
 
+public class AccessToken {
     /**
-     * Drift Access Token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/drift"&gt;docs&lt;/a&gt; for more information on how to generate this key.
+     * Drift Access Token. See the <a href="https://docs.airbyte.com/integrations/sources/drift">docs</a>
+     * for more information on how to generate this key.
      */
     @JsonProperty("access_token")
     private String accessToken;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
@@ -38,7 +39,8 @@ public class AccessToken {
     }
 
     /**
-     * Drift Access Token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/drift"&gt;docs&lt;/a&gt; for more information on how to generate this key.
+     * Drift Access Token. See the <a href="https://docs.airbyte.com/integrations/sources/drift">docs</a>
+     * for more information on how to generate this key.
      */
     @JsonIgnore
     public String accessToken() {
@@ -51,12 +53,14 @@ public class AccessToken {
         return (Optional<SourceDriftSchemasCredentials>) credentials;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Drift Access Token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/drift"&gt;docs&lt;/a&gt; for more information on how to generate this key.
+     * Drift Access Token. See the <a href="https://docs.airbyte.com/integrations/sources/drift">docs</a>
+     * for more information on how to generate this key.
      */
     public AccessToken withAccessToken(String accessToken) {
         Utils.checkNotNull(accessToken, "accessToken");
@@ -64,7 +68,6 @@ public class AccessToken {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -75,15 +78,14 @@ public class AccessToken {
         }
         AccessToken other = (AccessToken) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.credentials, other.credentials);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            credentials);
+        return Utils.enhancedHash(
+            accessToken, credentials);
     }
     
     @Override
@@ -92,28 +94,33 @@ public class AccessToken {
                 "accessToken", accessToken,
                 "credentials", credentials);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Drift Access Token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/drift"&gt;docs&lt;/a&gt; for more information on how to generate this key.
+         * Drift Access Token. See the <a href="https://docs.airbyte.com/integrations/sources/drift">docs</a>
+         * for more information on how to generate this key.
          */
         public Builder accessToken(String accessToken) {
             Utils.checkNotNull(accessToken, "accessToken");
             this.accessToken = accessToken;
             return this;
         }
-        
+
         public AccessToken build() {
+
             return new AccessToken(
                 accessToken);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceDriftSchemasCredentials>> _SINGLETON_VALUE_Credentials =
                 new LazySingletonValue<>(

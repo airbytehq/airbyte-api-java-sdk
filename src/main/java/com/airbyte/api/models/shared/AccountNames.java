@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 /**
  * AccountNames
@@ -17,7 +16,6 @@ import java.util.Objects;
  * <p>Account Names Predicates Config.
  */
 public class AccountNames {
-
     /**
      * Account Name is a string value for comparing with the specified predicate.
      */
@@ -25,7 +23,10 @@ public class AccountNames {
     private String name;
 
     /**
-     * An Operator that will be used to filter accounts. The Contains predicate has features for matching words, matching inflectional forms of words, searching using wildcard characters, and searching using proximity. The Equals is used to return all rows where account name is equal(=) to the string that you provided
+     * An Operator that will be used to filter accounts. The Contains predicate has features for matching
+     * words, matching inflectional forms of words, searching using wildcard characters, and searching
+     * using proximity. The Equals is used to return all rows where account name is equal(=) to the string
+     * that you provided
      */
     @JsonProperty("operator")
     private Operator operator;
@@ -49,16 +50,20 @@ public class AccountNames {
     }
 
     /**
-     * An Operator that will be used to filter accounts. The Contains predicate has features for matching words, matching inflectional forms of words, searching using wildcard characters, and searching using proximity. The Equals is used to return all rows where account name is equal(=) to the string that you provided
+     * An Operator that will be used to filter accounts. The Contains predicate has features for matching
+     * words, matching inflectional forms of words, searching using wildcard characters, and searching
+     * using proximity. The Equals is used to return all rows where account name is equal(=) to the string
+     * that you provided
      */
     @JsonIgnore
     public Operator operator() {
         return operator;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Account Name is a string value for comparing with the specified predicate.
@@ -70,7 +75,10 @@ public class AccountNames {
     }
 
     /**
-     * An Operator that will be used to filter accounts. The Contains predicate has features for matching words, matching inflectional forms of words, searching using wildcard characters, and searching using proximity. The Equals is used to return all rows where account name is equal(=) to the string that you provided
+     * An Operator that will be used to filter accounts. The Contains predicate has features for matching
+     * words, matching inflectional forms of words, searching using wildcard characters, and searching
+     * using proximity. The Equals is used to return all rows where account name is equal(=) to the string
+     * that you provided
      */
     public AccountNames withOperator(Operator operator) {
         Utils.checkNotNull(operator, "operator");
@@ -78,7 +86,6 @@ public class AccountNames {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -89,15 +96,14 @@ public class AccountNames {
         }
         AccountNames other = (AccountNames) o;
         return 
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.operator, other.operator);
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.operator, other.operator);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            name,
-            operator);
+        return Utils.enhancedHash(
+            name, operator);
     }
     
     @Override
@@ -106,16 +112,18 @@ public class AccountNames {
                 "name", name,
                 "operator", operator);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String name;
- 
+
         private Operator operator;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Account Name is a string value for comparing with the specified predicate.
@@ -126,19 +134,24 @@ public class AccountNames {
             return this;
         }
 
+
         /**
-         * An Operator that will be used to filter accounts. The Contains predicate has features for matching words, matching inflectional forms of words, searching using wildcard characters, and searching using proximity. The Equals is used to return all rows where account name is equal(=) to the string that you provided
+         * An Operator that will be used to filter accounts. The Contains predicate has features for matching
+         * words, matching inflectional forms of words, searching using wildcard characters, and searching
+         * using proximity. The Equals is used to return all rows where account name is equal(=) to the string
+         * that you provided
          */
         public Builder operator(Operator operator) {
             Utils.checkNotNull(operator, "operator");
             this.operator = operator;
             return this;
         }
-        
+
         public AccountNames build() {
+
             return new AccountNames(
-                name,
-                operator);
+                name, operator);
         }
+
     }
 }

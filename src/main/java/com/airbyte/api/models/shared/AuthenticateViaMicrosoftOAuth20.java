@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class AuthenticateViaMicrosoftOAuth20 {
 
@@ -42,7 +42,10 @@ public class AuthenticateViaMicrosoftOAuth20 {
     private String refreshToken;
 
     /**
-     * A globally unique identifier (GUID) that is different than your organization name or domain. Follow these steps to obtain: open one of the Teams where you belong inside the Teams Application -&gt; Click on the … next to the Team title -&gt; Click on Get link to team -&gt; Copy the link to the team and grab the tenant ID form the URL
+     * A globally unique identifier (GUID) that is different than your organization name or domain. Follow
+     * these steps to obtain: open one of the Teams where you belong inside the Teams Application -&gt;
+     * Click on the … next to the Team title -&gt; Click on Get link to team -&gt; Copy the link to the
+     * team and grab the tenant ID form the URL
      */
     @JsonProperty("tenant_id")
     private String tenantId;
@@ -95,16 +98,20 @@ public class AuthenticateViaMicrosoftOAuth20 {
     }
 
     /**
-     * A globally unique identifier (GUID) that is different than your organization name or domain. Follow these steps to obtain: open one of the Teams where you belong inside the Teams Application -&gt; Click on the … next to the Team title -&gt; Click on Get link to team -&gt; Copy the link to the team and grab the tenant ID form the URL
+     * A globally unique identifier (GUID) that is different than your organization name or domain. Follow
+     * these steps to obtain: open one of the Teams where you belong inside the Teams Application -&gt;
+     * Click on the … next to the Team title -&gt; Click on Get link to team -&gt; Copy the link to the
+     * team and grab the tenant ID form the URL
      */
     @JsonIgnore
     public String tenantId() {
         return tenantId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Client ID of your Microsoft Teams developer application.
@@ -134,7 +141,10 @@ public class AuthenticateViaMicrosoftOAuth20 {
     }
 
     /**
-     * A globally unique identifier (GUID) that is different than your organization name or domain. Follow these steps to obtain: open one of the Teams where you belong inside the Teams Application -&gt; Click on the … next to the Team title -&gt; Click on Get link to team -&gt; Copy the link to the team and grab the tenant ID form the URL
+     * A globally unique identifier (GUID) that is different than your organization name or domain. Follow
+     * these steps to obtain: open one of the Teams where you belong inside the Teams Application -&gt;
+     * Click on the … next to the Team title -&gt; Click on Get link to team -&gt; Copy the link to the
+     * team and grab the tenant ID form the URL
      */
     public AuthenticateViaMicrosoftOAuth20 withTenantId(String tenantId) {
         Utils.checkNotNull(tenantId, "tenantId");
@@ -142,7 +152,6 @@ public class AuthenticateViaMicrosoftOAuth20 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -153,21 +162,18 @@ public class AuthenticateViaMicrosoftOAuth20 {
         }
         AuthenticateViaMicrosoftOAuth20 other = (AuthenticateViaMicrosoftOAuth20) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken) &&
-            Objects.deepEquals(this.tenantId, other.tenantId);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.tenantId, other.tenantId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            clientId,
-            clientSecret,
-            refreshToken,
-            tenantId);
+        return Utils.enhancedHash(
+            authType, clientId, clientSecret,
+            refreshToken, tenantId);
     }
     
     @Override
@@ -179,20 +185,22 @@ public class AuthenticateViaMicrosoftOAuth20 {
                 "refreshToken", refreshToken,
                 "tenantId", tenantId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String refreshToken;
- 
+
         private String tenantId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Client ID of your Microsoft Teams developer application.
@@ -203,6 +211,7 @@ public class AuthenticateViaMicrosoftOAuth20 {
             return this;
         }
 
+
         /**
          * The Client Secret of your Microsoft Teams developer application.
          */
@@ -211,6 +220,7 @@ public class AuthenticateViaMicrosoftOAuth20 {
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         /**
          * A Refresh Token to renew the expired Access Token.
@@ -221,22 +231,26 @@ public class AuthenticateViaMicrosoftOAuth20 {
             return this;
         }
 
+
         /**
-         * A globally unique identifier (GUID) that is different than your organization name or domain. Follow these steps to obtain: open one of the Teams where you belong inside the Teams Application -&gt; Click on the … next to the Team title -&gt; Click on Get link to team -&gt; Copy the link to the team and grab the tenant ID form the URL
+         * A globally unique identifier (GUID) that is different than your organization name or domain. Follow
+         * these steps to obtain: open one of the Teams where you belong inside the Teams Application -&gt;
+         * Click on the … next to the Team title -&gt; Click on Get link to team -&gt; Copy the link to the
+         * team and grab the tenant ID form the URL
          */
         public Builder tenantId(String tenantId) {
             Utils.checkNotNull(tenantId, "tenantId");
             this.tenantId = tenantId;
             return this;
         }
-        
+
         public AuthenticateViaMicrosoftOAuth20 build() {
+
             return new AuthenticateViaMicrosoftOAuth20(
-                clientId,
-                clientSecret,
-                refreshToken,
+                clientId, clientSecret, refreshToken,
                 tenantId);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceMicrosoftTeamsAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

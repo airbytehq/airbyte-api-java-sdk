@@ -21,7 +21,7 @@ public enum StatisticsInterval {
     @JsonValue
     private final String value;
 
-    private StatisticsInterval(String value) {
+    StatisticsInterval(String value) {
         this.value = value;
     }
     

@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceZenefits {
 
@@ -19,7 +19,8 @@ public class SourceZenefits {
     private Zenefits sourceType;
 
     /**
-     * Use Sync with Zenefits button on the link given on the readme file, and get the token to access the api
+     * Use Sync with Zenefits button on the link given on the readme file, and get the token to access the
+     * api
      */
     @JsonProperty("token")
     private String token;
@@ -38,19 +39,22 @@ public class SourceZenefits {
     }
 
     /**
-     * Use Sync with Zenefits button on the link given on the readme file, and get the token to access the api
+     * Use Sync with Zenefits button on the link given on the readme file, and get the token to access the
+     * api
      */
     @JsonIgnore
     public String token() {
         return token;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Use Sync with Zenefits button on the link given on the readme file, and get the token to access the api
+     * Use Sync with Zenefits button on the link given on the readme file, and get the token to access the
+     * api
      */
     public SourceZenefits withToken(String token) {
         Utils.checkNotNull(token, "token");
@@ -58,7 +62,6 @@ public class SourceZenefits {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +72,14 @@ public class SourceZenefits {
         }
         SourceZenefits other = (SourceZenefits) o;
         return 
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.token, other.token);
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.token, other.token);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            sourceType,
-            token);
+        return Utils.enhancedHash(
+            sourceType, token);
     }
     
     @Override
@@ -86,28 +88,33 @@ public class SourceZenefits {
                 "sourceType", sourceType,
                 "token", token);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String token;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Use Sync with Zenefits button on the link given on the readme file, and get the token to access the api
+         * Use Sync with Zenefits button on the link given on the readme file, and get the token to access the
+         * api
          */
         public Builder token(String token) {
             Utils.checkNotNull(token, "token");
             this.token = token;
             return this;
         }
-        
+
         public SourceZenefits build() {
+
             return new SourceZenefits(
                 token);
         }
+
 
         private static final LazySingletonValue<Zenefits> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

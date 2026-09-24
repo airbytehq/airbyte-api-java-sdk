@@ -13,11 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceGreythr {
 
+public class SourceGreythr {
     /**
      * https://api.greythr.com
      */
@@ -30,12 +29,15 @@ public class SourceGreythr {
     @JsonProperty("domain")
     private String domain;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
     private Optional<String> password;
 
+
     @JsonProperty("sourceType")
     private Greythr sourceType;
+
 
     @JsonProperty("username")
     private String username;
@@ -61,7 +63,8 @@ public class SourceGreythr {
             String baseUrl,
             String domain,
             String username) {
-        this(baseUrl, domain, Optional.empty(), username);
+        this(baseUrl, domain, Optional.empty(),
+            username);
     }
 
     /**
@@ -95,9 +98,10 @@ public class SourceGreythr {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * https://api.greythr.com
@@ -123,6 +127,7 @@ public class SourceGreythr {
         return this;
     }
 
+
     public SourceGreythr withPassword(Optional<String> password) {
         Utils.checkNotNull(password, "password");
         this.password = password;
@@ -135,7 +140,6 @@ public class SourceGreythr {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -146,21 +150,18 @@ public class SourceGreythr {
         }
         SourceGreythr other = (SourceGreythr) o;
         return 
-            Objects.deepEquals(this.baseUrl, other.baseUrl) &&
-            Objects.deepEquals(this.domain, other.domain) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.baseUrl, other.baseUrl) &&
+            Utils.enhancedDeepEquals(this.domain, other.domain) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            baseUrl,
-            domain,
-            password,
-            sourceType,
-            username);
+        return Utils.enhancedHash(
+            baseUrl, domain, password,
+            sourceType, username);
     }
     
     @Override
@@ -172,20 +173,22 @@ public class SourceGreythr {
                 "sourceType", sourceType,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String baseUrl;
- 
+
         private String domain;
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * https://api.greythr.com
@@ -196,6 +199,7 @@ public class SourceGreythr {
             return this;
         }
 
+
         /**
          * Your GreytHR Host URL
          */
@@ -204,6 +208,7 @@ public class SourceGreythr {
             this.domain = domain;
             return this;
         }
+
 
         public Builder password(String password) {
             Utils.checkNotNull(password, "password");
@@ -217,19 +222,20 @@ public class SourceGreythr {
             return this;
         }
 
+
         public Builder username(String username) {
             Utils.checkNotNull(username, "username");
             this.username = username;
             return this;
         }
-        
+
         public SourceGreythr build() {
+
             return new SourceGreythr(
-                baseUrl,
-                domain,
-                password,
+                baseUrl, domain, password,
                 username);
         }
+
 
         private static final LazySingletonValue<Greythr> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

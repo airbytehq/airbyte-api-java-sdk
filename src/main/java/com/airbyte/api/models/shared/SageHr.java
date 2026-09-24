@@ -14,7 +14,7 @@ public enum SageHr {
     @JsonValue
     private final String value;
 
-    private SageHr(String value) {
+    SageHr(String value) {
         this.value = value;
     }
     

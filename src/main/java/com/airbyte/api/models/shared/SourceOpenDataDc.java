@@ -13,8 +13,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceOpenDataDc {
 
@@ -34,6 +34,7 @@ public class SourceOpenDataDc {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("marid")
     private Optional<String> marid;
+
 
     @JsonProperty("sourceType")
     private OpenDataDc sourceType;
@@ -83,9 +84,10 @@ public class SourceOpenDataDc {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceOpenDataDc withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -101,6 +103,7 @@ public class SourceOpenDataDc {
         this.location = Optional.ofNullable(location);
         return this;
     }
+
 
     /**
      * address or place or block
@@ -120,6 +123,7 @@ public class SourceOpenDataDc {
         return this;
     }
 
+
     /**
      * A unique identifier (Master Address Repository).
      */
@@ -129,7 +133,6 @@ public class SourceOpenDataDc {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -140,18 +143,16 @@ public class SourceOpenDataDc {
         }
         SourceOpenDataDc other = (SourceOpenDataDc) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.location, other.location) &&
-            Objects.deepEquals(this.marid, other.marid) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.location, other.location) &&
+            Utils.enhancedDeepEquals(this.marid, other.marid) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            location,
-            marid,
+        return Utils.enhancedHash(
+            apiKey, location, marid,
             sourceType);
     }
     
@@ -163,24 +164,27 @@ public class SourceOpenDataDc {
                 "marid", marid,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> location = Optional.empty();
- 
+
         private Optional<String> marid = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * address or place or block
@@ -200,6 +204,7 @@ public class SourceOpenDataDc {
             return this;
         }
 
+
         /**
          * A unique identifier (Master Address Repository).
          */
@@ -217,13 +222,13 @@ public class SourceOpenDataDc {
             this.marid = marid;
             return this;
         }
-        
+
         public SourceOpenDataDc build() {
+
             return new SourceOpenDataDc(
-                apiKey,
-                location,
-                marid);
+                apiKey, location, marid);
         }
+
 
         private static final LazySingletonValue<OpenDataDc> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

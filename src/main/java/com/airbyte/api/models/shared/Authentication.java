@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * Authentication
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class Authentication {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private Authentication(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class Authentication {
 
     public static Authentication of(OAuth2Recommended value) {
         Utils.checkNotNull(value, "value");
-        return new Authentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<OAuth2Recommended>(){}));
+        return new Authentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static Authentication of(PersonalAccessToken value) {
         Utils.checkNotNull(value, "value");
-        return new Authentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<PersonalAccessToken>(){}));
+        return new Authentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class Authentication {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class Authentication {
             return false;
         }
         Authentication other = (Authentication) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -95,6 +94,6 @@ public class Authentication {
         return Utils.toString(Authentication.class,
                 "value", value);
     }
- 
+
 }
 

@@ -1,0 +1,11 @@
+# SourceDatagen
+
+
+## Fields
+
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `concurrency`                                                                                  | *Optional\<Long>*                                                                              | :heavy_minus_sign:                                                                             | Maximum number of concurrent data generators. Leave empty to let Airbyte optimize performance. |
+| `flavor`                                                                                       | [DataGenerationType](../../models/shared/DataGenerationType.md)                                | :heavy_check_mark:                                                                             | Different patterns for generating data                                                         |
+| `maxRecords`                                                                                   | *Optional\<Long>*                                                                              | :heavy_minus_sign:                                                                             | The number of record messages to emit from this connector. Min 1. Max 100 billion.             |
+| `sourceType`                                                                                   | [Datagen](../../models/shared/Datagen.md)                                                      | :heavy_check_mark:                                                                             | N/A                                                                                            |

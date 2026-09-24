@@ -20,7 +20,7 @@ public enum SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayValidEnums {
     @JsonValue
     private final String value;
 
-    private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayValidEnums(String value) {
+    SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayValidEnums(String value) {
         this.value = value;
     }
     

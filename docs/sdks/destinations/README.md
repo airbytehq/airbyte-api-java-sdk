@@ -1,5 +1,4 @@
 # Destinations
-(*destinations()*)
 
 ## Overview
 
@@ -16,8 +15,9 @@
 
 Creates a destination given a name, workspace id, and a json blob containing the configuration for the source.
 
-### Example Usage
+### Example Usage: Destination Creation Request Example
 
+<!-- UsageSnippet language="java" operationID="createDestination" method="post" path="/destinations" example="Destination Creation Request Example" -->
 ```java
 package hello.world;
 
@@ -40,10 +40,8 @@ public class Application {
             .build();
 
         DestinationCreateRequest req = DestinationCreateRequest.builder()
-                .configuration(DestinationConfiguration.of(DestinationOracle.builder()
-                    .host("instructive-mainstream.com")
-                    .sid("<id>")
-                    .username("Robert.Legros98")
+                .configuration(DestinationConfiguration.of(DestinationElasticsearch.builder()
+                    .endpoint("<value>")
                     .build()))
                 .name("Postgres")
                 .workspaceId("2155ae5a-de39-4808-af6a-16fe7b8b4ed2")
@@ -54,7 +52,50 @@ public class Application {
                 .call();
 
         if (res.destinationResponse().isPresent()) {
-            // handle response
+            System.out.println(res.destinationResponse().get());
+        }
+    }
+}
+```
+### Example Usage: Destination Creation Response Example
+
+<!-- UsageSnippet language="java" operationID="createDestination" method="post" path="/destinations" example="Destination Creation Response Example" -->
+```java
+package hello.world;
+
+import com.airbyte.api.Airbyte;
+import com.airbyte.api.models.operations.CreateDestinationResponse;
+import com.airbyte.api.models.shared.*;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        Airbyte sdk = Airbyte.builder()
+                .security(Security.builder()
+                    .basicAuth(SchemeBasicAuth.builder()
+                        .password("")
+                        .username("")
+                        .build())
+                    .build())
+            .build();
+
+        DestinationCreateRequest req = DestinationCreateRequest.builder()
+                .configuration(DestinationConfiguration.of(DestinationTimeplus.builder()
+                    .apikey("<value>")
+                    .endpoint("https://us-west-2.timeplus.cloud/workspace_id")
+                    .build()))
+                .name("<value>")
+                .workspaceId("dc693cc0-960d-4c6c-9d1b-05e8bf0c96ba")
+                .build();
+
+        CreateDestinationResponse res = sdk.destinations().createDestination()
+                .request(req)
+                .call();
+
+        if (res.destinationResponse().isPresent()) {
+            System.out.println(res.destinationResponse().get());
         }
     }
 }
@@ -82,6 +123,7 @@ Delete a Destination
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="deleteDestination" method="delete" path="/destinations/{destinationId}" -->
 ```java
 package hello.world;
 
@@ -140,6 +182,7 @@ Get Destination details
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="getDestination" method="get" path="/destinations/{destinationId}" example="Destination Get Response Example" -->
 ```java
 package hello.world;
 
@@ -172,7 +215,7 @@ public class Application {
                 .call();
 
         if (res.destinationResponse().isPresent()) {
-            // handle response
+            System.out.println(res.destinationResponse().get());
         }
     }
 }
@@ -200,6 +243,7 @@ List destinations
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="listDestinations" method="get" path="/destinations" -->
 ```java
 package hello.world;
 
@@ -231,7 +275,7 @@ public class Application {
                 .call();
 
         if (res.destinationsResponse().isPresent()) {
-            // handle response
+            System.out.println(res.destinationsResponse().get());
         }
     }
 }
@@ -257,8 +301,9 @@ public class Application {
 
 Update a Destination
 
-### Example Usage
+### Example Usage: Destination Update Request Example
 
+<!-- UsageSnippet language="java" operationID="patchDestination" method="patch" path="/destinations/{destinationId}" example="Destination Update Request Example" -->
 ```java
 package hello.world;
 
@@ -284,9 +329,8 @@ public class Application {
         PatchDestinationRequest req = PatchDestinationRequest.builder()
                 .destinationId("<value>")
                 .destinationPatchRequest(DestinationPatchRequest.builder()
-                    .configuration(DestinationConfiguration.of(DestinationDeepset.builder()
-                        .apiKey("<value>")
-                        .workspace("<value>")
+                    .configuration(DestinationConfiguration.of(DestinationDuckdb.builder()
+                        .destinationPath("/local/destination.duckdb")
                         .build()))
                     .name("My Destination")
                     .build())
@@ -297,7 +341,55 @@ public class Application {
                 .call();
 
         if (res.destinationResponse().isPresent()) {
-            // handle response
+            System.out.println(res.destinationResponse().get());
+        }
+    }
+}
+```
+### Example Usage: Destination Update Response Example
+
+<!-- UsageSnippet language="java" operationID="patchDestination" method="patch" path="/destinations/{destinationId}" example="Destination Update Response Example" -->
+```java
+package hello.world;
+
+import com.airbyte.api.Airbyte;
+import com.airbyte.api.models.operations.PatchDestinationRequest;
+import com.airbyte.api.models.operations.PatchDestinationResponse;
+import com.airbyte.api.models.shared.*;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        Airbyte sdk = Airbyte.builder()
+                .security(Security.builder()
+                    .basicAuth(SchemeBasicAuth.builder()
+                        .password("")
+                        .username("")
+                        .build())
+                    .build())
+            .build();
+
+        PatchDestinationRequest req = PatchDestinationRequest.builder()
+                .destinationId("<value>")
+                .destinationPatchRequest(DestinationPatchRequest.builder()
+                    .configuration(DestinationConfiguration.of(DestinationHubspot.builder()
+                        .credentials(DestinationHubspotCredentials.of(OAuth.builder()
+                            .clientId("<id>")
+                            .clientSecret("<value>")
+                            .refreshToken("<value>")
+                            .build()))
+                        .build()))
+                    .build())
+                .build();
+
+        PatchDestinationResponse res = sdk.destinations().patchDestination()
+                .request(req)
+                .call();
+
+        if (res.destinationResponse().isPresent()) {
+            System.out.println(res.destinationResponse().get());
         }
     }
 }
@@ -323,8 +415,9 @@ public class Application {
 
 Update a Destination and fully overwrite it
 
-### Example Usage
+### Example Usage: Destination Update Request Example
 
+<!-- UsageSnippet language="java" operationID="putDestination" method="put" path="/destinations/{destinationId}" example="Destination Update Request Example" -->
 ```java
 package hello.world;
 
@@ -350,10 +443,11 @@ public class Application {
         PutDestinationRequest req = PutDestinationRequest.builder()
                 .destinationId("<value>")
                 .destinationPutRequest(DestinationPutRequest.builder()
-                    .configuration(DestinationConfiguration.of(DestinationClickhouse.builder()
-                        .database("<value>")
-                        .host("urban-receptor.org")
-                        .username("Kaylie_Terry")
+                    .configuration(DestinationConfiguration.of(DestinationSftpJson.builder()
+                        .destinationPath("/json_data")
+                        .host("slight-consistency.info")
+                        .password("TRmq8ozhIC5jwDd")
+                        .username("Easton_Wilderman")
                         .build()))
                     .name("My Destination")
                     .build())
@@ -364,7 +458,54 @@ public class Application {
                 .call();
 
         if (res.destinationResponse().isPresent()) {
-            // handle response
+            System.out.println(res.destinationResponse().get());
+        }
+    }
+}
+```
+### Example Usage: Destination Update Response Example
+
+<!-- UsageSnippet language="java" operationID="putDestination" method="put" path="/destinations/{destinationId}" example="Destination Update Response Example" -->
+```java
+package hello.world;
+
+import com.airbyte.api.Airbyte;
+import com.airbyte.api.models.operations.PutDestinationRequest;
+import com.airbyte.api.models.operations.PutDestinationResponse;
+import com.airbyte.api.models.shared.*;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        Airbyte sdk = Airbyte.builder()
+                .security(Security.builder()
+                    .basicAuth(SchemeBasicAuth.builder()
+                        .password("")
+                        .username("")
+                        .build())
+                    .build())
+            .build();
+
+        PutDestinationRequest req = PutDestinationRequest.builder()
+                .destinationId("<value>")
+                .destinationPutRequest(DestinationPutRequest.builder()
+                    .configuration(DestinationConfiguration.of(DestinationSalesforce.builder()
+                        .clientId("<id>")
+                        .clientSecret("<value>")
+                        .refreshToken("<value>")
+                        .build()))
+                    .name("<value>")
+                    .build())
+                .build();
+
+        PutDestinationResponse res = sdk.destinations().putDestination()
+                .request(req)
+                .call();
+
+        if (res.destinationResponse().isPresent()) {
+            System.out.println(res.destinationResponse().get());
         }
     }
 }

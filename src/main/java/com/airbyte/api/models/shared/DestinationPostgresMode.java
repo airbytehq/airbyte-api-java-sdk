@@ -14,7 +14,7 @@ public enum DestinationPostgresMode {
     @JsonValue
     private final String value;
 
-    private DestinationPostgresMode(String value) {
+    DestinationPostgresMode(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum WhenIWork {
     @JsonValue
     private final String value;
 
-    private WhenIWork(String value) {
+    WhenIWork(String value) {
         this.value = value;
     }
     

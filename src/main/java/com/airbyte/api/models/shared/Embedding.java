@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * Embedding
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class Embedding {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private Embedding(TypedObject value) {
         this.value = value;
@@ -33,27 +32,27 @@ public class Embedding {
 
     public static Embedding of(OpenAI value) {
         Utils.checkNotNull(value, "value");
-        return new Embedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<OpenAI>(){}));
+        return new Embedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static Embedding of(Cohere value) {
         Utils.checkNotNull(value, "value");
-        return new Embedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Cohere>(){}));
+        return new Embedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static Embedding of(Fake value) {
         Utils.checkNotNull(value, "value");
-        return new Embedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Fake>(){}));
+        return new Embedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static Embedding of(AzureOpenAI value) {
         Utils.checkNotNull(value, "value");
-        return new Embedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AzureOpenAI>(){}));
+        return new Embedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static Embedding of(OpenAICompatible value) {
         Utils.checkNotNull(value, "value");
-        return new Embedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<OpenAICompatible>(){}));
+        return new Embedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -79,7 +78,7 @@ public class Embedding {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -90,12 +89,12 @@ public class Embedding {
             return false;
         }
         Embedding other = (Embedding) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -103,11 +102,11 @@ public class Embedding {
 
         public _Deserializer() {
             super(Embedding.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<OpenAICompatible>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<AzureOpenAI>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Cohere>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<OpenAI>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Fake>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Cohere>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<Fake>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<AzureOpenAI>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<OpenAICompatible>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -116,6 +115,6 @@ public class Embedding {
         return Utils.toString(Embedding.class,
                 "value", value);
     }
- 
+
 }
 

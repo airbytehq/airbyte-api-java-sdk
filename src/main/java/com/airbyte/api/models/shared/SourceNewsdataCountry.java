@@ -89,7 +89,7 @@ public enum SourceNewsdataCountry {
     @JsonValue
     private final String value;
 
-    private SourceNewsdataCountry(String value) {
+    SourceNewsdataCountry(String value) {
         this.value = value;
     }
     

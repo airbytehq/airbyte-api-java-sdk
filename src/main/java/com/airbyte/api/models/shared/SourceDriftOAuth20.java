@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceDriftOAuth20 {
 
+public class SourceDriftOAuth20 {
     /**
      * Access Token for making authenticated requests.
      */
@@ -36,6 +35,7 @@ public class SourceDriftOAuth20 {
      */
     @JsonProperty("client_secret")
     private String clientSecret;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
@@ -102,9 +102,10 @@ public class SourceDriftOAuth20 {
         return refreshToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Access Token for making authenticated requests.
@@ -142,7 +143,6 @@ public class SourceDriftOAuth20 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -153,21 +153,18 @@ public class SourceDriftOAuth20 {
         }
         SourceDriftOAuth20 other = (SourceDriftOAuth20) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            clientId,
-            clientSecret,
-            credentials,
-            refreshToken);
+        return Utils.enhancedHash(
+            accessToken, clientId, clientSecret,
+            credentials, refreshToken);
     }
     
     @Override
@@ -179,20 +176,22 @@ public class SourceDriftOAuth20 {
                 "credentials", credentials,
                 "refreshToken", refreshToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String refreshToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Access Token for making authenticated requests.
@@ -203,6 +202,7 @@ public class SourceDriftOAuth20 {
             return this;
         }
 
+
         /**
          * The Client ID of your Drift developer application.
          */
@@ -211,6 +211,7 @@ public class SourceDriftOAuth20 {
             this.clientId = clientId;
             return this;
         }
+
 
         /**
          * The Client Secret of your Drift developer application.
@@ -221,6 +222,7 @@ public class SourceDriftOAuth20 {
             return this;
         }
 
+
         /**
          * Refresh Token to renew the expired Access Token.
          */
@@ -229,14 +231,14 @@ public class SourceDriftOAuth20 {
             this.refreshToken = refreshToken;
             return this;
         }
-        
+
         public SourceDriftOAuth20 build() {
+
             return new SourceDriftOAuth20(
-                accessToken,
-                clientId,
-                clientSecret,
+                accessToken, clientId, clientSecret,
                 refreshToken);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceDriftCredentials>> _SINGLETON_VALUE_Credentials =
                 new LazySingletonValue<>(

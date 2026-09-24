@@ -14,7 +14,7 @@ public enum Jira {
     @JsonValue
     private final String value;
 
-    private Jira(String value) {
+    Jira(String value) {
         this.value = value;
     }
     

@@ -14,13 +14,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceYotpo {
 
+public class SourceYotpo {
     /**
-     * Access token recieved as a result of API call to https://api.yotpo.com/oauth/token (Ref- https://apidocs.yotpo.com/reference/yotpo-authentication)
+     * Access token recieved as a result of API call to https://api.yotpo.com/oauth/token (Ref-
+     * https://apidocs.yotpo.com/reference/yotpo-authentication)
      */
     @JsonProperty("access_token")
     private String accessToken;
@@ -37,6 +37,7 @@ public class SourceYotpo {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("email")
     private Optional<String> email;
+
 
     @JsonProperty("sourceType")
     private Yotpo sourceType;
@@ -68,11 +69,13 @@ public class SourceYotpo {
             String accessToken,
             String appKey,
             OffsetDateTime startDate) {
-        this(accessToken, appKey, Optional.empty(), startDate);
+        this(accessToken, appKey, Optional.empty(),
+            startDate);
     }
 
     /**
-     * Access token recieved as a result of API call to https://api.yotpo.com/oauth/token (Ref- https://apidocs.yotpo.com/reference/yotpo-authentication)
+     * Access token recieved as a result of API call to https://api.yotpo.com/oauth/token (Ref-
+     * https://apidocs.yotpo.com/reference/yotpo-authentication)
      */
     @JsonIgnore
     public String accessToken() {
@@ -108,12 +111,14 @@ public class SourceYotpo {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Access token recieved as a result of API call to https://api.yotpo.com/oauth/token (Ref- https://apidocs.yotpo.com/reference/yotpo-authentication)
+     * Access token recieved as a result of API call to https://api.yotpo.com/oauth/token (Ref-
+     * https://apidocs.yotpo.com/reference/yotpo-authentication)
      */
     public SourceYotpo withAccessToken(String accessToken) {
         Utils.checkNotNull(accessToken, "accessToken");
@@ -139,6 +144,7 @@ public class SourceYotpo {
         return this;
     }
 
+
     /**
      * Email address registered with yotpo.
      */
@@ -157,7 +163,6 @@ public class SourceYotpo {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -168,21 +173,18 @@ public class SourceYotpo {
         }
         SourceYotpo other = (SourceYotpo) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.appKey, other.appKey) &&
-            Objects.deepEquals(this.email, other.email) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.appKey, other.appKey) &&
+            Utils.enhancedDeepEquals(this.email, other.email) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            appKey,
-            email,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            accessToken, appKey, email,
+            sourceType, startDate);
     }
     
     @Override
@@ -194,29 +196,33 @@ public class SourceYotpo {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private String appKey;
- 
+
         private Optional<String> email;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Access token recieved as a result of API call to https://api.yotpo.com/oauth/token (Ref- https://apidocs.yotpo.com/reference/yotpo-authentication)
+         * Access token recieved as a result of API call to https://api.yotpo.com/oauth/token (Ref-
+         * https://apidocs.yotpo.com/reference/yotpo-authentication)
          */
         public Builder accessToken(String accessToken) {
             Utils.checkNotNull(accessToken, "accessToken");
             this.accessToken = accessToken;
             return this;
         }
+
 
         /**
          * App key found at settings (Ref- https://settings.yotpo.com/#/general_settings)
@@ -226,6 +232,7 @@ public class SourceYotpo {
             this.appKey = appKey;
             return this;
         }
+
 
         /**
          * Email address registered with yotpo.
@@ -245,6 +252,7 @@ public class SourceYotpo {
             return this;
         }
 
+
         /**
          * Date time filter for incremental filter, Specify which date to extract from.
          */
@@ -253,17 +261,17 @@ public class SourceYotpo {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceYotpo build() {
             if (email == null) {
                 email = _SINGLETON_VALUE_Email.value();
             }
+
             return new SourceYotpo(
-                accessToken,
-                appKey,
-                email,
+                accessToken, appKey, email,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Email =
                 new LazySingletonValue<>(

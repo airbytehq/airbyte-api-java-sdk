@@ -11,15 +11,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceK6Cloud {
-
     /**
-     * Your API Token. See &lt;a href="https://k6.io/docs/cloud/integrations/token/"&gt;here&lt;/a&gt;. The key is case sensitive.
+     * Your API Token. See <a href="https://k6.io/docs/cloud/integrations/token/">here</a>. The key is case
+     * sensitive.
      */
     @JsonProperty("api_token")
     private String apiToken;
+
 
     @JsonProperty("sourceType")
     private K6Cloud sourceType;
@@ -33,7 +34,8 @@ public class SourceK6Cloud {
     }
 
     /**
-     * Your API Token. See &lt;a href="https://k6.io/docs/cloud/integrations/token/"&gt;here&lt;/a&gt;. The key is case sensitive.
+     * Your API Token. See <a href="https://k6.io/docs/cloud/integrations/token/">here</a>. The key is case
+     * sensitive.
      */
     @JsonIgnore
     public String apiToken() {
@@ -45,12 +47,14 @@ public class SourceK6Cloud {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Your API Token. See &lt;a href="https://k6.io/docs/cloud/integrations/token/"&gt;here&lt;/a&gt;. The key is case sensitive.
+     * Your API Token. See <a href="https://k6.io/docs/cloud/integrations/token/">here</a>. The key is case
+     * sensitive.
      */
     public SourceK6Cloud withApiToken(String apiToken) {
         Utils.checkNotNull(apiToken, "apiToken");
@@ -58,7 +62,6 @@ public class SourceK6Cloud {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +72,14 @@ public class SourceK6Cloud {
         }
         SourceK6Cloud other = (SourceK6Cloud) o;
         return 
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiToken,
-            sourceType);
+        return Utils.enhancedHash(
+            apiToken, sourceType);
     }
     
     @Override
@@ -86,28 +88,33 @@ public class SourceK6Cloud {
                 "apiToken", apiToken,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Your API Token. See &lt;a href="https://k6.io/docs/cloud/integrations/token/"&gt;here&lt;/a&gt;. The key is case sensitive.
+         * Your API Token. See <a href="https://k6.io/docs/cloud/integrations/token/">here</a>. The key is case
+         * sensitive.
          */
         public Builder apiToken(String apiToken) {
             Utils.checkNotNull(apiToken, "apiToken");
             this.apiToken = apiToken;
             return this;
         }
-        
+
         public SourceK6Cloud build() {
+
             return new SourceK6Cloud(
                 apiToken);
         }
+
 
         private static final LazySingletonValue<K6Cloud> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -20,7 +20,7 @@ public enum SourceYousignSubdomain {
     @JsonValue
     private final String value;
 
-    private SourceYousignSubdomain(String value) {
+    SourceYousignSubdomain(String value) {
         this.value = value;
     }
     

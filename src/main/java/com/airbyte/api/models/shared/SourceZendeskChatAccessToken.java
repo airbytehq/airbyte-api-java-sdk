@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceZendeskChatAccessToken {
-
     /**
      * The Access Token to make authenticated requests.
      */
     @JsonProperty("access_token")
     private String accessToken;
+
 
     @JsonProperty("credentials")
     private SourceZendeskChatSchemasCredentials credentials;
@@ -45,9 +45,10 @@ public class SourceZendeskChatAccessToken {
         return credentials;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Access Token to make authenticated requests.
@@ -58,7 +59,6 @@ public class SourceZendeskChatAccessToken {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceZendeskChatAccessToken {
         }
         SourceZendeskChatAccessToken other = (SourceZendeskChatAccessToken) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.credentials, other.credentials);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            credentials);
+        return Utils.enhancedHash(
+            accessToken, credentials);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourceZendeskChatAccessToken {
                 "accessToken", accessToken,
                 "credentials", credentials);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Access Token to make authenticated requests.
@@ -103,11 +104,13 @@ public class SourceZendeskChatAccessToken {
             this.accessToken = accessToken;
             return this;
         }
-        
+
         public SourceZendeskChatAccessToken build() {
+
             return new SourceZendeskChatAccessToken(
                 accessToken);
         }
+
 
         private static final LazySingletonValue<SourceZendeskChatSchemasCredentials> _SINGLETON_VALUE_Credentials =
                 new LazySingletonValue<>(
