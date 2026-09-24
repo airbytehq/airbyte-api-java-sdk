@@ -14,7 +14,7 @@ public enum Algolia {
     @JsonValue
     private final String value;
 
-    private Algolia(String value) {
+    Algolia(String value) {
         this.value = value;
     }
     

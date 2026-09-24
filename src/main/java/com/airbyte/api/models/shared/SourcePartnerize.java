@@ -11,21 +11,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourcePartnerize {
-
     /**
-     * The application key identifies the network you are making the request against. Find it in your account settings under 'User Application Key' at https://console.partnerize.com.
+     * The application key identifies the network you are making the request against. Find it in your
+     * account settings under 'User Application Key' at https://console.partnerize.com.
      */
     @JsonProperty("application_key")
     private String applicationKey;
+
 
     @JsonProperty("sourceType")
     private Partnerize sourceType;
 
     /**
-     * The user API key identifies the user on whose behalf the request is made. Find it in your account settings under 'User API Key' at https://console.partnerize.com.
+     * The user API key identifies the user on whose behalf the request is made. Find it in your account
+     * settings under 'User API Key' at https://console.partnerize.com.
      */
     @JsonProperty("user_api_key")
     private String userApiKey;
@@ -42,7 +44,8 @@ public class SourcePartnerize {
     }
 
     /**
-     * The application key identifies the network you are making the request against. Find it in your account settings under 'User Application Key' at https://console.partnerize.com.
+     * The application key identifies the network you are making the request against. Find it in your
+     * account settings under 'User Application Key' at https://console.partnerize.com.
      */
     @JsonIgnore
     public String applicationKey() {
@@ -55,19 +58,22 @@ public class SourcePartnerize {
     }
 
     /**
-     * The user API key identifies the user on whose behalf the request is made. Find it in your account settings under 'User API Key' at https://console.partnerize.com.
+     * The user API key identifies the user on whose behalf the request is made. Find it in your account
+     * settings under 'User API Key' at https://console.partnerize.com.
      */
     @JsonIgnore
     public String userApiKey() {
         return userApiKey;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The application key identifies the network you are making the request against. Find it in your account settings under 'User Application Key' at https://console.partnerize.com.
+     * The application key identifies the network you are making the request against. Find it in your
+     * account settings under 'User Application Key' at https://console.partnerize.com.
      */
     public SourcePartnerize withApplicationKey(String applicationKey) {
         Utils.checkNotNull(applicationKey, "applicationKey");
@@ -76,7 +82,8 @@ public class SourcePartnerize {
     }
 
     /**
-     * The user API key identifies the user on whose behalf the request is made. Find it in your account settings under 'User API Key' at https://console.partnerize.com.
+     * The user API key identifies the user on whose behalf the request is made. Find it in your account
+     * settings under 'User API Key' at https://console.partnerize.com.
      */
     public SourcePartnerize withUserApiKey(String userApiKey) {
         Utils.checkNotNull(userApiKey, "userApiKey");
@@ -84,7 +91,6 @@ public class SourcePartnerize {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +101,15 @@ public class SourcePartnerize {
         }
         SourcePartnerize other = (SourcePartnerize) o;
         return 
-            Objects.deepEquals(this.applicationKey, other.applicationKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.userApiKey, other.userApiKey);
+            Utils.enhancedDeepEquals(this.applicationKey, other.applicationKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.userApiKey, other.userApiKey);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            applicationKey,
-            sourceType,
-            userApiKey);
+        return Utils.enhancedHash(
+            applicationKey, sourceType, userApiKey);
     }
     
     @Override
@@ -115,19 +119,22 @@ public class SourcePartnerize {
                 "sourceType", sourceType,
                 "userApiKey", userApiKey);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String applicationKey;
- 
+
         private String userApiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The application key identifies the network you are making the request against. Find it in your account settings under 'User Application Key' at https://console.partnerize.com.
+         * The application key identifies the network you are making the request against. Find it in your
+         * account settings under 'User Application Key' at https://console.partnerize.com.
          */
         public Builder applicationKey(String applicationKey) {
             Utils.checkNotNull(applicationKey, "applicationKey");
@@ -135,20 +142,23 @@ public class SourcePartnerize {
             return this;
         }
 
+
         /**
-         * The user API key identifies the user on whose behalf the request is made. Find it in your account settings under 'User API Key' at https://console.partnerize.com.
+         * The user API key identifies the user on whose behalf the request is made. Find it in your account
+         * settings under 'User API Key' at https://console.partnerize.com.
          */
         public Builder userApiKey(String userApiKey) {
             Utils.checkNotNull(userApiKey, "userApiKey");
             this.userApiKey = userApiKey;
             return this;
         }
-        
+
         public SourcePartnerize build() {
+
             return new SourcePartnerize(
-                applicationKey,
-                userApiKey);
+                applicationKey, userApiKey);
         }
+
 
         private static final LazySingletonValue<Partnerize> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

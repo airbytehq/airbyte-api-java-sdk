@@ -14,7 +14,7 @@ public enum TrackPms {
     @JsonValue
     private final String value;
 
-    private TrackPms(String value) {
+    TrackPms(String value) {
         this.value = value;
     }
     

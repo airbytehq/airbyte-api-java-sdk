@@ -2,6 +2,14 @@
 
 Chosen level for API
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourcePinterestLevel;
+
+SourcePinterestLevel value = SourcePinterestLevel.ADVERTISER;
+```
+
 
 ## Values
 

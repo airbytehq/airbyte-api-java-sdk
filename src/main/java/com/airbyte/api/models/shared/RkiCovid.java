@@ -14,7 +14,7 @@ public enum RkiCovid {
     @JsonValue
     private final String value;
 
-    private RkiCovid(String value) {
+    RkiCovid(String value) {
         this.value = value;
     }
     

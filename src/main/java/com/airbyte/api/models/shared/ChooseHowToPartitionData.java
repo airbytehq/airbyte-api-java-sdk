@@ -25,7 +25,7 @@ public enum ChooseHowToPartitionData {
     @JsonValue
     private final String value;
 
-    private ChooseHowToPartitionData(String value) {
+    ChooseHowToPartitionData(String value) {
         this.value = value;
     }
     

@@ -16,7 +16,7 @@ public enum ScheduleTypeWithBasicEnum {
     @JsonValue
     private final String value;
 
-    private ScheduleTypeWithBasicEnum(String value) {
+    ScheduleTypeWithBasicEnum(String value) {
         this.value = value;
     }
     

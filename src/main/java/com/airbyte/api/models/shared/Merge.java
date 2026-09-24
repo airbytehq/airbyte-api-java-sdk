@@ -14,7 +14,7 @@ public enum Merge {
     @JsonValue
     private final String value;
 
-    private Merge(String value) {
+    Merge(String value) {
         this.value = value;
     }
     

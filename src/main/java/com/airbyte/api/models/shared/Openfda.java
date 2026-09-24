@@ -14,7 +14,7 @@ public enum Openfda {
     @JsonValue
     private final String value;
 
-    private Openfda(String value) {
+    Openfda(String value) {
         this.value = value;
     }
     

@@ -18,13 +18,13 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * SourcePostgresVerifyFull
  * 
- * <p>This is the most secure mode. Always require encryption and verifies the identity of the source database server.
+ * <p>This is the most secure mode. Always require encryption and verifies the identity of the source
+ * database server.
  */
 public class SourcePostgresVerifyFull {
 
@@ -58,6 +58,7 @@ public class SourcePostgresVerifyFull {
     @JsonProperty("client_key_password")
     private Optional<String> clientKeyPassword;
 
+
     @JsonProperty("mode")
     private SourcePostgresSchemasSSLModeSSLModes6Mode mode;
 
@@ -81,7 +82,8 @@ public class SourcePostgresVerifyFull {
     
     public SourcePostgresVerifyFull(
             String caCertificate) {
-        this(caCertificate, Optional.empty(), Optional.empty(), Optional.empty());
+        this(caCertificate, Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     @JsonAnyGetter
@@ -126,9 +128,10 @@ public class SourcePostgresVerifyFull {
         return mode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourcePostgresVerifyFull withAdditionalProperty(String key, Object value) {
@@ -136,8 +139,7 @@ public class SourcePostgresVerifyFull {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourcePostgresVerifyFull withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -162,6 +164,7 @@ public class SourcePostgresVerifyFull {
         return this;
     }
 
+
     /**
      * Client certificate
      */
@@ -179,6 +182,7 @@ public class SourcePostgresVerifyFull {
         this.clientKey = Optional.ofNullable(clientKey);
         return this;
     }
+
 
     /**
      * Client key
@@ -198,6 +202,7 @@ public class SourcePostgresVerifyFull {
         return this;
     }
 
+
     /**
      * Password for keystorage. If you do not add it - the password will be generated automatically.
      */
@@ -207,7 +212,6 @@ public class SourcePostgresVerifyFull {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -218,23 +222,19 @@ public class SourcePostgresVerifyFull {
         }
         SourcePostgresVerifyFull other = (SourcePostgresVerifyFull) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.caCertificate, other.caCertificate) &&
-            Objects.deepEquals(this.clientCertificate, other.clientCertificate) &&
-            Objects.deepEquals(this.clientKey, other.clientKey) &&
-            Objects.deepEquals(this.clientKeyPassword, other.clientKeyPassword) &&
-            Objects.deepEquals(this.mode, other.mode);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.caCertificate, other.caCertificate) &&
+            Utils.enhancedDeepEquals(this.clientCertificate, other.clientCertificate) &&
+            Utils.enhancedDeepEquals(this.clientKey, other.clientKey) &&
+            Utils.enhancedDeepEquals(this.clientKeyPassword, other.clientKeyPassword) &&
+            Utils.enhancedDeepEquals(this.mode, other.mode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            caCertificate,
-            clientCertificate,
-            clientKey,
-            clientKeyPassword,
-            mode);
+        return Utils.enhancedHash(
+            additionalProperties, caCertificate, clientCertificate,
+            clientKey, clientKeyPassword, mode);
     }
     
     @Override
@@ -247,19 +247,20 @@ public class SourcePostgresVerifyFull {
                 "clientKeyPassword", clientKeyPassword,
                 "mode", mode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private String caCertificate;
- 
+
         private Optional<String> clientCertificate = Optional.empty();
- 
+
         private Optional<String> clientKey = Optional.empty();
- 
+
         private Optional<String> clientKeyPassword = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -280,6 +281,7 @@ public class SourcePostgresVerifyFull {
             return this;
         }
 
+
         /**
          * CA certificate
          */
@@ -288,6 +290,7 @@ public class SourcePostgresVerifyFull {
             this.caCertificate = caCertificate;
             return this;
         }
+
 
         /**
          * Client certificate
@@ -307,6 +310,7 @@ public class SourcePostgresVerifyFull {
             return this;
         }
 
+
         /**
          * Client key
          */
@@ -325,6 +329,7 @@ public class SourcePostgresVerifyFull {
             return this;
         }
 
+
         /**
          * Password for keystorage. If you do not add it - the password will be generated automatically.
          */
@@ -342,15 +347,15 @@ public class SourcePostgresVerifyFull {
             this.clientKeyPassword = clientKeyPassword;
             return this;
         }
-        
+
         public SourcePostgresVerifyFull build() {
+
             return new SourcePostgresVerifyFull(
-                caCertificate,
-                clientCertificate,
-                clientKey,
+                caCertificate, clientCertificate, clientKey,
                 clientKeyPassword)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<SourcePostgresSchemasSSLModeSSLModes6Mode> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

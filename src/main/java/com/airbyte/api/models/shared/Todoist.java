@@ -14,7 +14,7 @@ public enum Todoist {
     @JsonValue
     private final String value;
 
-    private Todoist(String value) {
+    Todoist(String value) {
         this.value = value;
     }
     

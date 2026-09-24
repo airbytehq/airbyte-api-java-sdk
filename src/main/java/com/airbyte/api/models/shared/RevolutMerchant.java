@@ -14,7 +14,7 @@ public enum RevolutMerchant {
     @JsonValue
     private final String value;
 
-    private RevolutMerchant(String value) {
+    RevolutMerchant(String value) {
         this.value = value;
     }
     

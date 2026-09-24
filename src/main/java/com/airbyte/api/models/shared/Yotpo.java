@@ -14,7 +14,7 @@ public enum Yotpo {
     @JsonValue
     private final String value;
 
-    private Yotpo(String value) {
+    Yotpo(String value) {
         this.value = value;
     }
     

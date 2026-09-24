@@ -14,7 +14,7 @@ public enum Fastbill {
     @JsonValue
     private final String value;
 
-    private Fastbill(String value) {
+    Fastbill(String value) {
         this.value = value;
     }
     

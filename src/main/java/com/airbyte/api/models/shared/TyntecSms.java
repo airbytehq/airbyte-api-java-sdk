@@ -14,7 +14,7 @@ public enum TyntecSms {
     @JsonValue
     private final String value;
 
-    private TyntecSms(String value) {
+    TyntecSms(String value) {
         this.value = value;
     }
     

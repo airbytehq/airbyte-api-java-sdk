@@ -14,13 +14,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = SourceAuth0AuthenticationMethod._Deserializer.class)
 public class SourceAuth0AuthenticationMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceAuth0AuthenticationMethod(TypedObject value) {
         this.value = value;
@@ -28,12 +27,12 @@ public class SourceAuth0AuthenticationMethod {
 
     public static SourceAuth0AuthenticationMethod of(OAuth2ConfidentialApplication value) {
         Utils.checkNotNull(value, "value");
-        return new SourceAuth0AuthenticationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<OAuth2ConfidentialApplication>(){}));
+        return new SourceAuth0AuthenticationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceAuth0AuthenticationMethod of(OAuth2AccessToken value) {
         Utils.checkNotNull(value, "value");
-        return new SourceAuth0AuthenticationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<OAuth2AccessToken>(){}));
+        return new SourceAuth0AuthenticationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -56,7 +55,7 @@ public class SourceAuth0AuthenticationMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -67,12 +66,12 @@ public class SourceAuth0AuthenticationMethod {
             return false;
         }
         SourceAuth0AuthenticationMethod other = (SourceAuth0AuthenticationMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -90,6 +89,6 @@ public class SourceAuth0AuthenticationMethod {
         return Utils.toString(SourceAuth0AuthenticationMethod.class,
                 "value", value);
     }
- 
+
 }
 

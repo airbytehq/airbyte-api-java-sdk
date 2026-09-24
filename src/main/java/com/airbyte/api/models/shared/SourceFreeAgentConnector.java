@@ -15,26 +15,31 @@ import java.lang.Double;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceFreeAgentConnector {
 
     @JsonProperty("client_id")
     private String clientId;
 
+
     @JsonProperty("client_refresh_token_2")
     private String clientRefreshToken2;
 
+
     @JsonProperty("client_secret")
     private String clientSecret;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("payroll_year")
     private Optional<Double> payrollYear;
 
+
     @JsonProperty("sourceType")
     private FreeAgentConnector sourceType;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("updated_since")
@@ -64,7 +69,8 @@ public class SourceFreeAgentConnector {
             String clientId,
             String clientRefreshToken2,
             String clientSecret) {
-        this(clientId, clientRefreshToken2, clientSecret, Optional.empty(), Optional.empty());
+        this(clientId, clientRefreshToken2, clientSecret,
+            Optional.empty(), Optional.empty());
     }
 
     @JsonIgnore
@@ -97,9 +103,10 @@ public class SourceFreeAgentConnector {
         return updatedSince;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceFreeAgentConnector withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -125,6 +132,7 @@ public class SourceFreeAgentConnector {
         return this;
     }
 
+
     public SourceFreeAgentConnector withPayrollYear(Optional<Double> payrollYear) {
         Utils.checkNotNull(payrollYear, "payrollYear");
         this.payrollYear = payrollYear;
@@ -137,13 +145,13 @@ public class SourceFreeAgentConnector {
         return this;
     }
 
+
     public SourceFreeAgentConnector withUpdatedSince(Optional<OffsetDateTime> updatedSince) {
         Utils.checkNotNull(updatedSince, "updatedSince");
         this.updatedSince = updatedSince;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -154,23 +162,19 @@ public class SourceFreeAgentConnector {
         }
         SourceFreeAgentConnector other = (SourceFreeAgentConnector) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientRefreshToken2, other.clientRefreshToken2) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.payrollYear, other.payrollYear) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.updatedSince, other.updatedSince);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientRefreshToken2, other.clientRefreshToken2) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.payrollYear, other.payrollYear) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.updatedSince, other.updatedSince);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientRefreshToken2,
-            clientSecret,
-            payrollYear,
-            sourceType,
-            updatedSince);
+        return Utils.enhancedHash(
+            clientId, clientRefreshToken2, clientSecret,
+            payrollYear, sourceType, updatedSince);
     }
     
     @Override
@@ -183,22 +187,24 @@ public class SourceFreeAgentConnector {
                 "sourceType", sourceType,
                 "updatedSince", updatedSince);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientRefreshToken2;
- 
+
         private String clientSecret;
- 
+
         private Optional<Double> payrollYear = Optional.empty();
- 
+
         private Optional<OffsetDateTime> updatedSince = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -206,17 +212,20 @@ public class SourceFreeAgentConnector {
             return this;
         }
 
+
         public Builder clientRefreshToken2(String clientRefreshToken2) {
             Utils.checkNotNull(clientRefreshToken2, "clientRefreshToken2");
             this.clientRefreshToken2 = clientRefreshToken2;
             return this;
         }
 
+
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         public Builder payrollYear(double payrollYear) {
             Utils.checkNotNull(payrollYear, "payrollYear");
@@ -230,6 +239,7 @@ public class SourceFreeAgentConnector {
             return this;
         }
 
+
         public Builder updatedSince(OffsetDateTime updatedSince) {
             Utils.checkNotNull(updatedSince, "updatedSince");
             this.updatedSince = Optional.ofNullable(updatedSince);
@@ -241,15 +251,14 @@ public class SourceFreeAgentConnector {
             this.updatedSince = updatedSince;
             return this;
         }
-        
+
         public SourceFreeAgentConnector build() {
+
             return new SourceFreeAgentConnector(
-                clientId,
-                clientRefreshToken2,
-                clientSecret,
-                payrollYear,
-                updatedSince);
+                clientId, clientRefreshToken2, clientSecret,
+                payrollYear, updatedSince);
         }
+
 
         private static final LazySingletonValue<FreeAgentConnector> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

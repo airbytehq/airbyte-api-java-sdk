@@ -14,7 +14,7 @@ public enum Gocardless {
     @JsonValue
     private final String value;
 
-    private Gocardless(String value) {
+    Gocardless(String value) {
         this.value = value;
     }
     

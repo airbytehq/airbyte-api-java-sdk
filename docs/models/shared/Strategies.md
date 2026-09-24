@@ -1,5 +1,13 @@
 # Strategies
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.Strategies;
+
+Strategies value = Strategies.DESKTOP;
+```
+
 
 ## Values
 

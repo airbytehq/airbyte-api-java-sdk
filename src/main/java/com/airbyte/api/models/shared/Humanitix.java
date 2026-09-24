@@ -14,7 +14,7 @@ public enum Humanitix {
     @JsonValue
     private final String value;
 
-    private Humanitix(String value) {
+    Humanitix(String value) {
         this.value = value;
     }
     

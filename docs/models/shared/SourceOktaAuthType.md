@@ -1,5 +1,13 @@
 # SourceOktaAuthType
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceOktaAuthType;
+
+SourceOktaAuthType value = SourceOktaAuthType.OAUTH20;
+```
+
 
 ## Values
 

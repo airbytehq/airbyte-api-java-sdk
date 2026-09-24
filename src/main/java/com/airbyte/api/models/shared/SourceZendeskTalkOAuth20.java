@@ -19,8 +19,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceZendeskTalkOAuth20 {
 
@@ -28,10 +28,12 @@ public class SourceZendeskTalkOAuth20 {
     private Map<String, Object> additionalProperties;
 
     /**
-     * The value of the API token generated. See the &lt;a href="https://docs.airbyte.com/integrations/sources/zendesk-talk"&gt;docs&lt;/a&gt; for more information.
+     * The value of the API token generated. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/zendesk-talk">docs</a> for more information.
      */
     @JsonProperty("access_token")
     private String accessToken;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
@@ -77,7 +79,8 @@ public class SourceZendeskTalkOAuth20 {
     }
 
     /**
-     * The value of the API token generated. See the &lt;a href="https://docs.airbyte.com/integrations/sources/zendesk-talk"&gt;docs&lt;/a&gt; for more information.
+     * The value of the API token generated. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/zendesk-talk">docs</a> for more information.
      */
     @JsonIgnore
     public String accessToken() {
@@ -106,9 +109,10 @@ public class SourceZendeskTalkOAuth20 {
         return clientSecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceZendeskTalkOAuth20 withAdditionalProperty(String key, Object value) {
@@ -116,8 +120,7 @@ public class SourceZendeskTalkOAuth20 {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceZendeskTalkOAuth20 withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -125,7 +128,8 @@ public class SourceZendeskTalkOAuth20 {
     }
 
     /**
-     * The value of the API token generated. See the &lt;a href="https://docs.airbyte.com/integrations/sources/zendesk-talk"&gt;docs&lt;/a&gt; for more information.
+     * The value of the API token generated. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/zendesk-talk">docs</a> for more information.
      */
     public SourceZendeskTalkOAuth20 withAccessToken(String accessToken) {
         Utils.checkNotNull(accessToken, "accessToken");
@@ -141,6 +145,7 @@ public class SourceZendeskTalkOAuth20 {
         this.clientId = Optional.ofNullable(clientId);
         return this;
     }
+
 
     /**
      * Client ID
@@ -160,6 +165,7 @@ public class SourceZendeskTalkOAuth20 {
         return this;
     }
 
+
     /**
      * Client Secret
      */
@@ -169,7 +175,6 @@ public class SourceZendeskTalkOAuth20 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -180,21 +185,18 @@ public class SourceZendeskTalkOAuth20 {
         }
         SourceZendeskTalkOAuth20 other = (SourceZendeskTalkOAuth20) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            accessToken,
-            authType,
-            clientId,
-            clientSecret);
+        return Utils.enhancedHash(
+            additionalProperties, accessToken, authType,
+            clientId, clientSecret);
     }
     
     @Override
@@ -206,17 +208,18 @@ public class SourceZendeskTalkOAuth20 {
                 "clientId", clientId,
                 "clientSecret", clientSecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private String accessToken;
- 
+
         private Optional<String> clientId = Optional.empty();
- 
+
         private Optional<String> clientSecret = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -237,14 +240,17 @@ public class SourceZendeskTalkOAuth20 {
             return this;
         }
 
+
         /**
-         * The value of the API token generated. See the &lt;a href="https://docs.airbyte.com/integrations/sources/zendesk-talk"&gt;docs&lt;/a&gt; for more information.
+         * The value of the API token generated. See the <a
+         * href="https://docs.airbyte.com/integrations/sources/zendesk-talk">docs</a> for more information.
          */
         public Builder accessToken(String accessToken) {
             Utils.checkNotNull(accessToken, "accessToken");
             this.accessToken = accessToken;
             return this;
         }
+
 
         /**
          * Client ID
@@ -264,6 +270,7 @@ public class SourceZendeskTalkOAuth20 {
             return this;
         }
 
+
         /**
          * Client Secret
          */
@@ -281,14 +288,14 @@ public class SourceZendeskTalkOAuth20 {
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public SourceZendeskTalkOAuth20 build() {
+
             return new SourceZendeskTalkOAuth20(
-                accessToken,
-                clientId,
-                clientSecret)
+                accessToken, clientId, clientSecret)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceZendeskTalkAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

@@ -2,6 +2,14 @@
 
 An enumeration.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.ValidAdStatuses;
+
+ValidAdStatuses value = ValidAdStatuses.ACTIVE;
+```
+
 
 ## Values
 

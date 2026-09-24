@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class AuthenticateViaPassword {
 
@@ -51,9 +51,10 @@ public class AuthenticateViaPassword {
         return password;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Password
@@ -64,7 +65,6 @@ public class AuthenticateViaPassword {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -75,15 +75,14 @@ public class AuthenticateViaPassword {
         }
         AuthenticateViaPassword other = (AuthenticateViaPassword) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.password, other.password);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.password, other.password);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            password);
+        return Utils.enhancedHash(
+            authType, password);
     }
     
     @Override
@@ -92,14 +91,16 @@ public class AuthenticateViaPassword {
                 "authType", authType,
                 "password", password);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String password;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Password
@@ -109,11 +110,13 @@ public class AuthenticateViaPassword {
             this.password = password;
             return this;
         }
-        
+
         public AuthenticateViaPassword build() {
+
             return new AuthenticateViaPassword(
                 password);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceSftpBulkAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

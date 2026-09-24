@@ -11,7 +11,8 @@ import java.util.Optional;
 /**
  * ReportingDataObject
  * 
- * <p>The name of the the object derives from the ReportRequest object. You can find it in Bing Ads Api docs - Reporting API - Reporting Data Objects.
+ * <p>The name of the the object derives from the ReportRequest object. You can find it in Bing Ads Api
+ * docs - Reporting API - Reporting Data Objects.
  */
 public enum ReportingDataObject {
     ACCOUNT_PERFORMANCE_REPORT_REQUEST("AccountPerformanceReportRequest"),
@@ -52,7 +53,7 @@ public enum ReportingDataObject {
     @JsonValue
     private final String value;
 
-    private ReportingDataObject(String value) {
+    ReportingDataObject(String value) {
         this.value = value;
     }
     

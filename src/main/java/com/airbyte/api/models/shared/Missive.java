@@ -14,7 +14,7 @@ public enum Missive {
     @JsonValue
     private final String value;
 
-    private Missive(String value) {
+    Missive(String value) {
         this.value = value;
     }
     

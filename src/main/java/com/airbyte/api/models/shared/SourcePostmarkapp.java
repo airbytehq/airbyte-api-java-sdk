@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourcePostmarkapp {
-
     /**
      * API Key for account
      */
@@ -26,6 +25,7 @@ public class SourcePostmarkapp {
      */
     @JsonProperty("X-Postmark-Server-Token")
     private String xPostmarkServerToken;
+
 
     @JsonProperty("sourceType")
     private Postmarkapp sourceType;
@@ -62,9 +62,10 @@ public class SourcePostmarkapp {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API Key for account
@@ -84,7 +85,6 @@ public class SourcePostmarkapp {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourcePostmarkapp {
         }
         SourcePostmarkapp other = (SourcePostmarkapp) o;
         return 
-            Objects.deepEquals(this.xPostmarkAccountToken, other.xPostmarkAccountToken) &&
-            Objects.deepEquals(this.xPostmarkServerToken, other.xPostmarkServerToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.xPostmarkAccountToken, other.xPostmarkAccountToken) &&
+            Utils.enhancedDeepEquals(this.xPostmarkServerToken, other.xPostmarkServerToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            xPostmarkAccountToken,
-            xPostmarkServerToken,
-            sourceType);
+        return Utils.enhancedHash(
+            xPostmarkAccountToken, xPostmarkServerToken, sourceType);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SourcePostmarkapp {
                 "xPostmarkServerToken", xPostmarkServerToken,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xPostmarkAccountToken;
- 
+
         private String xPostmarkServerToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API Key for account
@@ -135,6 +135,7 @@ public class SourcePostmarkapp {
             return this;
         }
 
+
         /**
          * API Key for server
          */
@@ -143,12 +144,13 @@ public class SourcePostmarkapp {
             this.xPostmarkServerToken = xPostmarkServerToken;
             return this;
         }
-        
+
         public SourcePostmarkapp build() {
+
             return new SourcePostmarkapp(
-                xPostmarkAccountToken,
-                xPostmarkServerToken);
+                xPostmarkAccountToken, xPostmarkServerToken);
         }
+
 
         private static final LazySingletonValue<Postmarkapp> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

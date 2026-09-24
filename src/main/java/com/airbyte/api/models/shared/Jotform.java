@@ -14,7 +14,7 @@ public enum Jotform {
     @JsonValue
     private final String value;
 
-    private Jotform(String value) {
+    Jotform(String value) {
         this.value = value;
     }
     

@@ -20,7 +20,7 @@ public enum DomainRegionCode {
     @JsonValue
     private final String value;
 
-    private DomainRegionCode(String value) {
+    DomainRegionCode(String value) {
         this.value = value;
     }
     

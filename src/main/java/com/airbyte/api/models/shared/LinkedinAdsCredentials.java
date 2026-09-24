@@ -11,20 +11,23 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class LinkedinAdsCredentials {
 
+public class LinkedinAdsCredentials {
     /**
-     * The client ID of your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+     * The client ID of your developer application. Refer to our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+     * for more information.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_id")
     private Optional<String> clientId;
 
     /**
-     * The client secret of your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+     * The client secret of your developer application. Refer to our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+     * for more information.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_secret")
@@ -45,7 +48,9 @@ public class LinkedinAdsCredentials {
     }
 
     /**
-     * The client ID of your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+     * The client ID of your developer application. Refer to our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+     * for more information.
      */
     @JsonIgnore
     public Optional<String> clientId() {
@@ -53,19 +58,24 @@ public class LinkedinAdsCredentials {
     }
 
     /**
-     * The client secret of your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+     * The client secret of your developer application. Refer to our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+     * for more information.
      */
     @JsonIgnore
     public Optional<String> clientSecret() {
         return clientSecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The client ID of your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+     * The client ID of your developer application. Refer to our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+     * for more information.
      */
     public LinkedinAdsCredentials withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -73,8 +83,11 @@ public class LinkedinAdsCredentials {
         return this;
     }
 
+
     /**
-     * The client ID of your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+     * The client ID of your developer application. Refer to our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+     * for more information.
      */
     public LinkedinAdsCredentials withClientId(Optional<String> clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -83,7 +96,9 @@ public class LinkedinAdsCredentials {
     }
 
     /**
-     * The client secret of your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+     * The client secret of your developer application. Refer to our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+     * for more information.
      */
     public LinkedinAdsCredentials withClientSecret(String clientSecret) {
         Utils.checkNotNull(clientSecret, "clientSecret");
@@ -91,8 +106,11 @@ public class LinkedinAdsCredentials {
         return this;
     }
 
+
     /**
-     * The client secret of your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+     * The client secret of your developer application. Refer to our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+     * for more information.
      */
     public LinkedinAdsCredentials withClientSecret(Optional<String> clientSecret) {
         Utils.checkNotNull(clientSecret, "clientSecret");
@@ -100,7 +118,6 @@ public class LinkedinAdsCredentials {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -111,15 +128,14 @@ public class LinkedinAdsCredentials {
         }
         LinkedinAdsCredentials other = (LinkedinAdsCredentials) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret);
+        return Utils.enhancedHash(
+            clientId, clientSecret);
     }
     
     @Override
@@ -128,19 +144,23 @@ public class LinkedinAdsCredentials {
                 "clientId", clientId,
                 "clientSecret", clientSecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> clientId = Optional.empty();
- 
+
         private Optional<String> clientSecret = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The client ID of your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+         * The client ID of your developer application. Refer to our &lt;a
+         * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+         * for more information.
          */
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -149,7 +169,9 @@ public class LinkedinAdsCredentials {
         }
 
         /**
-         * The client ID of your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+         * The client ID of your developer application. Refer to our &lt;a
+         * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+         * for more information.
          */
         public Builder clientId(Optional<String> clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -157,8 +179,11 @@ public class LinkedinAdsCredentials {
             return this;
         }
 
+
         /**
-         * The client secret of your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+         * The client secret of your developer application. Refer to our &lt;a
+         * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+         * for more information.
          */
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
@@ -167,18 +192,21 @@ public class LinkedinAdsCredentials {
         }
 
         /**
-         * The client secret of your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+         * The client secret of your developer application. Refer to our &lt;a
+         * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+         * for more information.
          */
         public Builder clientSecret(Optional<String> clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public LinkedinAdsCredentials build() {
+
             return new LinkedinAdsCredentials(
-                clientId,
-                clientSecret);
+                clientId, clientSecret);
         }
+
     }
 }

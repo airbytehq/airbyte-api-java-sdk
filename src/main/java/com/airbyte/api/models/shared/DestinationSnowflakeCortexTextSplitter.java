@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationSnowflakeCortexTextSplitter
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class DestinationSnowflakeCortexTextSplitter {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationSnowflakeCortexTextSplitter(TypedObject value) {
         this.value = value;
@@ -33,17 +32,17 @@ public class DestinationSnowflakeCortexTextSplitter {
 
     public static DestinationSnowflakeCortexTextSplitter of(DestinationSnowflakeCortexBySeparator value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationSnowflakeCortexTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationSnowflakeCortexBySeparator>(){}));
+        return new DestinationSnowflakeCortexTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationSnowflakeCortexTextSplitter of(DestinationSnowflakeCortexByMarkdownHeader value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationSnowflakeCortexTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationSnowflakeCortexByMarkdownHeader>(){}));
+        return new DestinationSnowflakeCortexTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationSnowflakeCortexTextSplitter of(DestinationSnowflakeCortexByProgrammingLanguage value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationSnowflakeCortexTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationSnowflakeCortexByProgrammingLanguage>(){}));
+        return new DestinationSnowflakeCortexTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +66,7 @@ public class DestinationSnowflakeCortexTextSplitter {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +77,12 @@ public class DestinationSnowflakeCortexTextSplitter {
             return false;
         }
         DestinationSnowflakeCortexTextSplitter other = (DestinationSnowflakeCortexTextSplitter) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -92,8 +91,8 @@ public class DestinationSnowflakeCortexTextSplitter {
         public _Deserializer() {
             super(DestinationSnowflakeCortexTextSplitter.class, false,
                   TypeReferenceWithShape.of(new TypeReference<DestinationSnowflakeCortexBySeparator>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationSnowflakeCortexByProgrammingLanguage>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationSnowflakeCortexByMarkdownHeader>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationSnowflakeCortexByMarkdownHeader>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationSnowflakeCortexByProgrammingLanguage>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -102,6 +101,6 @@ public class DestinationSnowflakeCortexTextSplitter {
         return Utils.toString(DestinationSnowflakeCortexTextSplitter.class,
                 "value", value);
     }
- 
+
 }
 

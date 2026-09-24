@@ -9,10 +9,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class DestinationSnowflakeCortexCredentials {
-
     /**
      * Enter the password you want to use to access the database
      */
@@ -34,9 +33,10 @@ public class DestinationSnowflakeCortexCredentials {
         return password;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Enter the password you want to use to access the database
@@ -47,7 +47,6 @@ public class DestinationSnowflakeCortexCredentials {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -58,12 +57,12 @@ public class DestinationSnowflakeCortexCredentials {
         }
         DestinationSnowflakeCortexCredentials other = (DestinationSnowflakeCortexCredentials) o;
         return 
-            Objects.deepEquals(this.password, other.password);
+            Utils.enhancedDeepEquals(this.password, other.password);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             password);
     }
     
@@ -72,14 +71,16 @@ public class DestinationSnowflakeCortexCredentials {
         return Utils.toString(DestinationSnowflakeCortexCredentials.class,
                 "password", password);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String password;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Enter the password you want to use to access the database
@@ -89,10 +90,12 @@ public class DestinationSnowflakeCortexCredentials {
             this.password = password;
             return this;
         }
-        
+
         public DestinationSnowflakeCortexCredentials build() {
+
             return new DestinationSnowflakeCortexCredentials(
                 password);
         }
+
     }
 }

@@ -14,7 +14,7 @@ public enum Woocommerce {
     @JsonValue
     private final String value;
 
-    private Woocommerce(String value) {
+    Woocommerce(String value) {
         this.value = value;
     }
     

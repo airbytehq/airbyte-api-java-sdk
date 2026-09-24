@@ -14,7 +14,7 @@ public enum CloseCom {
     @JsonValue
     private final String value;
 
-    private CloseCom(String value) {
+    CloseCom(String value) {
         this.value = value;
     }
     

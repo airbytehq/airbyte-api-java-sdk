@@ -14,7 +14,7 @@ public enum FreeAgentConnector {
     @JsonValue
     private final String value;
 
-    private FreeAgentConnector(String value) {
+    FreeAgentConnector(String value) {
         this.value = value;
     }
     

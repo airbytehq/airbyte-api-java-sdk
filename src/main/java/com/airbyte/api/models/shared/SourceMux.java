@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceMux {
 
@@ -30,11 +30,14 @@ public class SourceMux {
     @JsonProperty("playback_id")
     private Optional<String> playbackId;
 
+
     @JsonProperty("sourceType")
     private Mux sourceType;
 
+
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
+
 
     @JsonProperty("username")
     private String username;
@@ -59,7 +62,8 @@ public class SourceMux {
     public SourceMux(
             OffsetDateTime startDate,
             String username) {
-        this(Optional.empty(), Optional.empty(), startDate, username);
+        this(Optional.empty(), Optional.empty(), startDate,
+            username);
     }
 
     @JsonIgnore
@@ -90,15 +94,17 @@ public class SourceMux {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceMux withPassword(String password) {
         Utils.checkNotNull(password, "password");
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     public SourceMux withPassword(Optional<String> password) {
         Utils.checkNotNull(password, "password");
@@ -114,6 +120,7 @@ public class SourceMux {
         this.playbackId = Optional.ofNullable(playbackId);
         return this;
     }
+
 
     /**
      * The playback id for your video asset shown in website details
@@ -136,7 +143,6 @@ public class SourceMux {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -147,21 +153,18 @@ public class SourceMux {
         }
         SourceMux other = (SourceMux) o;
         return 
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.playbackId, other.playbackId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.playbackId, other.playbackId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            password,
-            playbackId,
-            sourceType,
-            startDate,
-            username);
+        return Utils.enhancedHash(
+            password, playbackId, sourceType,
+            startDate, username);
     }
     
     @Override
@@ -173,20 +176,22 @@ public class SourceMux {
                 "startDate", startDate,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private Optional<String> playbackId = Optional.empty();
- 
+
         private OffsetDateTime startDate;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder password(String password) {
             Utils.checkNotNull(password, "password");
@@ -199,6 +204,7 @@ public class SourceMux {
             this.password = password;
             return this;
         }
+
 
         /**
          * The playback id for your video asset shown in website details
@@ -218,25 +224,27 @@ public class SourceMux {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
 
+
         public Builder username(String username) {
             Utils.checkNotNull(username, "username");
             this.username = username;
             return this;
         }
-        
+
         public SourceMux build() {
+
             return new SourceMux(
-                password,
-                playbackId,
-                startDate,
+                password, playbackId, startDate,
                 username);
         }
+
 
         private static final LazySingletonValue<Mux> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

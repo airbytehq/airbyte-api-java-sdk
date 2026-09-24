@@ -14,7 +14,7 @@ public enum Mixpanel {
     @JsonValue
     private final String value;
 
-    private Mixpanel(String value) {
+    Mixpanel(String value) {
         this.value = value;
     }
     

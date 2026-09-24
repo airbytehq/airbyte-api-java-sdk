@@ -21,7 +21,7 @@ public enum SourceAlpacaBrokerApiEnvironment {
     @JsonValue
     private final String value;
 
-    private SourceAlpacaBrokerApiEnvironment(String value) {
+    SourceAlpacaBrokerApiEnvironment(String value) {
         this.value = value;
     }
     

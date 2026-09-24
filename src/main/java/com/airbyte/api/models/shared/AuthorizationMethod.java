@@ -14,13 +14,17 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
+/**
+ * AuthorizationMethod
+ * 
+ * <p>Determines the type of authentication that should be used.
+ */
 @JsonDeserialize(using = AuthorizationMethod._Deserializer.class)
 public class AuthorizationMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private AuthorizationMethod(TypedObject value) {
         this.value = value;
@@ -28,17 +32,12 @@ public class AuthorizationMethod {
 
     public static AuthorizationMethod of(KeyPairAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new AuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<KeyPairAuthentication>(){}));
+        return new AuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AuthorizationMethod of(UsernameAndPassword value) {
         Utils.checkNotNull(value, "value");
-        return new AuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<UsernameAndPassword>(){}));
-    }
-
-    public static AuthorizationMethod of(DestinationSnowflakeOAuth20 value) {
-        Utils.checkNotNull(value, "value");
-        return new AuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationSnowflakeOAuth20>(){}));
+        return new AuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -46,7 +45,6 @@ public class AuthorizationMethod {
      * <ul>
      * <li>{@code com.airbyte.api.models.shared.KeyPairAuthentication}</li>
      * <li>{@code com.airbyte.api.models.shared.UsernameAndPassword}</li>
-     * <li>{@code com.airbyte.api.models.shared.DestinationSnowflakeOAuth20}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -62,7 +60,7 @@ public class AuthorizationMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -73,12 +71,12 @@ public class AuthorizationMethod {
             return false;
         }
         AuthorizationMethod other = (AuthorizationMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -86,7 +84,6 @@ public class AuthorizationMethod {
 
         public _Deserializer() {
             super(AuthorizationMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DestinationSnowflakeOAuth20>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<KeyPairAuthentication>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<UsernameAndPassword>() {}, JsonShape.DEFAULT));
         }
@@ -97,6 +94,6 @@ public class AuthorizationMethod {
         return Utils.toString(AuthorizationMethod.class,
                 "value", value);
     }
- 
+
 }
 

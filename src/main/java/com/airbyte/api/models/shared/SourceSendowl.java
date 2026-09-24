@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceSendowl {
 
+public class SourceSendowl {
     /**
      * Enter your API secret
      */
@@ -26,8 +25,10 @@ public class SourceSendowl {
     @JsonProperty("password")
     private Optional<String> password;
 
+
     @JsonProperty("sourceType")
     private Sendowl sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -84,9 +85,10 @@ public class SourceSendowl {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Enter your API secret
@@ -96,6 +98,7 @@ public class SourceSendowl {
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     /**
      * Enter your API secret
@@ -121,7 +124,6 @@ public class SourceSendowl {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -132,18 +134,16 @@ public class SourceSendowl {
         }
         SourceSendowl other = (SourceSendowl) o;
         return 
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            password,
-            sourceType,
-            startDate,
+        return Utils.enhancedHash(
+            password, sourceType, startDate,
             username);
     }
     
@@ -155,18 +155,20 @@ public class SourceSendowl {
                 "startDate", startDate,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private OffsetDateTime startDate;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Enter your API secret
@@ -186,11 +188,13 @@ public class SourceSendowl {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * Enter you API Key
@@ -200,13 +204,13 @@ public class SourceSendowl {
             this.username = username;
             return this;
         }
-        
+
         public SourceSendowl build() {
+
             return new SourceSendowl(
-                password,
-                startDate,
-                username);
+                password, startDate, username);
         }
+
 
         private static final LazySingletonValue<Sendowl> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

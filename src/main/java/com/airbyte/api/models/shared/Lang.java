@@ -11,7 +11,9 @@ import java.util.Optional;
 /**
  * Lang
  * 
- * <p>You can use lang parameter to get the output in your language. The contents of the description field will be translated. See &lt;a href="https://openweathermap.org/api/one-call-api#multi"&gt;here&lt;/a&gt; for the list of supported languages.
+ * <p>You can use lang parameter to get the output in your language. The contents of the description field
+ * will be translated. See <a href="https://openweathermap.org/api/one-call-api#multi">here</a> for the
+ * list of supported languages.
  */
 public enum Lang {
     AF("af"),
@@ -67,7 +69,7 @@ public enum Lang {
     @JsonValue
     private final String value;
 
-    private Lang(String value) {
+    Lang(String value) {
         this.value = value;
     }
     

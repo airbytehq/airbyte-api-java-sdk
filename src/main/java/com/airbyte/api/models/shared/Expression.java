@@ -9,12 +9,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class Expression {
 
     @JsonProperty("field_name")
     private String fieldName;
+
 
     @JsonProperty("filter")
     private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilter filter;
@@ -39,9 +40,10 @@ public class Expression {
         return filter;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public Expression withFieldName(String fieldName) {
         Utils.checkNotNull(fieldName, "fieldName");
@@ -55,7 +57,6 @@ public class Expression {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -66,15 +67,14 @@ public class Expression {
         }
         Expression other = (Expression) o;
         return 
-            Objects.deepEquals(this.fieldName, other.fieldName) &&
-            Objects.deepEquals(this.filter, other.filter);
+            Utils.enhancedDeepEquals(this.fieldName, other.fieldName) &&
+            Utils.enhancedDeepEquals(this.filter, other.filter);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            fieldName,
-            filter);
+        return Utils.enhancedHash(
+            fieldName, filter);
     }
     
     @Override
@@ -83,16 +83,18 @@ public class Expression {
                 "fieldName", fieldName,
                 "filter", filter);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String fieldName;
- 
+
         private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilter filter;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder fieldName(String fieldName) {
             Utils.checkNotNull(fieldName, "fieldName");
@@ -100,16 +102,18 @@ public class Expression {
             return this;
         }
 
+
         public Builder filter(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilter filter) {
             Utils.checkNotNull(filter, "filter");
             this.filter = filter;
             return this;
         }
-        
+
         public Expression build() {
+
             return new Expression(
-                fieldName,
-                filter);
+                fieldName, filter);
         }
+
     }
 }

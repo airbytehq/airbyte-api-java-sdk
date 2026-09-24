@@ -1,0 +1,9 @@
+# SourceTicktick
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `authorization`                                                                                        | [Optional\<SourceTicktickAuthenticationType>](../../models/shared/SourceTicktickAuthenticationType.md) | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
+| `sourceType`                                                                                           | [Optional\<SourceTicktickTicktick>](../../models/shared/SourceTicktickTicktick.md)                     | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |

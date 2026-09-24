@@ -19,7 +19,7 @@ public enum CredentialsTitle {
     @JsonValue
     private final String value;
 
-    private CredentialsTitle(String value) {
+    CredentialsTitle(String value) {
         this.value = value;
     }
     

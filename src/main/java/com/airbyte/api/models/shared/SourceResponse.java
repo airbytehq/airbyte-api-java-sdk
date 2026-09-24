@@ -13,7 +13,6 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -22,34 +21,44 @@ import java.util.Optional;
  * <p>Provides details of a single source.
  */
 public class SourceResponse {
-
     /**
      * The values required to configure the source.
      */
     @JsonProperty("configuration")
     private SourceConfiguration configuration;
 
+
     @JsonProperty("createdAt")
     private long createdAt;
 
+
     @JsonProperty("definitionId")
     private String definitionId;
+
 
     @JsonProperty("name")
     private String name;
 
     /**
-     * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
+     * actor or actor definition specific resource requirements. if default is set, these are the
+     * requirements that should be set for ALL jobs run for this actor definition. it is overriden by the
+     * job type specific configurations.
+     * 
+     * <p>if not set, the platform will use defaults. these values will be overriden by configuration at the
+     * connection level.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("resourceAllocation")
     private Optional<? extends ScopedResourceRequirements> resourceAllocation;
 
+
     @JsonProperty("sourceId")
     private String sourceId;
 
+
     @JsonProperty("sourceType")
     private String sourceType;
+
 
     @JsonProperty("workspaceId")
     private String workspaceId;
@@ -90,7 +99,9 @@ public class SourceResponse {
             String sourceId,
             String sourceType,
             String workspaceId) {
-        this(configuration, createdAt, definitionId, name, Optional.empty(), sourceId, sourceType, workspaceId);
+        this(configuration, createdAt, definitionId,
+            name, Optional.empty(), sourceId,
+            sourceType, workspaceId);
     }
 
     /**
@@ -117,7 +128,12 @@ public class SourceResponse {
     }
 
     /**
-     * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
+     * actor or actor definition specific resource requirements. if default is set, these are the
+     * requirements that should be set for ALL jobs run for this actor definition. it is overriden by the
+     * job type specific configurations.
+     * 
+     * <p>if not set, the platform will use defaults. these values will be overriden by configuration at the
+     * connection level.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -140,9 +156,10 @@ public class SourceResponse {
         return workspaceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The values required to configure the source.
@@ -172,7 +189,12 @@ public class SourceResponse {
     }
 
     /**
-     * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
+     * actor or actor definition specific resource requirements. if default is set, these are the
+     * requirements that should be set for ALL jobs run for this actor definition. it is overriden by the
+     * job type specific configurations.
+     * 
+     * <p>if not set, the platform will use defaults. these values will be overriden by configuration at the
+     * connection level.
      */
     public SourceResponse withResourceAllocation(ScopedResourceRequirements resourceAllocation) {
         Utils.checkNotNull(resourceAllocation, "resourceAllocation");
@@ -180,8 +202,14 @@ public class SourceResponse {
         return this;
     }
 
+
     /**
-     * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
+     * actor or actor definition specific resource requirements. if default is set, these are the
+     * requirements that should be set for ALL jobs run for this actor definition. it is overriden by the
+     * job type specific configurations.
+     * 
+     * <p>if not set, the platform will use defaults. these values will be overriden by configuration at the
+     * connection level.
      */
     public SourceResponse withResourceAllocation(Optional<? extends ScopedResourceRequirements> resourceAllocation) {
         Utils.checkNotNull(resourceAllocation, "resourceAllocation");
@@ -207,7 +235,6 @@ public class SourceResponse {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -218,27 +245,22 @@ public class SourceResponse {
         }
         SourceResponse other = (SourceResponse) o;
         return 
-            Objects.deepEquals(this.configuration, other.configuration) &&
-            Objects.deepEquals(this.createdAt, other.createdAt) &&
-            Objects.deepEquals(this.definitionId, other.definitionId) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.resourceAllocation, other.resourceAllocation) &&
-            Objects.deepEquals(this.sourceId, other.sourceId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.workspaceId, other.workspaceId);
+            Utils.enhancedDeepEquals(this.configuration, other.configuration) &&
+            Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
+            Utils.enhancedDeepEquals(this.definitionId, other.definitionId) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.resourceAllocation, other.resourceAllocation) &&
+            Utils.enhancedDeepEquals(this.sourceId, other.sourceId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.workspaceId, other.workspaceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            configuration,
-            createdAt,
-            definitionId,
-            name,
-            resourceAllocation,
-            sourceId,
-            sourceType,
-            workspaceId);
+        return Utils.enhancedHash(
+            configuration, createdAt, definitionId,
+            name, resourceAllocation, sourceId,
+            sourceType, workspaceId);
     }
     
     @Override
@@ -253,28 +275,30 @@ public class SourceResponse {
                 "sourceType", sourceType,
                 "workspaceId", workspaceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private SourceConfiguration configuration;
- 
+
         private Long createdAt;
- 
+
         private String definitionId;
- 
+
         private String name;
- 
+
         private Optional<? extends ScopedResourceRequirements> resourceAllocation = Optional.empty();
- 
+
         private String sourceId;
- 
+
         private String sourceType;
- 
+
         private String workspaceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The values required to configure the source.
@@ -285,11 +309,13 @@ public class SourceResponse {
             return this;
         }
 
+
         public Builder createdAt(long createdAt) {
             Utils.checkNotNull(createdAt, "createdAt");
             this.createdAt = createdAt;
             return this;
         }
+
 
         public Builder definitionId(String definitionId) {
             Utils.checkNotNull(definitionId, "definitionId");
@@ -297,14 +323,21 @@ public class SourceResponse {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = name;
             return this;
         }
 
+
         /**
-         * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
+         * actor or actor definition specific resource requirements. if default is set, these are the
+         * requirements that should be set for ALL jobs run for this actor definition. it is overriden by the
+         * job type specific configurations.
+         * 
+         * <p>if not set, the platform will use defaults. these values will be overriden by configuration at the
+         * connection level.
          */
         public Builder resourceAllocation(ScopedResourceRequirements resourceAllocation) {
             Utils.checkNotNull(resourceAllocation, "resourceAllocation");
@@ -313,7 +346,12 @@ public class SourceResponse {
         }
 
         /**
-         * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
+         * actor or actor definition specific resource requirements. if default is set, these are the
+         * requirements that should be set for ALL jobs run for this actor definition. it is overriden by the
+         * job type specific configurations.
+         * 
+         * <p>if not set, the platform will use defaults. these values will be overriden by configuration at the
+         * connection level.
          */
         public Builder resourceAllocation(Optional<? extends ScopedResourceRequirements> resourceAllocation) {
             Utils.checkNotNull(resourceAllocation, "resourceAllocation");
@@ -321,11 +359,13 @@ public class SourceResponse {
             return this;
         }
 
+
         public Builder sourceId(String sourceId) {
             Utils.checkNotNull(sourceId, "sourceId");
             this.sourceId = sourceId;
             return this;
         }
+
 
         public Builder sourceType(String sourceType) {
             Utils.checkNotNull(sourceType, "sourceType");
@@ -333,22 +373,20 @@ public class SourceResponse {
             return this;
         }
 
+
         public Builder workspaceId(String workspaceId) {
             Utils.checkNotNull(workspaceId, "workspaceId");
             this.workspaceId = workspaceId;
             return this;
         }
-        
+
         public SourceResponse build() {
+
             return new SourceResponse(
-                configuration,
-                createdAt,
-                definitionId,
-                name,
-                resourceAllocation,
-                sourceId,
-                sourceType,
-                workspaceId);
+                configuration, createdAt, definitionId,
+                name, resourceAllocation, sourceId,
+                sourceType, workspaceId);
         }
+
     }
 }

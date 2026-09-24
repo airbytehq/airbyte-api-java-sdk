@@ -11,7 +11,8 @@ import java.util.Optional;
 /**
  * TimeZone
  * 
- * <p>The timezone for the reporting data. Use 'ORTZ' for Organization Time Zone or 'UTC' for Coordinated Universal Time. Default is UTC.
+ * <p>The timezone for the reporting data. Use 'ORTZ' for Organization Time Zone or 'UTC' for Coordinated
+ * Universal Time. Default is UTC.
  */
 public enum TimeZone {
     ORTZ("ORTZ"),
@@ -20,7 +21,7 @@ public enum TimeZone {
     @JsonValue
     private final String value;
 
-    private TimeZone(String value) {
+    TimeZone(String value) {
         this.value = value;
     }
     

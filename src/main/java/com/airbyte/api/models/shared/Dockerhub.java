@@ -14,7 +14,7 @@ public enum Dockerhub {
     @JsonValue
     private final String value;
 
-    private Dockerhub(String value) {
+    Dockerhub(String value) {
         this.value = value;
     }
     

@@ -19,7 +19,7 @@ public enum SourceZohoAnalyticsMetadataApiDataCenter {
     @JsonValue
     private final String value;
 
-    private SourceZohoAnalyticsMetadataApiDataCenter(String value) {
+    SourceZohoAnalyticsMetadataApiDataCenter(String value) {
         this.value = value;
     }
     

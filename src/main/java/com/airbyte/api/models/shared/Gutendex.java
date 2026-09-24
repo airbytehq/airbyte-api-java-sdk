@@ -14,7 +14,7 @@ public enum Gutendex {
     @JsonValue
     private final String value;
 
-    private Gutendex(String value) {
+    Gutendex(String value) {
         this.value = value;
     }
     

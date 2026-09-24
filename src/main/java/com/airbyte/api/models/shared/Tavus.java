@@ -14,7 +14,7 @@ public enum Tavus {
     @JsonValue
     private final String value;
 
-    private Tavus(String value) {
+    Tavus(String value) {
         this.value = value;
     }
     

@@ -50,7 +50,7 @@ public enum ReportName {
     @JsonValue
     private final String value;
 
-    private ReportName(String value) {
+    ReportName(String value) {
         this.value = value;
     }
     

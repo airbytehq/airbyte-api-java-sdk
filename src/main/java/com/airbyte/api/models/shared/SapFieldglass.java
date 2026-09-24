@@ -14,7 +14,7 @@ public enum SapFieldglass {
     @JsonValue
     private final String value;
 
-    private SapFieldglass(String value) {
+    SapFieldglass(String value) {
         this.value = value;
     }
     

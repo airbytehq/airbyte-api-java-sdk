@@ -14,7 +14,7 @@ public enum SourceSurveymonkeyAuthMethod {
     @JsonValue
     private final String value;
 
-    private SourceSurveymonkeyAuthMethod(String value) {
+    SourceSurveymonkeyAuthMethod(String value) {
         this.value = value;
     }
     

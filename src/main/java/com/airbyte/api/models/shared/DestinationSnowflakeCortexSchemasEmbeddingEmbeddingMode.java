@@ -14,7 +14,7 @@ public enum DestinationSnowflakeCortexSchemasEmbeddingEmbeddingMode {
     @JsonValue
     private final String value;
 
-    private DestinationSnowflakeCortexSchemasEmbeddingEmbeddingMode(String value) {
+    DestinationSnowflakeCortexSchemasEmbeddingEmbeddingMode(String value) {
         this.value = value;
     }
     

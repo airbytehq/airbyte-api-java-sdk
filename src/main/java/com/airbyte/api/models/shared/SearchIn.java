@@ -16,7 +16,7 @@ public enum SearchIn {
     @JsonValue
     private final String value;
 
-    private SearchIn(String value) {
+    SearchIn(String value) {
         this.value = value;
     }
     

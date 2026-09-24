@@ -3,16 +3,21 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
+import com.airbyte.api.operations.ListPermissions;
+import com.airbyte.api.utils.Headers;
 import com.airbyte.api.utils.Utils;
-import java.lang.Exception;
 
 public class ListPermissionsRequestBuilder {
 
     private ListPermissionsRequest request;
-    private final SDKMethodInterfaces.MethodCallListPermissions sdk;
+    private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
-    public ListPermissionsRequestBuilder(SDKMethodInterfaces.MethodCallListPermissions sdk) {
-        this.sdk = sdk;
+    public ListPermissionsRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public ListPermissionsRequestBuilder request(ListPermissionsRequest request) {
@@ -21,9 +26,11 @@ public class ListPermissionsRequestBuilder {
         return this;
     }
 
-    public ListPermissionsResponse call() throws Exception {
+    public ListPermissionsResponse call() {
+        
+        RequestOperation<ListPermissionsRequest, ListPermissionsResponse> operation
+              = new ListPermissions.Sync(sdkConfiguration, _headers);
 
-        return sdk.listPermissions(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

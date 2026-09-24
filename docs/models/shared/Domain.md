@@ -2,6 +2,14 @@
 
 The domain suffix for the Zoho Inventory API based on your data center location (e.g., 'com', 'eu', 'in', etc.)
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.Domain;
+
+Domain value = Domain.COM;
+```
+
 
 ## Values
 

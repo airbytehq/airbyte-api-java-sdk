@@ -13,25 +13,28 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceAuth0 {
 
+public class SourceAuth0 {
     /**
-     * The Authentication API is served over HTTPS. All URLs referenced in the documentation have the following base `https://YOUR_DOMAIN`
+     * The Authentication API is served over HTTPS. All URLs referenced in the documentation have the
+     * following base `https://YOUR_DOMAIN`
      */
     @JsonProperty("base_url")
     private String baseUrl;
 
+
     @JsonProperty("credentials")
     private SourceAuth0AuthenticationMethod credentials;
+
 
     @JsonProperty("sourceType")
     private Auth0 sourceType;
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
@@ -58,7 +61,8 @@ public class SourceAuth0 {
     }
 
     /**
-     * The Authentication API is served over HTTPS. All URLs referenced in the documentation have the following base `https://YOUR_DOMAIN`
+     * The Authentication API is served over HTTPS. All URLs referenced in the documentation have the
+     * following base `https://YOUR_DOMAIN`
      */
     @JsonIgnore
     public String baseUrl() {
@@ -76,19 +80,22 @@ public class SourceAuth0 {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     @JsonIgnore
     public Optional<String> startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The Authentication API is served over HTTPS. All URLs referenced in the documentation have the following base `https://YOUR_DOMAIN`
+     * The Authentication API is served over HTTPS. All URLs referenced in the documentation have the
+     * following base `https://YOUR_DOMAIN`
      */
     public SourceAuth0 withBaseUrl(String baseUrl) {
         Utils.checkNotNull(baseUrl, "baseUrl");
@@ -103,7 +110,8 @@ public class SourceAuth0 {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     public SourceAuth0 withStartDate(String startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -111,8 +119,10 @@ public class SourceAuth0 {
         return this;
     }
 
+
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     public SourceAuth0 withStartDate(Optional<String> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -120,7 +130,6 @@ public class SourceAuth0 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -131,18 +140,16 @@ public class SourceAuth0 {
         }
         SourceAuth0 other = (SourceAuth0) o;
         return 
-            Objects.deepEquals(this.baseUrl, other.baseUrl) &&
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.baseUrl, other.baseUrl) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            baseUrl,
-            credentials,
-            sourceType,
+        return Utils.enhancedHash(
+            baseUrl, credentials, sourceType,
             startDate);
     }
     
@@ -154,21 +161,24 @@ public class SourceAuth0 {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String baseUrl;
- 
+
         private SourceAuth0AuthenticationMethod credentials;
- 
+
         private Optional<String> startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The Authentication API is served over HTTPS. All URLs referenced in the documentation have the following base `https://YOUR_DOMAIN`
+         * The Authentication API is served over HTTPS. All URLs referenced in the documentation have the
+         * following base `https://YOUR_DOMAIN`
          */
         public Builder baseUrl(String baseUrl) {
             Utils.checkNotNull(baseUrl, "baseUrl");
@@ -176,14 +186,17 @@ public class SourceAuth0 {
             return this;
         }
 
+
         public Builder credentials(SourceAuth0AuthenticationMethod credentials) {
             Utils.checkNotNull(credentials, "credentials");
             this.credentials = credentials;
             return this;
         }
 
+
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+         * replicated.
          */
         public Builder startDate(String startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -192,23 +205,24 @@ public class SourceAuth0 {
         }
 
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+         * replicated.
          */
         public Builder startDate(Optional<String> startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceAuth0 build() {
             if (startDate == null) {
                 startDate = _SINGLETON_VALUE_StartDate.value();
             }
+
             return new SourceAuth0(
-                baseUrl,
-                credentials,
-                startDate);
+                baseUrl, credentials, startDate);
         }
+
 
         private static final LazySingletonValue<Auth0> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

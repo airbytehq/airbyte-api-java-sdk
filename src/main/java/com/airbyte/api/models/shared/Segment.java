@@ -14,7 +14,7 @@ public enum Segment {
     @JsonValue
     private final String value;
 
-    private Segment(String value) {
+    Segment(String value) {
         this.value = value;
     }
     

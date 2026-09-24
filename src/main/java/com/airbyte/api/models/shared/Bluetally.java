@@ -14,7 +14,7 @@ public enum Bluetally {
     @JsonValue
     private final String value;
 
-    private Bluetally(String value) {
+    Bluetally(String value) {
         this.value = value;
     }
     

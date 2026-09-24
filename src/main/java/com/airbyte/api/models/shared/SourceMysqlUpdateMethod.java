@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceMysqlUpdateMethod
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class SourceMysqlUpdateMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceMysqlUpdateMethod(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class SourceMysqlUpdateMethod {
 
     public static SourceMysqlUpdateMethod of(SourceMysqlScanChangesWithUserDefinedCursor value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMysqlUpdateMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMysqlScanChangesWithUserDefinedCursor>(){}));
+        return new SourceMysqlUpdateMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceMysqlUpdateMethod of(SourceMysqlReadChangesUsingChangeDataCaptureCDC value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMysqlUpdateMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMysqlReadChangesUsingChangeDataCaptureCDC>(){}));
+        return new SourceMysqlUpdateMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class SourceMysqlUpdateMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class SourceMysqlUpdateMethod {
             return false;
         }
         SourceMysqlUpdateMethod other = (SourceMysqlUpdateMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,8 +84,8 @@ public class SourceMysqlUpdateMethod {
 
         public _Deserializer() {
             super(SourceMysqlUpdateMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceMysqlReadChangesUsingChangeDataCaptureCDC>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMysqlScanChangesWithUserDefinedCursor>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceMysqlScanChangesWithUserDefinedCursor>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMysqlReadChangesUsingChangeDataCaptureCDC>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -95,6 +94,6 @@ public class SourceMysqlUpdateMethod {
         return Utils.toString(SourceMysqlUpdateMethod.class,
                 "value", value);
     }
- 
+
 }
 

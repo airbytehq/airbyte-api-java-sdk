@@ -14,7 +14,7 @@ public enum GoogleWebfonts {
     @JsonValue
     private final String value;
 
-    private GoogleWebfonts(String value) {
+    GoogleWebfonts(String value) {
         this.value = value;
     }
     

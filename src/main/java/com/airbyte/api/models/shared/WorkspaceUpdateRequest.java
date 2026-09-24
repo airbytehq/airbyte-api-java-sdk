@@ -12,11 +12,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class WorkspaceUpdateRequest {
 
+public class WorkspaceUpdateRequest {
     /**
      * Name of the workspace
      */
@@ -30,6 +29,7 @@ public class WorkspaceUpdateRequest {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("notifications")
     private Optional<? extends NotificationsConfig> notifications;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("regionId")
@@ -74,9 +74,10 @@ public class WorkspaceUpdateRequest {
         return regionId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Name of the workspace
@@ -86,6 +87,7 @@ public class WorkspaceUpdateRequest {
         this.name = Optional.ofNullable(name);
         return this;
     }
+
 
     /**
      * Name of the workspace
@@ -105,6 +107,7 @@ public class WorkspaceUpdateRequest {
         return this;
     }
 
+
     /**
      * Configures workspace notifications.
      */
@@ -120,13 +123,13 @@ public class WorkspaceUpdateRequest {
         return this;
     }
 
+
     public WorkspaceUpdateRequest withRegionId(Optional<String> regionId) {
         Utils.checkNotNull(regionId, "regionId");
         this.regionId = regionId;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -137,17 +140,15 @@ public class WorkspaceUpdateRequest {
         }
         WorkspaceUpdateRequest other = (WorkspaceUpdateRequest) o;
         return 
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.notifications, other.notifications) &&
-            Objects.deepEquals(this.regionId, other.regionId);
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.notifications, other.notifications) &&
+            Utils.enhancedDeepEquals(this.regionId, other.regionId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            name,
-            notifications,
-            regionId);
+        return Utils.enhancedHash(
+            name, notifications, regionId);
     }
     
     @Override
@@ -157,18 +158,20 @@ public class WorkspaceUpdateRequest {
                 "notifications", notifications,
                 "regionId", regionId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> name = Optional.empty();
- 
+
         private Optional<? extends NotificationsConfig> notifications = Optional.empty();
- 
+
         private Optional<String> regionId = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Name of the workspace
@@ -188,6 +191,7 @@ public class WorkspaceUpdateRequest {
             return this;
         }
 
+
         /**
          * Configures workspace notifications.
          */
@@ -206,6 +210,7 @@ public class WorkspaceUpdateRequest {
             return this;
         }
 
+
         public Builder regionId(String regionId) {
             Utils.checkNotNull(regionId, "regionId");
             this.regionId = Optional.ofNullable(regionId);
@@ -217,12 +222,12 @@ public class WorkspaceUpdateRequest {
             this.regionId = regionId;
             return this;
         }
-        
+
         public WorkspaceUpdateRequest build() {
+
             return new WorkspaceUpdateRequest(
-                name,
-                notifications,
-                regionId);
+                name, notifications, regionId);
         }
+
     }
 }

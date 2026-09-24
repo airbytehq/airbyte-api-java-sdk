@@ -14,7 +14,7 @@ public enum Float {
     @JsonValue
     private final String value;
 
-    private Float(String value) {
+    Float(String value) {
         this.value = value;
     }
     

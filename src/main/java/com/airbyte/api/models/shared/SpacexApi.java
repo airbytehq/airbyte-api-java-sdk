@@ -14,7 +14,7 @@ public enum SpacexApi {
     @JsonValue
     private final String value;
 
-    private SpacexApi(String value) {
+    SpacexApi(String value) {
         this.value = value;
     }
     

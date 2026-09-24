@@ -14,7 +14,7 @@ public enum SourceMicrosoftSharepointSchemasStreamsFormatFormat6Filetype {
     @JsonValue
     private final String value;
 
-    private SourceMicrosoftSharepointSchemasStreamsFormatFormat6Filetype(String value) {
+    SourceMicrosoftSharepointSchemasStreamsFormatFormat6Filetype(String value) {
         this.value = value;
     }
     

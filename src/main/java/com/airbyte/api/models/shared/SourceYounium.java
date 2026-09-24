@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceYounium {
 
+public class SourceYounium {
     /**
      * Legal Entity that data should be pulled from
      */
@@ -37,6 +36,7 @@ public class SourceYounium {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("playground")
     private Optional<Boolean> playground;
+
 
     @JsonProperty("sourceType")
     private Younium sourceType;
@@ -68,7 +68,8 @@ public class SourceYounium {
             String legalEntity,
             String password,
             String username) {
-        this(legalEntity, password, Optional.empty(), username);
+        this(legalEntity, password, Optional.empty(),
+            username);
     }
 
     /**
@@ -108,9 +109,10 @@ public class SourceYounium {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Legal Entity that data should be pulled from
@@ -139,6 +141,7 @@ public class SourceYounium {
         return this;
     }
 
+
     /**
      * Property defining if connector is used against playground or production environment
      */
@@ -157,7 +160,6 @@ public class SourceYounium {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -168,21 +170,18 @@ public class SourceYounium {
         }
         SourceYounium other = (SourceYounium) o;
         return 
-            Objects.deepEquals(this.legalEntity, other.legalEntity) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.playground, other.playground) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.legalEntity, other.legalEntity) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.playground, other.playground) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            legalEntity,
-            password,
-            playground,
-            sourceType,
-            username);
+        return Utils.enhancedHash(
+            legalEntity, password, playground,
+            sourceType, username);
     }
     
     @Override
@@ -194,20 +193,22 @@ public class SourceYounium {
                 "sourceType", sourceType,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String legalEntity;
- 
+
         private String password;
- 
+
         private Optional<Boolean> playground;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Legal Entity that data should be pulled from
@@ -218,6 +219,7 @@ public class SourceYounium {
             return this;
         }
 
+
         /**
          * Account password for younium account API key
          */
@@ -226,6 +228,7 @@ public class SourceYounium {
             this.password = password;
             return this;
         }
+
 
         /**
          * Property defining if connector is used against playground or production environment
@@ -245,6 +248,7 @@ public class SourceYounium {
             return this;
         }
 
+
         /**
          * Username for Younium account
          */
@@ -253,17 +257,17 @@ public class SourceYounium {
             this.username = username;
             return this;
         }
-        
+
         public SourceYounium build() {
             if (playground == null) {
                 playground = _SINGLETON_VALUE_Playground.value();
             }
+
             return new SourceYounium(
-                legalEntity,
-                password,
-                playground,
+                legalEntity, password, playground,
                 username);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_Playground =
                 new LazySingletonValue<>(

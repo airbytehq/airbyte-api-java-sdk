@@ -14,7 +14,7 @@ public enum DestinationS3SchemasCompressionType {
     @JsonValue
     private final String value;
 
-    private DestinationS3SchemasCompressionType(String value) {
+    DestinationS3SchemasCompressionType(String value) {
         this.value = value;
     }
     

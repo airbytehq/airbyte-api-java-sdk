@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceMicrosoftSharepointAuthentication
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class SourceMicrosoftSharepointAuthentication {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceMicrosoftSharepointAuthentication(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class SourceMicrosoftSharepointAuthentication {
 
     public static SourceMicrosoftSharepointAuthentication of(SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMicrosoftSharepointAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth>(){}));
+        return new SourceMicrosoftSharepointAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceMicrosoftSharepointAuthentication of(SourceMicrosoftSharepointServiceKeyAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMicrosoftSharepointAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMicrosoftSharepointServiceKeyAuthentication>(){}));
+        return new SourceMicrosoftSharepointAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class SourceMicrosoftSharepointAuthentication {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class SourceMicrosoftSharepointAuthentication {
             return false;
         }
         SourceMicrosoftSharepointAuthentication other = (SourceMicrosoftSharepointAuthentication) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,8 +84,8 @@ public class SourceMicrosoftSharepointAuthentication {
 
         public _Deserializer() {
             super(SourceMicrosoftSharepointAuthentication.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepointServiceKeyAuthentication>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepointServiceKeyAuthentication>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -95,6 +94,6 @@ public class SourceMicrosoftSharepointAuthentication {
         return Utils.toString(SourceMicrosoftSharepointAuthentication.class,
                 "value", value);
     }
- 
+
 }
 

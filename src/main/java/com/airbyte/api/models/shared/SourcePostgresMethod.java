@@ -14,7 +14,7 @@ public enum SourcePostgresMethod {
     @JsonValue
     private final String value;
 
-    private SourcePostgresMethod(String value) {
+    SourcePostgresMethod(String value) {
         this.value = value;
     }
     

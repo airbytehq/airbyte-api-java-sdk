@@ -14,7 +14,7 @@ public enum PivotalTracker {
     @JsonValue
     private final String value;
 
-    private PivotalTracker(String value) {
+    PivotalTracker(String value) {
         this.value = value;
     }
     

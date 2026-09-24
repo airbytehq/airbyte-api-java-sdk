@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -27,6 +26,7 @@ public class SourceGoogleAnalyticsDataApiNotExpression {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("expression")
     private Optional<? extends SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilterExpression> expression;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("filter_type")
@@ -56,9 +56,10 @@ public class SourceGoogleAnalyticsDataApiNotExpression {
         return (Optional<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3FilterType>) filterType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceGoogleAnalyticsDataApiNotExpression withExpression(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilterExpression expression) {
         Utils.checkNotNull(expression, "expression");
@@ -66,13 +67,13 @@ public class SourceGoogleAnalyticsDataApiNotExpression {
         return this;
     }
 
+
     public SourceGoogleAnalyticsDataApiNotExpression withExpression(Optional<? extends SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilterExpression> expression) {
         Utils.checkNotNull(expression, "expression");
         this.expression = expression;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -83,15 +84,14 @@ public class SourceGoogleAnalyticsDataApiNotExpression {
         }
         SourceGoogleAnalyticsDataApiNotExpression other = (SourceGoogleAnalyticsDataApiNotExpression) o;
         return 
-            Objects.deepEquals(this.expression, other.expression) &&
-            Objects.deepEquals(this.filterType, other.filterType);
+            Utils.enhancedDeepEquals(this.expression, other.expression) &&
+            Utils.enhancedDeepEquals(this.filterType, other.filterType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            expression,
-            filterType);
+        return Utils.enhancedHash(
+            expression, filterType);
     }
     
     @Override
@@ -100,14 +100,16 @@ public class SourceGoogleAnalyticsDataApiNotExpression {
                 "expression", expression,
                 "filterType", filterType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilterExpression> expression = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder expression(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilterExpression expression) {
             Utils.checkNotNull(expression, "expression");
@@ -120,11 +122,13 @@ public class SourceGoogleAnalyticsDataApiNotExpression {
             this.expression = expression;
             return this;
         }
-        
+
         public SourceGoogleAnalyticsDataApiNotExpression build() {
+
             return new SourceGoogleAnalyticsDataApiNotExpression(
                 expression);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3FilterType>> _SINGLETON_VALUE_FilterType =
                 new LazySingletonValue<>(

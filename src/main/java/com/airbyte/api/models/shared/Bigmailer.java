@@ -14,7 +14,7 @@ public enum Bigmailer {
     @JsonValue
     private final String value;
 
-    private Bigmailer(String value) {
+    Bigmailer(String value) {
         this.value = value;
     }
     

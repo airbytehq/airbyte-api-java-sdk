@@ -14,7 +14,7 @@ public enum SourceMicrosoftTeamsMicrosoftTeams {
     @JsonValue
     private final String value;
 
-    private SourceMicrosoftTeamsMicrosoftTeams(String value) {
+    SourceMicrosoftTeamsMicrosoftTeams(String value) {
         this.value = value;
     }
     

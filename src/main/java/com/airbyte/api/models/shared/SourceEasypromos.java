@@ -11,12 +11,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceEasypromos {
 
     @JsonProperty("bearer_token")
     private String bearerToken;
+
 
     @JsonProperty("sourceType")
     private Easypromos sourceType;
@@ -39,9 +40,10 @@ public class SourceEasypromos {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceEasypromos withBearerToken(String bearerToken) {
         Utils.checkNotNull(bearerToken, "bearerToken");
@@ -49,7 +51,6 @@ public class SourceEasypromos {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -60,15 +61,14 @@ public class SourceEasypromos {
         }
         SourceEasypromos other = (SourceEasypromos) o;
         return 
-            Objects.deepEquals(this.bearerToken, other.bearerToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.bearerToken, other.bearerToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            bearerToken,
-            sourceType);
+        return Utils.enhancedHash(
+            bearerToken, sourceType);
     }
     
     @Override
@@ -77,25 +77,29 @@ public class SourceEasypromos {
                 "bearerToken", bearerToken,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String bearerToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder bearerToken(String bearerToken) {
             Utils.checkNotNull(bearerToken, "bearerToken");
             this.bearerToken = bearerToken;
             return this;
         }
-        
+
         public SourceEasypromos build() {
+
             return new SourceEasypromos(
                 bearerToken);
         }
+
 
         private static final LazySingletonValue<Easypromos> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

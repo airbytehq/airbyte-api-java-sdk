@@ -40,7 +40,7 @@ public enum AWSRegion {
     @JsonValue
     private final String value;
 
-    private AWSRegion(String value) {
+    AWSRegion(String value) {
         this.value = value;
     }
     

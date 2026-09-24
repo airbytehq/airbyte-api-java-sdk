@@ -14,7 +14,7 @@ public enum Openaq {
     @JsonValue
     private final String value;
 
-    private Openaq(String value) {
+    Openaq(String value) {
         this.value = value;
     }
     

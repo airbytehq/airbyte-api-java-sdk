@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceMyHours {
 
+public class SourceMyHours {
     /**
      * Your My Hours username
      */
@@ -37,6 +36,7 @@ public class SourceMyHours {
      */
     @JsonProperty("password")
     private String password;
+
 
     @JsonProperty("sourceType")
     private MyHours sourceType;
@@ -68,7 +68,8 @@ public class SourceMyHours {
             String email,
             String password,
             String startDate) {
-        this(email, Optional.empty(), password, startDate);
+        this(email, Optional.empty(), password,
+            startDate);
     }
 
     /**
@@ -108,9 +109,10 @@ public class SourceMyHours {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your My Hours username
@@ -129,6 +131,7 @@ public class SourceMyHours {
         this.logsBatchSize = Optional.ofNullable(logsBatchSize);
         return this;
     }
+
 
     /**
      * Pagination size used for retrieving logs in days
@@ -157,7 +160,6 @@ public class SourceMyHours {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -168,21 +170,18 @@ public class SourceMyHours {
         }
         SourceMyHours other = (SourceMyHours) o;
         return 
-            Objects.deepEquals(this.email, other.email) &&
-            Objects.deepEquals(this.logsBatchSize, other.logsBatchSize) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.email, other.email) &&
+            Utils.enhancedDeepEquals(this.logsBatchSize, other.logsBatchSize) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            email,
-            logsBatchSize,
-            password,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            email, logsBatchSize, password,
+            sourceType, startDate);
     }
     
     @Override
@@ -194,20 +193,22 @@ public class SourceMyHours {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String email;
- 
+
         private Optional<Long> logsBatchSize;
- 
+
         private String password;
- 
+
         private String startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your My Hours username
@@ -217,6 +218,7 @@ public class SourceMyHours {
             this.email = email;
             return this;
         }
+
 
         /**
          * Pagination size used for retrieving logs in days
@@ -236,6 +238,7 @@ public class SourceMyHours {
             return this;
         }
 
+
         /**
          * The password associated to the username
          */
@@ -245,6 +248,7 @@ public class SourceMyHours {
             return this;
         }
 
+
         /**
          * Start date for collecting time logs
          */
@@ -253,17 +257,17 @@ public class SourceMyHours {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceMyHours build() {
             if (logsBatchSize == null) {
                 logsBatchSize = _SINGLETON_VALUE_LogsBatchSize.value();
             }
+
             return new SourceMyHours(
-                email,
-                logsBatchSize,
-                password,
+                email, logsBatchSize, password,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_LogsBatchSize =
                 new LazySingletonValue<>(

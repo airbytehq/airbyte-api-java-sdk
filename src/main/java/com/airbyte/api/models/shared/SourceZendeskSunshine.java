@@ -15,8 +15,8 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceZendeskSunshine {
 
@@ -24,11 +24,13 @@ public class SourceZendeskSunshine {
     @JsonProperty("credentials")
     private Optional<? extends SourceZendeskSunshineAuthorizationMethod> credentials;
 
+
     @JsonProperty("sourceType")
     private ZendeskSunshine sourceType;
 
     /**
-     * The date from which you'd like to replicate data for Zendesk Sunshine API, in the format YYYY-MM-DDT00:00:00Z.
+     * The date from which you'd like to replicate data for Zendesk Sunshine API, in the format
+     * YYYY-MM-DDT00:00:00Z.
      */
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -71,7 +73,8 @@ public class SourceZendeskSunshine {
     }
 
     /**
-     * The date from which you'd like to replicate data for Zendesk Sunshine API, in the format YYYY-MM-DDT00:00:00Z.
+     * The date from which you'd like to replicate data for Zendesk Sunshine API, in the format
+     * YYYY-MM-DDT00:00:00Z.
      */
     @JsonIgnore
     public OffsetDateTime startDate() {
@@ -86,15 +89,17 @@ public class SourceZendeskSunshine {
         return subdomain;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceZendeskSunshine withCredentials(SourceZendeskSunshineAuthorizationMethod credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = Optional.ofNullable(credentials);
         return this;
     }
+
 
     public SourceZendeskSunshine withCredentials(Optional<? extends SourceZendeskSunshineAuthorizationMethod> credentials) {
         Utils.checkNotNull(credentials, "credentials");
@@ -103,7 +108,8 @@ public class SourceZendeskSunshine {
     }
 
     /**
-     * The date from which you'd like to replicate data for Zendesk Sunshine API, in the format YYYY-MM-DDT00:00:00Z.
+     * The date from which you'd like to replicate data for Zendesk Sunshine API, in the format
+     * YYYY-MM-DDT00:00:00Z.
      */
     public SourceZendeskSunshine withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -120,7 +126,6 @@ public class SourceZendeskSunshine {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -131,18 +136,16 @@ public class SourceZendeskSunshine {
         }
         SourceZendeskSunshine other = (SourceZendeskSunshine) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.subdomain, other.subdomain);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.subdomain, other.subdomain);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            sourceType,
-            startDate,
+        return Utils.enhancedHash(
+            credentials, sourceType, startDate,
             subdomain);
     }
     
@@ -154,18 +157,20 @@ public class SourceZendeskSunshine {
                 "startDate", startDate,
                 "subdomain", subdomain);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourceZendeskSunshineAuthorizationMethod> credentials = Optional.empty();
- 
+
         private OffsetDateTime startDate;
- 
+
         private String subdomain;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder credentials(SourceZendeskSunshineAuthorizationMethod credentials) {
             Utils.checkNotNull(credentials, "credentials");
@@ -179,14 +184,17 @@ public class SourceZendeskSunshine {
             return this;
         }
 
+
         /**
-         * The date from which you'd like to replicate data for Zendesk Sunshine API, in the format YYYY-MM-DDT00:00:00Z.
+         * The date from which you'd like to replicate data for Zendesk Sunshine API, in the format
+         * YYYY-MM-DDT00:00:00Z.
          */
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * The subdomain for your Zendesk Account.
@@ -196,13 +204,13 @@ public class SourceZendeskSunshine {
             this.subdomain = subdomain;
             return this;
         }
-        
+
         public SourceZendeskSunshine build() {
+
             return new SourceZendeskSunshine(
-                credentials,
-                startDate,
-                subdomain);
+                credentials, startDate, subdomain);
         }
+
 
         private static final LazySingletonValue<ZendeskSunshine> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

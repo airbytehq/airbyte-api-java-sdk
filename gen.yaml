@@ -3,28 +3,56 @@ generation:
   sdkClassName: airbyte
   usageSnippets:
     optionalPropertyRendering: withExample
+    sdkInitStyle: constructor
   useClassNamesForArrayFields: true
   fixes:
     nameResolutionFeb2025: false
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
     securityFeb2025: false
+    sharedErrorComponentsApr2025: false
+    sharedNestedComponentsJan2026: false
+    nameOverrideFeb2026: false
   auth:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: false
+    hoistGlobalSecurity: true
+  schemas:
+    allOfMergeStrategy: shallowMerge
+  requestBodyFieldName: ""
+  versioningStrategy: automatic
+  persistentEdits: {}
+  tests:
+    generateTests: true
+    generateNewTests: false
+    skipResponseBodyAssertions: false
 java:
-  version: 2.0.0
+  version: 3.0.0
   additionalDependencies: []
   additionalPlugins: []
   artifactID: api
+  asyncMode: enabled
+  baseErrorName: AirbyteException
   clientServerStatusCodesAsErrors: true
   companyEmail: info@airbyte.com
   companyName: Airbyte
   companyURL: www.airbyte.com
   defaultErrorName: SDKError
+  enableCustomCodeRegions: false
+  enableFormatting: false
+  enableSlf4jLogging: false
+  enableStreamingUploads: false
+  explicitDocImports: false
   flattenGlobalSecurity: false
+  forwardCompatibleEnumsByDefault: false
+  forwardCompatibleUnionsByDefault: true
+  generateOptionalUnionAccessors: false
+  generateSpringBootStarter: true
+  generateUnionDocs: false
+  getterStyle: presence-aware
   githubURL: github.com/airbytehq/airbyte-api-java-sdk
   groupID: com.airbyte
+  httpClient: jdk
   imports:
     option: openapi
     paths:
@@ -33,12 +61,21 @@ java:
       operations: models/operations
       shared: models/shared
       webhooks: models/webhooks
+  inferUnionDiscriminators: false
   inputModelSuffix: input
+  languageVersion: 11
   license:
     name: The MIT License (MIT)
     shortName: MIT
     url: https://mit-license.org/
   maxMethodParams: 0
+  multipartArrayFormat: legacy
+  nullFriendlyParameters: false
+  operationScopedParams: true
   outputModelSuffix: output
+  prefixModeMethodNames: false
   projectName: public-api
+  respectTitlesForPrimitiveUnionMembers: false
+  showSetterGetterTypesInDocs: false
   templateVersion: v2
+  unionStrategy: populated-fields

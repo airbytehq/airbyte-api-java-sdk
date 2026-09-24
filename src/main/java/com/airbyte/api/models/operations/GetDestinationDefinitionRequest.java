@@ -9,12 +9,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class GetDestinationDefinitionRequest {
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=definitionId")
     private String definitionId;
+
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspaceId")
     private String workspaceId;
@@ -39,9 +40,10 @@ public class GetDestinationDefinitionRequest {
         return workspaceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public GetDestinationDefinitionRequest withDefinitionId(String definitionId) {
         Utils.checkNotNull(definitionId, "definitionId");
@@ -55,7 +57,6 @@ public class GetDestinationDefinitionRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -66,15 +67,14 @@ public class GetDestinationDefinitionRequest {
         }
         GetDestinationDefinitionRequest other = (GetDestinationDefinitionRequest) o;
         return 
-            Objects.deepEquals(this.definitionId, other.definitionId) &&
-            Objects.deepEquals(this.workspaceId, other.workspaceId);
+            Utils.enhancedDeepEquals(this.definitionId, other.definitionId) &&
+            Utils.enhancedDeepEquals(this.workspaceId, other.workspaceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            definitionId,
-            workspaceId);
+        return Utils.enhancedHash(
+            definitionId, workspaceId);
     }
     
     @Override
@@ -83,16 +83,18 @@ public class GetDestinationDefinitionRequest {
                 "definitionId", definitionId,
                 "workspaceId", workspaceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String definitionId;
- 
+
         private String workspaceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder definitionId(String definitionId) {
             Utils.checkNotNull(definitionId, "definitionId");
@@ -100,16 +102,18 @@ public class GetDestinationDefinitionRequest {
             return this;
         }
 
+
         public Builder workspaceId(String workspaceId) {
             Utils.checkNotNull(workspaceId, "workspaceId");
             this.workspaceId = workspaceId;
             return this;
         }
-        
+
         public GetDestinationDefinitionRequest build() {
+
             return new GetDestinationDefinitionRequest(
-                definitionId,
-                workspaceId);
+                definitionId, workspaceId);
         }
+
     }
 }

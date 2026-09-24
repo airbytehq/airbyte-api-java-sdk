@@ -14,7 +14,7 @@ public enum FinancialModelling {
     @JsonValue
     private final String value;
 
-    private FinancialModelling(String value) {
+    FinancialModelling(String value) {
         this.value = value;
     }
     

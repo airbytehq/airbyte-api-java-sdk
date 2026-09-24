@@ -14,7 +14,7 @@ public enum SourceHarvestSchemasAuthType {
     @JsonValue
     private final String value;
 
-    private SourceHarvestSchemasAuthType(String value) {
+    SourceHarvestSchemasAuthType(String value) {
         this.value = value;
     }
     

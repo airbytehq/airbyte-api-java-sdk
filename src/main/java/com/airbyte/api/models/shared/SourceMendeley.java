@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceMendeley {
 
+public class SourceMendeley {
     /**
      * Could be found at `https://dev.mendeley.com/myapps.html`
      */
@@ -26,7 +25,9 @@ public class SourceMendeley {
     private String clientId;
 
     /**
-     * Use cURL or Postman with the OAuth 2.0 Authorization tab. Set the Auth URL to https://api.mendeley.com/oauth/authorize, the Token URL to https://api.mendeley.com/oauth/token, and use all as the scope.
+     * Use cURL or Postman with the OAuth 2.0 Authorization tab. Set the Auth URL to
+     * https://api.mendeley.com/oauth/authorize, the Token URL to https://api.mendeley.com/oauth/token, and
+     * use all as the scope.
      */
     @JsonProperty("client_refresh_token")
     private String clientRefreshToken;
@@ -51,8 +52,10 @@ public class SourceMendeley {
     @JsonProperty("query_for_catalog")
     private Optional<String> queryForCatalog;
 
+
     @JsonProperty("sourceType")
     private Mendeley sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -85,7 +88,8 @@ public class SourceMendeley {
             String clientRefreshToken,
             String clientSecret,
             OffsetDateTime startDate) {
-        this(clientId, clientRefreshToken, clientSecret, Optional.empty(), Optional.empty(), startDate);
+        this(clientId, clientRefreshToken, clientSecret,
+            Optional.empty(), Optional.empty(), startDate);
     }
 
     /**
@@ -97,7 +101,9 @@ public class SourceMendeley {
     }
 
     /**
-     * Use cURL or Postman with the OAuth 2.0 Authorization tab. Set the Auth URL to https://api.mendeley.com/oauth/authorize, the Token URL to https://api.mendeley.com/oauth/token, and use all as the scope.
+     * Use cURL or Postman with the OAuth 2.0 Authorization tab. Set the Auth URL to
+     * https://api.mendeley.com/oauth/authorize, the Token URL to https://api.mendeley.com/oauth/token, and
+     * use all as the scope.
      */
     @JsonIgnore
     public String clientRefreshToken() {
@@ -138,9 +144,10 @@ public class SourceMendeley {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Could be found at `https://dev.mendeley.com/myapps.html`
@@ -152,7 +159,9 @@ public class SourceMendeley {
     }
 
     /**
-     * Use cURL or Postman with the OAuth 2.0 Authorization tab. Set the Auth URL to https://api.mendeley.com/oauth/authorize, the Token URL to https://api.mendeley.com/oauth/token, and use all as the scope.
+     * Use cURL or Postman with the OAuth 2.0 Authorization tab. Set the Auth URL to
+     * https://api.mendeley.com/oauth/authorize, the Token URL to https://api.mendeley.com/oauth/token, and
+     * use all as the scope.
      */
     public SourceMendeley withClientRefreshToken(String clientRefreshToken) {
         Utils.checkNotNull(clientRefreshToken, "clientRefreshToken");
@@ -178,6 +187,7 @@ public class SourceMendeley {
         return this;
     }
 
+
     /**
      * The name parameter for institutions search
      */
@@ -196,6 +206,7 @@ public class SourceMendeley {
         return this;
     }
 
+
     /**
      * Query for catalog search
      */
@@ -211,7 +222,6 @@ public class SourceMendeley {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -222,24 +232,20 @@ public class SourceMendeley {
         }
         SourceMendeley other = (SourceMendeley) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientRefreshToken, other.clientRefreshToken) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.nameForInstitution, other.nameForInstitution) &&
-            Objects.deepEquals(this.queryForCatalog, other.queryForCatalog) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientRefreshToken, other.clientRefreshToken) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.nameForInstitution, other.nameForInstitution) &&
+            Utils.enhancedDeepEquals(this.queryForCatalog, other.queryForCatalog) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientRefreshToken,
-            clientSecret,
-            nameForInstitution,
-            queryForCatalog,
-            sourceType,
+        return Utils.enhancedHash(
+            clientId, clientRefreshToken, clientSecret,
+            nameForInstitution, queryForCatalog, sourceType,
             startDate);
     }
     
@@ -254,24 +260,26 @@ public class SourceMendeley {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientRefreshToken;
- 
+
         private String clientSecret;
- 
+
         private Optional<String> nameForInstitution;
- 
+
         private Optional<String> queryForCatalog;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Could be found at `https://dev.mendeley.com/myapps.html`
@@ -282,14 +290,18 @@ public class SourceMendeley {
             return this;
         }
 
+
         /**
-         * Use cURL or Postman with the OAuth 2.0 Authorization tab. Set the Auth URL to https://api.mendeley.com/oauth/authorize, the Token URL to https://api.mendeley.com/oauth/token, and use all as the scope.
+         * Use cURL or Postman with the OAuth 2.0 Authorization tab. Set the Auth URL to
+         * https://api.mendeley.com/oauth/authorize, the Token URL to https://api.mendeley.com/oauth/token, and
+         * use all as the scope.
          */
         public Builder clientRefreshToken(String clientRefreshToken) {
             Utils.checkNotNull(clientRefreshToken, "clientRefreshToken");
             this.clientRefreshToken = clientRefreshToken;
             return this;
         }
+
 
         /**
          * Could be found at `https://dev.mendeley.com/myapps.html`
@@ -299,6 +311,7 @@ public class SourceMendeley {
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         /**
          * The name parameter for institutions search
@@ -318,6 +331,7 @@ public class SourceMendeley {
             return this;
         }
 
+
         /**
          * Query for catalog search
          */
@@ -336,12 +350,13 @@ public class SourceMendeley {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceMendeley build() {
             if (nameForInstitution == null) {
                 nameForInstitution = _SINGLETON_VALUE_NameForInstitution.value();
@@ -349,14 +364,12 @@ public class SourceMendeley {
             if (queryForCatalog == null) {
                 queryForCatalog = _SINGLETON_VALUE_QueryForCatalog.value();
             }
+
             return new SourceMendeley(
-                clientId,
-                clientRefreshToken,
-                clientSecret,
-                nameForInstitution,
-                queryForCatalog,
-                startDate);
+                clientId, clientRefreshToken, clientSecret,
+                nameForInstitution, queryForCatalog, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_NameForInstitution =
                 new LazySingletonValue<>(

@@ -16,17 +16,18 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceMonday {
 
+public class SourceMonday {
     /**
-     * The IDs of the boards that the Items and Boards streams will extract records from. When left empty, streams will extract records from all boards that exist within the account.
+     * The IDs of the boards that the Items and Boards streams will extract records from. When left empty,
+     * streams will extract records from all boards that exist within the account.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("board_ids")
     private Optional<? extends List<Long>> boardIds;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
@@ -38,6 +39,7 @@ public class SourceMonday {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("num_workers")
     private Optional<Long> numWorkers;
+
 
     @JsonProperty("sourceType")
     private SourceMondayMonday sourceType;
@@ -61,7 +63,8 @@ public class SourceMonday {
     }
 
     /**
-     * The IDs of the boards that the Items and Boards streams will extract records from. When left empty, streams will extract records from all boards that exist within the account.
+     * The IDs of the boards that the Items and Boards streams will extract records from. When left empty,
+     * streams will extract records from all boards that exist within the account.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -88,12 +91,14 @@ public class SourceMonday {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The IDs of the boards that the Items and Boards streams will extract records from. When left empty, streams will extract records from all boards that exist within the account.
+     * The IDs of the boards that the Items and Boards streams will extract records from. When left empty,
+     * streams will extract records from all boards that exist within the account.
      */
     public SourceMonday withBoardIds(List<Long> boardIds) {
         Utils.checkNotNull(boardIds, "boardIds");
@@ -101,8 +106,10 @@ public class SourceMonday {
         return this;
     }
 
+
     /**
-     * The IDs of the boards that the Items and Boards streams will extract records from. When left empty, streams will extract records from all boards that exist within the account.
+     * The IDs of the boards that the Items and Boards streams will extract records from. When left empty,
+     * streams will extract records from all boards that exist within the account.
      */
     public SourceMonday withBoardIds(Optional<? extends List<Long>> boardIds) {
         Utils.checkNotNull(boardIds, "boardIds");
@@ -115,6 +122,7 @@ public class SourceMonday {
         this.credentials = Optional.ofNullable(credentials);
         return this;
     }
+
 
     public SourceMonday withCredentials(Optional<? extends SourceMondayAuthorizationMethod> credentials) {
         Utils.checkNotNull(credentials, "credentials");
@@ -131,6 +139,7 @@ public class SourceMonday {
         return this;
     }
 
+
     /**
      * The number of worker threads to use for the sync.
      */
@@ -140,7 +149,6 @@ public class SourceMonday {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -151,18 +159,16 @@ public class SourceMonday {
         }
         SourceMonday other = (SourceMonday) o;
         return 
-            Objects.deepEquals(this.boardIds, other.boardIds) &&
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.numWorkers, other.numWorkers) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.boardIds, other.boardIds) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.numWorkers, other.numWorkers) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            boardIds,
-            credentials,
-            numWorkers,
+        return Utils.enhancedHash(
+            boardIds, credentials, numWorkers,
             sourceType);
     }
     
@@ -174,21 +180,24 @@ public class SourceMonday {
                 "numWorkers", numWorkers,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends List<Long>> boardIds = Optional.empty();
- 
+
         private Optional<? extends SourceMondayAuthorizationMethod> credentials = Optional.empty();
- 
+
         private Optional<Long> numWorkers;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The IDs of the boards that the Items and Boards streams will extract records from. When left empty, streams will extract records from all boards that exist within the account.
+         * The IDs of the boards that the Items and Boards streams will extract records from. When left empty,
+         * streams will extract records from all boards that exist within the account.
          */
         public Builder boardIds(List<Long> boardIds) {
             Utils.checkNotNull(boardIds, "boardIds");
@@ -197,13 +206,15 @@ public class SourceMonday {
         }
 
         /**
-         * The IDs of the boards that the Items and Boards streams will extract records from. When left empty, streams will extract records from all boards that exist within the account.
+         * The IDs of the boards that the Items and Boards streams will extract records from. When left empty,
+         * streams will extract records from all boards that exist within the account.
          */
         public Builder boardIds(Optional<? extends List<Long>> boardIds) {
             Utils.checkNotNull(boardIds, "boardIds");
             this.boardIds = boardIds;
             return this;
         }
+
 
         public Builder credentials(SourceMondayAuthorizationMethod credentials) {
             Utils.checkNotNull(credentials, "credentials");
@@ -216,6 +227,7 @@ public class SourceMonday {
             this.credentials = credentials;
             return this;
         }
+
 
         /**
          * The number of worker threads to use for the sync.
@@ -234,16 +246,16 @@ public class SourceMonday {
             this.numWorkers = numWorkers;
             return this;
         }
-        
+
         public SourceMonday build() {
             if (numWorkers == null) {
                 numWorkers = _SINGLETON_VALUE_NumWorkers.value();
             }
+
             return new SourceMonday(
-                boardIds,
-                credentials,
-                numWorkers);
+                boardIds, credentials, numWorkers);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_NumWorkers =
                 new LazySingletonValue<>(

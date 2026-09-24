@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceShortcut {
 
@@ -23,14 +23,17 @@ public class SourceShortcut {
     private String apiKey2;
 
     /**
-     * Query for searching as defined in `https://help.shortcut.com/hc/en-us/articles/360000046646-Searching-in-Shortcut-Using-Search-Operators`
+     * Query for searching as defined in
+     * `https://help.shortcut.com/hc/en-us/articles/360000046646-Searching-in-Shortcut-Using-Search-Operators`
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("query")
     private Optional<String> query;
 
+
     @JsonProperty("sourceType")
     private Shortcut sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -61,7 +64,8 @@ public class SourceShortcut {
     }
 
     /**
-     * Query for searching as defined in `https://help.shortcut.com/hc/en-us/articles/360000046646-Searching-in-Shortcut-Using-Search-Operators`
+     * Query for searching as defined in
+     * `https://help.shortcut.com/hc/en-us/articles/360000046646-Searching-in-Shortcut-Using-Search-Operators`
      */
     @JsonIgnore
     public Optional<String> query() {
@@ -78,9 +82,10 @@ public class SourceShortcut {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceShortcut withApiKey2(String apiKey2) {
         Utils.checkNotNull(apiKey2, "apiKey2");
@@ -89,7 +94,8 @@ public class SourceShortcut {
     }
 
     /**
-     * Query for searching as defined in `https://help.shortcut.com/hc/en-us/articles/360000046646-Searching-in-Shortcut-Using-Search-Operators`
+     * Query for searching as defined in
+     * `https://help.shortcut.com/hc/en-us/articles/360000046646-Searching-in-Shortcut-Using-Search-Operators`
      */
     public SourceShortcut withQuery(String query) {
         Utils.checkNotNull(query, "query");
@@ -97,8 +103,10 @@ public class SourceShortcut {
         return this;
     }
 
+
     /**
-     * Query for searching as defined in `https://help.shortcut.com/hc/en-us/articles/360000046646-Searching-in-Shortcut-Using-Search-Operators`
+     * Query for searching as defined in
+     * `https://help.shortcut.com/hc/en-us/articles/360000046646-Searching-in-Shortcut-Using-Search-Operators`
      */
     public SourceShortcut withQuery(Optional<String> query) {
         Utils.checkNotNull(query, "query");
@@ -112,7 +120,6 @@ public class SourceShortcut {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -123,18 +130,16 @@ public class SourceShortcut {
         }
         SourceShortcut other = (SourceShortcut) o;
         return 
-            Objects.deepEquals(this.apiKey2, other.apiKey2) &&
-            Objects.deepEquals(this.query, other.query) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey2, other.apiKey2) &&
+            Utils.enhancedDeepEquals(this.query, other.query) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey2,
-            query,
-            sourceType,
+        return Utils.enhancedHash(
+            apiKey2, query, sourceType,
             startDate);
     }
     
@@ -146,18 +151,20 @@ public class SourceShortcut {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey2;
- 
+
         private Optional<String> query;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey2(String apiKey2) {
             Utils.checkNotNull(apiKey2, "apiKey2");
@@ -165,8 +172,10 @@ public class SourceShortcut {
             return this;
         }
 
+
         /**
-         * Query for searching as defined in `https://help.shortcut.com/hc/en-us/articles/360000046646-Searching-in-Shortcut-Using-Search-Operators`
+         * Query for searching as defined in
+         * `https://help.shortcut.com/hc/en-us/articles/360000046646-Searching-in-Shortcut-Using-Search-Operators`
          */
         public Builder query(String query) {
             Utils.checkNotNull(query, "query");
@@ -175,7 +184,8 @@ public class SourceShortcut {
         }
 
         /**
-         * Query for searching as defined in `https://help.shortcut.com/hc/en-us/articles/360000046646-Searching-in-Shortcut-Using-Search-Operators`
+         * Query for searching as defined in
+         * `https://help.shortcut.com/hc/en-us/articles/360000046646-Searching-in-Shortcut-Using-Search-Operators`
          */
         public Builder query(Optional<String> query) {
             Utils.checkNotNull(query, "query");
@@ -183,21 +193,22 @@ public class SourceShortcut {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceShortcut build() {
             if (query == null) {
                 query = _SINGLETON_VALUE_Query.value();
             }
+
             return new SourceShortcut(
-                apiKey2,
-                query,
-                startDate);
+                apiKey2, query, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Query =
                 new LazySingletonValue<>(

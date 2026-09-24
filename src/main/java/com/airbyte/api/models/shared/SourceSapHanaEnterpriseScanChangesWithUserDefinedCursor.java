@@ -19,18 +19,20 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * SourceSapHanaEnterpriseScanChangesWithUserDefinedCursor
  * 
- * <p>Incrementally detects new inserts and updates using the &lt;a href="https://docs.airbyte.com/understanding-airbyte/connections/incremental-append/#user-defined-cursor"&gt;cursor column&lt;/a&gt; chosen when configuring a connection (e.g. created_at, updated_at).
+ * <p>Incrementally detects new inserts and updates using the <a
+ * href="https://docs.airbyte.com/understanding-airbyte/connections/incremental-append/#user-defined-cursor">cursor
+ * column</a> chosen when configuring a connection (e.g. created_at, updated_at).
  */
 public class SourceSapHanaEnterpriseScanChangesWithUserDefinedCursor {
 
     @JsonIgnore
     private Map<String, Object> additionalProperties;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("cursor_method")
@@ -59,9 +61,10 @@ public class SourceSapHanaEnterpriseScanChangesWithUserDefinedCursor {
         return (Optional<SourceSapHanaEnterpriseCursorMethod>) cursorMethod;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceSapHanaEnterpriseScanChangesWithUserDefinedCursor withAdditionalProperty(String key, Object value) {
@@ -69,8 +72,7 @@ public class SourceSapHanaEnterpriseScanChangesWithUserDefinedCursor {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceSapHanaEnterpriseScanChangesWithUserDefinedCursor withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -83,13 +85,13 @@ public class SourceSapHanaEnterpriseScanChangesWithUserDefinedCursor {
         return this;
     }
 
+
     public SourceSapHanaEnterpriseScanChangesWithUserDefinedCursor withCursorMethod(Optional<? extends SourceSapHanaEnterpriseCursorMethod> cursorMethod) {
         Utils.checkNotNull(cursorMethod, "cursorMethod");
         this.cursorMethod = cursorMethod;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,15 +102,14 @@ public class SourceSapHanaEnterpriseScanChangesWithUserDefinedCursor {
         }
         SourceSapHanaEnterpriseScanChangesWithUserDefinedCursor other = (SourceSapHanaEnterpriseScanChangesWithUserDefinedCursor) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.cursorMethod, other.cursorMethod);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.cursorMethod, other.cursorMethod);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            cursorMethod);
+        return Utils.enhancedHash(
+            additionalProperties, cursorMethod);
     }
     
     @Override
@@ -117,13 +118,14 @@ public class SourceSapHanaEnterpriseScanChangesWithUserDefinedCursor {
                 "additionalProperties", additionalProperties,
                 "cursorMethod", cursorMethod);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends SourceSapHanaEnterpriseCursorMethod> cursorMethod;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -144,6 +146,7 @@ public class SourceSapHanaEnterpriseScanChangesWithUserDefinedCursor {
             return this;
         }
 
+
         public Builder cursorMethod(SourceSapHanaEnterpriseCursorMethod cursorMethod) {
             Utils.checkNotNull(cursorMethod, "cursorMethod");
             this.cursorMethod = Optional.ofNullable(cursorMethod);
@@ -155,15 +158,17 @@ public class SourceSapHanaEnterpriseScanChangesWithUserDefinedCursor {
             this.cursorMethod = cursorMethod;
             return this;
         }
-        
+
         public SourceSapHanaEnterpriseScanChangesWithUserDefinedCursor build() {
             if (cursorMethod == null) {
                 cursorMethod = _SINGLETON_VALUE_CursorMethod.value();
             }
+
             return new SourceSapHanaEnterpriseScanChangesWithUserDefinedCursor(
                 cursorMethod)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceSapHanaEnterpriseCursorMethod>> _SINGLETON_VALUE_CursorMethod =
                 new LazySingletonValue<>(

@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceHarvestAuthenticationMechanism
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class SourceHarvestAuthenticationMechanism {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceHarvestAuthenticationMechanism(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class SourceHarvestAuthenticationMechanism {
 
     public static SourceHarvestAuthenticationMechanism of(AuthenticateViaHarvestOAuth value) {
         Utils.checkNotNull(value, "value");
-        return new SourceHarvestAuthenticationMechanism(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AuthenticateViaHarvestOAuth>(){}));
+        return new SourceHarvestAuthenticationMechanism(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceHarvestAuthenticationMechanism of(SourceHarvestAuthenticateWithPersonalAccessToken value) {
         Utils.checkNotNull(value, "value");
-        return new SourceHarvestAuthenticationMechanism(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceHarvestAuthenticateWithPersonalAccessToken>(){}));
+        return new SourceHarvestAuthenticationMechanism(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class SourceHarvestAuthenticationMechanism {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class SourceHarvestAuthenticationMechanism {
             return false;
         }
         SourceHarvestAuthenticationMechanism other = (SourceHarvestAuthenticationMechanism) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -95,6 +94,6 @@ public class SourceHarvestAuthenticationMechanism {
         return Utils.toString(SourceHarvestAuthenticationMechanism.class,
                 "value", value);
     }
- 
+
 }
 

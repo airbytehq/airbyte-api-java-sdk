@@ -11,20 +11,23 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class CreateDefinitionRequest {
 
     @JsonProperty("dockerImageTag")
     private String dockerImageTag;
 
+
     @JsonProperty("dockerRepository")
     private String dockerRepository;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("documentationUrl")
     private Optional<String> documentationUrl;
+
 
     @JsonProperty("name")
     private String name;
@@ -49,7 +52,8 @@ public class CreateDefinitionRequest {
             String dockerImageTag,
             String dockerRepository,
             String name) {
-        this(dockerImageTag, dockerRepository, Optional.empty(), name);
+        this(dockerImageTag, dockerRepository, Optional.empty(),
+            name);
     }
 
     @JsonIgnore
@@ -72,9 +76,10 @@ public class CreateDefinitionRequest {
         return name;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public CreateDefinitionRequest withDockerImageTag(String dockerImageTag) {
         Utils.checkNotNull(dockerImageTag, "dockerImageTag");
@@ -94,6 +99,7 @@ public class CreateDefinitionRequest {
         return this;
     }
 
+
     public CreateDefinitionRequest withDocumentationUrl(Optional<String> documentationUrl) {
         Utils.checkNotNull(documentationUrl, "documentationUrl");
         this.documentationUrl = documentationUrl;
@@ -106,7 +112,6 @@ public class CreateDefinitionRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -117,18 +122,16 @@ public class CreateDefinitionRequest {
         }
         CreateDefinitionRequest other = (CreateDefinitionRequest) o;
         return 
-            Objects.deepEquals(this.dockerImageTag, other.dockerImageTag) &&
-            Objects.deepEquals(this.dockerRepository, other.dockerRepository) &&
-            Objects.deepEquals(this.documentationUrl, other.documentationUrl) &&
-            Objects.deepEquals(this.name, other.name);
+            Utils.enhancedDeepEquals(this.dockerImageTag, other.dockerImageTag) &&
+            Utils.enhancedDeepEquals(this.dockerRepository, other.dockerRepository) &&
+            Utils.enhancedDeepEquals(this.documentationUrl, other.documentationUrl) &&
+            Utils.enhancedDeepEquals(this.name, other.name);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            dockerImageTag,
-            dockerRepository,
-            documentationUrl,
+        return Utils.enhancedHash(
+            dockerImageTag, dockerRepository, documentationUrl,
             name);
     }
     
@@ -140,20 +143,22 @@ public class CreateDefinitionRequest {
                 "documentationUrl", documentationUrl,
                 "name", name);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String dockerImageTag;
- 
+
         private String dockerRepository;
- 
+
         private Optional<String> documentationUrl = Optional.empty();
- 
+
         private String name;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder dockerImageTag(String dockerImageTag) {
             Utils.checkNotNull(dockerImageTag, "dockerImageTag");
@@ -161,11 +166,13 @@ public class CreateDefinitionRequest {
             return this;
         }
 
+
         public Builder dockerRepository(String dockerRepository) {
             Utils.checkNotNull(dockerRepository, "dockerRepository");
             this.dockerRepository = dockerRepository;
             return this;
         }
+
 
         public Builder documentationUrl(String documentationUrl) {
             Utils.checkNotNull(documentationUrl, "documentationUrl");
@@ -179,18 +186,19 @@ public class CreateDefinitionRequest {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = name;
             return this;
         }
-        
+
         public CreateDefinitionRequest build() {
+
             return new CreateDefinitionRequest(
-                dockerImageTag,
-                dockerRepository,
-                documentationUrl,
+                dockerImageTag, dockerRepository, documentationUrl,
                 name);
         }
+
     }
 }

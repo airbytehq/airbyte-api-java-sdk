@@ -14,7 +14,7 @@ public enum Oracle {
     @JsonValue
     private final String value;
 
-    private Oracle(String value) {
+    Oracle(String value) {
         this.value = value;
     }
     

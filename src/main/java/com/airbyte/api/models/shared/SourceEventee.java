@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceEventee {
-
     /**
      * API token to use. Generate it at https://admin.eventee.co/ in 'Settings -&gt; Features'.
      */
     @JsonProperty("api_token")
     private String apiToken;
+
 
     @JsonProperty("sourceType")
     private Eventee sourceType;
@@ -45,9 +45,10 @@ public class SourceEventee {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API token to use. Generate it at https://admin.eventee.co/ in 'Settings -&gt; Features'.
@@ -58,7 +59,6 @@ public class SourceEventee {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceEventee {
         }
         SourceEventee other = (SourceEventee) o;
         return 
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiToken,
-            sourceType);
+        return Utils.enhancedHash(
+            apiToken, sourceType);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourceEventee {
                 "apiToken", apiToken,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API token to use. Generate it at https://admin.eventee.co/ in 'Settings -&gt; Features'.
@@ -103,11 +104,13 @@ public class SourceEventee {
             this.apiToken = apiToken;
             return this;
         }
-        
+
         public SourceEventee build() {
+
             return new SourceEventee(
                 apiToken);
         }
+
 
         private static final LazySingletonValue<Eventee> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

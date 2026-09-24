@@ -13,8 +13,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceSpacexApi {
 
@@ -22,9 +22,11 @@ public class SourceSpacexApi {
     @JsonProperty("id")
     private Optional<String> id;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("options")
     private Optional<String> options;
+
 
     @JsonProperty("sourceType")
     private SpacexApi sourceType;
@@ -59,15 +61,17 @@ public class SourceSpacexApi {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceSpacexApi withId(String id) {
         Utils.checkNotNull(id, "id");
         this.id = Optional.ofNullable(id);
         return this;
     }
+
 
     public SourceSpacexApi withId(Optional<String> id) {
         Utils.checkNotNull(id, "id");
@@ -81,13 +85,13 @@ public class SourceSpacexApi {
         return this;
     }
 
+
     public SourceSpacexApi withOptions(Optional<String> options) {
         Utils.checkNotNull(options, "options");
         this.options = options;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -98,17 +102,15 @@ public class SourceSpacexApi {
         }
         SourceSpacexApi other = (SourceSpacexApi) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.options, other.options) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.options, other.options) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            id,
-            options,
-            sourceType);
+        return Utils.enhancedHash(
+            id, options, sourceType);
     }
     
     @Override
@@ -118,16 +120,18 @@ public class SourceSpacexApi {
                 "options", options,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> id = Optional.empty();
- 
+
         private Optional<String> options = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
@@ -141,6 +145,7 @@ public class SourceSpacexApi {
             return this;
         }
 
+
         public Builder options(String options) {
             Utils.checkNotNull(options, "options");
             this.options = Optional.ofNullable(options);
@@ -152,12 +157,13 @@ public class SourceSpacexApi {
             this.options = options;
             return this;
         }
-        
+
         public SourceSpacexApi build() {
+
             return new SourceSpacexApi(
-                id,
-                options);
+                id, options);
         }
+
 
         private static final LazySingletonValue<SpacexApi> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

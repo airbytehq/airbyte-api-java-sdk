@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationWeaviateAuthentication
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class DestinationWeaviateAuthentication {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationWeaviateAuthentication(TypedObject value) {
         this.value = value;
@@ -33,17 +32,17 @@ public class DestinationWeaviateAuthentication {
 
     public static DestinationWeaviateAuthentication of(DestinationWeaviateAPIToken value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationWeaviateAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationWeaviateAPIToken>(){}));
+        return new DestinationWeaviateAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationWeaviateAuthentication of(DestinationWeaviateUsernamePassword value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationWeaviateAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationWeaviateUsernamePassword>(){}));
+        return new DestinationWeaviateAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationWeaviateAuthentication of(NoAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationWeaviateAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<NoAuthentication>(){}));
+        return new DestinationWeaviateAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +66,7 @@ public class DestinationWeaviateAuthentication {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +77,12 @@ public class DestinationWeaviateAuthentication {
             return false;
         }
         DestinationWeaviateAuthentication other = (DestinationWeaviateAuthentication) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -91,8 +90,8 @@ public class DestinationWeaviateAuthentication {
 
         public _Deserializer() {
             super(DestinationWeaviateAuthentication.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DestinationWeaviateUsernamePassword>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationWeaviateAPIToken>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationWeaviateUsernamePassword>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<NoAuthentication>() {}, JsonShape.DEFAULT));
         }
     }
@@ -102,6 +101,6 @@ public class DestinationWeaviateAuthentication {
         return Utils.toString(DestinationWeaviateAuthentication.class,
                 "value", value);
     }
- 
+
 }
 

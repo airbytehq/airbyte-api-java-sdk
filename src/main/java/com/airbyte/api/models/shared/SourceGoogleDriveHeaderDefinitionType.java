@@ -14,7 +14,7 @@ public enum SourceGoogleDriveHeaderDefinitionType {
     @JsonValue
     private final String value;
 
-    private SourceGoogleDriveHeaderDefinitionType(String value) {
+    SourceGoogleDriveHeaderDefinitionType(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum Cimis {
     @JsonValue
     private final String value;
 
-    private Cimis(String value) {
+    Cimis(String value) {
         this.value = value;
     }
     

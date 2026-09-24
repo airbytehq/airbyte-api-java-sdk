@@ -19,7 +19,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -32,12 +31,14 @@ public class GlueCatalog {
     @JsonIgnore
     private Map<String, Object> additionalProperties;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("catalog_type")
     private Optional<? extends DestinationS3DataLakeCatalogType> catalogType;
 
     /**
-     * The Glue database name. This will ONLY be used if the `Destination Namespace` setting for the connection is set to `Destination-defined` or `Source-defined`
+     * The Glue database name. This will ONLY be used if the `Destination Namespace` setting for the
+     * connection is set to `Destination-defined` or `Source-defined`
      */
     @JsonProperty("database_name")
     private String databaseName;
@@ -75,7 +76,8 @@ public class GlueCatalog {
     public GlueCatalog(
             String databaseName,
             String glueId) {
-        this(Optional.empty(), databaseName, glueId, Optional.empty());
+        this(Optional.empty(), databaseName, glueId,
+            Optional.empty());
     }
 
     @JsonAnyGetter
@@ -90,7 +92,8 @@ public class GlueCatalog {
     }
 
     /**
-     * The Glue database name. This will ONLY be used if the `Destination Namespace` setting for the connection is set to `Destination-defined` or `Source-defined`
+     * The Glue database name. This will ONLY be used if the `Destination Namespace` setting for the
+     * connection is set to `Destination-defined` or `Source-defined`
      */
     @JsonIgnore
     public String databaseName() {
@@ -113,9 +116,10 @@ public class GlueCatalog {
         return roleArn;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public GlueCatalog withAdditionalProperty(String key, Object value) {
@@ -123,8 +127,7 @@ public class GlueCatalog {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public GlueCatalog withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -137,6 +140,7 @@ public class GlueCatalog {
         return this;
     }
 
+
     public GlueCatalog withCatalogType(Optional<? extends DestinationS3DataLakeCatalogType> catalogType) {
         Utils.checkNotNull(catalogType, "catalogType");
         this.catalogType = catalogType;
@@ -144,7 +148,8 @@ public class GlueCatalog {
     }
 
     /**
-     * The Glue database name. This will ONLY be used if the `Destination Namespace` setting for the connection is set to `Destination-defined` or `Source-defined`
+     * The Glue database name. This will ONLY be used if the `Destination Namespace` setting for the
+     * connection is set to `Destination-defined` or `Source-defined`
      */
     public GlueCatalog withDatabaseName(String databaseName) {
         Utils.checkNotNull(databaseName, "databaseName");
@@ -170,6 +175,7 @@ public class GlueCatalog {
         return this;
     }
 
+
     /**
      * The ARN of the AWS role to assume. Only usable in Airbyte Cloud.
      */
@@ -179,7 +185,6 @@ public class GlueCatalog {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -190,21 +195,18 @@ public class GlueCatalog {
         }
         GlueCatalog other = (GlueCatalog) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.catalogType, other.catalogType) &&
-            Objects.deepEquals(this.databaseName, other.databaseName) &&
-            Objects.deepEquals(this.glueId, other.glueId) &&
-            Objects.deepEquals(this.roleArn, other.roleArn);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.catalogType, other.catalogType) &&
+            Utils.enhancedDeepEquals(this.databaseName, other.databaseName) &&
+            Utils.enhancedDeepEquals(this.glueId, other.glueId) &&
+            Utils.enhancedDeepEquals(this.roleArn, other.roleArn);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            catalogType,
-            databaseName,
-            glueId,
-            roleArn);
+        return Utils.enhancedHash(
+            additionalProperties, catalogType, databaseName,
+            glueId, roleArn);
     }
     
     @Override
@@ -216,19 +218,20 @@ public class GlueCatalog {
                 "glueId", glueId,
                 "roleArn", roleArn);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends DestinationS3DataLakeCatalogType> catalogType;
- 
+
         private String databaseName;
- 
+
         private String glueId;
- 
+
         private Optional<String> roleArn = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -249,6 +252,7 @@ public class GlueCatalog {
             return this;
         }
 
+
         public Builder catalogType(DestinationS3DataLakeCatalogType catalogType) {
             Utils.checkNotNull(catalogType, "catalogType");
             this.catalogType = Optional.ofNullable(catalogType);
@@ -261,14 +265,17 @@ public class GlueCatalog {
             return this;
         }
 
+
         /**
-         * The Glue database name. This will ONLY be used if the `Destination Namespace` setting for the connection is set to `Destination-defined` or `Source-defined`
+         * The Glue database name. This will ONLY be used if the `Destination Namespace` setting for the
+         * connection is set to `Destination-defined` or `Source-defined`
          */
         public Builder databaseName(String databaseName) {
             Utils.checkNotNull(databaseName, "databaseName");
             this.databaseName = databaseName;
             return this;
         }
+
 
         /**
          * The AWS Account ID associated with the Glue service used by the Iceberg catalog.
@@ -278,6 +285,7 @@ public class GlueCatalog {
             this.glueId = glueId;
             return this;
         }
+
 
         /**
          * The ARN of the AWS role to assume. Only usable in Airbyte Cloud.
@@ -296,18 +304,18 @@ public class GlueCatalog {
             this.roleArn = roleArn;
             return this;
         }
-        
+
         public GlueCatalog build() {
             if (catalogType == null) {
                 catalogType = _SINGLETON_VALUE_CatalogType.value();
             }
+
             return new GlueCatalog(
-                catalogType,
-                databaseName,
-                glueId,
+                catalogType, databaseName, glueId,
                 roleArn)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationS3DataLakeCatalogType>> _SINGLETON_VALUE_CatalogType =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum Workday {
     @JsonValue
     private final String value;
 
-    private Workday(String value) {
+    Workday(String value) {
         this.value = value;
     }
     

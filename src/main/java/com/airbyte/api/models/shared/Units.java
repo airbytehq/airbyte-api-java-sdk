@@ -11,7 +11,8 @@ import java.util.Optional;
 /**
  * Units
  * 
- * <p>Units of measurement. standard, metric and imperial units are available. If you do not use the units parameter, standard units will be applied by default.
+ * <p>Units of measurement. standard, metric and imperial units are available. If you do not use the units
+ * parameter, standard units will be applied by default.
  */
 public enum Units {
     STANDARD("standard"),
@@ -21,7 +22,7 @@ public enum Units {
     @JsonValue
     private final String value;
 
-    private Units(String value) {
+    Units(String value) {
         this.value = value;
     }
     

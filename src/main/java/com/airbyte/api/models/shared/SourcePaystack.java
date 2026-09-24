@@ -15,29 +15,32 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourcePaystack {
 
+public class SourcePaystack {
     /**
-     * When set, the connector will always reload data from the past N days, where N is the value set here. This is useful if your data is updated after creation.
+     * When set, the connector will always reload data from the past N days, where N is the value set here.
+     * This is useful if your data is updated after creation.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("lookback_window_days")
     private Optional<Long> lookbackWindowDays;
 
     /**
-     * The Paystack API key (usually starts with 'sk_live_'; find yours &lt;a href="https://dashboard.paystack.com/#/settings/developer"&gt;here&lt;/a&gt;).
+     * The Paystack API key (usually starts with 'sk_live_'; find yours <a
+     * href="https://dashboard.paystack.com/#/settings/developer">here</a>).
      */
     @JsonProperty("secret_key")
     private String secretKey;
+
 
     @JsonProperty("sourceType")
     private Paystack sourceType;
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -63,7 +66,8 @@ public class SourcePaystack {
     }
 
     /**
-     * When set, the connector will always reload data from the past N days, where N is the value set here. This is useful if your data is updated after creation.
+     * When set, the connector will always reload data from the past N days, where N is the value set here.
+     * This is useful if your data is updated after creation.
      */
     @JsonIgnore
     public Optional<Long> lookbackWindowDays() {
@@ -71,7 +75,8 @@ public class SourcePaystack {
     }
 
     /**
-     * The Paystack API key (usually starts with 'sk_live_'; find yours &lt;a href="https://dashboard.paystack.com/#/settings/developer"&gt;here&lt;/a&gt;).
+     * The Paystack API key (usually starts with 'sk_live_'; find yours <a
+     * href="https://dashboard.paystack.com/#/settings/developer">here</a>).
      */
     @JsonIgnore
     public String secretKey() {
@@ -84,19 +89,22 @@ public class SourcePaystack {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * When set, the connector will always reload data from the past N days, where N is the value set here. This is useful if your data is updated after creation.
+     * When set, the connector will always reload data from the past N days, where N is the value set here.
+     * This is useful if your data is updated after creation.
      */
     public SourcePaystack withLookbackWindowDays(long lookbackWindowDays) {
         Utils.checkNotNull(lookbackWindowDays, "lookbackWindowDays");
@@ -104,8 +112,10 @@ public class SourcePaystack {
         return this;
     }
 
+
     /**
-     * When set, the connector will always reload data from the past N days, where N is the value set here. This is useful if your data is updated after creation.
+     * When set, the connector will always reload data from the past N days, where N is the value set here.
+     * This is useful if your data is updated after creation.
      */
     public SourcePaystack withLookbackWindowDays(Optional<Long> lookbackWindowDays) {
         Utils.checkNotNull(lookbackWindowDays, "lookbackWindowDays");
@@ -114,7 +124,8 @@ public class SourcePaystack {
     }
 
     /**
-     * The Paystack API key (usually starts with 'sk_live_'; find yours &lt;a href="https://dashboard.paystack.com/#/settings/developer"&gt;here&lt;/a&gt;).
+     * The Paystack API key (usually starts with 'sk_live_'; find yours <a
+     * href="https://dashboard.paystack.com/#/settings/developer">here</a>).
      */
     public SourcePaystack withSecretKey(String secretKey) {
         Utils.checkNotNull(secretKey, "secretKey");
@@ -123,7 +134,8 @@ public class SourcePaystack {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     public SourcePaystack withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -131,7 +143,6 @@ public class SourcePaystack {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -142,18 +153,16 @@ public class SourcePaystack {
         }
         SourcePaystack other = (SourcePaystack) o;
         return 
-            Objects.deepEquals(this.lookbackWindowDays, other.lookbackWindowDays) &&
-            Objects.deepEquals(this.secretKey, other.secretKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.lookbackWindowDays, other.lookbackWindowDays) &&
+            Utils.enhancedDeepEquals(this.secretKey, other.secretKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            lookbackWindowDays,
-            secretKey,
-            sourceType,
+        return Utils.enhancedHash(
+            lookbackWindowDays, secretKey, sourceType,
             startDate);
     }
     
@@ -165,21 +174,24 @@ public class SourcePaystack {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Long> lookbackWindowDays;
- 
+
         private String secretKey;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * When set, the connector will always reload data from the past N days, where N is the value set here. This is useful if your data is updated after creation.
+         * When set, the connector will always reload data from the past N days, where N is the value set here.
+         * This is useful if your data is updated after creation.
          */
         public Builder lookbackWindowDays(long lookbackWindowDays) {
             Utils.checkNotNull(lookbackWindowDays, "lookbackWindowDays");
@@ -188,7 +200,8 @@ public class SourcePaystack {
         }
 
         /**
-         * When set, the connector will always reload data from the past N days, where N is the value set here. This is useful if your data is updated after creation.
+         * When set, the connector will always reload data from the past N days, where N is the value set here.
+         * This is useful if your data is updated after creation.
          */
         public Builder lookbackWindowDays(Optional<Long> lookbackWindowDays) {
             Utils.checkNotNull(lookbackWindowDays, "lookbackWindowDays");
@@ -196,8 +209,10 @@ public class SourcePaystack {
             return this;
         }
 
+
         /**
-         * The Paystack API key (usually starts with 'sk_live_'; find yours &lt;a href="https://dashboard.paystack.com/#/settings/developer"&gt;here&lt;/a&gt;).
+         * The Paystack API key (usually starts with 'sk_live_'; find yours <a
+         * href="https://dashboard.paystack.com/#/settings/developer">here</a>).
          */
         public Builder secretKey(String secretKey) {
             Utils.checkNotNull(secretKey, "secretKey");
@@ -205,24 +220,26 @@ public class SourcePaystack {
             return this;
         }
 
+
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+         * replicated.
          */
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourcePaystack build() {
             if (lookbackWindowDays == null) {
                 lookbackWindowDays = _SINGLETON_VALUE_LookbackWindowDays.value();
             }
+
             return new SourcePaystack(
-                lookbackWindowDays,
-                secretKey,
-                startDate);
+                lookbackWindowDays, secretKey, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_LookbackWindowDays =
                 new LazySingletonValue<>(

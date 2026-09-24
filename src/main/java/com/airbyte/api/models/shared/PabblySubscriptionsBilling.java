@@ -14,7 +14,7 @@ public enum PabblySubscriptionsBilling {
     @JsonValue
     private final String value;
 
-    private PabblySubscriptionsBilling(String value) {
+    PabblySubscriptionsBilling(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceConfiguration
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class SourceConfiguration {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceConfiguration(TypedObject value) {
         this.value = value;
@@ -33,2647 +32,2777 @@ public class SourceConfiguration {
 
     public static SourceConfiguration of(SourceAha value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAha>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(Source100ms value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Source100ms>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(Source7shifts value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Source7shifts>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceActivecampaign value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceActivecampaign>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static SourceConfiguration of(SourceAcuityScheduling value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static SourceConfiguration of(SourceAdobeCommerceMagento value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceAgilecrm value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAgilecrm>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceAirbyte value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAirbyte>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceAircall value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAircall>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceAirtable value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAirtable>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceAkeneo value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAkeneo>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceAlgolia value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAlgolia>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceAlpacaBrokerApi value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAlpacaBrokerApi>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceAlphaVantage value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAlphaVantage>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceAmazonAds value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAmazonAds>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceAmazonSellerPartner value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAmazonSellerPartner>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceAmazonSqs value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAmazonSqs>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceAmplitude value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAmplitude>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceApifyDataset value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceApifyDataset>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceAppcues value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAppcues>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceAppfigures value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAppfigures>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceAppfollow value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAppfollow>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceAppleSearchAds value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAppleSearchAds>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static SourceConfiguration of(SourceAppsflyer value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceApptivo value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceApptivo>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceAsana value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAsana>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceAshby value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAshby>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceAssemblyai value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAssemblyai>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceAuth0 value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAuth0>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceAviationstack value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAviationstack>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static SourceConfiguration of(SourceAwinAdvertiser value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceAwsCloudtrail value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAwsCloudtrail>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceAzureBlobStorage value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAzureBlobStorage>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceAzureTable value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAzureTable>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceBabelforce value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBabelforce>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceBambooHr value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBambooHr>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceBasecamp value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBasecamp>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceBeamer value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBeamer>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceBigmailer value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBigmailer>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceBigquery value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBigquery>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceBingAds value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBingAds>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceBitly value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBitly>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceBlogger value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBlogger>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceBluetally value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBluetally>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceBoldsign value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBoldsign>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceBox value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBox>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceBraintree value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBraintree>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceBraze value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBraze>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceBreezometer value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBreezometer>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceBreezyHr value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBreezyHr>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceBrevo value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBrevo>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceBrex value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBrex>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceBugsnag value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBugsnag>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceBuildkite value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBuildkite>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceBunnyInc value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBunnyInc>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceBuzzsprout value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBuzzsprout>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCalCom value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCalCom>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCalendly value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCalendly>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCallrail value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCallrail>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCampaignMonitor value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCampaignMonitor>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCampayn value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCampayn>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCanny value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCanny>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCapsuleCrm value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCapsuleCrm>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCaptainData value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCaptainData>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCareQualityCommission value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCareQualityCommission>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCart value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCart>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCastorEdc value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCastorEdc>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceChameleon value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceChameleon>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceChargebee value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceChargebee>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceChargedesk value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceChargedesk>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceChargify value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceChargify>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceChartmogul value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceChartmogul>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static SourceConfiguration of(SourceChurnkey value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCimis value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCimis>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCin7 value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCin7>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCirca value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCirca>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCircleci value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCircleci>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCiscoMeraki value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCiscoMeraki>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceClarifAi value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceClarifAi>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceClazar value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceClazar>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceClickhouse value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceClickhouse>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceClickupApi value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceClickupApi>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceClockify value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceClockify>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceClockodo value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceClockodo>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCloseCom value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCloseCom>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCloudbeds value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCloudbeds>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCoassemble value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCoassemble>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCoda value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCoda>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCodefresh value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCodefresh>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCoinApi value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCoinApi>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCoingeckoCoins value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCoingeckoCoins>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCoinmarketcap value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCoinmarketcap>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceConcord value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceConcord>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceConfigcat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceConfigcat>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceConfluence value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceConfluence>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceConvertkit value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceConvertkit>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceConvex value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceConvex>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCopper value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCopper>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCouchbase value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCouchbase>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCountercyclical value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCountercyclical>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCustomerIo value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCustomerIo>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceCustomerly value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCustomerly>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceDatadog value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceDatadog>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static SourceConfiguration of(SourceDatagen value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceDatascope value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceDatascope>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static SourceConfiguration of(SourceDb2Enterprise value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceDbt value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceDbt>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static SourceConfiguration of(SourceDefillama value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceDelighted value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceDelighted>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceDeputy value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceDeputy>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceDingConnect value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceDingConnect>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceDixa value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceDixa>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceDockerhub value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceDockerhub>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceDocuseal value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceDocuseal>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static SourceConfiguration of(SourceDolibarr value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceDremio value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceDremio>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceDrift value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceDrift>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceDrip value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceDrip>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceDropboxSign value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceDropboxSign>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceDwolla value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceDwolla>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceDynamodb value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceDynamodb>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceEConomic value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceEConomic>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceEasypost value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceEasypost>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceEasypromos value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceEasypromos>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceEbayFinance value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceEbayFinance>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static SourceConfiguration of(SourceEbayFulfillment value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceElasticemail value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceElasticemail>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static SourceConfiguration of(SourceElasticsearch value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceEmailoctopus value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceEmailoctopus>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceEmploymentHero value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceEmploymentHero>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceEncharge value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceEncharge>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceEventbrite value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceEventbrite>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceEventee value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceEventee>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceEventzilla value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceEventzilla>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceEverhour value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceEverhour>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceExchangeRates value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceExchangeRates>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceEzofficeinventory value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceEzofficeinventory>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFacebookMarketing value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFacebookMarketing>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static SourceConfiguration of(SourceFacebookPages value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFactorial value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFactorial>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFaker value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFaker>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFastbill value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFastbill>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFastly value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFastly>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFauna value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFauna>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFile value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFile>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFillout value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFillout>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFinage value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFinage>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFinancialModelling value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFinancialModelling>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFinnhub value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFinnhub>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFinnworlds value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFinnworlds>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFirebolt value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFirebolt>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFirehydrant value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFirehydrant>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFleetio value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFleetio>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFlexmail value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFlexmail>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFlexport value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFlexport>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFloat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFloat>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFlowlu value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFlowlu>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFormbricks value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFormbricks>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFreeAgentConnector value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFreeAgentConnector>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFreightview value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFreightview>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFreshbooks value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFreshbooks>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFreshcaller value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFreshcaller>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFreshchat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFreshchat>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFreshdesk value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFreshdesk>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFreshsales value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFreshsales>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFreshservice value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFreshservice>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFront value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFront>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFulcrum value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFulcrum>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceFullstory value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFullstory>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGainsightPx value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGainsightPx>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGcs value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGcs>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGetgist value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGetgist>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGetlago value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGetlago>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGiphy value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGiphy>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGitbook value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGitbook>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGithub value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGithub>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGitlab value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGitlab>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGlassfrog value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGlassfrog>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGmail value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGmail>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGnews value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGnews>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGocardless value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGocardless>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGoldcast value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoldcast>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGologin value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGologin>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGong value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGong>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGoogleAds value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAds>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGoogleAnalyticsDataApi value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApi>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGoogleCalendar value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleCalendar>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGoogleClassroom value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleClassroom>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGoogleDirectory value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleDirectory>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGoogleDrive value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleDrive>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGoogleForms value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleForms>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGooglePagespeedInsights value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGooglePagespeedInsights>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGoogleSearchConsole value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleSearchConsole>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGoogleSheets value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleSheets>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGoogleTasks value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleTasks>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGoogleWebfonts value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleWebfonts>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGorgias value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGorgias>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGreenhouse value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGreenhouse>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGreythr value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGreythr>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGridly value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGridly>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGuru value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGuru>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceGutendex value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGutendex>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceHardcodedRecords value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceHardcodedRecords>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceHarness value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceHarness>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceHarvest value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceHarvest>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceHeight value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceHeight>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceHellobaton value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceHellobaton>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceHelpScout value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceHelpScout>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceHibob value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceHibob>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceHighLevel value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceHighLevel>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceHoorayhr value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceHoorayhr>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceHubplanner value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceHubplanner>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceHubspot value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceHubspot>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceHuggingFaceDatasets value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceHuggingFaceDatasets>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceHumanitix value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceHumanitix>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceHuntr value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceHuntr>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceIlluminaBasespace value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceIlluminaBasespace>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceImagga value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceImagga>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceIncidentIo value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceIncidentIo>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceInflowinventory value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceInflowinventory>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceInsightful value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceInsightful>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceInsightly value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceInsightly>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceInstagram value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceInstagram>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceInstatus value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceInstatus>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceIntercom value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceIntercom>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceIntruder value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceIntruder>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceInvoiced value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceInvoiced>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceInvoiceninja value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceInvoiceninja>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceIp2whois value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceIp2whois>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceIterable value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceIterable>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceJamfPro value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceJamfPro>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceJira value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceJira>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceJobnimbus value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceJobnimbus>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceJotform value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceJotform>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static SourceConfiguration of(SourceJudgeMeReviews value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceJustSift value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceJustSift>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceJustcall value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceJustcall>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceK6Cloud value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceK6Cloud>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceKatana value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceKatana>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceKeka value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceKeka>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceKisi value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceKisi>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceKissmetrics value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceKissmetrics>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceKlarna value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceKlarna>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceKlausApi value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceKlausApi>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceKlaviyo value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceKlaviyo>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceKyve value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceKyve>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceLaunchdarkly value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceLaunchdarkly>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceLeadfeeder value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceLeadfeeder>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceLemlist value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceLemlist>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceLessAnnoyingCrm value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceLessAnnoyingCrm>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceLeverHiring value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceLeverHiring>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceLightspeedRetail value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceLightspeedRetail>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static SourceConfiguration of(SourceLinear value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceLinkedinAds value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceLinkedinAds>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceLinkedinPages value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceLinkedinPages>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceLinnworks value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceLinnworks>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceLob value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceLob>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceLokalise value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceLokalise>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceLooker value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceLooker>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceLuma value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceLuma>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMailchimp value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMailchimp>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMailerlite value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMailerlite>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMailersend value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMailersend>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMailgun value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMailgun>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMailjetMail value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMailjetMail>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMailjetSms value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMailjetSms>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMailosaur value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMailosaur>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMailtrap value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMailtrap>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static SourceConfiguration of(SourceMantle value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMarketo value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMarketo>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMarketstack value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMarketstack>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMendeley value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMendeley>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMention value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMention>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static SourceConfiguration of(SourceMercadoAds value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMerge value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMerge>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMetabase value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMetabase>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static SourceConfiguration of(SourceMetricool value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMicrosoftDataverse value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMicrosoftDataverse>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMicrosoftEntraId value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMicrosoftEntraId>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMicrosoftLists value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMicrosoftLists>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMicrosoftOnedrive value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMicrosoftOnedrive>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMicrosoftSharepoint value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMicrosoftSharepoint>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMicrosoftTeams value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMicrosoftTeams>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMiro value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMiro>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMissive value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMissive>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMixmax value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMixmax>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMixpanel value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMixpanel>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMode value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMode>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMonday value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMonday>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMongodbV2 value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMongodbV2>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMssql value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMssql>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMux value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMux>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMyHours value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMyHours>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceMysql value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMysql>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceN8n value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceN8n>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceNasa value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceNasa>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceNavan value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceNavan>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceNebiusAi value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceNebiusAi>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceNetsuite value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceNetsuite>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceNetsuiteEnterprise value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceNetsuiteEnterprise>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceNewsApi value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceNewsApi>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceNewsdata value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceNewsdata>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceNewsdataIo value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceNewsdataIo>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceNexiopay value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceNexiopay>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceNinjaoneRmm value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceNinjaoneRmm>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceNocrm value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceNocrm>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceNorthpassLms value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceNorthpassLms>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceNotion value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceNotion>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceNutshell value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceNutshell>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceNylas value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceNylas>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceNytimes value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceNytimes>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceOkta value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOkta>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceOmnisend value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOmnisend>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceOncehub value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOncehub>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceOnepagecrm value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOnepagecrm>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceOnesignal value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOnesignal>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceOnfleet value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOnfleet>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceOpenDataDc value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOpenDataDc>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static SourceConfiguration of(SourceOpenExchangeRates value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceOpenaq value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOpenaq>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceOpenfda value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOpenfda>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceOpenweather value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOpenweather>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceOpinionStage value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOpinionStage>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceOpsgenie value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOpsgenie>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static SourceConfiguration of(SourceOpuswatch value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceOracle value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOracle>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceOracleEnterprise value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOracleEnterprise>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceOrb value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOrb>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceOura value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOura>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceOutbrainAmplify value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOutbrainAmplify>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static SourceConfiguration of(SourceOutlook value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceOutreach value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOutreach>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceOveit value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOveit>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePabblySubscriptionsBilling value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePabblySubscriptionsBilling>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePaddle value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePaddle>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePagerduty value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePagerduty>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePandadoc value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePandadoc>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePaperform value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePaperform>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePapersign value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePapersign>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePardot value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePardot>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePartnerize value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePartnerize>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePartnerstack value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePartnerstack>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePayfit value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePayfit>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePaypalTransaction value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePaypalTransaction>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePaystack value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePaystack>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePendo value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePendo>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePennylane value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePennylane>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePerigon value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePerigon>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePersistiq value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePersistiq>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePersona value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePersona>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePexelsApi value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePexelsApi>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePhyllo value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePhyllo>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePicqer value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePicqer>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePingdom value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePingdom>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePinterest value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePinterest>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePipedrive value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePipedrive>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePipeliner value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePipeliner>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePivotalTracker value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePivotalTracker>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePiwik value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePiwik>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePlaid value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePlaid>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePlanhat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePlanhat>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePlausible value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePlausible>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePocket value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePocket>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePokeapi value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePokeapi>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePolygonStockApi value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePolygonStockApi>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePoplar value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePoplar>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePostgres value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePostgres>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePosthog value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePosthog>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePostmarkapp value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePostmarkapp>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePrestashop value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePrestashop>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePretix value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePretix>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePrimetric value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePrimetric>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePrintify value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePrintify>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceProductboard value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceProductboard>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceProductive value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceProductive>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourcePypi value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePypi>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceQualaroo value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceQualaroo>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceQuickbooks value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceQuickbooks>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceRailz value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceRailz>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceRdStationMarketing value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceRdStationMarketing>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceRecharge value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceRecharge>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceRecreation value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceRecreation>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceRecruitee value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceRecruitee>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceRecurly value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceRecurly>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceReddit value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceReddit>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceRedshift value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceRedshift>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceReferralhero value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceReferralhero>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceRentcast value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceRentcast>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceRepairshopr value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceRepairshopr>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceReplyIo value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceReplyIo>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceRetailexpressByMaropost value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceRetailexpressByMaropost>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceRetently value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceRetently>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceRevenuecat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceRevenuecat>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceRevolutMerchant value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceRevolutMerchant>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceRingcentral value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceRingcentral>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceRkiCovid value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceRkiCovid>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceRocketChat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceRocketChat>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceRocketlane value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceRocketlane>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceRollbar value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceRollbar>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceRootly value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceRootly>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceRss value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceRss>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceRuddr value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceRuddr>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceS3 value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceS3>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSafetyculture value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSafetyculture>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSageHr value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSageHr>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSalesflare value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSalesflare>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSalesforce value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSalesforce>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSalesloft value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSalesloft>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSapFieldglass value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSapFieldglass>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSapHanaEnterprise value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSapHanaEnterprise>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSavvycal value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSavvycal>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceScryfall value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceScryfall>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSecoda value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSecoda>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSegment value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSegment>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSendgrid value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSendgrid>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSendinblue value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSendinblue>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSendowl value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSendowl>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSendpulse value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSendpulse>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSenseforce value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSenseforce>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSentry value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSentry>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSerpstat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSerpstat>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceServiceNow value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceServiceNow>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSftp value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSftp>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSftpBulk value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSftpBulk>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static SourceConfiguration of(SourceSharepointEnterprise value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSharetribe value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSharetribe>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceShippo value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceShippo>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceShipstation value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceShipstation>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceShopify value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceShopify>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceShopwired value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceShopwired>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceShortcut value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceShortcut>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceShortio value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceShortio>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceShutterstock value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceShutterstock>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSigmaComputing value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSigmaComputing>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSignnow value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSignnow>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSimfin value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSimfin>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSimplecast value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSimplecast>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSimplesat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSimplesat>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSlack value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSlack>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSmaily value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSmaily>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSmartengage value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSmartengage>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSmartreach value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSmartreach>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSmartsheets value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSmartsheets>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSmartwaiver value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSmartwaiver>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSnapchatMarketing value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSnapchatMarketing>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSnowflake value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSnowflake>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSolarwindsServiceDesk value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSolarwindsServiceDesk>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSonarCloud value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSonarCloud>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSpacexApi value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSpacexApi>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSparkpost value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSparkpost>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSplitIo value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSplitIo>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static SourceConfiguration of(SourceSpotifyAds value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSpotlercrm value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSpotlercrm>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSquare value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSquare>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSquarespace value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSquarespace>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceStatsig value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceStatsig>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceStatuspage value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceStatuspage>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceStockdata value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceStockdata>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceStrava value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceStrava>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceStripe value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceStripe>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSurveySparrow value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSurveySparrow>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSurveymonkey value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSurveymonkey>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSurvicate value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSurvicate>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSvix value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSvix>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceSysteme value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSysteme>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceTaboola value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTaboola>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceTavus value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTavus>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceTeamtailor value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTeamtailor>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceTeamwork value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTeamwork>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceTempo value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTempo>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceTestrail value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTestrail>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceTheGuardianApi value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTheGuardianApi>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceThinkific value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceThinkific>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceThinkificCourses value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceThinkificCourses>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static SourceConfiguration of(SourceThriveLearning value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceTicketmaster value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTicketmaster>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceTickettailor value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTickettailor>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static SourceConfiguration of(SourceTicktick value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceTiktokMarketing value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTiktokMarketing>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceTimely value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTimely>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceTinyemail value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTinyemail>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceTmdb value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTmdb>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceTodoist value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTodoist>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceToggl value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceToggl>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceTrackPms value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTrackPms>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceTrello value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTrello>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceTremendous value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTremendous>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceTrustpilot value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTrustpilot>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceTvmazeSchedule value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTvmazeSchedule>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceTwelveData value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTwelveData>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceTwilio value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTwilio>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceTwilioTaskrouter value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTwilioTaskrouter>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceTwitter value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTwitter>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceTyntecSms value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTyntecSms>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceTypeform value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTypeform>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceUbidots value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceUbidots>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceUnleash value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceUnleash>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceUppromote value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceUppromote>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static SourceConfiguration of(SourceUptick value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceUsCensus value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceUsCensus>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceUservoice value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceUservoice>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceVantage value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceVantage>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceVeeqo value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceVeeqo>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceVercel value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceVercel>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceVismaEconomic value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceVismaEconomic>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceVitally value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceVitally>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceVwo value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceVwo>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceWaiteraid value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceWaiteraid>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceWasabiStatsApi value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceWasabiStatsApi>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceWatchmode value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceWatchmode>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceWeatherstack value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceWeatherstack>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceWebScrapper value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceWebScrapper>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceWebflow value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceWebflow>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceWhenIWork value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceWhenIWork>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceWhiskyHunter value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceWhiskyHunter>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceWikipediaPageviews value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceWikipediaPageviews>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceWoocommerce value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceWoocommerce>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceWordpress value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceWordpress>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceWorkable value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceWorkable>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceWorkday value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceWorkday>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static SourceConfiguration of(SourceWorkdayRest value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceWorkflowmax value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceWorkflowmax>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceWorkramp value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceWorkramp>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceWrike value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceWrike>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceWufoo value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceWufoo>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceXkcd value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceXkcd>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceXsolla value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceXsolla>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceYahooFinancePrice value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceYahooFinancePrice>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceYandexMetrica value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceYandexMetrica>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceYotpo value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceYotpo>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceYouNeedABudgetYnab value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceYouNeedABudgetYnab>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceYounium value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceYounium>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceYousign value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceYousign>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceYoutubeAnalytics value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceYoutubeAnalytics>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceYoutubeData value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceYoutubeData>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceZapierSupportedStorage value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZapierSupportedStorage>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceZapsign value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZapsign>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceZendeskChat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZendeskChat>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceZendeskSunshine value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZendeskSunshine>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceZendeskSupport value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZendeskSupport>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceZendeskTalk value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZendeskTalk>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceZenefits value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZenefits>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceZenloop value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZenloop>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceZohoAnalyticsMetadataApi value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZohoAnalyticsMetadataApi>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceZohoBigin value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZohoBigin>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceZohoBilling value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZohoBilling>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceZohoBooks value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZohoBooks>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceZohoCampaign value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZohoCampaign>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceZohoCrm value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZohoCrm>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceZohoDesk value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZohoDesk>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceZohoExpense value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZohoExpense>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceZohoInventory value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZohoInventory>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceZohoInvoice value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZohoInvoice>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceZonkaFeedback value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZonkaFeedback>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceConfiguration of(SourceZoom value) {
         Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZoom>(){}));
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -2683,6 +2812,8 @@ public class SourceConfiguration {
      * <li>{@code com.airbyte.api.models.shared.Source100ms}</li>
      * <li>{@code com.airbyte.api.models.shared.Source7shifts}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceActivecampaign}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceAcuityScheduling}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceAdobeCommerceMagento}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceAgilecrm}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceAirbyte}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceAircall}</li>
@@ -2700,12 +2831,14 @@ public class SourceConfiguration {
      * <li>{@code com.airbyte.api.models.shared.SourceAppfigures}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceAppfollow}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceAppleSearchAds}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceAppsflyer}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceApptivo}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceAsana}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceAshby}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceAssemblyai}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceAuth0}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceAviationstack}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceAwinAdvertiser}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceAwsCloudtrail}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceAzureBlobStorage}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceAzureTable}</li>
@@ -2747,6 +2880,7 @@ public class SourceConfiguration {
      * <li>{@code com.airbyte.api.models.shared.SourceChargedesk}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceChargify}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceChartmogul}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceChurnkey}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceCimis}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceCin7}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceCirca}</li>
@@ -2777,14 +2911,18 @@ public class SourceConfiguration {
      * <li>{@code com.airbyte.api.models.shared.SourceCustomerIo}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceCustomerly}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceDatadog}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceDatagen}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceDatascope}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceDb2Enterprise}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceDbt}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceDefillama}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceDelighted}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceDeputy}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceDingConnect}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceDixa}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceDockerhub}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceDocuseal}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceDolibarr}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceDremio}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceDrift}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceDrip}</li>
@@ -2795,7 +2933,9 @@ public class SourceConfiguration {
      * <li>{@code com.airbyte.api.models.shared.SourceEasypost}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceEasypromos}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceEbayFinance}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceEbayFulfillment}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceElasticemail}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceElasticsearch}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceEmailoctopus}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceEmploymentHero}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceEncharge}</li>
@@ -2806,6 +2946,7 @@ public class SourceConfiguration {
      * <li>{@code com.airbyte.api.models.shared.SourceExchangeRates}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceEzofficeinventory}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceFacebookMarketing}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceFacebookPages}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceFactorial}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceFaker}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceFastbill}</li>
@@ -2901,6 +3042,7 @@ public class SourceConfiguration {
      * <li>{@code com.airbyte.api.models.shared.SourceJira}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceJobnimbus}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceJotform}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceJudgeMeReviews}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceJustSift}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceJustcall}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceK6Cloud}</li>
@@ -2918,6 +3060,7 @@ public class SourceConfiguration {
      * <li>{@code com.airbyte.api.models.shared.SourceLessAnnoyingCrm}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceLeverHiring}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceLightspeedRetail}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceLinear}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceLinkedinAds}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceLinkedinPages}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceLinnworks}</li>
@@ -2933,12 +3076,15 @@ public class SourceConfiguration {
      * <li>{@code com.airbyte.api.models.shared.SourceMailjetSms}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceMailosaur}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceMailtrap}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceMantle}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceMarketo}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceMarketstack}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceMendeley}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceMention}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceMercadoAds}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceMerge}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceMetabase}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceMetricool}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceMicrosoftDataverse}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceMicrosoftEntraId}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceMicrosoftLists}</li>
@@ -2980,16 +3126,19 @@ public class SourceConfiguration {
      * <li>{@code com.airbyte.api.models.shared.SourceOnesignal}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceOnfleet}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceOpenDataDc}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceOpenExchangeRates}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceOpenaq}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceOpenfda}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceOpenweather}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceOpinionStage}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceOpsgenie}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceOpuswatch}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceOracle}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceOracleEnterprise}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceOrb}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceOura}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceOutbrainAmplify}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceOutlook}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceOutreach}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceOveit}</li>
      * <li>{@code com.airbyte.api.models.shared.SourcePabblySubscriptionsBilling}</li>
@@ -3083,6 +3232,7 @@ public class SourceConfiguration {
      * <li>{@code com.airbyte.api.models.shared.SourceServiceNow}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceSftp}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceSftpBulk}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceSharepointEnterprise}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceSharetribe}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceShippo}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceShipstation}</li>
@@ -3109,6 +3259,7 @@ public class SourceConfiguration {
      * <li>{@code com.airbyte.api.models.shared.SourceSpacexApi}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceSparkpost}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceSplitIo}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceSpotifyAds}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceSpotlercrm}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceSquare}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceSquarespace}</li>
@@ -3131,8 +3282,10 @@ public class SourceConfiguration {
      * <li>{@code com.airbyte.api.models.shared.SourceTheGuardianApi}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceThinkific}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceThinkificCourses}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceThriveLearning}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceTicketmaster}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceTickettailor}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceTicktick}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceTiktokMarketing}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceTimely}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceTinyemail}</li>
@@ -3153,6 +3306,7 @@ public class SourceConfiguration {
      * <li>{@code com.airbyte.api.models.shared.SourceUbidots}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceUnleash}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceUppromote}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceUptick}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceUsCensus}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceUservoice}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceVantage}</li>
@@ -3174,6 +3328,7 @@ public class SourceConfiguration {
      * <li>{@code com.airbyte.api.models.shared.SourceWordpress}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceWorkable}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceWorkday}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceWorkdayRest}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceWorkflowmax}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceWorkramp}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceWrike}</li>
@@ -3223,7 +3378,7 @@ public class SourceConfiguration {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -3234,12 +3389,12 @@ public class SourceConfiguration {
             return false;
         }
         SourceConfiguration other = (SourceConfiguration) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -3247,535 +3402,561 @@ public class SourceConfiguration {
 
         public _Deserializer() {
             super(SourceConfiguration.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceRentcast>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceAmazonSellerPartner>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFacebookMarketing>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceOracleEnterprise>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceNetsuiteEnterprise>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSapHanaEnterprise>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMysql>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceNewsApi>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGnews>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePocket>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMixpanel>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceBingAds>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSerpstat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePostgres>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSnapchatMarketing>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMssql>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePolygonStockApi>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSalesforce>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceOracle>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceS3>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceQuickbooks>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceAmazonAds>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApi>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceAmazonSqs>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSftpBulk>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceOrb>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceCimis>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceNetsuite>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFinnworlds>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFreshbooks>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePagerduty>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceAppleSearchAds>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFinage>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceShopify>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceDatadog>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePaypalTransaction>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceNewsdataIo>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceClickhouse>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceJira>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePardot>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceBreezometer>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepoint>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceEbayFinance>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGutendex>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceCoinApi>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMongodbV2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceStripe>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceRedshift>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSftp>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceReddit>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAds>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSnowflake>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceZohoCrm>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceWikipediaPageviews>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGiphy>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceOutbrainAmplify>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFirebolt>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleSearchConsole>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceOpenweather>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceStrava>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFinancialModelling>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePexelsApi>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceCoingeckoCoins>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceNewsdata>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceCircleci>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceBambooHr>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMendeley>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceTheGuardianApi>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftLists>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceAzureBlobStorage>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftOnedrive>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceAmplitude>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSlack>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSigmaComputing>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceNasa>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceShutterstock>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGithub>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceIntercom>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceToggl>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftDataverse>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceLinkedinAds>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceKeka>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceTwelveData>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceInstagram>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceNytimes>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGuru>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleDrive>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGitlab>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFreshdesk>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFreshcaller>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceOutreach>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFreeAgentConnector>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFinnhub>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceStockdata>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFile>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFaker>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceDynamodb>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceCouchbase>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePinterest>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePlaid>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceCodefresh>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceClockodo>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSonarCloud>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceChargebee>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceChameleon>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceBraintree>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceBasecamp>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceBabelforce>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceAwsCloudtrail>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceZohoAnalyticsMetadataApi>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceZohoBigin>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceZohoBooks>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceAlphaVantage>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceZohoDesk>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSentry>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceAlpacaBrokerApi>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceZohoInventory>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceZohoInvoice>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceAlgolia>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceAkeneo>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSharetribe>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceTiktokMarketing>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFauna>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceAha>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<Source100ms>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<Source7shifts>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceActivecampaign>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceAcuityScheduling>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceAdobeCommerceMagento>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceAgilecrm>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceAirbyte>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceKlaviyo>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceKlausApi>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceKlarna>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceLinkedinPages>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSignnow>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceLinnworks>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSenseforce>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceZoom>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceTvmazeSchedule>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceZohoExpense>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceZohoCampaign>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceLooker>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceZohoBilling>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceZenloop>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceJotform>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceAircall>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceAirtable>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceAkeneo>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceAlgolia>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceAlpacaBrokerApi>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceAlphaVantage>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceAmazonAds>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceAmazonSellerPartner>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceAmazonSqs>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceAmplitude>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceApifyDataset>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceAppcues>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceAppfigures>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceZendeskSupport>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceTwilio>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceTwitter>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceAssemblyai>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMarketo>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMention>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMetabase>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceTrello>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftEntraId>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceTmdb>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMissive>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceTyntecSms>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMux>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMyHours>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceRevolutMerchant>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGreythr>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGorgias>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleWebfonts>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceYousign>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceTestrail>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceYounium>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleSheets>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceTeamwork>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSmartsheets>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceNexiopay>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGooglePagespeedInsights>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleForms>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceUnleash>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceNylas>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleCalendar>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGocardless>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceQualaroo>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceCastorEdc>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceYotpo>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceOnesignal>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceChargify>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceYandexMetrica>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGmail>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGcs>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSurveymonkey>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePosthog>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceVitally>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceWoocommerce>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceExchangeRates>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceElasticemail>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceWordpress>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePlausible>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceDwolla>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSquare>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePhyllo>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePicqer>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePipeliner>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePingdom>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceDocuseal>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceAgilecrm>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceDingConnect>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePiwik>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceWorkday>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceWorkflowmax>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceWorkable>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSparkpost>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceConfluence>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceEmploymentHero>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePaystack>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceCoinmarketcap>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceEzofficeinventory>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePartnerstack>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceWrike>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceStatsig>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFactorial>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceWebflow>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceWeatherstack>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceWatchmode>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePaddle>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceWaiteraid>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceClockify>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSurveySparrow>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceClarifAi>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceOura>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFreshchat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFreshservice>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFront>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceOpsgenie>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceShipstation>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceTaboola>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePrestashop>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceYahooFinancePrice>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceOpenDataDc>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceUservoice>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceChargedesk>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSmartwaiver>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGong>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceUsCensus>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceOkta>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceRailz>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceCapsuleCrm>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleClassroom>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceRecharge>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceCampaignMonitor>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceCallrail>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceIlluminaBasespace>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceKyve>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceImagga>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceBuzzsprout>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceBunnyInc>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceBraze>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleTasks>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceNebiusAi>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceNavan>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceBox>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceBlogger>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceBitly>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceRingcentral>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceBigquery>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceTypeform>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceTimely>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMonday>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMode>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceRocketChat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceHarness>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceZapsign>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceHarvest>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceHeight>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceRollbar>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceHelpScout>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceTrackPms>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceAzureTable>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceZendeskChat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceZendeskSunshine>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMerge>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSmaily>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceHibob>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceHighLevel>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceAuth0>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceHubspot>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceHuggingFaceDatasets>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMailjetSms>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceAsana>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMailgun>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMailersend>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceJamfPro>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSimplesat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceZendeskTalk>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSegment>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSendowl>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceLob>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceAircall>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceServiceNow>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceTrustpilot>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceShortio>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceLeverHiring>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceShortcut>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceShopwired>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceRecurly>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceDixa>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceLeadfeeder>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceShippo>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceLessAnnoyingCrm>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceLightspeedRetail>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceKissmetrics>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSendpulse>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceLokalise>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceKatana>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceZonkaFeedback>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceJustcall>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSendgrid>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Source100ms>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceApifyDataset>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMailchimp>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSalesloft>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceIterable>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceIp2whois>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceAppfollow>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceAppleSearchAds>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceAppsflyer>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceApptivo>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceAsana>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceAshby>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSageHr>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceTwilioTaskrouter>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceAssemblyai>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceAuth0>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceAviationstack>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMailjetMail>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceInsightly>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceInsightful>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceInflowinventory>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceRootly>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceTeamtailor>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceNinjaoneRmm>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceN8n>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceYoutubeData>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMailosaur>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceAwinAdvertiser>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceAwsCloudtrail>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceAzureBlobStorage>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceAzureTable>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceBabelforce>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceBambooHr>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceBasecamp>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceBeamer>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceRevenuecat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceHoorayhr>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMarketstack>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceTremendous>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceBigmailer>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceBigquery>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceBingAds>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceBitly>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceBlogger>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceBluetally>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceHellobaton>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftTeams>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceBoldsign>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMixmax>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceRetailexpressByMaropost>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceRepairshopr>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceBox>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceBraintree>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceBraze>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceBreezometer>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceBreezyHr>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGridly>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceBrevo>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceBrex>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceBugsnag>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceThinkificCourses>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceThinkific>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceBuildkite>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSmartreach>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceNocrm>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceBunnyInc>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceBuzzsprout>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceCalCom>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceNotion>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceCalendly>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceNutshell>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceTavus>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceUppromote>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceRecruitee>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceOncehub>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGologin>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceRecreation>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceOnepagecrm>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceOnfleet>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceOpenaq>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceCallrail>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceCampaignMonitor>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceCampayn>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceCopper>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceVeeqo>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGitbook>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceVercel>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGetlago>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceCanny>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceCapsuleCrm>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceCaptainData>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Source7shifts>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePypi>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFullstory>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceProductive>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceProductboard>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSvix>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFreshsales>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceVismaEconomic>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSurvicate>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceOveit>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceVwo>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFreightview>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePabblySubscriptionsBilling>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceCareQualityCommission>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceCart>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceCastorEdc>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceChameleon>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceChargebee>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceChargedesk>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceChargify>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceChartmogul>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFlowlu>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFloat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFlexport>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFlexmail>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFleetio>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePrimetric>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceWasabiStatsApi>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceChurnkey>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceCimis>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceCin7>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePandadoc>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceCirca>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceCircleci>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceCiscoMeraki>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFillout>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceWhenIWork>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceAha>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFastly>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceFastbill>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceActivecampaign>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePostmarkapp>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePartnerize>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePayfit>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSquarespace>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceClarifAi>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceClazar>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceXsolla>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceClickhouse>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceClickupApi>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceEventbrite>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSolarwindsServiceDesk>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceClockify>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceClockodo>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceCloseCom>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceCloudbeds>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceCoassemble>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePennylane>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePerigon>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceWufoo>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceEasypost>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceEConomic>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePoplar>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceWorkramp>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceDropboxSign>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSpacexApi>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceDrift>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceDremio>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceCoda>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceCodefresh>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceCoinApi>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceCoingeckoCoins>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceCoinmarketcap>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceConcord>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceConfigcat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePipedrive>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceConvex>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceDeputy>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceDelighted>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceDbt>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceDatascope>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSplitIo>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceRdStationMarketing>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceCart>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceCountercyclical>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePlanhat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceCustomerly>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePivotalTracker>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceConfluence>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceConvertkit>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePokeapi>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceConvex>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceCopper>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceCouchbase>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceCountercyclical>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceCustomerIo>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceCustomerly>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceDatadog>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceDatagen>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceDatascope>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceDb2Enterprise>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceDbt>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceDefillama>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceDelighted>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceDeputy>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceDingConnect>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceDixa>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceDockerhub>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSpotlercrm>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceDocuseal>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceDolibarr>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceDremio>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceDrift>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceDrip>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePersona>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePersistiq>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceDropboxSign>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceDwolla>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceDynamodb>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceEConomic>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceEasypost>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceEasypromos>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceCoda>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceEbayFinance>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceEbayFulfillment>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceElasticemail>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceElasticsearch>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceEmailoctopus>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceCloudbeds>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePendo>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceXkcd>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceEmploymentHero>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceEncharge>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceEventbrite>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceEventee>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceEventzilla>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceEverhour>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePapersign>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePaperform>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePretix>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceWebScrapper>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceStatuspage>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceExchangeRates>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceEzofficeinventory>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFacebookMarketing>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFacebookPages>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFactorial>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFaker>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFastbill>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFastly>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFauna>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFile>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFillout>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFinage>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFinancialModelling>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFinnhub>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFinnworlds>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFirebolt>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceFirehydrant>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFleetio>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFlexmail>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFlexport>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFloat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFlowlu>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceFormbricks>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePrintify>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSysteme>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFreeAgentConnector>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFreightview>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFreshbooks>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFreshcaller>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFreshchat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFreshdesk>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFreshsales>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFreshservice>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFront>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceFulcrum>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceYouNeedABudgetYnab>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceFullstory>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceGainsightPx>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceLaunchdarkly>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceCareQualityCommission>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGcs>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceGetgist>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceVantage>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceCanny>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGetlago>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGiphy>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGitbook>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGithub>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGitlab>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceGlassfrog>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGmail>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGnews>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGocardless>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceGoldcast>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceOmnisend>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGologin>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGong>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAds>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApi>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleCalendar>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleClassroom>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceGoogleDirectory>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceNorthpassLms>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceUbidots>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceReferralhero>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceTempo>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceHuntr>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleDrive>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleForms>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGooglePagespeedInsights>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleSearchConsole>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleSheets>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleTasks>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleWebfonts>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGorgias>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceGreenhouse>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceTicketmaster>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceTickettailor>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSmartengage>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceTinyemail>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceReplyIo>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGreythr>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGridly>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGuru>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGutendex>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceHardcodedRecords>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMiro>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceTodoist>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceRetently>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceHarness>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceHarvest>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceHeight>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceHellobaton>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceHelpScout>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceHibob>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceHighLevel>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceHoorayhr>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceHubplanner>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceYoutubeAnalytics>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceRkiCovid>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceBigmailer>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMailtrap>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceHubspot>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceHuggingFaceDatasets>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceHumanitix>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceZapierSupportedStorage>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceRocketlane>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceHuntr>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceIlluminaBasespace>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceImagga>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceIncidentIo>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceRss>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceRuddr>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceInflowinventory>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceInsightful>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceInsightly>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceInstagram>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceInstatus>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSafetyculture>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceIntercom>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceIntruder>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceInvoiced>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSalesflare>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceInvoiceninja>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMailerlite>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceAppfollow>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSapFieldglass>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSimplecast>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceIp2whois>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceIterable>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceJamfPro>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceJira>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceJobnimbus>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSavvycal>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceZenefits>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceLuma>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSecoda>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceJotform>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceJudgeMeReviews>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceJustSift>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSendinblue>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceJustcall>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceK6Cloud>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceKatana>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceKeka>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceKisi>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceAirtable>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSimfin>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceKissmetrics>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceKlarna>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceKlausApi>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceKlaviyo>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceKyve>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceLaunchdarkly>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceLeadfeeder>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceLemlist>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceCustomerIo>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceOpinionStage>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceLessAnnoyingCrm>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceLeverHiring>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceLightspeedRetail>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceLinear>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceLinkedinAds>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceLinkedinPages>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceLinnworks>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceLob>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceLokalise>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceLooker>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceLuma>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMailchimp>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMailerlite>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMailersend>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMailgun>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMailjetMail>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMailjetSms>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMailosaur>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMailtrap>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMantle>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMarketo>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMarketstack>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMendeley>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMention>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMercadoAds>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMerge>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMetabase>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMetricool>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftDataverse>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftEntraId>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftLists>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftOnedrive>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepoint>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftTeams>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMiro>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMissive>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMixmax>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMixpanel>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMode>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMonday>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMongodbV2>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMssql>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMux>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMyHours>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMysql>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceN8n>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceNasa>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceNavan>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceNebiusAi>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceNetsuite>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceNetsuiteEnterprise>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceNewsApi>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceNewsdata>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceNewsdataIo>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceNexiopay>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceNinjaoneRmm>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceNocrm>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceNorthpassLms>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceNotion>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceNutshell>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceNylas>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceNytimes>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceOkta>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceOmnisend>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceOncehub>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceOnepagecrm>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceOnesignal>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceOnfleet>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceOpenDataDc>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceOpenExchangeRates>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceOpenaq>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceOpenfda>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceOpenweather>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceOpinionStage>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceOpsgenie>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceOpuswatch>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceOracle>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceOracleEnterprise>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceOrb>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceOura>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceOutbrainAmplify>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceOutlook>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceOutreach>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceOveit>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePabblySubscriptionsBilling>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePaddle>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePagerduty>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePandadoc>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePaperform>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePapersign>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePardot>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePartnerize>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePartnerstack>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePayfit>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePaypalTransaction>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePaystack>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePendo>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePennylane>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePerigon>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePersistiq>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePersona>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePexelsApi>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePhyllo>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePicqer>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePingdom>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePinterest>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePipedrive>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePipeliner>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePivotalTracker>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePiwik>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePlaid>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePlanhat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePlausible>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePocket>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePokeapi>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePolygonStockApi>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePoplar>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePostgres>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePosthog>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePostmarkapp>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePrestashop>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePretix>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePrimetric>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePrintify>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceProductboard>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceProductive>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePypi>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceQualaroo>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceQuickbooks>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceRailz>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceRdStationMarketing>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceRecharge>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceRecreation>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceRecruitee>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceRecurly>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceReddit>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceRedshift>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceReferralhero>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceRentcast>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceRepairshopr>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceReplyIo>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceRetailexpressByMaropost>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceRetently>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceRevenuecat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceRevolutMerchant>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceRingcentral>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceRkiCovid>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceRocketChat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceRocketlane>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceRollbar>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceRootly>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceRss>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceRuddr>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceS3>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSafetyculture>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSageHr>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSalesflare>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSalesforce>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSalesloft>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSapFieldglass>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSapHanaEnterprise>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSavvycal>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceScryfall>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceWhiskyHunter>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceSecoda>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSegment>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSendgrid>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSendinblue>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSendowl>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSendpulse>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSenseforce>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSentry>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSerpstat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceServiceNow>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSftp>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSftpBulk>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSharepointEnterprise>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSharetribe>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceShippo>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceShipstation>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceShopify>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceShopwired>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceShortcut>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceShortio>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceShutterstock>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSigmaComputing>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSignnow>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSimfin>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSimplecast>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSimplesat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSlack>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSmaily>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSmartengage>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSmartreach>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSmartsheets>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSmartwaiver>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSnapchatMarketing>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSnowflake>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSolarwindsServiceDesk>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSonarCloud>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSpacexApi>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSparkpost>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSplitIo>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSpotifyAds>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSpotlercrm>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSquare>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSquarespace>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceStatsig>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceStatuspage>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceStockdata>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceStrava>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceStripe>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSurveySparrow>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSurveymonkey>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSurvicate>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSvix>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSysteme>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceTaboola>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceTavus>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceTeamtailor>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceTeamwork>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceTempo>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceTestrail>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceTheGuardianApi>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceThinkific>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceThinkificCourses>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceThriveLearning>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceTicketmaster>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceTickettailor>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceTicktick>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceTiktokMarketing>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceTimely>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceTinyemail>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceTmdb>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceTodoist>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceToggl>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceTrackPms>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceTrello>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceTremendous>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceTrustpilot>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceTvmazeSchedule>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceTwelveData>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceTwilio>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceTwilioTaskrouter>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceTwitter>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceTyntecSms>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceTypeform>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceUbidots>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceUnleash>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceUppromote>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceUptick>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceUsCensus>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceUservoice>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceVantage>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceVeeqo>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceVercel>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceVismaEconomic>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceVitally>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceVwo>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceWaiteraid>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceWasabiStatsApi>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceWatchmode>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceWeatherstack>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceWebScrapper>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceWebflow>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceWhenIWork>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceWhiskyHunter>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceWikipediaPageviews>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceWoocommerce>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceWordpress>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceWorkable>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceWorkday>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceWorkdayRest>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceWorkflowmax>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceWorkramp>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceWrike>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceWufoo>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceXkcd>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceXsolla>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceYahooFinancePrice>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceYandexMetrica>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceYotpo>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceYouNeedABudgetYnab>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceYounium>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceYousign>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceYoutubeAnalytics>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceYoutubeData>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceZapierSupportedStorage>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceZapsign>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceZendeskChat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceZendeskSunshine>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceZendeskSupport>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceZendeskTalk>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceZenefits>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceZenloop>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceZohoAnalyticsMetadataApi>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceZohoBigin>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceZohoBilling>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceZohoBooks>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceZohoCampaign>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceZohoCrm>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceZohoDesk>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceZohoExpense>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceZohoInventory>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceZohoInvoice>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceZonkaFeedback>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceZoom>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -3784,6 +3965,6 @@ public class SourceConfiguration {
         return Utils.toString(SourceConfiguration.class,
                 "value", value);
     }
- 
+
 }
 

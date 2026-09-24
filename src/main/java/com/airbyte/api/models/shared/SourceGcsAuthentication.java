@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceGcsAuthentication
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class SourceGcsAuthentication {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceGcsAuthentication(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class SourceGcsAuthentication {
 
     public static SourceGcsAuthentication of(SourceGcsAuthenticateViaGoogleOAuth value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGcsAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGcsAuthenticateViaGoogleOAuth>(){}));
+        return new SourceGcsAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceGcsAuthentication of(ServiceAccountAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGcsAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ServiceAccountAuthentication>(){}));
+        return new SourceGcsAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class SourceGcsAuthentication {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class SourceGcsAuthentication {
             return false;
         }
         SourceGcsAuthentication other = (SourceGcsAuthentication) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -95,6 +94,6 @@ public class SourceGcsAuthentication {
         return Utils.toString(SourceGcsAuthentication.class,
                 "value", value);
     }
- 
+
 }
 

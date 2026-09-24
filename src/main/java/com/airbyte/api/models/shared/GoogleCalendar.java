@@ -14,7 +14,7 @@ public enum GoogleCalendar {
     @JsonValue
     private final String value;
 
-    private GoogleCalendar(String value) {
+    GoogleCalendar(String value) {
         this.value = value;
     }
     

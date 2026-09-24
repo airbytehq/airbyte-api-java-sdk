@@ -14,7 +14,7 @@ public enum Nylas {
     @JsonValue
     private final String value;
 
-    private Nylas(String value) {
+    Nylas(String value) {
         this.value = value;
     }
     

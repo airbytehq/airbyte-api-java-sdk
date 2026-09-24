@@ -14,7 +14,7 @@ public enum EncryptionMethod {
     @JsonValue
     private final String value;
 
-    private EncryptionMethod(String value) {
+    EncryptionMethod(String value) {
         this.value = value;
     }
     

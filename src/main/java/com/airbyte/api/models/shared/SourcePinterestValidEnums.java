@@ -20,7 +20,7 @@ public enum SourcePinterestValidEnums {
     @JsonValue
     private final String value;
 
-    private SourcePinterestValidEnums(String value) {
+    SourcePinterestValidEnums(String value) {
         this.value = value;
     }
     

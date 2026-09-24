@@ -12,11 +12,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class GetStreamPropertiesRequest {
 
+public class GetStreamPropertiesRequest {
     /**
      * ID of the destination
      */
@@ -77,9 +76,10 @@ public class GetStreamPropertiesRequest {
         return sourceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * ID of the destination
@@ -89,6 +89,7 @@ public class GetStreamPropertiesRequest {
         this.destinationId = Optional.ofNullable(destinationId);
         return this;
     }
+
 
     /**
      * ID of the destination
@@ -108,6 +109,7 @@ public class GetStreamPropertiesRequest {
         return this;
     }
 
+
     /**
      * If true pull the latest schema from the source, else pull from cache (default false)
      */
@@ -126,7 +128,6 @@ public class GetStreamPropertiesRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -137,17 +138,15 @@ public class GetStreamPropertiesRequest {
         }
         GetStreamPropertiesRequest other = (GetStreamPropertiesRequest) o;
         return 
-            Objects.deepEquals(this.destinationId, other.destinationId) &&
-            Objects.deepEquals(this.ignoreCache, other.ignoreCache) &&
-            Objects.deepEquals(this.sourceId, other.sourceId);
+            Utils.enhancedDeepEquals(this.destinationId, other.destinationId) &&
+            Utils.enhancedDeepEquals(this.ignoreCache, other.ignoreCache) &&
+            Utils.enhancedDeepEquals(this.sourceId, other.sourceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            destinationId,
-            ignoreCache,
-            sourceId);
+        return Utils.enhancedHash(
+            destinationId, ignoreCache, sourceId);
     }
     
     @Override
@@ -157,18 +156,20 @@ public class GetStreamPropertiesRequest {
                 "ignoreCache", ignoreCache,
                 "sourceId", sourceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> destinationId = Optional.empty();
- 
+
         private Optional<Boolean> ignoreCache;
- 
+
         private String sourceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * ID of the destination
@@ -188,6 +189,7 @@ public class GetStreamPropertiesRequest {
             return this;
         }
 
+
         /**
          * If true pull the latest schema from the source, else pull from cache (default false)
          */
@@ -206,6 +208,7 @@ public class GetStreamPropertiesRequest {
             return this;
         }
 
+
         /**
          * ID of the source
          */
@@ -214,16 +217,16 @@ public class GetStreamPropertiesRequest {
             this.sourceId = sourceId;
             return this;
         }
-        
+
         public GetStreamPropertiesRequest build() {
             if (ignoreCache == null) {
                 ignoreCache = _SINGLETON_VALUE_IgnoreCache.value();
             }
+
             return new GetStreamPropertiesRequest(
-                destinationId,
-                ignoreCache,
-                sourceId);
+                destinationId, ignoreCache, sourceId);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_IgnoreCache =
                 new LazySingletonValue<>(
