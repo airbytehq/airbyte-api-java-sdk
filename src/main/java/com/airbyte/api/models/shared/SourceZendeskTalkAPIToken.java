@@ -19,8 +19,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceZendeskTalkAPIToken {
 
@@ -28,10 +28,12 @@ public class SourceZendeskTalkAPIToken {
     private Map<String, Object> additionalProperties;
 
     /**
-     * The value of the API token generated. See the &lt;a href="https://docs.airbyte.com/integrations/sources/zendesk-talk"&gt;docs&lt;/a&gt; for more information.
+     * The value of the API token generated. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/zendesk-talk">docs</a> for more information.
      */
     @JsonProperty("api_token")
     private String apiToken;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
@@ -61,7 +63,8 @@ public class SourceZendeskTalkAPIToken {
     }
 
     /**
-     * The value of the API token generated. See the &lt;a href="https://docs.airbyte.com/integrations/sources/zendesk-talk"&gt;docs&lt;/a&gt; for more information.
+     * The value of the API token generated. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/zendesk-talk">docs</a> for more information.
      */
     @JsonIgnore
     public String apiToken() {
@@ -82,9 +85,10 @@ public class SourceZendeskTalkAPIToken {
         return email;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceZendeskTalkAPIToken withAdditionalProperty(String key, Object value) {
@@ -92,8 +96,7 @@ public class SourceZendeskTalkAPIToken {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceZendeskTalkAPIToken withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -101,7 +104,8 @@ public class SourceZendeskTalkAPIToken {
     }
 
     /**
-     * The value of the API token generated. See the &lt;a href="https://docs.airbyte.com/integrations/sources/zendesk-talk"&gt;docs&lt;/a&gt; for more information.
+     * The value of the API token generated. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/zendesk-talk">docs</a> for more information.
      */
     public SourceZendeskTalkAPIToken withApiToken(String apiToken) {
         Utils.checkNotNull(apiToken, "apiToken");
@@ -118,7 +122,6 @@ public class SourceZendeskTalkAPIToken {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -129,18 +132,16 @@ public class SourceZendeskTalkAPIToken {
         }
         SourceZendeskTalkAPIToken other = (SourceZendeskTalkAPIToken) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.email, other.email);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.email, other.email);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            apiToken,
-            authType,
+        return Utils.enhancedHash(
+            additionalProperties, apiToken, authType,
             email);
     }
     
@@ -152,15 +153,16 @@ public class SourceZendeskTalkAPIToken {
                 "authType", authType,
                 "email", email);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private String apiToken;
- 
+
         private String email;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -181,14 +183,17 @@ public class SourceZendeskTalkAPIToken {
             return this;
         }
 
+
         /**
-         * The value of the API token generated. See the &lt;a href="https://docs.airbyte.com/integrations/sources/zendesk-talk"&gt;docs&lt;/a&gt; for more information.
+         * The value of the API token generated. See the <a
+         * href="https://docs.airbyte.com/integrations/sources/zendesk-talk">docs</a> for more information.
          */
         public Builder apiToken(String apiToken) {
             Utils.checkNotNull(apiToken, "apiToken");
             this.apiToken = apiToken;
             return this;
         }
+
 
         /**
          * The user email for your Zendesk account.
@@ -198,13 +203,14 @@ public class SourceZendeskTalkAPIToken {
             this.email = email;
             return this;
         }
-        
+
         public SourceZendeskTalkAPIToken build() {
+
             return new SourceZendeskTalkAPIToken(
-                apiToken,
-                email)
+                apiToken, email)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceZendeskTalkSchemasAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

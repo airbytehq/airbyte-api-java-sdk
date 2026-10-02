@@ -14,7 +14,7 @@ public enum SourceLeverHiringLeverHiring {
     @JsonValue
     private final String value;
 
-    private SourceLeverHiringLeverHiring(String value) {
+    SourceLeverHiringLeverHiring(String value) {
         this.value = value;
     }
     

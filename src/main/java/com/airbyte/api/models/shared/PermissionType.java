@@ -29,7 +29,7 @@ public enum PermissionType {
     @JsonValue
     private final String value;
 
-    private PermissionType(String value) {
+    PermissionType(String value) {
         this.value = value;
     }
     

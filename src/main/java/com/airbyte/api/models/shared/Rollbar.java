@@ -14,7 +14,7 @@ public enum Rollbar {
     @JsonValue
     private final String value;
 
-    private Rollbar(String value) {
+    Rollbar(String value) {
         this.value = value;
     }
     

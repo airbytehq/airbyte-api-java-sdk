@@ -14,26 +14,31 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceZohoDesk {
 
     @JsonProperty("client_id")
     private String clientId;
 
+
     @JsonProperty("client_secret")
     private String clientSecret;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("include_custom_domain")
     private Optional<Boolean> includeCustomDomain;
 
+
     @JsonProperty("refresh_token")
     private String refreshToken;
 
+
     @JsonProperty("sourceType")
     private ZohoDesk sourceType;
+
 
     @JsonProperty("token_refresh_endpoint")
     private String tokenRefreshEndpoint;
@@ -63,7 +68,8 @@ public class SourceZohoDesk {
             String clientSecret,
             String refreshToken,
             String tokenRefreshEndpoint) {
-        this(clientId, clientSecret, Optional.empty(), refreshToken, tokenRefreshEndpoint);
+        this(clientId, clientSecret, Optional.empty(),
+            refreshToken, tokenRefreshEndpoint);
     }
 
     @JsonIgnore
@@ -96,9 +102,10 @@ public class SourceZohoDesk {
         return tokenRefreshEndpoint;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceZohoDesk withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -118,6 +125,7 @@ public class SourceZohoDesk {
         return this;
     }
 
+
     public SourceZohoDesk withIncludeCustomDomain(Optional<Boolean> includeCustomDomain) {
         Utils.checkNotNull(includeCustomDomain, "includeCustomDomain");
         this.includeCustomDomain = includeCustomDomain;
@@ -136,7 +144,6 @@ public class SourceZohoDesk {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -147,23 +154,19 @@ public class SourceZohoDesk {
         }
         SourceZohoDesk other = (SourceZohoDesk) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.includeCustomDomain, other.includeCustomDomain) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.tokenRefreshEndpoint, other.tokenRefreshEndpoint);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.includeCustomDomain, other.includeCustomDomain) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.tokenRefreshEndpoint, other.tokenRefreshEndpoint);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            includeCustomDomain,
-            refreshToken,
-            sourceType,
-            tokenRefreshEndpoint);
+        return Utils.enhancedHash(
+            clientId, clientSecret, includeCustomDomain,
+            refreshToken, sourceType, tokenRefreshEndpoint);
     }
     
     @Override
@@ -176,22 +179,24 @@ public class SourceZohoDesk {
                 "sourceType", sourceType,
                 "tokenRefreshEndpoint", tokenRefreshEndpoint);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private Optional<Boolean> includeCustomDomain = Optional.empty();
- 
+
         private String refreshToken;
- 
+
         private String tokenRefreshEndpoint;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -199,11 +204,13 @@ public class SourceZohoDesk {
             return this;
         }
 
+
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         public Builder includeCustomDomain(boolean includeCustomDomain) {
             Utils.checkNotNull(includeCustomDomain, "includeCustomDomain");
@@ -217,26 +224,27 @@ public class SourceZohoDesk {
             return this;
         }
 
+
         public Builder refreshToken(String refreshToken) {
             Utils.checkNotNull(refreshToken, "refreshToken");
             this.refreshToken = refreshToken;
             return this;
         }
 
+
         public Builder tokenRefreshEndpoint(String tokenRefreshEndpoint) {
             Utils.checkNotNull(tokenRefreshEndpoint, "tokenRefreshEndpoint");
             this.tokenRefreshEndpoint = tokenRefreshEndpoint;
             return this;
         }
-        
+
         public SourceZohoDesk build() {
+
             return new SourceZohoDesk(
-                clientId,
-                clientSecret,
-                includeCustomDomain,
-                refreshToken,
-                tokenRefreshEndpoint);
+                clientId, clientSecret, includeCustomDomain,
+                refreshToken, tokenRefreshEndpoint);
         }
+
 
         private static final LazySingletonValue<ZohoDesk> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

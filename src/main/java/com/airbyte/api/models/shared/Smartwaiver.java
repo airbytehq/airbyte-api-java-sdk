@@ -14,7 +14,7 @@ public enum Smartwaiver {
     @JsonValue
     private final String value;
 
-    private Smartwaiver(String value) {
+    Smartwaiver(String value) {
         this.value = value;
     }
     

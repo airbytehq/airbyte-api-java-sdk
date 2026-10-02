@@ -5,21 +5,36 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
+import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+import java.lang.SuppressWarnings;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+
 
 public class DestinationBigqueryHMACKey {
 
+    @JsonIgnore
+    private Map<String, Object> additionalProperties;
+
+
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credential_type")
-    private DestinationBigqueryCredentialType credentialType;
+    private Optional<? extends DestinationBigqueryCredentialType> credentialType;
 
     /**
-     * HMAC key access ID. When linked to a service account, this ID is 61 characters long; when linked to a user account, it is 24 characters long.
+     * HMAC key access ID. When linked to a service account, this ID is 61 characters long; when linked to
+     * a user account, it is 24 characters long.
      */
     @JsonProperty("hmac_key_access_id")
     private String hmacKeyAccessId;
@@ -32,22 +47,38 @@ public class DestinationBigqueryHMACKey {
 
     @JsonCreator
     public DestinationBigqueryHMACKey(
+            @JsonProperty("credential_type") Optional<? extends DestinationBigqueryCredentialType> credentialType,
             @JsonProperty("hmac_key_access_id") String hmacKeyAccessId,
             @JsonProperty("hmac_key_secret") String hmacKeySecret) {
+        Utils.checkNotNull(credentialType, "credentialType");
         Utils.checkNotNull(hmacKeyAccessId, "hmacKeyAccessId");
         Utils.checkNotNull(hmacKeySecret, "hmacKeySecret");
-        this.credentialType = Builder._SINGLETON_VALUE_CredentialType.value();
+        this.additionalProperties = new HashMap<>();
+        this.credentialType = credentialType;
         this.hmacKeyAccessId = hmacKeyAccessId;
         this.hmacKeySecret = hmacKeySecret;
     }
+    
+    public DestinationBigqueryHMACKey(
+            String hmacKeyAccessId,
+            String hmacKeySecret) {
+        this(Optional.empty(), hmacKeyAccessId, hmacKeySecret);
+    }
 
+    @JsonAnyGetter
+    public Map<String, Object> additionalProperties() {
+        return additionalProperties;
+    }
+
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public DestinationBigqueryCredentialType credentialType() {
-        return credentialType;
+    public Optional<DestinationBigqueryCredentialType> credentialType() {
+        return (Optional<DestinationBigqueryCredentialType>) credentialType;
     }
 
     /**
-     * HMAC key access ID. When linked to a service account, this ID is 61 characters long; when linked to a user account, it is 24 characters long.
+     * HMAC key access ID. When linked to a service account, this ID is 61 characters long; when linked to
+     * a user account, it is 24 characters long.
      */
     @JsonIgnore
     public String hmacKeyAccessId() {
@@ -62,12 +93,40 @@ public class DestinationBigqueryHMACKey {
         return hmacKeySecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
+
+    @JsonAnySetter
+    public DestinationBigqueryHMACKey withAdditionalProperty(String key, Object value) {
+        // note that value can be null because of the way JsonAnySetter works
+        Utils.checkNotNull(key, "key");
+        additionalProperties.put(key, value); 
+        return this;
+    }
+    public DestinationBigqueryHMACKey withAdditionalProperties(Map<String, Object> additionalProperties) {
+        Utils.checkNotNull(additionalProperties, "additionalProperties");
+        this.additionalProperties = additionalProperties;
+        return this;
+    }
+
+    public DestinationBigqueryHMACKey withCredentialType(DestinationBigqueryCredentialType credentialType) {
+        Utils.checkNotNull(credentialType, "credentialType");
+        this.credentialType = Optional.ofNullable(credentialType);
+        return this;
+    }
+
+
+    public DestinationBigqueryHMACKey withCredentialType(Optional<? extends DestinationBigqueryCredentialType> credentialType) {
+        Utils.checkNotNull(credentialType, "credentialType");
+        this.credentialType = credentialType;
+        return this;
+    }
 
     /**
-     * HMAC key access ID. When linked to a service account, this ID is 61 characters long; when linked to a user account, it is 24 characters long.
+     * HMAC key access ID. When linked to a service account, this ID is 61 characters long; when linked to
+     * a user account, it is 24 characters long.
      */
     public DestinationBigqueryHMACKey withHmacKeyAccessId(String hmacKeyAccessId) {
         Utils.checkNotNull(hmacKeyAccessId, "hmacKeyAccessId");
@@ -84,7 +143,6 @@ public class DestinationBigqueryHMACKey {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,45 +153,83 @@ public class DestinationBigqueryHMACKey {
         }
         DestinationBigqueryHMACKey other = (DestinationBigqueryHMACKey) o;
         return 
-            Objects.deepEquals(this.credentialType, other.credentialType) &&
-            Objects.deepEquals(this.hmacKeyAccessId, other.hmacKeyAccessId) &&
-            Objects.deepEquals(this.hmacKeySecret, other.hmacKeySecret);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.credentialType, other.credentialType) &&
+            Utils.enhancedDeepEquals(this.hmacKeyAccessId, other.hmacKeyAccessId) &&
+            Utils.enhancedDeepEquals(this.hmacKeySecret, other.hmacKeySecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentialType,
-            hmacKeyAccessId,
+        return Utils.enhancedHash(
+            additionalProperties, credentialType, hmacKeyAccessId,
             hmacKeySecret);
     }
     
     @Override
     public String toString() {
         return Utils.toString(DestinationBigqueryHMACKey.class,
+                "additionalProperties", additionalProperties,
                 "credentialType", credentialType,
                 "hmacKeyAccessId", hmacKeyAccessId,
                 "hmacKeySecret", hmacKeySecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
+        private Map<String, Object> additionalProperties = new HashMap<>();
+
+        private Optional<? extends DestinationBigqueryCredentialType> credentialType;
+
         private String hmacKeyAccessId;
- 
+
         private String hmacKeySecret;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+        public Builder additionalProperty(String key, Object value) {
+            Utils.checkNotNull(key, "key");
+            // we could be strict about null values (force the user
+            // to pass `JsonNullable.of(null)`) but likely to be a bit 
+            // annoying for additional properties building so we'll 
+            // relax preconditions.
+            this.additionalProperties.put(key, value);
+            return this;
+        }
+
+        public Builder additionalProperties(Map<String, Object> additionalProperties) {
+            Utils.checkNotNull(additionalProperties, "additionalProperties");
+            this.additionalProperties = additionalProperties;
+            return this;
+        }
+
+
+        public Builder credentialType(DestinationBigqueryCredentialType credentialType) {
+            Utils.checkNotNull(credentialType, "credentialType");
+            this.credentialType = Optional.ofNullable(credentialType);
+            return this;
+        }
+
+        public Builder credentialType(Optional<? extends DestinationBigqueryCredentialType> credentialType) {
+            Utils.checkNotNull(credentialType, "credentialType");
+            this.credentialType = credentialType;
+            return this;
+        }
+
+
         /**
-         * HMAC key access ID. When linked to a service account, this ID is 61 characters long; when linked to a user account, it is 24 characters long.
+         * HMAC key access ID. When linked to a service account, this ID is 61 characters long; when linked to
+         * a user account, it is 24 characters long.
          */
         public Builder hmacKeyAccessId(String hmacKeyAccessId) {
             Utils.checkNotNull(hmacKeyAccessId, "hmacKeyAccessId");
             this.hmacKeyAccessId = hmacKeyAccessId;
             return this;
         }
+
 
         /**
          * The corresponding secret for the access ID. It is a 40-character base-64 encoded string.
@@ -143,17 +239,22 @@ public class DestinationBigqueryHMACKey {
             this.hmacKeySecret = hmacKeySecret;
             return this;
         }
-        
+
         public DestinationBigqueryHMACKey build() {
+            if (credentialType == null) {
+                credentialType = _SINGLETON_VALUE_CredentialType.value();
+            }
+
             return new DestinationBigqueryHMACKey(
-                hmacKeyAccessId,
-                hmacKeySecret);
+                credentialType, hmacKeyAccessId, hmacKeySecret)
+                .withAdditionalProperties(additionalProperties);
         }
 
-        private static final LazySingletonValue<DestinationBigqueryCredentialType> _SINGLETON_VALUE_CredentialType =
+
+        private static final LazySingletonValue<Optional<? extends DestinationBigqueryCredentialType>> _SINGLETON_VALUE_CredentialType =
                 new LazySingletonValue<>(
                         "credential_type",
                         "\"HMAC_KEY\"",
-                        new TypeReference<DestinationBigqueryCredentialType>() {});
+                        new TypeReference<Optional<? extends DestinationBigqueryCredentialType>>() {});
     }
 }

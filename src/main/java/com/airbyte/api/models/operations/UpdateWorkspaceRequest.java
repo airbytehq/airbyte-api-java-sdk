@@ -10,12 +10,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class UpdateWorkspaceRequest {
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private WorkspaceUpdateRequest workspaceUpdateRequest;
+
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspaceId")
     private String workspaceId;
@@ -40,9 +41,10 @@ public class UpdateWorkspaceRequest {
         return workspaceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public UpdateWorkspaceRequest withWorkspaceUpdateRequest(WorkspaceUpdateRequest workspaceUpdateRequest) {
         Utils.checkNotNull(workspaceUpdateRequest, "workspaceUpdateRequest");
@@ -56,7 +58,6 @@ public class UpdateWorkspaceRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -67,15 +68,14 @@ public class UpdateWorkspaceRequest {
         }
         UpdateWorkspaceRequest other = (UpdateWorkspaceRequest) o;
         return 
-            Objects.deepEquals(this.workspaceUpdateRequest, other.workspaceUpdateRequest) &&
-            Objects.deepEquals(this.workspaceId, other.workspaceId);
+            Utils.enhancedDeepEquals(this.workspaceUpdateRequest, other.workspaceUpdateRequest) &&
+            Utils.enhancedDeepEquals(this.workspaceId, other.workspaceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            workspaceUpdateRequest,
-            workspaceId);
+        return Utils.enhancedHash(
+            workspaceUpdateRequest, workspaceId);
     }
     
     @Override
@@ -84,16 +84,18 @@ public class UpdateWorkspaceRequest {
                 "workspaceUpdateRequest", workspaceUpdateRequest,
                 "workspaceId", workspaceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private WorkspaceUpdateRequest workspaceUpdateRequest;
- 
+
         private String workspaceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder workspaceUpdateRequest(WorkspaceUpdateRequest workspaceUpdateRequest) {
             Utils.checkNotNull(workspaceUpdateRequest, "workspaceUpdateRequest");
@@ -101,16 +103,18 @@ public class UpdateWorkspaceRequest {
             return this;
         }
 
+
         public Builder workspaceId(String workspaceId) {
             Utils.checkNotNull(workspaceId, "workspaceId");
             this.workspaceId = workspaceId;
             return this;
         }
-        
+
         public UpdateWorkspaceRequest build() {
+
             return new UpdateWorkspaceRequest(
-                workspaceUpdateRequest,
-                workspaceId);
+                workspaceUpdateRequest, workspaceId);
         }
+
     }
 }

@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * TextSplitter
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class TextSplitter {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private TextSplitter(TypedObject value) {
         this.value = value;
@@ -33,17 +32,17 @@ public class TextSplitter {
 
     public static TextSplitter of(BySeparator value) {
         Utils.checkNotNull(value, "value");
-        return new TextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<BySeparator>(){}));
+        return new TextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TextSplitter of(ByMarkdownHeader value) {
         Utils.checkNotNull(value, "value");
-        return new TextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ByMarkdownHeader>(){}));
+        return new TextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TextSplitter of(ByProgrammingLanguage value) {
         Utils.checkNotNull(value, "value");
-        return new TextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ByProgrammingLanguage>(){}));
+        return new TextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +66,7 @@ public class TextSplitter {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +77,12 @@ public class TextSplitter {
             return false;
         }
         TextSplitter other = (TextSplitter) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -92,8 +91,8 @@ public class TextSplitter {
         public _Deserializer() {
             super(TextSplitter.class, false,
                   TypeReferenceWithShape.of(new TypeReference<BySeparator>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<ByProgrammingLanguage>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<ByMarkdownHeader>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<ByMarkdownHeader>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<ByProgrammingLanguage>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -102,6 +101,6 @@ public class TextSplitter {
         return Utils.toString(TextSplitter.class,
                 "value", value);
     }
- 
+
 }
 

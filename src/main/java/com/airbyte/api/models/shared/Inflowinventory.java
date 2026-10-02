@@ -14,7 +14,7 @@ public enum Inflowinventory {
     @JsonValue
     private final String value;
 
-    private Inflowinventory(String value) {
+    Inflowinventory(String value) {
         this.value = value;
     }
     

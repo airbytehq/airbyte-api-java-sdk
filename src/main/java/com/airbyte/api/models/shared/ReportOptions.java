@@ -10,18 +10,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
-import java.util.Objects;
+
 
 public class ReportOptions {
-
     /**
      * List of options
      */
     @JsonProperty("options_list")
     private List<OptionsList> optionsList;
 
+
     @JsonProperty("report_name")
     private ReportName reportName;
+
 
     @JsonProperty("stream_name")
     private String streamName;
@@ -57,9 +58,10 @@ public class ReportOptions {
         return streamName;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * List of options
@@ -82,7 +84,6 @@ public class ReportOptions {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -93,17 +94,15 @@ public class ReportOptions {
         }
         ReportOptions other = (ReportOptions) o;
         return 
-            Objects.deepEquals(this.optionsList, other.optionsList) &&
-            Objects.deepEquals(this.reportName, other.reportName) &&
-            Objects.deepEquals(this.streamName, other.streamName);
+            Utils.enhancedDeepEquals(this.optionsList, other.optionsList) &&
+            Utils.enhancedDeepEquals(this.reportName, other.reportName) &&
+            Utils.enhancedDeepEquals(this.streamName, other.streamName);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            optionsList,
-            reportName,
-            streamName);
+        return Utils.enhancedHash(
+            optionsList, reportName, streamName);
     }
     
     @Override
@@ -113,18 +112,20 @@ public class ReportOptions {
                 "reportName", reportName,
                 "streamName", streamName);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private List<OptionsList> optionsList;
- 
+
         private ReportName reportName;
- 
+
         private String streamName;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * List of options
@@ -135,23 +136,25 @@ public class ReportOptions {
             return this;
         }
 
+
         public Builder reportName(ReportName reportName) {
             Utils.checkNotNull(reportName, "reportName");
             this.reportName = reportName;
             return this;
         }
 
+
         public Builder streamName(String streamName) {
             Utils.checkNotNull(streamName, "streamName");
             this.streamName = streamName;
             return this;
         }
-        
+
         public ReportOptions build() {
+
             return new ReportOptions(
-                optionsList,
-                reportName,
-                streamName);
+                optionsList, reportName, streamName);
         }
+
     }
 }

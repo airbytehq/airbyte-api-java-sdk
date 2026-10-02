@@ -14,7 +14,7 @@ public enum Yousign {
     @JsonValue
     private final String value;
 
-    private Yousign(String value) {
+    Yousign(String value) {
         this.value = value;
     }
     

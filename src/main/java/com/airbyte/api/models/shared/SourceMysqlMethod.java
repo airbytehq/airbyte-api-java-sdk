@@ -14,7 +14,7 @@ public enum SourceMysqlMethod {
     @JsonValue
     private final String value;
 
-    private SourceMysqlMethod(String value) {
+    SourceMysqlMethod(String value) {
         this.value = value;
     }
     

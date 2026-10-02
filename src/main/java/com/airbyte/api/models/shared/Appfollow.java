@@ -14,7 +14,7 @@ public enum Appfollow {
     @JsonValue
     private final String value;
 
-    private Appfollow(String value) {
+    Appfollow(String value) {
         this.value = value;
     }
     

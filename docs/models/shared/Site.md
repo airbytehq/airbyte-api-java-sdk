@@ -2,6 +2,14 @@
 
 The site where Datadog data resides in.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.Site;
+
+Site value = Site.DATADOGHQ_COM;
+```
+
 
 ## Values
 

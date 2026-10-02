@@ -16,13 +16,14 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceSurveySparrow {
 
+public class SourceSurveySparrow {
     /**
-     * Your access token. See &lt;a href="https://developers.surveysparrow.com/rest-apis#authentication"&gt;here&lt;/a&gt;. The key is case sensitive.
+     * Your access token. See <a
+     * href="https://developers.surveysparrow.com/rest-apis#authentication">here</a>. The key is case
+     * sensitive.
      */
     @JsonProperty("access_token")
     private String accessToken;
@@ -33,6 +34,7 @@ public class SourceSurveySparrow {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("region")
     private Optional<? extends BaseURL> region;
+
 
     @JsonProperty("sourceType")
     private SurveySparrow sourceType;
@@ -64,7 +66,9 @@ public class SourceSurveySparrow {
     }
 
     /**
-     * Your access token. See &lt;a href="https://developers.surveysparrow.com/rest-apis#authentication"&gt;here&lt;/a&gt;. The key is case sensitive.
+     * Your access token. See <a
+     * href="https://developers.surveysparrow.com/rest-apis#authentication">here</a>. The key is case
+     * sensitive.
      */
     @JsonIgnore
     public String accessToken() {
@@ -94,12 +98,15 @@ public class SourceSurveySparrow {
         return (Optional<List<Object>>) surveyId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Your access token. See &lt;a href="https://developers.surveysparrow.com/rest-apis#authentication"&gt;here&lt;/a&gt;. The key is case sensitive.
+     * Your access token. See <a
+     * href="https://developers.surveysparrow.com/rest-apis#authentication">here</a>. The key is case
+     * sensitive.
      */
     public SourceSurveySparrow withAccessToken(String accessToken) {
         Utils.checkNotNull(accessToken, "accessToken");
@@ -115,6 +122,7 @@ public class SourceSurveySparrow {
         this.region = Optional.ofNullable(region);
         return this;
     }
+
 
     /**
      * Is your account location is EU based? If yes, the base url to retrieve data will be different.
@@ -134,6 +142,7 @@ public class SourceSurveySparrow {
         return this;
     }
 
+
     /**
      * A List of your survey ids for survey-specific stream
      */
@@ -143,7 +152,6 @@ public class SourceSurveySparrow {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -154,18 +162,16 @@ public class SourceSurveySparrow {
         }
         SourceSurveySparrow other = (SourceSurveySparrow) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.region, other.region) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.surveyId, other.surveyId);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.region, other.region) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.surveyId, other.surveyId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            region,
-            sourceType,
+        return Utils.enhancedHash(
+            accessToken, region, sourceType,
             surveyId);
     }
     
@@ -177,27 +183,32 @@ public class SourceSurveySparrow {
                 "sourceType", sourceType,
                 "surveyId", surveyId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private Optional<? extends BaseURL> region = Optional.empty();
- 
+
         private Optional<? extends List<Object>> surveyId = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Your access token. See &lt;a href="https://developers.surveysparrow.com/rest-apis#authentication"&gt;here&lt;/a&gt;. The key is case sensitive.
+         * Your access token. See <a
+         * href="https://developers.surveysparrow.com/rest-apis#authentication">here</a>. The key is case
+         * sensitive.
          */
         public Builder accessToken(String accessToken) {
             Utils.checkNotNull(accessToken, "accessToken");
             this.accessToken = accessToken;
             return this;
         }
+
 
         /**
          * Is your account location is EU based? If yes, the base url to retrieve data will be different.
@@ -217,6 +228,7 @@ public class SourceSurveySparrow {
             return this;
         }
 
+
         /**
          * A List of your survey ids for survey-specific stream
          */
@@ -234,13 +246,13 @@ public class SourceSurveySparrow {
             this.surveyId = surveyId;
             return this;
         }
-        
+
         public SourceSurveySparrow build() {
+
             return new SourceSurveySparrow(
-                accessToken,
-                region,
-                surveyId);
+                accessToken, region, surveyId);
         }
+
 
         private static final LazySingletonValue<SurveySparrow> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class AuthenticateViaMicrosoft {
 
@@ -36,7 +36,10 @@ public class AuthenticateViaMicrosoft {
     private String clientSecret;
 
     /**
-     * A globally unique identifier (GUID) that is different than your organization name or domain. Follow these steps to obtain: open one of the Teams where you belong inside the Teams Application -&gt; Click on the … next to the Team title -&gt; Click on Get link to team -&gt; Copy the link to the team and grab the tenant ID form the URL
+     * A globally unique identifier (GUID) that is different than your organization name or domain. Follow
+     * these steps to obtain: open one of the Teams where you belong inside the Teams Application -&gt;
+     * Click on the … next to the Team title -&gt; Click on Get link to team -&gt; Copy the link to the
+     * team and grab the tenant ID form the URL
      */
     @JsonProperty("tenant_id")
     private String tenantId;
@@ -78,16 +81,20 @@ public class AuthenticateViaMicrosoft {
     }
 
     /**
-     * A globally unique identifier (GUID) that is different than your organization name or domain. Follow these steps to obtain: open one of the Teams where you belong inside the Teams Application -&gt; Click on the … next to the Team title -&gt; Click on Get link to team -&gt; Copy the link to the team and grab the tenant ID form the URL
+     * A globally unique identifier (GUID) that is different than your organization name or domain. Follow
+     * these steps to obtain: open one of the Teams where you belong inside the Teams Application -&gt;
+     * Click on the … next to the Team title -&gt; Click on Get link to team -&gt; Copy the link to the
+     * team and grab the tenant ID form the URL
      */
     @JsonIgnore
     public String tenantId() {
         return tenantId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Client ID of your Microsoft Teams developer application.
@@ -108,7 +115,10 @@ public class AuthenticateViaMicrosoft {
     }
 
     /**
-     * A globally unique identifier (GUID) that is different than your organization name or domain. Follow these steps to obtain: open one of the Teams where you belong inside the Teams Application -&gt; Click on the … next to the Team title -&gt; Click on Get link to team -&gt; Copy the link to the team and grab the tenant ID form the URL
+     * A globally unique identifier (GUID) that is different than your organization name or domain. Follow
+     * these steps to obtain: open one of the Teams where you belong inside the Teams Application -&gt;
+     * Click on the … next to the Team title -&gt; Click on Get link to team -&gt; Copy the link to the
+     * team and grab the tenant ID form the URL
      */
     public AuthenticateViaMicrosoft withTenantId(String tenantId) {
         Utils.checkNotNull(tenantId, "tenantId");
@@ -116,7 +126,6 @@ public class AuthenticateViaMicrosoft {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -127,18 +136,16 @@ public class AuthenticateViaMicrosoft {
         }
         AuthenticateViaMicrosoft other = (AuthenticateViaMicrosoft) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.tenantId, other.tenantId);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.tenantId, other.tenantId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            clientId,
-            clientSecret,
+        return Utils.enhancedHash(
+            authType, clientId, clientSecret,
             tenantId);
     }
     
@@ -150,18 +157,20 @@ public class AuthenticateViaMicrosoft {
                 "clientSecret", clientSecret,
                 "tenantId", tenantId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String tenantId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Client ID of your Microsoft Teams developer application.
@@ -172,6 +181,7 @@ public class AuthenticateViaMicrosoft {
             return this;
         }
 
+
         /**
          * The Client Secret of your Microsoft Teams developer application.
          */
@@ -181,21 +191,25 @@ public class AuthenticateViaMicrosoft {
             return this;
         }
 
+
         /**
-         * A globally unique identifier (GUID) that is different than your organization name or domain. Follow these steps to obtain: open one of the Teams where you belong inside the Teams Application -&gt; Click on the … next to the Team title -&gt; Click on Get link to team -&gt; Copy the link to the team and grab the tenant ID form the URL
+         * A globally unique identifier (GUID) that is different than your organization name or domain. Follow
+         * these steps to obtain: open one of the Teams where you belong inside the Teams Application -&gt;
+         * Click on the … next to the Team title -&gt; Click on Get link to team -&gt; Copy the link to the
+         * team and grab the tenant ID form the URL
          */
         public Builder tenantId(String tenantId) {
             Utils.checkNotNull(tenantId, "tenantId");
             this.tenantId = tenantId;
             return this;
         }
-        
+
         public AuthenticateViaMicrosoft build() {
+
             return new AuthenticateViaMicrosoft(
-                clientId,
-                clientSecret,
-                tenantId);
+                clientId, clientSecret, tenantId);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceMicrosoftTeamsSchemasAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

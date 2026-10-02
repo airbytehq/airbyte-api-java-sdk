@@ -13,14 +13,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceCampaignMonitor {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
     private Optional<String> password;
+
 
     @JsonProperty("sourceType")
     private CampaignMonitor sourceType;
@@ -31,6 +32,7 @@ public class SourceCampaignMonitor {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
     private Optional<String> startDate;
+
 
     @JsonProperty("username")
     private String username;
@@ -77,15 +79,17 @@ public class SourceCampaignMonitor {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceCampaignMonitor withPassword(String password) {
         Utils.checkNotNull(password, "password");
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     public SourceCampaignMonitor withPassword(Optional<String> password) {
         Utils.checkNotNull(password, "password");
@@ -102,6 +106,7 @@ public class SourceCampaignMonitor {
         return this;
     }
 
+
     /**
      * Date from when the sync should start
      */
@@ -117,7 +122,6 @@ public class SourceCampaignMonitor {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -128,18 +132,16 @@ public class SourceCampaignMonitor {
         }
         SourceCampaignMonitor other = (SourceCampaignMonitor) o;
         return 
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            password,
-            sourceType,
-            startDate,
+        return Utils.enhancedHash(
+            password, sourceType, startDate,
             username);
     }
     
@@ -151,18 +153,20 @@ public class SourceCampaignMonitor {
                 "startDate", startDate,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private Optional<String> startDate = Optional.empty();
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder password(String password) {
             Utils.checkNotNull(password, "password");
@@ -175,6 +179,7 @@ public class SourceCampaignMonitor {
             this.password = password;
             return this;
         }
+
 
         /**
          * Date from when the sync should start
@@ -194,18 +199,19 @@ public class SourceCampaignMonitor {
             return this;
         }
 
+
         public Builder username(String username) {
             Utils.checkNotNull(username, "username");
             this.username = username;
             return this;
         }
-        
+
         public SourceCampaignMonitor build() {
+
             return new SourceCampaignMonitor(
-                password,
-                startDate,
-                username);
+                password, startDate, username);
         }
+
 
         private static final LazySingletonValue<CampaignMonitor> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

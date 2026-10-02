@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceDeputy {
 
@@ -23,6 +23,7 @@ public class SourceDeputy {
      */
     @JsonProperty("base_url")
     private String baseUrl;
+
 
     @JsonProperty("sourceType")
     private Deputy sourceType;
@@ -56,9 +57,10 @@ public class SourceDeputy {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceDeputy withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -75,7 +77,6 @@ public class SourceDeputy {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -86,17 +87,15 @@ public class SourceDeputy {
         }
         SourceDeputy other = (SourceDeputy) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.baseUrl, other.baseUrl) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.baseUrl, other.baseUrl) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            baseUrl,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, baseUrl, sourceType);
     }
     
     @Override
@@ -106,22 +105,25 @@ public class SourceDeputy {
                 "baseUrl", baseUrl,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String baseUrl;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * The base url for your deputy account to make API requests
@@ -131,12 +133,13 @@ public class SourceDeputy {
             this.baseUrl = baseUrl;
             return this;
         }
-        
+
         public SourceDeputy build() {
+
             return new SourceDeputy(
-                apiKey,
-                baseUrl);
+                apiKey, baseUrl);
         }
+
 
         private static final LazySingletonValue<Deputy> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -1,5 +1,13 @@
 # PolygonStockApi
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.PolygonStockApi;
+
+PolygonStockApi value = PolygonStockApi.POLYGON_STOCK_API;
+```
+
 
 ## Values
 

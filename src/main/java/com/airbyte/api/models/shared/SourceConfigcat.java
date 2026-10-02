@@ -11,21 +11,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceConfigcat {
-
     /**
-     * Basic auth password. See &lt;a href="https://api.configcat.com/docs/#section/Authentication"&gt;here&lt;/a&gt;.
+     * Basic auth password. See <a href="https://api.configcat.com/docs/#section/Authentication">here</a>.
      */
     @JsonProperty("password")
     private String password;
+
 
     @JsonProperty("sourceType")
     private Configcat sourceType;
 
     /**
-     * Basic auth user name. See &lt;a href="https://api.configcat.com/docs/#section/Authentication"&gt;here&lt;/a&gt;.
+     * Basic auth user name. See <a href="https://api.configcat.com/docs/#section/Authentication">here</a>.
      */
     @JsonProperty("username")
     private String username;
@@ -42,7 +42,7 @@ public class SourceConfigcat {
     }
 
     /**
-     * Basic auth password. See &lt;a href="https://api.configcat.com/docs/#section/Authentication"&gt;here&lt;/a&gt;.
+     * Basic auth password. See <a href="https://api.configcat.com/docs/#section/Authentication">here</a>.
      */
     @JsonIgnore
     public String password() {
@@ -55,19 +55,20 @@ public class SourceConfigcat {
     }
 
     /**
-     * Basic auth user name. See &lt;a href="https://api.configcat.com/docs/#section/Authentication"&gt;here&lt;/a&gt;.
+     * Basic auth user name. See <a href="https://api.configcat.com/docs/#section/Authentication">here</a>.
      */
     @JsonIgnore
     public String username() {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Basic auth password. See &lt;a href="https://api.configcat.com/docs/#section/Authentication"&gt;here&lt;/a&gt;.
+     * Basic auth password. See <a href="https://api.configcat.com/docs/#section/Authentication">here</a>.
      */
     public SourceConfigcat withPassword(String password) {
         Utils.checkNotNull(password, "password");
@@ -76,7 +77,7 @@ public class SourceConfigcat {
     }
 
     /**
-     * Basic auth user name. See &lt;a href="https://api.configcat.com/docs/#section/Authentication"&gt;here&lt;/a&gt;.
+     * Basic auth user name. See <a href="https://api.configcat.com/docs/#section/Authentication">here</a>.
      */
     public SourceConfigcat withUsername(String username) {
         Utils.checkNotNull(username, "username");
@@ -84,7 +85,6 @@ public class SourceConfigcat {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourceConfigcat {
         }
         SourceConfigcat other = (SourceConfigcat) o;
         return 
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            password,
-            sourceType,
-            username);
+        return Utils.enhancedHash(
+            password, sourceType, username);
     }
     
     @Override
@@ -115,19 +113,21 @@ public class SourceConfigcat {
                 "sourceType", sourceType,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String password;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Basic auth password. See &lt;a href="https://api.configcat.com/docs/#section/Authentication"&gt;here&lt;/a&gt;.
+         * Basic auth password. See <a href="https://api.configcat.com/docs/#section/Authentication">here</a>.
          */
         public Builder password(String password) {
             Utils.checkNotNull(password, "password");
@@ -135,20 +135,22 @@ public class SourceConfigcat {
             return this;
         }
 
+
         /**
-         * Basic auth user name. See &lt;a href="https://api.configcat.com/docs/#section/Authentication"&gt;here&lt;/a&gt;.
+         * Basic auth user name. See <a href="https://api.configcat.com/docs/#section/Authentication">here</a>.
          */
         public Builder username(String username) {
             Utils.checkNotNull(username, "username");
             this.username = username;
             return this;
         }
-        
+
         public SourceConfigcat build() {
+
             return new SourceConfigcat(
-                password,
-                username);
+                password, username);
         }
+
 
         private static final LazySingletonValue<Configcat> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceNocrm {
-
     /**
      * API key to use. Generate it from the admin section of your noCRM.io account.
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Nocrm sourceType;
@@ -62,9 +62,10 @@ public class SourceNocrm {
         return subdomain;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API key to use. Generate it from the admin section of your noCRM.io account.
@@ -84,7 +85,6 @@ public class SourceNocrm {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourceNocrm {
         }
         SourceNocrm other = (SourceNocrm) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.subdomain, other.subdomain);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.subdomain, other.subdomain);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            subdomain);
+        return Utils.enhancedHash(
+            apiKey, sourceType, subdomain);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SourceNocrm {
                 "sourceType", sourceType,
                 "subdomain", subdomain);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String subdomain;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API key to use. Generate it from the admin section of your noCRM.io account.
@@ -135,6 +135,7 @@ public class SourceNocrm {
             return this;
         }
 
+
         /**
          * The subdomain specific to your noCRM.io account, e.g., 'yourcompany' in 'yourcompany.nocrm.io'.
          */
@@ -143,12 +144,13 @@ public class SourceNocrm {
             this.subdomain = subdomain;
             return this;
         }
-        
+
         public SourceNocrm build() {
+
             return new SourceNocrm(
-                apiKey,
-                subdomain);
+                apiKey, subdomain);
         }
+
 
         private static final LazySingletonValue<Nocrm> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

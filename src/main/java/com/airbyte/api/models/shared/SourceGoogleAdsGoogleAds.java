@@ -14,7 +14,7 @@ public enum SourceGoogleAdsGoogleAds {
     @JsonValue
     private final String value;
 
-    private SourceGoogleAdsGoogleAds(String value) {
+    SourceGoogleAdsGoogleAds(String value) {
         this.value = value;
     }
     

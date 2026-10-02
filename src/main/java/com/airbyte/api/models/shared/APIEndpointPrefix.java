@@ -15,7 +15,7 @@ public enum APIEndpointPrefix {
     @JsonValue
     private final String value;
 
-    private APIEndpointPrefix(String value) {
+    APIEndpointPrefix(String value) {
         this.value = value;
     }
     

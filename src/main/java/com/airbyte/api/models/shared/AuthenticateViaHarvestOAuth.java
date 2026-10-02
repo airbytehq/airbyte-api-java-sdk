@@ -19,13 +19,14 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class AuthenticateViaHarvestOAuth {
 
     @JsonIgnore
     private Map<String, Object> additionalProperties;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
@@ -99,9 +100,10 @@ public class AuthenticateViaHarvestOAuth {
         return refreshToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public AuthenticateViaHarvestOAuth withAdditionalProperty(String key, Object value) {
@@ -109,8 +111,7 @@ public class AuthenticateViaHarvestOAuth {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public AuthenticateViaHarvestOAuth withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -144,7 +145,6 @@ public class AuthenticateViaHarvestOAuth {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -155,21 +155,18 @@ public class AuthenticateViaHarvestOAuth {
         }
         AuthenticateViaHarvestOAuth other = (AuthenticateViaHarvestOAuth) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            authType,
-            clientId,
-            clientSecret,
-            refreshToken);
+        return Utils.enhancedHash(
+            additionalProperties, authType, clientId,
+            clientSecret, refreshToken);
     }
     
     @Override
@@ -181,17 +178,18 @@ public class AuthenticateViaHarvestOAuth {
                 "clientSecret", clientSecret,
                 "refreshToken", refreshToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String refreshToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -212,6 +210,7 @@ public class AuthenticateViaHarvestOAuth {
             return this;
         }
 
+
         /**
          * The Client ID of your Harvest developer application.
          */
@@ -220,6 +219,7 @@ public class AuthenticateViaHarvestOAuth {
             this.clientId = clientId;
             return this;
         }
+
 
         /**
          * The Client Secret of your Harvest developer application.
@@ -230,6 +230,7 @@ public class AuthenticateViaHarvestOAuth {
             return this;
         }
 
+
         /**
          * Refresh Token to renew the expired Access Token.
          */
@@ -238,14 +239,14 @@ public class AuthenticateViaHarvestOAuth {
             this.refreshToken = refreshToken;
             return this;
         }
-        
+
         public AuthenticateViaHarvestOAuth build() {
+
             return new AuthenticateViaHarvestOAuth(
-                clientId,
-                clientSecret,
-                refreshToken)
+                clientId, clientSecret, refreshToken)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceHarvestAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

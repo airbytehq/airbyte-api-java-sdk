@@ -14,7 +14,7 @@ public enum Rss {
     @JsonValue
     private final String value;
 
-    private Rss(String value) {
+    Rss(String value) {
         this.value = value;
     }
     

@@ -15,12 +15,11 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class SourceZohoCrm {
 
+public class SourceZohoCrm {
     /**
      * OAuth2.0 Client ID
      */
@@ -34,7 +33,8 @@ public class SourceZohoCrm {
     private String clientSecret;
 
     /**
-     * Please choose the region of your Data Center location. More info by this &lt;a href="https://www.zoho.com/crm/developer/docs/api/v2/multi-dc.html"&gt;Link&lt;/a&gt;
+     * Please choose the region of your Data Center location. More info by this <a
+     * href="https://www.zoho.com/crm/developer/docs/api/v2/multi-dc.html">Link</a>
      */
     @JsonProperty("dc_region")
     private DataCenterLocation dcRegion;
@@ -57,6 +57,7 @@ public class SourceZohoCrm {
      */
     @JsonProperty("refresh_token")
     private String refreshToken;
+
 
     @JsonProperty("sourceType")
     private ZohoCrm sourceType;
@@ -100,7 +101,9 @@ public class SourceZohoCrm {
             DataCenterLocation dcRegion,
             SourceZohoCrmEnvironment environment,
             String refreshToken) {
-        this(clientId, clientSecret, dcRegion, Optional.empty(), environment, refreshToken, JsonNullable.undefined());
+        this(clientId, clientSecret, dcRegion,
+            Optional.empty(), environment, refreshToken,
+            JsonNullable.undefined());
     }
 
     /**
@@ -120,7 +123,8 @@ public class SourceZohoCrm {
     }
 
     /**
-     * Please choose the region of your Data Center location. More info by this &lt;a href="https://www.zoho.com/crm/developer/docs/api/v2/multi-dc.html"&gt;Link&lt;/a&gt;
+     * Please choose the region of your Data Center location. More info by this <a
+     * href="https://www.zoho.com/crm/developer/docs/api/v2/multi-dc.html">Link</a>
      */
     @JsonIgnore
     public DataCenterLocation dcRegion() {
@@ -165,9 +169,10 @@ public class SourceZohoCrm {
         return startDatetime;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * OAuth2.0 Client ID
@@ -188,7 +193,8 @@ public class SourceZohoCrm {
     }
 
     /**
-     * Please choose the region of your Data Center location. More info by this &lt;a href="https://www.zoho.com/crm/developer/docs/api/v2/multi-dc.html"&gt;Link&lt;/a&gt;
+     * Please choose the region of your Data Center location. More info by this <a
+     * href="https://www.zoho.com/crm/developer/docs/api/v2/multi-dc.html">Link</a>
      */
     public SourceZohoCrm withDcRegion(DataCenterLocation dcRegion) {
         Utils.checkNotNull(dcRegion, "dcRegion");
@@ -204,6 +210,7 @@ public class SourceZohoCrm {
         this.edition = Optional.ofNullable(edition);
         return this;
     }
+
 
     /**
      * Choose your Edition of Zoho CRM to determine API Concurrency Limits
@@ -250,7 +257,6 @@ public class SourceZohoCrm {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -261,27 +267,22 @@ public class SourceZohoCrm {
         }
         SourceZohoCrm other = (SourceZohoCrm) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.dcRegion, other.dcRegion) &&
-            Objects.deepEquals(this.edition, other.edition) &&
-            Objects.deepEquals(this.environment, other.environment) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDatetime, other.startDatetime);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.dcRegion, other.dcRegion) &&
+            Utils.enhancedDeepEquals(this.edition, other.edition) &&
+            Utils.enhancedDeepEquals(this.environment, other.environment) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDatetime, other.startDatetime);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            dcRegion,
-            edition,
-            environment,
-            refreshToken,
-            sourceType,
-            startDatetime);
+        return Utils.enhancedHash(
+            clientId, clientSecret, dcRegion,
+            edition, environment, refreshToken,
+            sourceType, startDatetime);
     }
     
     @Override
@@ -296,26 +297,28 @@ public class SourceZohoCrm {
                 "sourceType", sourceType,
                 "startDatetime", startDatetime);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private DataCenterLocation dcRegion;
- 
+
         private Optional<? extends ZohoCRMEdition> edition;
- 
+
         private SourceZohoCrmEnvironment environment;
- 
+
         private String refreshToken;
- 
+
         private JsonNullable<OffsetDateTime> startDatetime = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * OAuth2.0 Client ID
@@ -326,6 +329,7 @@ public class SourceZohoCrm {
             return this;
         }
 
+
         /**
          * OAuth2.0 Client Secret
          */
@@ -335,14 +339,17 @@ public class SourceZohoCrm {
             return this;
         }
 
+
         /**
-         * Please choose the region of your Data Center location. More info by this &lt;a href="https://www.zoho.com/crm/developer/docs/api/v2/multi-dc.html"&gt;Link&lt;/a&gt;
+         * Please choose the region of your Data Center location. More info by this <a
+         * href="https://www.zoho.com/crm/developer/docs/api/v2/multi-dc.html">Link</a>
          */
         public Builder dcRegion(DataCenterLocation dcRegion) {
             Utils.checkNotNull(dcRegion, "dcRegion");
             this.dcRegion = dcRegion;
             return this;
         }
+
 
         /**
          * Choose your Edition of Zoho CRM to determine API Concurrency Limits
@@ -362,6 +369,7 @@ public class SourceZohoCrm {
             return this;
         }
 
+
         /**
          * Please choose the environment
          */
@@ -371,6 +379,7 @@ public class SourceZohoCrm {
             return this;
         }
 
+
         /**
          * OAuth2.0 Refresh Token
          */
@@ -379,6 +388,7 @@ public class SourceZohoCrm {
             this.refreshToken = refreshToken;
             return this;
         }
+
 
         /**
          * ISO 8601, for instance: `YYYY-MM-DD`, `YYYY-MM-DD HH:MM:SS+HH:MM`
@@ -397,20 +407,18 @@ public class SourceZohoCrm {
             this.startDatetime = startDatetime;
             return this;
         }
-        
+
         public SourceZohoCrm build() {
             if (edition == null) {
                 edition = _SINGLETON_VALUE_Edition.value();
             }
+
             return new SourceZohoCrm(
-                clientId,
-                clientSecret,
-                dcRegion,
-                edition,
-                environment,
-                refreshToken,
+                clientId, clientSecret, dcRegion,
+                edition, environment, refreshToken,
                 startDatetime);
         }
+
 
         private static final LazySingletonValue<Optional<? extends ZohoCRMEdition>> _SINGLETON_VALUE_Edition =
                 new LazySingletonValue<>(

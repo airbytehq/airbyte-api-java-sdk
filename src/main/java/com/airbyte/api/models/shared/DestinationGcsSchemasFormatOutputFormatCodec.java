@@ -14,7 +14,7 @@ public enum DestinationGcsSchemasFormatOutputFormatCodec {
     @JsonValue
     private final String value;
 
-    private DestinationGcsSchemasFormatOutputFormatCodec(String value) {
+    DestinationGcsSchemasFormatOutputFormatCodec(String value) {
         this.value = value;
     }
     

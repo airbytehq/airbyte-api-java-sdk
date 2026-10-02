@@ -14,17 +14,17 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceHardcodedRecords {
 
+public class SourceHardcodedRecords {
     /**
      * How many records per stream should be generated
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("count")
     private Optional<Long> count;
+
 
     @JsonProperty("sourceType")
     private HardcodedRecords sourceType;
@@ -54,9 +54,10 @@ public class SourceHardcodedRecords {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * How many records per stream should be generated
@@ -67,6 +68,7 @@ public class SourceHardcodedRecords {
         return this;
     }
 
+
     /**
      * How many records per stream should be generated
      */
@@ -76,7 +78,6 @@ public class SourceHardcodedRecords {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -87,15 +88,14 @@ public class SourceHardcodedRecords {
         }
         SourceHardcodedRecords other = (SourceHardcodedRecords) o;
         return 
-            Objects.deepEquals(this.count, other.count) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.count, other.count) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            count,
-            sourceType);
+        return Utils.enhancedHash(
+            count, sourceType);
     }
     
     @Override
@@ -104,14 +104,16 @@ public class SourceHardcodedRecords {
                 "count", count,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Long> count;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * How many records per stream should be generated
@@ -130,14 +132,16 @@ public class SourceHardcodedRecords {
             this.count = count;
             return this;
         }
-        
+
         public SourceHardcodedRecords build() {
             if (count == null) {
                 count = _SINGLETON_VALUE_Count.value();
             }
+
             return new SourceHardcodedRecords(
                 count);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_Count =
                 new LazySingletonValue<>(

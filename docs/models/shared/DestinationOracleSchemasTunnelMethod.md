@@ -2,6 +2,14 @@
 
 Connect through a jump server tunnel host using username and ssh key
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DestinationOracleSchemasTunnelMethod;
+
+DestinationOracleSchemasTunnelMethod value = DestinationOracleSchemasTunnelMethod.SSH_KEY_AUTH;
+```
+
 
 ## Values
 

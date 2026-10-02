@@ -15,11 +15,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.LocalDate;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceCoingeckoCoins {
 
+public class SourceCoingeckoCoins {
     /**
      * API Key (for pro users)
      */
@@ -47,6 +46,7 @@ public class SourceCoingeckoCoins {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("end_date")
     private Optional<LocalDate> endDate;
+
 
     @JsonProperty("sourceType")
     private CoingeckoCoins sourceType;
@@ -90,7 +90,8 @@ public class SourceCoingeckoCoins {
             String coinId,
             LocalDate startDate,
             String vsCurrency) {
-        this(Optional.empty(), coinId, Optional.empty(), Optional.empty(), startDate, vsCurrency);
+        this(Optional.empty(), coinId, Optional.empty(),
+            Optional.empty(), startDate, vsCurrency);
     }
 
     /**
@@ -148,9 +149,10 @@ public class SourceCoingeckoCoins {
         return vsCurrency;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API Key (for pro users)
@@ -160,6 +162,7 @@ public class SourceCoingeckoCoins {
         this.apiKey = Optional.ofNullable(apiKey);
         return this;
     }
+
 
     /**
      * API Key (for pro users)
@@ -189,6 +192,7 @@ public class SourceCoingeckoCoins {
         return this;
     }
 
+
     /**
      * The number of days of data for market chart.
      */
@@ -206,6 +210,7 @@ public class SourceCoingeckoCoins {
         this.endDate = Optional.ofNullable(endDate);
         return this;
     }
+
 
     /**
      * The end date for the historical data stream in dd-mm-yyyy format.
@@ -234,7 +239,6 @@ public class SourceCoingeckoCoins {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -245,24 +249,20 @@ public class SourceCoingeckoCoins {
         }
         SourceCoingeckoCoins other = (SourceCoingeckoCoins) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.coinId, other.coinId) &&
-            Objects.deepEquals(this.days, other.days) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.vsCurrency, other.vsCurrency);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.coinId, other.coinId) &&
+            Utils.enhancedDeepEquals(this.days, other.days) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.vsCurrency, other.vsCurrency);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            coinId,
-            days,
-            endDate,
-            sourceType,
-            startDate,
+        return Utils.enhancedHash(
+            apiKey, coinId, days,
+            endDate, sourceType, startDate,
             vsCurrency);
     }
     
@@ -277,24 +277,26 @@ public class SourceCoingeckoCoins {
                 "startDate", startDate,
                 "vsCurrency", vsCurrency);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> apiKey = Optional.empty();
- 
+
         private String coinId;
- 
+
         private Optional<? extends Days> days;
- 
+
         private Optional<LocalDate> endDate = Optional.empty();
- 
+
         private LocalDate startDate;
- 
+
         private String vsCurrency;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API Key (for pro users)
@@ -314,6 +316,7 @@ public class SourceCoingeckoCoins {
             return this;
         }
 
+
         /**
          * CoinGecko coin ID (e.g. bitcoin). Can be retrieved from the
          * `/coins/list` endpoint.
@@ -323,6 +326,7 @@ public class SourceCoingeckoCoins {
             this.coinId = coinId;
             return this;
         }
+
 
         /**
          * The number of days of data for market chart.
@@ -342,6 +346,7 @@ public class SourceCoingeckoCoins {
             return this;
         }
 
+
         /**
          * The end date for the historical data stream in dd-mm-yyyy format.
          */
@@ -360,6 +365,7 @@ public class SourceCoingeckoCoins {
             return this;
         }
 
+
         /**
          * The start date for the historical data stream in dd-mm-yyyy format.
          */
@@ -369,6 +375,7 @@ public class SourceCoingeckoCoins {
             return this;
         }
 
+
         /**
          * The target currency of market data (e.g. usd, eur, jpy, etc.)
          */
@@ -377,19 +384,17 @@ public class SourceCoingeckoCoins {
             this.vsCurrency = vsCurrency;
             return this;
         }
-        
+
         public SourceCoingeckoCoins build() {
             if (days == null) {
                 days = _SINGLETON_VALUE_Days.value();
             }
+
             return new SourceCoingeckoCoins(
-                apiKey,
-                coinId,
-                days,
-                endDate,
-                startDate,
-                vsCurrency);
+                apiKey, coinId, days,
+                endDate, startDate, vsCurrency);
         }
+
 
         private static final LazySingletonValue<Optional<? extends Days>> _SINGLETON_VALUE_Days =
                 new LazySingletonValue<>(

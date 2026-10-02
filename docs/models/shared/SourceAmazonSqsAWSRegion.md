@@ -2,6 +2,14 @@
 
 AWS Region of the SQS Queue
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceAmazonSqsAWSRegion;
+
+SourceAmazonSqsAWSRegion value = SourceAmazonSqsAWSRegion.AF_SOUTH1;
+```
+
 
 ## Values
 

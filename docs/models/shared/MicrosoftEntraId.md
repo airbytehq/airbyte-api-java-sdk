@@ -1,5 +1,13 @@
 # MicrosoftEntraId
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.MicrosoftEntraId;
+
+MicrosoftEntraId value = MicrosoftEntraId.MICROSOFT_ENTRA_ID;
+```
+
 
 ## Values
 

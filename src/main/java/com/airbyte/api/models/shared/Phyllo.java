@@ -14,7 +14,7 @@ public enum Phyllo {
     @JsonValue
     private final String value;
 
-    private Phyllo(String value) {
+    Phyllo(String value) {
         this.value = value;
     }
     

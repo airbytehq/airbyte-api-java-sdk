@@ -3,17 +3,20 @@
  */
 package com.airbyte.api.models.shared;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonTypeIdResolver;
 import java.lang.String;
 
-@JsonTypeInfo(use = Id.NAME, property = "type", include = As.EXISTING_PROPERTY, visible = true)
-@JsonSubTypes({
-    @Type(value = Equal.class, name="EQUAL"),
-    @Type(value = Not.class, name="NOT")})
+@JsonTypeInfo(
+        use = Id.CUSTOM,
+        property = "type",
+        include = As.EXISTING_PROPERTY,
+        visible = true,
+        defaultImpl = UnknownRowFilteringOperation.class
+)
+@JsonTypeIdResolver(RowFilteringOperationTypeIdResolver.class)
 public interface RowFilteringOperation {
 
     String type();

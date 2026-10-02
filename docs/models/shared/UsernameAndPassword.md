@@ -1,9 +1,12 @@
 # UsernameAndPassword
 
+Configuration details for the Username and Password Authentication.
+
 
 ## Fields
 
 | Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
 | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `additionalProperties`                                                                                       | Map\<String, *Object*>                                                                                       | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
 | `authType`                                                                                                   | [Optional\<DestinationSnowflakeSchemasAuthType>](../../models/shared/DestinationSnowflakeSchemasAuthType.md) | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
 | `password`                                                                                                   | *String*                                                                                                     | :heavy_check_mark:                                                                                           | Enter the password associated with the username.                                                             |

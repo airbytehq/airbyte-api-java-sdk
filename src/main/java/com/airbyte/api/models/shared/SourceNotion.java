@@ -15,24 +15,28 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceNotion {
 
+public class SourceNotion {
     /**
-     * Choose either OAuth (recommended for Airbyte Cloud) or Access Token. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#setup-guide'&gt;docs&lt;/a&gt; for more information.
+     * Choose either OAuth (recommended for Airbyte Cloud) or Access Token. See our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/notion#setup-guide'&gt;docs&lt;/a&gt; for more
+     * information.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     private Optional<? extends SourceNotionAuthenticationMethod> credentials;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceType")
     private Optional<? extends SourceNotionNotion> sourceType;
 
     /**
-     * UTC date and time in the format YYYY-MM-DDTHH:MM:SS.000Z. During incremental sync, any data generated before this date will not be replicated. If left blank, the start date will be set to 2 years before the present date.
+     * UTC date and time in the format YYYY-MM-DDTHH:MM:SS.000Z. During incremental sync, any data
+     * generated before this date will not be replicated. If left blank, the start date will be set to 2
+     * years before the present date.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
@@ -54,7 +58,9 @@ public class SourceNotion {
     }
 
     /**
-     * Choose either OAuth (recommended for Airbyte Cloud) or Access Token. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#setup-guide'&gt;docs&lt;/a&gt; for more information.
+     * Choose either OAuth (recommended for Airbyte Cloud) or Access Token. See our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/notion#setup-guide'&gt;docs&lt;/a&gt; for more
+     * information.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -69,19 +75,24 @@ public class SourceNotion {
     }
 
     /**
-     * UTC date and time in the format YYYY-MM-DDTHH:MM:SS.000Z. During incremental sync, any data generated before this date will not be replicated. If left blank, the start date will be set to 2 years before the present date.
+     * UTC date and time in the format YYYY-MM-DDTHH:MM:SS.000Z. During incremental sync, any data
+     * generated before this date will not be replicated. If left blank, the start date will be set to 2
+     * years before the present date.
      */
     @JsonIgnore
     public Optional<OffsetDateTime> startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Choose either OAuth (recommended for Airbyte Cloud) or Access Token. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#setup-guide'&gt;docs&lt;/a&gt; for more information.
+     * Choose either OAuth (recommended for Airbyte Cloud) or Access Token. See our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/notion#setup-guide'&gt;docs&lt;/a&gt; for more
+     * information.
      */
     public SourceNotion withCredentials(SourceNotionAuthenticationMethod credentials) {
         Utils.checkNotNull(credentials, "credentials");
@@ -89,8 +100,11 @@ public class SourceNotion {
         return this;
     }
 
+
     /**
-     * Choose either OAuth (recommended for Airbyte Cloud) or Access Token. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#setup-guide'&gt;docs&lt;/a&gt; for more information.
+     * Choose either OAuth (recommended for Airbyte Cloud) or Access Token. See our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/notion#setup-guide'&gt;docs&lt;/a&gt; for more
+     * information.
      */
     public SourceNotion withCredentials(Optional<? extends SourceNotionAuthenticationMethod> credentials) {
         Utils.checkNotNull(credentials, "credentials");
@@ -99,7 +113,9 @@ public class SourceNotion {
     }
 
     /**
-     * UTC date and time in the format YYYY-MM-DDTHH:MM:SS.000Z. During incremental sync, any data generated before this date will not be replicated. If left blank, the start date will be set to 2 years before the present date.
+     * UTC date and time in the format YYYY-MM-DDTHH:MM:SS.000Z. During incremental sync, any data
+     * generated before this date will not be replicated. If left blank, the start date will be set to 2
+     * years before the present date.
      */
     public SourceNotion withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -107,8 +123,11 @@ public class SourceNotion {
         return this;
     }
 
+
     /**
-     * UTC date and time in the format YYYY-MM-DDTHH:MM:SS.000Z. During incremental sync, any data generated before this date will not be replicated. If left blank, the start date will be set to 2 years before the present date.
+     * UTC date and time in the format YYYY-MM-DDTHH:MM:SS.000Z. During incremental sync, any data
+     * generated before this date will not be replicated. If left blank, the start date will be set to 2
+     * years before the present date.
      */
     public SourceNotion withStartDate(Optional<OffsetDateTime> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -116,7 +135,6 @@ public class SourceNotion {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -127,17 +145,15 @@ public class SourceNotion {
         }
         SourceNotion other = (SourceNotion) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            credentials, sourceType, startDate);
     }
     
     @Override
@@ -147,19 +163,23 @@ public class SourceNotion {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourceNotionAuthenticationMethod> credentials = Optional.empty();
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Choose either OAuth (recommended for Airbyte Cloud) or Access Token. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#setup-guide'&gt;docs&lt;/a&gt; for more information.
+         * Choose either OAuth (recommended for Airbyte Cloud) or Access Token. See our &lt;a
+         * href='https://docs.airbyte.com/integrations/sources/notion#setup-guide'&gt;docs&lt;/a&gt; for more
+         * information.
          */
         public Builder credentials(SourceNotionAuthenticationMethod credentials) {
             Utils.checkNotNull(credentials, "credentials");
@@ -168,7 +188,9 @@ public class SourceNotion {
         }
 
         /**
-         * Choose either OAuth (recommended for Airbyte Cloud) or Access Token. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#setup-guide'&gt;docs&lt;/a&gt; for more information.
+         * Choose either OAuth (recommended for Airbyte Cloud) or Access Token. See our &lt;a
+         * href='https://docs.airbyte.com/integrations/sources/notion#setup-guide'&gt;docs&lt;/a&gt; for more
+         * information.
          */
         public Builder credentials(Optional<? extends SourceNotionAuthenticationMethod> credentials) {
             Utils.checkNotNull(credentials, "credentials");
@@ -176,8 +198,11 @@ public class SourceNotion {
             return this;
         }
 
+
         /**
-         * UTC date and time in the format YYYY-MM-DDTHH:MM:SS.000Z. During incremental sync, any data generated before this date will not be replicated. If left blank, the start date will be set to 2 years before the present date.
+         * UTC date and time in the format YYYY-MM-DDTHH:MM:SS.000Z. During incremental sync, any data
+         * generated before this date will not be replicated. If left blank, the start date will be set to 2
+         * years before the present date.
          */
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -186,19 +211,22 @@ public class SourceNotion {
         }
 
         /**
-         * UTC date and time in the format YYYY-MM-DDTHH:MM:SS.000Z. During incremental sync, any data generated before this date will not be replicated. If left blank, the start date will be set to 2 years before the present date.
+         * UTC date and time in the format YYYY-MM-DDTHH:MM:SS.000Z. During incremental sync, any data
+         * generated before this date will not be replicated. If left blank, the start date will be set to 2
+         * years before the present date.
          */
         public Builder startDate(Optional<OffsetDateTime> startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceNotion build() {
+
             return new SourceNotion(
-                credentials,
-                startDate);
+                credentials, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceNotionNotion>> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

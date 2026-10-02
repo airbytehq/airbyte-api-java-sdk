@@ -1,5 +1,13 @@
 # BreezyHr
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.BreezyHr;
+
+BreezyHr value = BreezyHr.BREEZY_HR;
+```
+
 
 ## Values
 

@@ -14,7 +14,7 @@ public enum Oveit {
     @JsonValue
     private final String value;
 
-    private Oveit(String value) {
+    Oveit(String value) {
         this.value = value;
     }
     

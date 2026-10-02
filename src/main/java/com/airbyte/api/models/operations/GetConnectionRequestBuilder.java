@@ -3,16 +3,21 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
+import com.airbyte.api.operations.GetConnection;
+import com.airbyte.api.utils.Headers;
 import com.airbyte.api.utils.Utils;
-import java.lang.Exception;
 
 public class GetConnectionRequestBuilder {
 
     private GetConnectionRequest request;
-    private final SDKMethodInterfaces.MethodCallGetConnection sdk;
+    private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
-    public GetConnectionRequestBuilder(SDKMethodInterfaces.MethodCallGetConnection sdk) {
-        this.sdk = sdk;
+    public GetConnectionRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public GetConnectionRequestBuilder request(GetConnectionRequest request) {
@@ -21,9 +26,11 @@ public class GetConnectionRequestBuilder {
         return this;
     }
 
-    public GetConnectionResponse call() throws Exception {
+    public GetConnectionResponse call() {
+        
+        RequestOperation<GetConnectionRequest, GetConnectionResponse> operation
+              = new GetConnection.Sync(sdkConfiguration, _headers);
 
-        return sdk.getConnection(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

@@ -14,7 +14,7 @@ public enum Kisi {
     @JsonValue
     private final String value;
 
-    private Kisi(String value) {
+    Kisi(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum Bugsnag {
     @JsonValue
     private final String value;
 
-    private Bugsnag(String value) {
+    Bugsnag(String value) {
         this.value = value;
     }
     

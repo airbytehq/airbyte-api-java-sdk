@@ -14,18 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceOracleEnterpriseSSHTunnelMethod
  * 
- * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+ * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+ * authentication to use.
  */
 @JsonDeserialize(using = SourceOracleEnterpriseSSHTunnelMethod._Deserializer.class)
 public class SourceOracleEnterpriseSSHTunnelMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceOracleEnterpriseSSHTunnelMethod(TypedObject value) {
         this.value = value;
@@ -33,17 +33,17 @@ public class SourceOracleEnterpriseSSHTunnelMethod {
 
     public static SourceOracleEnterpriseSSHTunnelMethod of(SourceOracleEnterpriseNoTunnel value) {
         Utils.checkNotNull(value, "value");
-        return new SourceOracleEnterpriseSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOracleEnterpriseNoTunnel>(){}));
+        return new SourceOracleEnterpriseSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceOracleEnterpriseSSHTunnelMethod of(SourceOracleEnterpriseSSHKeyAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new SourceOracleEnterpriseSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOracleEnterpriseSSHKeyAuthentication>(){}));
+        return new SourceOracleEnterpriseSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceOracleEnterpriseSSHTunnelMethod of(SourceOracleEnterprisePasswordAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new SourceOracleEnterpriseSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOracleEnterprisePasswordAuthentication>(){}));
+        return new SourceOracleEnterpriseSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +67,7 @@ public class SourceOracleEnterpriseSSHTunnelMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +78,12 @@ public class SourceOracleEnterpriseSSHTunnelMethod {
             return false;
         }
         SourceOracleEnterpriseSSHTunnelMethod other = (SourceOracleEnterpriseSSHTunnelMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -91,9 +91,9 @@ public class SourceOracleEnterpriseSSHTunnelMethod {
 
         public _Deserializer() {
             super(SourceOracleEnterpriseSSHTunnelMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceOracleEnterprisePasswordAuthentication>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceOracleEnterpriseNoTunnel>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceOracleEnterpriseSSHKeyAuthentication>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceOracleEnterpriseNoTunnel>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceOracleEnterprisePasswordAuthentication>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -102,6 +102,6 @@ public class SourceOracleEnterpriseSSHTunnelMethod {
         return Utils.toString(SourceOracleEnterpriseSSHTunnelMethod.class,
                 "value", value);
     }
- 
+
 }
 

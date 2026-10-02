@@ -8,18 +8,13 @@ import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 
-/**
- * DestinationClickhouseTunnelMethod
- * 
- * <p>Connect through a jump server tunnel host using username and ssh key
- */
 public enum DestinationClickhouseTunnelMethod {
     SSH_KEY_AUTH("SSH_KEY_AUTH");
 
     @JsonValue
     private final String value;
 
-    private DestinationClickhouseTunnelMethod(String value) {
+    DestinationClickhouseTunnelMethod(String value) {
         this.value = value;
     }
     

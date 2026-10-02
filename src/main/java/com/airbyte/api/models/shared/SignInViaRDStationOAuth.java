@@ -13,8 +13,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SignInViaRDStationOAuth {
 
@@ -89,9 +89,10 @@ public class SignInViaRDStationOAuth {
         return refreshToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Client ID of your RD Station developer application.
@@ -101,6 +102,7 @@ public class SignInViaRDStationOAuth {
         this.clientId = Optional.ofNullable(clientId);
         return this;
     }
+
 
     /**
      * The Client ID of your RD Station developer application.
@@ -120,6 +122,7 @@ public class SignInViaRDStationOAuth {
         return this;
     }
 
+
     /**
      * The Client Secret of your RD Station developer application
      */
@@ -138,6 +141,7 @@ public class SignInViaRDStationOAuth {
         return this;
     }
 
+
     /**
      * The token for obtaining the new access token.
      */
@@ -147,7 +151,6 @@ public class SignInViaRDStationOAuth {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -158,18 +161,16 @@ public class SignInViaRDStationOAuth {
         }
         SignInViaRDStationOAuth other = (SignInViaRDStationOAuth) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            clientId,
-            clientSecret,
+        return Utils.enhancedHash(
+            authType, clientId, clientSecret,
             refreshToken);
     }
     
@@ -181,18 +182,20 @@ public class SignInViaRDStationOAuth {
                 "clientSecret", clientSecret,
                 "refreshToken", refreshToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> clientId = Optional.empty();
- 
+
         private Optional<String> clientSecret = Optional.empty();
- 
+
         private Optional<String> refreshToken = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Client ID of your RD Station developer application.
@@ -212,6 +215,7 @@ public class SignInViaRDStationOAuth {
             return this;
         }
 
+
         /**
          * The Client Secret of your RD Station developer application
          */
@@ -230,6 +234,7 @@ public class SignInViaRDStationOAuth {
             return this;
         }
 
+
         /**
          * The token for obtaining the new access token.
          */
@@ -247,13 +252,13 @@ public class SignInViaRDStationOAuth {
             this.refreshToken = refreshToken;
             return this;
         }
-        
+
         public SignInViaRDStationOAuth build() {
+
             return new SignInViaRDStationOAuth(
-                clientId,
-                clientSecret,
-                refreshToken);
+                clientId, clientSecret, refreshToken);
         }
+
 
         private static final LazySingletonValue<SourceRdStationMarketingAuthType> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

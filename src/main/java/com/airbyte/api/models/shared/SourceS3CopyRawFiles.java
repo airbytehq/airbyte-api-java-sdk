@@ -15,13 +15,14 @@ import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * SourceS3CopyRawFiles
  * 
- * <p>Copy raw files without parsing their contents. Bits are copied into the destination exactly as they appeared in the source. Recommended for use with unstructured text data, non-text and compressed files.
+ * <p>Copy raw files without parsing their contents. Bits are copied into the destination exactly as they
+ * appeared in the source. Recommended for use with unstructured text data, non-text and compressed
+ * files.
  */
 public class SourceS3CopyRawFiles {
 
@@ -30,7 +31,9 @@ public class SourceS3CopyRawFiles {
     private Optional<? extends SourceS3SchemasDeliveryType> deliveryType;
 
     /**
-     * If enabled, sends subdirectory folder structure along with source file names to the destination. Otherwise, files will be synced by their names only. This option is ignored when file-based replication is not enabled.
+     * If enabled, sends subdirectory folder structure along with source file names to the destination.
+     * Otherwise, files will be synced by their names only. This option is ignored when file-based
+     * replication is not enabled.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("preserve_directory_structure")
@@ -55,19 +58,24 @@ public class SourceS3CopyRawFiles {
     }
 
     /**
-     * If enabled, sends subdirectory folder structure along with source file names to the destination. Otherwise, files will be synced by their names only. This option is ignored when file-based replication is not enabled.
+     * If enabled, sends subdirectory folder structure along with source file names to the destination.
+     * Otherwise, files will be synced by their names only. This option is ignored when file-based
+     * replication is not enabled.
      */
     @JsonIgnore
     public Optional<Boolean> preserveDirectoryStructure() {
         return preserveDirectoryStructure;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * If enabled, sends subdirectory folder structure along with source file names to the destination. Otherwise, files will be synced by their names only. This option is ignored when file-based replication is not enabled.
+     * If enabled, sends subdirectory folder structure along with source file names to the destination.
+     * Otherwise, files will be synced by their names only. This option is ignored when file-based
+     * replication is not enabled.
      */
     public SourceS3CopyRawFiles withPreserveDirectoryStructure(boolean preserveDirectoryStructure) {
         Utils.checkNotNull(preserveDirectoryStructure, "preserveDirectoryStructure");
@@ -75,8 +83,11 @@ public class SourceS3CopyRawFiles {
         return this;
     }
 
+
     /**
-     * If enabled, sends subdirectory folder structure along with source file names to the destination. Otherwise, files will be synced by their names only. This option is ignored when file-based replication is not enabled.
+     * If enabled, sends subdirectory folder structure along with source file names to the destination.
+     * Otherwise, files will be synced by their names only. This option is ignored when file-based
+     * replication is not enabled.
      */
     public SourceS3CopyRawFiles withPreserveDirectoryStructure(Optional<Boolean> preserveDirectoryStructure) {
         Utils.checkNotNull(preserveDirectoryStructure, "preserveDirectoryStructure");
@@ -84,7 +95,6 @@ public class SourceS3CopyRawFiles {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,15 +105,14 @@ public class SourceS3CopyRawFiles {
         }
         SourceS3CopyRawFiles other = (SourceS3CopyRawFiles) o;
         return 
-            Objects.deepEquals(this.deliveryType, other.deliveryType) &&
-            Objects.deepEquals(this.preserveDirectoryStructure, other.preserveDirectoryStructure);
+            Utils.enhancedDeepEquals(this.deliveryType, other.deliveryType) &&
+            Utils.enhancedDeepEquals(this.preserveDirectoryStructure, other.preserveDirectoryStructure);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            deliveryType,
-            preserveDirectoryStructure);
+        return Utils.enhancedHash(
+            deliveryType, preserveDirectoryStructure);
     }
     
     @Override
@@ -112,17 +121,21 @@ public class SourceS3CopyRawFiles {
                 "deliveryType", deliveryType,
                 "preserveDirectoryStructure", preserveDirectoryStructure);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> preserveDirectoryStructure;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * If enabled, sends subdirectory folder structure along with source file names to the destination. Otherwise, files will be synced by their names only. This option is ignored when file-based replication is not enabled.
+         * If enabled, sends subdirectory folder structure along with source file names to the destination.
+         * Otherwise, files will be synced by their names only. This option is ignored when file-based
+         * replication is not enabled.
          */
         public Builder preserveDirectoryStructure(boolean preserveDirectoryStructure) {
             Utils.checkNotNull(preserveDirectoryStructure, "preserveDirectoryStructure");
@@ -131,21 +144,25 @@ public class SourceS3CopyRawFiles {
         }
 
         /**
-         * If enabled, sends subdirectory folder structure along with source file names to the destination. Otherwise, files will be synced by their names only. This option is ignored when file-based replication is not enabled.
+         * If enabled, sends subdirectory folder structure along with source file names to the destination.
+         * Otherwise, files will be synced by their names only. This option is ignored when file-based
+         * replication is not enabled.
          */
         public Builder preserveDirectoryStructure(Optional<Boolean> preserveDirectoryStructure) {
             Utils.checkNotNull(preserveDirectoryStructure, "preserveDirectoryStructure");
             this.preserveDirectoryStructure = preserveDirectoryStructure;
             return this;
         }
-        
+
         public SourceS3CopyRawFiles build() {
             if (preserveDirectoryStructure == null) {
                 preserveDirectoryStructure = _SINGLETON_VALUE_PreserveDirectoryStructure.value();
             }
+
             return new SourceS3CopyRawFiles(
                 preserveDirectoryStructure);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceS3SchemasDeliveryType>> _SINGLETON_VALUE_DeliveryType =
                 new LazySingletonValue<>(

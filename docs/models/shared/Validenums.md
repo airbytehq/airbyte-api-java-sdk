@@ -1,5 +1,13 @@
 # Validenums
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.Validenums;
+
+Validenums value = Validenums.SHEETCREATED_AT;
+```
+
 
 ## Values
 

@@ -13,16 +13,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationTimeplus {
 
+public class DestinationTimeplus {
     /**
      * Personal API key
      */
     @JsonProperty("apikey")
     private String apikey;
+
 
     @JsonProperty("destinationType")
     private Timeplus destinationType;
@@ -71,9 +71,10 @@ public class DestinationTimeplus {
         return endpoint;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Personal API key
@@ -93,6 +94,7 @@ public class DestinationTimeplus {
         return this;
     }
 
+
     /**
      * Timeplus workspace endpoint
      */
@@ -102,7 +104,6 @@ public class DestinationTimeplus {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,17 +114,15 @@ public class DestinationTimeplus {
         }
         DestinationTimeplus other = (DestinationTimeplus) o;
         return 
-            Objects.deepEquals(this.apikey, other.apikey) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.endpoint, other.endpoint);
+            Utils.enhancedDeepEquals(this.apikey, other.apikey) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.endpoint, other.endpoint);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apikey,
-            destinationType,
-            endpoint);
+        return Utils.enhancedHash(
+            apikey, destinationType, endpoint);
     }
     
     @Override
@@ -133,16 +132,18 @@ public class DestinationTimeplus {
                 "destinationType", destinationType,
                 "endpoint", endpoint);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apikey;
- 
+
         private Optional<String> endpoint;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Personal API key
@@ -152,6 +153,7 @@ public class DestinationTimeplus {
             this.apikey = apikey;
             return this;
         }
+
 
         /**
          * Timeplus workspace endpoint
@@ -170,15 +172,16 @@ public class DestinationTimeplus {
             this.endpoint = endpoint;
             return this;
         }
-        
+
         public DestinationTimeplus build() {
             if (endpoint == null) {
                 endpoint = _SINGLETON_VALUE_Endpoint.value();
             }
+
             return new DestinationTimeplus(
-                apikey,
-                endpoint);
+                apikey, endpoint);
         }
+
 
         private static final LazySingletonValue<Timeplus> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

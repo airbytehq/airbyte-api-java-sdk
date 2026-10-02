@@ -14,7 +14,7 @@ public enum SourceGcsAuthType {
     @JsonValue
     private final String value;
 
-    private SourceGcsAuthType(String value) {
+    SourceGcsAuthType(String value) {
         this.value = value;
     }
     

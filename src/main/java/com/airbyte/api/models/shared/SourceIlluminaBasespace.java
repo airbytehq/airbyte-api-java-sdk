@@ -13,13 +13,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceIlluminaBasespace {
 
+public class SourceIlluminaBasespace {
     /**
-     * BaseSpace access token. Instructions for obtaining your access token can be found in the BaseSpace Developer Documentation.
+     * BaseSpace access token. Instructions for obtaining your access token can be found in the BaseSpace
+     * Developer Documentation.
      */
     @JsonProperty("access_token")
     private String accessToken;
@@ -30,11 +30,13 @@ public class SourceIlluminaBasespace {
     @JsonProperty("domain")
     private String domain;
 
+
     @JsonProperty("sourceType")
     private IlluminaBasespace sourceType;
 
     /**
-     * Providing a user ID restricts the returned data to what that user can access. If you use the default ('current'), all data accessible to the user associated with the API key will be shown.
+     * Providing a user ID restricts the returned data to what that user can access. If you use the default
+     * ('current'), all data accessible to the user associated with the API key will be shown.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("user")
@@ -61,7 +63,8 @@ public class SourceIlluminaBasespace {
     }
 
     /**
-     * BaseSpace access token. Instructions for obtaining your access token can be found in the BaseSpace Developer Documentation.
+     * BaseSpace access token. Instructions for obtaining your access token can be found in the BaseSpace
+     * Developer Documentation.
      */
     @JsonIgnore
     public String accessToken() {
@@ -82,19 +85,22 @@ public class SourceIlluminaBasespace {
     }
 
     /**
-     * Providing a user ID restricts the returned data to what that user can access. If you use the default ('current'), all data accessible to the user associated with the API key will be shown.
+     * Providing a user ID restricts the returned data to what that user can access. If you use the default
+     * ('current'), all data accessible to the user associated with the API key will be shown.
      */
     @JsonIgnore
     public Optional<String> user() {
         return user;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * BaseSpace access token. Instructions for obtaining your access token can be found in the BaseSpace Developer Documentation.
+     * BaseSpace access token. Instructions for obtaining your access token can be found in the BaseSpace
+     * Developer Documentation.
      */
     public SourceIlluminaBasespace withAccessToken(String accessToken) {
         Utils.checkNotNull(accessToken, "accessToken");
@@ -112,7 +118,8 @@ public class SourceIlluminaBasespace {
     }
 
     /**
-     * Providing a user ID restricts the returned data to what that user can access. If you use the default ('current'), all data accessible to the user associated with the API key will be shown.
+     * Providing a user ID restricts the returned data to what that user can access. If you use the default
+     * ('current'), all data accessible to the user associated with the API key will be shown.
      */
     public SourceIlluminaBasespace withUser(String user) {
         Utils.checkNotNull(user, "user");
@@ -120,8 +127,10 @@ public class SourceIlluminaBasespace {
         return this;
     }
 
+
     /**
-     * Providing a user ID restricts the returned data to what that user can access. If you use the default ('current'), all data accessible to the user associated with the API key will be shown.
+     * Providing a user ID restricts the returned data to what that user can access. If you use the default
+     * ('current'), all data accessible to the user associated with the API key will be shown.
      */
     public SourceIlluminaBasespace withUser(Optional<String> user) {
         Utils.checkNotNull(user, "user");
@@ -129,7 +138,6 @@ public class SourceIlluminaBasespace {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -140,18 +148,16 @@ public class SourceIlluminaBasespace {
         }
         SourceIlluminaBasespace other = (SourceIlluminaBasespace) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.domain, other.domain) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.user, other.user);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.domain, other.domain) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.user, other.user);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            domain,
-            sourceType,
+        return Utils.enhancedHash(
+            accessToken, domain, sourceType,
             user);
     }
     
@@ -163,27 +169,31 @@ public class SourceIlluminaBasespace {
                 "sourceType", sourceType,
                 "user", user);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private String domain;
- 
+
         private Optional<String> user;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * BaseSpace access token. Instructions for obtaining your access token can be found in the BaseSpace Developer Documentation.
+         * BaseSpace access token. Instructions for obtaining your access token can be found in the BaseSpace
+         * Developer Documentation.
          */
         public Builder accessToken(String accessToken) {
             Utils.checkNotNull(accessToken, "accessToken");
             this.accessToken = accessToken;
             return this;
         }
+
 
         /**
          * Domain name of the BaseSpace instance (e.g., euw2.sh.basespace.illumina.com)
@@ -194,8 +204,10 @@ public class SourceIlluminaBasespace {
             return this;
         }
 
+
         /**
-         * Providing a user ID restricts the returned data to what that user can access. If you use the default ('current'), all data accessible to the user associated with the API key will be shown.
+         * Providing a user ID restricts the returned data to what that user can access. If you use the default
+         * ('current'), all data accessible to the user associated with the API key will be shown.
          */
         public Builder user(String user) {
             Utils.checkNotNull(user, "user");
@@ -204,23 +216,24 @@ public class SourceIlluminaBasespace {
         }
 
         /**
-         * Providing a user ID restricts the returned data to what that user can access. If you use the default ('current'), all data accessible to the user associated with the API key will be shown.
+         * Providing a user ID restricts the returned data to what that user can access. If you use the default
+         * ('current'), all data accessible to the user associated with the API key will be shown.
          */
         public Builder user(Optional<String> user) {
             Utils.checkNotNull(user, "user");
             this.user = user;
             return this;
         }
-        
+
         public SourceIlluminaBasespace build() {
             if (user == null) {
                 user = _SINGLETON_VALUE_User.value();
             }
+
             return new SourceIlluminaBasespace(
-                accessToken,
-                domain,
-                user);
+                accessToken, domain, user);
         }
+
 
         private static final LazySingletonValue<IlluminaBasespace> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

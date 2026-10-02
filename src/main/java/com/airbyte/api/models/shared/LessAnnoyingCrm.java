@@ -14,7 +14,7 @@ public enum LessAnnoyingCrm {
     @JsonValue
     private final String value;
 
-    private LessAnnoyingCrm(String value) {
+    LessAnnoyingCrm(String value) {
         this.value = value;
     }
     

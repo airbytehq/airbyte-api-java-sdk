@@ -14,7 +14,7 @@ public enum SourceGoogleDriveSchemasStreamsHeaderDefinitionType {
     @JsonValue
     private final String value;
 
-    private SourceGoogleDriveSchemasStreamsHeaderDefinitionType(String value) {
+    SourceGoogleDriveSchemasStreamsHeaderDefinitionType(String value) {
         this.value = value;
     }
     

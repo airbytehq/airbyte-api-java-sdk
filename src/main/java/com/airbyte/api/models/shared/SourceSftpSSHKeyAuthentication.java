@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceSftpSSHKeyAuthentication {
-
     /**
      * Connect through ssh key
      */
@@ -22,7 +21,8 @@ public class SourceSftpSSHKeyAuthentication {
     private SourceSftpSchemasAuthMethod authMethod;
 
     /**
-     * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM -f myuser_rsa )
+     * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM
+     * -f myuser_rsa )
      */
     @JsonProperty("auth_ssh_key")
     private String authSshKey;
@@ -44,19 +44,22 @@ public class SourceSftpSSHKeyAuthentication {
     }
 
     /**
-     * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM -f myuser_rsa )
+     * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM
+     * -f myuser_rsa )
      */
     @JsonIgnore
     public String authSshKey() {
         return authSshKey;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM -f myuser_rsa )
+     * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM
+     * -f myuser_rsa )
      */
     public SourceSftpSSHKeyAuthentication withAuthSshKey(String authSshKey) {
         Utils.checkNotNull(authSshKey, "authSshKey");
@@ -64,7 +67,6 @@ public class SourceSftpSSHKeyAuthentication {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -75,15 +77,14 @@ public class SourceSftpSSHKeyAuthentication {
         }
         SourceSftpSSHKeyAuthentication other = (SourceSftpSSHKeyAuthentication) o;
         return 
-            Objects.deepEquals(this.authMethod, other.authMethod) &&
-            Objects.deepEquals(this.authSshKey, other.authSshKey);
+            Utils.enhancedDeepEquals(this.authMethod, other.authMethod) &&
+            Utils.enhancedDeepEquals(this.authSshKey, other.authSshKey);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authMethod,
-            authSshKey);
+        return Utils.enhancedHash(
+            authMethod, authSshKey);
     }
     
     @Override
@@ -92,28 +93,33 @@ public class SourceSftpSSHKeyAuthentication {
                 "authMethod", authMethod,
                 "authSshKey", authSshKey);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String authSshKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM -f myuser_rsa )
+         * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM
+         * -f myuser_rsa )
          */
         public Builder authSshKey(String authSshKey) {
             Utils.checkNotNull(authSshKey, "authSshKey");
             this.authSshKey = authSshKey;
             return this;
         }
-        
+
         public SourceSftpSSHKeyAuthentication build() {
+
             return new SourceSftpSSHKeyAuthentication(
                 authSshKey);
         }
+
 
         private static final LazySingletonValue<SourceSftpSchemasAuthMethod> _SINGLETON_VALUE_AuthMethod =
                 new LazySingletonValue<>(

@@ -13,22 +13,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceKyve {
 
+public class SourceKyve {
     /**
      * The IDs of the KYVE storage pool you want to archive. (Comma separated)
      */
     @JsonProperty("pool_ids")
     private String poolIds;
 
+
     @JsonProperty("sourceType")
     private Kyve sourceType;
 
     /**
-     * The start-id defines, from which bundle id the pipeline should start to extract the data. (Comma separated)
+     * The start-id defines, from which bundle id the pipeline should start to extract the data. (Comma
+     * separated)
      */
     @JsonProperty("start_ids")
     private String startIds;
@@ -74,7 +75,8 @@ public class SourceKyve {
     }
 
     /**
-     * The start-id defines, from which bundle id the pipeline should start to extract the data. (Comma separated)
+     * The start-id defines, from which bundle id the pipeline should start to extract the data. (Comma
+     * separated)
      */
     @JsonIgnore
     public String startIds() {
@@ -89,9 +91,10 @@ public class SourceKyve {
         return urlBase;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The IDs of the KYVE storage pool you want to archive. (Comma separated)
@@ -103,7 +106,8 @@ public class SourceKyve {
     }
 
     /**
-     * The start-id defines, from which bundle id the pipeline should start to extract the data. (Comma separated)
+     * The start-id defines, from which bundle id the pipeline should start to extract the data. (Comma
+     * separated)
      */
     public SourceKyve withStartIds(String startIds) {
         Utils.checkNotNull(startIds, "startIds");
@@ -120,6 +124,7 @@ public class SourceKyve {
         return this;
     }
 
+
     /**
      * URL to the KYVE Chain API.
      */
@@ -129,7 +134,6 @@ public class SourceKyve {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -140,18 +144,16 @@ public class SourceKyve {
         }
         SourceKyve other = (SourceKyve) o;
         return 
-            Objects.deepEquals(this.poolIds, other.poolIds) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startIds, other.startIds) &&
-            Objects.deepEquals(this.urlBase, other.urlBase);
+            Utils.enhancedDeepEquals(this.poolIds, other.poolIds) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startIds, other.startIds) &&
+            Utils.enhancedDeepEquals(this.urlBase, other.urlBase);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            poolIds,
-            sourceType,
-            startIds,
+        return Utils.enhancedHash(
+            poolIds, sourceType, startIds,
             urlBase);
     }
     
@@ -163,18 +165,20 @@ public class SourceKyve {
                 "startIds", startIds,
                 "urlBase", urlBase);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String poolIds;
- 
+
         private String startIds;
- 
+
         private Optional<String> urlBase;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The IDs of the KYVE storage pool you want to archive. (Comma separated)
@@ -185,14 +189,17 @@ public class SourceKyve {
             return this;
         }
 
+
         /**
-         * The start-id defines, from which bundle id the pipeline should start to extract the data. (Comma separated)
+         * The start-id defines, from which bundle id the pipeline should start to extract the data. (Comma
+         * separated)
          */
         public Builder startIds(String startIds) {
             Utils.checkNotNull(startIds, "startIds");
             this.startIds = startIds;
             return this;
         }
+
 
         /**
          * URL to the KYVE Chain API.
@@ -211,16 +218,16 @@ public class SourceKyve {
             this.urlBase = urlBase;
             return this;
         }
-        
+
         public SourceKyve build() {
             if (urlBase == null) {
                 urlBase = _SINGLETON_VALUE_UrlBase.value();
             }
+
             return new SourceKyve(
-                poolIds,
-                startIds,
-                urlBase);
+                poolIds, startIds, urlBase);
         }
+
 
         private static final LazySingletonValue<Kyve> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

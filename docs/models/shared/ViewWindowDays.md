@@ -2,6 +2,14 @@
 
 Number of days to use as the conversion attribution window for a view action.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.ViewWindowDays;
+
+ViewWindowDays value = ViewWindowDays.ZERO;
+```
+
 
 ## Values
 

@@ -11,27 +11,30 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceRingcentral {
-
     /**
-     * Could be seen at response to basic api call to an endpoint with ~ operator.  Example- (https://platform.devtest.ringcentral.com/restapi/v1.0/account/~/extension/~/business-hours)
+     * Could be seen at response to basic api call to an endpoint with ~ operator. Example-
+     * (https://platform.devtest.ringcentral.com/restapi/v1.0/account/~/extension/~/business-hours)
      */
     @JsonProperty("account_id")
     private String accountId;
 
     /**
-     * Token could be recieved by following instructions at https://developers.ringcentral.com/api-reference/authentication
+     * Token could be recieved by following instructions at
+     * https://developers.ringcentral.com/api-reference/authentication
      */
     @JsonProperty("auth_token")
     private String authToken;
 
     /**
-     * Could be seen at response to basic api call to an endpoint with ~ operator.  Example- (https://platform.devtest.ringcentral.com/restapi/v1.0/account/~/extension/~/business-hours)
+     * Could be seen at response to basic api call to an endpoint with ~ operator. Example-
+     * (https://platform.devtest.ringcentral.com/restapi/v1.0/account/~/extension/~/business-hours)
      */
     @JsonProperty("extension_id")
     private String extensionId;
+
 
     @JsonProperty("sourceType")
     private Ringcentral sourceType;
@@ -51,7 +54,8 @@ public class SourceRingcentral {
     }
 
     /**
-     * Could be seen at response to basic api call to an endpoint with ~ operator.  Example- (https://platform.devtest.ringcentral.com/restapi/v1.0/account/~/extension/~/business-hours)
+     * Could be seen at response to basic api call to an endpoint with ~ operator. Example-
+     * (https://platform.devtest.ringcentral.com/restapi/v1.0/account/~/extension/~/business-hours)
      */
     @JsonIgnore
     public String accountId() {
@@ -59,7 +63,8 @@ public class SourceRingcentral {
     }
 
     /**
-     * Token could be recieved by following instructions at https://developers.ringcentral.com/api-reference/authentication
+     * Token could be recieved by following instructions at
+     * https://developers.ringcentral.com/api-reference/authentication
      */
     @JsonIgnore
     public String authToken() {
@@ -67,7 +72,8 @@ public class SourceRingcentral {
     }
 
     /**
-     * Could be seen at response to basic api call to an endpoint with ~ operator.  Example- (https://platform.devtest.ringcentral.com/restapi/v1.0/account/~/extension/~/business-hours)
+     * Could be seen at response to basic api call to an endpoint with ~ operator. Example-
+     * (https://platform.devtest.ringcentral.com/restapi/v1.0/account/~/extension/~/business-hours)
      */
     @JsonIgnore
     public String extensionId() {
@@ -79,12 +85,14 @@ public class SourceRingcentral {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Could be seen at response to basic api call to an endpoint with ~ operator.  Example- (https://platform.devtest.ringcentral.com/restapi/v1.0/account/~/extension/~/business-hours)
+     * Could be seen at response to basic api call to an endpoint with ~ operator. Example-
+     * (https://platform.devtest.ringcentral.com/restapi/v1.0/account/~/extension/~/business-hours)
      */
     public SourceRingcentral withAccountId(String accountId) {
         Utils.checkNotNull(accountId, "accountId");
@@ -93,7 +101,8 @@ public class SourceRingcentral {
     }
 
     /**
-     * Token could be recieved by following instructions at https://developers.ringcentral.com/api-reference/authentication
+     * Token could be recieved by following instructions at
+     * https://developers.ringcentral.com/api-reference/authentication
      */
     public SourceRingcentral withAuthToken(String authToken) {
         Utils.checkNotNull(authToken, "authToken");
@@ -102,7 +111,8 @@ public class SourceRingcentral {
     }
 
     /**
-     * Could be seen at response to basic api call to an endpoint with ~ operator.  Example- (https://platform.devtest.ringcentral.com/restapi/v1.0/account/~/extension/~/business-hours)
+     * Could be seen at response to basic api call to an endpoint with ~ operator. Example-
+     * (https://platform.devtest.ringcentral.com/restapi/v1.0/account/~/extension/~/business-hours)
      */
     public SourceRingcentral withExtensionId(String extensionId) {
         Utils.checkNotNull(extensionId, "extensionId");
@@ -110,7 +120,6 @@ public class SourceRingcentral {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -121,18 +130,16 @@ public class SourceRingcentral {
         }
         SourceRingcentral other = (SourceRingcentral) o;
         return 
-            Objects.deepEquals(this.accountId, other.accountId) &&
-            Objects.deepEquals(this.authToken, other.authToken) &&
-            Objects.deepEquals(this.extensionId, other.extensionId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.accountId, other.accountId) &&
+            Utils.enhancedDeepEquals(this.authToken, other.authToken) &&
+            Utils.enhancedDeepEquals(this.extensionId, other.extensionId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountId,
-            authToken,
-            extensionId,
+        return Utils.enhancedHash(
+            accountId, authToken, extensionId,
             sourceType);
     }
     
@@ -144,21 +151,24 @@ public class SourceRingcentral {
                 "extensionId", extensionId,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accountId;
- 
+
         private String authToken;
- 
+
         private String extensionId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Could be seen at response to basic api call to an endpoint with ~ operator.  Example- (https://platform.devtest.ringcentral.com/restapi/v1.0/account/~/extension/~/business-hours)
+         * Could be seen at response to basic api call to an endpoint with ~ operator. Example-
+         * (https://platform.devtest.ringcentral.com/restapi/v1.0/account/~/extension/~/business-hours)
          */
         public Builder accountId(String accountId) {
             Utils.checkNotNull(accountId, "accountId");
@@ -166,8 +176,10 @@ public class SourceRingcentral {
             return this;
         }
 
+
         /**
-         * Token could be recieved by following instructions at https://developers.ringcentral.com/api-reference/authentication
+         * Token could be recieved by following instructions at
+         * https://developers.ringcentral.com/api-reference/authentication
          */
         public Builder authToken(String authToken) {
             Utils.checkNotNull(authToken, "authToken");
@@ -175,21 +187,23 @@ public class SourceRingcentral {
             return this;
         }
 
+
         /**
-         * Could be seen at response to basic api call to an endpoint with ~ operator.  Example- (https://platform.devtest.ringcentral.com/restapi/v1.0/account/~/extension/~/business-hours)
+         * Could be seen at response to basic api call to an endpoint with ~ operator. Example-
+         * (https://platform.devtest.ringcentral.com/restapi/v1.0/account/~/extension/~/business-hours)
          */
         public Builder extensionId(String extensionId) {
             Utils.checkNotNull(extensionId, "extensionId");
             this.extensionId = extensionId;
             return this;
         }
-        
+
         public SourceRingcentral build() {
+
             return new SourceRingcentral(
-                accountId,
-                authToken,
-                extensionId);
+                accountId, authToken, extensionId);
         }
+
 
         private static final LazySingletonValue<Ringcentral> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

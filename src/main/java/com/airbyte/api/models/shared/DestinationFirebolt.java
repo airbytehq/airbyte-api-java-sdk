@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationFirebolt {
 
+public class DestinationFirebolt {
     /**
      * Firebolt account to login.
      */
@@ -42,6 +41,7 @@ public class DestinationFirebolt {
      */
     @JsonProperty("database")
     private String database;
+
 
     @JsonProperty("destinationType")
     private Firebolt destinationType;
@@ -98,7 +98,9 @@ public class DestinationFirebolt {
             String clientSecret,
             String database,
             String engine) {
-        this(account, clientId, clientSecret, database, engine, Optional.empty(), Optional.empty());
+        this(account, clientId, clientSecret,
+            database, engine, Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -163,9 +165,10 @@ public class DestinationFirebolt {
         return (Optional<DestinationFireboltLoadingMethod>) loadingMethod;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Firebolt account to login.
@@ -221,6 +224,7 @@ public class DestinationFirebolt {
         return this;
     }
 
+
     /**
      * The host name of your Firebolt database.
      */
@@ -239,6 +243,7 @@ public class DestinationFirebolt {
         return this;
     }
 
+
     /**
      * Loading method used to select the way data will be uploaded to Firebolt
      */
@@ -248,7 +253,6 @@ public class DestinationFirebolt {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -259,27 +263,22 @@ public class DestinationFirebolt {
         }
         DestinationFirebolt other = (DestinationFirebolt) o;
         return 
-            Objects.deepEquals(this.account, other.account) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.database, other.database) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.engine, other.engine) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.loadingMethod, other.loadingMethod);
+            Utils.enhancedDeepEquals(this.account, other.account) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.database, other.database) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.engine, other.engine) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.loadingMethod, other.loadingMethod);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            account,
-            clientId,
-            clientSecret,
-            database,
-            destinationType,
-            engine,
-            host,
-            loadingMethod);
+        return Utils.enhancedHash(
+            account, clientId, clientSecret,
+            database, destinationType, engine,
+            host, loadingMethod);
     }
     
     @Override
@@ -294,26 +293,28 @@ public class DestinationFirebolt {
                 "host", host,
                 "loadingMethod", loadingMethod);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String account;
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String database;
- 
+
         private String engine;
- 
+
         private Optional<String> host = Optional.empty();
- 
+
         private Optional<? extends DestinationFireboltLoadingMethod> loadingMethod = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Firebolt account to login.
@@ -324,6 +325,7 @@ public class DestinationFirebolt {
             return this;
         }
 
+
         /**
          * Firebolt service account ID.
          */
@@ -332,6 +334,7 @@ public class DestinationFirebolt {
             this.clientId = clientId;
             return this;
         }
+
 
         /**
          * Firebolt secret, corresponding to the service account ID.
@@ -342,6 +345,7 @@ public class DestinationFirebolt {
             return this;
         }
 
+
         /**
          * The database to connect to.
          */
@@ -351,6 +355,7 @@ public class DestinationFirebolt {
             return this;
         }
 
+
         /**
          * Engine name to connect to.
          */
@@ -359,6 +364,7 @@ public class DestinationFirebolt {
             this.engine = engine;
             return this;
         }
+
 
         /**
          * The host name of your Firebolt database.
@@ -378,6 +384,7 @@ public class DestinationFirebolt {
             return this;
         }
 
+
         /**
          * Loading method used to select the way data will be uploaded to Firebolt
          */
@@ -395,17 +402,15 @@ public class DestinationFirebolt {
             this.loadingMethod = loadingMethod;
             return this;
         }
-        
+
         public DestinationFirebolt build() {
+
             return new DestinationFirebolt(
-                account,
-                clientId,
-                clientSecret,
-                database,
-                engine,
-                host,
+                account, clientId, clientSecret,
+                database, engine, host,
                 loadingMethod);
         }
+
 
         private static final LazySingletonValue<Firebolt> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

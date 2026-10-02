@@ -14,7 +14,7 @@ public enum CampaignMonitor {
     @JsonValue
     private final String value;
 
-    private CampaignMonitor(String value) {
+    CampaignMonitor(String value) {
         this.value = value;
     }
     

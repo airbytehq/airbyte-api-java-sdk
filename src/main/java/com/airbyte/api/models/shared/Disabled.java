@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class Disabled {
 
@@ -20,7 +20,6 @@ public class Disabled {
 
     @JsonCreator
     public Disabled() {
-        
         this.deletionMode = Builder._SINGLETON_VALUE_DeletionMode.value();
     }
 
@@ -29,11 +28,11 @@ public class Disabled {
         return deletionMode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -44,12 +43,12 @@ public class Disabled {
         }
         Disabled other = (Disabled) o;
         return 
-            Objects.deepEquals(this.deletionMode, other.deletionMode);
+            Utils.enhancedDeepEquals(this.deletionMode, other.deletionMode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             deletionMode);
     }
     
@@ -58,17 +57,20 @@ public class Disabled {
         return Utils.toString(Disabled.class,
                 "deletionMode", deletionMode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public Disabled build() {
+
             return new Disabled(
                 );
         }
+
 
         private static final LazySingletonValue<SourceFaunaSchemasDeletionMode> _SINGLETON_VALUE_DeletionMode =
                 new LazySingletonValue<>(

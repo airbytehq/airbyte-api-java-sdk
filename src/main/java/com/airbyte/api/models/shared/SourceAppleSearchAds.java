@@ -15,26 +15,28 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceAppleSearchAds {
 
+public class SourceAppleSearchAds {
     /**
-     * This factor factor determines the delay increase factor between retryable failures. Valid values are integers between 1 and 20.
+     * This factor factor determines the delay increase factor between retryable failures. Valid values are
+     * integers between 1 and 20.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("backoff_factor")
     private Optional<Long> backoffFactor;
 
     /**
-     * A user identifier for the token request. See &lt;a href="https://developer.apple.com/documentation/apple_search_ads/implementing_oauth_for_the_apple_search_ads_api"&gt;here&lt;/a&gt;
+     * A user identifier for the token request. See <a
+     * href="https://developer.apple.com/documentation/apple_search_ads/implementing_oauth_for_the_apple_search_ads_api">here</a>
      */
     @JsonProperty("client_id")
     private String clientId;
 
     /**
-     * A string that authenticates the user’s setup request. See &lt;a href="https://developer.apple.com/documentation/apple_search_ads/implementing_oauth_for_the_apple_search_ads_api"&gt;here&lt;/a&gt;
+     * A string that authenticates the user’s setup request. See <a
+     * href="https://developer.apple.com/documentation/apple_search_ads/implementing_oauth_for_the_apple_search_ads_api">here</a>
      */
     @JsonProperty("client_secret")
     private String clientSecret;
@@ -47,17 +49,20 @@ public class SourceAppleSearchAds {
     private Optional<String> endDate;
 
     /**
-     * Apple Search Ads uses a 30-day attribution window. However, you may consider smaller values in order to shorten sync durations, at the cost of missing late data attributions.
+     * Apple Search Ads uses a 30-day attribution window. However, you may consider smaller values in order
+     * to shorten sync durations, at the cost of missing late data attributions.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("lookback_window")
     private Optional<Long> lookbackWindow;
 
     /**
-     * The identifier of the organization that owns the campaign. Your Org Id is the same as your account in the Apple Search Ads UI.
+     * The identifier of the organization that owns the campaign. Your Org Id is the same as your account
+     * in the Apple Search Ads UI.
      */
     @JsonProperty("org_id")
     private long orgId;
+
 
     @JsonProperty("sourceType")
     private AppleSearchAds sourceType;
@@ -69,11 +74,20 @@ public class SourceAppleSearchAds {
     private String startDate;
 
     /**
-     * The timezone for the reporting data. Use 'ORTZ' for Organization Time Zone or 'UTC' for Coordinated Universal Time. Default is UTC.
+     * The timezone for the reporting data. Use 'ORTZ' for Organization Time Zone or 'UTC' for Coordinated
+     * Universal Time. Default is UTC.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("timezone")
     private Optional<? extends TimeZone> timezone;
+
+    /**
+     * Token Refresh Endpoint. You should override the default value in scenarios  where it's required to
+     * proxy requests to Apple's token endpoint
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("token_refresh_endpoint")
+    private Optional<String> tokenRefreshEndpoint;
 
     @JsonCreator
     public SourceAppleSearchAds(
@@ -84,7 +98,8 @@ public class SourceAppleSearchAds {
             @JsonProperty("lookback_window") Optional<Long> lookbackWindow,
             @JsonProperty("org_id") long orgId,
             @JsonProperty("start_date") String startDate,
-            @JsonProperty("timezone") Optional<? extends TimeZone> timezone) {
+            @JsonProperty("timezone") Optional<? extends TimeZone> timezone,
+            @JsonProperty("token_refresh_endpoint") Optional<String> tokenRefreshEndpoint) {
         Utils.checkNotNull(backoffFactor, "backoffFactor");
         Utils.checkNotNull(clientId, "clientId");
         Utils.checkNotNull(clientSecret, "clientSecret");
@@ -93,6 +108,7 @@ public class SourceAppleSearchAds {
         Utils.checkNotNull(orgId, "orgId");
         Utils.checkNotNull(startDate, "startDate");
         Utils.checkNotNull(timezone, "timezone");
+        Utils.checkNotNull(tokenRefreshEndpoint, "tokenRefreshEndpoint");
         this.backoffFactor = backoffFactor;
         this.clientId = clientId;
         this.clientSecret = clientSecret;
@@ -102,6 +118,7 @@ public class SourceAppleSearchAds {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
         this.timezone = timezone;
+        this.tokenRefreshEndpoint = tokenRefreshEndpoint;
     }
     
     public SourceAppleSearchAds(
@@ -109,11 +126,14 @@ public class SourceAppleSearchAds {
             String clientSecret,
             long orgId,
             String startDate) {
-        this(Optional.empty(), clientId, clientSecret, Optional.empty(), Optional.empty(), orgId, startDate, Optional.empty());
+        this(Optional.empty(), clientId, clientSecret,
+            Optional.empty(), Optional.empty(), orgId,
+            startDate, Optional.empty(), Optional.empty());
     }
 
     /**
-     * This factor factor determines the delay increase factor between retryable failures. Valid values are integers between 1 and 20.
+     * This factor factor determines the delay increase factor between retryable failures. Valid values are
+     * integers between 1 and 20.
      */
     @JsonIgnore
     public Optional<Long> backoffFactor() {
@@ -121,7 +141,8 @@ public class SourceAppleSearchAds {
     }
 
     /**
-     * A user identifier for the token request. See &lt;a href="https://developer.apple.com/documentation/apple_search_ads/implementing_oauth_for_the_apple_search_ads_api"&gt;here&lt;/a&gt;
+     * A user identifier for the token request. See <a
+     * href="https://developer.apple.com/documentation/apple_search_ads/implementing_oauth_for_the_apple_search_ads_api">here</a>
      */
     @JsonIgnore
     public String clientId() {
@@ -129,7 +150,8 @@ public class SourceAppleSearchAds {
     }
 
     /**
-     * A string that authenticates the user’s setup request. See &lt;a href="https://developer.apple.com/documentation/apple_search_ads/implementing_oauth_for_the_apple_search_ads_api"&gt;here&lt;/a&gt;
+     * A string that authenticates the user’s setup request. See <a
+     * href="https://developer.apple.com/documentation/apple_search_ads/implementing_oauth_for_the_apple_search_ads_api">here</a>
      */
     @JsonIgnore
     public String clientSecret() {
@@ -145,7 +167,8 @@ public class SourceAppleSearchAds {
     }
 
     /**
-     * Apple Search Ads uses a 30-day attribution window. However, you may consider smaller values in order to shorten sync durations, at the cost of missing late data attributions.
+     * Apple Search Ads uses a 30-day attribution window. However, you may consider smaller values in order
+     * to shorten sync durations, at the cost of missing late data attributions.
      */
     @JsonIgnore
     public Optional<Long> lookbackWindow() {
@@ -153,7 +176,8 @@ public class SourceAppleSearchAds {
     }
 
     /**
-     * The identifier of the organization that owns the campaign. Your Org Id is the same as your account in the Apple Search Ads UI.
+     * The identifier of the organization that owns the campaign. Your Org Id is the same as your account
+     * in the Apple Search Ads UI.
      */
     @JsonIgnore
     public long orgId() {
@@ -174,7 +198,8 @@ public class SourceAppleSearchAds {
     }
 
     /**
-     * The timezone for the reporting data. Use 'ORTZ' for Organization Time Zone or 'UTC' for Coordinated Universal Time. Default is UTC.
+     * The timezone for the reporting data. Use 'ORTZ' for Organization Time Zone or 'UTC' for Coordinated
+     * Universal Time. Default is UTC.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -182,12 +207,23 @@ public class SourceAppleSearchAds {
         return (Optional<TimeZone>) timezone;
     }
 
-    public final static Builder builder() {
+    /**
+     * Token Refresh Endpoint. You should override the default value in scenarios  where it's required to
+     * proxy requests to Apple's token endpoint
+     */
+    @JsonIgnore
+    public Optional<String> tokenRefreshEndpoint() {
+        return tokenRefreshEndpoint;
+    }
+
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * This factor factor determines the delay increase factor between retryable failures. Valid values are integers between 1 and 20.
+     * This factor factor determines the delay increase factor between retryable failures. Valid values are
+     * integers between 1 and 20.
      */
     public SourceAppleSearchAds withBackoffFactor(long backoffFactor) {
         Utils.checkNotNull(backoffFactor, "backoffFactor");
@@ -195,8 +231,10 @@ public class SourceAppleSearchAds {
         return this;
     }
 
+
     /**
-     * This factor factor determines the delay increase factor between retryable failures. Valid values are integers between 1 and 20.
+     * This factor factor determines the delay increase factor between retryable failures. Valid values are
+     * integers between 1 and 20.
      */
     public SourceAppleSearchAds withBackoffFactor(Optional<Long> backoffFactor) {
         Utils.checkNotNull(backoffFactor, "backoffFactor");
@@ -205,7 +243,8 @@ public class SourceAppleSearchAds {
     }
 
     /**
-     * A user identifier for the token request. See &lt;a href="https://developer.apple.com/documentation/apple_search_ads/implementing_oauth_for_the_apple_search_ads_api"&gt;here&lt;/a&gt;
+     * A user identifier for the token request. See <a
+     * href="https://developer.apple.com/documentation/apple_search_ads/implementing_oauth_for_the_apple_search_ads_api">here</a>
      */
     public SourceAppleSearchAds withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -214,7 +253,8 @@ public class SourceAppleSearchAds {
     }
 
     /**
-     * A string that authenticates the user’s setup request. See &lt;a href="https://developer.apple.com/documentation/apple_search_ads/implementing_oauth_for_the_apple_search_ads_api"&gt;here&lt;/a&gt;
+     * A string that authenticates the user’s setup request. See <a
+     * href="https://developer.apple.com/documentation/apple_search_ads/implementing_oauth_for_the_apple_search_ads_api">here</a>
      */
     public SourceAppleSearchAds withClientSecret(String clientSecret) {
         Utils.checkNotNull(clientSecret, "clientSecret");
@@ -231,6 +271,7 @@ public class SourceAppleSearchAds {
         return this;
     }
 
+
     /**
      * Data is retrieved until that date (included)
      */
@@ -241,7 +282,8 @@ public class SourceAppleSearchAds {
     }
 
     /**
-     * Apple Search Ads uses a 30-day attribution window. However, you may consider smaller values in order to shorten sync durations, at the cost of missing late data attributions.
+     * Apple Search Ads uses a 30-day attribution window. However, you may consider smaller values in order
+     * to shorten sync durations, at the cost of missing late data attributions.
      */
     public SourceAppleSearchAds withLookbackWindow(long lookbackWindow) {
         Utils.checkNotNull(lookbackWindow, "lookbackWindow");
@@ -249,8 +291,10 @@ public class SourceAppleSearchAds {
         return this;
     }
 
+
     /**
-     * Apple Search Ads uses a 30-day attribution window. However, you may consider smaller values in order to shorten sync durations, at the cost of missing late data attributions.
+     * Apple Search Ads uses a 30-day attribution window. However, you may consider smaller values in order
+     * to shorten sync durations, at the cost of missing late data attributions.
      */
     public SourceAppleSearchAds withLookbackWindow(Optional<Long> lookbackWindow) {
         Utils.checkNotNull(lookbackWindow, "lookbackWindow");
@@ -259,7 +303,8 @@ public class SourceAppleSearchAds {
     }
 
     /**
-     * The identifier of the organization that owns the campaign. Your Org Id is the same as your account in the Apple Search Ads UI.
+     * The identifier of the organization that owns the campaign. Your Org Id is the same as your account
+     * in the Apple Search Ads UI.
      */
     public SourceAppleSearchAds withOrgId(long orgId) {
         Utils.checkNotNull(orgId, "orgId");
@@ -277,7 +322,8 @@ public class SourceAppleSearchAds {
     }
 
     /**
-     * The timezone for the reporting data. Use 'ORTZ' for Organization Time Zone or 'UTC' for Coordinated Universal Time. Default is UTC.
+     * The timezone for the reporting data. Use 'ORTZ' for Organization Time Zone or 'UTC' for Coordinated
+     * Universal Time. Default is UTC.
      */
     public SourceAppleSearchAds withTimezone(TimeZone timezone) {
         Utils.checkNotNull(timezone, "timezone");
@@ -285,8 +331,10 @@ public class SourceAppleSearchAds {
         return this;
     }
 
+
     /**
-     * The timezone for the reporting data. Use 'ORTZ' for Organization Time Zone or 'UTC' for Coordinated Universal Time. Default is UTC.
+     * The timezone for the reporting data. Use 'ORTZ' for Organization Time Zone or 'UTC' for Coordinated
+     * Universal Time. Default is UTC.
      */
     public SourceAppleSearchAds withTimezone(Optional<? extends TimeZone> timezone) {
         Utils.checkNotNull(timezone, "timezone");
@@ -294,7 +342,27 @@ public class SourceAppleSearchAds {
         return this;
     }
 
-    
+    /**
+     * Token Refresh Endpoint. You should override the default value in scenarios  where it's required to
+     * proxy requests to Apple's token endpoint
+     */
+    public SourceAppleSearchAds withTokenRefreshEndpoint(String tokenRefreshEndpoint) {
+        Utils.checkNotNull(tokenRefreshEndpoint, "tokenRefreshEndpoint");
+        this.tokenRefreshEndpoint = Optional.ofNullable(tokenRefreshEndpoint);
+        return this;
+    }
+
+
+    /**
+     * Token Refresh Endpoint. You should override the default value in scenarios  where it's required to
+     * proxy requests to Apple's token endpoint
+     */
+    public SourceAppleSearchAds withTokenRefreshEndpoint(Optional<String> tokenRefreshEndpoint) {
+        Utils.checkNotNull(tokenRefreshEndpoint, "tokenRefreshEndpoint");
+        this.tokenRefreshEndpoint = tokenRefreshEndpoint;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -305,29 +373,25 @@ public class SourceAppleSearchAds {
         }
         SourceAppleSearchAds other = (SourceAppleSearchAds) o;
         return 
-            Objects.deepEquals(this.backoffFactor, other.backoffFactor) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.lookbackWindow, other.lookbackWindow) &&
-            Objects.deepEquals(this.orgId, other.orgId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.timezone, other.timezone);
+            Utils.enhancedDeepEquals(this.backoffFactor, other.backoffFactor) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.lookbackWindow, other.lookbackWindow) &&
+            Utils.enhancedDeepEquals(this.orgId, other.orgId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.timezone, other.timezone) &&
+            Utils.enhancedDeepEquals(this.tokenRefreshEndpoint, other.tokenRefreshEndpoint);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            backoffFactor,
-            clientId,
-            clientSecret,
-            endDate,
-            lookbackWindow,
-            orgId,
-            sourceType,
-            startDate,
-            timezone);
+        return Utils.enhancedHash(
+            backoffFactor, clientId, clientSecret,
+            endDate, lookbackWindow, orgId,
+            sourceType, startDate, timezone,
+            tokenRefreshEndpoint);
     }
     
     @Override
@@ -341,33 +405,39 @@ public class SourceAppleSearchAds {
                 "orgId", orgId,
                 "sourceType", sourceType,
                 "startDate", startDate,
-                "timezone", timezone);
+                "timezone", timezone,
+                "tokenRefreshEndpoint", tokenRefreshEndpoint);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Long> backoffFactor;
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private Optional<String> endDate = Optional.empty();
- 
+
         private Optional<Long> lookbackWindow;
- 
+
         private Long orgId;
- 
+
         private String startDate;
- 
+
         private Optional<? extends TimeZone> timezone;
-        
+
+        private Optional<String> tokenRefreshEndpoint;
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * This factor factor determines the delay increase factor between retryable failures. Valid values are integers between 1 and 20.
+         * This factor factor determines the delay increase factor between retryable failures. Valid values are
+         * integers between 1 and 20.
          */
         public Builder backoffFactor(long backoffFactor) {
             Utils.checkNotNull(backoffFactor, "backoffFactor");
@@ -376,7 +446,8 @@ public class SourceAppleSearchAds {
         }
 
         /**
-         * This factor factor determines the delay increase factor between retryable failures. Valid values are integers between 1 and 20.
+         * This factor factor determines the delay increase factor between retryable failures. Valid values are
+         * integers between 1 and 20.
          */
         public Builder backoffFactor(Optional<Long> backoffFactor) {
             Utils.checkNotNull(backoffFactor, "backoffFactor");
@@ -384,8 +455,10 @@ public class SourceAppleSearchAds {
             return this;
         }
 
+
         /**
-         * A user identifier for the token request. See &lt;a href="https://developer.apple.com/documentation/apple_search_ads/implementing_oauth_for_the_apple_search_ads_api"&gt;here&lt;/a&gt;
+         * A user identifier for the token request. See <a
+         * href="https://developer.apple.com/documentation/apple_search_ads/implementing_oauth_for_the_apple_search_ads_api">here</a>
          */
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -393,14 +466,17 @@ public class SourceAppleSearchAds {
             return this;
         }
 
+
         /**
-         * A string that authenticates the user’s setup request. See &lt;a href="https://developer.apple.com/documentation/apple_search_ads/implementing_oauth_for_the_apple_search_ads_api"&gt;here&lt;/a&gt;
+         * A string that authenticates the user’s setup request. See <a
+         * href="https://developer.apple.com/documentation/apple_search_ads/implementing_oauth_for_the_apple_search_ads_api">here</a>
          */
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         /**
          * Data is retrieved until that date (included)
@@ -420,8 +496,10 @@ public class SourceAppleSearchAds {
             return this;
         }
 
+
         /**
-         * Apple Search Ads uses a 30-day attribution window. However, you may consider smaller values in order to shorten sync durations, at the cost of missing late data attributions.
+         * Apple Search Ads uses a 30-day attribution window. However, you may consider smaller values in order
+         * to shorten sync durations, at the cost of missing late data attributions.
          */
         public Builder lookbackWindow(long lookbackWindow) {
             Utils.checkNotNull(lookbackWindow, "lookbackWindow");
@@ -430,7 +508,8 @@ public class SourceAppleSearchAds {
         }
 
         /**
-         * Apple Search Ads uses a 30-day attribution window. However, you may consider smaller values in order to shorten sync durations, at the cost of missing late data attributions.
+         * Apple Search Ads uses a 30-day attribution window. However, you may consider smaller values in order
+         * to shorten sync durations, at the cost of missing late data attributions.
          */
         public Builder lookbackWindow(Optional<Long> lookbackWindow) {
             Utils.checkNotNull(lookbackWindow, "lookbackWindow");
@@ -438,14 +517,17 @@ public class SourceAppleSearchAds {
             return this;
         }
 
+
         /**
-         * The identifier of the organization that owns the campaign. Your Org Id is the same as your account in the Apple Search Ads UI.
+         * The identifier of the organization that owns the campaign. Your Org Id is the same as your account
+         * in the Apple Search Ads UI.
          */
         public Builder orgId(long orgId) {
             Utils.checkNotNull(orgId, "orgId");
             this.orgId = orgId;
             return this;
         }
+
 
         /**
          * Start getting data from that date.
@@ -456,8 +538,10 @@ public class SourceAppleSearchAds {
             return this;
         }
 
+
         /**
-         * The timezone for the reporting data. Use 'ORTZ' for Organization Time Zone or 'UTC' for Coordinated Universal Time. Default is UTC.
+         * The timezone for the reporting data. Use 'ORTZ' for Organization Time Zone or 'UTC' for Coordinated
+         * Universal Time. Default is UTC.
          */
         public Builder timezone(TimeZone timezone) {
             Utils.checkNotNull(timezone, "timezone");
@@ -466,14 +550,36 @@ public class SourceAppleSearchAds {
         }
 
         /**
-         * The timezone for the reporting data. Use 'ORTZ' for Organization Time Zone or 'UTC' for Coordinated Universal Time. Default is UTC.
+         * The timezone for the reporting data. Use 'ORTZ' for Organization Time Zone or 'UTC' for Coordinated
+         * Universal Time. Default is UTC.
          */
         public Builder timezone(Optional<? extends TimeZone> timezone) {
             Utils.checkNotNull(timezone, "timezone");
             this.timezone = timezone;
             return this;
         }
-        
+
+
+        /**
+         * Token Refresh Endpoint. You should override the default value in scenarios  where it's required to
+         * proxy requests to Apple's token endpoint
+         */
+        public Builder tokenRefreshEndpoint(String tokenRefreshEndpoint) {
+            Utils.checkNotNull(tokenRefreshEndpoint, "tokenRefreshEndpoint");
+            this.tokenRefreshEndpoint = Optional.ofNullable(tokenRefreshEndpoint);
+            return this;
+        }
+
+        /**
+         * Token Refresh Endpoint. You should override the default value in scenarios  where it's required to
+         * proxy requests to Apple's token endpoint
+         */
+        public Builder tokenRefreshEndpoint(Optional<String> tokenRefreshEndpoint) {
+            Utils.checkNotNull(tokenRefreshEndpoint, "tokenRefreshEndpoint");
+            this.tokenRefreshEndpoint = tokenRefreshEndpoint;
+            return this;
+        }
+
         public SourceAppleSearchAds build() {
             if (backoffFactor == null) {
                 backoffFactor = _SINGLETON_VALUE_BackoffFactor.value();
@@ -484,16 +590,16 @@ public class SourceAppleSearchAds {
             if (timezone == null) {
                 timezone = _SINGLETON_VALUE_Timezone.value();
             }
+            if (tokenRefreshEndpoint == null) {
+                tokenRefreshEndpoint = _SINGLETON_VALUE_TokenRefreshEndpoint.value();
+            }
+
             return new SourceAppleSearchAds(
-                backoffFactor,
-                clientId,
-                clientSecret,
-                endDate,
-                lookbackWindow,
-                orgId,
-                startDate,
-                timezone);
+                backoffFactor, clientId, clientSecret,
+                endDate, lookbackWindow, orgId,
+                startDate, timezone, tokenRefreshEndpoint);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_BackoffFactor =
                 new LazySingletonValue<>(
@@ -518,5 +624,11 @@ public class SourceAppleSearchAds {
                         "timezone",
                         "\"UTC\"",
                         new TypeReference<Optional<? extends TimeZone>>() {});
+
+        private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_TokenRefreshEndpoint =
+                new LazySingletonValue<>(
+                        "token_refresh_endpoint",
+                        "\"https://appleid.apple.com/auth/oauth2/token?grant_type=client_credentials&scope=searchadsorg\"",
+                        new TypeReference<Optional<String>>() {});
     }
 }

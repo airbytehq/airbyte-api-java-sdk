@@ -14,7 +14,7 @@ public enum Teamtailor {
     @JsonValue
     private final String value;
 
-    private Teamtailor(String value) {
+    Teamtailor(String value) {
         this.value = value;
     }
     

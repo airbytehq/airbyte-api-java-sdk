@@ -12,7 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -26,6 +25,7 @@ public class JobResponse {
     @JsonProperty("bytesSynced")
     private Optional<Long> bytesSynced;
 
+
     @JsonProperty("connectionId")
     private String connectionId;
 
@@ -36,6 +36,7 @@ public class JobResponse {
     @JsonProperty("duration")
     private Optional<String> duration;
 
+
     @JsonProperty("jobId")
     private long jobId;
 
@@ -45,16 +46,20 @@ public class JobResponse {
     @JsonProperty("jobType")
     private JobTypeEnum jobType;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("lastUpdatedAt")
     private Optional<String> lastUpdatedAt;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("rowsSynced")
     private Optional<Long> rowsSynced;
 
+
     @JsonProperty("startTime")
     private String startTime;
+
 
     @JsonProperty("status")
     private JobStatusEnum status;
@@ -96,7 +101,9 @@ public class JobResponse {
             JobTypeEnum jobType,
             String startTime,
             JobStatusEnum status) {
-        this(Optional.empty(), connectionId, Optional.empty(), jobId, jobType, Optional.empty(), Optional.empty(), startTime, status);
+        this(Optional.empty(), connectionId, Optional.empty(),
+            jobId, jobType, Optional.empty(),
+            Optional.empty(), startTime, status);
     }
 
     @JsonIgnore
@@ -150,15 +157,17 @@ public class JobResponse {
         return status;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public JobResponse withBytesSynced(long bytesSynced) {
         Utils.checkNotNull(bytesSynced, "bytesSynced");
         this.bytesSynced = Optional.ofNullable(bytesSynced);
         return this;
     }
+
 
     public JobResponse withBytesSynced(Optional<Long> bytesSynced) {
         Utils.checkNotNull(bytesSynced, "bytesSynced");
@@ -180,6 +189,7 @@ public class JobResponse {
         this.duration = Optional.ofNullable(duration);
         return this;
     }
+
 
     /**
      * Duration of a sync in ISO_8601 format
@@ -211,6 +221,7 @@ public class JobResponse {
         return this;
     }
 
+
     public JobResponse withLastUpdatedAt(Optional<String> lastUpdatedAt) {
         Utils.checkNotNull(lastUpdatedAt, "lastUpdatedAt");
         this.lastUpdatedAt = lastUpdatedAt;
@@ -222,6 +233,7 @@ public class JobResponse {
         this.rowsSynced = Optional.ofNullable(rowsSynced);
         return this;
     }
+
 
     public JobResponse withRowsSynced(Optional<Long> rowsSynced) {
         Utils.checkNotNull(rowsSynced, "rowsSynced");
@@ -241,7 +253,6 @@ public class JobResponse {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -252,29 +263,23 @@ public class JobResponse {
         }
         JobResponse other = (JobResponse) o;
         return 
-            Objects.deepEquals(this.bytesSynced, other.bytesSynced) &&
-            Objects.deepEquals(this.connectionId, other.connectionId) &&
-            Objects.deepEquals(this.duration, other.duration) &&
-            Objects.deepEquals(this.jobId, other.jobId) &&
-            Objects.deepEquals(this.jobType, other.jobType) &&
-            Objects.deepEquals(this.lastUpdatedAt, other.lastUpdatedAt) &&
-            Objects.deepEquals(this.rowsSynced, other.rowsSynced) &&
-            Objects.deepEquals(this.startTime, other.startTime) &&
-            Objects.deepEquals(this.status, other.status);
+            Utils.enhancedDeepEquals(this.bytesSynced, other.bytesSynced) &&
+            Utils.enhancedDeepEquals(this.connectionId, other.connectionId) &&
+            Utils.enhancedDeepEquals(this.duration, other.duration) &&
+            Utils.enhancedDeepEquals(this.jobId, other.jobId) &&
+            Utils.enhancedDeepEquals(this.jobType, other.jobType) &&
+            Utils.enhancedDeepEquals(this.lastUpdatedAt, other.lastUpdatedAt) &&
+            Utils.enhancedDeepEquals(this.rowsSynced, other.rowsSynced) &&
+            Utils.enhancedDeepEquals(this.startTime, other.startTime) &&
+            Utils.enhancedDeepEquals(this.status, other.status);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            bytesSynced,
-            connectionId,
-            duration,
-            jobId,
-            jobType,
-            lastUpdatedAt,
-            rowsSynced,
-            startTime,
-            status);
+        return Utils.enhancedHash(
+            bytesSynced, connectionId, duration,
+            jobId, jobType, lastUpdatedAt,
+            rowsSynced, startTime, status);
     }
     
     @Override
@@ -290,30 +295,32 @@ public class JobResponse {
                 "startTime", startTime,
                 "status", status);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Long> bytesSynced = Optional.empty();
- 
+
         private String connectionId;
- 
+
         private Optional<String> duration = Optional.empty();
- 
+
         private Long jobId;
- 
+
         private JobTypeEnum jobType;
- 
+
         private Optional<String> lastUpdatedAt = Optional.empty();
- 
+
         private Optional<Long> rowsSynced = Optional.empty();
- 
+
         private String startTime;
- 
+
         private JobStatusEnum status;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder bytesSynced(long bytesSynced) {
             Utils.checkNotNull(bytesSynced, "bytesSynced");
@@ -327,11 +334,13 @@ public class JobResponse {
             return this;
         }
 
+
         public Builder connectionId(String connectionId) {
             Utils.checkNotNull(connectionId, "connectionId");
             this.connectionId = connectionId;
             return this;
         }
+
 
         /**
          * Duration of a sync in ISO_8601 format
@@ -351,11 +360,13 @@ public class JobResponse {
             return this;
         }
 
+
         public Builder jobId(long jobId) {
             Utils.checkNotNull(jobId, "jobId");
             this.jobId = jobId;
             return this;
         }
+
 
         /**
          * Enum that describes the different types of jobs that the platform runs.
@@ -365,6 +376,7 @@ public class JobResponse {
             this.jobType = jobType;
             return this;
         }
+
 
         public Builder lastUpdatedAt(String lastUpdatedAt) {
             Utils.checkNotNull(lastUpdatedAt, "lastUpdatedAt");
@@ -378,6 +390,7 @@ public class JobResponse {
             return this;
         }
 
+
         public Builder rowsSynced(long rowsSynced) {
             Utils.checkNotNull(rowsSynced, "rowsSynced");
             this.rowsSynced = Optional.ofNullable(rowsSynced);
@@ -390,29 +403,27 @@ public class JobResponse {
             return this;
         }
 
+
         public Builder startTime(String startTime) {
             Utils.checkNotNull(startTime, "startTime");
             this.startTime = startTime;
             return this;
         }
 
+
         public Builder status(JobStatusEnum status) {
             Utils.checkNotNull(status, "status");
             this.status = status;
             return this;
         }
-        
+
         public JobResponse build() {
+
             return new JobResponse(
-                bytesSynced,
-                connectionId,
-                duration,
-                jobId,
-                jobType,
-                lastUpdatedAt,
-                rowsSynced,
-                startTime,
-                status);
+                bytesSynced, connectionId, duration,
+                jobId, jobType, lastUpdatedAt,
+                rowsSynced, startTime, status);
         }
+
     }
 }

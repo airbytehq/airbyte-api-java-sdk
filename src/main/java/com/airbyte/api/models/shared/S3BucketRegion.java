@@ -11,7 +11,9 @@ import java.util.Optional;
 /**
  * S3BucketRegion
  * 
- * <p>The region of the S3 bucket. See &lt;a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions"&gt;here&lt;/a&gt; for all region codes.
+ * <p>The region of the S3 bucket. See <a
+ * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions">here</a>
+ * for all region codes.
  */
 public enum S3BucketRegion {
     UNKNOWN(""),
@@ -52,7 +54,7 @@ public enum S3BucketRegion {
     @JsonValue
     private final String value;
 
-    private S3BucketRegion(String value) {
+    S3BucketRegion(String value) {
         this.value = value;
     }
     

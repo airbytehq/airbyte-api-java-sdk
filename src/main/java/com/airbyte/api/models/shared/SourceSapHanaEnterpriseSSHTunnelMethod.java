@@ -14,18 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceSapHanaEnterpriseSSHTunnelMethod
  * 
- * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+ * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+ * authentication to use.
  */
 @JsonDeserialize(using = SourceSapHanaEnterpriseSSHTunnelMethod._Deserializer.class)
 public class SourceSapHanaEnterpriseSSHTunnelMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceSapHanaEnterpriseSSHTunnelMethod(TypedObject value) {
         this.value = value;
@@ -33,17 +33,17 @@ public class SourceSapHanaEnterpriseSSHTunnelMethod {
 
     public static SourceSapHanaEnterpriseSSHTunnelMethod of(SourceSapHanaEnterpriseNoTunnel value) {
         Utils.checkNotNull(value, "value");
-        return new SourceSapHanaEnterpriseSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSapHanaEnterpriseNoTunnel>(){}));
+        return new SourceSapHanaEnterpriseSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceSapHanaEnterpriseSSHTunnelMethod of(SourceSapHanaEnterpriseSSHKeyAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new SourceSapHanaEnterpriseSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSapHanaEnterpriseSSHKeyAuthentication>(){}));
+        return new SourceSapHanaEnterpriseSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceSapHanaEnterpriseSSHTunnelMethod of(SourceSapHanaEnterprisePasswordAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new SourceSapHanaEnterpriseSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSapHanaEnterprisePasswordAuthentication>(){}));
+        return new SourceSapHanaEnterpriseSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +67,7 @@ public class SourceSapHanaEnterpriseSSHTunnelMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +78,12 @@ public class SourceSapHanaEnterpriseSSHTunnelMethod {
             return false;
         }
         SourceSapHanaEnterpriseSSHTunnelMethod other = (SourceSapHanaEnterpriseSSHTunnelMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -91,9 +91,9 @@ public class SourceSapHanaEnterpriseSSHTunnelMethod {
 
         public _Deserializer() {
             super(SourceSapHanaEnterpriseSSHTunnelMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceSapHanaEnterprisePasswordAuthentication>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSapHanaEnterpriseNoTunnel>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceSapHanaEnterpriseSSHKeyAuthentication>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSapHanaEnterpriseNoTunnel>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceSapHanaEnterprisePasswordAuthentication>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -102,6 +102,6 @@ public class SourceSapHanaEnterpriseSSHTunnelMethod {
         return Utils.toString(SourceSapHanaEnterpriseSSHTunnelMethod.class,
                 "value", value);
     }
- 
+
 }
 

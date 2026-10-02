@@ -14,7 +14,7 @@ public enum SourceAzureBlobStorageHeaderDefinitionType {
     @JsonValue
     private final String value;
 
-    private SourceAzureBlobStorageHeaderDefinitionType(String value) {
+    SourceAzureBlobStorageHeaderDefinitionType(String value) {
         this.value = value;
     }
     

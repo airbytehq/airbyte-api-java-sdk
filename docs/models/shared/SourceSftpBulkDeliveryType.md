@@ -1,5 +1,13 @@
 # SourceSftpBulkDeliveryType
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceSftpBulkDeliveryType;
+
+SourceSftpBulkDeliveryType value = SourceSftpBulkDeliveryType.USE_RECORDS_TRANSFER;
+```
+
 
 ## Values
 

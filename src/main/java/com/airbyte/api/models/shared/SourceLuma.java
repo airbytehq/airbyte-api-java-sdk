@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceLuma {
-
     /**
      * Get your API key on lu.ma Calendars dashboard → Settings.
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Luma sourceType;
@@ -45,9 +45,10 @@ public class SourceLuma {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Get your API key on lu.ma Calendars dashboard → Settings.
@@ -58,7 +59,6 @@ public class SourceLuma {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceLuma {
         }
         SourceLuma other = (SourceLuma) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, sourceType);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourceLuma {
                 "apiKey", apiKey,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Get your API key on lu.ma Calendars dashboard → Settings.
@@ -103,11 +104,13 @@ public class SourceLuma {
             this.apiKey = apiKey;
             return this;
         }
-        
+
         public SourceLuma build() {
+
             return new SourceLuma(
                 apiKey);
         }
+
 
         private static final LazySingletonValue<Luma> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

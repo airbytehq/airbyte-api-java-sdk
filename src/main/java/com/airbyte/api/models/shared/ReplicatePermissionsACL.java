@@ -15,13 +15,13 @@ import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * ReplicatePermissionsACL
  * 
- * <p>Sends one identity stream and one for more permissions (ACL) streams to the destination. This data can be used in downstream systems to recreate permission restrictions mirroring the original source.
+ * <p>Sends one identity stream and one for more permissions (ACL) streams to the destination. This data
+ * can be used in downstream systems to recreate permission restrictions mirroring the original source.
  */
 public class ReplicatePermissionsACL {
 
@@ -37,7 +37,8 @@ public class ReplicatePermissionsACL {
     private Optional<String> domain;
 
     /**
-     * This data can be used in downstream systems to recreate permission restrictions mirroring the original source
+     * This data can be used in downstream systems to recreate permission restrictions mirroring the
+     * original source
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("include_identities_stream")
@@ -73,16 +74,18 @@ public class ReplicatePermissionsACL {
     }
 
     /**
-     * This data can be used in downstream systems to recreate permission restrictions mirroring the original source
+     * This data can be used in downstream systems to recreate permission restrictions mirroring the
+     * original source
      */
     @JsonIgnore
     public Optional<Boolean> includeIdentitiesStream() {
         return includeIdentitiesStream;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Google domain of the identities.
@@ -92,6 +95,7 @@ public class ReplicatePermissionsACL {
         this.domain = Optional.ofNullable(domain);
         return this;
     }
+
 
     /**
      * The Google domain of the identities.
@@ -103,7 +107,8 @@ public class ReplicatePermissionsACL {
     }
 
     /**
-     * This data can be used in downstream systems to recreate permission restrictions mirroring the original source
+     * This data can be used in downstream systems to recreate permission restrictions mirroring the
+     * original source
      */
     public ReplicatePermissionsACL withIncludeIdentitiesStream(boolean includeIdentitiesStream) {
         Utils.checkNotNull(includeIdentitiesStream, "includeIdentitiesStream");
@@ -111,8 +116,10 @@ public class ReplicatePermissionsACL {
         return this;
     }
 
+
     /**
-     * This data can be used in downstream systems to recreate permission restrictions mirroring the original source
+     * This data can be used in downstream systems to recreate permission restrictions mirroring the
+     * original source
      */
     public ReplicatePermissionsACL withIncludeIdentitiesStream(Optional<Boolean> includeIdentitiesStream) {
         Utils.checkNotNull(includeIdentitiesStream, "includeIdentitiesStream");
@@ -120,7 +127,6 @@ public class ReplicatePermissionsACL {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -131,17 +137,15 @@ public class ReplicatePermissionsACL {
         }
         ReplicatePermissionsACL other = (ReplicatePermissionsACL) o;
         return 
-            Objects.deepEquals(this.deliveryType, other.deliveryType) &&
-            Objects.deepEquals(this.domain, other.domain) &&
-            Objects.deepEquals(this.includeIdentitiesStream, other.includeIdentitiesStream);
+            Utils.enhancedDeepEquals(this.deliveryType, other.deliveryType) &&
+            Utils.enhancedDeepEquals(this.domain, other.domain) &&
+            Utils.enhancedDeepEquals(this.includeIdentitiesStream, other.includeIdentitiesStream);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            deliveryType,
-            domain,
-            includeIdentitiesStream);
+        return Utils.enhancedHash(
+            deliveryType, domain, includeIdentitiesStream);
     }
     
     @Override
@@ -151,16 +155,18 @@ public class ReplicatePermissionsACL {
                 "domain", domain,
                 "includeIdentitiesStream", includeIdentitiesStream);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> domain = Optional.empty();
- 
+
         private Optional<Boolean> includeIdentitiesStream;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Google domain of the identities.
@@ -180,8 +186,10 @@ public class ReplicatePermissionsACL {
             return this;
         }
 
+
         /**
-         * This data can be used in downstream systems to recreate permission restrictions mirroring the original source
+         * This data can be used in downstream systems to recreate permission restrictions mirroring the
+         * original source
          */
         public Builder includeIdentitiesStream(boolean includeIdentitiesStream) {
             Utils.checkNotNull(includeIdentitiesStream, "includeIdentitiesStream");
@@ -190,22 +198,24 @@ public class ReplicatePermissionsACL {
         }
 
         /**
-         * This data can be used in downstream systems to recreate permission restrictions mirroring the original source
+         * This data can be used in downstream systems to recreate permission restrictions mirroring the
+         * original source
          */
         public Builder includeIdentitiesStream(Optional<Boolean> includeIdentitiesStream) {
             Utils.checkNotNull(includeIdentitiesStream, "includeIdentitiesStream");
             this.includeIdentitiesStream = includeIdentitiesStream;
             return this;
         }
-        
+
         public ReplicatePermissionsACL build() {
             if (includeIdentitiesStream == null) {
                 includeIdentitiesStream = _SINGLETON_VALUE_IncludeIdentitiesStream.value();
             }
+
             return new ReplicatePermissionsACL(
-                domain,
-                includeIdentitiesStream);
+                domain, includeIdentitiesStream);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceGoogleDriveSchemasDeliveryType>> _SINGLETON_VALUE_DeliveryType =
                 new LazySingletonValue<>(

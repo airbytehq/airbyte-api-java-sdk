@@ -19,13 +19,14 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class DestinationS3SchemasNoCompression {
 
     @JsonIgnore
     private Map<String, Object> additionalProperties;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression_type")
@@ -54,9 +55,10 @@ public class DestinationS3SchemasNoCompression {
         return (Optional<DestinationS3SchemasFormatCompressionType>) compressionType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public DestinationS3SchemasNoCompression withAdditionalProperty(String key, Object value) {
@@ -64,8 +66,7 @@ public class DestinationS3SchemasNoCompression {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public DestinationS3SchemasNoCompression withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -78,13 +79,13 @@ public class DestinationS3SchemasNoCompression {
         return this;
     }
 
+
     public DestinationS3SchemasNoCompression withCompressionType(Optional<? extends DestinationS3SchemasFormatCompressionType> compressionType) {
         Utils.checkNotNull(compressionType, "compressionType");
         this.compressionType = compressionType;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,15 +96,14 @@ public class DestinationS3SchemasNoCompression {
         }
         DestinationS3SchemasNoCompression other = (DestinationS3SchemasNoCompression) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.compressionType, other.compressionType);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.compressionType, other.compressionType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            compressionType);
+        return Utils.enhancedHash(
+            additionalProperties, compressionType);
     }
     
     @Override
@@ -112,13 +112,14 @@ public class DestinationS3SchemasNoCompression {
                 "additionalProperties", additionalProperties,
                 "compressionType", compressionType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends DestinationS3SchemasFormatCompressionType> compressionType;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -139,6 +140,7 @@ public class DestinationS3SchemasNoCompression {
             return this;
         }
 
+
         public Builder compressionType(DestinationS3SchemasFormatCompressionType compressionType) {
             Utils.checkNotNull(compressionType, "compressionType");
             this.compressionType = Optional.ofNullable(compressionType);
@@ -150,15 +152,17 @@ public class DestinationS3SchemasNoCompression {
             this.compressionType = compressionType;
             return this;
         }
-        
+
         public DestinationS3SchemasNoCompression build() {
             if (compressionType == null) {
                 compressionType = _SINGLETON_VALUE_CompressionType.value();
             }
+
             return new DestinationS3SchemasNoCompression(
                 compressionType)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationS3SchemasFormatCompressionType>> _SINGLETON_VALUE_CompressionType =
                 new LazySingletonValue<>(

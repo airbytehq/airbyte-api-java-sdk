@@ -11,27 +11,32 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class GoogleAdsCredentials {
 
+public class GoogleAdsCredentials {
     /**
-     * The Client ID of your Google Ads developer application. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
+     * The Client ID of your Google Ads developer application. For detailed instructions on finding this
+     * value, refer to our <a
+     * href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide">documentation</a>.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_id")
     private Optional<String> clientId;
 
     /**
-     * The Client Secret of your Google Ads developer application. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
+     * The Client Secret of your Google Ads developer application. For detailed instructions on finding
+     * this value, refer to our <a
+     * href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide">documentation</a>.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_secret")
     private Optional<String> clientSecret;
 
     /**
-     * The Developer Token granted by Google to use their APIs. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
+     * The Developer Token granted by Google to use their APIs. For detailed instructions on finding this
+     * value, refer to our <a
+     * href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide">documentation</a>.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("developer_token")
@@ -55,7 +60,9 @@ public class GoogleAdsCredentials {
     }
 
     /**
-     * The Client ID of your Google Ads developer application. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
+     * The Client ID of your Google Ads developer application. For detailed instructions on finding this
+     * value, refer to our <a
+     * href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide">documentation</a>.
      */
     @JsonIgnore
     public Optional<String> clientId() {
@@ -63,7 +70,9 @@ public class GoogleAdsCredentials {
     }
 
     /**
-     * The Client Secret of your Google Ads developer application. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
+     * The Client Secret of your Google Ads developer application. For detailed instructions on finding
+     * this value, refer to our <a
+     * href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide">documentation</a>.
      */
     @JsonIgnore
     public Optional<String> clientSecret() {
@@ -71,19 +80,24 @@ public class GoogleAdsCredentials {
     }
 
     /**
-     * The Developer Token granted by Google to use their APIs. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
+     * The Developer Token granted by Google to use their APIs. For detailed instructions on finding this
+     * value, refer to our <a
+     * href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide">documentation</a>.
      */
     @JsonIgnore
     public Optional<String> developerToken() {
         return developerToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The Client ID of your Google Ads developer application. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
+     * The Client ID of your Google Ads developer application. For detailed instructions on finding this
+     * value, refer to our <a
+     * href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide">documentation</a>.
      */
     public GoogleAdsCredentials withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -91,8 +105,11 @@ public class GoogleAdsCredentials {
         return this;
     }
 
+
     /**
-     * The Client ID of your Google Ads developer application. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
+     * The Client ID of your Google Ads developer application. For detailed instructions on finding this
+     * value, refer to our <a
+     * href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide">documentation</a>.
      */
     public GoogleAdsCredentials withClientId(Optional<String> clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -101,7 +118,9 @@ public class GoogleAdsCredentials {
     }
 
     /**
-     * The Client Secret of your Google Ads developer application. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
+     * The Client Secret of your Google Ads developer application. For detailed instructions on finding
+     * this value, refer to our <a
+     * href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide">documentation</a>.
      */
     public GoogleAdsCredentials withClientSecret(String clientSecret) {
         Utils.checkNotNull(clientSecret, "clientSecret");
@@ -109,8 +128,11 @@ public class GoogleAdsCredentials {
         return this;
     }
 
+
     /**
-     * The Client Secret of your Google Ads developer application. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
+     * The Client Secret of your Google Ads developer application. For detailed instructions on finding
+     * this value, refer to our <a
+     * href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide">documentation</a>.
      */
     public GoogleAdsCredentials withClientSecret(Optional<String> clientSecret) {
         Utils.checkNotNull(clientSecret, "clientSecret");
@@ -119,7 +141,9 @@ public class GoogleAdsCredentials {
     }
 
     /**
-     * The Developer Token granted by Google to use their APIs. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
+     * The Developer Token granted by Google to use their APIs. For detailed instructions on finding this
+     * value, refer to our <a
+     * href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide">documentation</a>.
      */
     public GoogleAdsCredentials withDeveloperToken(String developerToken) {
         Utils.checkNotNull(developerToken, "developerToken");
@@ -127,8 +151,11 @@ public class GoogleAdsCredentials {
         return this;
     }
 
+
     /**
-     * The Developer Token granted by Google to use their APIs. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
+     * The Developer Token granted by Google to use their APIs. For detailed instructions on finding this
+     * value, refer to our <a
+     * href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide">documentation</a>.
      */
     public GoogleAdsCredentials withDeveloperToken(Optional<String> developerToken) {
         Utils.checkNotNull(developerToken, "developerToken");
@@ -136,7 +163,6 @@ public class GoogleAdsCredentials {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -147,17 +173,15 @@ public class GoogleAdsCredentials {
         }
         GoogleAdsCredentials other = (GoogleAdsCredentials) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.developerToken, other.developerToken);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.developerToken, other.developerToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            developerToken);
+        return Utils.enhancedHash(
+            clientId, clientSecret, developerToken);
     }
     
     @Override
@@ -167,21 +191,25 @@ public class GoogleAdsCredentials {
                 "clientSecret", clientSecret,
                 "developerToken", developerToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> clientId = Optional.empty();
- 
+
         private Optional<String> clientSecret = Optional.empty();
- 
+
         private Optional<String> developerToken = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The Client ID of your Google Ads developer application. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
+         * The Client ID of your Google Ads developer application. For detailed instructions on finding this
+         * value, refer to our <a
+         * href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide">documentation</a>.
          */
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -190,7 +218,9 @@ public class GoogleAdsCredentials {
         }
 
         /**
-         * The Client ID of your Google Ads developer application. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
+         * The Client ID of your Google Ads developer application. For detailed instructions on finding this
+         * value, refer to our <a
+         * href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide">documentation</a>.
          */
         public Builder clientId(Optional<String> clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -198,8 +228,11 @@ public class GoogleAdsCredentials {
             return this;
         }
 
+
         /**
-         * The Client Secret of your Google Ads developer application. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
+         * The Client Secret of your Google Ads developer application. For detailed instructions on finding
+         * this value, refer to our <a
+         * href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide">documentation</a>.
          */
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
@@ -208,7 +241,9 @@ public class GoogleAdsCredentials {
         }
 
         /**
-         * The Client Secret of your Google Ads developer application. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
+         * The Client Secret of your Google Ads developer application. For detailed instructions on finding
+         * this value, refer to our <a
+         * href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide">documentation</a>.
          */
         public Builder clientSecret(Optional<String> clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
@@ -216,8 +251,11 @@ public class GoogleAdsCredentials {
             return this;
         }
 
+
         /**
-         * The Developer Token granted by Google to use their APIs. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
+         * The Developer Token granted by Google to use their APIs. For detailed instructions on finding this
+         * value, refer to our <a
+         * href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide">documentation</a>.
          */
         public Builder developerToken(String developerToken) {
             Utils.checkNotNull(developerToken, "developerToken");
@@ -226,19 +264,21 @@ public class GoogleAdsCredentials {
         }
 
         /**
-         * The Developer Token granted by Google to use their APIs. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
+         * The Developer Token granted by Google to use their APIs. For detailed instructions on finding this
+         * value, refer to our <a
+         * href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide">documentation</a>.
          */
         public Builder developerToken(Optional<String> developerToken) {
             Utils.checkNotNull(developerToken, "developerToken");
             this.developerToken = developerToken;
             return this;
         }
-        
+
         public GoogleAdsCredentials build() {
+
             return new GoogleAdsCredentials(
-                clientId,
-                clientSecret,
-                developerToken);
+                clientId, clientSecret, developerToken);
         }
+
     }
 }

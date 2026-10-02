@@ -14,7 +14,7 @@ public enum Sparkpost {
     @JsonValue
     private final String value;
 
-    private Sparkpost(String value) {
+    Sparkpost(String value) {
         this.value = value;
     }
     

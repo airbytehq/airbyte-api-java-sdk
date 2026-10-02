@@ -15,7 +15,7 @@ public enum Padding {
     @JsonValue
     private final String value;
 
-    private Padding(String value) {
+    Padding(String value) {
         this.value = value;
     }
     

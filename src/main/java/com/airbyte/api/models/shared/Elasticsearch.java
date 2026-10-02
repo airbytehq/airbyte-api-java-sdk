@@ -14,7 +14,7 @@ public enum Elasticsearch {
     @JsonValue
     private final String value;
 
-    private Elasticsearch(String value) {
+    Elasticsearch(String value) {
         this.value = value;
     }
     

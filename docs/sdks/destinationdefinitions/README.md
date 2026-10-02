@@ -1,5 +1,4 @@
 # DestinationDefinitions
-(*destinationDefinitions()*)
 
 ## Overview
 
@@ -17,6 +16,7 @@ Create a destination definition.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="createDestinationDefinition" method="post" path="/workspaces/{workspaceId}/definitions/destinations" -->
 ```java
 package hello.world;
 
@@ -45,7 +45,7 @@ public class Application {
                     .dockerRepository("<value>")
                     .name("<value>")
                     .build())
-                .workspaceId("f49928fc-e1f7-4278-9366-b5b974ad2068")
+                .workspaceId("20a22858-a8c3-4a9c-af3e-691931b55938")
                 .build();
 
         CreateDestinationDefinitionResponse res = sdk.destinationDefinitions().createDestinationDefinition()
@@ -53,7 +53,7 @@ public class Application {
                 .call();
 
         if (res.definitionResponse().isPresent()) {
-            // handle response
+            System.out.println(res.definitionResponse().get());
         }
     }
 }
@@ -81,6 +81,7 @@ Delete a destination definition.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="deleteDestinationDefinition" method="delete" path="/workspaces/{workspaceId}/definitions/destinations/{definitionId}" -->
 ```java
 package hello.world;
 
@@ -105,8 +106,8 @@ public class Application {
             .build();
 
         DeleteDestinationDefinitionRequest req = DeleteDestinationDefinitionRequest.builder()
-                .definitionId("7a6d93e0-5a99-4e33-87ce-c0e739faf1e9")
-                .workspaceId("619cc567-a21d-4f39-90ab-7854d54c9c42")
+                .definitionId("1f3ace88-4e9e-4438-8667-c98520825c79")
+                .workspaceId("b1b184d8-4def-4e2d-8e9d-7caadc80e180")
                 .build();
 
         DeleteDestinationDefinitionResponse res = sdk.destinationDefinitions().deleteDestinationDefinition()
@@ -114,7 +115,7 @@ public class Application {
                 .call();
 
         if (res.definitionResponse().isPresent()) {
-            // handle response
+            System.out.println(res.definitionResponse().get());
         }
     }
 }
@@ -142,6 +143,7 @@ Get destination definition details.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="getDestinationDefinition" method="get" path="/workspaces/{workspaceId}/definitions/destinations/{definitionId}" -->
 ```java
 package hello.world;
 
@@ -166,8 +168,8 @@ public class Application {
             .build();
 
         GetDestinationDefinitionRequest req = GetDestinationDefinitionRequest.builder()
-                .definitionId("5ddd49a6-7aa1-469d-bd19-fa66e3586402")
-                .workspaceId("5a9c29a5-f169-496b-b3b1-ab05028ede0b")
+                .definitionId("83a7ce8a-1507-42c5-84a3-1b95932f919f")
+                .workspaceId("443f2bd2-d502-4aec-b86f-c4e3d5675ae9")
                 .build();
 
         GetDestinationDefinitionResponse res = sdk.destinationDefinitions().getDestinationDefinition()
@@ -175,7 +177,7 @@ public class Application {
                 .call();
 
         if (res.definitionResponse().isPresent()) {
-            // handle response
+            System.out.println(res.definitionResponse().get());
         }
     }
 }
@@ -203,6 +205,7 @@ List destination definitions.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="listDestinationDefinitions" method="get" path="/workspaces/{workspaceId}/definitions/destinations" -->
 ```java
 package hello.world;
 
@@ -227,7 +230,7 @@ public class Application {
             .build();
 
         ListDestinationDefinitionsRequest req = ListDestinationDefinitionsRequest.builder()
-                .workspaceId("f1f18267-b72b-4ea5-a29c-8742c80ceaf4")
+                .workspaceId("aed43ac9-470c-4cba-8489-c73f9e881f94")
                 .build();
 
         ListDestinationDefinitionsResponse res = sdk.destinationDefinitions().listDestinationDefinitions()
@@ -235,7 +238,7 @@ public class Application {
                 .call();
 
         if (res.definitionsResponse().isPresent()) {
-            // handle response
+            System.out.println(res.definitionsResponse().get());
         }
     }
 }
@@ -263,6 +266,7 @@ Update destination definition details.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="updateDestinationDefinition" method="put" path="/workspaces/{workspaceId}/definitions/destinations/{definitionId}" -->
 ```java
 package hello.world;
 
@@ -290,8 +294,8 @@ public class Application {
                     .dockerImageTag("<value>")
                     .name("<value>")
                     .build())
-                .definitionId("97416649-dabf-43f9-8715-c5c8279f7f23")
-                .workspaceId("98e0ed50-276f-49ae-ad18-43bc892bb109")
+                .definitionId("43c71f97-6486-49c7-9f26-4de603fa3bb2")
+                .workspaceId("29dd981b-57da-413b-b1f4-012b1a97afc4")
                 .build();
 
         UpdateDestinationDefinitionResponse res = sdk.destinationDefinitions().updateDestinationDefinition()
@@ -299,7 +303,7 @@ public class Application {
                 .call();
 
         if (res.definitionResponse().isPresent()) {
-            // handle response
+            System.out.println(res.definitionResponse().get());
         }
     }
 }

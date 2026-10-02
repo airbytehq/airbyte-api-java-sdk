@@ -14,7 +14,7 @@ public enum Paperform {
     @JsonValue
     private final String value;
 
-    private Paperform(String value) {
+    Paperform(String value) {
         this.value = value;
     }
     

@@ -1,5 +1,13 @@
 # SearchCriteria
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SearchCriteria;
+
+SearchCriteria value = SearchCriteria.STARTS_WITH;
+```
+
 
 ## Values
 

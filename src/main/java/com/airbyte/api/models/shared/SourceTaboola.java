@@ -11,21 +11,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceTaboola {
-
     /**
      * The ID associated with your taboola account
      */
     @JsonProperty("account_id")
     private String accountId;
 
+
     @JsonProperty("client_id")
     private String clientId;
 
+
     @JsonProperty("client_secret")
     private String clientSecret;
+
 
     @JsonProperty("sourceType")
     private Taboola sourceType;
@@ -67,9 +69,10 @@ public class SourceTaboola {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The ID associated with your taboola account
@@ -92,7 +95,6 @@ public class SourceTaboola {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -103,18 +105,16 @@ public class SourceTaboola {
         }
         SourceTaboola other = (SourceTaboola) o;
         return 
-            Objects.deepEquals(this.accountId, other.accountId) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.accountId, other.accountId) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountId,
-            clientId,
-            clientSecret,
+        return Utils.enhancedHash(
+            accountId, clientId, clientSecret,
             sourceType);
     }
     
@@ -126,18 +126,20 @@ public class SourceTaboola {
                 "clientSecret", clientSecret,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accountId;
- 
+
         private String clientId;
- 
+
         private String clientSecret;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The ID associated with your taboola account
@@ -148,24 +150,26 @@ public class SourceTaboola {
             return this;
         }
 
+
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
             this.clientId = clientId;
             return this;
         }
 
+
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public SourceTaboola build() {
+
             return new SourceTaboola(
-                accountId,
-                clientId,
-                clientSecret);
+                accountId, clientId, clientSecret);
         }
+
 
         private static final LazySingletonValue<Taboola> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

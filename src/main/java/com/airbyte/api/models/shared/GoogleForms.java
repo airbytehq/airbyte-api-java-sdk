@@ -14,7 +14,7 @@ public enum GoogleForms {
     @JsonValue
     private final String value;
 
-    private GoogleForms(String value) {
+    GoogleForms(String value) {
         this.value = value;
     }
     

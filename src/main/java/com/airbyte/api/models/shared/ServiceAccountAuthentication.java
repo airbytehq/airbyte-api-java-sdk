@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class ServiceAccountAuthentication {
 
@@ -24,7 +24,9 @@ public class ServiceAccountAuthentication {
     private Optional<? extends SourceGcsSchemasAuthType> authType;
 
     /**
-     * Enter your Google Cloud &lt;a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys"&gt;service account key&lt;/a&gt; in JSON format
+     * Enter your Google Cloud <a
+     * href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys">service
+     * account key</a> in JSON format
      */
     @JsonProperty("service_account")
     private String serviceAccount;
@@ -44,19 +46,24 @@ public class ServiceAccountAuthentication {
     }
 
     /**
-     * Enter your Google Cloud &lt;a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys"&gt;service account key&lt;/a&gt; in JSON format
+     * Enter your Google Cloud <a
+     * href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys">service
+     * account key</a> in JSON format
      */
     @JsonIgnore
     public String serviceAccount() {
         return serviceAccount;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Enter your Google Cloud &lt;a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys"&gt;service account key&lt;/a&gt; in JSON format
+     * Enter your Google Cloud <a
+     * href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys">service
+     * account key</a> in JSON format
      */
     public ServiceAccountAuthentication withServiceAccount(String serviceAccount) {
         Utils.checkNotNull(serviceAccount, "serviceAccount");
@@ -64,7 +71,6 @@ public class ServiceAccountAuthentication {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -75,15 +81,14 @@ public class ServiceAccountAuthentication {
         }
         ServiceAccountAuthentication other = (ServiceAccountAuthentication) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.serviceAccount, other.serviceAccount);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.serviceAccount, other.serviceAccount);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            serviceAccount);
+        return Utils.enhancedHash(
+            authType, serviceAccount);
     }
     
     @Override
@@ -92,28 +97,34 @@ public class ServiceAccountAuthentication {
                 "authType", authType,
                 "serviceAccount", serviceAccount);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String serviceAccount;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Enter your Google Cloud &lt;a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys"&gt;service account key&lt;/a&gt; in JSON format
+         * Enter your Google Cloud <a
+         * href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys">service
+         * account key</a> in JSON format
          */
         public Builder serviceAccount(String serviceAccount) {
             Utils.checkNotNull(serviceAccount, "serviceAccount");
             this.serviceAccount = serviceAccount;
             return this;
         }
-        
+
         public ServiceAccountAuthentication build() {
+
             return new ServiceAccountAuthentication(
                 serviceAccount);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceGcsSchemasAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

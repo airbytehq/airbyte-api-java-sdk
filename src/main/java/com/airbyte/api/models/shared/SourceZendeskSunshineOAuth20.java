@@ -14,16 +14,16 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceZendeskSunshineOAuth20 {
 
+public class SourceZendeskSunshineOAuth20 {
     /**
      * Long-term access Token for making authenticated requests.
      */
     @JsonProperty("access_token")
     private String accessToken;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_method")
@@ -85,9 +85,10 @@ public class SourceZendeskSunshineOAuth20 {
         return clientSecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Long-term access Token for making authenticated requests.
@@ -116,7 +117,6 @@ public class SourceZendeskSunshineOAuth20 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -127,18 +127,16 @@ public class SourceZendeskSunshineOAuth20 {
         }
         SourceZendeskSunshineOAuth20 other = (SourceZendeskSunshineOAuth20) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.authMethod, other.authMethod) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.authMethod, other.authMethod) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            authMethod,
-            clientId,
+        return Utils.enhancedHash(
+            accessToken, authMethod, clientId,
             clientSecret);
     }
     
@@ -150,18 +148,20 @@ public class SourceZendeskSunshineOAuth20 {
                 "clientId", clientId,
                 "clientSecret", clientSecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private String clientId;
- 
+
         private String clientSecret;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Long-term access Token for making authenticated requests.
@@ -172,6 +172,7 @@ public class SourceZendeskSunshineOAuth20 {
             return this;
         }
 
+
         /**
          * The Client ID of your OAuth application.
          */
@@ -181,6 +182,7 @@ public class SourceZendeskSunshineOAuth20 {
             return this;
         }
 
+
         /**
          * The Client Secret of your OAuth application.
          */
@@ -189,13 +191,13 @@ public class SourceZendeskSunshineOAuth20 {
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public SourceZendeskSunshineOAuth20 build() {
+
             return new SourceZendeskSunshineOAuth20(
-                accessToken,
-                clientId,
-                clientSecret);
+                accessToken, clientId, clientSecret);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceZendeskSunshineAuthMethod>> _SINGLETON_VALUE_AuthMethod =
                 new LazySingletonValue<>(

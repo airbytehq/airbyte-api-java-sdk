@@ -21,20 +21,23 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class DestinationS3Zstandard {
 
     @JsonIgnore
     private Map<String, Object> additionalProperties;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("codec")
     private Optional<? extends DestinationS3SchemasFormatOutputFormat3Codec> codec;
 
+
     @JsonProperty("compression_level")
     private long compressionLevel;
+
 
     @JsonProperty("include_checksum")
     private boolean includeChecksum;
@@ -80,9 +83,10 @@ public class DestinationS3Zstandard {
         return includeChecksum;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public DestinationS3Zstandard withAdditionalProperty(String key, Object value) {
@@ -90,8 +94,7 @@ public class DestinationS3Zstandard {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public DestinationS3Zstandard withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -103,6 +106,7 @@ public class DestinationS3Zstandard {
         this.codec = Optional.ofNullable(codec);
         return this;
     }
+
 
     public DestinationS3Zstandard withCodec(Optional<? extends DestinationS3SchemasFormatOutputFormat3Codec> codec) {
         Utils.checkNotNull(codec, "codec");
@@ -122,7 +126,6 @@ public class DestinationS3Zstandard {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -133,18 +136,16 @@ public class DestinationS3Zstandard {
         }
         DestinationS3Zstandard other = (DestinationS3Zstandard) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.codec, other.codec) &&
-            Objects.deepEquals(this.compressionLevel, other.compressionLevel) &&
-            Objects.deepEquals(this.includeChecksum, other.includeChecksum);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.codec, other.codec) &&
+            Utils.enhancedDeepEquals(this.compressionLevel, other.compressionLevel) &&
+            Utils.enhancedDeepEquals(this.includeChecksum, other.includeChecksum);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            codec,
-            compressionLevel,
+        return Utils.enhancedHash(
+            additionalProperties, codec, compressionLevel,
             includeChecksum);
     }
     
@@ -156,17 +157,18 @@ public class DestinationS3Zstandard {
                 "compressionLevel", compressionLevel,
                 "includeChecksum", includeChecksum);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends DestinationS3SchemasFormatOutputFormat3Codec> codec;
- 
+
         private Long compressionLevel;
- 
+
         private Boolean includeChecksum;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -187,6 +189,7 @@ public class DestinationS3Zstandard {
             return this;
         }
 
+
         public Builder codec(DestinationS3SchemasFormatOutputFormat3Codec codec) {
             Utils.checkNotNull(codec, "codec");
             this.codec = Optional.ofNullable(codec);
@@ -199,28 +202,30 @@ public class DestinationS3Zstandard {
             return this;
         }
 
+
         public Builder compressionLevel(long compressionLevel) {
             Utils.checkNotNull(compressionLevel, "compressionLevel");
             this.compressionLevel = compressionLevel;
             return this;
         }
 
+
         public Builder includeChecksum(boolean includeChecksum) {
             Utils.checkNotNull(includeChecksum, "includeChecksum");
             this.includeChecksum = includeChecksum;
             return this;
         }
-        
+
         public DestinationS3Zstandard build() {
             if (codec == null) {
                 codec = _SINGLETON_VALUE_Codec.value();
             }
+
             return new DestinationS3Zstandard(
-                codec,
-                compressionLevel,
-                includeChecksum)
+                codec, compressionLevel, includeChecksum)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationS3SchemasFormatOutputFormat3Codec>> _SINGLETON_VALUE_Codec =
                 new LazySingletonValue<>(

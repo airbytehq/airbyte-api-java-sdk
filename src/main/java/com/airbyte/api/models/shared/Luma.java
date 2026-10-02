@@ -14,7 +14,7 @@ public enum Luma {
     @JsonValue
     private final String value;
 
-    private Luma(String value) {
+    Luma(String value) {
         this.value = value;
     }
     

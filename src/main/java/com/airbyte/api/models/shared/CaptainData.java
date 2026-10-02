@@ -14,7 +14,7 @@ public enum CaptainData {
     @JsonValue
     private final String value;
 
-    private CaptainData(String value) {
+    CaptainData(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum NewsdataIo {
     @JsonValue
     private final String value;
 
-    private NewsdataIo(String value) {
+    NewsdataIo(String value) {
         this.value = value;
     }
     

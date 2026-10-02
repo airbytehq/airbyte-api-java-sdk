@@ -9,10 +9,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class PermissionUpdateRequest {
-
     /**
      * Describes what actions/endpoints the permission entitles to
      */
@@ -34,9 +33,10 @@ public class PermissionUpdateRequest {
         return permissionType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Describes what actions/endpoints the permission entitles to
@@ -47,7 +47,6 @@ public class PermissionUpdateRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -58,12 +57,12 @@ public class PermissionUpdateRequest {
         }
         PermissionUpdateRequest other = (PermissionUpdateRequest) o;
         return 
-            Objects.deepEquals(this.permissionType, other.permissionType);
+            Utils.enhancedDeepEquals(this.permissionType, other.permissionType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             permissionType);
     }
     
@@ -72,14 +71,16 @@ public class PermissionUpdateRequest {
         return Utils.toString(PermissionUpdateRequest.class,
                 "permissionType", permissionType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private PermissionType permissionType;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Describes what actions/endpoints the permission entitles to
@@ -89,10 +90,12 @@ public class PermissionUpdateRequest {
             this.permissionType = permissionType;
             return this;
         }
-        
+
         public PermissionUpdateRequest build() {
+
             return new PermissionUpdateRequest(
                 permissionType);
         }
+
     }
 }

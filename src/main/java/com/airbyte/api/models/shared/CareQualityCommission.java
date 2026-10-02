@@ -14,7 +14,7 @@ public enum CareQualityCommission {
     @JsonValue
     private final String value;
 
-    private CareQualityCommission(String value) {
+    CareQualityCommission(String value) {
         this.value = value;
     }
     

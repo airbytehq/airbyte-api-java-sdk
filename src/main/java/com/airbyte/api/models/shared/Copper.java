@@ -14,7 +14,7 @@ public enum Copper {
     @JsonValue
     private final String value;
 
-    private Copper(String value) {
+    Copper(String value) {
         this.value = value;
     }
     

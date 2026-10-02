@@ -14,7 +14,7 @@ public enum DestinationMilvusSchemasEmbeddingEmbedding5Mode {
     @JsonValue
     private final String value;
 
-    private DestinationMilvusSchemasEmbeddingEmbedding5Mode(String value) {
+    DestinationMilvusSchemasEmbeddingEmbedding5Mode(String value) {
         this.value = value;
     }
     

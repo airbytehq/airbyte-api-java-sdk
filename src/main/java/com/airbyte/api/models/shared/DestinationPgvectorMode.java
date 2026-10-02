@@ -14,7 +14,7 @@ public enum DestinationPgvectorMode {
     @JsonValue
     private final String value;
 
-    private DestinationPgvectorMode(String value) {
+    DestinationPgvectorMode(String value) {
         this.value = value;
     }
     

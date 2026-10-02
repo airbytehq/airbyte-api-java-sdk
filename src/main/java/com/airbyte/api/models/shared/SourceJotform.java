@@ -12,21 +12,25 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceJotform {
 
     @JsonProperty("api_endpoint")
     private APIEndpoint apiEndpoint;
 
+
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("end_date")
     private OffsetDateTime endDate;
 
+
     @JsonProperty("sourceType")
     private Jotform sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -73,9 +77,10 @@ public class SourceJotform {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceJotform withApiEndpoint(APIEndpoint apiEndpoint) {
         Utils.checkNotNull(apiEndpoint, "apiEndpoint");
@@ -101,7 +106,6 @@ public class SourceJotform {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -112,21 +116,18 @@ public class SourceJotform {
         }
         SourceJotform other = (SourceJotform) o;
         return 
-            Objects.deepEquals(this.apiEndpoint, other.apiEndpoint) &&
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiEndpoint, other.apiEndpoint) &&
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiEndpoint,
-            apiKey,
-            endDate,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiEndpoint, apiKey, endDate,
+            sourceType, startDate);
     }
     
     @Override
@@ -138,20 +139,22 @@ public class SourceJotform {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private APIEndpoint apiEndpoint;
- 
+
         private String apiKey;
- 
+
         private OffsetDateTime endDate;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiEndpoint(APIEndpoint apiEndpoint) {
             Utils.checkNotNull(apiEndpoint, "apiEndpoint");
@@ -159,11 +162,13 @@ public class SourceJotform {
             return this;
         }
 
+
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         public Builder endDate(OffsetDateTime endDate) {
             Utils.checkNotNull(endDate, "endDate");
@@ -171,19 +176,20 @@ public class SourceJotform {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceJotform build() {
+
             return new SourceJotform(
-                apiEndpoint,
-                apiKey,
-                endDate,
+                apiEndpoint, apiKey, endDate,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Jotform> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

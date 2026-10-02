@@ -14,7 +14,7 @@ public enum SourceAzureBlobStorageFiletype {
     @JsonValue
     private final String value;
 
-    private SourceAzureBlobStorageFiletype(String value) {
+    SourceAzureBlobStorageFiletype(String value) {
         this.value = value;
     }
     

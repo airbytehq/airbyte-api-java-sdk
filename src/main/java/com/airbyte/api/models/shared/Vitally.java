@@ -14,7 +14,7 @@ public enum Vitally {
     @JsonValue
     private final String value;
 
-    private Vitally(String value) {
+    Vitally(String value) {
         this.value = value;
     }
     

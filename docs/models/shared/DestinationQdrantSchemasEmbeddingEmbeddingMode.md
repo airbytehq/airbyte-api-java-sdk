@@ -1,5 +1,13 @@
 # DestinationQdrantSchemasEmbeddingEmbeddingMode
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DestinationQdrantSchemasEmbeddingEmbeddingMode;
+
+DestinationQdrantSchemasEmbeddingEmbeddingMode value = DestinationQdrantSchemasEmbeddingEmbeddingMode.AZURE_OPENAI;
+```
+
 
 ## Values
 

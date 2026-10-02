@@ -8,18 +8,13 @@ import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 
-/**
- * DestinationClickhouseSchemasTunnelMethod
- * 
- * <p>Connect through a jump server tunnel host using username and password authentication
- */
 public enum DestinationClickhouseSchemasTunnelMethod {
     SSH_PASSWORD_AUTH("SSH_PASSWORD_AUTH");
 
     @JsonValue
     private final String value;
 
-    private DestinationClickhouseSchemasTunnelMethod(String value) {
+    DestinationClickhouseSchemasTunnelMethod(String value) {
         this.value = value;
     }
     

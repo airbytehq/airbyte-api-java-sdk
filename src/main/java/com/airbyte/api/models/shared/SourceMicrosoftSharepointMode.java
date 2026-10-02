@@ -14,7 +14,7 @@ public enum SourceMicrosoftSharepointMode {
     @JsonValue
     private final String value;
 
-    private SourceMicrosoftSharepointMode(String value) {
+    SourceMicrosoftSharepointMode(String value) {
         this.value = value;
     }
     

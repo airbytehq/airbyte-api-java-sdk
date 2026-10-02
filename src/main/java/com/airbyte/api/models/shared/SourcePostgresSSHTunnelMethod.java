@@ -14,18 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourcePostgresSSHTunnelMethod
  * 
- * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+ * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+ * authentication to use.
  */
 @JsonDeserialize(using = SourcePostgresSSHTunnelMethod._Deserializer.class)
 public class SourcePostgresSSHTunnelMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourcePostgresSSHTunnelMethod(TypedObject value) {
         this.value = value;
@@ -33,17 +33,17 @@ public class SourcePostgresSSHTunnelMethod {
 
     public static SourcePostgresSSHTunnelMethod of(SourcePostgresNoTunnel value) {
         Utils.checkNotNull(value, "value");
-        return new SourcePostgresSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePostgresNoTunnel>(){}));
+        return new SourcePostgresSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourcePostgresSSHTunnelMethod of(SourcePostgresSSHKeyAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new SourcePostgresSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePostgresSSHKeyAuthentication>(){}));
+        return new SourcePostgresSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourcePostgresSSHTunnelMethod of(SourcePostgresPasswordAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new SourcePostgresSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePostgresPasswordAuthentication>(){}));
+        return new SourcePostgresSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +67,7 @@ public class SourcePostgresSSHTunnelMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +78,12 @@ public class SourcePostgresSSHTunnelMethod {
             return false;
         }
         SourcePostgresSSHTunnelMethod other = (SourcePostgresSSHTunnelMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -91,9 +91,9 @@ public class SourcePostgresSSHTunnelMethod {
 
         public _Deserializer() {
             super(SourcePostgresSSHTunnelMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourcePostgresPasswordAuthentication>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePostgresNoTunnel>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourcePostgresSSHKeyAuthentication>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePostgresNoTunnel>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourcePostgresPasswordAuthentication>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -102,6 +102,6 @@ public class SourcePostgresSSHTunnelMethod {
         return Utils.toString(SourcePostgresSSHTunnelMethod.class,
                 "value", value);
     }
- 
+
 }
 

@@ -14,7 +14,7 @@ public enum ZapierSupportedStorage {
     @JsonValue
     private final String value;
 
-    private ZapierSupportedStorage(String value) {
+    ZapierSupportedStorage(String value) {
         this.value = value;
     }
     

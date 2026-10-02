@@ -14,13 +14,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * DestinationPineconeFake
  * 
- * <p>Use a fake embedding made out of random vectors with 1536 embedding dimensions. This is useful for testing the data pipeline without incurring any costs.
+ * <p>Use a fake embedding made out of random vectors with 1536 embedding dimensions. This is useful for
+ * testing the data pipeline without incurring any costs.
  */
 public class DestinationPineconeFake {
 
@@ -30,7 +30,6 @@ public class DestinationPineconeFake {
 
     @JsonCreator
     public DestinationPineconeFake() {
-        
         this.mode = Builder._SINGLETON_VALUE_Mode.value();
     }
 
@@ -40,11 +39,11 @@ public class DestinationPineconeFake {
         return (Optional<DestinationPineconeSchemasEmbeddingMode>) mode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -55,12 +54,12 @@ public class DestinationPineconeFake {
         }
         DestinationPineconeFake other = (DestinationPineconeFake) o;
         return 
-            Objects.deepEquals(this.mode, other.mode);
+            Utils.enhancedDeepEquals(this.mode, other.mode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             mode);
     }
     
@@ -69,17 +68,20 @@ public class DestinationPineconeFake {
         return Utils.toString(DestinationPineconeFake.class,
                 "mode", mode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public DestinationPineconeFake build() {
+
             return new DestinationPineconeFake(
                 );
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationPineconeSchemasEmbeddingMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

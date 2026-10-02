@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceCallrail {
-
     /**
      * Account ID
      */
@@ -26,6 +25,7 @@ public class SourceCallrail {
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Callrail sourceType;
@@ -79,9 +79,10 @@ public class SourceCallrail {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Account ID
@@ -110,7 +111,6 @@ public class SourceCallrail {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -121,18 +121,16 @@ public class SourceCallrail {
         }
         SourceCallrail other = (SourceCallrail) o;
         return 
-            Objects.deepEquals(this.accountId, other.accountId) &&
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.accountId, other.accountId) &&
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountId,
-            apiKey,
-            sourceType,
+        return Utils.enhancedHash(
+            accountId, apiKey, sourceType,
             startDate);
     }
     
@@ -144,18 +142,20 @@ public class SourceCallrail {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accountId;
- 
+
         private String apiKey;
- 
+
         private String startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Account ID
@@ -166,6 +166,7 @@ public class SourceCallrail {
             return this;
         }
 
+
         /**
          * API access key
          */
@@ -175,6 +176,7 @@ public class SourceCallrail {
             return this;
         }
 
+
         /**
          * Start getting data from that date.
          */
@@ -183,13 +185,13 @@ public class SourceCallrail {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceCallrail build() {
+
             return new SourceCallrail(
-                accountId,
-                apiKey,
-                startDate);
+                accountId, apiKey, startDate);
         }
+
 
         private static final LazySingletonValue<Callrail> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(
