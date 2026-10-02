@@ -2,6 +2,14 @@
 
 The region of the Dynamodb database
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceDynamodbDynamodbRegion;
+
+SourceDynamodbDynamodbRegion value = SourceDynamodbDynamodbRegion.UNKNOWN;
+```
+
 
 ## Values
 

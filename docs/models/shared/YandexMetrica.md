@@ -1,5 +1,13 @@
 # YandexMetrica
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.YandexMetrica;
+
+YandexMetrica value = YandexMetrica.YANDEX_METRICA;
+```
+
 
 ## Values
 

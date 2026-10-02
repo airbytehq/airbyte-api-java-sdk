@@ -26,7 +26,7 @@ public enum SourceZohoBooksRegion {
     @JsonValue
     private final String value;
 
-    private SourceZohoBooksRegion(String value) {
+    SourceZohoBooksRegion(String value) {
         this.value = value;
     }
     

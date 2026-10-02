@@ -14,13 +14,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceLob {
 
+public class SourceLob {
     /**
-     * API key to use for authentication. You can find your account's API keys in your Dashboard Settings at https://dashboard.lob.com/settings/api-keys.
+     * API key to use for authentication. You can find your account's API keys in your Dashboard Settings
+     * at https://dashboard.lob.com/settings/api-keys.
      */
     @JsonProperty("api_key")
     private String apiKey;
@@ -32,8 +32,10 @@ public class SourceLob {
     @JsonProperty("limit")
     private Optional<String> limit;
 
+
     @JsonProperty("sourceType")
     private Lob sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -59,7 +61,8 @@ public class SourceLob {
     }
 
     /**
-     * API key to use for authentication. You can find your account's API keys in your Dashboard Settings at https://dashboard.lob.com/settings/api-keys.
+     * API key to use for authentication. You can find your account's API keys in your Dashboard Settings
+     * at https://dashboard.lob.com/settings/api-keys.
      */
     @JsonIgnore
     public String apiKey() {
@@ -84,12 +87,14 @@ public class SourceLob {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * API key to use for authentication. You can find your account's API keys in your Dashboard Settings at https://dashboard.lob.com/settings/api-keys.
+     * API key to use for authentication. You can find your account's API keys in your Dashboard Settings
+     * at https://dashboard.lob.com/settings/api-keys.
      */
     public SourceLob withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -106,6 +111,7 @@ public class SourceLob {
         return this;
     }
 
+
     /**
      * Max records per page limit
      */
@@ -121,7 +127,6 @@ public class SourceLob {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -132,18 +137,16 @@ public class SourceLob {
         }
         SourceLob other = (SourceLob) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.limit, other.limit) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.limit, other.limit) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            limit,
-            sourceType,
+        return Utils.enhancedHash(
+            apiKey, limit, sourceType,
             startDate);
     }
     
@@ -155,27 +158,31 @@ public class SourceLob {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> limit;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * API key to use for authentication. You can find your account's API keys in your Dashboard Settings at https://dashboard.lob.com/settings/api-keys.
+         * API key to use for authentication. You can find your account's API keys in your Dashboard Settings
+         * at https://dashboard.lob.com/settings/api-keys.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Max records per page limit
@@ -195,21 +202,22 @@ public class SourceLob {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceLob build() {
             if (limit == null) {
                 limit = _SINGLETON_VALUE_Limit.value();
             }
+
             return new SourceLob(
-                apiKey,
-                limit,
-                startDate);
+                apiKey, limit, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Limit =
                 new LazySingletonValue<>(

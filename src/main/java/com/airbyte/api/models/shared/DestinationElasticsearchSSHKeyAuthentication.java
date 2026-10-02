@@ -14,13 +14,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationElasticsearchSSHKeyAuthentication {
 
+public class DestinationElasticsearchSSHKeyAuthentication {
     /**
-     * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM -f myuser_rsa )
+     * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM
+     * -f myuser_rsa )
      */
     @JsonProperty("ssh_key")
     private String sshKey;
@@ -71,11 +71,13 @@ public class DestinationElasticsearchSSHKeyAuthentication {
             String sshKey,
             String tunnelHost,
             String tunnelUser) {
-        this(sshKey, tunnelHost, Optional.empty(), tunnelUser);
+        this(sshKey, tunnelHost, Optional.empty(),
+            tunnelUser);
     }
 
     /**
-     * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM -f myuser_rsa )
+     * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM
+     * -f myuser_rsa )
      */
     @JsonIgnore
     public String sshKey() {
@@ -114,12 +116,14 @@ public class DestinationElasticsearchSSHKeyAuthentication {
         return tunnelUser;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM -f myuser_rsa )
+     * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM
+     * -f myuser_rsa )
      */
     public DestinationElasticsearchSSHKeyAuthentication withSshKey(String sshKey) {
         Utils.checkNotNull(sshKey, "sshKey");
@@ -145,6 +149,7 @@ public class DestinationElasticsearchSSHKeyAuthentication {
         return this;
     }
 
+
     /**
      * Port on the proxy/jump server that accepts inbound ssh connections.
      */
@@ -163,7 +168,6 @@ public class DestinationElasticsearchSSHKeyAuthentication {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -174,21 +178,18 @@ public class DestinationElasticsearchSSHKeyAuthentication {
         }
         DestinationElasticsearchSSHKeyAuthentication other = (DestinationElasticsearchSSHKeyAuthentication) o;
         return 
-            Objects.deepEquals(this.sshKey, other.sshKey) &&
-            Objects.deepEquals(this.tunnelHost, other.tunnelHost) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
-            Objects.deepEquals(this.tunnelPort, other.tunnelPort) &&
-            Objects.deepEquals(this.tunnelUser, other.tunnelUser);
+            Utils.enhancedDeepEquals(this.sshKey, other.sshKey) &&
+            Utils.enhancedDeepEquals(this.tunnelHost, other.tunnelHost) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.tunnelPort, other.tunnelPort) &&
+            Utils.enhancedDeepEquals(this.tunnelUser, other.tunnelUser);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            sshKey,
-            tunnelHost,
-            tunnelMethod,
-            tunnelPort,
-            tunnelUser);
+        return Utils.enhancedHash(
+            sshKey, tunnelHost, tunnelMethod,
+            tunnelPort, tunnelUser);
     }
     
     @Override
@@ -200,29 +201,33 @@ public class DestinationElasticsearchSSHKeyAuthentication {
                 "tunnelPort", tunnelPort,
                 "tunnelUser", tunnelUser);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String sshKey;
- 
+
         private String tunnelHost;
- 
+
         private Optional<Long> tunnelPort;
- 
+
         private String tunnelUser;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM -f myuser_rsa )
+         * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM
+         * -f myuser_rsa )
          */
         public Builder sshKey(String sshKey) {
             Utils.checkNotNull(sshKey, "sshKey");
             this.sshKey = sshKey;
             return this;
         }
+
 
         /**
          * Hostname of the jump server host that allows inbound ssh tunnel.
@@ -232,6 +237,7 @@ public class DestinationElasticsearchSSHKeyAuthentication {
             this.tunnelHost = tunnelHost;
             return this;
         }
+
 
         /**
          * Port on the proxy/jump server that accepts inbound ssh connections.
@@ -251,6 +257,7 @@ public class DestinationElasticsearchSSHKeyAuthentication {
             return this;
         }
 
+
         /**
          * OS-level username for logging into the jump server host.
          */
@@ -259,17 +266,17 @@ public class DestinationElasticsearchSSHKeyAuthentication {
             this.tunnelUser = tunnelUser;
             return this;
         }
-        
+
         public DestinationElasticsearchSSHKeyAuthentication build() {
             if (tunnelPort == null) {
                 tunnelPort = _SINGLETON_VALUE_TunnelPort.value();
             }
+
             return new DestinationElasticsearchSSHKeyAuthentication(
-                sshKey,
-                tunnelHost,
-                tunnelPort,
+                sshKey, tunnelHost, tunnelPort,
                 tunnelUser);
         }
+
 
         private static final LazySingletonValue<DestinationElasticsearchSchemasTunnelMethod> _SINGLETON_VALUE_TunnelMethod =
                 new LazySingletonValue<>(

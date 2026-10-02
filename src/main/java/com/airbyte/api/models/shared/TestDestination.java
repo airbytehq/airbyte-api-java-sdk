@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * TestDestination
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class TestDestination {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private TestDestination(TypedObject value) {
         this.value = value;
@@ -33,22 +32,22 @@ public class TestDestination {
 
     public static TestDestination of(Logging value) {
         Utils.checkNotNull(value, "value");
-        return new TestDestination(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Logging>(){}));
+        return new TestDestination(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TestDestination of(Silent value) {
         Utils.checkNotNull(value, "value");
-        return new TestDestination(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Silent>(){}));
+        return new TestDestination(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TestDestination of(Throttled value) {
         Utils.checkNotNull(value, "value");
-        return new TestDestination(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Throttled>(){}));
+        return new TestDestination(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static TestDestination of(Failing value) {
         Utils.checkNotNull(value, "value");
-        return new TestDestination(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Failing>(){}));
+        return new TestDestination(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -73,7 +72,7 @@ public class TestDestination {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -84,12 +83,12 @@ public class TestDestination {
             return false;
         }
         TestDestination other = (TestDestination) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -97,10 +96,10 @@ public class TestDestination {
 
         public _Deserializer() {
             super(TestDestination.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<Failing>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Throttled>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<Logging>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Silent>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Silent>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<Throttled>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<Failing>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -109,6 +108,6 @@ public class TestDestination {
         return Utils.toString(TestDestination.class,
                 "value", value);
     }
- 
+
 }
 

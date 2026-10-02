@@ -27,7 +27,7 @@ public enum TopHeadlinesTopic {
     @JsonValue
     private final String value;
 
-    private TopHeadlinesTopic(String value) {
+    TopHeadlinesTopic(String value) {
         this.value = value;
     }
     

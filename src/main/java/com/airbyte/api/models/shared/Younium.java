@@ -14,7 +14,7 @@ public enum Younium {
     @JsonValue
     private final String value;
 
-    private Younium(String value) {
+    Younium(String value) {
         this.value = value;
     }
     

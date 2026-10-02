@@ -14,7 +14,7 @@ public enum Veeqo {
     @JsonValue
     private final String value;
 
-    private Veeqo(String value) {
+    Veeqo(String value) {
         this.value = value;
     }
     

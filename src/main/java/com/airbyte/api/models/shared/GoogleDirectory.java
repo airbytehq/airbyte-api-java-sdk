@@ -14,7 +14,7 @@ public enum GoogleDirectory {
     @JsonValue
     private final String value;
 
-    private GoogleDirectory(String value) {
+    GoogleDirectory(String value) {
         this.value = value;
     }
     

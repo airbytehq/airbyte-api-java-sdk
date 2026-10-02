@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceWhiskyHunter {
 
@@ -20,7 +20,6 @@ public class SourceWhiskyHunter {
 
     @JsonCreator
     public SourceWhiskyHunter() {
-        
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
 
@@ -29,11 +28,11 @@ public class SourceWhiskyHunter {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -44,12 +43,12 @@ public class SourceWhiskyHunter {
         }
         SourceWhiskyHunter other = (SourceWhiskyHunter) o;
         return 
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             sourceType);
     }
     
@@ -58,17 +57,20 @@ public class SourceWhiskyHunter {
         return Utils.toString(SourceWhiskyHunter.class,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public SourceWhiskyHunter build() {
+
             return new SourceWhiskyHunter(
                 );
         }
+
 
         private static final LazySingletonValue<WhiskyHunter> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum Toggl {
     @JsonValue
     private final String value;
 
-    private Toggl(String value) {
+    Toggl(String value) {
         this.value = value;
     }
     

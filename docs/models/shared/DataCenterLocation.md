@@ -2,6 +2,14 @@
 
 Please choose the region of your Data Center location. More info by this <a href="https://www.zoho.com/crm/developer/docs/api/v2/multi-dc.html">Link</a>
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DataCenterLocation;
+
+DataCenterLocation value = DataCenterLocation.US;
+```
+
 
 ## Values
 

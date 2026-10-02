@@ -14,7 +14,7 @@ public enum Ticketmaster {
     @JsonValue
     private final String value;
 
-    private Ticketmaster(String value) {
+    Ticketmaster(String value) {
         this.value = value;
     }
     

@@ -2,6 +2,14 @@
 
 This parameter allows you to specify the country where the news articles returned by the API were published, the contents of the articles are not necessarily related to the specified country. You have to set as value the 2 letters code of the country you want to filter.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceGnewsCountry;
+
+SourceGnewsCountry value = SourceGnewsCountry.AU;
+```
+
 
 ## Values
 

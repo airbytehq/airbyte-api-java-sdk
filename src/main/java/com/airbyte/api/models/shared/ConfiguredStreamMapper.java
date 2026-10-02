@@ -11,8 +11,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class ConfiguredStreamMapper {
 
@@ -25,6 +25,7 @@ public class ConfiguredStreamMapper {
      */
     @JsonProperty("mapperConfiguration")
     private MapperConfiguration mapperConfiguration;
+
 
     @JsonProperty("type")
     private StreamMapperType type;
@@ -66,15 +67,17 @@ public class ConfiguredStreamMapper {
         return type;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public ConfiguredStreamMapper withId(String id) {
         Utils.checkNotNull(id, "id");
         this.id = Optional.ofNullable(id);
         return this;
     }
+
 
     public ConfiguredStreamMapper withId(Optional<String> id) {
         Utils.checkNotNull(id, "id");
@@ -97,7 +100,6 @@ public class ConfiguredStreamMapper {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -108,17 +110,15 @@ public class ConfiguredStreamMapper {
         }
         ConfiguredStreamMapper other = (ConfiguredStreamMapper) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.mapperConfiguration, other.mapperConfiguration) &&
-            Objects.deepEquals(this.type, other.type);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.mapperConfiguration, other.mapperConfiguration) &&
+            Utils.enhancedDeepEquals(this.type, other.type);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            id,
-            mapperConfiguration,
-            type);
+        return Utils.enhancedHash(
+            id, mapperConfiguration, type);
     }
     
     @Override
@@ -128,18 +128,20 @@ public class ConfiguredStreamMapper {
                 "mapperConfiguration", mapperConfiguration,
                 "type", type);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> id = Optional.empty();
- 
+
         private MapperConfiguration mapperConfiguration;
- 
+
         private StreamMapperType type;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
@@ -153,6 +155,7 @@ public class ConfiguredStreamMapper {
             return this;
         }
 
+
         /**
          * The values required to configure the mapper.
          */
@@ -162,17 +165,18 @@ public class ConfiguredStreamMapper {
             return this;
         }
 
+
         public Builder type(StreamMapperType type) {
             Utils.checkNotNull(type, "type");
             this.type = type;
             return this;
         }
-        
+
         public ConfiguredStreamMapper build() {
+
             return new ConfiguredStreamMapper(
-                id,
-                mapperConfiguration,
-                type);
+                id, mapperConfiguration, type);
         }
+
     }
 }

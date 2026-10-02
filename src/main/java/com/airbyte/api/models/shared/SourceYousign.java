@@ -15,11 +15,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceYousign {
 
+public class SourceYousign {
     /**
      * API key or access token
      */
@@ -33,8 +32,10 @@ public class SourceYousign {
     @JsonProperty("limit")
     private Optional<String> limit;
 
+
     @JsonProperty("sourceType")
     private Yousign sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -66,7 +67,8 @@ public class SourceYousign {
     public SourceYousign(
             String apiKey,
             OffsetDateTime startDate) {
-        this(apiKey, Optional.empty(), startDate, Optional.empty());
+        this(apiKey, Optional.empty(), startDate,
+            Optional.empty());
     }
 
     /**
@@ -104,9 +106,10 @@ public class SourceYousign {
         return (Optional<SourceYousignSubdomain>) subdomain;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API key or access token
@@ -125,6 +128,7 @@ public class SourceYousign {
         this.limit = Optional.ofNullable(limit);
         return this;
     }
+
 
     /**
      * Limit for each response objects
@@ -150,6 +154,7 @@ public class SourceYousign {
         return this;
     }
 
+
     /**
      * The subdomain for the Yousign API environment, such as 'sandbox' or 'api'.
      */
@@ -159,7 +164,6 @@ public class SourceYousign {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -170,21 +174,18 @@ public class SourceYousign {
         }
         SourceYousign other = (SourceYousign) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.limit, other.limit) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.subdomain, other.subdomain);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.limit, other.limit) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.subdomain, other.subdomain);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            limit,
-            sourceType,
-            startDate,
-            subdomain);
+        return Utils.enhancedHash(
+            apiKey, limit, sourceType,
+            startDate, subdomain);
     }
     
     @Override
@@ -196,20 +197,22 @@ public class SourceYousign {
                 "startDate", startDate,
                 "subdomain", subdomain);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> limit;
- 
+
         private OffsetDateTime startDate;
- 
+
         private Optional<? extends SourceYousignSubdomain> subdomain;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API key or access token
@@ -219,6 +222,7 @@ public class SourceYousign {
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Limit for each response objects
@@ -238,11 +242,13 @@ public class SourceYousign {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * The subdomain for the Yousign API environment, such as 'sandbox' or 'api'.
@@ -261,7 +267,7 @@ public class SourceYousign {
             this.subdomain = subdomain;
             return this;
         }
-        
+
         public SourceYousign build() {
             if (limit == null) {
                 limit = _SINGLETON_VALUE_Limit.value();
@@ -269,12 +275,12 @@ public class SourceYousign {
             if (subdomain == null) {
                 subdomain = _SINGLETON_VALUE_Subdomain.value();
             }
+
             return new SourceYousign(
-                apiKey,
-                limit,
-                startDate,
+                apiKey, limit, startDate,
                 subdomain);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Limit =
                 new LazySingletonValue<>(

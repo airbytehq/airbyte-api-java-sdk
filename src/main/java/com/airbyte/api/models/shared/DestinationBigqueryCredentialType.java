@@ -14,7 +14,7 @@ public enum DestinationBigqueryCredentialType {
     @JsonValue
     private final String value;
 
-    private DestinationBigqueryCredentialType(String value) {
+    DestinationBigqueryCredentialType(String value) {
         this.value = value;
     }
     

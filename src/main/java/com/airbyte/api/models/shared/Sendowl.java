@@ -14,7 +14,7 @@ public enum Sendowl {
     @JsonValue
     private final String value;
 
-    private Sendowl(String value) {
+    Sendowl(String value) {
         this.value = value;
     }
     

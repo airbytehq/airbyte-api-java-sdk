@@ -9,10 +9,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class FieldNameMappingConfigModel {
-
     /**
      * The field name in the source
      */
@@ -51,9 +50,10 @@ public class FieldNameMappingConfigModel {
         return toField;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The field name in the source
@@ -73,7 +73,6 @@ public class FieldNameMappingConfigModel {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -84,15 +83,14 @@ public class FieldNameMappingConfigModel {
         }
         FieldNameMappingConfigModel other = (FieldNameMappingConfigModel) o;
         return 
-            Objects.deepEquals(this.fromField, other.fromField) &&
-            Objects.deepEquals(this.toField, other.toField);
+            Utils.enhancedDeepEquals(this.fromField, other.fromField) &&
+            Utils.enhancedDeepEquals(this.toField, other.toField);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            fromField,
-            toField);
+        return Utils.enhancedHash(
+            fromField, toField);
     }
     
     @Override
@@ -101,16 +99,18 @@ public class FieldNameMappingConfigModel {
                 "fromField", fromField,
                 "toField", toField);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String fromField;
- 
+
         private String toField;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The field name in the source
@@ -121,6 +121,7 @@ public class FieldNameMappingConfigModel {
             return this;
         }
 
+
         /**
          * The field name to use in the destination
          */
@@ -129,11 +130,12 @@ public class FieldNameMappingConfigModel {
             this.toField = toField;
             return this;
         }
-        
+
         public FieldNameMappingConfigModel build() {
+
             return new FieldNameMappingConfigModel(
-                fromField,
-                toField);
+                fromField, toField);
         }
+
     }
 }

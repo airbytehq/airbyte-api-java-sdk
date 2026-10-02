@@ -13,22 +13,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourcePypi {
 
+public class SourcePypi {
     /**
-     * Name of the project/package. Can only be in lowercase with hyphen. This is the name used using pip command for installing the package.
+     * Name of the project/package. Can only be in lowercase with hyphen. This is the name used using pip
+     * command for installing the package.
      */
     @JsonProperty("project_name")
     private String projectName;
+
 
     @JsonProperty("sourceType")
     private Pypi sourceType;
 
     /**
-     * Version of the project/package.  Use it to find a particular release instead of all releases.
+     * Version of the project/package. Use it to find a particular release instead of all releases.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("version")
@@ -51,7 +52,8 @@ public class SourcePypi {
     }
 
     /**
-     * Name of the project/package. Can only be in lowercase with hyphen. This is the name used using pip command for installing the package.
+     * Name of the project/package. Can only be in lowercase with hyphen. This is the name used using pip
+     * command for installing the package.
      */
     @JsonIgnore
     public String projectName() {
@@ -64,19 +66,21 @@ public class SourcePypi {
     }
 
     /**
-     * Version of the project/package.  Use it to find a particular release instead of all releases.
+     * Version of the project/package. Use it to find a particular release instead of all releases.
      */
     @JsonIgnore
     public Optional<String> version() {
         return version;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Name of the project/package. Can only be in lowercase with hyphen. This is the name used using pip command for installing the package.
+     * Name of the project/package. Can only be in lowercase with hyphen. This is the name used using pip
+     * command for installing the package.
      */
     public SourcePypi withProjectName(String projectName) {
         Utils.checkNotNull(projectName, "projectName");
@@ -85,7 +89,7 @@ public class SourcePypi {
     }
 
     /**
-     * Version of the project/package.  Use it to find a particular release instead of all releases.
+     * Version of the project/package. Use it to find a particular release instead of all releases.
      */
     public SourcePypi withVersion(String version) {
         Utils.checkNotNull(version, "version");
@@ -93,8 +97,9 @@ public class SourcePypi {
         return this;
     }
 
+
     /**
-     * Version of the project/package.  Use it to find a particular release instead of all releases.
+     * Version of the project/package. Use it to find a particular release instead of all releases.
      */
     public SourcePypi withVersion(Optional<String> version) {
         Utils.checkNotNull(version, "version");
@@ -102,7 +107,6 @@ public class SourcePypi {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,17 +117,15 @@ public class SourcePypi {
         }
         SourcePypi other = (SourcePypi) o;
         return 
-            Objects.deepEquals(this.projectName, other.projectName) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.version, other.version);
+            Utils.enhancedDeepEquals(this.projectName, other.projectName) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.version, other.version);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            projectName,
-            sourceType,
-            version);
+        return Utils.enhancedHash(
+            projectName, sourceType, version);
     }
     
     @Override
@@ -133,19 +135,22 @@ public class SourcePypi {
                 "sourceType", sourceType,
                 "version", version);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String projectName;
- 
+
         private Optional<String> version = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Name of the project/package. Can only be in lowercase with hyphen. This is the name used using pip command for installing the package.
+         * Name of the project/package. Can only be in lowercase with hyphen. This is the name used using pip
+         * command for installing the package.
          */
         public Builder projectName(String projectName) {
             Utils.checkNotNull(projectName, "projectName");
@@ -153,8 +158,9 @@ public class SourcePypi {
             return this;
         }
 
+
         /**
-         * Version of the project/package.  Use it to find a particular release instead of all releases.
+         * Version of the project/package. Use it to find a particular release instead of all releases.
          */
         public Builder version(String version) {
             Utils.checkNotNull(version, "version");
@@ -163,19 +169,20 @@ public class SourcePypi {
         }
 
         /**
-         * Version of the project/package.  Use it to find a particular release instead of all releases.
+         * Version of the project/package. Use it to find a particular release instead of all releases.
          */
         public Builder version(Optional<String> version) {
             Utils.checkNotNull(version, "version");
             this.version = version;
             return this;
         }
-        
+
         public SourcePypi build() {
+
             return new SourcePypi(
-                projectName,
-                version);
+                projectName, version);
         }
+
 
         private static final LazySingletonValue<Pypi> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

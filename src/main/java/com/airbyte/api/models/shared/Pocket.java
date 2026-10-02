@@ -14,7 +14,7 @@ public enum Pocket {
     @JsonValue
     private final String value;
 
-    private Pocket(String value) {
+    Pocket(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum Dwolla {
     @JsonValue
     private final String value;
 
-    private Dwolla(String value) {
+    Dwolla(String value) {
         this.value = value;
     }
     

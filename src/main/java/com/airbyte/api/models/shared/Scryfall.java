@@ -14,7 +14,7 @@ public enum Scryfall {
     @JsonValue
     private final String value;
 
-    private Scryfall(String value) {
+    Scryfall(String value) {
         this.value = value;
     }
     

@@ -22,7 +22,7 @@ public enum SourceBraintreeEnvironment {
     @JsonValue
     private final String value;
 
-    private SourceBraintreeEnvironment(String value) {
+    SourceBraintreeEnvironment(String value) {
         this.value = value;
     }
     

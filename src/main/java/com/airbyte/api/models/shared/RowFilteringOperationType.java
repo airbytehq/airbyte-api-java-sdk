@@ -15,7 +15,7 @@ public enum RowFilteringOperationType {
     @JsonValue
     private final String value;
 
-    private RowFilteringOperationType(String value) {
+    RowFilteringOperationType(String value) {
         this.value = value;
     }
     

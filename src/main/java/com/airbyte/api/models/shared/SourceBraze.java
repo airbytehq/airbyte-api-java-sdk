@@ -12,15 +12,15 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.LocalDate;
-import java.util.Objects;
+
 
 public class SourceBraze {
-
     /**
      * Braze REST API key
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Braze sourceType;
@@ -80,9 +80,10 @@ public class SourceBraze {
         return url;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Braze REST API key
@@ -111,7 +112,6 @@ public class SourceBraze {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -122,18 +122,16 @@ public class SourceBraze {
         }
         SourceBraze other = (SourceBraze) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.url, other.url);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.url, other.url);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            startDate,
+        return Utils.enhancedHash(
+            apiKey, sourceType, startDate,
             url);
     }
     
@@ -145,18 +143,20 @@ public class SourceBraze {
                 "startDate", startDate,
                 "url", url);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private LocalDate startDate;
- 
+
         private String url;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Braze REST API key
@@ -167,6 +167,7 @@ public class SourceBraze {
             return this;
         }
 
+
         /**
          * Rows after this date will be synced
          */
@@ -176,6 +177,7 @@ public class SourceBraze {
             return this;
         }
 
+
         /**
          * Braze REST API endpoint
          */
@@ -184,13 +186,13 @@ public class SourceBraze {
             this.url = url;
             return this;
         }
-        
+
         public SourceBraze build() {
+
             return new SourceBraze(
-                apiKey,
-                startDate,
-                url);
+                apiKey, startDate, url);
         }
+
 
         private static final LazySingletonValue<Braze> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

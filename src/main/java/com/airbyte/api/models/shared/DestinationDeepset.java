@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Double;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationDeepset {
 
+public class DestinationDeepset {
     /**
      * Your deepset cloud API key
      */
@@ -26,11 +25,13 @@ public class DestinationDeepset {
     private String apiKey;
 
     /**
-     * URL of deepset Cloud API (e.g. https://api.cloud.deepset.ai, https://api.us.deepset.ai, etc). Defaults to https://api.cloud.deepset.ai.
+     * URL of deepset Cloud API (e.g. https://api.cloud.deepset.ai, https://api.us.deepset.ai, etc).
+     * Defaults to https://api.cloud.deepset.ai.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("base_url")
     private Optional<String> baseUrl;
+
 
     @JsonProperty("destinationType")
     private Deepset destinationType;
@@ -68,7 +69,8 @@ public class DestinationDeepset {
     public DestinationDeepset(
             String apiKey,
             String workspace) {
-        this(apiKey, Optional.empty(), Optional.empty(), workspace);
+        this(apiKey, Optional.empty(), Optional.empty(),
+            workspace);
     }
 
     /**
@@ -80,7 +82,8 @@ public class DestinationDeepset {
     }
 
     /**
-     * URL of deepset Cloud API (e.g. https://api.cloud.deepset.ai, https://api.us.deepset.ai, etc). Defaults to https://api.cloud.deepset.ai.
+     * URL of deepset Cloud API (e.g. https://api.cloud.deepset.ai, https://api.us.deepset.ai, etc).
+     * Defaults to https://api.cloud.deepset.ai.
      */
     @JsonIgnore
     public Optional<String> baseUrl() {
@@ -108,9 +111,10 @@ public class DestinationDeepset {
         return workspace;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your deepset cloud API key
@@ -122,7 +126,8 @@ public class DestinationDeepset {
     }
 
     /**
-     * URL of deepset Cloud API (e.g. https://api.cloud.deepset.ai, https://api.us.deepset.ai, etc). Defaults to https://api.cloud.deepset.ai.
+     * URL of deepset Cloud API (e.g. https://api.cloud.deepset.ai, https://api.us.deepset.ai, etc).
+     * Defaults to https://api.cloud.deepset.ai.
      */
     public DestinationDeepset withBaseUrl(String baseUrl) {
         Utils.checkNotNull(baseUrl, "baseUrl");
@@ -130,8 +135,10 @@ public class DestinationDeepset {
         return this;
     }
 
+
     /**
-     * URL of deepset Cloud API (e.g. https://api.cloud.deepset.ai, https://api.us.deepset.ai, etc). Defaults to https://api.cloud.deepset.ai.
+     * URL of deepset Cloud API (e.g. https://api.cloud.deepset.ai, https://api.us.deepset.ai, etc).
+     * Defaults to https://api.cloud.deepset.ai.
      */
     public DestinationDeepset withBaseUrl(Optional<String> baseUrl) {
         Utils.checkNotNull(baseUrl, "baseUrl");
@@ -147,6 +154,7 @@ public class DestinationDeepset {
         this.retries = Optional.ofNullable(retries);
         return this;
     }
+
 
     /**
      * Number of times to retry an action before giving up.
@@ -166,7 +174,6 @@ public class DestinationDeepset {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -177,21 +184,18 @@ public class DestinationDeepset {
         }
         DestinationDeepset other = (DestinationDeepset) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.baseUrl, other.baseUrl) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.retries, other.retries) &&
-            Objects.deepEquals(this.workspace, other.workspace);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.baseUrl, other.baseUrl) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.retries, other.retries) &&
+            Utils.enhancedDeepEquals(this.workspace, other.workspace);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            baseUrl,
-            destinationType,
-            retries,
-            workspace);
+        return Utils.enhancedHash(
+            apiKey, baseUrl, destinationType,
+            retries, workspace);
     }
     
     @Override
@@ -203,20 +207,22 @@ public class DestinationDeepset {
                 "retries", retries,
                 "workspace", workspace);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> baseUrl;
- 
+
         private Optional<Double> retries;
- 
+
         private String workspace;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your deepset cloud API key
@@ -227,8 +233,10 @@ public class DestinationDeepset {
             return this;
         }
 
+
         /**
-         * URL of deepset Cloud API (e.g. https://api.cloud.deepset.ai, https://api.us.deepset.ai, etc). Defaults to https://api.cloud.deepset.ai.
+         * URL of deepset Cloud API (e.g. https://api.cloud.deepset.ai, https://api.us.deepset.ai, etc).
+         * Defaults to https://api.cloud.deepset.ai.
          */
         public Builder baseUrl(String baseUrl) {
             Utils.checkNotNull(baseUrl, "baseUrl");
@@ -237,13 +245,15 @@ public class DestinationDeepset {
         }
 
         /**
-         * URL of deepset Cloud API (e.g. https://api.cloud.deepset.ai, https://api.us.deepset.ai, etc). Defaults to https://api.cloud.deepset.ai.
+         * URL of deepset Cloud API (e.g. https://api.cloud.deepset.ai, https://api.us.deepset.ai, etc).
+         * Defaults to https://api.cloud.deepset.ai.
          */
         public Builder baseUrl(Optional<String> baseUrl) {
             Utils.checkNotNull(baseUrl, "baseUrl");
             this.baseUrl = baseUrl;
             return this;
         }
+
 
         /**
          * Number of times to retry an action before giving up.
@@ -263,6 +273,7 @@ public class DestinationDeepset {
             return this;
         }
 
+
         /**
          * Name of workspace to which to sync the data.
          */
@@ -271,7 +282,7 @@ public class DestinationDeepset {
             this.workspace = workspace;
             return this;
         }
-        
+
         public DestinationDeepset build() {
             if (baseUrl == null) {
                 baseUrl = _SINGLETON_VALUE_BaseUrl.value();
@@ -279,12 +290,12 @@ public class DestinationDeepset {
             if (retries == null) {
                 retries = _SINGLETON_VALUE_Retries.value();
             }
+
             return new DestinationDeepset(
-                apiKey,
-                baseUrl,
-                retries,
+                apiKey, baseUrl, retries,
                 workspace);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_BaseUrl =
                 new LazySingletonValue<>(

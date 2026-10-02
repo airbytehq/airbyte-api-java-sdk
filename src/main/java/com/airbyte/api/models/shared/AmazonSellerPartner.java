@@ -11,11 +11,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class AmazonSellerPartner {
 
+public class AmazonSellerPartner {
     /**
      * Your Amazon Application ID.
      */
@@ -78,9 +77,10 @@ public class AmazonSellerPartner {
         return lwaClientSecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your Amazon Application ID.
@@ -90,6 +90,7 @@ public class AmazonSellerPartner {
         this.appId = Optional.ofNullable(appId);
         return this;
     }
+
 
     /**
      * Your Amazon Application ID.
@@ -109,6 +110,7 @@ public class AmazonSellerPartner {
         return this;
     }
 
+
     /**
      * Your Login with Amazon Client ID.
      */
@@ -127,6 +129,7 @@ public class AmazonSellerPartner {
         return this;
     }
 
+
     /**
      * Your Login with Amazon Client Secret.
      */
@@ -136,7 +139,6 @@ public class AmazonSellerPartner {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -147,17 +149,15 @@ public class AmazonSellerPartner {
         }
         AmazonSellerPartner other = (AmazonSellerPartner) o;
         return 
-            Objects.deepEquals(this.appId, other.appId) &&
-            Objects.deepEquals(this.lwaAppId, other.lwaAppId) &&
-            Objects.deepEquals(this.lwaClientSecret, other.lwaClientSecret);
+            Utils.enhancedDeepEquals(this.appId, other.appId) &&
+            Utils.enhancedDeepEquals(this.lwaAppId, other.lwaAppId) &&
+            Utils.enhancedDeepEquals(this.lwaClientSecret, other.lwaClientSecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            appId,
-            lwaAppId,
-            lwaClientSecret);
+        return Utils.enhancedHash(
+            appId, lwaAppId, lwaClientSecret);
     }
     
     @Override
@@ -167,18 +167,20 @@ public class AmazonSellerPartner {
                 "lwaAppId", lwaAppId,
                 "lwaClientSecret", lwaClientSecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> appId = Optional.empty();
- 
+
         private Optional<String> lwaAppId = Optional.empty();
- 
+
         private Optional<String> lwaClientSecret = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your Amazon Application ID.
@@ -198,6 +200,7 @@ public class AmazonSellerPartner {
             return this;
         }
 
+
         /**
          * Your Login with Amazon Client ID.
          */
@@ -216,6 +219,7 @@ public class AmazonSellerPartner {
             return this;
         }
 
+
         /**
          * Your Login with Amazon Client Secret.
          */
@@ -233,12 +237,12 @@ public class AmazonSellerPartner {
             this.lwaClientSecret = lwaClientSecret;
             return this;
         }
-        
+
         public AmazonSellerPartner build() {
+
             return new AmazonSellerPartner(
-                appId,
-                lwaAppId,
-                lwaClientSecret);
+                appId, lwaAppId, lwaClientSecret);
         }
+
     }
 }

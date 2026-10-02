@@ -14,7 +14,7 @@ public enum Boldsign {
     @JsonValue
     private final String value;
 
-    private Boldsign(String value) {
+    Boldsign(String value) {
         this.value = value;
     }
     

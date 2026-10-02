@@ -1,5 +1,13 @@
 # DestinationPineconeSchemasEmbeddingEmbeddingMode
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DestinationPineconeSchemasEmbeddingEmbeddingMode;
+
+DestinationPineconeSchemasEmbeddingEmbeddingMode value = DestinationPineconeSchemasEmbeddingEmbeddingMode.AZURE_OPENAI;
+```
+
 
 ## Values
 

@@ -19,7 +19,7 @@ public enum SourceGoogleAnalyticsDataApiSchemasValidEnums {
     @JsonValue
     private final String value;
 
-    private SourceGoogleAnalyticsDataApiSchemasValidEnums(String value) {
+    SourceGoogleAnalyticsDataApiSchemasValidEnums(String value) {
         this.value = value;
     }
     

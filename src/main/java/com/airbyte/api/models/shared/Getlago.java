@@ -14,7 +14,7 @@ public enum Getlago {
     @JsonValue
     private final String value;
 
-    private Getlago(String value) {
+    Getlago(String value) {
         this.value = value;
     }
     

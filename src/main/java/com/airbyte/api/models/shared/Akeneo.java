@@ -14,7 +14,7 @@ public enum Akeneo {
     @JsonValue
     private final String value;
 
-    private Akeneo(String value) {
+    Akeneo(String value) {
         this.value = value;
     }
     

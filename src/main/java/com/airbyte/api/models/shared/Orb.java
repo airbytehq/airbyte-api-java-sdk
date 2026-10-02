@@ -14,7 +14,7 @@ public enum Orb {
     @JsonValue
     private final String value;
 
-    private Orb(String value) {
+    Orb(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum Guru {
     @JsonValue
     private final String value;
 
-    private Guru(String value) {
+    Guru(String value) {
         this.value = value;
     }
     

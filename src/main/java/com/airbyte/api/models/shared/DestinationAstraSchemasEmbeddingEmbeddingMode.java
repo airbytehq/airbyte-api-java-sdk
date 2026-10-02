@@ -14,7 +14,7 @@ public enum DestinationAstraSchemasEmbeddingEmbeddingMode {
     @JsonValue
     private final String value;
 
-    private DestinationAstraSchemasEmbeddingEmbeddingMode(String value) {
+    DestinationAstraSchemasEmbeddingEmbeddingMode(String value) {
         this.value = value;
     }
     

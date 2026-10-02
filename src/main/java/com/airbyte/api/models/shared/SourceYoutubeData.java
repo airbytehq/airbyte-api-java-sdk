@@ -13,15 +13,17 @@ import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
-import java.util.Objects;
+
 
 public class SourceYoutubeData {
 
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonProperty("channel_ids")
     private List<Object> channelIds;
+
 
     @JsonProperty("sourceType")
     private YoutubeData sourceType;
@@ -52,9 +54,10 @@ public class SourceYoutubeData {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceYoutubeData withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -68,7 +71,6 @@ public class SourceYoutubeData {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -79,17 +81,15 @@ public class SourceYoutubeData {
         }
         SourceYoutubeData other = (SourceYoutubeData) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.channelIds, other.channelIds) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.channelIds, other.channelIds) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            channelIds,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, channelIds, sourceType);
     }
     
     @Override
@@ -99,16 +99,18 @@ public class SourceYoutubeData {
                 "channelIds", channelIds,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private List<Object> channelIds;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -116,17 +118,19 @@ public class SourceYoutubeData {
             return this;
         }
 
+
         public Builder channelIds(List<Object> channelIds) {
             Utils.checkNotNull(channelIds, "channelIds");
             this.channelIds = channelIds;
             return this;
         }
-        
+
         public SourceYoutubeData build() {
+
             return new SourceYoutubeData(
-                apiKey,
-                channelIds);
+                apiKey, channelIds);
         }
+
 
         private static final LazySingletonValue<YoutubeData> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

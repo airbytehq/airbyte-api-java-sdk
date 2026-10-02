@@ -1,5 +1,13 @@
 # SourceGoogleAnalyticsDataApiValidEnums
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceGoogleAnalyticsDataApiValidEnums;
+
+SourceGoogleAnalyticsDataApiValidEnums value = SourceGoogleAnalyticsDataApiValidEnums.MATCH_TYPE_UNSPECIFIED;
+```
+
 
 ## Values
 

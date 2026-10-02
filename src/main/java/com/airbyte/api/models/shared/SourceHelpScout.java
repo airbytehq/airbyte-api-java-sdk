@@ -12,18 +12,21 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceHelpScout {
 
     @JsonProperty("client_id")
     private String clientId;
 
+
     @JsonProperty("client_secret")
     private String clientSecret;
 
+
     @JsonProperty("sourceType")
     private HelpScout sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -62,9 +65,10 @@ public class SourceHelpScout {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceHelpScout withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -84,7 +88,6 @@ public class SourceHelpScout {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,18 +98,16 @@ public class SourceHelpScout {
         }
         SourceHelpScout other = (SourceHelpScout) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            sourceType,
+        return Utils.enhancedHash(
+            clientId, clientSecret, sourceType,
             startDate);
     }
     
@@ -118,18 +119,20 @@ public class SourceHelpScout {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -137,24 +140,26 @@ public class SourceHelpScout {
             return this;
         }
 
+
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceHelpScout build() {
+
             return new SourceHelpScout(
-                clientId,
-                clientSecret,
-                startDate);
+                clientId, clientSecret, startDate);
         }
+
 
         private static final LazySingletonValue<HelpScout> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -11,7 +11,8 @@ import java.util.Optional;
 /**
  * SourceLeverHiringEnvironment
  * 
- * <p>The environment in which you'd like to replicate data for Lever. This is used to determine which Lever API endpoint to use.
+ * <p>The environment in which you'd like to replicate data for Lever. This is used to determine which
+ * Lever API endpoint to use.
  */
 public enum SourceLeverHiringEnvironment {
     PRODUCTION("Production"),
@@ -20,7 +21,7 @@ public enum SourceLeverHiringEnvironment {
     @JsonValue
     private final String value;
 
-    private SourceLeverHiringEnvironment(String value) {
+    SourceLeverHiringEnvironment(String value) {
         this.value = value;
     }
     

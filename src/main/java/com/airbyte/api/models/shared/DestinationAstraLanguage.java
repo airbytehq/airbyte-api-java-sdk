@@ -34,7 +34,7 @@ public enum DestinationAstraLanguage {
     @JsonValue
     private final String value;
 
-    private DestinationAstraLanguage(String value) {
+    DestinationAstraLanguage(String value) {
         this.value = value;
     }
     

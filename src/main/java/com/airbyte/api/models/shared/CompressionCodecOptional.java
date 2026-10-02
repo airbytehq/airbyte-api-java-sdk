@@ -20,7 +20,7 @@ public enum CompressionCodecOptional {
     @JsonValue
     private final String value;
 
-    private CompressionCodecOptional(String value) {
+    CompressionCodecOptional(String value) {
         this.value = value;
     }
     

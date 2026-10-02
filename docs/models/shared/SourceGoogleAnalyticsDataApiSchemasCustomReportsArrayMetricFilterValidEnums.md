@@ -1,5 +1,13 @@
 # SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterValidEnums
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterValidEnums;
+
+SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterValidEnums value = SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterValidEnums.OPERATION_UNSPECIFIED;
+```
+
 
 ## Values
 

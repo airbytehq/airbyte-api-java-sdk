@@ -14,7 +14,7 @@ public enum Nocrm {
     @JsonValue
     private final String value;
 
-    private Nocrm(String value) {
+    Nocrm(String value) {
         this.value = value;
     }
     

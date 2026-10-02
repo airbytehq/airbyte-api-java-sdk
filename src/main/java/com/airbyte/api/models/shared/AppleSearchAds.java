@@ -14,7 +14,7 @@ public enum AppleSearchAds {
     @JsonValue
     private final String value;
 
-    private AppleSearchAds(String value) {
+    AppleSearchAds(String value) {
         this.value = value;
     }
     

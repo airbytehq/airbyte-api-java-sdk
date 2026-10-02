@@ -11,7 +11,8 @@ import java.util.Optional;
 /**
  * DataCenterLocation
  * 
- * <p>Please choose the region of your Data Center location. More info by this &lt;a href="https://www.zoho.com/crm/developer/docs/api/v2/multi-dc.html"&gt;Link&lt;/a&gt;
+ * <p>Please choose the region of your Data Center location. More info by this <a
+ * href="https://www.zoho.com/crm/developer/docs/api/v2/multi-dc.html">Link</a>
  */
 public enum DataCenterLocation {
     US("US"),
@@ -24,7 +25,7 @@ public enum DataCenterLocation {
     @JsonValue
     private final String value;
 
-    private DataCenterLocation(String value) {
+    DataCenterLocation(String value) {
         this.value = value;
     }
     

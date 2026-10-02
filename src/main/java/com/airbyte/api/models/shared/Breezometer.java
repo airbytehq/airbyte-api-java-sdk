@@ -14,7 +14,7 @@ public enum Breezometer {
     @JsonValue
     private final String value;
 
-    private Breezometer(String value) {
+    Breezometer(String value) {
         this.value = value;
     }
     

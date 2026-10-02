@@ -14,7 +14,7 @@ public enum Tempo {
     @JsonValue
     private final String value;
 
-    private Tempo(String value) {
+    Tempo(String value) {
         this.value = value;
     }
     

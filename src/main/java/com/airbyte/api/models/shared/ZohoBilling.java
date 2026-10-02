@@ -14,7 +14,7 @@ public enum ZohoBilling {
     @JsonValue
     private final String value;
 
-    private ZohoBilling(String value) {
+    ZohoBilling(String value) {
         this.value = value;
     }
     

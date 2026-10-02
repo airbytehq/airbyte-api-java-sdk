@@ -14,17 +14,18 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceXkcd {
 
+public class SourceXkcd {
     /**
-     * Specifies the comic number in which details are to be extracted, pagination will begin with that number to end of available comics
+     * Specifies the comic number in which details are to be extracted, pagination will begin with that
+     * number to end of available comics
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("comic_number")
     private Optional<String> comicNumber;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceType")
@@ -43,7 +44,8 @@ public class SourceXkcd {
     }
 
     /**
-     * Specifies the comic number in which details are to be extracted, pagination will begin with that number to end of available comics
+     * Specifies the comic number in which details are to be extracted, pagination will begin with that
+     * number to end of available comics
      */
     @JsonIgnore
     public Optional<String> comicNumber() {
@@ -56,12 +58,14 @@ public class SourceXkcd {
         return (Optional<Xkcd>) sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Specifies the comic number in which details are to be extracted, pagination will begin with that number to end of available comics
+     * Specifies the comic number in which details are to be extracted, pagination will begin with that
+     * number to end of available comics
      */
     public SourceXkcd withComicNumber(String comicNumber) {
         Utils.checkNotNull(comicNumber, "comicNumber");
@@ -69,8 +73,10 @@ public class SourceXkcd {
         return this;
     }
 
+
     /**
-     * Specifies the comic number in which details are to be extracted, pagination will begin with that number to end of available comics
+     * Specifies the comic number in which details are to be extracted, pagination will begin with that
+     * number to end of available comics
      */
     public SourceXkcd withComicNumber(Optional<String> comicNumber) {
         Utils.checkNotNull(comicNumber, "comicNumber");
@@ -78,7 +84,6 @@ public class SourceXkcd {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -89,15 +94,14 @@ public class SourceXkcd {
         }
         SourceXkcd other = (SourceXkcd) o;
         return 
-            Objects.deepEquals(this.comicNumber, other.comicNumber) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.comicNumber, other.comicNumber) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            comicNumber,
-            sourceType);
+        return Utils.enhancedHash(
+            comicNumber, sourceType);
     }
     
     @Override
@@ -106,17 +110,20 @@ public class SourceXkcd {
                 "comicNumber", comicNumber,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> comicNumber;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Specifies the comic number in which details are to be extracted, pagination will begin with that number to end of available comics
+         * Specifies the comic number in which details are to be extracted, pagination will begin with that
+         * number to end of available comics
          */
         public Builder comicNumber(String comicNumber) {
             Utils.checkNotNull(comicNumber, "comicNumber");
@@ -125,21 +132,24 @@ public class SourceXkcd {
         }
 
         /**
-         * Specifies the comic number in which details are to be extracted, pagination will begin with that number to end of available comics
+         * Specifies the comic number in which details are to be extracted, pagination will begin with that
+         * number to end of available comics
          */
         public Builder comicNumber(Optional<String> comicNumber) {
             Utils.checkNotNull(comicNumber, "comicNumber");
             this.comicNumber = comicNumber;
             return this;
         }
-        
+
         public SourceXkcd build() {
             if (comicNumber == null) {
                 comicNumber = _SINGLETON_VALUE_ComicNumber.value();
             }
+
             return new SourceXkcd(
                 comicNumber);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_ComicNumber =
                 new LazySingletonValue<>(

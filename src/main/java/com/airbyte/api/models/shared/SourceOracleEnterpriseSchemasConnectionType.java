@@ -14,7 +14,7 @@ public enum SourceOracleEnterpriseSchemasConnectionType {
     @JsonValue
     private final String value;
 
-    private SourceOracleEnterpriseSchemasConnectionType(String value) {
+    SourceOracleEnterpriseSchemasConnectionType(String value) {
         this.value = value;
     }
     

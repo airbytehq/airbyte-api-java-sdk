@@ -2,6 +2,14 @@
 
 The region of the S3 staging bucket.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DestinationRedshiftS3BucketRegion;
+
+DestinationRedshiftS3BucketRegion value = DestinationRedshiftS3BucketRegion.UNKNOWN;
+```
+
 
 ## Values
 

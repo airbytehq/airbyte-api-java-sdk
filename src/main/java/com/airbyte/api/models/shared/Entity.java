@@ -16,7 +16,7 @@ public enum Entity {
     @JsonValue
     private final String value;
 
-    private Entity(String value) {
+    Entity(String value) {
         this.value = value;
     }
     

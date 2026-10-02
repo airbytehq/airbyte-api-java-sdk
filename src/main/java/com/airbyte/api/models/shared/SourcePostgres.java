@@ -11,21 +11,42 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
+import java.lang.Boolean;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourcePostgres {
 
+public class SourcePostgres {
     /**
      * Name of the database.
      */
     @JsonProperty("database")
     private String database;
+
+    /**
+     * If using Entra service principal, the application ID of the service principal
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("entra_client_id")
+    private Optional<String> entraClientId;
+
+    /**
+     * Interpret password as a client secret for a Microsft Entra service principal
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("entra_service_principal_auth")
+    private Optional<Boolean> entraServicePrincipalAuth;
+
+    /**
+     * If using Entra service principal, the ID of the tenant
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("entra_tenant_id")
+    private Optional<String> entraTenantId;
 
     /**
      * Hostname of the database.
@@ -34,7 +55,12 @@ public class SourcePostgres {
     private String host;
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (Eg. key1=value1&amp;key2=value2&amp;key3=value3). For more information read about &lt;a href="https://jdbc.postgresql.org/documentation/head/connect.html"&gt;JDBC URL parameters&lt;/a&gt;.
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (Eg.
+     * key1=value1&amp;key2=value2&amp;key3=value3).
+     * 
+     * <p>For more information read about <a
+     * href="https://jdbc.postgresql.org/documentation/head/connect.html">JDBC URL parameters</a>.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("jdbc_url_params")
@@ -68,19 +94,21 @@ public class SourcePostgres {
     @JsonProperty("schemas")
     private Optional<? extends List<String>> schemas;
 
+
     @JsonProperty("sourceType")
     private SourcePostgresPostgres sourceType;
 
     /**
-     * SSL connection modes. 
-     *   Read more &lt;a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"&gt; in the docs&lt;/a&gt;.
+     * SSL connection modes.
+     * Read more <a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"> in the docs</a>.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("ssl_mode")
     private Optional<? extends SourcePostgresSSLModes> sslMode;
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
@@ -95,6 +123,9 @@ public class SourcePostgres {
     @JsonCreator
     public SourcePostgres(
             @JsonProperty("database") String database,
+            @JsonProperty("entra_client_id") Optional<String> entraClientId,
+            @JsonProperty("entra_service_principal_auth") Optional<Boolean> entraServicePrincipalAuth,
+            @JsonProperty("entra_tenant_id") Optional<String> entraTenantId,
             @JsonProperty("host") String host,
             @JsonProperty("jdbc_url_params") Optional<String> jdbcUrlParams,
             @JsonProperty("password") Optional<String> password,
@@ -105,6 +136,9 @@ public class SourcePostgres {
             @JsonProperty("tunnel_method") Optional<? extends SourcePostgresSSHTunnelMethod> tunnelMethod,
             @JsonProperty("username") String username) {
         Utils.checkNotNull(database, "database");
+        Utils.checkNotNull(entraClientId, "entraClientId");
+        Utils.checkNotNull(entraServicePrincipalAuth, "entraServicePrincipalAuth");
+        Utils.checkNotNull(entraTenantId, "entraTenantId");
         Utils.checkNotNull(host, "host");
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
         Utils.checkNotNull(password, "password");
@@ -115,6 +149,9 @@ public class SourcePostgres {
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
         Utils.checkNotNull(username, "username");
         this.database = database;
+        this.entraClientId = entraClientId;
+        this.entraServicePrincipalAuth = entraServicePrincipalAuth;
+        this.entraTenantId = entraTenantId;
         this.host = host;
         this.jdbcUrlParams = jdbcUrlParams;
         this.password = password;
@@ -131,7 +168,11 @@ public class SourcePostgres {
             String database,
             String host,
             String username) {
-        this(database, host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+        this(database, Optional.empty(), Optional.empty(),
+            Optional.empty(), host, Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            username);
     }
 
     /**
@@ -143,6 +184,30 @@ public class SourcePostgres {
     }
 
     /**
+     * If using Entra service principal, the application ID of the service principal
+     */
+    @JsonIgnore
+    public Optional<String> entraClientId() {
+        return entraClientId;
+    }
+
+    /**
+     * Interpret password as a client secret for a Microsft Entra service principal
+     */
+    @JsonIgnore
+    public Optional<Boolean> entraServicePrincipalAuth() {
+        return entraServicePrincipalAuth;
+    }
+
+    /**
+     * If using Entra service principal, the ID of the tenant
+     */
+    @JsonIgnore
+    public Optional<String> entraTenantId() {
+        return entraTenantId;
+    }
+
+    /**
      * Hostname of the database.
      */
     @JsonIgnore
@@ -151,7 +216,12 @@ public class SourcePostgres {
     }
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (Eg. key1=value1&amp;key2=value2&amp;key3=value3). For more information read about &lt;a href="https://jdbc.postgresql.org/documentation/head/connect.html"&gt;JDBC URL parameters&lt;/a&gt;.
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (Eg.
+     * key1=value1&amp;key2=value2&amp;key3=value3).
+     * 
+     * <p>For more information read about <a
+     * href="https://jdbc.postgresql.org/documentation/head/connect.html">JDBC URL parameters</a>.
      */
     @JsonIgnore
     public Optional<String> jdbcUrlParams() {
@@ -198,8 +268,8 @@ public class SourcePostgres {
     }
 
     /**
-     * SSL connection modes. 
-     *   Read more &lt;a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"&gt; in the docs&lt;/a&gt;.
+     * SSL connection modes.
+     * Read more <a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"> in the docs</a>.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -208,7 +278,8 @@ public class SourcePostgres {
     }
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -224,9 +295,10 @@ public class SourcePostgres {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Name of the database.
@@ -234,6 +306,63 @@ public class SourcePostgres {
     public SourcePostgres withDatabase(String database) {
         Utils.checkNotNull(database, "database");
         this.database = database;
+        return this;
+    }
+
+    /**
+     * If using Entra service principal, the application ID of the service principal
+     */
+    public SourcePostgres withEntraClientId(String entraClientId) {
+        Utils.checkNotNull(entraClientId, "entraClientId");
+        this.entraClientId = Optional.ofNullable(entraClientId);
+        return this;
+    }
+
+
+    /**
+     * If using Entra service principal, the application ID of the service principal
+     */
+    public SourcePostgres withEntraClientId(Optional<String> entraClientId) {
+        Utils.checkNotNull(entraClientId, "entraClientId");
+        this.entraClientId = entraClientId;
+        return this;
+    }
+
+    /**
+     * Interpret password as a client secret for a Microsft Entra service principal
+     */
+    public SourcePostgres withEntraServicePrincipalAuth(boolean entraServicePrincipalAuth) {
+        Utils.checkNotNull(entraServicePrincipalAuth, "entraServicePrincipalAuth");
+        this.entraServicePrincipalAuth = Optional.ofNullable(entraServicePrincipalAuth);
+        return this;
+    }
+
+
+    /**
+     * Interpret password as a client secret for a Microsft Entra service principal
+     */
+    public SourcePostgres withEntraServicePrincipalAuth(Optional<Boolean> entraServicePrincipalAuth) {
+        Utils.checkNotNull(entraServicePrincipalAuth, "entraServicePrincipalAuth");
+        this.entraServicePrincipalAuth = entraServicePrincipalAuth;
+        return this;
+    }
+
+    /**
+     * If using Entra service principal, the ID of the tenant
+     */
+    public SourcePostgres withEntraTenantId(String entraTenantId) {
+        Utils.checkNotNull(entraTenantId, "entraTenantId");
+        this.entraTenantId = Optional.ofNullable(entraTenantId);
+        return this;
+    }
+
+
+    /**
+     * If using Entra service principal, the ID of the tenant
+     */
+    public SourcePostgres withEntraTenantId(Optional<String> entraTenantId) {
+        Utils.checkNotNull(entraTenantId, "entraTenantId");
+        this.entraTenantId = entraTenantId;
         return this;
     }
 
@@ -247,7 +376,12 @@ public class SourcePostgres {
     }
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (Eg. key1=value1&amp;key2=value2&amp;key3=value3). For more information read about &lt;a href="https://jdbc.postgresql.org/documentation/head/connect.html"&gt;JDBC URL parameters&lt;/a&gt;.
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (Eg.
+     * key1=value1&amp;key2=value2&amp;key3=value3).
+     * 
+     * <p>For more information read about <a
+     * href="https://jdbc.postgresql.org/documentation/head/connect.html">JDBC URL parameters</a>.
      */
     public SourcePostgres withJdbcUrlParams(String jdbcUrlParams) {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -255,8 +389,14 @@ public class SourcePostgres {
         return this;
     }
 
+
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (Eg. key1=value1&amp;key2=value2&amp;key3=value3). For more information read about &lt;a href="https://jdbc.postgresql.org/documentation/head/connect.html"&gt;JDBC URL parameters&lt;/a&gt;.
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (Eg.
+     * key1=value1&amp;key2=value2&amp;key3=value3).
+     * 
+     * <p>For more information read about <a
+     * href="https://jdbc.postgresql.org/documentation/head/connect.html">JDBC URL parameters</a>.
      */
     public SourcePostgres withJdbcUrlParams(Optional<String> jdbcUrlParams) {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -272,6 +412,7 @@ public class SourcePostgres {
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     /**
      * Password associated with the username.
@@ -291,6 +432,7 @@ public class SourcePostgres {
         return this;
     }
 
+
     /**
      * Port of the database.
      */
@@ -308,6 +450,7 @@ public class SourcePostgres {
         this.replicationMethod = Optional.ofNullable(replicationMethod);
         return this;
     }
+
 
     /**
      * Configures how data is extracted from the database.
@@ -327,6 +470,7 @@ public class SourcePostgres {
         return this;
     }
 
+
     /**
      * The list of schemas (case sensitive) to sync from. Defaults to public.
      */
@@ -337,8 +481,8 @@ public class SourcePostgres {
     }
 
     /**
-     * SSL connection modes. 
-     *   Read more &lt;a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"&gt; in the docs&lt;/a&gt;.
+     * SSL connection modes.
+     * Read more <a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"> in the docs</a>.
      */
     public SourcePostgres withSslMode(SourcePostgresSSLModes sslMode) {
         Utils.checkNotNull(sslMode, "sslMode");
@@ -346,9 +490,10 @@ public class SourcePostgres {
         return this;
     }
 
+
     /**
-     * SSL connection modes. 
-     *   Read more &lt;a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"&gt; in the docs&lt;/a&gt;.
+     * SSL connection modes.
+     * Read more <a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"> in the docs</a>.
      */
     public SourcePostgres withSslMode(Optional<? extends SourcePostgresSSLModes> sslMode) {
         Utils.checkNotNull(sslMode, "sslMode");
@@ -357,7 +502,8 @@ public class SourcePostgres {
     }
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     public SourcePostgres withTunnelMethod(SourcePostgresSSHTunnelMethod tunnelMethod) {
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -365,8 +511,10 @@ public class SourcePostgres {
         return this;
     }
 
+
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     public SourcePostgres withTunnelMethod(Optional<? extends SourcePostgresSSHTunnelMethod> tunnelMethod) {
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -383,7 +531,6 @@ public class SourcePostgres {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -394,39 +541,39 @@ public class SourcePostgres {
         }
         SourcePostgres other = (SourcePostgres) o;
         return 
-            Objects.deepEquals(this.database, other.database) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.replicationMethod, other.replicationMethod) &&
-            Objects.deepEquals(this.schemas, other.schemas) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.sslMode, other.sslMode) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.database, other.database) &&
+            Utils.enhancedDeepEquals(this.entraClientId, other.entraClientId) &&
+            Utils.enhancedDeepEquals(this.entraServicePrincipalAuth, other.entraServicePrincipalAuth) &&
+            Utils.enhancedDeepEquals(this.entraTenantId, other.entraTenantId) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.replicationMethod, other.replicationMethod) &&
+            Utils.enhancedDeepEquals(this.schemas, other.schemas) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.sslMode, other.sslMode) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            database,
-            host,
-            jdbcUrlParams,
-            password,
-            port,
-            replicationMethod,
-            schemas,
-            sourceType,
-            sslMode,
-            tunnelMethod,
-            username);
+        return Utils.enhancedHash(
+            database, entraClientId, entraServicePrincipalAuth,
+            entraTenantId, host, jdbcUrlParams,
+            password, port, replicationMethod,
+            schemas, sourceType, sslMode,
+            tunnelMethod, username);
     }
     
     @Override
     public String toString() {
         return Utils.toString(SourcePostgres.class,
                 "database", database,
+                "entraClientId", entraClientId,
+                "entraServicePrincipalAuth", entraServicePrincipalAuth,
+                "entraTenantId", entraTenantId,
                 "host", host,
                 "jdbcUrlParams", jdbcUrlParams,
                 "password", password,
@@ -438,32 +585,40 @@ public class SourcePostgres {
                 "tunnelMethod", tunnelMethod,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String database;
- 
+
+        private Optional<String> entraClientId = Optional.empty();
+
+        private Optional<Boolean> entraServicePrincipalAuth;
+
+        private Optional<String> entraTenantId = Optional.empty();
+
         private String host;
- 
+
         private Optional<String> jdbcUrlParams = Optional.empty();
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private Optional<Long> port;
- 
+
         private Optional<? extends SourcePostgresUpdateMethod> replicationMethod = Optional.empty();
- 
+
         private Optional<? extends List<String>> schemas = Optional.empty();
- 
+
         private Optional<? extends SourcePostgresSSLModes> sslMode = Optional.empty();
- 
+
         private Optional<? extends SourcePostgresSSHTunnelMethod> tunnelMethod = Optional.empty();
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Name of the database.
@@ -474,6 +629,64 @@ public class SourcePostgres {
             return this;
         }
 
+
+        /**
+         * If using Entra service principal, the application ID of the service principal
+         */
+        public Builder entraClientId(String entraClientId) {
+            Utils.checkNotNull(entraClientId, "entraClientId");
+            this.entraClientId = Optional.ofNullable(entraClientId);
+            return this;
+        }
+
+        /**
+         * If using Entra service principal, the application ID of the service principal
+         */
+        public Builder entraClientId(Optional<String> entraClientId) {
+            Utils.checkNotNull(entraClientId, "entraClientId");
+            this.entraClientId = entraClientId;
+            return this;
+        }
+
+
+        /**
+         * Interpret password as a client secret for a Microsft Entra service principal
+         */
+        public Builder entraServicePrincipalAuth(boolean entraServicePrincipalAuth) {
+            Utils.checkNotNull(entraServicePrincipalAuth, "entraServicePrincipalAuth");
+            this.entraServicePrincipalAuth = Optional.ofNullable(entraServicePrincipalAuth);
+            return this;
+        }
+
+        /**
+         * Interpret password as a client secret for a Microsft Entra service principal
+         */
+        public Builder entraServicePrincipalAuth(Optional<Boolean> entraServicePrincipalAuth) {
+            Utils.checkNotNull(entraServicePrincipalAuth, "entraServicePrincipalAuth");
+            this.entraServicePrincipalAuth = entraServicePrincipalAuth;
+            return this;
+        }
+
+
+        /**
+         * If using Entra service principal, the ID of the tenant
+         */
+        public Builder entraTenantId(String entraTenantId) {
+            Utils.checkNotNull(entraTenantId, "entraTenantId");
+            this.entraTenantId = Optional.ofNullable(entraTenantId);
+            return this;
+        }
+
+        /**
+         * If using Entra service principal, the ID of the tenant
+         */
+        public Builder entraTenantId(Optional<String> entraTenantId) {
+            Utils.checkNotNull(entraTenantId, "entraTenantId");
+            this.entraTenantId = entraTenantId;
+            return this;
+        }
+
+
         /**
          * Hostname of the database.
          */
@@ -483,8 +696,14 @@ public class SourcePostgres {
             return this;
         }
 
+
         /**
-         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (Eg. key1=value1&amp;key2=value2&amp;key3=value3). For more information read about &lt;a href="https://jdbc.postgresql.org/documentation/head/connect.html"&gt;JDBC URL parameters&lt;/a&gt;.
+         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+         * 'key=value' pairs separated by the symbol '&amp;'. (Eg.
+         * key1=value1&amp;key2=value2&amp;key3=value3).
+         * 
+         * <p>For more information read about <a
+         * href="https://jdbc.postgresql.org/documentation/head/connect.html">JDBC URL parameters</a>.
          */
         public Builder jdbcUrlParams(String jdbcUrlParams) {
             Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -493,13 +712,19 @@ public class SourcePostgres {
         }
 
         /**
-         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (Eg. key1=value1&amp;key2=value2&amp;key3=value3). For more information read about &lt;a href="https://jdbc.postgresql.org/documentation/head/connect.html"&gt;JDBC URL parameters&lt;/a&gt;.
+         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+         * 'key=value' pairs separated by the symbol '&amp;'. (Eg.
+         * key1=value1&amp;key2=value2&amp;key3=value3).
+         * 
+         * <p>For more information read about <a
+         * href="https://jdbc.postgresql.org/documentation/head/connect.html">JDBC URL parameters</a>.
          */
         public Builder jdbcUrlParams(Optional<String> jdbcUrlParams) {
             Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
             this.jdbcUrlParams = jdbcUrlParams;
             return this;
         }
+
 
         /**
          * Password associated with the username.
@@ -519,6 +744,7 @@ public class SourcePostgres {
             return this;
         }
 
+
         /**
          * Port of the database.
          */
@@ -536,6 +762,7 @@ public class SourcePostgres {
             this.port = port;
             return this;
         }
+
 
         /**
          * Configures how data is extracted from the database.
@@ -555,6 +782,7 @@ public class SourcePostgres {
             return this;
         }
 
+
         /**
          * The list of schemas (case sensitive) to sync from. Defaults to public.
          */
@@ -573,9 +801,10 @@ public class SourcePostgres {
             return this;
         }
 
+
         /**
-         * SSL connection modes. 
-         *   Read more &lt;a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"&gt; in the docs&lt;/a&gt;.
+         * SSL connection modes.
+         * Read more <a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"> in the docs</a>.
          */
         public Builder sslMode(SourcePostgresSSLModes sslMode) {
             Utils.checkNotNull(sslMode, "sslMode");
@@ -584,8 +813,8 @@ public class SourcePostgres {
         }
 
         /**
-         * SSL connection modes. 
-         *   Read more &lt;a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"&gt; in the docs&lt;/a&gt;.
+         * SSL connection modes.
+         * Read more <a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"> in the docs</a>.
          */
         public Builder sslMode(Optional<? extends SourcePostgresSSLModes> sslMode) {
             Utils.checkNotNull(sslMode, "sslMode");
@@ -593,8 +822,10 @@ public class SourcePostgres {
             return this;
         }
 
+
         /**
-         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+         * authentication to use.
          */
         public Builder tunnelMethod(SourcePostgresSSHTunnelMethod tunnelMethod) {
             Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -603,13 +834,15 @@ public class SourcePostgres {
         }
 
         /**
-         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+         * authentication to use.
          */
         public Builder tunnelMethod(Optional<? extends SourcePostgresSSHTunnelMethod> tunnelMethod) {
             Utils.checkNotNull(tunnelMethod, "tunnelMethod");
             this.tunnelMethod = tunnelMethod;
             return this;
         }
+
 
         /**
          * Username to access the database.
@@ -619,23 +852,29 @@ public class SourcePostgres {
             this.username = username;
             return this;
         }
-        
+
         public SourcePostgres build() {
+            if (entraServicePrincipalAuth == null) {
+                entraServicePrincipalAuth = _SINGLETON_VALUE_EntraServicePrincipalAuth.value();
+            }
             if (port == null) {
                 port = _SINGLETON_VALUE_Port.value();
             }
+
             return new SourcePostgres(
-                database,
-                host,
-                jdbcUrlParams,
-                password,
-                port,
-                replicationMethod,
-                schemas,
-                sslMode,
-                tunnelMethod,
+                database, entraClientId, entraServicePrincipalAuth,
+                entraTenantId, host, jdbcUrlParams,
+                password, port, replicationMethod,
+                schemas, sslMode, tunnelMethod,
                 username);
         }
+
+
+        private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_EntraServicePrincipalAuth =
+                new LazySingletonValue<>(
+                        "entra_service_principal_auth",
+                        "false",
+                        new TypeReference<Optional<Boolean>>() {});
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_Port =
                 new LazySingletonValue<>(

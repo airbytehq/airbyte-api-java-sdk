@@ -5,6 +5,8 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -12,12 +14,23 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Long;
+import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+import java.lang.SuppressWarnings;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
+/**
+ * PasswordAuthentication
+ * 
+ * <p>Connect through a jump server tunnel host using username and password authentication
+ */
 public class PasswordAuthentication {
+
+    @JsonIgnore
+    private Map<String, Object> additionalProperties;
 
     /**
      * Hostname of the jump server host that allows inbound ssh tunnel.
@@ -25,11 +38,10 @@ public class PasswordAuthentication {
     @JsonProperty("tunnel_host")
     private String tunnelHost;
 
-    /**
-     * Connect through a jump server tunnel host using username and password authentication
-     */
+
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
-    private DestinationClickhouseSchemasTunnelMethod tunnelMethod;
+    private Optional<? extends DestinationClickhouseSchemasTunnelMethod> tunnelMethod;
 
     /**
      * Port on the proxy/jump server that accepts inbound ssh connections.
@@ -53,15 +65,18 @@ public class PasswordAuthentication {
     @JsonCreator
     public PasswordAuthentication(
             @JsonProperty("tunnel_host") String tunnelHost,
+            @JsonProperty("tunnel_method") Optional<? extends DestinationClickhouseSchemasTunnelMethod> tunnelMethod,
             @JsonProperty("tunnel_port") Optional<Long> tunnelPort,
             @JsonProperty("tunnel_user") String tunnelUser,
             @JsonProperty("tunnel_user_password") String tunnelUserPassword) {
         Utils.checkNotNull(tunnelHost, "tunnelHost");
+        Utils.checkNotNull(tunnelMethod, "tunnelMethod");
         Utils.checkNotNull(tunnelPort, "tunnelPort");
         Utils.checkNotNull(tunnelUser, "tunnelUser");
         Utils.checkNotNull(tunnelUserPassword, "tunnelUserPassword");
+        this.additionalProperties = new HashMap<>();
         this.tunnelHost = tunnelHost;
-        this.tunnelMethod = Builder._SINGLETON_VALUE_TunnelMethod.value();
+        this.tunnelMethod = tunnelMethod;
         this.tunnelPort = tunnelPort;
         this.tunnelUser = tunnelUser;
         this.tunnelUserPassword = tunnelUserPassword;
@@ -71,7 +86,13 @@ public class PasswordAuthentication {
             String tunnelHost,
             String tunnelUser,
             String tunnelUserPassword) {
-        this(tunnelHost, Optional.empty(), tunnelUser, tunnelUserPassword);
+        this(tunnelHost, Optional.empty(), Optional.empty(),
+            tunnelUser, tunnelUserPassword);
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> additionalProperties() {
+        return additionalProperties;
     }
 
     /**
@@ -82,12 +103,10 @@ public class PasswordAuthentication {
         return tunnelHost;
     }
 
-    /**
-     * Connect through a jump server tunnel host using username and password authentication
-     */
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public DestinationClickhouseSchemasTunnelMethod tunnelMethod() {
-        return tunnelMethod;
+    public Optional<DestinationClickhouseSchemasTunnelMethod> tunnelMethod() {
+        return (Optional<DestinationClickhouseSchemasTunnelMethod>) tunnelMethod;
     }
 
     /**
@@ -114,9 +133,23 @@ public class PasswordAuthentication {
         return tunnelUserPassword;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
+
+    @JsonAnySetter
+    public PasswordAuthentication withAdditionalProperty(String key, Object value) {
+        // note that value can be null because of the way JsonAnySetter works
+        Utils.checkNotNull(key, "key");
+        additionalProperties.put(key, value); 
+        return this;
+    }
+    public PasswordAuthentication withAdditionalProperties(Map<String, Object> additionalProperties) {
+        Utils.checkNotNull(additionalProperties, "additionalProperties");
+        this.additionalProperties = additionalProperties;
+        return this;
+    }
 
     /**
      * Hostname of the jump server host that allows inbound ssh tunnel.
@@ -124,6 +157,19 @@ public class PasswordAuthentication {
     public PasswordAuthentication withTunnelHost(String tunnelHost) {
         Utils.checkNotNull(tunnelHost, "tunnelHost");
         this.tunnelHost = tunnelHost;
+        return this;
+    }
+
+    public PasswordAuthentication withTunnelMethod(DestinationClickhouseSchemasTunnelMethod tunnelMethod) {
+        Utils.checkNotNull(tunnelMethod, "tunnelMethod");
+        this.tunnelMethod = Optional.ofNullable(tunnelMethod);
+        return this;
+    }
+
+
+    public PasswordAuthentication withTunnelMethod(Optional<? extends DestinationClickhouseSchemasTunnelMethod> tunnelMethod) {
+        Utils.checkNotNull(tunnelMethod, "tunnelMethod");
+        this.tunnelMethod = tunnelMethod;
         return this;
     }
 
@@ -135,6 +181,7 @@ public class PasswordAuthentication {
         this.tunnelPort = Optional.ofNullable(tunnelPort);
         return this;
     }
+
 
     /**
      * Port on the proxy/jump server that accepts inbound ssh connections.
@@ -163,7 +210,6 @@ public class PasswordAuthentication {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -174,46 +220,67 @@ public class PasswordAuthentication {
         }
         PasswordAuthentication other = (PasswordAuthentication) o;
         return 
-            Objects.deepEquals(this.tunnelHost, other.tunnelHost) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
-            Objects.deepEquals(this.tunnelPort, other.tunnelPort) &&
-            Objects.deepEquals(this.tunnelUser, other.tunnelUser) &&
-            Objects.deepEquals(this.tunnelUserPassword, other.tunnelUserPassword);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.tunnelHost, other.tunnelHost) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.tunnelPort, other.tunnelPort) &&
+            Utils.enhancedDeepEquals(this.tunnelUser, other.tunnelUser) &&
+            Utils.enhancedDeepEquals(this.tunnelUserPassword, other.tunnelUserPassword);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            tunnelHost,
-            tunnelMethod,
-            tunnelPort,
-            tunnelUser,
-            tunnelUserPassword);
+        return Utils.enhancedHash(
+            additionalProperties, tunnelHost, tunnelMethod,
+            tunnelPort, tunnelUser, tunnelUserPassword);
     }
     
     @Override
     public String toString() {
         return Utils.toString(PasswordAuthentication.class,
+                "additionalProperties", additionalProperties,
                 "tunnelHost", tunnelHost,
                 "tunnelMethod", tunnelMethod,
                 "tunnelPort", tunnelPort,
                 "tunnelUser", tunnelUser,
                 "tunnelUserPassword", tunnelUserPassword);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
+        private Map<String, Object> additionalProperties = new HashMap<>();
+
         private String tunnelHost;
- 
+
+        private Optional<? extends DestinationClickhouseSchemasTunnelMethod> tunnelMethod;
+
         private Optional<Long> tunnelPort;
- 
+
         private String tunnelUser;
- 
+
         private String tunnelUserPassword;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
+        public Builder additionalProperty(String key, Object value) {
+            Utils.checkNotNull(key, "key");
+            // we could be strict about null values (force the user
+            // to pass `JsonNullable.of(null)`) but likely to be a bit 
+            // annoying for additional properties building so we'll 
+            // relax preconditions.
+            this.additionalProperties.put(key, value);
+            return this;
+        }
+
+        public Builder additionalProperties(Map<String, Object> additionalProperties) {
+            Utils.checkNotNull(additionalProperties, "additionalProperties");
+            this.additionalProperties = additionalProperties;
+            return this;
+        }
+
 
         /**
          * Hostname of the jump server host that allows inbound ssh tunnel.
@@ -223,6 +290,20 @@ public class PasswordAuthentication {
             this.tunnelHost = tunnelHost;
             return this;
         }
+
+
+        public Builder tunnelMethod(DestinationClickhouseSchemasTunnelMethod tunnelMethod) {
+            Utils.checkNotNull(tunnelMethod, "tunnelMethod");
+            this.tunnelMethod = Optional.ofNullable(tunnelMethod);
+            return this;
+        }
+
+        public Builder tunnelMethod(Optional<? extends DestinationClickhouseSchemasTunnelMethod> tunnelMethod) {
+            Utils.checkNotNull(tunnelMethod, "tunnelMethod");
+            this.tunnelMethod = tunnelMethod;
+            return this;
+        }
+
 
         /**
          * Port on the proxy/jump server that accepts inbound ssh connections.
@@ -242,6 +323,7 @@ public class PasswordAuthentication {
             return this;
         }
 
+
         /**
          * OS-level username for logging into the jump server host
          */
@@ -251,6 +333,7 @@ public class PasswordAuthentication {
             return this;
         }
 
+
         /**
          * OS-level password for logging into the jump server host
          */
@@ -259,23 +342,27 @@ public class PasswordAuthentication {
             this.tunnelUserPassword = tunnelUserPassword;
             return this;
         }
-        
+
         public PasswordAuthentication build() {
+            if (tunnelMethod == null) {
+                tunnelMethod = _SINGLETON_VALUE_TunnelMethod.value();
+            }
             if (tunnelPort == null) {
                 tunnelPort = _SINGLETON_VALUE_TunnelPort.value();
             }
+
             return new PasswordAuthentication(
-                tunnelHost,
-                tunnelPort,
-                tunnelUser,
-                tunnelUserPassword);
+                tunnelHost, tunnelMethod, tunnelPort,
+                tunnelUser, tunnelUserPassword)
+                .withAdditionalProperties(additionalProperties);
         }
 
-        private static final LazySingletonValue<DestinationClickhouseSchemasTunnelMethod> _SINGLETON_VALUE_TunnelMethod =
+
+        private static final LazySingletonValue<Optional<? extends DestinationClickhouseSchemasTunnelMethod>> _SINGLETON_VALUE_TunnelMethod =
                 new LazySingletonValue<>(
                         "tunnel_method",
                         "\"SSH_PASSWORD_AUTH\"",
-                        new TypeReference<DestinationClickhouseSchemasTunnelMethod>() {});
+                        new TypeReference<Optional<? extends DestinationClickhouseSchemasTunnelMethod>>() {});
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_TunnelPort =
                 new LazySingletonValue<>(

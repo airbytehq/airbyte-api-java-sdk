@@ -14,7 +14,7 @@ public enum Workable {
     @JsonValue
     private final String value;
 
-    private Workable(String value) {
+    Workable(String value) {
         this.value = value;
     }
     

@@ -25,7 +25,7 @@ public enum HashingMethod {
     @JsonValue
     private final String value;
 
-    private HashingMethod(String value) {
+    HashingMethod(String value) {
         this.value = value;
     }
     

@@ -14,18 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationOracleSSHTunnelMethod
  * 
- * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+ * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+ * authentication to use.
  */
 @JsonDeserialize(using = DestinationOracleSSHTunnelMethod._Deserializer.class)
 public class DestinationOracleSSHTunnelMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationOracleSSHTunnelMethod(TypedObject value) {
         this.value = value;
@@ -33,17 +33,17 @@ public class DestinationOracleSSHTunnelMethod {
 
     public static DestinationOracleSSHTunnelMethod of(DestinationOracleNoTunnel value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationOracleSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationOracleNoTunnel>(){}));
+        return new DestinationOracleSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationOracleSSHTunnelMethod of(DestinationOracleSSHKeyAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationOracleSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationOracleSSHKeyAuthentication>(){}));
+        return new DestinationOracleSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationOracleSSHTunnelMethod of(DestinationOraclePasswordAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationOracleSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationOraclePasswordAuthentication>(){}));
+        return new DestinationOracleSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +67,7 @@ public class DestinationOracleSSHTunnelMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +78,12 @@ public class DestinationOracleSSHTunnelMethod {
             return false;
         }
         DestinationOracleSSHTunnelMethod other = (DestinationOracleSSHTunnelMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -91,9 +91,9 @@ public class DestinationOracleSSHTunnelMethod {
 
         public _Deserializer() {
             super(DestinationOracleSSHTunnelMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DestinationOraclePasswordAuthentication>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationOracleNoTunnel>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationOracleSSHKeyAuthentication>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationOracleNoTunnel>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationOraclePasswordAuthentication>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -102,6 +102,6 @@ public class DestinationOracleSSHTunnelMethod {
         return Utils.toString(DestinationOracleSSHTunnelMethod.class,
                 "value", value);
     }
- 
+
 }
 

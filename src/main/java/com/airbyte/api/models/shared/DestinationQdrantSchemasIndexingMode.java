@@ -14,7 +14,7 @@ public enum DestinationQdrantSchemasIndexingMode {
     @JsonValue
     private final String value;
 
-    private DestinationQdrantSchemasIndexingMode(String value) {
+    DestinationQdrantSchemasIndexingMode(String value) {
         this.value = value;
     }
     

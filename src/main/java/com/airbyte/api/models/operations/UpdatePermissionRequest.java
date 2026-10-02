@@ -10,12 +10,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class UpdatePermissionRequest {
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private PermissionUpdateRequest permissionUpdateRequest;
+
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=permissionId")
     private String permissionId;
@@ -40,9 +41,10 @@ public class UpdatePermissionRequest {
         return permissionId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public UpdatePermissionRequest withPermissionUpdateRequest(PermissionUpdateRequest permissionUpdateRequest) {
         Utils.checkNotNull(permissionUpdateRequest, "permissionUpdateRequest");
@@ -56,7 +58,6 @@ public class UpdatePermissionRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -67,15 +68,14 @@ public class UpdatePermissionRequest {
         }
         UpdatePermissionRequest other = (UpdatePermissionRequest) o;
         return 
-            Objects.deepEquals(this.permissionUpdateRequest, other.permissionUpdateRequest) &&
-            Objects.deepEquals(this.permissionId, other.permissionId);
+            Utils.enhancedDeepEquals(this.permissionUpdateRequest, other.permissionUpdateRequest) &&
+            Utils.enhancedDeepEquals(this.permissionId, other.permissionId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            permissionUpdateRequest,
-            permissionId);
+        return Utils.enhancedHash(
+            permissionUpdateRequest, permissionId);
     }
     
     @Override
@@ -84,16 +84,18 @@ public class UpdatePermissionRequest {
                 "permissionUpdateRequest", permissionUpdateRequest,
                 "permissionId", permissionId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private PermissionUpdateRequest permissionUpdateRequest;
- 
+
         private String permissionId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder permissionUpdateRequest(PermissionUpdateRequest permissionUpdateRequest) {
             Utils.checkNotNull(permissionUpdateRequest, "permissionUpdateRequest");
@@ -101,16 +103,18 @@ public class UpdatePermissionRequest {
             return this;
         }
 
+
         public Builder permissionId(String permissionId) {
             Utils.checkNotNull(permissionId, "permissionId");
             this.permissionId = permissionId;
             return this;
         }
-        
+
         public UpdatePermissionRequest build() {
+
             return new UpdatePermissionRequest(
-                permissionUpdateRequest,
-                permissionId);
+                permissionUpdateRequest, permissionId);
         }
+
     }
 }

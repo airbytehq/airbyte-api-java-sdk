@@ -20,17 +20,19 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class DestinationS3Deflate {
 
     @JsonIgnore
     private Map<String, Object> additionalProperties;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("codec")
     private Optional<? extends DestinationS3SchemasCodec> codec;
+
 
     @JsonProperty("compression_level")
     private long compressionLevel;
@@ -67,9 +69,10 @@ public class DestinationS3Deflate {
         return compressionLevel;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public DestinationS3Deflate withAdditionalProperty(String key, Object value) {
@@ -77,8 +80,7 @@ public class DestinationS3Deflate {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public DestinationS3Deflate withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -90,6 +92,7 @@ public class DestinationS3Deflate {
         this.codec = Optional.ofNullable(codec);
         return this;
     }
+
 
     public DestinationS3Deflate withCodec(Optional<? extends DestinationS3SchemasCodec> codec) {
         Utils.checkNotNull(codec, "codec");
@@ -103,7 +106,6 @@ public class DestinationS3Deflate {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -114,17 +116,15 @@ public class DestinationS3Deflate {
         }
         DestinationS3Deflate other = (DestinationS3Deflate) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.codec, other.codec) &&
-            Objects.deepEquals(this.compressionLevel, other.compressionLevel);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.codec, other.codec) &&
+            Utils.enhancedDeepEquals(this.compressionLevel, other.compressionLevel);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            codec,
-            compressionLevel);
+        return Utils.enhancedHash(
+            additionalProperties, codec, compressionLevel);
     }
     
     @Override
@@ -134,15 +134,16 @@ public class DestinationS3Deflate {
                 "codec", codec,
                 "compressionLevel", compressionLevel);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends DestinationS3SchemasCodec> codec;
- 
+
         private Long compressionLevel;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -163,6 +164,7 @@ public class DestinationS3Deflate {
             return this;
         }
 
+
         public Builder codec(DestinationS3SchemasCodec codec) {
             Utils.checkNotNull(codec, "codec");
             this.codec = Optional.ofNullable(codec);
@@ -175,21 +177,23 @@ public class DestinationS3Deflate {
             return this;
         }
 
+
         public Builder compressionLevel(long compressionLevel) {
             Utils.checkNotNull(compressionLevel, "compressionLevel");
             this.compressionLevel = compressionLevel;
             return this;
         }
-        
+
         public DestinationS3Deflate build() {
             if (codec == null) {
                 codec = _SINGLETON_VALUE_Codec.value();
             }
+
             return new DestinationS3Deflate(
-                codec,
-                compressionLevel)
+                codec, compressionLevel)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationS3SchemasCodec>> _SINGLETON_VALUE_Codec =
                 new LazySingletonValue<>(

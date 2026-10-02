@@ -14,7 +14,7 @@ public enum Hibob {
     @JsonValue
     private final String value;
 
-    private Hibob(String value) {
+    Hibob(String value) {
         this.value = value;
     }
     

@@ -19,13 +19,14 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class DestinationS3SchemasFormatNoCompression {
 
     @JsonIgnore
     private Map<String, Object> additionalProperties;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("codec")
@@ -54,9 +55,10 @@ public class DestinationS3SchemasFormatNoCompression {
         return (Optional<DestinationS3Codec>) codec;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public DestinationS3SchemasFormatNoCompression withAdditionalProperty(String key, Object value) {
@@ -64,8 +66,7 @@ public class DestinationS3SchemasFormatNoCompression {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public DestinationS3SchemasFormatNoCompression withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -78,13 +79,13 @@ public class DestinationS3SchemasFormatNoCompression {
         return this;
     }
 
+
     public DestinationS3SchemasFormatNoCompression withCodec(Optional<? extends DestinationS3Codec> codec) {
         Utils.checkNotNull(codec, "codec");
         this.codec = codec;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,15 +96,14 @@ public class DestinationS3SchemasFormatNoCompression {
         }
         DestinationS3SchemasFormatNoCompression other = (DestinationS3SchemasFormatNoCompression) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.codec, other.codec);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.codec, other.codec);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            codec);
+        return Utils.enhancedHash(
+            additionalProperties, codec);
     }
     
     @Override
@@ -112,13 +112,14 @@ public class DestinationS3SchemasFormatNoCompression {
                 "additionalProperties", additionalProperties,
                 "codec", codec);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends DestinationS3Codec> codec;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -139,6 +140,7 @@ public class DestinationS3SchemasFormatNoCompression {
             return this;
         }
 
+
         public Builder codec(DestinationS3Codec codec) {
             Utils.checkNotNull(codec, "codec");
             this.codec = Optional.ofNullable(codec);
@@ -150,15 +152,17 @@ public class DestinationS3SchemasFormatNoCompression {
             this.codec = codec;
             return this;
         }
-        
+
         public DestinationS3SchemasFormatNoCompression build() {
             if (codec == null) {
                 codec = _SINGLETON_VALUE_Codec.value();
             }
+
             return new DestinationS3SchemasFormatNoCompression(
                 codec)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationS3Codec>> _SINGLETON_VALUE_Codec =
                 new LazySingletonValue<>(

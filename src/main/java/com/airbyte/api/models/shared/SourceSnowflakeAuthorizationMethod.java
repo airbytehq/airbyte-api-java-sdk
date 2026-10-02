@@ -14,37 +14,30 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = SourceSnowflakeAuthorizationMethod._Deserializer.class)
 public class SourceSnowflakeAuthorizationMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceSnowflakeAuthorizationMethod(TypedObject value) {
         this.value = value;
     }
 
-    public static SourceSnowflakeAuthorizationMethod of(SourceSnowflakeOAuth20 value) {
-        Utils.checkNotNull(value, "value");
-        return new SourceSnowflakeAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSnowflakeOAuth20>(){}));
-    }
-
     public static SourceSnowflakeAuthorizationMethod of(SourceSnowflakeKeyPairAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new SourceSnowflakeAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSnowflakeKeyPairAuthentication>(){}));
+        return new SourceSnowflakeAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceSnowflakeAuthorizationMethod of(SourceSnowflakeUsernameAndPassword value) {
         Utils.checkNotNull(value, "value");
-        return new SourceSnowflakeAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSnowflakeUsernameAndPassword>(){}));
+        return new SourceSnowflakeAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
-     * <li>{@code com.airbyte.api.models.shared.SourceSnowflakeOAuth20}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceSnowflakeKeyPairAuthentication}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceSnowflakeUsernameAndPassword}</li>
      * </ul>
@@ -62,7 +55,7 @@ public class SourceSnowflakeAuthorizationMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -73,12 +66,12 @@ public class SourceSnowflakeAuthorizationMethod {
             return false;
         }
         SourceSnowflakeAuthorizationMethod other = (SourceSnowflakeAuthorizationMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -86,7 +79,6 @@ public class SourceSnowflakeAuthorizationMethod {
 
         public _Deserializer() {
             super(SourceSnowflakeAuthorizationMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceSnowflakeOAuth20>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceSnowflakeKeyPairAuthentication>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceSnowflakeUsernameAndPassword>() {}, JsonShape.DEFAULT));
         }
@@ -97,6 +89,6 @@ public class SourceSnowflakeAuthorizationMethod {
         return Utils.toString(SourceSnowflakeAuthorizationMethod.class,
                 "value", value);
     }
- 
+
 }
 

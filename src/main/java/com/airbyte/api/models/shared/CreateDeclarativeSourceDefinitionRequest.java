@@ -10,15 +10,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class CreateDeclarativeSourceDefinitionRequest {
-
     /**
      * Low code CDK manifest JSON object
      */
     @JsonProperty("manifest")
     private Object manifest;
+
 
     @JsonProperty("name")
     private String name;
@@ -46,9 +46,10 @@ public class CreateDeclarativeSourceDefinitionRequest {
         return name;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Low code CDK manifest JSON object
@@ -65,7 +66,6 @@ public class CreateDeclarativeSourceDefinitionRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -76,15 +76,14 @@ public class CreateDeclarativeSourceDefinitionRequest {
         }
         CreateDeclarativeSourceDefinitionRequest other = (CreateDeclarativeSourceDefinitionRequest) o;
         return 
-            Objects.deepEquals(this.manifest, other.manifest) &&
-            Objects.deepEquals(this.name, other.name);
+            Utils.enhancedDeepEquals(this.manifest, other.manifest) &&
+            Utils.enhancedDeepEquals(this.name, other.name);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            manifest,
-            name);
+        return Utils.enhancedHash(
+            manifest, name);
     }
     
     @Override
@@ -93,16 +92,18 @@ public class CreateDeclarativeSourceDefinitionRequest {
                 "manifest", manifest,
                 "name", name);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Object manifest;
- 
+
         private String name;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Low code CDK manifest JSON object
@@ -113,16 +114,18 @@ public class CreateDeclarativeSourceDefinitionRequest {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = name;
             return this;
         }
-        
+
         public CreateDeclarativeSourceDefinitionRequest build() {
+
             return new CreateDeclarativeSourceDefinitionRequest(
-                manifest,
-                name);
+                manifest, name);
         }
+
     }
 }

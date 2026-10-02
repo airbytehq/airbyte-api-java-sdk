@@ -14,7 +14,7 @@ public enum TheGuardianApi {
     @JsonValue
     private final String value;
 
-    private TheGuardianApi(String value) {
+    TheGuardianApi(String value) {
         this.value = value;
     }
     

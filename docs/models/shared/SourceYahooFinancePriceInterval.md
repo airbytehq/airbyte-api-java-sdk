@@ -2,6 +2,14 @@
 
 The interval of between prices queried.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceYahooFinancePriceInterval;
+
+SourceYahooFinancePriceInterval value = SourceYahooFinancePriceInterval.ONEM;
+```
+
 
 ## Values
 

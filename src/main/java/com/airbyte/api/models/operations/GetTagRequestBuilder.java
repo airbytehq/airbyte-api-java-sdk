@@ -3,16 +3,21 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
+import com.airbyte.api.operations.GetTag;
+import com.airbyte.api.utils.Headers;
 import com.airbyte.api.utils.Utils;
-import java.lang.Exception;
 
 public class GetTagRequestBuilder {
 
     private GetTagRequest request;
-    private final SDKMethodInterfaces.MethodCallGetTag sdk;
+    private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
-    public GetTagRequestBuilder(SDKMethodInterfaces.MethodCallGetTag sdk) {
-        this.sdk = sdk;
+    public GetTagRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public GetTagRequestBuilder request(GetTagRequest request) {
@@ -21,9 +26,11 @@ public class GetTagRequestBuilder {
         return this;
     }
 
-    public GetTagResponse call() throws Exception {
+    public GetTagResponse call() {
+        
+        RequestOperation<GetTagRequest, GetTagResponse> operation
+              = new GetTag.Sync(sdkConfiguration, _headers);
 
-        return sdk.getTag(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

@@ -14,7 +14,7 @@ public enum Astra {
     @JsonValue
     private final String value;
 
-    private Astra(String value) {
+    Astra(String value) {
         this.value = value;
     }
     

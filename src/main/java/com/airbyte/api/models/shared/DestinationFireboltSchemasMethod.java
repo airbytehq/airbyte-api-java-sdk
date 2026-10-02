@@ -14,7 +14,7 @@ public enum DestinationFireboltSchemasMethod {
     @JsonValue
     private final String value;
 
-    private DestinationFireboltSchemasMethod(String value) {
+    DestinationFireboltSchemasMethod(String value) {
         this.value = value;
     }
     

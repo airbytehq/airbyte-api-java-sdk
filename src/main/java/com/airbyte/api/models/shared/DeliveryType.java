@@ -14,7 +14,7 @@ public enum DeliveryType {
     @JsonValue
     private final String value;
 
-    private DeliveryType(String value) {
+    DeliveryType(String value) {
         this.value = value;
     }
     

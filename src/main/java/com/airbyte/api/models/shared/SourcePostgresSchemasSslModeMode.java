@@ -14,7 +14,7 @@ public enum SourcePostgresSchemasSslModeMode {
     @JsonValue
     private final String value;
 
-    private SourcePostgresSchemasSslModeMode(String value) {
+    SourcePostgresSchemasSslModeMode(String value) {
         this.value = value;
     }
     

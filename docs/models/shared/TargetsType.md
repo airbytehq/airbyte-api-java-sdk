@@ -1,5 +1,13 @@
 # TargetsType
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.TargetsType;
+
+TargetsType value = TargetsType.WSN_STATION_NUMBERS;
+```
+
 
 ## Values
 

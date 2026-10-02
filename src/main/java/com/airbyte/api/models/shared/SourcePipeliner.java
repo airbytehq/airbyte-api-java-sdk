@@ -13,8 +13,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourcePipeliner {
 
@@ -22,14 +22,18 @@ public class SourcePipeliner {
     @JsonProperty("password")
     private Optional<String> password;
 
+
     @JsonProperty("service")
     private DataCenter service;
+
 
     @JsonProperty("sourceType")
     private Pipeliner sourceType;
 
+
     @JsonProperty("spaceid")
     private String spaceid;
+
 
     @JsonProperty("username")
     private String username;
@@ -55,7 +59,8 @@ public class SourcePipeliner {
             DataCenter service,
             String spaceid,
             String username) {
-        this(Optional.empty(), service, spaceid, username);
+        this(Optional.empty(), service, spaceid,
+            username);
     }
 
     @JsonIgnore
@@ -83,15 +88,17 @@ public class SourcePipeliner {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourcePipeliner withPassword(String password) {
         Utils.checkNotNull(password, "password");
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     public SourcePipeliner withPassword(Optional<String> password) {
         Utils.checkNotNull(password, "password");
@@ -117,7 +124,6 @@ public class SourcePipeliner {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -128,21 +134,18 @@ public class SourcePipeliner {
         }
         SourcePipeliner other = (SourcePipeliner) o;
         return 
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.service, other.service) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.spaceid, other.spaceid) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.service, other.service) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.spaceid, other.spaceid) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            password,
-            service,
-            sourceType,
-            spaceid,
-            username);
+        return Utils.enhancedHash(
+            password, service, sourceType,
+            spaceid, username);
     }
     
     @Override
@@ -154,20 +157,22 @@ public class SourcePipeliner {
                 "spaceid", spaceid,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private DataCenter service;
- 
+
         private String spaceid;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder password(String password) {
             Utils.checkNotNull(password, "password");
@@ -181,11 +186,13 @@ public class SourcePipeliner {
             return this;
         }
 
+
         public Builder service(DataCenter service) {
             Utils.checkNotNull(service, "service");
             this.service = service;
             return this;
         }
+
 
         public Builder spaceid(String spaceid) {
             Utils.checkNotNull(spaceid, "spaceid");
@@ -193,19 +200,20 @@ public class SourcePipeliner {
             return this;
         }
 
+
         public Builder username(String username) {
             Utils.checkNotNull(username, "username");
             this.username = username;
             return this;
         }
-        
+
         public SourcePipeliner build() {
+
             return new SourcePipeliner(
-                password,
-                service,
-                spaceid,
+                password, service, spaceid,
                 username);
         }
+
 
         private static final LazySingletonValue<Pipeliner> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

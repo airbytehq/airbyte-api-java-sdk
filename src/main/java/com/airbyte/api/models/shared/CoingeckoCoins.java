@@ -14,7 +14,7 @@ public enum CoingeckoCoins {
     @JsonValue
     private final String value;
 
-    private CoingeckoCoins(String value) {
+    CoingeckoCoins(String value) {
         this.value = value;
     }
     

@@ -3,16 +3,21 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
+import com.airbyte.api.operations.ListUsersWithinAnOrganization;
+import com.airbyte.api.utils.Headers;
 import com.airbyte.api.utils.Utils;
-import java.lang.Exception;
 
 public class ListUsersWithinAnOrganizationRequestBuilder {
 
     private ListUsersWithinAnOrganizationRequest request;
-    private final SDKMethodInterfaces.MethodCallListUsersWithinAnOrganization sdk;
+    private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
-    public ListUsersWithinAnOrganizationRequestBuilder(SDKMethodInterfaces.MethodCallListUsersWithinAnOrganization sdk) {
-        this.sdk = sdk;
+    public ListUsersWithinAnOrganizationRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public ListUsersWithinAnOrganizationRequestBuilder request(ListUsersWithinAnOrganizationRequest request) {
@@ -21,9 +26,11 @@ public class ListUsersWithinAnOrganizationRequestBuilder {
         return this;
     }
 
-    public ListUsersWithinAnOrganizationResponse call() throws Exception {
+    public ListUsersWithinAnOrganizationResponse call() {
+        
+        RequestOperation<ListUsersWithinAnOrganizationRequest, ListUsersWithinAnOrganizationResponse> operation
+              = new ListUsersWithinAnOrganization.Sync(sdkConfiguration, _headers);
 
-        return sdk.listUsersWithinAnOrganization(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

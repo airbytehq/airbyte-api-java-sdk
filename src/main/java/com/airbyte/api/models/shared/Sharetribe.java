@@ -14,7 +14,7 @@ public enum Sharetribe {
     @JsonValue
     private final String value;
 
-    private Sharetribe(String value) {
+    Sharetribe(String value) {
         this.value = value;
     }
     
