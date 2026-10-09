@@ -15,56 +15,69 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceStripe {
 
+public class SourceStripe {
     /**
-     * Your Stripe account ID (starts with 'acct_', find yours &lt;a href="https://dashboard.stripe.com/settings/account"&gt;here&lt;/a&gt;).
+     * Your Stripe account ID (starts with 'acct_', find yours <a
+     * href="https://dashboard.stripe.com/settings/account">here</a>).
      */
     @JsonProperty("account_id")
     private String accountId;
 
     /**
-     * The number of API calls per second that you allow connector to make. This value can not be bigger than real API call rate limit (https://stripe.com/docs/rate-limits). If not specified the default maximum is 25 and 100 calls per second for test and production tokens respectively.
+     * The number of API calls per second that you allow connector to make. This value can not be bigger
+     * than real API call rate limit (https://stripe.com/docs/rate-limits). If not specified the default
+     * maximum is 25 and 100 calls per second for test and production tokens respectively.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("call_rate_limit")
     private Optional<Long> callRateLimit;
 
     /**
-     * Stripe API key (usually starts with 'sk_live_'; find yours &lt;a href="https://dashboard.stripe.com/apikeys"&gt;here&lt;/a&gt;).
+     * Stripe API key (usually starts with 'sk_live_'; find yours <a
+     * href="https://dashboard.stripe.com/apikeys">here</a>).
      */
     @JsonProperty("client_secret")
     private String clientSecret;
 
     /**
-     * When set, the connector will always re-export data from the past N days, where N is the value set here. This is useful if your data is frequently updated after creation. The Lookback Window only applies to streams that do not support event-based incremental syncs: Events, SetupAttempts, ShippingRates, BalanceTransactions, Files, FileLinks, Refunds. More info &lt;a href="https://docs.airbyte.com/integrations/sources/stripe#requirements"&gt;here&lt;/a&gt;
+     * When set, the connector will always re-export data from the past N days, where N is the value set
+     * here. This is useful if your data is frequently updated after creation. The Lookback Window only
+     * applies to streams that do not support event-based incremental syncs: Events, SetupAttempts,
+     * ShippingRates, BalanceTransactions, Files, FileLinks, Refunds.
+     * 
+     * <p>More info <a href="https://docs.airbyte.com/integrations/sources/stripe#requirements">here</a>
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("lookback_window_days")
     private Optional<Long> lookbackWindowDays;
 
     /**
-     * The number of worker thread to use for the sync. The performance upper boundary depends on call_rate_limit setting and type of account.
+     * The number of worker thread to use for the sync. The performance upper boundary depends on
+     * call_rate_limit setting and type of account.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("num_workers")
     private Optional<Long> numWorkers;
 
     /**
-     * The time increment used by the connector when requesting data from the Stripe API. The bigger the value is, the less requests will be made and faster the sync will be. On the other hand, the more seldom the state is persisted.
+     * The time increment used by the connector when requesting data from the Stripe API. The bigger the
+     * value is, the less requests will be made and faster the sync will be. On the other hand, the more
+     * seldom the state is persisted.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("slice_range")
     private Optional<Long> sliceRange;
 
+
     @JsonProperty("sourceType")
     private Stripe sourceType;
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Only data generated after this date will be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Only data generated after this date will be
+     * replicated.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
@@ -99,11 +112,14 @@ public class SourceStripe {
     public SourceStripe(
             String accountId,
             String clientSecret) {
-        this(accountId, Optional.empty(), clientSecret, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(accountId, Optional.empty(), clientSecret,
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     /**
-     * Your Stripe account ID (starts with 'acct_', find yours &lt;a href="https://dashboard.stripe.com/settings/account"&gt;here&lt;/a&gt;).
+     * Your Stripe account ID (starts with 'acct_', find yours <a
+     * href="https://dashboard.stripe.com/settings/account">here</a>).
      */
     @JsonIgnore
     public String accountId() {
@@ -111,7 +127,9 @@ public class SourceStripe {
     }
 
     /**
-     * The number of API calls per second that you allow connector to make. This value can not be bigger than real API call rate limit (https://stripe.com/docs/rate-limits). If not specified the default maximum is 25 and 100 calls per second for test and production tokens respectively.
+     * The number of API calls per second that you allow connector to make. This value can not be bigger
+     * than real API call rate limit (https://stripe.com/docs/rate-limits). If not specified the default
+     * maximum is 25 and 100 calls per second for test and production tokens respectively.
      */
     @JsonIgnore
     public Optional<Long> callRateLimit() {
@@ -119,7 +137,8 @@ public class SourceStripe {
     }
 
     /**
-     * Stripe API key (usually starts with 'sk_live_'; find yours &lt;a href="https://dashboard.stripe.com/apikeys"&gt;here&lt;/a&gt;).
+     * Stripe API key (usually starts with 'sk_live_'; find yours <a
+     * href="https://dashboard.stripe.com/apikeys">here</a>).
      */
     @JsonIgnore
     public String clientSecret() {
@@ -127,7 +146,12 @@ public class SourceStripe {
     }
 
     /**
-     * When set, the connector will always re-export data from the past N days, where N is the value set here. This is useful if your data is frequently updated after creation. The Lookback Window only applies to streams that do not support event-based incremental syncs: Events, SetupAttempts, ShippingRates, BalanceTransactions, Files, FileLinks, Refunds. More info &lt;a href="https://docs.airbyte.com/integrations/sources/stripe#requirements"&gt;here&lt;/a&gt;
+     * When set, the connector will always re-export data from the past N days, where N is the value set
+     * here. This is useful if your data is frequently updated after creation. The Lookback Window only
+     * applies to streams that do not support event-based incremental syncs: Events, SetupAttempts,
+     * ShippingRates, BalanceTransactions, Files, FileLinks, Refunds.
+     * 
+     * <p>More info <a href="https://docs.airbyte.com/integrations/sources/stripe#requirements">here</a>
      */
     @JsonIgnore
     public Optional<Long> lookbackWindowDays() {
@@ -135,7 +159,8 @@ public class SourceStripe {
     }
 
     /**
-     * The number of worker thread to use for the sync. The performance upper boundary depends on call_rate_limit setting and type of account.
+     * The number of worker thread to use for the sync. The performance upper boundary depends on
+     * call_rate_limit setting and type of account.
      */
     @JsonIgnore
     public Optional<Long> numWorkers() {
@@ -143,7 +168,9 @@ public class SourceStripe {
     }
 
     /**
-     * The time increment used by the connector when requesting data from the Stripe API. The bigger the value is, the less requests will be made and faster the sync will be. On the other hand, the more seldom the state is persisted.
+     * The time increment used by the connector when requesting data from the Stripe API. The bigger the
+     * value is, the less requests will be made and faster the sync will be. On the other hand, the more
+     * seldom the state is persisted.
      */
     @JsonIgnore
     public Optional<Long> sliceRange() {
@@ -156,19 +183,22 @@ public class SourceStripe {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Only data generated after this date will be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Only data generated after this date will be
+     * replicated.
      */
     @JsonIgnore
     public Optional<OffsetDateTime> startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Your Stripe account ID (starts with 'acct_', find yours &lt;a href="https://dashboard.stripe.com/settings/account"&gt;here&lt;/a&gt;).
+     * Your Stripe account ID (starts with 'acct_', find yours <a
+     * href="https://dashboard.stripe.com/settings/account">here</a>).
      */
     public SourceStripe withAccountId(String accountId) {
         Utils.checkNotNull(accountId, "accountId");
@@ -177,7 +207,9 @@ public class SourceStripe {
     }
 
     /**
-     * The number of API calls per second that you allow connector to make. This value can not be bigger than real API call rate limit (https://stripe.com/docs/rate-limits). If not specified the default maximum is 25 and 100 calls per second for test and production tokens respectively.
+     * The number of API calls per second that you allow connector to make. This value can not be bigger
+     * than real API call rate limit (https://stripe.com/docs/rate-limits). If not specified the default
+     * maximum is 25 and 100 calls per second for test and production tokens respectively.
      */
     public SourceStripe withCallRateLimit(long callRateLimit) {
         Utils.checkNotNull(callRateLimit, "callRateLimit");
@@ -185,8 +217,11 @@ public class SourceStripe {
         return this;
     }
 
+
     /**
-     * The number of API calls per second that you allow connector to make. This value can not be bigger than real API call rate limit (https://stripe.com/docs/rate-limits). If not specified the default maximum is 25 and 100 calls per second for test and production tokens respectively.
+     * The number of API calls per second that you allow connector to make. This value can not be bigger
+     * than real API call rate limit (https://stripe.com/docs/rate-limits). If not specified the default
+     * maximum is 25 and 100 calls per second for test and production tokens respectively.
      */
     public SourceStripe withCallRateLimit(Optional<Long> callRateLimit) {
         Utils.checkNotNull(callRateLimit, "callRateLimit");
@@ -195,7 +230,8 @@ public class SourceStripe {
     }
 
     /**
-     * Stripe API key (usually starts with 'sk_live_'; find yours &lt;a href="https://dashboard.stripe.com/apikeys"&gt;here&lt;/a&gt;).
+     * Stripe API key (usually starts with 'sk_live_'; find yours <a
+     * href="https://dashboard.stripe.com/apikeys">here</a>).
      */
     public SourceStripe withClientSecret(String clientSecret) {
         Utils.checkNotNull(clientSecret, "clientSecret");
@@ -204,7 +240,12 @@ public class SourceStripe {
     }
 
     /**
-     * When set, the connector will always re-export data from the past N days, where N is the value set here. This is useful if your data is frequently updated after creation. The Lookback Window only applies to streams that do not support event-based incremental syncs: Events, SetupAttempts, ShippingRates, BalanceTransactions, Files, FileLinks, Refunds. More info &lt;a href="https://docs.airbyte.com/integrations/sources/stripe#requirements"&gt;here&lt;/a&gt;
+     * When set, the connector will always re-export data from the past N days, where N is the value set
+     * here. This is useful if your data is frequently updated after creation. The Lookback Window only
+     * applies to streams that do not support event-based incremental syncs: Events, SetupAttempts,
+     * ShippingRates, BalanceTransactions, Files, FileLinks, Refunds.
+     * 
+     * <p>More info <a href="https://docs.airbyte.com/integrations/sources/stripe#requirements">here</a>
      */
     public SourceStripe withLookbackWindowDays(long lookbackWindowDays) {
         Utils.checkNotNull(lookbackWindowDays, "lookbackWindowDays");
@@ -212,8 +253,14 @@ public class SourceStripe {
         return this;
     }
 
+
     /**
-     * When set, the connector will always re-export data from the past N days, where N is the value set here. This is useful if your data is frequently updated after creation. The Lookback Window only applies to streams that do not support event-based incremental syncs: Events, SetupAttempts, ShippingRates, BalanceTransactions, Files, FileLinks, Refunds. More info &lt;a href="https://docs.airbyte.com/integrations/sources/stripe#requirements"&gt;here&lt;/a&gt;
+     * When set, the connector will always re-export data from the past N days, where N is the value set
+     * here. This is useful if your data is frequently updated after creation. The Lookback Window only
+     * applies to streams that do not support event-based incremental syncs: Events, SetupAttempts,
+     * ShippingRates, BalanceTransactions, Files, FileLinks, Refunds.
+     * 
+     * <p>More info <a href="https://docs.airbyte.com/integrations/sources/stripe#requirements">here</a>
      */
     public SourceStripe withLookbackWindowDays(Optional<Long> lookbackWindowDays) {
         Utils.checkNotNull(lookbackWindowDays, "lookbackWindowDays");
@@ -222,7 +269,8 @@ public class SourceStripe {
     }
 
     /**
-     * The number of worker thread to use for the sync. The performance upper boundary depends on call_rate_limit setting and type of account.
+     * The number of worker thread to use for the sync. The performance upper boundary depends on
+     * call_rate_limit setting and type of account.
      */
     public SourceStripe withNumWorkers(long numWorkers) {
         Utils.checkNotNull(numWorkers, "numWorkers");
@@ -230,8 +278,10 @@ public class SourceStripe {
         return this;
     }
 
+
     /**
-     * The number of worker thread to use for the sync. The performance upper boundary depends on call_rate_limit setting and type of account.
+     * The number of worker thread to use for the sync. The performance upper boundary depends on
+     * call_rate_limit setting and type of account.
      */
     public SourceStripe withNumWorkers(Optional<Long> numWorkers) {
         Utils.checkNotNull(numWorkers, "numWorkers");
@@ -240,7 +290,9 @@ public class SourceStripe {
     }
 
     /**
-     * The time increment used by the connector when requesting data from the Stripe API. The bigger the value is, the less requests will be made and faster the sync will be. On the other hand, the more seldom the state is persisted.
+     * The time increment used by the connector when requesting data from the Stripe API. The bigger the
+     * value is, the less requests will be made and faster the sync will be. On the other hand, the more
+     * seldom the state is persisted.
      */
     public SourceStripe withSliceRange(long sliceRange) {
         Utils.checkNotNull(sliceRange, "sliceRange");
@@ -248,8 +300,11 @@ public class SourceStripe {
         return this;
     }
 
+
     /**
-     * The time increment used by the connector when requesting data from the Stripe API. The bigger the value is, the less requests will be made and faster the sync will be. On the other hand, the more seldom the state is persisted.
+     * The time increment used by the connector when requesting data from the Stripe API. The bigger the
+     * value is, the less requests will be made and faster the sync will be. On the other hand, the more
+     * seldom the state is persisted.
      */
     public SourceStripe withSliceRange(Optional<Long> sliceRange) {
         Utils.checkNotNull(sliceRange, "sliceRange");
@@ -258,7 +313,8 @@ public class SourceStripe {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Only data generated after this date will be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Only data generated after this date will be
+     * replicated.
      */
     public SourceStripe withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -266,8 +322,10 @@ public class SourceStripe {
         return this;
     }
 
+
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Only data generated after this date will be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Only data generated after this date will be
+     * replicated.
      */
     public SourceStripe withStartDate(Optional<OffsetDateTime> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -275,7 +333,6 @@ public class SourceStripe {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -286,27 +343,22 @@ public class SourceStripe {
         }
         SourceStripe other = (SourceStripe) o;
         return 
-            Objects.deepEquals(this.accountId, other.accountId) &&
-            Objects.deepEquals(this.callRateLimit, other.callRateLimit) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.lookbackWindowDays, other.lookbackWindowDays) &&
-            Objects.deepEquals(this.numWorkers, other.numWorkers) &&
-            Objects.deepEquals(this.sliceRange, other.sliceRange) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.accountId, other.accountId) &&
+            Utils.enhancedDeepEquals(this.callRateLimit, other.callRateLimit) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.lookbackWindowDays, other.lookbackWindowDays) &&
+            Utils.enhancedDeepEquals(this.numWorkers, other.numWorkers) &&
+            Utils.enhancedDeepEquals(this.sliceRange, other.sliceRange) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountId,
-            callRateLimit,
-            clientSecret,
-            lookbackWindowDays,
-            numWorkers,
-            sliceRange,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            accountId, callRateLimit, clientSecret,
+            lookbackWindowDays, numWorkers, sliceRange,
+            sourceType, startDate);
     }
     
     @Override
@@ -321,29 +373,32 @@ public class SourceStripe {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accountId;
- 
+
         private Optional<Long> callRateLimit = Optional.empty();
- 
+
         private String clientSecret;
- 
+
         private Optional<Long> lookbackWindowDays;
- 
+
         private Optional<Long> numWorkers;
- 
+
         private Optional<Long> sliceRange;
- 
+
         private Optional<OffsetDateTime> startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Your Stripe account ID (starts with 'acct_', find yours &lt;a href="https://dashboard.stripe.com/settings/account"&gt;here&lt;/a&gt;).
+         * Your Stripe account ID (starts with 'acct_', find yours <a
+         * href="https://dashboard.stripe.com/settings/account">here</a>).
          */
         public Builder accountId(String accountId) {
             Utils.checkNotNull(accountId, "accountId");
@@ -351,8 +406,11 @@ public class SourceStripe {
             return this;
         }
 
+
         /**
-         * The number of API calls per second that you allow connector to make. This value can not be bigger than real API call rate limit (https://stripe.com/docs/rate-limits). If not specified the default maximum is 25 and 100 calls per second for test and production tokens respectively.
+         * The number of API calls per second that you allow connector to make. This value can not be bigger
+         * than real API call rate limit (https://stripe.com/docs/rate-limits). If not specified the default
+         * maximum is 25 and 100 calls per second for test and production tokens respectively.
          */
         public Builder callRateLimit(long callRateLimit) {
             Utils.checkNotNull(callRateLimit, "callRateLimit");
@@ -361,7 +419,9 @@ public class SourceStripe {
         }
 
         /**
-         * The number of API calls per second that you allow connector to make. This value can not be bigger than real API call rate limit (https://stripe.com/docs/rate-limits). If not specified the default maximum is 25 and 100 calls per second for test and production tokens respectively.
+         * The number of API calls per second that you allow connector to make. This value can not be bigger
+         * than real API call rate limit (https://stripe.com/docs/rate-limits). If not specified the default
+         * maximum is 25 and 100 calls per second for test and production tokens respectively.
          */
         public Builder callRateLimit(Optional<Long> callRateLimit) {
             Utils.checkNotNull(callRateLimit, "callRateLimit");
@@ -369,8 +429,10 @@ public class SourceStripe {
             return this;
         }
 
+
         /**
-         * Stripe API key (usually starts with 'sk_live_'; find yours &lt;a href="https://dashboard.stripe.com/apikeys"&gt;here&lt;/a&gt;).
+         * Stripe API key (usually starts with 'sk_live_'; find yours <a
+         * href="https://dashboard.stripe.com/apikeys">here</a>).
          */
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
@@ -378,8 +440,14 @@ public class SourceStripe {
             return this;
         }
 
+
         /**
-         * When set, the connector will always re-export data from the past N days, where N is the value set here. This is useful if your data is frequently updated after creation. The Lookback Window only applies to streams that do not support event-based incremental syncs: Events, SetupAttempts, ShippingRates, BalanceTransactions, Files, FileLinks, Refunds. More info &lt;a href="https://docs.airbyte.com/integrations/sources/stripe#requirements"&gt;here&lt;/a&gt;
+         * When set, the connector will always re-export data from the past N days, where N is the value set
+         * here. This is useful if your data is frequently updated after creation. The Lookback Window only
+         * applies to streams that do not support event-based incremental syncs: Events, SetupAttempts,
+         * ShippingRates, BalanceTransactions, Files, FileLinks, Refunds.
+         * 
+         * <p>More info <a href="https://docs.airbyte.com/integrations/sources/stripe#requirements">here</a>
          */
         public Builder lookbackWindowDays(long lookbackWindowDays) {
             Utils.checkNotNull(lookbackWindowDays, "lookbackWindowDays");
@@ -388,7 +456,12 @@ public class SourceStripe {
         }
 
         /**
-         * When set, the connector will always re-export data from the past N days, where N is the value set here. This is useful if your data is frequently updated after creation. The Lookback Window only applies to streams that do not support event-based incremental syncs: Events, SetupAttempts, ShippingRates, BalanceTransactions, Files, FileLinks, Refunds. More info &lt;a href="https://docs.airbyte.com/integrations/sources/stripe#requirements"&gt;here&lt;/a&gt;
+         * When set, the connector will always re-export data from the past N days, where N is the value set
+         * here. This is useful if your data is frequently updated after creation. The Lookback Window only
+         * applies to streams that do not support event-based incremental syncs: Events, SetupAttempts,
+         * ShippingRates, BalanceTransactions, Files, FileLinks, Refunds.
+         * 
+         * <p>More info <a href="https://docs.airbyte.com/integrations/sources/stripe#requirements">here</a>
          */
         public Builder lookbackWindowDays(Optional<Long> lookbackWindowDays) {
             Utils.checkNotNull(lookbackWindowDays, "lookbackWindowDays");
@@ -396,8 +469,10 @@ public class SourceStripe {
             return this;
         }
 
+
         /**
-         * The number of worker thread to use for the sync. The performance upper boundary depends on call_rate_limit setting and type of account.
+         * The number of worker thread to use for the sync. The performance upper boundary depends on
+         * call_rate_limit setting and type of account.
          */
         public Builder numWorkers(long numWorkers) {
             Utils.checkNotNull(numWorkers, "numWorkers");
@@ -406,7 +481,8 @@ public class SourceStripe {
         }
 
         /**
-         * The number of worker thread to use for the sync. The performance upper boundary depends on call_rate_limit setting and type of account.
+         * The number of worker thread to use for the sync. The performance upper boundary depends on
+         * call_rate_limit setting and type of account.
          */
         public Builder numWorkers(Optional<Long> numWorkers) {
             Utils.checkNotNull(numWorkers, "numWorkers");
@@ -414,8 +490,11 @@ public class SourceStripe {
             return this;
         }
 
+
         /**
-         * The time increment used by the connector when requesting data from the Stripe API. The bigger the value is, the less requests will be made and faster the sync will be. On the other hand, the more seldom the state is persisted.
+         * The time increment used by the connector when requesting data from the Stripe API. The bigger the
+         * value is, the less requests will be made and faster the sync will be. On the other hand, the more
+         * seldom the state is persisted.
          */
         public Builder sliceRange(long sliceRange) {
             Utils.checkNotNull(sliceRange, "sliceRange");
@@ -424,7 +503,9 @@ public class SourceStripe {
         }
 
         /**
-         * The time increment used by the connector when requesting data from the Stripe API. The bigger the value is, the less requests will be made and faster the sync will be. On the other hand, the more seldom the state is persisted.
+         * The time increment used by the connector when requesting data from the Stripe API. The bigger the
+         * value is, the less requests will be made and faster the sync will be. On the other hand, the more
+         * seldom the state is persisted.
          */
         public Builder sliceRange(Optional<Long> sliceRange) {
             Utils.checkNotNull(sliceRange, "sliceRange");
@@ -432,8 +513,10 @@ public class SourceStripe {
             return this;
         }
 
+
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Only data generated after this date will be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Only data generated after this date will be
+         * replicated.
          */
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -442,14 +525,15 @@ public class SourceStripe {
         }
 
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Only data generated after this date will be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Only data generated after this date will be
+         * replicated.
          */
         public Builder startDate(Optional<OffsetDateTime> startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceStripe build() {
             if (lookbackWindowDays == null) {
                 lookbackWindowDays = _SINGLETON_VALUE_LookbackWindowDays.value();
@@ -463,15 +547,13 @@ public class SourceStripe {
             if (startDate == null) {
                 startDate = _SINGLETON_VALUE_StartDate.value();
             }
+
             return new SourceStripe(
-                accountId,
-                callRateLimit,
-                clientSecret,
-                lookbackWindowDays,
-                numWorkers,
-                sliceRange,
+                accountId, callRateLimit, clientSecret,
+                lookbackWindowDays, numWorkers, sliceRange,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_LookbackWindowDays =
                 new LazySingletonValue<>(

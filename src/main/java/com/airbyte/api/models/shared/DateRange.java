@@ -10,12 +10,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
 import java.time.LocalDate;
-import java.util.Objects;
+
 
 public class DateRange {
 
     @JsonProperty("endDate")
     private LocalDate endDate;
+
 
     @JsonProperty("startDate")
     private LocalDate startDate;
@@ -40,9 +41,10 @@ public class DateRange {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public DateRange withEndDate(LocalDate endDate) {
         Utils.checkNotNull(endDate, "endDate");
@@ -56,7 +58,6 @@ public class DateRange {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -67,15 +68,14 @@ public class DateRange {
         }
         DateRange other = (DateRange) o;
         return 
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            endDate,
-            startDate);
+        return Utils.enhancedHash(
+            endDate, startDate);
     }
     
     @Override
@@ -84,16 +84,18 @@ public class DateRange {
                 "endDate", endDate,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private LocalDate endDate;
- 
+
         private LocalDate startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder endDate(LocalDate endDate) {
             Utils.checkNotNull(endDate, "endDate");
@@ -101,16 +103,18 @@ public class DateRange {
             return this;
         }
 
+
         public Builder startDate(LocalDate startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public DateRange build() {
+
             return new DateRange(
-                endDate,
-                startDate);
+                endDate, startDate);
         }
+
     }
 }

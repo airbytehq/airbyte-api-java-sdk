@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -24,6 +23,7 @@ public class PermissionResponse {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("organizationId")
     private Optional<String> organizationId;
+
 
     @JsonProperty("permissionId")
     private String permissionId;
@@ -39,6 +39,7 @@ public class PermissionResponse {
      */
     @JsonProperty("userId")
     private String userId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("workspaceId")
@@ -67,7 +68,8 @@ public class PermissionResponse {
             String permissionId,
             PermissionType permissionType,
             String userId) {
-        this(Optional.empty(), permissionId, permissionType, userId, Optional.empty());
+        this(Optional.empty(), permissionId, permissionType,
+            userId, Optional.empty());
     }
 
     @JsonIgnore
@@ -101,15 +103,17 @@ public class PermissionResponse {
         return workspaceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public PermissionResponse withOrganizationId(String organizationId) {
         Utils.checkNotNull(organizationId, "organizationId");
         this.organizationId = Optional.ofNullable(organizationId);
         return this;
     }
+
 
     public PermissionResponse withOrganizationId(Optional<String> organizationId) {
         Utils.checkNotNull(organizationId, "organizationId");
@@ -147,13 +151,13 @@ public class PermissionResponse {
         return this;
     }
 
+
     public PermissionResponse withWorkspaceId(Optional<String> workspaceId) {
         Utils.checkNotNull(workspaceId, "workspaceId");
         this.workspaceId = workspaceId;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -164,21 +168,18 @@ public class PermissionResponse {
         }
         PermissionResponse other = (PermissionResponse) o;
         return 
-            Objects.deepEquals(this.organizationId, other.organizationId) &&
-            Objects.deepEquals(this.permissionId, other.permissionId) &&
-            Objects.deepEquals(this.permissionType, other.permissionType) &&
-            Objects.deepEquals(this.userId, other.userId) &&
-            Objects.deepEquals(this.workspaceId, other.workspaceId);
+            Utils.enhancedDeepEquals(this.organizationId, other.organizationId) &&
+            Utils.enhancedDeepEquals(this.permissionId, other.permissionId) &&
+            Utils.enhancedDeepEquals(this.permissionType, other.permissionType) &&
+            Utils.enhancedDeepEquals(this.userId, other.userId) &&
+            Utils.enhancedDeepEquals(this.workspaceId, other.workspaceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            organizationId,
-            permissionId,
-            permissionType,
-            userId,
-            workspaceId);
+        return Utils.enhancedHash(
+            organizationId, permissionId, permissionType,
+            userId, workspaceId);
     }
     
     @Override
@@ -190,22 +191,24 @@ public class PermissionResponse {
                 "userId", userId,
                 "workspaceId", workspaceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> organizationId = Optional.empty();
- 
+
         private String permissionId;
- 
+
         private PermissionType permissionType;
- 
+
         private String userId;
- 
+
         private Optional<String> workspaceId = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder organizationId(String organizationId) {
             Utils.checkNotNull(organizationId, "organizationId");
@@ -219,11 +222,13 @@ public class PermissionResponse {
             return this;
         }
 
+
         public Builder permissionId(String permissionId) {
             Utils.checkNotNull(permissionId, "permissionId");
             this.permissionId = permissionId;
             return this;
         }
+
 
         /**
          * Describes what actions/endpoints the permission entitles to
@@ -234,6 +239,7 @@ public class PermissionResponse {
             return this;
         }
 
+
         /**
          * Internal Airbyte user ID
          */
@@ -242,6 +248,7 @@ public class PermissionResponse {
             this.userId = userId;
             return this;
         }
+
 
         public Builder workspaceId(String workspaceId) {
             Utils.checkNotNull(workspaceId, "workspaceId");
@@ -254,14 +261,13 @@ public class PermissionResponse {
             this.workspaceId = workspaceId;
             return this;
         }
-        
+
         public PermissionResponse build() {
+
             return new PermissionResponse(
-                organizationId,
-                permissionId,
-                permissionType,
-                userId,
-                workspaceId);
+                organizationId, permissionId, permissionType,
+                userId, workspaceId);
         }
+
     }
 }

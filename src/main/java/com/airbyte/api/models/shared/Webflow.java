@@ -14,7 +14,7 @@ public enum Webflow {
     @JsonValue
     private final String value;
 
-    private Webflow(String value) {
+    Webflow(String value) {
         this.value = value;
     }
     

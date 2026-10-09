@@ -7,25 +7,46 @@ import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
+import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+import java.util.List;
+import java.util.Optional;
+
 
 public class SourceWorkday {
-
     /**
-     * Report Based Streams and REST API Streams use different methods of Authentication. Choose streams type you want to sync and provide needed credentials for them.
+     * Credentials for connecting to the Workday (RAAS) API.
      */
     @JsonProperty("credentials")
     private SourceWorkdayAuthentication credentials;
 
+
     @JsonProperty("host")
     private String host;
 
+    /**
+     * The number of worker threads to use for the sync.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("num_workers")
+    private Optional<Long> numWorkers;
+
+    /**
+     * Report IDs can be found by clicking the three dots on the right side of the report &gt; Web Service
+     * &gt; View URLs &gt; in JSON url copy everything between Workday tenant/ and ?format=json.
+     */
+    @JsonProperty("report_ids")
+    private List<ReportIds> reportIds;
+
+
     @JsonProperty("sourceType")
     private Workday sourceType;
+
 
     @JsonProperty("tenant_id")
     private String tenantId;
@@ -34,18 +55,33 @@ public class SourceWorkday {
     public SourceWorkday(
             @JsonProperty("credentials") SourceWorkdayAuthentication credentials,
             @JsonProperty("host") String host,
+            @JsonProperty("num_workers") Optional<Long> numWorkers,
+            @JsonProperty("report_ids") List<ReportIds> reportIds,
             @JsonProperty("tenant_id") String tenantId) {
         Utils.checkNotNull(credentials, "credentials");
         Utils.checkNotNull(host, "host");
+        Utils.checkNotNull(numWorkers, "numWorkers");
+        Utils.checkNotNull(reportIds, "reportIds");
         Utils.checkNotNull(tenantId, "tenantId");
         this.credentials = credentials;
         this.host = host;
+        this.numWorkers = numWorkers;
+        this.reportIds = reportIds;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.tenantId = tenantId;
     }
+    
+    public SourceWorkday(
+            SourceWorkdayAuthentication credentials,
+            String host,
+            List<ReportIds> reportIds,
+            String tenantId) {
+        this(credentials, host, Optional.empty(),
+            reportIds, tenantId);
+    }
 
     /**
-     * Report Based Streams and REST API Streams use different methods of Authentication. Choose streams type you want to sync and provide needed credentials for them.
+     * Credentials for connecting to the Workday (RAAS) API.
      */
     @JsonIgnore
     public SourceWorkdayAuthentication credentials() {
@@ -55,6 +91,23 @@ public class SourceWorkday {
     @JsonIgnore
     public String host() {
         return host;
+    }
+
+    /**
+     * The number of worker threads to use for the sync.
+     */
+    @JsonIgnore
+    public Optional<Long> numWorkers() {
+        return numWorkers;
+    }
+
+    /**
+     * Report IDs can be found by clicking the three dots on the right side of the report &gt; Web Service
+     * &gt; View URLs &gt; in JSON url copy everything between Workday tenant/ and ?format=json.
+     */
+    @JsonIgnore
+    public List<ReportIds> reportIds() {
+        return reportIds;
     }
 
     @JsonIgnore
@@ -67,12 +120,13 @@ public class SourceWorkday {
         return tenantId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Report Based Streams and REST API Streams use different methods of Authentication. Choose streams type you want to sync and provide needed credentials for them.
+     * Credentials for connecting to the Workday (RAAS) API.
      */
     public SourceWorkday withCredentials(SourceWorkdayAuthentication credentials) {
         Utils.checkNotNull(credentials, "credentials");
@@ -86,13 +140,41 @@ public class SourceWorkday {
         return this;
     }
 
+    /**
+     * The number of worker threads to use for the sync.
+     */
+    public SourceWorkday withNumWorkers(long numWorkers) {
+        Utils.checkNotNull(numWorkers, "numWorkers");
+        this.numWorkers = Optional.ofNullable(numWorkers);
+        return this;
+    }
+
+
+    /**
+     * The number of worker threads to use for the sync.
+     */
+    public SourceWorkday withNumWorkers(Optional<Long> numWorkers) {
+        Utils.checkNotNull(numWorkers, "numWorkers");
+        this.numWorkers = numWorkers;
+        return this;
+    }
+
+    /**
+     * Report IDs can be found by clicking the three dots on the right side of the report &gt; Web Service
+     * &gt; View URLs &gt; in JSON url copy everything between Workday tenant/ and ?format=json.
+     */
+    public SourceWorkday withReportIds(List<ReportIds> reportIds) {
+        Utils.checkNotNull(reportIds, "reportIds");
+        this.reportIds = reportIds;
+        return this;
+    }
+
     public SourceWorkday withTenantId(String tenantId) {
         Utils.checkNotNull(tenantId, "tenantId");
         this.tenantId = tenantId;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -103,19 +185,19 @@ public class SourceWorkday {
         }
         SourceWorkday other = (SourceWorkday) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.tenantId, other.tenantId);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.numWorkers, other.numWorkers) &&
+            Utils.enhancedDeepEquals(this.reportIds, other.reportIds) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.tenantId, other.tenantId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            host,
-            sourceType,
-            tenantId);
+        return Utils.enhancedHash(
+            credentials, host, numWorkers,
+            reportIds, sourceType, tenantId);
     }
     
     @Override
@@ -123,24 +205,32 @@ public class SourceWorkday {
         return Utils.toString(SourceWorkday.class,
                 "credentials", credentials,
                 "host", host,
+                "numWorkers", numWorkers,
+                "reportIds", reportIds,
                 "sourceType", sourceType,
                 "tenantId", tenantId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private SourceWorkdayAuthentication credentials;
- 
+
         private String host;
- 
+
+        private Optional<Long> numWorkers;
+
+        private List<ReportIds> reportIds;
+
         private String tenantId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Report Based Streams and REST API Streams use different methods of Authentication. Choose streams type you want to sync and provide needed credentials for them.
+         * Credentials for connecting to the Workday (RAAS) API.
          */
         public Builder credentials(SourceWorkdayAuthentication credentials) {
             Utils.checkNotNull(credentials, "credentials");
@@ -148,24 +238,66 @@ public class SourceWorkday {
             return this;
         }
 
+
         public Builder host(String host) {
             Utils.checkNotNull(host, "host");
             this.host = host;
             return this;
         }
 
+
+        /**
+         * The number of worker threads to use for the sync.
+         */
+        public Builder numWorkers(long numWorkers) {
+            Utils.checkNotNull(numWorkers, "numWorkers");
+            this.numWorkers = Optional.ofNullable(numWorkers);
+            return this;
+        }
+
+        /**
+         * The number of worker threads to use for the sync.
+         */
+        public Builder numWorkers(Optional<Long> numWorkers) {
+            Utils.checkNotNull(numWorkers, "numWorkers");
+            this.numWorkers = numWorkers;
+            return this;
+        }
+
+
+        /**
+         * Report IDs can be found by clicking the three dots on the right side of the report &gt; Web Service
+         * &gt; View URLs &gt; in JSON url copy everything between Workday tenant/ and ?format=json.
+         */
+        public Builder reportIds(List<ReportIds> reportIds) {
+            Utils.checkNotNull(reportIds, "reportIds");
+            this.reportIds = reportIds;
+            return this;
+        }
+
+
         public Builder tenantId(String tenantId) {
             Utils.checkNotNull(tenantId, "tenantId");
             this.tenantId = tenantId;
             return this;
         }
-        
+
         public SourceWorkday build() {
+            if (numWorkers == null) {
+                numWorkers = _SINGLETON_VALUE_NumWorkers.value();
+            }
+
             return new SourceWorkday(
-                credentials,
-                host,
-                tenantId);
+                credentials, host, numWorkers,
+                reportIds, tenantId);
         }
+
+
+        private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_NumWorkers =
+                new LazySingletonValue<>(
+                        "num_workers",
+                        "10",
+                        new TypeReference<Optional<Long>>() {});
 
         private static final LazySingletonValue<Workday> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

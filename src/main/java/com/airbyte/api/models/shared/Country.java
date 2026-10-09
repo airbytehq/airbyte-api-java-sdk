@@ -73,7 +73,7 @@ public enum Country {
     @JsonValue
     private final String value;
 
-    private Country(String value) {
+    Country(String value) {
         this.value = value;
     }
     

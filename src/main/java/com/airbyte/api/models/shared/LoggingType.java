@@ -14,7 +14,7 @@ public enum LoggingType {
     @JsonValue
     private final String value;
 
-    private LoggingType(String value) {
+    LoggingType(String value) {
         this.value = value;
     }
     

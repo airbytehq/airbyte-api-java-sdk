@@ -16,8 +16,8 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceHuggingFaceDatasets {
 
@@ -25,18 +25,21 @@ public class SourceHuggingFaceDatasets {
     private String datasetName;
 
     /**
-     * Splits to import. Will import all of them if nothing is provided (see https://huggingface.co/docs/dataset-viewer/en/configs_and_splits for more details)
+     * Splits to import. Will import all of them if nothing is provided (see
+     * https://huggingface.co/docs/dataset-viewer/en/configs_and_splits for more details)
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dataset_splits")
     private Optional<? extends List<Object>> datasetSplits;
 
     /**
-     * Dataset Subsets to import. Will import all of them if nothing is provided (see https://huggingface.co/docs/dataset-viewer/en/configs_and_splits for more details)
+     * Dataset Subsets to import. Will import all of them if nothing is provided (see
+     * https://huggingface.co/docs/dataset-viewer/en/configs_and_splits for more details)
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dataset_subsets")
     private Optional<? extends List<Object>> datasetSubsets;
+
 
     @JsonProperty("sourceType")
     private HuggingFaceDatasets sourceType;
@@ -66,7 +69,8 @@ public class SourceHuggingFaceDatasets {
     }
 
     /**
-     * Splits to import. Will import all of them if nothing is provided (see https://huggingface.co/docs/dataset-viewer/en/configs_and_splits for more details)
+     * Splits to import. Will import all of them if nothing is provided (see
+     * https://huggingface.co/docs/dataset-viewer/en/configs_and_splits for more details)
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -75,7 +79,8 @@ public class SourceHuggingFaceDatasets {
     }
 
     /**
-     * Dataset Subsets to import. Will import all of them if nothing is provided (see https://huggingface.co/docs/dataset-viewer/en/configs_and_splits for more details)
+     * Dataset Subsets to import. Will import all of them if nothing is provided (see
+     * https://huggingface.co/docs/dataset-viewer/en/configs_and_splits for more details)
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -88,9 +93,10 @@ public class SourceHuggingFaceDatasets {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceHuggingFaceDatasets withDatasetName(String datasetName) {
         Utils.checkNotNull(datasetName, "datasetName");
@@ -99,7 +105,8 @@ public class SourceHuggingFaceDatasets {
     }
 
     /**
-     * Splits to import. Will import all of them if nothing is provided (see https://huggingface.co/docs/dataset-viewer/en/configs_and_splits for more details)
+     * Splits to import. Will import all of them if nothing is provided (see
+     * https://huggingface.co/docs/dataset-viewer/en/configs_and_splits for more details)
      */
     public SourceHuggingFaceDatasets withDatasetSplits(List<Object> datasetSplits) {
         Utils.checkNotNull(datasetSplits, "datasetSplits");
@@ -107,8 +114,10 @@ public class SourceHuggingFaceDatasets {
         return this;
     }
 
+
     /**
-     * Splits to import. Will import all of them if nothing is provided (see https://huggingface.co/docs/dataset-viewer/en/configs_and_splits for more details)
+     * Splits to import. Will import all of them if nothing is provided (see
+     * https://huggingface.co/docs/dataset-viewer/en/configs_and_splits for more details)
      */
     public SourceHuggingFaceDatasets withDatasetSplits(Optional<? extends List<Object>> datasetSplits) {
         Utils.checkNotNull(datasetSplits, "datasetSplits");
@@ -117,7 +126,8 @@ public class SourceHuggingFaceDatasets {
     }
 
     /**
-     * Dataset Subsets to import. Will import all of them if nothing is provided (see https://huggingface.co/docs/dataset-viewer/en/configs_and_splits for more details)
+     * Dataset Subsets to import. Will import all of them if nothing is provided (see
+     * https://huggingface.co/docs/dataset-viewer/en/configs_and_splits for more details)
      */
     public SourceHuggingFaceDatasets withDatasetSubsets(List<Object> datasetSubsets) {
         Utils.checkNotNull(datasetSubsets, "datasetSubsets");
@@ -125,8 +135,10 @@ public class SourceHuggingFaceDatasets {
         return this;
     }
 
+
     /**
-     * Dataset Subsets to import. Will import all of them if nothing is provided (see https://huggingface.co/docs/dataset-viewer/en/configs_and_splits for more details)
+     * Dataset Subsets to import. Will import all of them if nothing is provided (see
+     * https://huggingface.co/docs/dataset-viewer/en/configs_and_splits for more details)
      */
     public SourceHuggingFaceDatasets withDatasetSubsets(Optional<? extends List<Object>> datasetSubsets) {
         Utils.checkNotNull(datasetSubsets, "datasetSubsets");
@@ -134,7 +146,6 @@ public class SourceHuggingFaceDatasets {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -145,18 +156,16 @@ public class SourceHuggingFaceDatasets {
         }
         SourceHuggingFaceDatasets other = (SourceHuggingFaceDatasets) o;
         return 
-            Objects.deepEquals(this.datasetName, other.datasetName) &&
-            Objects.deepEquals(this.datasetSplits, other.datasetSplits) &&
-            Objects.deepEquals(this.datasetSubsets, other.datasetSubsets) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.datasetName, other.datasetName) &&
+            Utils.enhancedDeepEquals(this.datasetSplits, other.datasetSplits) &&
+            Utils.enhancedDeepEquals(this.datasetSubsets, other.datasetSubsets) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            datasetName,
-            datasetSplits,
-            datasetSubsets,
+        return Utils.enhancedHash(
+            datasetName, datasetSplits, datasetSubsets,
             sourceType);
     }
     
@@ -168,18 +177,20 @@ public class SourceHuggingFaceDatasets {
                 "datasetSubsets", datasetSubsets,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String datasetName;
- 
+
         private Optional<? extends List<Object>> datasetSplits = Optional.empty();
- 
+
         private Optional<? extends List<Object>> datasetSubsets = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder datasetName(String datasetName) {
             Utils.checkNotNull(datasetName, "datasetName");
@@ -187,8 +198,10 @@ public class SourceHuggingFaceDatasets {
             return this;
         }
 
+
         /**
-         * Splits to import. Will import all of them if nothing is provided (see https://huggingface.co/docs/dataset-viewer/en/configs_and_splits for more details)
+         * Splits to import. Will import all of them if nothing is provided (see
+         * https://huggingface.co/docs/dataset-viewer/en/configs_and_splits for more details)
          */
         public Builder datasetSplits(List<Object> datasetSplits) {
             Utils.checkNotNull(datasetSplits, "datasetSplits");
@@ -197,7 +210,8 @@ public class SourceHuggingFaceDatasets {
         }
 
         /**
-         * Splits to import. Will import all of them if nothing is provided (see https://huggingface.co/docs/dataset-viewer/en/configs_and_splits for more details)
+         * Splits to import. Will import all of them if nothing is provided (see
+         * https://huggingface.co/docs/dataset-viewer/en/configs_and_splits for more details)
          */
         public Builder datasetSplits(Optional<? extends List<Object>> datasetSplits) {
             Utils.checkNotNull(datasetSplits, "datasetSplits");
@@ -205,8 +219,10 @@ public class SourceHuggingFaceDatasets {
             return this;
         }
 
+
         /**
-         * Dataset Subsets to import. Will import all of them if nothing is provided (see https://huggingface.co/docs/dataset-viewer/en/configs_and_splits for more details)
+         * Dataset Subsets to import. Will import all of them if nothing is provided (see
+         * https://huggingface.co/docs/dataset-viewer/en/configs_and_splits for more details)
          */
         public Builder datasetSubsets(List<Object> datasetSubsets) {
             Utils.checkNotNull(datasetSubsets, "datasetSubsets");
@@ -215,20 +231,21 @@ public class SourceHuggingFaceDatasets {
         }
 
         /**
-         * Dataset Subsets to import. Will import all of them if nothing is provided (see https://huggingface.co/docs/dataset-viewer/en/configs_and_splits for more details)
+         * Dataset Subsets to import. Will import all of them if nothing is provided (see
+         * https://huggingface.co/docs/dataset-viewer/en/configs_and_splits for more details)
          */
         public Builder datasetSubsets(Optional<? extends List<Object>> datasetSubsets) {
             Utils.checkNotNull(datasetSubsets, "datasetSubsets");
             this.datasetSubsets = datasetSubsets;
             return this;
         }
-        
+
         public SourceHuggingFaceDatasets build() {
+
             return new SourceHuggingFaceDatasets(
-                datasetName,
-                datasetSplits,
-                datasetSubsets);
+                datasetName, datasetSplits, datasetSubsets);
         }
+
 
         private static final LazySingletonValue<HuggingFaceDatasets> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

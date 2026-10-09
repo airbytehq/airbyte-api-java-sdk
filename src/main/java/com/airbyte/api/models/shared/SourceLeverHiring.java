@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceLeverHiring {
 
+public class SourceLeverHiring {
     /**
      * Choose how to authenticate to Lever Hiring.
      */
@@ -27,17 +26,21 @@ public class SourceLeverHiring {
     private Optional<? extends SourceLeverHiringAuthenticationMechanism> credentials;
 
     /**
-     * The environment in which you'd like to replicate data for Lever. This is used to determine which Lever API endpoint to use.
+     * The environment in which you'd like to replicate data for Lever. This is used to determine which
+     * Lever API endpoint to use.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("environment")
     private Optional<? extends SourceLeverHiringEnvironment> environment;
 
+
     @JsonProperty("sourceType")
     private SourceLeverHiringLeverHiring sourceType;
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. Note that it will be used only in the following incremental streams: comments, commits, and issues.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated. Note that it will be used only in the following incremental streams: comments, commits,
+     * and issues.
      */
     @JsonProperty("start_date")
     private String startDate;
@@ -71,7 +74,8 @@ public class SourceLeverHiring {
     }
 
     /**
-     * The environment in which you'd like to replicate data for Lever. This is used to determine which Lever API endpoint to use.
+     * The environment in which you'd like to replicate data for Lever. This is used to determine which
+     * Lever API endpoint to use.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -85,16 +89,19 @@ public class SourceLeverHiring {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. Note that it will be used only in the following incremental streams: comments, commits, and issues.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated. Note that it will be used only in the following incremental streams: comments, commits,
+     * and issues.
      */
     @JsonIgnore
     public String startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Choose how to authenticate to Lever Hiring.
@@ -104,6 +111,7 @@ public class SourceLeverHiring {
         this.credentials = Optional.ofNullable(credentials);
         return this;
     }
+
 
     /**
      * Choose how to authenticate to Lever Hiring.
@@ -115,7 +123,8 @@ public class SourceLeverHiring {
     }
 
     /**
-     * The environment in which you'd like to replicate data for Lever. This is used to determine which Lever API endpoint to use.
+     * The environment in which you'd like to replicate data for Lever. This is used to determine which
+     * Lever API endpoint to use.
      */
     public SourceLeverHiring withEnvironment(SourceLeverHiringEnvironment environment) {
         Utils.checkNotNull(environment, "environment");
@@ -123,8 +132,10 @@ public class SourceLeverHiring {
         return this;
     }
 
+
     /**
-     * The environment in which you'd like to replicate data for Lever. This is used to determine which Lever API endpoint to use.
+     * The environment in which you'd like to replicate data for Lever. This is used to determine which
+     * Lever API endpoint to use.
      */
     public SourceLeverHiring withEnvironment(Optional<? extends SourceLeverHiringEnvironment> environment) {
         Utils.checkNotNull(environment, "environment");
@@ -133,7 +144,9 @@ public class SourceLeverHiring {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. Note that it will be used only in the following incremental streams: comments, commits, and issues.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated. Note that it will be used only in the following incremental streams: comments, commits,
+     * and issues.
      */
     public SourceLeverHiring withStartDate(String startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -141,7 +154,6 @@ public class SourceLeverHiring {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -152,18 +164,16 @@ public class SourceLeverHiring {
         }
         SourceLeverHiring other = (SourceLeverHiring) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.environment, other.environment) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.environment, other.environment) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            environment,
-            sourceType,
+        return Utils.enhancedHash(
+            credentials, environment, sourceType,
             startDate);
     }
     
@@ -175,18 +185,20 @@ public class SourceLeverHiring {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourceLeverHiringAuthenticationMechanism> credentials = Optional.empty();
- 
+
         private Optional<? extends SourceLeverHiringEnvironment> environment;
- 
+
         private String startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Choose how to authenticate to Lever Hiring.
@@ -206,8 +218,10 @@ public class SourceLeverHiring {
             return this;
         }
 
+
         /**
-         * The environment in which you'd like to replicate data for Lever. This is used to determine which Lever API endpoint to use.
+         * The environment in which you'd like to replicate data for Lever. This is used to determine which
+         * Lever API endpoint to use.
          */
         public Builder environment(SourceLeverHiringEnvironment environment) {
             Utils.checkNotNull(environment, "environment");
@@ -216,7 +230,8 @@ public class SourceLeverHiring {
         }
 
         /**
-         * The environment in which you'd like to replicate data for Lever. This is used to determine which Lever API endpoint to use.
+         * The environment in which you'd like to replicate data for Lever. This is used to determine which
+         * Lever API endpoint to use.
          */
         public Builder environment(Optional<? extends SourceLeverHiringEnvironment> environment) {
             Utils.checkNotNull(environment, "environment");
@@ -224,24 +239,27 @@ public class SourceLeverHiring {
             return this;
         }
 
+
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. Note that it will be used only in the following incremental streams: comments, commits, and issues.
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+         * replicated. Note that it will be used only in the following incremental streams: comments, commits,
+         * and issues.
          */
         public Builder startDate(String startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceLeverHiring build() {
             if (environment == null) {
                 environment = _SINGLETON_VALUE_Environment.value();
             }
+
             return new SourceLeverHiring(
-                credentials,
-                environment,
-                startDate);
+                credentials, environment, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceLeverHiringEnvironment>> _SINGLETON_VALUE_Environment =
                 new LazySingletonValue<>(

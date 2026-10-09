@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceCaptainData {
-
     /**
      * Your Captain Data project API key.
      */
@@ -26,6 +25,7 @@ public class SourceCaptainData {
      */
     @JsonProperty("project_uid")
     private String projectUid;
+
 
     @JsonProperty("sourceType")
     private CaptainData sourceType;
@@ -62,9 +62,10 @@ public class SourceCaptainData {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your Captain Data project API key.
@@ -84,7 +85,6 @@ public class SourceCaptainData {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourceCaptainData {
         }
         SourceCaptainData other = (SourceCaptainData) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.projectUid, other.projectUid) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.projectUid, other.projectUid) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            projectUid,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, projectUid, sourceType);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SourceCaptainData {
                 "projectUid", projectUid,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String projectUid;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your Captain Data project API key.
@@ -135,6 +135,7 @@ public class SourceCaptainData {
             return this;
         }
 
+
         /**
          * Your Captain Data project uuid.
          */
@@ -143,12 +144,13 @@ public class SourceCaptainData {
             this.projectUid = projectUid;
             return this;
         }
-        
+
         public SourceCaptainData build() {
+
             return new SourceCaptainData(
-                apiKey,
-                projectUid);
+                apiKey, projectUid);
         }
+
 
         private static final LazySingletonValue<CaptainData> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

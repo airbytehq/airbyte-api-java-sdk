@@ -14,7 +14,7 @@ public enum Beamer {
     @JsonValue
     private final String value;
 
-    private Beamer(String value) {
+    Beamer(String value) {
         this.value = value;
     }
     

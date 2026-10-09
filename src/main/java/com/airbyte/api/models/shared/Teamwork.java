@@ -14,7 +14,7 @@ public enum Teamwork {
     @JsonValue
     private final String value;
 
-    private Teamwork(String value) {
+    Teamwork(String value) {
         this.value = value;
     }
     

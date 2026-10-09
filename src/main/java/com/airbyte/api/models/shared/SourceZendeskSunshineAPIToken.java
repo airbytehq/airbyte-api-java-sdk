@@ -14,16 +14,17 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceZendeskSunshineAPIToken {
 
+public class SourceZendeskSunshineAPIToken {
     /**
-     * API Token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/zendesk_sunshine"&gt;docs&lt;/a&gt; for information on how to generate this key.
+     * API Token. See the <a href="https://docs.airbyte.com/integrations/sources/zendesk_sunshine">docs</a>
+     * for information on how to generate this key.
      */
     @JsonProperty("api_token")
     private String apiToken;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_method")
@@ -47,7 +48,8 @@ public class SourceZendeskSunshineAPIToken {
     }
 
     /**
-     * API Token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/zendesk_sunshine"&gt;docs&lt;/a&gt; for information on how to generate this key.
+     * API Token. See the <a href="https://docs.airbyte.com/integrations/sources/zendesk_sunshine">docs</a>
+     * for information on how to generate this key.
      */
     @JsonIgnore
     public String apiToken() {
@@ -68,12 +70,14 @@ public class SourceZendeskSunshineAPIToken {
         return email;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * API Token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/zendesk_sunshine"&gt;docs&lt;/a&gt; for information on how to generate this key.
+     * API Token. See the <a href="https://docs.airbyte.com/integrations/sources/zendesk_sunshine">docs</a>
+     * for information on how to generate this key.
      */
     public SourceZendeskSunshineAPIToken withApiToken(String apiToken) {
         Utils.checkNotNull(apiToken, "apiToken");
@@ -90,7 +94,6 @@ public class SourceZendeskSunshineAPIToken {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,17 +104,15 @@ public class SourceZendeskSunshineAPIToken {
         }
         SourceZendeskSunshineAPIToken other = (SourceZendeskSunshineAPIToken) o;
         return 
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.authMethod, other.authMethod) &&
-            Objects.deepEquals(this.email, other.email);
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.authMethod, other.authMethod) &&
+            Utils.enhancedDeepEquals(this.email, other.email);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiToken,
-            authMethod,
-            email);
+        return Utils.enhancedHash(
+            apiToken, authMethod, email);
     }
     
     @Override
@@ -121,25 +122,29 @@ public class SourceZendeskSunshineAPIToken {
                 "authMethod", authMethod,
                 "email", email);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiToken;
- 
+
         private String email;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * API Token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/zendesk_sunshine"&gt;docs&lt;/a&gt; for information on how to generate this key.
+         * API Token. See the <a href="https://docs.airbyte.com/integrations/sources/zendesk_sunshine">docs</a>
+         * for information on how to generate this key.
          */
         public Builder apiToken(String apiToken) {
             Utils.checkNotNull(apiToken, "apiToken");
             this.apiToken = apiToken;
             return this;
         }
+
 
         /**
          * The user email for your Zendesk account
@@ -149,12 +154,13 @@ public class SourceZendeskSunshineAPIToken {
             this.email = email;
             return this;
         }
-        
+
         public SourceZendeskSunshineAPIToken build() {
+
             return new SourceZendeskSunshineAPIToken(
-                apiToken,
-                email);
+                apiToken, email);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceZendeskSunshineSchemasAuthMethod>> _SINGLETON_VALUE_AuthMethod =
                 new LazySingletonValue<>(

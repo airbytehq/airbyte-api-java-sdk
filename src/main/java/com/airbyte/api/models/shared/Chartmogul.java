@@ -14,7 +14,7 @@ public enum Chartmogul {
     @JsonValue
     private final String value;
 
-    private Chartmogul(String value) {
+    Chartmogul(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum Freightview {
     @JsonValue
     private final String value;
 
-    private Freightview(String value) {
+    Freightview(String value) {
         this.value = value;
     }
     

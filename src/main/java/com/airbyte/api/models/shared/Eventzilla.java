@@ -14,7 +14,7 @@ public enum Eventzilla {
     @JsonValue
     private final String value;
 
-    private Eventzilla(String value) {
+    Eventzilla(String value) {
         this.value = value;
     }
     

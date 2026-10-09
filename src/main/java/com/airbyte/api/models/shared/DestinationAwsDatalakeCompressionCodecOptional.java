@@ -22,7 +22,7 @@ public enum DestinationAwsDatalakeCompressionCodecOptional {
     @JsonValue
     private final String value;
 
-    private DestinationAwsDatalakeCompressionCodecOptional(String value) {
+    DestinationAwsDatalakeCompressionCodecOptional(String value) {
         this.value = value;
     }
     

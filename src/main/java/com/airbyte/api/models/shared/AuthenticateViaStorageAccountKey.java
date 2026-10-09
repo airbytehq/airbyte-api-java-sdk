@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class AuthenticateViaStorageAccountKey {
 
@@ -51,9 +51,10 @@ public class AuthenticateViaStorageAccountKey {
         return azureBlobStorageAccountKey;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Azure blob storage account key.
@@ -64,7 +65,6 @@ public class AuthenticateViaStorageAccountKey {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -75,15 +75,14 @@ public class AuthenticateViaStorageAccountKey {
         }
         AuthenticateViaStorageAccountKey other = (AuthenticateViaStorageAccountKey) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.azureBlobStorageAccountKey, other.azureBlobStorageAccountKey);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.azureBlobStorageAccountKey, other.azureBlobStorageAccountKey);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            azureBlobStorageAccountKey);
+        return Utils.enhancedHash(
+            authType, azureBlobStorageAccountKey);
     }
     
     @Override
@@ -92,14 +91,16 @@ public class AuthenticateViaStorageAccountKey {
                 "authType", authType,
                 "azureBlobStorageAccountKey", azureBlobStorageAccountKey);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String azureBlobStorageAccountKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Azure blob storage account key.
@@ -109,11 +110,13 @@ public class AuthenticateViaStorageAccountKey {
             this.azureBlobStorageAccountKey = azureBlobStorageAccountKey;
             return this;
         }
-        
+
         public AuthenticateViaStorageAccountKey build() {
+
             return new AuthenticateViaStorageAccountKey(
                 azureBlobStorageAccountKey);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceAzureBlobStorageSchemasCredentialsAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

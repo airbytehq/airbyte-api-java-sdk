@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceGoogleAnalyticsDataApiDisabled {
 
@@ -25,7 +25,6 @@ public class SourceGoogleAnalyticsDataApiDisabled {
 
     @JsonCreator
     public SourceGoogleAnalyticsDataApiDisabled() {
-        
         this.enabled = Builder._SINGLETON_VALUE_Enabled.value();
     }
 
@@ -35,11 +34,11 @@ public class SourceGoogleAnalyticsDataApiDisabled {
         return (Optional<SourceGoogleAnalyticsDataApiEnabled>) enabled;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -50,12 +49,12 @@ public class SourceGoogleAnalyticsDataApiDisabled {
         }
         SourceGoogleAnalyticsDataApiDisabled other = (SourceGoogleAnalyticsDataApiDisabled) o;
         return 
-            Objects.deepEquals(this.enabled, other.enabled);
+            Utils.enhancedDeepEquals(this.enabled, other.enabled);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             enabled);
     }
     
@@ -64,17 +63,20 @@ public class SourceGoogleAnalyticsDataApiDisabled {
         return Utils.toString(SourceGoogleAnalyticsDataApiDisabled.class,
                 "enabled", enabled);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public SourceGoogleAnalyticsDataApiDisabled build() {
+
             return new SourceGoogleAnalyticsDataApiDisabled(
                 );
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceGoogleAnalyticsDataApiEnabled>> _SINGLETON_VALUE_Enabled =
                 new LazySingletonValue<>(

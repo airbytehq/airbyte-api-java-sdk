@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 /**
  * SnowflakeConnection
@@ -34,7 +33,8 @@ public class SnowflakeConnection {
     private String defaultSchema;
 
     /**
-     * Enter the account name you want to use to access the database. This is usually the identifier before .snowflakecomputing.com
+     * Enter the account name you want to use to access the database. This is usually the identifier before
+     * .snowflakecomputing.com
      */
     @JsonProperty("host")
     private String host;
@@ -104,7 +104,8 @@ public class SnowflakeConnection {
     }
 
     /**
-     * Enter the account name you want to use to access the database. This is usually the identifier before .snowflakecomputing.com
+     * Enter the account name you want to use to access the database. This is usually the identifier before
+     * .snowflakecomputing.com
      */
     @JsonIgnore
     public String host() {
@@ -135,9 +136,10 @@ public class SnowflakeConnection {
         return warehouse;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SnowflakeConnection withCredentials(DestinationSnowflakeCortexCredentials credentials) {
         Utils.checkNotNull(credentials, "credentials");
@@ -164,7 +166,8 @@ public class SnowflakeConnection {
     }
 
     /**
-     * Enter the account name you want to use to access the database. This is usually the identifier before .snowflakecomputing.com
+     * Enter the account name you want to use to access the database. This is usually the identifier before
+     * .snowflakecomputing.com
      */
     public SnowflakeConnection withHost(String host) {
         Utils.checkNotNull(host, "host");
@@ -199,7 +202,6 @@ public class SnowflakeConnection {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -210,24 +212,20 @@ public class SnowflakeConnection {
         }
         SnowflakeConnection other = (SnowflakeConnection) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.database, other.database) &&
-            Objects.deepEquals(this.defaultSchema, other.defaultSchema) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.role, other.role) &&
-            Objects.deepEquals(this.username, other.username) &&
-            Objects.deepEquals(this.warehouse, other.warehouse);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.database, other.database) &&
+            Utils.enhancedDeepEquals(this.defaultSchema, other.defaultSchema) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.role, other.role) &&
+            Utils.enhancedDeepEquals(this.username, other.username) &&
+            Utils.enhancedDeepEquals(this.warehouse, other.warehouse);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            database,
-            defaultSchema,
-            host,
-            role,
-            username,
+        return Utils.enhancedHash(
+            credentials, database, defaultSchema,
+            host, role, username,
             warehouse);
     }
     
@@ -242,32 +240,35 @@ public class SnowflakeConnection {
                 "username", username,
                 "warehouse", warehouse);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private DestinationSnowflakeCortexCredentials credentials;
- 
+
         private String database;
- 
+
         private String defaultSchema;
- 
+
         private String host;
- 
+
         private String role;
- 
+
         private String username;
- 
+
         private String warehouse;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder credentials(DestinationSnowflakeCortexCredentials credentials) {
             Utils.checkNotNull(credentials, "credentials");
             this.credentials = credentials;
             return this;
         }
+
 
         /**
          * Enter the name of the database that you want to sync data into
@@ -278,6 +279,7 @@ public class SnowflakeConnection {
             return this;
         }
 
+
         /**
          * Enter the name of the default schema
          */
@@ -287,14 +289,17 @@ public class SnowflakeConnection {
             return this;
         }
 
+
         /**
-         * Enter the account name you want to use to access the database. This is usually the identifier before .snowflakecomputing.com
+         * Enter the account name you want to use to access the database. This is usually the identifier before
+         * .snowflakecomputing.com
          */
         public Builder host(String host) {
             Utils.checkNotNull(host, "host");
             this.host = host;
             return this;
         }
+
 
         /**
          * Enter the role that you want to use to access Snowflake
@@ -305,6 +310,7 @@ public class SnowflakeConnection {
             return this;
         }
 
+
         /**
          * Enter the name of the user you want to use to access the database
          */
@@ -314,6 +320,7 @@ public class SnowflakeConnection {
             return this;
         }
 
+
         /**
          * Enter the name of the warehouse that you want to use as a compute cluster
          */
@@ -322,16 +329,14 @@ public class SnowflakeConnection {
             this.warehouse = warehouse;
             return this;
         }
-        
+
         public SnowflakeConnection build() {
+
             return new SnowflakeConnection(
-                credentials,
-                database,
-                defaultSchema,
-                host,
-                role,
-                username,
+                credentials, database, defaultSchema,
+                host, role, username,
                 warehouse);
         }
+
     }
 }

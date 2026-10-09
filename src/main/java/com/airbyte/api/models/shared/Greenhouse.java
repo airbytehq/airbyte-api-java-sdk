@@ -14,7 +14,7 @@ public enum Greenhouse {
     @JsonValue
     private final String value;
 
-    private Greenhouse(String value) {
+    Greenhouse(String value) {
         this.value = value;
     }
     

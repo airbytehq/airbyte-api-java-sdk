@@ -14,7 +14,7 @@ public enum SourceFaunaSchemasDeletionMode {
     @JsonValue
     private final String value;
 
-    private SourceFaunaSchemasDeletionMode(String value) {
+    SourceFaunaSchemasDeletionMode(String value) {
         this.value = value;
     }
     

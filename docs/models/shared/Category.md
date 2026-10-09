@@ -2,6 +2,14 @@
 
 The category you want to get top headlines for.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.Category;
+
+Category value = Category.BUSINESS;
+```
+
 
 ## Values
 

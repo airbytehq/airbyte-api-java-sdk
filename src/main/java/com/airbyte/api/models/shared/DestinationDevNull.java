@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class DestinationDevNull {
 
@@ -45,9 +45,10 @@ public class DestinationDevNull {
         return testDestination;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The type of destination to be used
@@ -58,7 +59,6 @@ public class DestinationDevNull {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class DestinationDevNull {
         }
         DestinationDevNull other = (DestinationDevNull) o;
         return 
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.testDestination, other.testDestination);
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.testDestination, other.testDestination);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            destinationType,
-            testDestination);
+        return Utils.enhancedHash(
+            destinationType, testDestination);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class DestinationDevNull {
                 "destinationType", destinationType,
                 "testDestination", testDestination);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private TestDestination testDestination;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The type of destination to be used
@@ -103,11 +104,13 @@ public class DestinationDevNull {
             this.testDestination = testDestination;
             return this;
         }
-        
+
         public DestinationDevNull build() {
+
             return new DestinationDevNull(
                 testDestination);
         }
+
 
         private static final LazySingletonValue<DevNull> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

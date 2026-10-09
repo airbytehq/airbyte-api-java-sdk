@@ -12,18 +12,20 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceBugsnag {
-
     /**
-     * Personal auth token for accessing the Bugsnag API. Generate it in the My Account section of Bugsnag settings.
+     * Personal auth token for accessing the Bugsnag API. Generate it in the My Account section of Bugsnag
+     * settings.
      */
     @JsonProperty("auth_token")
     private String authToken;
 
+
     @JsonProperty("sourceType")
     private Bugsnag sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -40,7 +42,8 @@ public class SourceBugsnag {
     }
 
     /**
-     * Personal auth token for accessing the Bugsnag API. Generate it in the My Account section of Bugsnag settings.
+     * Personal auth token for accessing the Bugsnag API. Generate it in the My Account section of Bugsnag
+     * settings.
      */
     @JsonIgnore
     public String authToken() {
@@ -57,12 +60,14 @@ public class SourceBugsnag {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Personal auth token for accessing the Bugsnag API. Generate it in the My Account section of Bugsnag settings.
+     * Personal auth token for accessing the Bugsnag API. Generate it in the My Account section of Bugsnag
+     * settings.
      */
     public SourceBugsnag withAuthToken(String authToken) {
         Utils.checkNotNull(authToken, "authToken");
@@ -76,7 +81,6 @@ public class SourceBugsnag {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -87,17 +91,15 @@ public class SourceBugsnag {
         }
         SourceBugsnag other = (SourceBugsnag) o;
         return 
-            Objects.deepEquals(this.authToken, other.authToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.authToken, other.authToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authToken,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            authToken, sourceType, startDate);
     }
     
     @Override
@@ -107,19 +109,22 @@ public class SourceBugsnag {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String authToken;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Personal auth token for accessing the Bugsnag API. Generate it in the My Account section of Bugsnag settings.
+         * Personal auth token for accessing the Bugsnag API. Generate it in the My Account section of Bugsnag
+         * settings.
          */
         public Builder authToken(String authToken) {
             Utils.checkNotNull(authToken, "authToken");
@@ -127,17 +132,19 @@ public class SourceBugsnag {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceBugsnag build() {
+
             return new SourceBugsnag(
-                authToken,
-                startDate);
+                authToken, startDate);
         }
+
 
         private static final LazySingletonValue<Bugsnag> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

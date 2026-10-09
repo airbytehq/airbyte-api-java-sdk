@@ -14,7 +14,7 @@ public enum SourceStravaAuthType {
     @JsonValue
     private final String value;
 
-    private SourceStravaAuthType(String value) {
+    SourceStravaAuthType(String value) {
         this.value = value;
     }
     

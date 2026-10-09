@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * CompressionCodec
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class CompressionCodec {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private CompressionCodec(TypedObject value) {
         this.value = value;
@@ -33,32 +32,32 @@ public class CompressionCodec {
 
     public static CompressionCodec of(NoCompression value) {
         Utils.checkNotNull(value, "value");
-        return new CompressionCodec(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<NoCompression>(){}));
+        return new CompressionCodec(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CompressionCodec of(Deflate value) {
         Utils.checkNotNull(value, "value");
-        return new CompressionCodec(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Deflate>(){}));
+        return new CompressionCodec(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CompressionCodec of(Bzip2 value) {
         Utils.checkNotNull(value, "value");
-        return new CompressionCodec(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Bzip2>(){}));
+        return new CompressionCodec(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CompressionCodec of(Xz value) {
         Utils.checkNotNull(value, "value");
-        return new CompressionCodec(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Xz>(){}));
+        return new CompressionCodec(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CompressionCodec of(Zstandard value) {
         Utils.checkNotNull(value, "value");
-        return new CompressionCodec(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Zstandard>(){}));
+        return new CompressionCodec(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CompressionCodec of(Snappy value) {
         Utils.checkNotNull(value, "value");
-        return new CompressionCodec(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Snappy>(){}));
+        return new CompressionCodec(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -85,7 +84,7 @@ public class CompressionCodec {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -96,12 +95,12 @@ public class CompressionCodec {
             return false;
         }
         CompressionCodec other = (CompressionCodec) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -109,12 +108,12 @@ public class CompressionCodec {
 
         public _Deserializer() {
             super(CompressionCodec.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<Zstandard>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Xz>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<NoCompression>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<Deflate>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Snappy>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<Bzip2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<NoCompression>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Xz>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<Zstandard>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<Snappy>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -123,6 +122,6 @@ public class CompressionCodec {
         return Utils.toString(CompressionCodec.class,
                 "value", value);
     }
- 
+
 }
 

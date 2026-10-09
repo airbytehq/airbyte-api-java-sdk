@@ -14,7 +14,7 @@ public enum Campayn {
     @JsonValue
     private final String value;
 
-    private Campayn(String value) {
+    Campayn(String value) {
         this.value = value;
     }
     

@@ -1,5 +1,4 @@
 # Jobs
-(*jobs()*)
 
 ## Overview
 
@@ -16,6 +15,7 @@ Cancel a running Job
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="cancelJob" method="delete" path="/jobs/{jobId}" -->
 ```java
 package hello.world;
 
@@ -40,7 +40,7 @@ public class Application {
             .build();
 
         CancelJobRequest req = CancelJobRequest.builder()
-                .jobId(801771L)
+                .jobId(621441L)
                 .build();
 
         CancelJobResponse res = sdk.jobs().cancelJob()
@@ -48,7 +48,7 @@ public class Application {
                 .call();
 
         if (res.jobResponse().isPresent()) {
-            // handle response
+            System.out.println(res.jobResponse().get());
         }
     }
 }
@@ -74,8 +74,9 @@ public class Application {
 
 Trigger a sync or reset job of a connection
 
-### Example Usage
+### Example Usage: Job Creation Request Example
 
+<!-- UsageSnippet language="java" operationID="createJob" method="post" path="/jobs" example="Job Creation Request Example" -->
 ```java
 package hello.world;
 
@@ -107,7 +108,46 @@ public class Application {
                 .call();
 
         if (res.jobResponse().isPresent()) {
-            // handle response
+            System.out.println(res.jobResponse().get());
+        }
+    }
+}
+```
+### Example Usage: Job Creation Response Example
+
+<!-- UsageSnippet language="java" operationID="createJob" method="post" path="/jobs" example="Job Creation Response Example" -->
+```java
+package hello.world;
+
+import com.airbyte.api.Airbyte;
+import com.airbyte.api.models.operations.CreateJobResponse;
+import com.airbyte.api.models.shared.*;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        Airbyte sdk = Airbyte.builder()
+                .security(Security.builder()
+                    .basicAuth(SchemeBasicAuth.builder()
+                        .password("")
+                        .username("")
+                        .build())
+                    .build())
+            .build();
+
+        JobCreateRequest req = JobCreateRequest.builder()
+                .connectionId("18dccc91-0ab1-4f72-9ed7-0b8fc27c5826")
+                .jobType(JobTypeEnum.SYNC)
+                .build();
+
+        CreateJobResponse res = sdk.jobs().createJob()
+                .request(req)
+                .call();
+
+        if (res.jobResponse().isPresent()) {
+            System.out.println(res.jobResponse().get());
         }
     }
 }
@@ -135,6 +175,7 @@ Get Job status and details
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="getJob" method="get" path="/jobs/{jobId}" example="Job Get Response Example" -->
 ```java
 package hello.world;
 
@@ -159,7 +200,7 @@ public class Application {
             .build();
 
         GetJobRequest req = GetJobRequest.builder()
-                .jobId(131101L)
+                .jobId(245534L)
                 .build();
 
         GetJobResponse res = sdk.jobs().getJob()
@@ -167,7 +208,7 @@ public class Application {
                 .call();
 
         if (res.jobResponse().isPresent()) {
-            // handle response
+            System.out.println(res.jobResponse().get());
         }
     }
 }
@@ -195,6 +236,7 @@ List Jobs by sync type
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="listJobs" method="get" path="/jobs" example="Job List Response Example" -->
 ```java
 package hello.world;
 
@@ -220,11 +262,11 @@ public class Application {
             .build();
 
         ListJobsRequest req = ListJobsRequest.builder()
-                .createdAtEnd(OffsetDateTime.parse("1687450500000"))
-                .createdAtStart(OffsetDateTime.parse("1687450500000"))
+                .createdAtEnd(OffsetDateTime.parse("2024-11-05T02:58:38.581Z"))
+                .createdAtStart(OffsetDateTime.parse("2024-04-14T21:55:04.172Z"))
                 .orderBy("updatedAt|DESC")
-                .updatedAtEnd(OffsetDateTime.parse("1687450500000"))
-                .updatedAtStart(OffsetDateTime.parse("1687450500000"))
+                .updatedAtEnd(OffsetDateTime.parse("2025-11-15T07:41:11.221Z"))
+                .updatedAtStart(OffsetDateTime.parse("2026-10-05T17:24:30.764Z"))
                 .build();
 
         ListJobsResponse res = sdk.jobs().listJobs()
@@ -232,7 +274,7 @@ public class Application {
                 .call();
 
         if (res.jobsResponse().isPresent()) {
-            // handle response
+            System.out.println(res.jobsResponse().get());
         }
     }
 }

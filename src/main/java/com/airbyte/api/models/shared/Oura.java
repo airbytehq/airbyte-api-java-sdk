@@ -14,7 +14,7 @@ public enum Oura {
     @JsonValue
     private final String value;
 
-    private Oura(String value) {
+    Oura(String value) {
         this.value = value;
     }
     

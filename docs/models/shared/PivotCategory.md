@@ -2,6 +2,14 @@
 
 Choose a category to pivot your analytics report around. This selection will organize your data based on the chosen attribute, allowing you to analyze trends and performance from different perspectives.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.PivotCategory;
+
+PivotCategory value = PivotCategory.COMPANY;
+```
+
 
 ## Values
 

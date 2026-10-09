@@ -12,10 +12,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.LocalDate;
-import java.util.Objects;
+
 
 public class SourceWoocommerce {
-
     /**
      * Customer Key for API in WooCommerce shop
      */
@@ -33,6 +32,7 @@ public class SourceWoocommerce {
      */
     @JsonProperty("shop")
     private String shop;
+
 
     @JsonProperty("sourceType")
     private Woocommerce sourceType;
@@ -97,9 +97,10 @@ public class SourceWoocommerce {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Customer Key for API in WooCommerce shop
@@ -137,7 +138,6 @@ public class SourceWoocommerce {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -148,21 +148,18 @@ public class SourceWoocommerce {
         }
         SourceWoocommerce other = (SourceWoocommerce) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.apiSecret, other.apiSecret) &&
-            Objects.deepEquals(this.shop, other.shop) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.apiSecret, other.apiSecret) &&
+            Utils.enhancedDeepEquals(this.shop, other.shop) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            apiSecret,
-            shop,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKey, apiSecret, shop,
+            sourceType, startDate);
     }
     
     @Override
@@ -174,20 +171,22 @@ public class SourceWoocommerce {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String apiSecret;
- 
+
         private String shop;
- 
+
         private LocalDate startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Customer Key for API in WooCommerce shop
@@ -198,6 +197,7 @@ public class SourceWoocommerce {
             return this;
         }
 
+
         /**
          * Customer Secret for API in WooCommerce shop
          */
@@ -206,6 +206,7 @@ public class SourceWoocommerce {
             this.apiSecret = apiSecret;
             return this;
         }
+
 
         /**
          * The name of the store. For https://EXAMPLE.com, the shop name is 'EXAMPLE.com'.
@@ -216,6 +217,7 @@ public class SourceWoocommerce {
             return this;
         }
 
+
         /**
          * The date you would like to replicate data from. Format: YYYY-MM-DD
          */
@@ -224,14 +226,14 @@ public class SourceWoocommerce {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceWoocommerce build() {
+
             return new SourceWoocommerce(
-                apiKey,
-                apiSecret,
-                shop,
+                apiKey, apiSecret, shop,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Woocommerce> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

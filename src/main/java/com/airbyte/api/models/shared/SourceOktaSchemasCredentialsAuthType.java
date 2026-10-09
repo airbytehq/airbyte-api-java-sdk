@@ -14,7 +14,7 @@ public enum SourceOktaSchemasCredentialsAuthType {
     @JsonValue
     private final String value;
 
-    private SourceOktaSchemasCredentialsAuthType(String value) {
+    SourceOktaSchemasCredentialsAuthType(String value) {
         this.value = value;
     }
     

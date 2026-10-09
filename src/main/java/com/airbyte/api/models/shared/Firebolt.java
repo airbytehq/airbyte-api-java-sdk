@@ -14,7 +14,7 @@ public enum Firebolt {
     @JsonValue
     private final String value;
 
-    private Firebolt(String value) {
+    Firebolt(String value) {
         this.value = value;
     }
     

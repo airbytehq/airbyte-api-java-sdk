@@ -14,7 +14,7 @@ public enum Mention {
     @JsonValue
     private final String value;
 
-    private Mention(String value) {
+    Mention(String value) {
         this.value = value;
     }
     

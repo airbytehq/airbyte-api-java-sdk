@@ -14,7 +14,7 @@ public enum SourceSnowflakeSnowflake {
     @JsonValue
     private final String value;
 
-    private SourceSnowflakeSnowflake(String value) {
+    SourceSnowflakeSnowflake(String value) {
         this.value = value;
     }
     

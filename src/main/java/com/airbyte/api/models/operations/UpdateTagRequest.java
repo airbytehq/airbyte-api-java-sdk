@@ -10,12 +10,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class UpdateTagRequest {
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private TagPatchRequest tagPatchRequest;
+
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=tagId")
     private String tagId;
@@ -40,9 +41,10 @@ public class UpdateTagRequest {
         return tagId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public UpdateTagRequest withTagPatchRequest(TagPatchRequest tagPatchRequest) {
         Utils.checkNotNull(tagPatchRequest, "tagPatchRequest");
@@ -56,7 +58,6 @@ public class UpdateTagRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -67,15 +68,14 @@ public class UpdateTagRequest {
         }
         UpdateTagRequest other = (UpdateTagRequest) o;
         return 
-            Objects.deepEquals(this.tagPatchRequest, other.tagPatchRequest) &&
-            Objects.deepEquals(this.tagId, other.tagId);
+            Utils.enhancedDeepEquals(this.tagPatchRequest, other.tagPatchRequest) &&
+            Utils.enhancedDeepEquals(this.tagId, other.tagId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            tagPatchRequest,
-            tagId);
+        return Utils.enhancedHash(
+            tagPatchRequest, tagId);
     }
     
     @Override
@@ -84,16 +84,18 @@ public class UpdateTagRequest {
                 "tagPatchRequest", tagPatchRequest,
                 "tagId", tagId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private TagPatchRequest tagPatchRequest;
- 
+
         private String tagId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder tagPatchRequest(TagPatchRequest tagPatchRequest) {
             Utils.checkNotNull(tagPatchRequest, "tagPatchRequest");
@@ -101,16 +103,18 @@ public class UpdateTagRequest {
             return this;
         }
 
+
         public Builder tagId(String tagId) {
             Utils.checkNotNull(tagId, "tagId");
             this.tagId = tagId;
             return this;
         }
-        
+
         public UpdateTagRequest build() {
+
             return new UpdateTagRequest(
-                tagPatchRequest,
-                tagId);
+                tagPatchRequest, tagId);
         }
+
     }
 }

@@ -23,7 +23,7 @@ public enum Interval {
     @JsonValue
     private final String value;
 
-    private Interval(String value) {
+    Interval(String value) {
         this.value = value;
     }
     

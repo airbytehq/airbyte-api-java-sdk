@@ -14,7 +14,7 @@ public enum DestinationAstraSchemasProcessingTextSplitterMode {
     @JsonValue
     private final String value;
 
-    private DestinationAstraSchemasProcessingTextSplitterMode(String value) {
+    DestinationAstraSchemasProcessingTextSplitterMode(String value) {
         this.value = value;
     }
     

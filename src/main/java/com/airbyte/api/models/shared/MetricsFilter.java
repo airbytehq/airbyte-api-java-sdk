@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * MetricsFilter
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class MetricsFilter {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private MetricsFilter(TypedObject value) {
         this.value = value;
@@ -33,22 +32,22 @@ public class MetricsFilter {
 
     public static MetricsFilter of(SourceGoogleAnalyticsDataApiAndGroup value) {
         Utils.checkNotNull(value, "value");
-        return new MetricsFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiAndGroup>(){}));
+        return new MetricsFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static MetricsFilter of(SourceGoogleAnalyticsDataApiOrGroup value) {
         Utils.checkNotNull(value, "value");
-        return new MetricsFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiOrGroup>(){}));
+        return new MetricsFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static MetricsFilter of(SourceGoogleAnalyticsDataApiNotExpression value) {
         Utils.checkNotNull(value, "value");
-        return new MetricsFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiNotExpression>(){}));
+        return new MetricsFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static MetricsFilter of(SourceGoogleAnalyticsDataApiSchemasFilter value) {
         Utils.checkNotNull(value, "value");
-        return new MetricsFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasFilter>(){}));
+        return new MetricsFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -73,7 +72,7 @@ public class MetricsFilter {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -84,12 +83,12 @@ public class MetricsFilter {
             return false;
         }
         MetricsFilter other = (MetricsFilter) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -97,10 +96,10 @@ public class MetricsFilter {
 
         public _Deserializer() {
             super(MetricsFilter.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasFilter>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiNotExpression>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiAndGroup>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiOrGroup>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiAndGroup>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiNotExpression>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasFilter>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -109,6 +108,6 @@ public class MetricsFilter {
         return Utils.toString(MetricsFilter.class,
                 "value", value);
     }
- 
+
 }
 

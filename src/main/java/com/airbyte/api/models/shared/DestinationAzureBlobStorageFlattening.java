@@ -15,7 +15,7 @@ public enum DestinationAzureBlobStorageFlattening {
     @JsonValue
     private final String value;
 
-    private DestinationAzureBlobStorageFlattening(String value) {
+    DestinationAzureBlobStorageFlattening(String value) {
         this.value = value;
     }
     

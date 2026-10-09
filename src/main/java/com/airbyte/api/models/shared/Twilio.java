@@ -14,7 +14,7 @@ public enum Twilio {
     @JsonValue
     private final String value;
 
-    private Twilio(String value) {
+    Twilio(String value) {
         this.value = value;
     }
     

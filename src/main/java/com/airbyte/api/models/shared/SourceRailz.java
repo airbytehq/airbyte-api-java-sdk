@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceRailz {
-
     /**
      * Client ID (client_id)
      */
@@ -26,6 +25,7 @@ public class SourceRailz {
      */
     @JsonProperty("secret_key")
     private String secretKey;
+
 
     @JsonProperty("sourceType")
     private Railz sourceType;
@@ -79,9 +79,10 @@ public class SourceRailz {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Client ID (client_id)
@@ -110,7 +111,6 @@ public class SourceRailz {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -121,18 +121,16 @@ public class SourceRailz {
         }
         SourceRailz other = (SourceRailz) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.secretKey, other.secretKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.secretKey, other.secretKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            secretKey,
-            sourceType,
+        return Utils.enhancedHash(
+            clientId, secretKey, sourceType,
             startDate);
     }
     
@@ -144,18 +142,20 @@ public class SourceRailz {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String secretKey;
- 
+
         private String startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Client ID (client_id)
@@ -166,6 +166,7 @@ public class SourceRailz {
             return this;
         }
 
+
         /**
          * Secret key (secret_key)
          */
@@ -175,6 +176,7 @@ public class SourceRailz {
             return this;
         }
 
+
         /**
          * Start date
          */
@@ -183,13 +185,13 @@ public class SourceRailz {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceRailz build() {
+
             return new SourceRailz(
-                clientId,
-                secretKey,
-                startDate);
+                clientId, secretKey, startDate);
         }
+
 
         private static final LazySingletonValue<Railz> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

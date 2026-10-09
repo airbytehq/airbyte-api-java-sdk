@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceRdStationMarketing {
 
+public class SourceRdStationMarketing {
     /**
      * Choose one of the possible authorization method
      */
@@ -26,11 +25,13 @@ public class SourceRdStationMarketing {
     @JsonProperty("authorization")
     private Optional<? extends SourceRdStationMarketingAuthenticationType> authorization;
 
+
     @JsonProperty("sourceType")
     private SourceRdStationMarketingRdStationMarketing sourceType;
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. When specified and not None, then stream will behave as incremental
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated. When specified and not None, then stream will behave as incremental
      */
     @JsonProperty("start_date")
     private String startDate;
@@ -66,16 +67,18 @@ public class SourceRdStationMarketing {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. When specified and not None, then stream will behave as incremental
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated. When specified and not None, then stream will behave as incremental
      */
     @JsonIgnore
     public String startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Choose one of the possible authorization method
@@ -85,6 +88,7 @@ public class SourceRdStationMarketing {
         this.authorization = Optional.ofNullable(authorization);
         return this;
     }
+
 
     /**
      * Choose one of the possible authorization method
@@ -96,7 +100,8 @@ public class SourceRdStationMarketing {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. When specified and not None, then stream will behave as incremental
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated. When specified and not None, then stream will behave as incremental
      */
     public SourceRdStationMarketing withStartDate(String startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -104,7 +109,6 @@ public class SourceRdStationMarketing {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -115,17 +119,15 @@ public class SourceRdStationMarketing {
         }
         SourceRdStationMarketing other = (SourceRdStationMarketing) o;
         return 
-            Objects.deepEquals(this.authorization, other.authorization) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.authorization, other.authorization) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authorization,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            authorization, sourceType, startDate);
     }
     
     @Override
@@ -135,16 +137,18 @@ public class SourceRdStationMarketing {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourceRdStationMarketingAuthenticationType> authorization = Optional.empty();
- 
+
         private String startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Choose one of the possible authorization method
@@ -164,20 +168,23 @@ public class SourceRdStationMarketing {
             return this;
         }
 
+
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. When specified and not None, then stream will behave as incremental
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+         * replicated. When specified and not None, then stream will behave as incremental
          */
         public Builder startDate(String startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceRdStationMarketing build() {
+
             return new SourceRdStationMarketing(
-                authorization,
-                startDate);
+                authorization, startDate);
         }
+
 
         private static final LazySingletonValue<SourceRdStationMarketingRdStationMarketing> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

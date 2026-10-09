@@ -14,7 +14,7 @@ public enum SourceAmazonSellerPartnerAmazonSellerPartner {
     @JsonValue
     private final String value;
 
-    private SourceAmazonSellerPartnerAmazonSellerPartner(String value) {
+    SourceAmazonSellerPartnerAmazonSellerPartner(String value) {
         this.value = value;
     }
     

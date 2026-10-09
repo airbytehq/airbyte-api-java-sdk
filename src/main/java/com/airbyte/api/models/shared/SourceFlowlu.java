@@ -11,18 +11,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceFlowlu {
-
     /**
      * The API key to use for authentication
      */
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonProperty("company")
     private String company;
+
 
     @JsonProperty("sourceType")
     private Flowlu sourceType;
@@ -56,9 +57,10 @@ public class SourceFlowlu {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The API key to use for authentication
@@ -75,7 +77,6 @@ public class SourceFlowlu {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -86,17 +87,15 @@ public class SourceFlowlu {
         }
         SourceFlowlu other = (SourceFlowlu) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.company, other.company) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.company, other.company) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            company,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, company, sourceType);
     }
     
     @Override
@@ -106,16 +105,18 @@ public class SourceFlowlu {
                 "company", company,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String company;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The API key to use for authentication
@@ -126,17 +127,19 @@ public class SourceFlowlu {
             return this;
         }
 
+
         public Builder company(String company) {
             Utils.checkNotNull(company, "company");
             this.company = company;
             return this;
         }
-        
+
         public SourceFlowlu build() {
+
             return new SourceFlowlu(
-                apiKey,
-                company);
+                apiKey, company);
         }
+
 
         private static final LazySingletonValue<Flowlu> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

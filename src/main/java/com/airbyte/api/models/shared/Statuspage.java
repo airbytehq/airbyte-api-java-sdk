@@ -14,7 +14,7 @@ public enum Statuspage {
     @JsonValue
     private final String value;
 
-    private Statuspage(String value) {
+    Statuspage(String value) {
         this.value = value;
     }
     

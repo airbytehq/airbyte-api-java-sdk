@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceFullstory {
-
     /**
      * API Key for the fullstory.com API.
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Fullstory sourceType;
@@ -62,9 +62,10 @@ public class SourceFullstory {
         return uid;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API Key for the fullstory.com API.
@@ -84,7 +85,6 @@ public class SourceFullstory {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourceFullstory {
         }
         SourceFullstory other = (SourceFullstory) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.uid, other.uid);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.uid, other.uid);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            uid);
+        return Utils.enhancedHash(
+            apiKey, sourceType, uid);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SourceFullstory {
                 "sourceType", sourceType,
                 "uid", uid);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String uid;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API Key for the fullstory.com API.
@@ -135,6 +135,7 @@ public class SourceFullstory {
             return this;
         }
 
+
         /**
          * User ID for the fullstory.com API.
          */
@@ -143,12 +144,13 @@ public class SourceFullstory {
             this.uid = uid;
             return this;
         }
-        
+
         public SourceFullstory build() {
+
             return new SourceFullstory(
-                apiKey,
-                uid);
+                apiKey, uid);
         }
+
 
         private static final LazySingletonValue<Fullstory> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

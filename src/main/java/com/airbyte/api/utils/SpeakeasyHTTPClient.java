@@ -3,6 +3,8 @@
  */
 package com.airbyte.api.utils;
 
+import com.airbyte.api.utils.Blob;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
@@ -14,50 +16,105 @@ import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
+import java.util.concurrent.CompletableFuture;
 
 public class SpeakeasyHTTPClient implements HTTPClient {
 
+    // global debug flag. Retained for backwards compatibility.
     private static boolean debugEnabled = false;
+
+    // Instance-level debug flag. Can be set by clients to enable debug logging for a
+    // single SDK instance.
+    private Boolean localDebugEnabled;
 
     // uppercase
     private static Set<String> redactedHeaders = Set.of("AUTHORIZATION", "X-API-KEY");
     
     private static Consumer<? super String> logger = System.out::println;
 
+    private final HttpClient client = HttpClient.newHttpClient();
+
+    private static final Set<String> STREAMING_MEDIA_TYPES =
+            Set.of("text/event-stream", "application/x-ndjson", "application/jsonl");
+
+    private static boolean isStreamingMediaType(String value) {
+        int paramsIndex = value.indexOf(';');
+        String mediaType = paramsIndex == -1 ? value : value.substring(0, paramsIndex);
+        return STREAMING_MEDIA_TYPES.contains(mediaType.trim().toLowerCase(Locale.ENGLISH));
+    }
+
     /**
-     * Experimental, may be changed anytime. Sets debug logging on or off for
-     * requests and responses including bodies for JSON content. WARNING: this
-     * setting may expose sensitive information in logs (like <i>Authorization</i>
-     * headers), and should only be enabled temporarily for local debugging
-     * purposes. By default, <i>Authorization</i> headers are redacted in the logs
-     * ( printed with a value of {@code [*******]}). Header suppression is controlled
-     * with the {@link #setRedactedHeaders(Collection)} method.
+     * Sets debug logging on or off for requests and responses including bodies for JSON content.
+     * <p>
+     * <strong>WARNING:</strong> This setting may expose sensitive information in logs (such as
+     * {@code Authorization} headers) and should only be enabled temporarily for local debugging
+     * purposes.
+     * <p>
+     * By default, {@code Authorization} headers are redacted in the logs (printed with a value
+     * of {@code [*******]}). Header suppression can be controlled with the
+     * {@link #setRedactedHeaders(Collection)} method.
      *
-     * @param enabled true to enable debug logging, false to disable it
+     * @param enabled {@code true} to enable debug logging, {@code false} to disable it
+     * @see #setRedactedHeaders(Collection)
+     * @see #addRedactedHeader(String)
+     * @see #getDebugLoggingEnabled()
      */
     public static void setDebugLogging(boolean enabled) {
         debugEnabled = enabled;
     }
 
+    public static boolean getDebugLoggingEnabled() {
+        return debugEnabled;
+    }
+
+    @Override
+    public boolean isDebugLoggingEnabled() {
+        return Optional.ofNullable(localDebugEnabled).orElse(debugEnabled);
+    }
+
+    @Override
+    public void enableDebugLogging(boolean enabled) {
+        localDebugEnabled = enabled;
+    }
+
     /**
-     * Experimental, may be changed anytime. When debug logging is enabled this
-     * method controls the suppression of header values in the logs. By default,
-     * <i>Authorization</i> headers are redacted in the logs (printed with a value
-     * of {@code [*******]}). Header suppression is controlled with the
-     * {@link #setRedactedHeaders(Collection)} method.
-     * 
-     * @param headerNames the names (case-insensitive) of the headers whose values 
-     * will be redacted in the logs
+     * When debug logging is enabled, this method controls the suppression of header values in the logs.
+     * <p>
+     * By default, {@code Authorization} headers are redacted in the logs (printed with a value
+     * of {@code [*******]}).
+     *
+     * @param headerNames the names (case-insensitive) of the headers whose values
+     *                    will be redacted in the logs
+     * @see #setDebugLogging(boolean)
      */
     public static void setRedactedHeaders(Collection<String> headerNames) {
         redactedHeaders = headerNames.stream() //
                 .map(x -> x.toUpperCase(Locale.ENGLISH)) //
                 .collect(Collectors.toSet());
     }
-    
+
+    /**
+     * When debug logging is enabled, this method adds a single header to the list of headers
+     * whose values will be redacted in the logs.
+     * <p>
+     * By default, {@code Authorization} headers are redacted in the logs (printed with a value
+     * of {@code [*******]}).
+     * 
+     * @param headerName the name (case-insensitive) of the header whose value 
+     *                   will be redacted in the logs
+     * @see #setDebugLogging(boolean)
+     * @see #setRedactedHeaders(Collection)
+     */
+    public static void addRedactedHeader(String headerName) {
+        Set<String> updated = new java.util.HashSet<>(redactedHeaders);
+        updated.add(headerName.toUpperCase(Locale.ENGLISH));
+        redactedHeaders = Set.copyOf(updated);
+    }
+
     public static void setLogger(Consumer<? super String> logger) {
         SpeakeasyHTTPClient.logger = logger;
     }
@@ -65,22 +122,32 @@ public class SpeakeasyHTTPClient implements HTTPClient {
     @Override
     public HttpResponse<InputStream> send(HttpRequest request)
             throws IOException, InterruptedException, URISyntaxException {
-        HttpClient client = HttpClient.newHttpClient();
-        if (debugEnabled) {
-            request = logRequest(request);
+        if (isDebugLoggingEnabled()) {
+            request = logRequest(request, true);
         }
         var response = client.send(request, HttpResponse.BodyHandlers.ofInputStream());
-        if (debugEnabled) {
-            response = logResponse(response);
+        if (isDebugLoggingEnabled()) {
+            response = logResponse(response, true);
         }
         return response;
     }
 
-    private HttpRequest logRequest(HttpRequest request) {
+    @Override
+    public CompletableFuture<HttpResponse<Blob>> sendAsync(HttpRequest request) {
+        if (isDebugLoggingEnabled()) {
+            request = logRequest(request, true);
+        }
+        return client.sendAsync(request, HttpResponse.BodyHandlers.ofPublisher())
+                .thenApply(response ->
+                        // TODO: log responses when helper for Blob is setup
+                        new ResponseWithBody<>(response, Blob::from));
+    }
+
+    private HttpRequest logRequest(HttpRequest request, boolean logBody) {
         log("Sending request: " + request);
         log("Request headers: " + redactHeaders(request.headers()));
-        // only log the body if it is present and the content type is JSON
-        if (request.bodyPublisher().isPresent() && request.headers() //
+        // only log the body if logBody is true and the body is present and the content type is JSON
+        if (logBody && request.bodyPublisher().isPresent() && request.headers() //
                 .firstValue("Content-Type") //
                 .filter(x -> x.equals("application/json") || x.equals("text/plain")).isPresent()) {
             // we read the body and ensure that the BodyPublisher is rebuilt to pass to the
@@ -98,17 +165,22 @@ public class SpeakeasyHTTPClient implements HTTPClient {
         return request;
     }
 
-    private static HttpResponse<InputStream> logResponse(HttpResponse<InputStream> response) throws IOException {
+    private static HttpResponse<InputStream> logResponse(HttpResponse<InputStream> response, boolean logBody) throws IOException {
+        String contentType = response.headers().firstValue("Content-Type").orElse("application/octet-stream");
+        log("Received response: " + response);
+        log("Response headers: " + redactHeaders(response.headers()));
+
+        // skip caching for streaming responses - they may hang
+        if (isStreamingMediaType(contentType)) {
+            return response;
+        }
+
         // make the response re-readable by loading the response body into a byte array
         // and allowing the InputStream to be read many times
         response = Utils.cache(response);
-        log("Received response: " + response);
-        log("Response headers: " + redactHeaders(response.headers()));
-        // only log the response body if it is present and the content type is JSON or plain text
-        if (response.headers() //
-                .firstValue("Content-Type") //
-                .filter(x -> x.equals("application/json") || x.equals("text/plain")) //
-                .isPresent()) {
+
+        // only log the response body if logBody is true and the content type is JSON or plain text
+        if (logBody && (contentType.startsWith("application/json") || contentType.startsWith("text/plain"))) {
             // the response is re-readable so we can read and close it without
             // affecting later processing of the response.
 

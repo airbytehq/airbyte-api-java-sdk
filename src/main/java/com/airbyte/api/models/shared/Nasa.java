@@ -14,7 +14,7 @@ public enum Nasa {
     @JsonValue
     private final String value;
 
-    private Nasa(String value) {
+    Nasa(String value) {
         this.value = value;
     }
     

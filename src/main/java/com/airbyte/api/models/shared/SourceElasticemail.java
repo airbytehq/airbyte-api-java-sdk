@@ -15,24 +15,28 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceElasticemail {
 
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("from")
     private Optional<OffsetDateTime> from;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("scope_type")
     private Optional<? extends ScopeType> scopeType;
 
+
     @JsonProperty("sourceType")
     private Elasticemail sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -57,7 +61,8 @@ public class SourceElasticemail {
     public SourceElasticemail(
             String apiKey,
             OffsetDateTime startDate) {
-        this(apiKey, Optional.empty(), Optional.empty(), startDate);
+        this(apiKey, Optional.empty(), Optional.empty(),
+            startDate);
     }
 
     @JsonIgnore
@@ -86,9 +91,10 @@ public class SourceElasticemail {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceElasticemail withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -102,6 +108,7 @@ public class SourceElasticemail {
         return this;
     }
 
+
     public SourceElasticemail withFrom(Optional<OffsetDateTime> from) {
         Utils.checkNotNull(from, "from");
         this.from = from;
@@ -113,6 +120,7 @@ public class SourceElasticemail {
         this.scopeType = Optional.ofNullable(scopeType);
         return this;
     }
+
 
     public SourceElasticemail withScopeType(Optional<? extends ScopeType> scopeType) {
         Utils.checkNotNull(scopeType, "scopeType");
@@ -126,7 +134,6 @@ public class SourceElasticemail {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -137,21 +144,18 @@ public class SourceElasticemail {
         }
         SourceElasticemail other = (SourceElasticemail) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.from, other.from) &&
-            Objects.deepEquals(this.scopeType, other.scopeType) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.from, other.from) &&
+            Utils.enhancedDeepEquals(this.scopeType, other.scopeType) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            from,
-            scopeType,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKey, from, scopeType,
+            sourceType, startDate);
     }
     
     @Override
@@ -163,26 +167,29 @@ public class SourceElasticemail {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<OffsetDateTime> from = Optional.empty();
- 
+
         private Optional<? extends ScopeType> scopeType = Optional.empty();
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         public Builder from(OffsetDateTime from) {
             Utils.checkNotNull(from, "from");
@@ -196,6 +203,7 @@ public class SourceElasticemail {
             return this;
         }
 
+
         public Builder scopeType(ScopeType scopeType) {
             Utils.checkNotNull(scopeType, "scopeType");
             this.scopeType = Optional.ofNullable(scopeType);
@@ -208,19 +216,20 @@ public class SourceElasticemail {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceElasticemail build() {
+
             return new SourceElasticemail(
-                apiKey,
-                from,
-                scopeType,
+                apiKey, from, scopeType,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Elasticemail> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

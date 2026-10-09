@@ -14,7 +14,7 @@ public enum Posthog {
     @JsonValue
     private final String value;
 
-    private Posthog(String value) {
+    Posthog(String value) {
         this.value = value;
     }
     

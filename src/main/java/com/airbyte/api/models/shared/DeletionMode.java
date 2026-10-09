@@ -14,21 +14,21 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DeletionMode
  * 
- * <p>&lt;b&gt;This only applies to incremental syncs.&lt;/b&gt; &lt;br&gt;
- * Enabling deletion mode informs your destination of deleted documents.&lt;br&gt;
- * Disabled - Leave this feature disabled, and ignore deleted documents.&lt;br&gt;
- * Enabled - Enables this feature. When a document is deleted, the connector exports a record with a "deleted at" column containing the time that the document was deleted.
+ * <p><b>This only applies to incremental syncs.</b> <br>
+ * Enabling deletion mode informs your destination of deleted documents.<br>
+ * Disabled - Leave this feature disabled, and ignore deleted documents.<br>
+ * Enabled - Enables this feature. When a document is deleted, the connector exports a record with a
+ * "deleted at" column containing the time that the document was deleted.
  */
 @JsonDeserialize(using = DeletionMode._Deserializer.class)
 public class DeletionMode {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DeletionMode(TypedObject value) {
         this.value = value;
@@ -36,12 +36,12 @@ public class DeletionMode {
 
     public static DeletionMode of(Disabled value) {
         Utils.checkNotNull(value, "value");
-        return new DeletionMode(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Disabled>(){}));
+        return new DeletionMode(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DeletionMode of(Enabled value) {
         Utils.checkNotNull(value, "value");
-        return new DeletionMode(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Enabled>(){}));
+        return new DeletionMode(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -64,7 +64,7 @@ public class DeletionMode {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -75,12 +75,12 @@ public class DeletionMode {
             return false;
         }
         DeletionMode other = (DeletionMode) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -88,8 +88,8 @@ public class DeletionMode {
 
         public _Deserializer() {
             super(DeletionMode.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<Enabled>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Disabled>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Disabled>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<Enabled>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -98,6 +98,6 @@ public class DeletionMode {
         return Utils.toString(DeletionMode.class,
                 "value", value);
     }
- 
+
 }
 

@@ -1,0 +1,11 @@
+# SourceDolibarr
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `apiKey`                                                                                  | *String*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `myDolibarrDomainUrl`                                                                     | *String*                                                                                  | :heavy_check_mark:                                                                        | enter your "domain/dolibarr_url" without https:// Example: mydomain.com/dolibarr          |
+| `sourceType`                                                                              | [Dolibarr](../../models/shared/Dolibarr.md)                                               | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `startDate`                                                                               | [OffsetDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html) | :heavy_check_mark:                                                                        | N/A                                                                                       |

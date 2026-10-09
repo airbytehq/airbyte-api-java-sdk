@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceZendeskTalkAuthentication
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class SourceZendeskTalkAuthentication {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceZendeskTalkAuthentication(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class SourceZendeskTalkAuthentication {
 
     public static SourceZendeskTalkAuthentication of(SourceZendeskTalkOAuth20 value) {
         Utils.checkNotNull(value, "value");
-        return new SourceZendeskTalkAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZendeskTalkOAuth20>(){}));
+        return new SourceZendeskTalkAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceZendeskTalkAuthentication of(SourceZendeskTalkAPIToken value) {
         Utils.checkNotNull(value, "value");
-        return new SourceZendeskTalkAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZendeskTalkAPIToken>(){}));
+        return new SourceZendeskTalkAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class SourceZendeskTalkAuthentication {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class SourceZendeskTalkAuthentication {
             return false;
         }
         SourceZendeskTalkAuthentication other = (SourceZendeskTalkAuthentication) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -95,6 +94,6 @@ public class SourceZendeskTalkAuthentication {
         return Utils.toString(SourceZendeskTalkAuthentication.class,
                 "value", value);
     }
- 
+
 }
 

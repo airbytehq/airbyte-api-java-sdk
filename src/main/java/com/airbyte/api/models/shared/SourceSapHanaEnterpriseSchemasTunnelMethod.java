@@ -14,7 +14,7 @@ public enum SourceSapHanaEnterpriseSchemasTunnelMethod {
     @JsonValue
     private final String value;
 
-    private SourceSapHanaEnterpriseSchemasTunnelMethod(String value) {
+    SourceSapHanaEnterpriseSchemasTunnelMethod(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationPgvectorTextSplitter
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class DestinationPgvectorTextSplitter {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationPgvectorTextSplitter(TypedObject value) {
         this.value = value;
@@ -33,17 +32,17 @@ public class DestinationPgvectorTextSplitter {
 
     public static DestinationPgvectorTextSplitter of(DestinationPgvectorBySeparator value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationPgvectorTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationPgvectorBySeparator>(){}));
+        return new DestinationPgvectorTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationPgvectorTextSplitter of(DestinationPgvectorByMarkdownHeader value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationPgvectorTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationPgvectorByMarkdownHeader>(){}));
+        return new DestinationPgvectorTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationPgvectorTextSplitter of(DestinationPgvectorByProgrammingLanguage value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationPgvectorTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationPgvectorByProgrammingLanguage>(){}));
+        return new DestinationPgvectorTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +66,7 @@ public class DestinationPgvectorTextSplitter {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +77,12 @@ public class DestinationPgvectorTextSplitter {
             return false;
         }
         DestinationPgvectorTextSplitter other = (DestinationPgvectorTextSplitter) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -92,8 +91,8 @@ public class DestinationPgvectorTextSplitter {
         public _Deserializer() {
             super(DestinationPgvectorTextSplitter.class, false,
                   TypeReferenceWithShape.of(new TypeReference<DestinationPgvectorBySeparator>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationPgvectorByProgrammingLanguage>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationPgvectorByMarkdownHeader>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationPgvectorByMarkdownHeader>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationPgvectorByProgrammingLanguage>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -102,6 +101,6 @@ public class DestinationPgvectorTextSplitter {
         return Utils.toString(DestinationPgvectorTextSplitter.class,
                 "value", value);
     }
- 
+
 }
 

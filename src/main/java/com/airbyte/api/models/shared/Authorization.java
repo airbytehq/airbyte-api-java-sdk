@@ -11,20 +11,21 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class Authorization {
 
+public class Authorization {
     /**
-     * The client ID of your Google Search Console developer application. Read more &lt;a href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing"&gt;here&lt;/a&gt;.
+     * The client ID of your Google Search Console developer application. Read more <a
+     * href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing">here</a>.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_id")
     private Optional<String> clientId;
 
     /**
-     * The client secret of your Google Search Console developer application. Read more &lt;a href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing"&gt;here&lt;/a&gt;.
+     * The client secret of your Google Search Console developer application. Read more <a
+     * href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing">here</a>.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_secret")
@@ -45,7 +46,8 @@ public class Authorization {
     }
 
     /**
-     * The client ID of your Google Search Console developer application. Read more &lt;a href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing"&gt;here&lt;/a&gt;.
+     * The client ID of your Google Search Console developer application. Read more <a
+     * href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing">here</a>.
      */
     @JsonIgnore
     public Optional<String> clientId() {
@@ -53,19 +55,22 @@ public class Authorization {
     }
 
     /**
-     * The client secret of your Google Search Console developer application. Read more &lt;a href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing"&gt;here&lt;/a&gt;.
+     * The client secret of your Google Search Console developer application. Read more <a
+     * href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing">here</a>.
      */
     @JsonIgnore
     public Optional<String> clientSecret() {
         return clientSecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The client ID of your Google Search Console developer application. Read more &lt;a href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing"&gt;here&lt;/a&gt;.
+     * The client ID of your Google Search Console developer application. Read more <a
+     * href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing">here</a>.
      */
     public Authorization withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -73,8 +78,10 @@ public class Authorization {
         return this;
     }
 
+
     /**
-     * The client ID of your Google Search Console developer application. Read more &lt;a href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing"&gt;here&lt;/a&gt;.
+     * The client ID of your Google Search Console developer application. Read more <a
+     * href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing">here</a>.
      */
     public Authorization withClientId(Optional<String> clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -83,7 +90,8 @@ public class Authorization {
     }
 
     /**
-     * The client secret of your Google Search Console developer application. Read more &lt;a href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing"&gt;here&lt;/a&gt;.
+     * The client secret of your Google Search Console developer application. Read more <a
+     * href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing">here</a>.
      */
     public Authorization withClientSecret(String clientSecret) {
         Utils.checkNotNull(clientSecret, "clientSecret");
@@ -91,8 +99,10 @@ public class Authorization {
         return this;
     }
 
+
     /**
-     * The client secret of your Google Search Console developer application. Read more &lt;a href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing"&gt;here&lt;/a&gt;.
+     * The client secret of your Google Search Console developer application. Read more <a
+     * href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing">here</a>.
      */
     public Authorization withClientSecret(Optional<String> clientSecret) {
         Utils.checkNotNull(clientSecret, "clientSecret");
@@ -100,7 +110,6 @@ public class Authorization {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -111,15 +120,14 @@ public class Authorization {
         }
         Authorization other = (Authorization) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret);
+        return Utils.enhancedHash(
+            clientId, clientSecret);
     }
     
     @Override
@@ -128,19 +136,22 @@ public class Authorization {
                 "clientId", clientId,
                 "clientSecret", clientSecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> clientId = Optional.empty();
- 
+
         private Optional<String> clientSecret = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The client ID of your Google Search Console developer application. Read more &lt;a href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing"&gt;here&lt;/a&gt;.
+         * The client ID of your Google Search Console developer application. Read more <a
+         * href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing">here</a>.
          */
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -149,7 +160,8 @@ public class Authorization {
         }
 
         /**
-         * The client ID of your Google Search Console developer application. Read more &lt;a href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing"&gt;here&lt;/a&gt;.
+         * The client ID of your Google Search Console developer application. Read more <a
+         * href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing">here</a>.
          */
         public Builder clientId(Optional<String> clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -157,8 +169,10 @@ public class Authorization {
             return this;
         }
 
+
         /**
-         * The client secret of your Google Search Console developer application. Read more &lt;a href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing"&gt;here&lt;/a&gt;.
+         * The client secret of your Google Search Console developer application. Read more <a
+         * href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing">here</a>.
          */
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
@@ -167,18 +181,20 @@ public class Authorization {
         }
 
         /**
-         * The client secret of your Google Search Console developer application. Read more &lt;a href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing"&gt;here&lt;/a&gt;.
+         * The client secret of your Google Search Console developer application. Read more <a
+         * href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing">here</a>.
          */
         public Builder clientSecret(Optional<String> clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public Authorization build() {
+
             return new Authorization(
-                clientId,
-                clientSecret);
+                clientId, clientSecret);
         }
+
     }
 }

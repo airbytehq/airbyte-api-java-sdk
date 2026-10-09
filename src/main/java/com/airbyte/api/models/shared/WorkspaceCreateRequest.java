@@ -12,11 +12,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class WorkspaceCreateRequest {
 
+public class WorkspaceCreateRequest {
     /**
      * Name of the workspace
      */
@@ -36,6 +35,7 @@ public class WorkspaceCreateRequest {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("organizationId")
     private Optional<String> organizationId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("regionId")
@@ -59,7 +59,8 @@ public class WorkspaceCreateRequest {
     
     public WorkspaceCreateRequest(
             String name) {
-        this(name, Optional.empty(), Optional.empty(), Optional.empty());
+        this(name, Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -92,9 +93,10 @@ public class WorkspaceCreateRequest {
         return regionId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Name of the workspace
@@ -114,6 +116,7 @@ public class WorkspaceCreateRequest {
         return this;
     }
 
+
     /**
      * Configures workspace notifications.
      */
@@ -132,6 +135,7 @@ public class WorkspaceCreateRequest {
         return this;
     }
 
+
     /**
      * ID of organization to add workspace to.
      */
@@ -147,13 +151,13 @@ public class WorkspaceCreateRequest {
         return this;
     }
 
+
     public WorkspaceCreateRequest withRegionId(Optional<String> regionId) {
         Utils.checkNotNull(regionId, "regionId");
         this.regionId = regionId;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -164,18 +168,16 @@ public class WorkspaceCreateRequest {
         }
         WorkspaceCreateRequest other = (WorkspaceCreateRequest) o;
         return 
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.notifications, other.notifications) &&
-            Objects.deepEquals(this.organizationId, other.organizationId) &&
-            Objects.deepEquals(this.regionId, other.regionId);
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.notifications, other.notifications) &&
+            Utils.enhancedDeepEquals(this.organizationId, other.organizationId) &&
+            Utils.enhancedDeepEquals(this.regionId, other.regionId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            name,
-            notifications,
-            organizationId,
+        return Utils.enhancedHash(
+            name, notifications, organizationId,
             regionId);
     }
     
@@ -187,20 +189,22 @@ public class WorkspaceCreateRequest {
                 "organizationId", organizationId,
                 "regionId", regionId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String name;
- 
+
         private Optional<? extends NotificationsConfig> notifications = Optional.empty();
- 
+
         private Optional<String> organizationId = Optional.empty();
- 
+
         private Optional<String> regionId = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Name of the workspace
@@ -210,6 +214,7 @@ public class WorkspaceCreateRequest {
             this.name = name;
             return this;
         }
+
 
         /**
          * Configures workspace notifications.
@@ -229,6 +234,7 @@ public class WorkspaceCreateRequest {
             return this;
         }
 
+
         /**
          * ID of organization to add workspace to.
          */
@@ -247,6 +253,7 @@ public class WorkspaceCreateRequest {
             return this;
         }
 
+
         public Builder regionId(String regionId) {
             Utils.checkNotNull(regionId, "regionId");
             this.regionId = Optional.ofNullable(regionId);
@@ -258,13 +265,13 @@ public class WorkspaceCreateRequest {
             this.regionId = regionId;
             return this;
         }
-        
+
         public WorkspaceCreateRequest build() {
+
             return new WorkspaceCreateRequest(
-                name,
-                notifications,
-                organizationId,
+                name, notifications, organizationId,
                 regionId);
         }
+
     }
 }

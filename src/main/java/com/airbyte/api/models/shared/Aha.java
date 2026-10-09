@@ -14,7 +14,7 @@ public enum Aha {
     @JsonValue
     private final String value;
 
-    private Aha(String value) {
+    Aha(String value) {
         this.value = value;
     }
     

@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class EUBasedAccount {
 
@@ -25,7 +25,6 @@ public class EUBasedAccount {
 
     @JsonCreator
     public EUBasedAccount() {
-        
         this.urlBase = Builder._SINGLETON_VALUE_UrlBase.value();
     }
 
@@ -35,11 +34,11 @@ public class EUBasedAccount {
         return (Optional<UrlBase>) urlBase;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -50,12 +49,12 @@ public class EUBasedAccount {
         }
         EUBasedAccount other = (EUBasedAccount) o;
         return 
-            Objects.deepEquals(this.urlBase, other.urlBase);
+            Utils.enhancedDeepEquals(this.urlBase, other.urlBase);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             urlBase);
     }
     
@@ -64,17 +63,20 @@ public class EUBasedAccount {
         return Utils.toString(EUBasedAccount.class,
                 "urlBase", urlBase);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public EUBasedAccount build() {
+
             return new EUBasedAccount(
                 );
         }
+
 
         private static final LazySingletonValue<Optional<? extends UrlBase>> _SINGLETON_VALUE_UrlBase =
                 new LazySingletonValue<>(

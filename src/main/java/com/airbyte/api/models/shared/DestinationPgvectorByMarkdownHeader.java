@@ -15,13 +15,13 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * DestinationPgvectorByMarkdownHeader
  * 
- * <p>Split the text by Markdown headers down to the specified header level. If the chunk size fits multiple sections, they will be combined into a single chunk.
+ * <p>Split the text by Markdown headers down to the specified header level. If the chunk size fits
+ * multiple sections, they will be combined into a single chunk.
  */
 public class DestinationPgvectorByMarkdownHeader {
 
@@ -30,7 +30,8 @@ public class DestinationPgvectorByMarkdownHeader {
     private Optional<? extends DestinationPgvectorSchemasProcessingTextSplitterMode> mode;
 
     /**
-     * Level of markdown headers to split text fields by. Headings down to the specified level will be used as split points
+     * Level of markdown headers to split text fields by. Headings down to the specified level will be used
+     * as split points
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("split_level")
@@ -55,19 +56,22 @@ public class DestinationPgvectorByMarkdownHeader {
     }
 
     /**
-     * Level of markdown headers to split text fields by. Headings down to the specified level will be used as split points
+     * Level of markdown headers to split text fields by. Headings down to the specified level will be used
+     * as split points
      */
     @JsonIgnore
     public Optional<Long> splitLevel() {
         return splitLevel;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Level of markdown headers to split text fields by. Headings down to the specified level will be used as split points
+     * Level of markdown headers to split text fields by. Headings down to the specified level will be used
+     * as split points
      */
     public DestinationPgvectorByMarkdownHeader withSplitLevel(long splitLevel) {
         Utils.checkNotNull(splitLevel, "splitLevel");
@@ -75,8 +79,10 @@ public class DestinationPgvectorByMarkdownHeader {
         return this;
     }
 
+
     /**
-     * Level of markdown headers to split text fields by. Headings down to the specified level will be used as split points
+     * Level of markdown headers to split text fields by. Headings down to the specified level will be used
+     * as split points
      */
     public DestinationPgvectorByMarkdownHeader withSplitLevel(Optional<Long> splitLevel) {
         Utils.checkNotNull(splitLevel, "splitLevel");
@@ -84,7 +90,6 @@ public class DestinationPgvectorByMarkdownHeader {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,15 +100,14 @@ public class DestinationPgvectorByMarkdownHeader {
         }
         DestinationPgvectorByMarkdownHeader other = (DestinationPgvectorByMarkdownHeader) o;
         return 
-            Objects.deepEquals(this.mode, other.mode) &&
-            Objects.deepEquals(this.splitLevel, other.splitLevel);
+            Utils.enhancedDeepEquals(this.mode, other.mode) &&
+            Utils.enhancedDeepEquals(this.splitLevel, other.splitLevel);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            mode,
-            splitLevel);
+        return Utils.enhancedHash(
+            mode, splitLevel);
     }
     
     @Override
@@ -112,17 +116,20 @@ public class DestinationPgvectorByMarkdownHeader {
                 "mode", mode,
                 "splitLevel", splitLevel);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Long> splitLevel;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Level of markdown headers to split text fields by. Headings down to the specified level will be used as split points
+         * Level of markdown headers to split text fields by. Headings down to the specified level will be used
+         * as split points
          */
         public Builder splitLevel(long splitLevel) {
             Utils.checkNotNull(splitLevel, "splitLevel");
@@ -131,21 +138,24 @@ public class DestinationPgvectorByMarkdownHeader {
         }
 
         /**
-         * Level of markdown headers to split text fields by. Headings down to the specified level will be used as split points
+         * Level of markdown headers to split text fields by. Headings down to the specified level will be used
+         * as split points
          */
         public Builder splitLevel(Optional<Long> splitLevel) {
             Utils.checkNotNull(splitLevel, "splitLevel");
             this.splitLevel = splitLevel;
             return this;
         }
-        
+
         public DestinationPgvectorByMarkdownHeader build() {
             if (splitLevel == null) {
                 splitLevel = _SINGLETON_VALUE_SplitLevel.value();
             }
+
             return new DestinationPgvectorByMarkdownHeader(
                 splitLevel);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationPgvectorSchemasProcessingTextSplitterMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

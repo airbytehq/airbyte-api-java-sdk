@@ -14,23 +14,25 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceHibob {
 
+public class SourceHibob {
     /**
      * Toggle true if this instance is a HiBob sandbox
      */
     @JsonProperty("is_sandbox")
     private boolean isSandbox;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
     private Optional<String> password;
 
+
     @JsonProperty("sourceType")
     private Hibob sourceType;
+
 
     @JsonProperty("username")
     private String username;
@@ -78,9 +80,10 @@ public class SourceHibob {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Toggle true if this instance is a HiBob sandbox
@@ -97,6 +100,7 @@ public class SourceHibob {
         return this;
     }
 
+
     public SourceHibob withPassword(Optional<String> password) {
         Utils.checkNotNull(password, "password");
         this.password = password;
@@ -109,7 +113,6 @@ public class SourceHibob {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,18 +123,16 @@ public class SourceHibob {
         }
         SourceHibob other = (SourceHibob) o;
         return 
-            Objects.deepEquals(this.isSandbox, other.isSandbox) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.isSandbox, other.isSandbox) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            isSandbox,
-            password,
-            sourceType,
+        return Utils.enhancedHash(
+            isSandbox, password, sourceType,
             username);
     }
     
@@ -143,18 +144,20 @@ public class SourceHibob {
                 "sourceType", sourceType,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Boolean isSandbox;
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Toggle true if this instance is a HiBob sandbox
@@ -164,6 +167,7 @@ public class SourceHibob {
             this.isSandbox = isSandbox;
             return this;
         }
+
 
         public Builder password(String password) {
             Utils.checkNotNull(password, "password");
@@ -177,18 +181,19 @@ public class SourceHibob {
             return this;
         }
 
+
         public Builder username(String username) {
             Utils.checkNotNull(username, "username");
             this.username = username;
             return this;
         }
-        
+
         public SourceHibob build() {
+
             return new SourceHibob(
-                isSandbox,
-                password,
-                username);
+                isSandbox, password, username);
         }
+
 
         private static final LazySingletonValue<Hibob> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

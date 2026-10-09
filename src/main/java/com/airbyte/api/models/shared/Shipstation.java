@@ -14,7 +14,7 @@ public enum Shipstation {
     @JsonValue
     private final String value;
 
-    private Shipstation(String value) {
+    Shipstation(String value) {
         this.value = value;
     }
     

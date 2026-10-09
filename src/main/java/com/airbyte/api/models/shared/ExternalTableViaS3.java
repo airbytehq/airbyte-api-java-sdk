@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class ExternalTableViaS3 {
-
     /**
      * AWS access key granting read and write access to S3.
      */
@@ -26,6 +25,7 @@ public class ExternalTableViaS3 {
      */
     @JsonProperty("aws_key_secret")
     private String awsKeySecret;
+
 
     @JsonProperty("method")
     private DestinationFireboltSchemasMethod method;
@@ -96,9 +96,10 @@ public class ExternalTableViaS3 {
         return s3Region;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * AWS access key granting read and write access to S3.
@@ -136,7 +137,6 @@ public class ExternalTableViaS3 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -147,21 +147,18 @@ public class ExternalTableViaS3 {
         }
         ExternalTableViaS3 other = (ExternalTableViaS3) o;
         return 
-            Objects.deepEquals(this.awsKeyId, other.awsKeyId) &&
-            Objects.deepEquals(this.awsKeySecret, other.awsKeySecret) &&
-            Objects.deepEquals(this.method, other.method) &&
-            Objects.deepEquals(this.s3Bucket, other.s3Bucket) &&
-            Objects.deepEquals(this.s3Region, other.s3Region);
+            Utils.enhancedDeepEquals(this.awsKeyId, other.awsKeyId) &&
+            Utils.enhancedDeepEquals(this.awsKeySecret, other.awsKeySecret) &&
+            Utils.enhancedDeepEquals(this.method, other.method) &&
+            Utils.enhancedDeepEquals(this.s3Bucket, other.s3Bucket) &&
+            Utils.enhancedDeepEquals(this.s3Region, other.s3Region);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            awsKeyId,
-            awsKeySecret,
-            method,
-            s3Bucket,
-            s3Region);
+        return Utils.enhancedHash(
+            awsKeyId, awsKeySecret, method,
+            s3Bucket, s3Region);
     }
     
     @Override
@@ -173,20 +170,22 @@ public class ExternalTableViaS3 {
                 "s3Bucket", s3Bucket,
                 "s3Region", s3Region);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String awsKeyId;
- 
+
         private String awsKeySecret;
- 
+
         private String s3Bucket;
- 
+
         private String s3Region;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * AWS access key granting read and write access to S3.
@@ -197,6 +196,7 @@ public class ExternalTableViaS3 {
             return this;
         }
 
+
         /**
          * Corresponding secret part of the AWS Key
          */
@@ -205,6 +205,7 @@ public class ExternalTableViaS3 {
             this.awsKeySecret = awsKeySecret;
             return this;
         }
+
 
         /**
          * The name of the S3 bucket.
@@ -215,6 +216,7 @@ public class ExternalTableViaS3 {
             return this;
         }
 
+
         /**
          * Region name of the S3 bucket.
          */
@@ -223,14 +225,14 @@ public class ExternalTableViaS3 {
             this.s3Region = s3Region;
             return this;
         }
-        
+
         public ExternalTableViaS3 build() {
+
             return new ExternalTableViaS3(
-                awsKeyId,
-                awsKeySecret,
-                s3Bucket,
+                awsKeyId, awsKeySecret, s3Bucket,
                 s3Region);
         }
+
 
         private static final LazySingletonValue<DestinationFireboltSchemasMethod> _SINGLETON_VALUE_Method =
                 new LazySingletonValue<>(

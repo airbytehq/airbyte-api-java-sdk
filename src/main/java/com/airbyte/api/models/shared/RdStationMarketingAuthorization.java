@@ -11,11 +11,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class RdStationMarketingAuthorization {
 
+public class RdStationMarketingAuthorization {
     /**
      * The Client ID of your RD Station developer application.
      */
@@ -60,9 +59,10 @@ public class RdStationMarketingAuthorization {
         return clientSecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Client ID of your RD Station developer application.
@@ -72,6 +72,7 @@ public class RdStationMarketingAuthorization {
         this.clientId = Optional.ofNullable(clientId);
         return this;
     }
+
 
     /**
      * The Client ID of your RD Station developer application.
@@ -91,6 +92,7 @@ public class RdStationMarketingAuthorization {
         return this;
     }
 
+
     /**
      * The Client Secret of your RD Station developer application
      */
@@ -100,7 +102,6 @@ public class RdStationMarketingAuthorization {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -111,15 +112,14 @@ public class RdStationMarketingAuthorization {
         }
         RdStationMarketingAuthorization other = (RdStationMarketingAuthorization) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret);
+        return Utils.enhancedHash(
+            clientId, clientSecret);
     }
     
     @Override
@@ -128,16 +128,18 @@ public class RdStationMarketingAuthorization {
                 "clientId", clientId,
                 "clientSecret", clientSecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> clientId = Optional.empty();
- 
+
         private Optional<String> clientSecret = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Client ID of your RD Station developer application.
@@ -157,6 +159,7 @@ public class RdStationMarketingAuthorization {
             return this;
         }
 
+
         /**
          * The Client Secret of your RD Station developer application
          */
@@ -174,11 +177,12 @@ public class RdStationMarketingAuthorization {
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public RdStationMarketingAuthorization build() {
+
             return new RdStationMarketingAuthorization(
-                clientId,
-                clientSecret);
+                clientId, clientSecret);
         }
+
     }
 }

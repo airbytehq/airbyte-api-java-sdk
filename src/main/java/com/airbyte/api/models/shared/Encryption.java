@@ -3,20 +3,104 @@
  */
 package com.airbyte.api.models.shared;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
-import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.airbyte.api.utils.OneOfDeserializer;
+import com.airbyte.api.utils.TypedObject;
+import com.airbyte.api.utils.Utils.JsonShape;
+import com.airbyte.api.utils.Utils.TypeReferenceWithShape;
+import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import java.lang.Override;
 import java.lang.String;
+import java.lang.SuppressWarnings;
 
-@JsonTypeInfo(use = Id.NAME, property = "algorithm", include = As.EXISTING_PROPERTY, visible = true)
-@JsonSubTypes({
-    @Type(value = EncryptionRSA.class, name="RSA"),
-    @Type(value = EncryptionAES.class, name="AES")})
-public interface Encryption {
+/**
+ * Encryption
+ * 
+ * <p>The encryption method which is used when communicating with the database.
+ */
+@JsonDeserialize(using = Encryption._Deserializer.class)
+public class Encryption {
 
-    String algorithm();
+    @JsonValue
+    private final TypedObject value;
+    
+    private Encryption(TypedObject value) {
+        this.value = value;
+    }
+
+    public static Encryption of(DestinationOracleUnencrypted value) {
+        Utils.checkNotNull(value, "value");
+        return new Encryption(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static Encryption of(NativeNetworkEncryptionNNE value) {
+        Utils.checkNotNull(value, "value");
+        return new Encryption(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static Encryption of(TLSEncryptedVerifyCertificate value) {
+        Utils.checkNotNull(value, "value");
+        return new Encryption(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+    
+    /**
+     * Returns an instance of one of these types:
+     * <ul>
+     * <li>{@code com.airbyte.api.models.shared.DestinationOracleUnencrypted}</li>
+     * <li>{@code com.airbyte.api.models.shared.NativeNetworkEncryptionNNE}</li>
+     * <li>{@code com.airbyte.api.models.shared.TLSEncryptedVerifyCertificate}</li>
+     * </ul>
+     * 
+     * <p>Use {@code instanceof} to determine what type is returned. For example:
+     * 
+     * <pre>
+     * if (obj.value() instanceof String) {
+     *     String answer = (String) obj.value();
+     *     System.out.println("answer=" + answer);
+     * }
+     * </pre>
+     * 
+     * @return value of oneOf type
+     **/ 
+    public java.lang.Object value() {
+        return value.value();
+    }
+    
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Encryption other = (Encryption) o;
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
+    }
+    
+    @Override
+    public int hashCode() {
+        return Utils.enhancedHash(value.value());
+    }
+    
+    @SuppressWarnings("serial")
+    public static final class _Deserializer extends OneOfDeserializer<Encryption> {
+
+        public _Deserializer() {
+            super(Encryption.class, false,
+                  TypeReferenceWithShape.of(new TypeReference<DestinationOracleUnencrypted>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<NativeNetworkEncryptionNNE>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<TLSEncryptedVerifyCertificate>() {}, JsonShape.DEFAULT));
+        }
+    }
+    
+    @Override
+    public String toString() {
+        return Utils.toString(Encryption.class,
+                "value", value);
+    }
 
 }
 

@@ -23,7 +23,7 @@ public enum Granularity {
     @JsonValue
     private final String value;
 
-    private Granularity(String value) {
+    Granularity(String value) {
         this.value = value;
     }
     

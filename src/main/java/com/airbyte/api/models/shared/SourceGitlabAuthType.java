@@ -14,7 +14,7 @@ public enum SourceGitlabAuthType {
     @JsonValue
     private final String value;
 
-    private SourceGitlabAuthType(String value) {
+    SourceGitlabAuthType(String value) {
         this.value = value;
     }
     

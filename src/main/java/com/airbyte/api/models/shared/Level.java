@@ -22,7 +22,7 @@ public enum Level {
     @JsonValue
     private final String value;
 
-    private Level(String value) {
+    Level(String value) {
         this.value = value;
     }
     

@@ -58,7 +58,7 @@ public enum SourceNewsdataLanguage {
     @JsonValue
     private final String value;
 
-    private SourceNewsdataLanguage(String value) {
+    SourceNewsdataLanguage(String value) {
         this.value = value;
     }
     

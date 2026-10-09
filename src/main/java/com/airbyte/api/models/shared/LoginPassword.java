@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 /**
  * LoginPassword
@@ -67,9 +66,10 @@ public class LoginPassword {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Password associated with the username.
@@ -89,7 +89,6 @@ public class LoginPassword {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,17 +99,15 @@ public class LoginPassword {
         }
         LoginPassword other = (LoginPassword) o;
         return 
-            Objects.deepEquals(this.authorization, other.authorization) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.authorization, other.authorization) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authorization,
-            password,
-            username);
+        return Utils.enhancedHash(
+            authorization, password, username);
     }
     
     @Override
@@ -120,16 +117,18 @@ public class LoginPassword {
                 "password", password,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String password;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Password associated with the username.
@@ -140,6 +139,7 @@ public class LoginPassword {
             return this;
         }
 
+
         /**
          * Username to use to access the database.
          */
@@ -148,12 +148,13 @@ public class LoginPassword {
             this.username = username;
             return this;
         }
-        
+
         public LoginPassword build() {
+
             return new LoginPassword(
-                password,
-                username);
+                password, username);
         }
+
 
         private static final LazySingletonValue<DestinationMongodbAuthorization> _SINGLETON_VALUE_Authorization =
                 new LazySingletonValue<>(

@@ -1,5 +1,13 @@
 # SourceSftpBulkSchemasStreamsHeaderDefinitionType
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceSftpBulkSchemasStreamsHeaderDefinitionType;
+
+SourceSftpBulkSchemasStreamsHeaderDefinitionType value = SourceSftpBulkSchemasStreamsHeaderDefinitionType.USER_PROVIDED;
+```
+
 
 ## Values
 

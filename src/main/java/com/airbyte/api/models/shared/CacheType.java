@@ -19,7 +19,7 @@ public enum CacheType {
     @JsonValue
     private final String value;
 
-    private CacheType(String value) {
+    CacheType(String value) {
         this.value = value;
     }
     

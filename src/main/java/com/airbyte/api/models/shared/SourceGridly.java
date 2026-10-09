@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceGridly {
 
@@ -23,6 +23,7 @@ public class SourceGridly {
      */
     @JsonProperty("grid_id")
     private String gridId;
+
 
     @JsonProperty("sourceType")
     private Gridly sourceType;
@@ -56,9 +57,10 @@ public class SourceGridly {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceGridly withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -75,7 +77,6 @@ public class SourceGridly {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -86,17 +87,15 @@ public class SourceGridly {
         }
         SourceGridly other = (SourceGridly) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.gridId, other.gridId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.gridId, other.gridId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            gridId,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, gridId, sourceType);
     }
     
     @Override
@@ -106,22 +105,25 @@ public class SourceGridly {
                 "gridId", gridId,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String gridId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * ID of a grid, or can be ID of a branch
@@ -131,12 +133,13 @@ public class SourceGridly {
             this.gridId = gridId;
             return this;
         }
-        
+
         public SourceGridly build() {
+
             return new SourceGridly(
-                apiKey,
-                gridId);
+                apiKey, gridId);
         }
+
 
         private static final LazySingletonValue<Gridly> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

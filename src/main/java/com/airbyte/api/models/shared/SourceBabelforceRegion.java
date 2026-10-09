@@ -21,7 +21,7 @@ public enum SourceBabelforceRegion {
     @JsonValue
     private final String value;
 
-    private SourceBabelforceRegion(String value) {
+    SourceBabelforceRegion(String value) {
         this.value = value;
     }
     

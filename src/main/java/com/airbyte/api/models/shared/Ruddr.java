@@ -14,7 +14,7 @@ public enum Ruddr {
     @JsonValue
     private final String value;
 
-    private Ruddr(String value) {
+    Ruddr(String value) {
         this.value = value;
     }
     

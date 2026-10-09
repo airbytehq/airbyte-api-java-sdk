@@ -7,9 +7,9 @@ import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 /**
  * WorkspaceOAuthCredentialsRequest
@@ -17,7 +17,6 @@ import java.util.Objects;
  * <p>POST body for creating/updating workspace level OAuth credentials
  */
 public class WorkspaceOAuthCredentialsRequest {
-
     /**
      * Whether you're setting this override for a source or destination
      */
@@ -28,7 +27,8 @@ public class WorkspaceOAuthCredentialsRequest {
      * The values required to configure the source.
      */
     @JsonProperty("configuration")
-    private OAuthCredentialsConfiguration configuration;
+    private Object configuration;
+
 
     @JsonProperty("name")
     private OAuthActorNames name;
@@ -36,7 +36,7 @@ public class WorkspaceOAuthCredentialsRequest {
     @JsonCreator
     public WorkspaceOAuthCredentialsRequest(
             @JsonProperty("actorType") ActorTypeEnum actorType,
-            @JsonProperty("configuration") OAuthCredentialsConfiguration configuration,
+            @JsonProperty("configuration") Object configuration,
             @JsonProperty("name") OAuthActorNames name) {
         Utils.checkNotNull(actorType, "actorType");
         Utils.checkNotNull(configuration, "configuration");
@@ -58,7 +58,7 @@ public class WorkspaceOAuthCredentialsRequest {
      * The values required to configure the source.
      */
     @JsonIgnore
-    public OAuthCredentialsConfiguration configuration() {
+    public Object configuration() {
         return configuration;
     }
 
@@ -67,9 +67,10 @@ public class WorkspaceOAuthCredentialsRequest {
         return name;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Whether you're setting this override for a source or destination
@@ -83,7 +84,7 @@ public class WorkspaceOAuthCredentialsRequest {
     /**
      * The values required to configure the source.
      */
-    public WorkspaceOAuthCredentialsRequest withConfiguration(OAuthCredentialsConfiguration configuration) {
+    public WorkspaceOAuthCredentialsRequest withConfiguration(Object configuration) {
         Utils.checkNotNull(configuration, "configuration");
         this.configuration = configuration;
         return this;
@@ -95,7 +96,6 @@ public class WorkspaceOAuthCredentialsRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -106,17 +106,15 @@ public class WorkspaceOAuthCredentialsRequest {
         }
         WorkspaceOAuthCredentialsRequest other = (WorkspaceOAuthCredentialsRequest) o;
         return 
-            Objects.deepEquals(this.actorType, other.actorType) &&
-            Objects.deepEquals(this.configuration, other.configuration) &&
-            Objects.deepEquals(this.name, other.name);
+            Utils.enhancedDeepEquals(this.actorType, other.actorType) &&
+            Utils.enhancedDeepEquals(this.configuration, other.configuration) &&
+            Utils.enhancedDeepEquals(this.name, other.name);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            actorType,
-            configuration,
-            name);
+        return Utils.enhancedHash(
+            actorType, configuration, name);
     }
     
     @Override
@@ -126,18 +124,20 @@ public class WorkspaceOAuthCredentialsRequest {
                 "configuration", configuration,
                 "name", name);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private ActorTypeEnum actorType;
- 
-        private OAuthCredentialsConfiguration configuration;
- 
+
+        private Object configuration;
+
         private OAuthActorNames name;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Whether you're setting this override for a source or destination
@@ -148,26 +148,28 @@ public class WorkspaceOAuthCredentialsRequest {
             return this;
         }
 
+
         /**
          * The values required to configure the source.
          */
-        public Builder configuration(OAuthCredentialsConfiguration configuration) {
+        public Builder configuration(Object configuration) {
             Utils.checkNotNull(configuration, "configuration");
             this.configuration = configuration;
             return this;
         }
+
 
         public Builder name(OAuthActorNames name) {
             Utils.checkNotNull(name, "name");
             this.name = name;
             return this;
         }
-        
+
         public WorkspaceOAuthCredentialsRequest build() {
+
             return new WorkspaceOAuthCredentialsRequest(
-                actorType,
-                configuration,
-                name);
+                actorType, configuration, name);
         }
+
     }
 }

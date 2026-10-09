@@ -11,10 +11,11 @@ import java.util.Optional;
 /**
  * SourceGnewsSortBy
  * 
- * <p>This parameter allows you to choose with which type of sorting the articles should be returned. Two values  are possible:
- *   - publishedAt = sort by publication date, the articles with the most recent
+ * <p>This parameter allows you to choose with which type of sorting the articles should be returned. Two
+ * values  are possible:
+ * - publishedAt = sort by publication date, the articles with the most recent
  * publication date are returned first
- *   - relevance = sort by best match to keywords, the articles with the best
+ * - relevance = sort by best match to keywords, the articles with the best
  * match are returned first
  */
 public enum SourceGnewsSortBy {
@@ -24,7 +25,7 @@ public enum SourceGnewsSortBy {
     @JsonValue
     private final String value;
 
-    private SourceGnewsSortBy(String value) {
+    SourceGnewsSortBy(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum Miro {
     @JsonValue
     private final String value;
 
-    private Miro(String value) {
+    Miro(String value) {
         this.value = value;
     }
     

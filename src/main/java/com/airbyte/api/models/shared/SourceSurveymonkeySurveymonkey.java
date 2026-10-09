@@ -14,7 +14,7 @@ public enum SourceSurveymonkeySurveymonkey {
     @JsonValue
     private final String value;
 
-    private SourceSurveymonkeySurveymonkey(String value) {
+    SourceSurveymonkeySurveymonkey(String value) {
         this.value = value;
     }
     

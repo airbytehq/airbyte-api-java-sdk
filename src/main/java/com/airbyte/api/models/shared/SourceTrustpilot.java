@@ -12,18 +12,20 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
-import java.util.Objects;
+
 
 public class SourceTrustpilot {
-
     /**
-     * The names of business units which shall be synchronized. Some streams e.g. configured_business_units or private_reviews use this configuration.
+     * The names of business units which shall be synchronized. Some streams e.g. configured_business_units
+     * or private_reviews use this configuration.
      */
     @JsonProperty("business_units")
     private List<String> businessUnits;
 
+
     @JsonProperty("credentials")
     private SourceTrustpilotAuthorizationMethod credentials;
+
 
     @JsonProperty("sourceType")
     private Trustpilot sourceType;
@@ -49,7 +51,8 @@ public class SourceTrustpilot {
     }
 
     /**
-     * The names of business units which shall be synchronized. Some streams e.g. configured_business_units or private_reviews use this configuration.
+     * The names of business units which shall be synchronized. Some streams e.g. configured_business_units
+     * or private_reviews use this configuration.
      */
     @JsonIgnore
     public List<String> businessUnits() {
@@ -74,12 +77,14 @@ public class SourceTrustpilot {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The names of business units which shall be synchronized. Some streams e.g. configured_business_units or private_reviews use this configuration.
+     * The names of business units which shall be synchronized. Some streams e.g. configured_business_units
+     * or private_reviews use this configuration.
      */
     public SourceTrustpilot withBusinessUnits(List<String> businessUnits) {
         Utils.checkNotNull(businessUnits, "businessUnits");
@@ -102,7 +107,6 @@ public class SourceTrustpilot {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,18 +117,16 @@ public class SourceTrustpilot {
         }
         SourceTrustpilot other = (SourceTrustpilot) o;
         return 
-            Objects.deepEquals(this.businessUnits, other.businessUnits) &&
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.businessUnits, other.businessUnits) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            businessUnits,
-            credentials,
-            sourceType,
+        return Utils.enhancedHash(
+            businessUnits, credentials, sourceType,
             startDate);
     }
     
@@ -136,21 +138,24 @@ public class SourceTrustpilot {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private List<String> businessUnits;
- 
+
         private SourceTrustpilotAuthorizationMethod credentials;
- 
+
         private String startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The names of business units which shall be synchronized. Some streams e.g. configured_business_units or private_reviews use this configuration.
+         * The names of business units which shall be synchronized. Some streams e.g. configured_business_units
+         * or private_reviews use this configuration.
          */
         public Builder businessUnits(List<String> businessUnits) {
             Utils.checkNotNull(businessUnits, "businessUnits");
@@ -158,11 +163,13 @@ public class SourceTrustpilot {
             return this;
         }
 
+
         public Builder credentials(SourceTrustpilotAuthorizationMethod credentials) {
             Utils.checkNotNull(credentials, "credentials");
             this.credentials = credentials;
             return this;
         }
+
 
         /**
          * For streams with sync. method incremental the start date time to be used
@@ -172,13 +179,13 @@ public class SourceTrustpilot {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceTrustpilot build() {
+
             return new SourceTrustpilot(
-                businessUnits,
-                credentials,
-                startDate);
+                businessUnits, credentials, startDate);
         }
+
 
         private static final LazySingletonValue<Trustpilot> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

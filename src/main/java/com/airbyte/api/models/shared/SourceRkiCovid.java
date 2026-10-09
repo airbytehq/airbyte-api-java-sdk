@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceRkiCovid {
 
@@ -45,9 +45,10 @@ public class SourceRkiCovid {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * UTC date in the format 2017-01-25. Any data before this date will not be replicated.
@@ -58,7 +59,6 @@ public class SourceRkiCovid {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceRkiCovid {
         }
         SourceRkiCovid other = (SourceRkiCovid) o;
         return 
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            sourceType, startDate);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourceRkiCovid {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * UTC date in the format 2017-01-25. Any data before this date will not be replicated.
@@ -103,11 +104,13 @@ public class SourceRkiCovid {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceRkiCovid build() {
+
             return new SourceRkiCovid(
                 startDate);
         }
+
 
         private static final LazySingletonValue<RkiCovid> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

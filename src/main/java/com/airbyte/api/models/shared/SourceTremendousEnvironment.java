@@ -15,7 +15,7 @@ public enum SourceTremendousEnvironment {
     @JsonValue
     private final String value;
 
-    private SourceTremendousEnvironment(String value) {
+    SourceTremendousEnvironment(String value) {
         this.value = value;
     }
     

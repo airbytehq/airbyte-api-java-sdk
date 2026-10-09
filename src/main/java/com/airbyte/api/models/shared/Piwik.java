@@ -14,7 +14,7 @@ public enum Piwik {
     @JsonValue
     private final String value;
 
-    private Piwik(String value) {
+    Piwik(String value) {
         this.value = value;
     }
     

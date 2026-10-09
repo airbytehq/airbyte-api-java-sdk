@@ -14,7 +14,7 @@ public enum DestinationGcsCodec {
     @JsonValue
     private final String value;
 
-    private DestinationGcsCodec(String value) {
+    DestinationGcsCodec(String value) {
         this.value = value;
     }
     

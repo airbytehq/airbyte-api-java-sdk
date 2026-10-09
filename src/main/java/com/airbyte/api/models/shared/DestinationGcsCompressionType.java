@@ -14,7 +14,7 @@ public enum DestinationGcsCompressionType {
     @JsonValue
     private final String value;
 
-    private DestinationGcsCompressionType(String value) {
+    DestinationGcsCompressionType(String value) {
         this.value = value;
     }
     

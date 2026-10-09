@@ -14,7 +14,7 @@ public enum BothUsernameAndPasswordIsRequiredForAuthenticationRequest {
     @JsonValue
     private final String value;
 
-    private BothUsernameAndPasswordIsRequiredForAuthenticationRequest(String value) {
+    BothUsernameAndPasswordIsRequiredForAuthenticationRequest(String value) {
         this.value = value;
     }
     

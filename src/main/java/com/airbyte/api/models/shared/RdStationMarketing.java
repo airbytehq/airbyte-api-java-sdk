@@ -12,8 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class RdStationMarketing {
 
@@ -38,9 +38,10 @@ public class RdStationMarketing {
         return (Optional<RdStationMarketingAuthorization>) authorization;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public RdStationMarketing withAuthorization(RdStationMarketingAuthorization authorization) {
         Utils.checkNotNull(authorization, "authorization");
@@ -48,13 +49,13 @@ public class RdStationMarketing {
         return this;
     }
 
+
     public RdStationMarketing withAuthorization(Optional<? extends RdStationMarketingAuthorization> authorization) {
         Utils.checkNotNull(authorization, "authorization");
         this.authorization = authorization;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -65,12 +66,12 @@ public class RdStationMarketing {
         }
         RdStationMarketing other = (RdStationMarketing) o;
         return 
-            Objects.deepEquals(this.authorization, other.authorization);
+            Utils.enhancedDeepEquals(this.authorization, other.authorization);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             authorization);
     }
     
@@ -79,14 +80,16 @@ public class RdStationMarketing {
         return Utils.toString(RdStationMarketing.class,
                 "authorization", authorization);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends RdStationMarketingAuthorization> authorization = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder authorization(RdStationMarketingAuthorization authorization) {
             Utils.checkNotNull(authorization, "authorization");
@@ -99,10 +102,12 @@ public class RdStationMarketing {
             this.authorization = authorization;
             return this;
         }
-        
+
         public RdStationMarketing build() {
+
             return new RdStationMarketing(
                 authorization);
         }
+
     }
 }
