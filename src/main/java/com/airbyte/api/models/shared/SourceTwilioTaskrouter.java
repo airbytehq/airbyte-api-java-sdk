@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceTwilioTaskrouter {
-
     /**
      * Twilio Account ID
      */
@@ -26,6 +25,7 @@ public class SourceTwilioTaskrouter {
      */
     @JsonProperty("auth_token")
     private String authToken;
+
 
     @JsonProperty("sourceType")
     private TwilioTaskrouter sourceType;
@@ -62,9 +62,10 @@ public class SourceTwilioTaskrouter {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Twilio Account ID
@@ -84,7 +85,6 @@ public class SourceTwilioTaskrouter {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourceTwilioTaskrouter {
         }
         SourceTwilioTaskrouter other = (SourceTwilioTaskrouter) o;
         return 
-            Objects.deepEquals(this.accountSid, other.accountSid) &&
-            Objects.deepEquals(this.authToken, other.authToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.accountSid, other.accountSid) &&
+            Utils.enhancedDeepEquals(this.authToken, other.authToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountSid,
-            authToken,
-            sourceType);
+        return Utils.enhancedHash(
+            accountSid, authToken, sourceType);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SourceTwilioTaskrouter {
                 "authToken", authToken,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accountSid;
- 
+
         private String authToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Twilio Account ID
@@ -135,6 +135,7 @@ public class SourceTwilioTaskrouter {
             return this;
         }
 
+
         /**
          * Twilio Auth Token
          */
@@ -143,12 +144,13 @@ public class SourceTwilioTaskrouter {
             this.authToken = authToken;
             return this;
         }
-        
+
         public SourceTwilioTaskrouter build() {
+
             return new SourceTwilioTaskrouter(
-                accountSid,
-                authToken);
+                accountSid, authToken);
         }
+
 
         private static final LazySingletonValue<TwilioTaskrouter> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

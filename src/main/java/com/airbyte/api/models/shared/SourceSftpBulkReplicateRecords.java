@@ -14,13 +14,16 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * SourceSftpBulkReplicateRecords
  * 
- * <p>Recommended - Extract and load structured records into your destination of choice. This is the classic method of moving data in Airbyte. It allows for blocking and hashing individual fields or files from a structured schema. Data can be flattened, typed and deduped depending on the destination.
+ * <p>Recommended - Extract and load structured records into your destination of choice. This is the
+ * classic method of moving data in Airbyte. It allows for blocking and hashing individual fields or
+ * files from a structured schema.
+ * 
+ * <p>Data can be flattened, typed and deduped depending on the destination.
  */
 public class SourceSftpBulkReplicateRecords {
 
@@ -30,7 +33,6 @@ public class SourceSftpBulkReplicateRecords {
 
     @JsonCreator
     public SourceSftpBulkReplicateRecords() {
-        
         this.deliveryType = Builder._SINGLETON_VALUE_DeliveryType.value();
     }
 
@@ -40,11 +42,11 @@ public class SourceSftpBulkReplicateRecords {
         return (Optional<SourceSftpBulkDeliveryType>) deliveryType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -55,12 +57,12 @@ public class SourceSftpBulkReplicateRecords {
         }
         SourceSftpBulkReplicateRecords other = (SourceSftpBulkReplicateRecords) o;
         return 
-            Objects.deepEquals(this.deliveryType, other.deliveryType);
+            Utils.enhancedDeepEquals(this.deliveryType, other.deliveryType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             deliveryType);
     }
     
@@ -69,17 +71,20 @@ public class SourceSftpBulkReplicateRecords {
         return Utils.toString(SourceSftpBulkReplicateRecords.class,
                 "deliveryType", deliveryType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public SourceSftpBulkReplicateRecords build() {
+
             return new SourceSftpBulkReplicateRecords(
                 );
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceSftpBulkDeliveryType>> _SINGLETON_VALUE_DeliveryType =
                 new LazySingletonValue<>(

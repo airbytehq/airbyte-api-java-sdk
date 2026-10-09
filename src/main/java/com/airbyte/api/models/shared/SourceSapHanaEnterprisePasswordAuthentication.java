@@ -20,7 +20,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -38,6 +37,7 @@ public class SourceSapHanaEnterprisePasswordAuthentication {
      */
     @JsonProperty("tunnel_host")
     private String tunnelHost;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
@@ -86,7 +86,8 @@ public class SourceSapHanaEnterprisePasswordAuthentication {
             String tunnelHost,
             String tunnelUser,
             String tunnelUserPassword) {
-        this(tunnelHost, Optional.empty(), Optional.empty(), tunnelUser, tunnelUserPassword);
+        this(tunnelHost, Optional.empty(), Optional.empty(),
+            tunnelUser, tunnelUserPassword);
     }
 
     @JsonAnyGetter
@@ -132,9 +133,10 @@ public class SourceSapHanaEnterprisePasswordAuthentication {
         return tunnelUserPassword;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceSapHanaEnterprisePasswordAuthentication withAdditionalProperty(String key, Object value) {
@@ -142,8 +144,7 @@ public class SourceSapHanaEnterprisePasswordAuthentication {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceSapHanaEnterprisePasswordAuthentication withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -165,6 +166,7 @@ public class SourceSapHanaEnterprisePasswordAuthentication {
         return this;
     }
 
+
     public SourceSapHanaEnterprisePasswordAuthentication withTunnelMethod(Optional<? extends SourceSapHanaEnterpriseSchemasTunnelMethodTunnelMethod> tunnelMethod) {
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
         this.tunnelMethod = tunnelMethod;
@@ -179,6 +181,7 @@ public class SourceSapHanaEnterprisePasswordAuthentication {
         this.tunnelPort = Optional.ofNullable(tunnelPort);
         return this;
     }
+
 
     /**
      * Port on the proxy/jump server that accepts inbound ssh connections.
@@ -207,7 +210,6 @@ public class SourceSapHanaEnterprisePasswordAuthentication {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -218,23 +220,19 @@ public class SourceSapHanaEnterprisePasswordAuthentication {
         }
         SourceSapHanaEnterprisePasswordAuthentication other = (SourceSapHanaEnterprisePasswordAuthentication) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.tunnelHost, other.tunnelHost) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
-            Objects.deepEquals(this.tunnelPort, other.tunnelPort) &&
-            Objects.deepEquals(this.tunnelUser, other.tunnelUser) &&
-            Objects.deepEquals(this.tunnelUserPassword, other.tunnelUserPassword);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.tunnelHost, other.tunnelHost) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.tunnelPort, other.tunnelPort) &&
+            Utils.enhancedDeepEquals(this.tunnelUser, other.tunnelUser) &&
+            Utils.enhancedDeepEquals(this.tunnelUserPassword, other.tunnelUserPassword);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            tunnelHost,
-            tunnelMethod,
-            tunnelPort,
-            tunnelUser,
-            tunnelUserPassword);
+        return Utils.enhancedHash(
+            additionalProperties, tunnelHost, tunnelMethod,
+            tunnelPort, tunnelUser, tunnelUserPassword);
     }
     
     @Override
@@ -247,21 +245,22 @@ public class SourceSapHanaEnterprisePasswordAuthentication {
                 "tunnelUser", tunnelUser,
                 "tunnelUserPassword", tunnelUserPassword);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private String tunnelHost;
- 
+
         private Optional<? extends SourceSapHanaEnterpriseSchemasTunnelMethodTunnelMethod> tunnelMethod;
- 
+
         private Optional<Long> tunnelPort;
- 
+
         private String tunnelUser;
- 
+
         private String tunnelUserPassword;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -282,6 +281,7 @@ public class SourceSapHanaEnterprisePasswordAuthentication {
             return this;
         }
 
+
         /**
          * Hostname of the jump server host that allows inbound ssh tunnel.
          */
@@ -290,6 +290,7 @@ public class SourceSapHanaEnterprisePasswordAuthentication {
             this.tunnelHost = tunnelHost;
             return this;
         }
+
 
         public Builder tunnelMethod(SourceSapHanaEnterpriseSchemasTunnelMethodTunnelMethod tunnelMethod) {
             Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -302,6 +303,7 @@ public class SourceSapHanaEnterprisePasswordAuthentication {
             this.tunnelMethod = tunnelMethod;
             return this;
         }
+
 
         /**
          * Port on the proxy/jump server that accepts inbound ssh connections.
@@ -321,6 +323,7 @@ public class SourceSapHanaEnterprisePasswordAuthentication {
             return this;
         }
 
+
         /**
          * OS-level username for logging into the jump server host
          */
@@ -330,6 +333,7 @@ public class SourceSapHanaEnterprisePasswordAuthentication {
             return this;
         }
 
+
         /**
          * OS-level password for logging into the jump server host
          */
@@ -338,7 +342,7 @@ public class SourceSapHanaEnterprisePasswordAuthentication {
             this.tunnelUserPassword = tunnelUserPassword;
             return this;
         }
-        
+
         public SourceSapHanaEnterprisePasswordAuthentication build() {
             if (tunnelMethod == null) {
                 tunnelMethod = _SINGLETON_VALUE_TunnelMethod.value();
@@ -346,14 +350,13 @@ public class SourceSapHanaEnterprisePasswordAuthentication {
             if (tunnelPort == null) {
                 tunnelPort = _SINGLETON_VALUE_TunnelPort.value();
             }
+
             return new SourceSapHanaEnterprisePasswordAuthentication(
-                tunnelHost,
-                tunnelMethod,
-                tunnelPort,
-                tunnelUser,
-                tunnelUserPassword)
+                tunnelHost, tunnelMethod, tunnelPort,
+                tunnelUser, tunnelUserPassword)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceSapHanaEnterpriseSchemasTunnelMethodTunnelMethod>> _SINGLETON_VALUE_TunnelMethod =
                 new LazySingletonValue<>(

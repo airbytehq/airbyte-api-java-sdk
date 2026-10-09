@@ -14,7 +14,7 @@ public enum Sentry {
     @JsonValue
     private final String value;
 
-    private Sentry(String value) {
+    Sentry(String value) {
         this.value = value;
     }
     

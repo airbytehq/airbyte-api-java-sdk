@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class AuthenticateViaClientCredentials {
 
+public class AuthenticateViaClientCredentials {
     /**
      * Client ID of your Microsoft developer application
      */
@@ -36,6 +35,7 @@ public class AuthenticateViaClientCredentials {
      */
     @JsonProperty("app_tenant_id")
     private String appTenantId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
@@ -85,9 +85,10 @@ public class AuthenticateViaClientCredentials {
         return (Optional<SourceAzureBlobStorageSchemasAuthType>) authType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Client ID of your Microsoft developer application
@@ -116,7 +117,6 @@ public class AuthenticateViaClientCredentials {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -127,18 +127,16 @@ public class AuthenticateViaClientCredentials {
         }
         AuthenticateViaClientCredentials other = (AuthenticateViaClientCredentials) o;
         return 
-            Objects.deepEquals(this.appClientId, other.appClientId) &&
-            Objects.deepEquals(this.appClientSecret, other.appClientSecret) &&
-            Objects.deepEquals(this.appTenantId, other.appTenantId) &&
-            Objects.deepEquals(this.authType, other.authType);
+            Utils.enhancedDeepEquals(this.appClientId, other.appClientId) &&
+            Utils.enhancedDeepEquals(this.appClientSecret, other.appClientSecret) &&
+            Utils.enhancedDeepEquals(this.appTenantId, other.appTenantId) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            appClientId,
-            appClientSecret,
-            appTenantId,
+        return Utils.enhancedHash(
+            appClientId, appClientSecret, appTenantId,
             authType);
     }
     
@@ -150,18 +148,20 @@ public class AuthenticateViaClientCredentials {
                 "appTenantId", appTenantId,
                 "authType", authType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String appClientId;
- 
+
         private String appClientSecret;
- 
+
         private String appTenantId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Client ID of your Microsoft developer application
@@ -172,6 +172,7 @@ public class AuthenticateViaClientCredentials {
             return this;
         }
 
+
         /**
          * Client Secret of your Microsoft developer application
          */
@@ -181,6 +182,7 @@ public class AuthenticateViaClientCredentials {
             return this;
         }
 
+
         /**
          * Tenant ID of the Microsoft Azure Application
          */
@@ -189,13 +191,13 @@ public class AuthenticateViaClientCredentials {
             this.appTenantId = appTenantId;
             return this;
         }
-        
+
         public AuthenticateViaClientCredentials build() {
+
             return new AuthenticateViaClientCredentials(
-                appClientId,
-                appClientSecret,
-                appTenantId);
+                appClientId, appClientSecret, appTenantId);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceAzureBlobStorageSchemasAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum Flexmail {
     @JsonValue
     private final String value;
 
-    private Flexmail(String value) {
+    Flexmail(String value) {
         this.value = value;
     }
     

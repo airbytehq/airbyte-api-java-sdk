@@ -30,7 +30,7 @@ public enum Validenums {
     @JsonValue
     private final String value;
 
-    private Validenums(String value) {
+    Validenums(String value) {
         this.value = value;
     }
     

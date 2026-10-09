@@ -21,7 +21,7 @@ public enum SourceZohoCrmEnvironment {
     @JsonValue
     private final String value;
 
-    private SourceZohoCrmEnvironment(String value) {
+    SourceZohoCrmEnvironment(String value) {
         this.value = value;
     }
     

@@ -11,12 +11,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 /**
  * DetectChangesWithXminSystemColumn
  * 
- * <p>&lt;i&gt;Recommended&lt;/i&gt; - Incrementally reads new inserts and updates via Postgres &lt;a href="https://docs.airbyte.com/integrations/sources/postgres/#xmin"&gt;Xmin system column&lt;/a&gt;. Suitable for databases that have low transaction pressure.
+ * <p><i>Recommended</i> - Incrementally reads new inserts and updates via Postgres <a
+ * href="https://docs.airbyte.com/integrations/sources/postgres/#xmin">Xmin system column</a>. Suitable
+ * for databases that have low transaction pressure.
  */
 public class DetectChangesWithXminSystemColumn {
 
@@ -25,7 +26,6 @@ public class DetectChangesWithXminSystemColumn {
 
     @JsonCreator
     public DetectChangesWithXminSystemColumn() {
-        
         this.method = Builder._SINGLETON_VALUE_Method.value();
     }
 
@@ -34,11 +34,11 @@ public class DetectChangesWithXminSystemColumn {
         return method;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -49,12 +49,12 @@ public class DetectChangesWithXminSystemColumn {
         }
         DetectChangesWithXminSystemColumn other = (DetectChangesWithXminSystemColumn) o;
         return 
-            Objects.deepEquals(this.method, other.method);
+            Utils.enhancedDeepEquals(this.method, other.method);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             method);
     }
     
@@ -63,17 +63,20 @@ public class DetectChangesWithXminSystemColumn {
         return Utils.toString(DetectChangesWithXminSystemColumn.class,
                 "method", method);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public DetectChangesWithXminSystemColumn build() {
+
             return new DetectChangesWithXminSystemColumn(
                 );
         }
+
 
         private static final LazySingletonValue<SourcePostgresSchemasMethod> _SINGLETON_VALUE_Method =
                 new LazySingletonValue<>(

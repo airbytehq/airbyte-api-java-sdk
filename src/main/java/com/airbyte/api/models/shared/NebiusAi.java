@@ -14,7 +14,7 @@ public enum NebiusAi {
     @JsonValue
     private final String value;
 
-    private NebiusAi(String value) {
+    NebiusAi(String value) {
         this.value = value;
     }
     

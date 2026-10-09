@@ -14,7 +14,7 @@ public enum SourceS3SchemasStreamsFiletype {
     @JsonValue
     private final String value;
 
-    private SourceS3SchemasStreamsFiletype(String value) {
+    SourceS3SchemasStreamsFiletype(String value) {
         this.value = value;
     }
     

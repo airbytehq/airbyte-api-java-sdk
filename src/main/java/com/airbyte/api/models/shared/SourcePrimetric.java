@@ -11,21 +11,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourcePrimetric {
-
     /**
-     * The Client ID of your Primetric developer application. The Client ID is visible &lt;a href=\"https://app.primetric.com/administrator/integrations"&gt;here&lt;/a&gt;.
+     * The Client ID of your Primetric developer application. The Client ID is visible &lt;a
+     * href=\"https://app.primetric.com/administrator/integrations"&gt;here&lt;/a&gt;.
      */
     @JsonProperty("client_id")
     private String clientId;
 
     /**
-     * The Client Secret of your Primetric developer application. You can manage your client's credentials &lt;a href=\"https://app.primetric.com/administrator/integrations"&gt;here&lt;/a&gt;.
+     * The Client Secret of your Primetric developer application. You can manage your client's credentials
+     * &lt;a href=\"https://app.primetric.com/administrator/integrations"&gt;here&lt;/a&gt;.
      */
     @JsonProperty("client_secret")
     private String clientSecret;
+
 
     @JsonProperty("sourceType")
     private Primetric sourceType;
@@ -42,7 +44,8 @@ public class SourcePrimetric {
     }
 
     /**
-     * The Client ID of your Primetric developer application. The Client ID is visible &lt;a href=\"https://app.primetric.com/administrator/integrations"&gt;here&lt;/a&gt;.
+     * The Client ID of your Primetric developer application. The Client ID is visible &lt;a
+     * href=\"https://app.primetric.com/administrator/integrations"&gt;here&lt;/a&gt;.
      */
     @JsonIgnore
     public String clientId() {
@@ -50,7 +53,8 @@ public class SourcePrimetric {
     }
 
     /**
-     * The Client Secret of your Primetric developer application. You can manage your client's credentials &lt;a href=\"https://app.primetric.com/administrator/integrations"&gt;here&lt;/a&gt;.
+     * The Client Secret of your Primetric developer application. You can manage your client's credentials
+     * &lt;a href=\"https://app.primetric.com/administrator/integrations"&gt;here&lt;/a&gt;.
      */
     @JsonIgnore
     public String clientSecret() {
@@ -62,12 +66,14 @@ public class SourcePrimetric {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The Client ID of your Primetric developer application. The Client ID is visible &lt;a href=\"https://app.primetric.com/administrator/integrations"&gt;here&lt;/a&gt;.
+     * The Client ID of your Primetric developer application. The Client ID is visible &lt;a
+     * href=\"https://app.primetric.com/administrator/integrations"&gt;here&lt;/a&gt;.
      */
     public SourcePrimetric withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -76,7 +82,8 @@ public class SourcePrimetric {
     }
 
     /**
-     * The Client Secret of your Primetric developer application. You can manage your client's credentials &lt;a href=\"https://app.primetric.com/administrator/integrations"&gt;here&lt;/a&gt;.
+     * The Client Secret of your Primetric developer application. You can manage your client's credentials
+     * &lt;a href=\"https://app.primetric.com/administrator/integrations"&gt;here&lt;/a&gt;.
      */
     public SourcePrimetric withClientSecret(String clientSecret) {
         Utils.checkNotNull(clientSecret, "clientSecret");
@@ -84,7 +91,6 @@ public class SourcePrimetric {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +101,15 @@ public class SourcePrimetric {
         }
         SourcePrimetric other = (SourcePrimetric) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            sourceType);
+        return Utils.enhancedHash(
+            clientId, clientSecret, sourceType);
     }
     
     @Override
@@ -115,19 +119,22 @@ public class SourcePrimetric {
                 "clientSecret", clientSecret,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The Client ID of your Primetric developer application. The Client ID is visible &lt;a href=\"https://app.primetric.com/administrator/integrations"&gt;here&lt;/a&gt;.
+         * The Client ID of your Primetric developer application. The Client ID is visible &lt;a
+         * href=\"https://app.primetric.com/administrator/integrations"&gt;here&lt;/a&gt;.
          */
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -135,20 +142,23 @@ public class SourcePrimetric {
             return this;
         }
 
+
         /**
-         * The Client Secret of your Primetric developer application. You can manage your client's credentials &lt;a href=\"https://app.primetric.com/administrator/integrations"&gt;here&lt;/a&gt;.
+         * The Client Secret of your Primetric developer application. You can manage your client's credentials
+         * &lt;a href=\"https://app.primetric.com/administrator/integrations"&gt;here&lt;/a&gt;.
          */
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public SourcePrimetric build() {
+
             return new SourcePrimetric(
-                clientId,
-                clientSecret);
+                clientId, clientSecret);
         }
+
 
         private static final LazySingletonValue<Primetric> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

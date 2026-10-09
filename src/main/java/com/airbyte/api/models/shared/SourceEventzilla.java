@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceEventzilla {
 
@@ -19,7 +19,8 @@ public class SourceEventzilla {
     private Eventzilla sourceType;
 
     /**
-     * API key to use. Generate it by creating a new application within your Eventzilla account settings under Settings &gt; App Management.
+     * API key to use. Generate it by creating a new application within your Eventzilla account settings
+     * under Settings &gt; App Management.
      */
     @JsonProperty("x-api-key")
     private String xApiKey;
@@ -38,19 +39,22 @@ public class SourceEventzilla {
     }
 
     /**
-     * API key to use. Generate it by creating a new application within your Eventzilla account settings under Settings &gt; App Management.
+     * API key to use. Generate it by creating a new application within your Eventzilla account settings
+     * under Settings &gt; App Management.
      */
     @JsonIgnore
     public String xApiKey() {
         return xApiKey;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * API key to use. Generate it by creating a new application within your Eventzilla account settings under Settings &gt; App Management.
+     * API key to use. Generate it by creating a new application within your Eventzilla account settings
+     * under Settings &gt; App Management.
      */
     public SourceEventzilla withXApiKey(String xApiKey) {
         Utils.checkNotNull(xApiKey, "xApiKey");
@@ -58,7 +62,6 @@ public class SourceEventzilla {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +72,14 @@ public class SourceEventzilla {
         }
         SourceEventzilla other = (SourceEventzilla) o;
         return 
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.xApiKey, other.xApiKey);
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.xApiKey, other.xApiKey);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            sourceType,
-            xApiKey);
+        return Utils.enhancedHash(
+            sourceType, xApiKey);
     }
     
     @Override
@@ -86,28 +88,33 @@ public class SourceEventzilla {
                 "sourceType", sourceType,
                 "xApiKey", xApiKey);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xApiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * API key to use. Generate it by creating a new application within your Eventzilla account settings under Settings &gt; App Management.
+         * API key to use. Generate it by creating a new application within your Eventzilla account settings
+         * under Settings &gt; App Management.
          */
         public Builder xApiKey(String xApiKey) {
             Utils.checkNotNull(xApiKey, "xApiKey");
             this.xApiKey = xApiKey;
             return this;
         }
-        
+
         public SourceEventzilla build() {
+
             return new SourceEventzilla(
                 xApiKey);
         }
+
 
         private static final LazySingletonValue<Eventzilla> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

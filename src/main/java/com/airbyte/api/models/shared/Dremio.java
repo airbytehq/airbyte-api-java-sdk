@@ -14,7 +14,7 @@ public enum Dremio {
     @JsonValue
     private final String value;
 
-    private Dremio(String value) {
+    Dremio(String value) {
         this.value = value;
     }
     

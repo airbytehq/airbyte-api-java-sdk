@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceWeatherstack {
-
     /**
      * API access key used to retrieve data from the Weatherstack API.(https://weatherstack.com/product)
      */
@@ -22,16 +21,20 @@ public class SourceWeatherstack {
     private String accessKey;
 
     /**
-     * This is required for enabling the Historical date API with format- (YYYY-MM-DD). * Note, only supported by paid accounts
+     * This is required for enabling the Historical date API with format- (YYYY-MM-DD). * Note, only
+     * supported by paid accounts
      */
     @JsonProperty("historical_date")
     private String historicalDate;
 
     /**
-     * A location to query such as city, IP, latitudeLongitude, or zipcode. Multiple locations with semicolon seperated if using a professional plan or higher. For more info- (https://weatherstack.com/documentation#query_parameter)
+     * A location to query such as city, IP, latitudeLongitude, or zipcode. Multiple locations with
+     * semicolon seperated if using a professional plan or higher. For more info-
+     * (https://weatherstack.com/documentation#query_parameter)
      */
     @JsonProperty("query")
     private String query;
+
 
     @JsonProperty("sourceType")
     private Weatherstack sourceType;
@@ -59,7 +62,8 @@ public class SourceWeatherstack {
     }
 
     /**
-     * This is required for enabling the Historical date API with format- (YYYY-MM-DD). * Note, only supported by paid accounts
+     * This is required for enabling the Historical date API with format- (YYYY-MM-DD). * Note, only
+     * supported by paid accounts
      */
     @JsonIgnore
     public String historicalDate() {
@@ -67,7 +71,9 @@ public class SourceWeatherstack {
     }
 
     /**
-     * A location to query such as city, IP, latitudeLongitude, or zipcode. Multiple locations with semicolon seperated if using a professional plan or higher. For more info- (https://weatherstack.com/documentation#query_parameter)
+     * A location to query such as city, IP, latitudeLongitude, or zipcode. Multiple locations with
+     * semicolon seperated if using a professional plan or higher. For more info-
+     * (https://weatherstack.com/documentation#query_parameter)
      */
     @JsonIgnore
     public String query() {
@@ -79,9 +85,10 @@ public class SourceWeatherstack {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API access key used to retrieve data from the Weatherstack API.(https://weatherstack.com/product)
@@ -93,7 +100,8 @@ public class SourceWeatherstack {
     }
 
     /**
-     * This is required for enabling the Historical date API with format- (YYYY-MM-DD). * Note, only supported by paid accounts
+     * This is required for enabling the Historical date API with format- (YYYY-MM-DD). * Note, only
+     * supported by paid accounts
      */
     public SourceWeatherstack withHistoricalDate(String historicalDate) {
         Utils.checkNotNull(historicalDate, "historicalDate");
@@ -102,7 +110,9 @@ public class SourceWeatherstack {
     }
 
     /**
-     * A location to query such as city, IP, latitudeLongitude, or zipcode. Multiple locations with semicolon seperated if using a professional plan or higher. For more info- (https://weatherstack.com/documentation#query_parameter)
+     * A location to query such as city, IP, latitudeLongitude, or zipcode. Multiple locations with
+     * semicolon seperated if using a professional plan or higher. For more info-
+     * (https://weatherstack.com/documentation#query_parameter)
      */
     public SourceWeatherstack withQuery(String query) {
         Utils.checkNotNull(query, "query");
@@ -110,7 +120,6 @@ public class SourceWeatherstack {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -121,18 +130,16 @@ public class SourceWeatherstack {
         }
         SourceWeatherstack other = (SourceWeatherstack) o;
         return 
-            Objects.deepEquals(this.accessKey, other.accessKey) &&
-            Objects.deepEquals(this.historicalDate, other.historicalDate) &&
-            Objects.deepEquals(this.query, other.query) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.accessKey, other.accessKey) &&
+            Utils.enhancedDeepEquals(this.historicalDate, other.historicalDate) &&
+            Utils.enhancedDeepEquals(this.query, other.query) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessKey,
-            historicalDate,
-            query,
+        return Utils.enhancedHash(
+            accessKey, historicalDate, query,
             sourceType);
     }
     
@@ -144,18 +151,20 @@ public class SourceWeatherstack {
                 "query", query,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessKey;
- 
+
         private String historicalDate;
- 
+
         private String query;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API access key used to retrieve data from the Weatherstack API.(https://weatherstack.com/product)
@@ -166,8 +175,10 @@ public class SourceWeatherstack {
             return this;
         }
 
+
         /**
-         * This is required for enabling the Historical date API with format- (YYYY-MM-DD). * Note, only supported by paid accounts
+         * This is required for enabling the Historical date API with format- (YYYY-MM-DD). * Note, only
+         * supported by paid accounts
          */
         public Builder historicalDate(String historicalDate) {
             Utils.checkNotNull(historicalDate, "historicalDate");
@@ -175,21 +186,24 @@ public class SourceWeatherstack {
             return this;
         }
 
+
         /**
-         * A location to query such as city, IP, latitudeLongitude, or zipcode. Multiple locations with semicolon seperated if using a professional plan or higher. For more info- (https://weatherstack.com/documentation#query_parameter)
+         * A location to query such as city, IP, latitudeLongitude, or zipcode. Multiple locations with
+         * semicolon seperated if using a professional plan or higher. For more info-
+         * (https://weatherstack.com/documentation#query_parameter)
          */
         public Builder query(String query) {
             Utils.checkNotNull(query, "query");
             this.query = query;
             return this;
         }
-        
+
         public SourceWeatherstack build() {
+
             return new SourceWeatherstack(
-                accessKey,
-                historicalDate,
-                query);
+                accessKey, historicalDate, query);
         }
+
 
         private static final LazySingletonValue<Weatherstack> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

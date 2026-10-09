@@ -17,6 +17,7 @@ public enum OAuthActorNames {
     BING_ADS("bing-ads"),
     DRIFT("drift"),
     FACEBOOK_MARKETING("facebook-marketing"),
+    FACEBOOK_PAGES("facebook-pages"),
     GCS("gcs"),
     GITHUB("github"),
     GITLAB("gitlab"),
@@ -27,6 +28,7 @@ public enum OAuthActorNames {
     GOOGLE_SHEETS("google-sheets"),
     HUBSPOT("hubspot"),
     INSTAGRAM("instagram"),
+    INTERCOM("intercom"),
     LEVER_HIRING("lever-hiring"),
     LINKEDIN_ADS("linkedin-ads"),
     MAILCHIMP("mailchimp"),
@@ -38,11 +40,12 @@ public enum OAuthActorNames {
     PINTEREST("pinterest"),
     RD_STATION_MARKETING("rd-station-marketing"),
     SALESFORCE("salesforce"),
+    SHAREPOINT_ENTERPRISE("sharepoint-enterprise"),
     SLACK("slack"),
     SMARTSHEETS("smartsheets"),
     SNAPCHAT_MARKETING("snapchat-marketing"),
-    SNOWFLAKE("snowflake"),
     SURVEYMONKEY("surveymonkey"),
+    TICKTICK("ticktick"),
     TIKTOK_MARKETING("tiktok-marketing"),
     TRELLO("trello"),
     TYPEFORM("typeform"),
@@ -53,7 +56,7 @@ public enum OAuthActorNames {
     @JsonValue
     private final String value;
 
-    private OAuthActorNames(String value) {
+    OAuthActorNames(String value) {
         this.value = value;
     }
     

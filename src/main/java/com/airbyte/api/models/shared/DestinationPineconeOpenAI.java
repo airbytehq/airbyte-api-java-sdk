@@ -14,19 +14,20 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * DestinationPineconeOpenAI
  * 
- * <p>Use the OpenAI API to embed text. This option is using the text-embedding-ada-002 model with 1536 embedding dimensions.
+ * <p>Use the OpenAI API to embed text. This option is using the text-embedding-ada-002 model with 1536
+ * embedding dimensions.
  */
 public class DestinationPineconeOpenAI {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
     private Optional<? extends DestinationPineconeMode> mode;
+
 
     @JsonProperty("openai_key")
     private String openaiKey;
@@ -50,9 +51,10 @@ public class DestinationPineconeOpenAI {
         return openaiKey;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public DestinationPineconeOpenAI withOpenaiKey(String openaiKey) {
         Utils.checkNotNull(openaiKey, "openaiKey");
@@ -60,7 +62,6 @@ public class DestinationPineconeOpenAI {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -71,15 +72,14 @@ public class DestinationPineconeOpenAI {
         }
         DestinationPineconeOpenAI other = (DestinationPineconeOpenAI) o;
         return 
-            Objects.deepEquals(this.mode, other.mode) &&
-            Objects.deepEquals(this.openaiKey, other.openaiKey);
+            Utils.enhancedDeepEquals(this.mode, other.mode) &&
+            Utils.enhancedDeepEquals(this.openaiKey, other.openaiKey);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            mode,
-            openaiKey);
+        return Utils.enhancedHash(
+            mode, openaiKey);
     }
     
     @Override
@@ -88,25 +88,29 @@ public class DestinationPineconeOpenAI {
                 "mode", mode,
                 "openaiKey", openaiKey);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String openaiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder openaiKey(String openaiKey) {
             Utils.checkNotNull(openaiKey, "openaiKey");
             this.openaiKey = openaiKey;
             return this;
         }
-        
+
         public DestinationPineconeOpenAI build() {
+
             return new DestinationPineconeOpenAI(
                 openaiKey);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationPineconeMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

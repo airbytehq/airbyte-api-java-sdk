@@ -11,15 +11,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterBetweenFilter {
 
     @JsonProperty("filter_name")
     private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter2ExpressionsFilterName filterName;
 
+
     @JsonProperty("fromValue")
     private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFromValue fromValue;
+
 
     @JsonProperty("toValue")
     private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterToValue toValue;
@@ -50,9 +52,10 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilte
         return toValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterBetweenFilter withFromValue(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFromValue fromValue) {
         Utils.checkNotNull(fromValue, "fromValue");
@@ -66,7 +69,6 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilte
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -77,17 +79,15 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilte
         }
         SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterBetweenFilter other = (SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterBetweenFilter) o;
         return 
-            Objects.deepEquals(this.filterName, other.filterName) &&
-            Objects.deepEquals(this.fromValue, other.fromValue) &&
-            Objects.deepEquals(this.toValue, other.toValue);
+            Utils.enhancedDeepEquals(this.filterName, other.filterName) &&
+            Utils.enhancedDeepEquals(this.fromValue, other.fromValue) &&
+            Utils.enhancedDeepEquals(this.toValue, other.toValue);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            filterName,
-            fromValue,
-            toValue);
+        return Utils.enhancedHash(
+            filterName, fromValue, toValue);
     }
     
     @Override
@@ -97,16 +97,18 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilte
                 "fromValue", fromValue,
                 "toValue", toValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFromValue fromValue;
- 
+
         private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterToValue toValue;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder fromValue(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFromValue fromValue) {
             Utils.checkNotNull(fromValue, "fromValue");
@@ -114,17 +116,19 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilte
             return this;
         }
 
+
         public Builder toValue(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterToValue toValue) {
             Utils.checkNotNull(toValue, "toValue");
             this.toValue = toValue;
             return this;
         }
-        
+
         public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterBetweenFilter build() {
+
             return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterBetweenFilter(
-                fromValue,
-                toValue);
+                fromValue, toValue);
         }
+
 
         private static final LazySingletonValue<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter2ExpressionsFilterName> _SINGLETON_VALUE_FilterName =
                 new LazySingletonValue<>(

@@ -20,7 +20,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -33,12 +32,16 @@ public class RandomSampling {
     @JsonIgnore
     private Map<String, Object> additionalProperties;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("logging_type")
     private Optional<? extends DestinationDevNullSchemasLoggingType> loggingType;
 
     /**
-     * Number of entries to log. This destination is for testing only. So it won't make sense to log infinitely. The maximum is 1,000 entries.
+     * Number of entries to log. This destination is for testing only. So it won't make sense to log
+     * infinitely.
+     * 
+     * <p>The maximum is 1,000 entries.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("max_entry_count")
@@ -76,7 +79,8 @@ public class RandomSampling {
     }
     
     public RandomSampling() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     @JsonAnyGetter
@@ -91,7 +95,10 @@ public class RandomSampling {
     }
 
     /**
-     * Number of entries to log. This destination is for testing only. So it won't make sense to log infinitely. The maximum is 1,000 entries.
+     * Number of entries to log. This destination is for testing only. So it won't make sense to log
+     * infinitely.
+     * 
+     * <p>The maximum is 1,000 entries.
      */
     @JsonIgnore
     public Optional<Double> maxEntryCount() {
@@ -114,9 +121,10 @@ public class RandomSampling {
         return seed;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public RandomSampling withAdditionalProperty(String key, Object value) {
@@ -124,8 +132,7 @@ public class RandomSampling {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public RandomSampling withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -138,6 +145,7 @@ public class RandomSampling {
         return this;
     }
 
+
     public RandomSampling withLoggingType(Optional<? extends DestinationDevNullSchemasLoggingType> loggingType) {
         Utils.checkNotNull(loggingType, "loggingType");
         this.loggingType = loggingType;
@@ -145,7 +153,10 @@ public class RandomSampling {
     }
 
     /**
-     * Number of entries to log. This destination is for testing only. So it won't make sense to log infinitely. The maximum is 1,000 entries.
+     * Number of entries to log. This destination is for testing only. So it won't make sense to log
+     * infinitely.
+     * 
+     * <p>The maximum is 1,000 entries.
      */
     public RandomSampling withMaxEntryCount(double maxEntryCount) {
         Utils.checkNotNull(maxEntryCount, "maxEntryCount");
@@ -153,8 +164,12 @@ public class RandomSampling {
         return this;
     }
 
+
     /**
-     * Number of entries to log. This destination is for testing only. So it won't make sense to log infinitely. The maximum is 1,000 entries.
+     * Number of entries to log. This destination is for testing only. So it won't make sense to log
+     * infinitely.
+     * 
+     * <p>The maximum is 1,000 entries.
      */
     public RandomSampling withMaxEntryCount(Optional<Double> maxEntryCount) {
         Utils.checkNotNull(maxEntryCount, "maxEntryCount");
@@ -170,6 +185,7 @@ public class RandomSampling {
         this.samplingRatio = Optional.ofNullable(samplingRatio);
         return this;
     }
+
 
     /**
      * A positive floating number smaller than 1.
@@ -189,6 +205,7 @@ public class RandomSampling {
         return this;
     }
 
+
     /**
      * When the seed is unspecified, the current time millis will be used as the seed.
      */
@@ -198,7 +215,6 @@ public class RandomSampling {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -209,21 +225,18 @@ public class RandomSampling {
         }
         RandomSampling other = (RandomSampling) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.loggingType, other.loggingType) &&
-            Objects.deepEquals(this.maxEntryCount, other.maxEntryCount) &&
-            Objects.deepEquals(this.samplingRatio, other.samplingRatio) &&
-            Objects.deepEquals(this.seed, other.seed);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.loggingType, other.loggingType) &&
+            Utils.enhancedDeepEquals(this.maxEntryCount, other.maxEntryCount) &&
+            Utils.enhancedDeepEquals(this.samplingRatio, other.samplingRatio) &&
+            Utils.enhancedDeepEquals(this.seed, other.seed);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            loggingType,
-            maxEntryCount,
-            samplingRatio,
-            seed);
+        return Utils.enhancedHash(
+            additionalProperties, loggingType, maxEntryCount,
+            samplingRatio, seed);
     }
     
     @Override
@@ -235,19 +248,20 @@ public class RandomSampling {
                 "samplingRatio", samplingRatio,
                 "seed", seed);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends DestinationDevNullSchemasLoggingType> loggingType;
- 
+
         private Optional<Double> maxEntryCount;
- 
+
         private Optional<Double> samplingRatio;
- 
+
         private Optional<Double> seed = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -268,6 +282,7 @@ public class RandomSampling {
             return this;
         }
 
+
         public Builder loggingType(DestinationDevNullSchemasLoggingType loggingType) {
             Utils.checkNotNull(loggingType, "loggingType");
             this.loggingType = Optional.ofNullable(loggingType);
@@ -280,8 +295,12 @@ public class RandomSampling {
             return this;
         }
 
+
         /**
-         * Number of entries to log. This destination is for testing only. So it won't make sense to log infinitely. The maximum is 1,000 entries.
+         * Number of entries to log. This destination is for testing only. So it won't make sense to log
+         * infinitely.
+         * 
+         * <p>The maximum is 1,000 entries.
          */
         public Builder maxEntryCount(double maxEntryCount) {
             Utils.checkNotNull(maxEntryCount, "maxEntryCount");
@@ -290,13 +309,17 @@ public class RandomSampling {
         }
 
         /**
-         * Number of entries to log. This destination is for testing only. So it won't make sense to log infinitely. The maximum is 1,000 entries.
+         * Number of entries to log. This destination is for testing only. So it won't make sense to log
+         * infinitely.
+         * 
+         * <p>The maximum is 1,000 entries.
          */
         public Builder maxEntryCount(Optional<Double> maxEntryCount) {
             Utils.checkNotNull(maxEntryCount, "maxEntryCount");
             this.maxEntryCount = maxEntryCount;
             return this;
         }
+
 
         /**
          * A positive floating number smaller than 1.
@@ -316,6 +339,7 @@ public class RandomSampling {
             return this;
         }
 
+
         /**
          * When the seed is unspecified, the current time millis will be used as the seed.
          */
@@ -333,7 +357,7 @@ public class RandomSampling {
             this.seed = seed;
             return this;
         }
-        
+
         public RandomSampling build() {
             if (loggingType == null) {
                 loggingType = _SINGLETON_VALUE_LoggingType.value();
@@ -344,13 +368,13 @@ public class RandomSampling {
             if (samplingRatio == null) {
                 samplingRatio = _SINGLETON_VALUE_SamplingRatio.value();
             }
+
             return new RandomSampling(
-                loggingType,
-                maxEntryCount,
-                samplingRatio,
+                loggingType, maxEntryCount, samplingRatio,
                 seed)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationDevNullSchemasLoggingType>> _SINGLETON_VALUE_LoggingType =
                 new LazySingletonValue<>(

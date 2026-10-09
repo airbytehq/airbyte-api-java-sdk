@@ -1,5 +1,4 @@
 # Sources
-(*sources()*)
 
 ## Overview
 
@@ -17,8 +16,9 @@
 
 Creates a source given a name, workspace id, and a json blob containing the configuration for the source.
 
-### Example Usage
+### Example Usage: Source Creation Request Example
 
+<!-- UsageSnippet language="java" operationID="createSource" method="post" path="/sources" example="Source Creation Request Example" -->
 ```java
 package hello.world;
 
@@ -41,9 +41,8 @@ public class Application {
             .build();
 
         SourceCreateRequest req = SourceCreateRequest.builder()
-                .configuration(SourceConfiguration.of(SourcePocket.builder()
-                    .accessToken("<value>")
-                    .consumerKey("<value>")
+                .configuration(SourceConfiguration.of(SourceOnepagecrm.builder()
+                    .username("Bartholome.Rolfson90")
                     .build()))
                 .name("My Source")
                 .workspaceId("744cc0ed-7f05-4949-9e60-2a814f90c035")
@@ -54,7 +53,49 @@ public class Application {
                 .call();
 
         if (res.sourceResponse().isPresent()) {
-            // handle response
+            System.out.println(res.sourceResponse().get());
+        }
+    }
+}
+```
+### Example Usage: Source Creation Response Example
+
+<!-- UsageSnippet language="java" operationID="createSource" method="post" path="/sources" example="Source Creation Response Example" -->
+```java
+package hello.world;
+
+import com.airbyte.api.Airbyte;
+import com.airbyte.api.models.operations.CreateSourceResponse;
+import com.airbyte.api.models.shared.*;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        Airbyte sdk = Airbyte.builder()
+                .security(Security.builder()
+                    .basicAuth(SchemeBasicAuth.builder()
+                        .password("")
+                        .username("")
+                        .build())
+                    .build())
+            .build();
+
+        SourceCreateRequest req = SourceCreateRequest.builder()
+                .configuration(SourceConfiguration.of(SourceMailerlite.builder()
+                    .apiToken("<value>")
+                    .build()))
+                .name("<value>")
+                .workspaceId("5923d04d-a31f-43ea-8396-170b96449103")
+                .build();
+
+        CreateSourceResponse res = sdk.sources().createSource()
+                .request(req)
+                .call();
+
+        if (res.sourceResponse().isPresent()) {
+            System.out.println(res.sourceResponse().get());
         }
     }
 }
@@ -82,6 +123,7 @@ Delete a Source
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="deleteSource" method="delete" path="/sources/{sourceId}" -->
 ```java
 package hello.world;
 
@@ -140,6 +182,7 @@ Get Source details
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="getSource" method="get" path="/sources/{sourceId}" example="Source Get Response Example" -->
 ```java
 package hello.world;
 
@@ -172,7 +215,7 @@ public class Application {
                 .call();
 
         if (res.sourceResponse().isPresent()) {
-            // handle response
+            System.out.println(res.sourceResponse().get());
         }
     }
 }
@@ -204,6 +247,7 @@ That secret ID can be used to create a source with credentials in place of actua
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="initiateOAuth" method="post" path="/sources/initiateOAuth" -->
 ```java
 package hello.world;
 
@@ -227,7 +271,7 @@ public class Application {
 
         InitiateOauthRequest req = InitiateOauthRequest.builder()
                 .redirectUrl("https://cloud.airbyte.io/v1/api/oauth/callback")
-                .sourceType(OAuthActorNames.GCS)
+                .sourceType(OAuthActorNames.INTERCOM)
                 .workspaceId("871d9b60-11d1-44cb-8c92-c246d53bf87e")
                 .build();
 
@@ -262,6 +306,7 @@ List sources
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="listSources" method="get" path="/sources" -->
 ```java
 package hello.world;
 
@@ -288,7 +333,79 @@ public class Application {
 
         ListSourcesRequest req = ListSourcesRequest.builder()
                 .workspaceIds(List.of(
-                    "df08f6b0-b364-4cc1-9b3f-96f5d2fccfb2,b0796797-de23-4fc7-a5e2-7e131314718c"))
+                    "d",
+                    "f",
+                    "0",
+                    "8",
+                    "f",
+                    "6",
+                    "b",
+                    "0",
+                    "-",
+                    "b",
+                    "3",
+                    "6",
+                    "4",
+                    "-",
+                    "4",
+                    "c",
+                    "c",
+                    "1",
+                    "-",
+                    "9",
+                    "b",
+                    "3",
+                    "f",
+                    "-",
+                    "9",
+                    "6",
+                    "f",
+                    "5",
+                    "d",
+                    "2",
+                    "f",
+                    "c",
+                    "c",
+                    "f",
+                    "b",
+                    "2",
+                    ",",
+                    "b",
+                    "0",
+                    "7",
+                    "9",
+                    "6",
+                    "7",
+                    "9",
+                    "7",
+                    "-",
+                    "d",
+                    "e",
+                    "2",
+                    "3",
+                    "-",
+                    "4",
+                    "f",
+                    "c",
+                    "7",
+                    "-",
+                    "a",
+                    "5",
+                    "e",
+                    "2",
+                    "-",
+                    "7",
+                    "e",
+                    "1",
+                    "3",
+                    "1",
+                    "3",
+                    "1",
+                    "4",
+                    "7",
+                    "1",
+                    "8",
+                    "c"))
                 .build();
 
         ListSourcesResponse res = sdk.sources().listSources()
@@ -296,7 +413,7 @@ public class Application {
                 .call();
 
         if (res.sourcesResponse().isPresent()) {
-            // handle response
+            System.out.println(res.sourcesResponse().get());
         }
     }
 }
@@ -322,8 +439,9 @@ public class Application {
 
 Update a Source
 
-### Example Usage
+### Example Usage: Source Update Request Example
 
+<!-- UsageSnippet language="java" operationID="patchSource" method="patch" path="/sources/{sourceId}" example="Source Update Request Example" -->
 ```java
 package hello.world;
 
@@ -349,8 +467,8 @@ public class Application {
         PatchSourceRequest req = PatchSourceRequest.builder()
                 .sourceId("<value>")
                 .sourcePatchRequest(SourcePatchRequest.builder()
-                    .configuration(SourceConfiguration.of(SourceEventee.builder()
-                        .apiToken("<value>")
+                    .configuration(SourceConfiguration.of(SourceNutshell.builder()
+                        .username("Elyssa_Hackett7")
                         .build()))
                     .name("My Source")
                     .workspaceId("744cc0ed-7f05-4949-9e60-2a814f90c035")
@@ -362,7 +480,56 @@ public class Application {
                 .call();
 
         if (res.sourceResponse().isPresent()) {
-            // handle response
+            System.out.println(res.sourceResponse().get());
+        }
+    }
+}
+```
+### Example Usage: Source Update Response Example
+
+<!-- UsageSnippet language="java" operationID="patchSource" method="patch" path="/sources/{sourceId}" example="Source Update Response Example" -->
+```java
+package hello.world;
+
+import com.airbyte.api.Airbyte;
+import com.airbyte.api.models.operations.PatchSourceRequest;
+import com.airbyte.api.models.operations.PatchSourceResponse;
+import com.airbyte.api.models.shared.*;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        Airbyte sdk = Airbyte.builder()
+                .security(Security.builder()
+                    .basicAuth(SchemeBasicAuth.builder()
+                        .password("")
+                        .username("")
+                        .build())
+                    .build())
+            .build();
+
+        PatchSourceRequest req = PatchSourceRequest.builder()
+                .sourceId("<value>")
+                .sourcePatchRequest(SourcePatchRequest.builder()
+                    .configuration(SourceConfiguration.of(SourceFirebolt.builder()
+                        .account("95324582")
+                        .clientId("bbl9qth066hmxkwyb0hy2iwk8ktez9dz")
+                        .clientSecret("<value>")
+                        .database("<value>")
+                        .engine("<value>")
+                        .build()))
+                    .name("My source")
+                    .build())
+                .build();
+
+        PatchSourceResponse res = sdk.sources().patchSource()
+                .request(req)
+                .call();
+
+        if (res.sourceResponse().isPresent()) {
+            System.out.println(res.sourceResponse().get());
         }
     }
 }
@@ -388,8 +555,9 @@ public class Application {
 
 Update a Source and fully overwrite it
 
-### Example Usage
+### Example Usage: Source Update Request Example
 
+<!-- UsageSnippet language="java" operationID="putSource" method="put" path="/sources/{sourceId}" example="Source Update Request Example" -->
 ```java
 package hello.world;
 
@@ -415,7 +583,10 @@ public class Application {
         PutSourceRequest req = PutSourceRequest.builder()
                 .sourceId("<value>")
                 .sourcePutRequest(SourcePutRequest.builder()
-                    .configuration(SourceConfiguration.of(SourceAirtable.builder()
+                    .configuration(SourceConfiguration.of(SourceRailz.builder()
+                        .clientId("<id>")
+                        .secretKey("<value>")
+                        .startDate("<value>")
                         .build()))
                     .name("My Source")
                     .build())
@@ -426,7 +597,54 @@ public class Application {
                 .call();
 
         if (res.sourceResponse().isPresent()) {
-            // handle response
+            System.out.println(res.sourceResponse().get());
+        }
+    }
+}
+```
+### Example Usage: Source Update Response Example
+
+<!-- UsageSnippet language="java" operationID="putSource" method="put" path="/sources/{sourceId}" example="Source Update Response Example" -->
+```java
+package hello.world;
+
+import com.airbyte.api.Airbyte;
+import com.airbyte.api.models.operations.PutSourceRequest;
+import com.airbyte.api.models.operations.PutSourceResponse;
+import com.airbyte.api.models.shared.*;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        Airbyte sdk = Airbyte.builder()
+                .security(Security.builder()
+                    .basicAuth(SchemeBasicAuth.builder()
+                        .password("")
+                        .username("")
+                        .build())
+                    .build())
+            .build();
+
+        PutSourceRequest req = PutSourceRequest.builder()
+                .sourceId("<value>")
+                .sourcePutRequest(SourcePutRequest.builder()
+                    .configuration(SourceConfiguration.of(SourceRailz.builder()
+                        .clientId("<id>")
+                        .secretKey("<value>")
+                        .startDate("<value>")
+                        .build()))
+                    .name("<value>")
+                    .build())
+                .build();
+
+        PutSourceResponse res = sdk.sources().putSource()
+                .request(req)
+                .call();
+
+        if (res.sourceResponse().isPresent()) {
+            System.out.println(res.sourceResponse().get());
         }
     }
 }

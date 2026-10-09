@@ -11,7 +11,8 @@ import java.util.Optional;
 /**
  * SourceMicrosoftOnedriveValidationPolicy
  * 
- * <p>The name of the validation policy that dictates sync behavior when a record does not adhere to the stream schema.
+ * <p>The name of the validation policy that dictates sync behavior when a record does not adhere to the
+ * stream schema.
  */
 public enum SourceMicrosoftOnedriveValidationPolicy {
     EMIT_RECORD("Emit Record"),
@@ -21,7 +22,7 @@ public enum SourceMicrosoftOnedriveValidationPolicy {
     @JsonValue
     private final String value;
 
-    private SourceMicrosoftOnedriveValidationPolicy(String value) {
+    SourceMicrosoftOnedriveValidationPolicy(String value) {
         this.value = value;
     }
     

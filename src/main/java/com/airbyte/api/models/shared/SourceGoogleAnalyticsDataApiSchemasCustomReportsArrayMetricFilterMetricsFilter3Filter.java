@@ -14,13 +14,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3Filter._Deserializer.class)
 public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3Filter {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3Filter(TypedObject value) {
         this.value = value;
@@ -28,22 +27,22 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMe
 
     public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3Filter of(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3StringFilter value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3Filter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3StringFilter>(){}));
+        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3Filter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3Filter of(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3InListFilter value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3Filter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3InListFilter>(){}));
+        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3Filter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3Filter of(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3NumericFilter value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3Filter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3NumericFilter>(){}));
+        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3Filter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3Filter of(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3BetweenFilter value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3Filter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3BetweenFilter>(){}));
+        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3Filter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -68,7 +67,7 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMe
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -79,12 +78,12 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMe
             return false;
         }
         SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3Filter other = (SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3Filter) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -93,9 +92,9 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMe
         public _Deserializer() {
             super(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3Filter.class, false,
                   TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3StringFilter>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3BetweenFilter>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3InListFilter>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3NumericFilter>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3InListFilter>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3BetweenFilter>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -104,6 +103,6 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMe
         return Utils.toString(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3Filter.class,
                 "value", value);
     }
- 
+
 }
 

@@ -11,15 +11,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceClazar {
 
     @JsonProperty("client_id")
     private String clientId;
 
+
     @JsonProperty("client_secret")
     private String clientSecret;
+
 
     @JsonProperty("sourceType")
     private Clazar sourceType;
@@ -50,9 +52,10 @@ public class SourceClazar {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceClazar withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -66,7 +69,6 @@ public class SourceClazar {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -77,17 +79,15 @@ public class SourceClazar {
         }
         SourceClazar other = (SourceClazar) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            sourceType);
+        return Utils.enhancedHash(
+            clientId, clientSecret, sourceType);
     }
     
     @Override
@@ -97,16 +97,18 @@ public class SourceClazar {
                 "clientSecret", clientSecret,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -114,17 +116,19 @@ public class SourceClazar {
             return this;
         }
 
+
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public SourceClazar build() {
+
             return new SourceClazar(
-                clientId,
-                clientSecret);
+                clientId, clientSecret);
         }
+
 
         private static final LazySingletonValue<Clazar> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

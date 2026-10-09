@@ -20,7 +20,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -41,36 +40,43 @@ public class BulkLoad {
     private Optional<String> azureBlobStorageAccountKey;
 
     /**
-     * The name of the Azure Blob Storage account. See: https://learn.microsoft.com/azure/storage/blobs/storage-blobs-introduction#storage-accounts
+     * The name of the Azure Blob Storage account. See:
+     * https://learn.microsoft.com/azure/storage/blobs/storage-blobs-introduction#storage-accounts
      */
     @JsonProperty("azure_blob_storage_account_name")
     private String azureBlobStorageAccountName;
 
     /**
-     * The name of the Azure Blob Storage container. See: https://learn.microsoft.com/azure/storage/blobs/storage-blobs-introduction#containers
+     * The name of the Azure Blob Storage container. See:
+     * https://learn.microsoft.com/azure/storage/blobs/storage-blobs-introduction#containers
      */
     @JsonProperty("azure_blob_storage_container_name")
     private String azureBlobStorageContainerName;
 
     /**
-     * Specifies the external data source name configured in MSSQL, which references the Azure Blob container. See: https://learn.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql
+     * Specifies the external data source name configured in MSSQL, which references the Azure Blob
+     * container. See: https://learn.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql
      */
     @JsonProperty("bulk_load_data_source")
     private String bulkLoadDataSource;
 
     /**
-     * When enabled, Airbyte will validate all values before loading them into the destination table. This provides stronger data integrity guarantees but may significantly impact performance.
+     * When enabled, Airbyte will validate all values before loading them into the destination table. This
+     * provides stronger data integrity guarantees but may significantly impact performance.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("bulk_load_validate_values_pre_load")
     private Optional<Boolean> bulkLoadValidateValuesPreLoad;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("load_type")
     private Optional<? extends DestinationMssqlLoadType> loadType;
 
     /**
-     * A shared access signature (SAS) provides secure delegated access to resources in your storage account. See: https://learn.microsoft.com/azure/storage/common/storage-sas-overview.Mutually exclusive with an account key
+     * A shared access signature (SAS) provides secure delegated access to resources in your storage
+     * account. See: https://learn.microsoft.com/azure/storage/common/storage-sas-overview.Mutually
+     * exclusive with an account key
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("shared_access_signature")
@@ -106,7 +112,9 @@ public class BulkLoad {
             String azureBlobStorageAccountName,
             String azureBlobStorageContainerName,
             String bulkLoadDataSource) {
-        this(Optional.empty(), azureBlobStorageAccountName, azureBlobStorageContainerName, bulkLoadDataSource, Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), azureBlobStorageAccountName, azureBlobStorageContainerName,
+            bulkLoadDataSource, Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     @JsonAnyGetter
@@ -123,7 +131,8 @@ public class BulkLoad {
     }
 
     /**
-     * The name of the Azure Blob Storage account. See: https://learn.microsoft.com/azure/storage/blobs/storage-blobs-introduction#storage-accounts
+     * The name of the Azure Blob Storage account. See:
+     * https://learn.microsoft.com/azure/storage/blobs/storage-blobs-introduction#storage-accounts
      */
     @JsonIgnore
     public String azureBlobStorageAccountName() {
@@ -131,7 +140,8 @@ public class BulkLoad {
     }
 
     /**
-     * The name of the Azure Blob Storage container. See: https://learn.microsoft.com/azure/storage/blobs/storage-blobs-introduction#containers
+     * The name of the Azure Blob Storage container. See:
+     * https://learn.microsoft.com/azure/storage/blobs/storage-blobs-introduction#containers
      */
     @JsonIgnore
     public String azureBlobStorageContainerName() {
@@ -139,7 +149,8 @@ public class BulkLoad {
     }
 
     /**
-     * Specifies the external data source name configured in MSSQL, which references the Azure Blob container. See: https://learn.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql
+     * Specifies the external data source name configured in MSSQL, which references the Azure Blob
+     * container. See: https://learn.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql
      */
     @JsonIgnore
     public String bulkLoadDataSource() {
@@ -147,7 +158,8 @@ public class BulkLoad {
     }
 
     /**
-     * When enabled, Airbyte will validate all values before loading them into the destination table. This provides stronger data integrity guarantees but may significantly impact performance.
+     * When enabled, Airbyte will validate all values before loading them into the destination table. This
+     * provides stronger data integrity guarantees but may significantly impact performance.
      */
     @JsonIgnore
     public Optional<Boolean> bulkLoadValidateValuesPreLoad() {
@@ -161,16 +173,19 @@ public class BulkLoad {
     }
 
     /**
-     * A shared access signature (SAS) provides secure delegated access to resources in your storage account. See: https://learn.microsoft.com/azure/storage/common/storage-sas-overview.Mutually exclusive with an account key
+     * A shared access signature (SAS) provides secure delegated access to resources in your storage
+     * account. See: https://learn.microsoft.com/azure/storage/common/storage-sas-overview.Mutually
+     * exclusive with an account key
      */
     @JsonIgnore
     public Optional<String> sharedAccessSignature() {
         return sharedAccessSignature;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public BulkLoad withAdditionalProperty(String key, Object value) {
@@ -178,8 +193,7 @@ public class BulkLoad {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public BulkLoad withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -195,6 +209,7 @@ public class BulkLoad {
         return this;
     }
 
+
     /**
      * The Azure blob storage account key. Mutually exclusive with a Shared Access Signature
      */
@@ -205,7 +220,8 @@ public class BulkLoad {
     }
 
     /**
-     * The name of the Azure Blob Storage account. See: https://learn.microsoft.com/azure/storage/blobs/storage-blobs-introduction#storage-accounts
+     * The name of the Azure Blob Storage account. See:
+     * https://learn.microsoft.com/azure/storage/blobs/storage-blobs-introduction#storage-accounts
      */
     public BulkLoad withAzureBlobStorageAccountName(String azureBlobStorageAccountName) {
         Utils.checkNotNull(azureBlobStorageAccountName, "azureBlobStorageAccountName");
@@ -214,7 +230,8 @@ public class BulkLoad {
     }
 
     /**
-     * The name of the Azure Blob Storage container. See: https://learn.microsoft.com/azure/storage/blobs/storage-blobs-introduction#containers
+     * The name of the Azure Blob Storage container. See:
+     * https://learn.microsoft.com/azure/storage/blobs/storage-blobs-introduction#containers
      */
     public BulkLoad withAzureBlobStorageContainerName(String azureBlobStorageContainerName) {
         Utils.checkNotNull(azureBlobStorageContainerName, "azureBlobStorageContainerName");
@@ -223,7 +240,8 @@ public class BulkLoad {
     }
 
     /**
-     * Specifies the external data source name configured in MSSQL, which references the Azure Blob container. See: https://learn.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql
+     * Specifies the external data source name configured in MSSQL, which references the Azure Blob
+     * container. See: https://learn.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql
      */
     public BulkLoad withBulkLoadDataSource(String bulkLoadDataSource) {
         Utils.checkNotNull(bulkLoadDataSource, "bulkLoadDataSource");
@@ -232,7 +250,8 @@ public class BulkLoad {
     }
 
     /**
-     * When enabled, Airbyte will validate all values before loading them into the destination table. This provides stronger data integrity guarantees but may significantly impact performance.
+     * When enabled, Airbyte will validate all values before loading them into the destination table. This
+     * provides stronger data integrity guarantees but may significantly impact performance.
      */
     public BulkLoad withBulkLoadValidateValuesPreLoad(boolean bulkLoadValidateValuesPreLoad) {
         Utils.checkNotNull(bulkLoadValidateValuesPreLoad, "bulkLoadValidateValuesPreLoad");
@@ -240,8 +259,10 @@ public class BulkLoad {
         return this;
     }
 
+
     /**
-     * When enabled, Airbyte will validate all values before loading them into the destination table. This provides stronger data integrity guarantees but may significantly impact performance.
+     * When enabled, Airbyte will validate all values before loading them into the destination table. This
+     * provides stronger data integrity guarantees but may significantly impact performance.
      */
     public BulkLoad withBulkLoadValidateValuesPreLoad(Optional<Boolean> bulkLoadValidateValuesPreLoad) {
         Utils.checkNotNull(bulkLoadValidateValuesPreLoad, "bulkLoadValidateValuesPreLoad");
@@ -255,6 +276,7 @@ public class BulkLoad {
         return this;
     }
 
+
     public BulkLoad withLoadType(Optional<? extends DestinationMssqlLoadType> loadType) {
         Utils.checkNotNull(loadType, "loadType");
         this.loadType = loadType;
@@ -262,7 +284,9 @@ public class BulkLoad {
     }
 
     /**
-     * A shared access signature (SAS) provides secure delegated access to resources in your storage account. See: https://learn.microsoft.com/azure/storage/common/storage-sas-overview.Mutually exclusive with an account key
+     * A shared access signature (SAS) provides secure delegated access to resources in your storage
+     * account. See: https://learn.microsoft.com/azure/storage/common/storage-sas-overview.Mutually
+     * exclusive with an account key
      */
     public BulkLoad withSharedAccessSignature(String sharedAccessSignature) {
         Utils.checkNotNull(sharedAccessSignature, "sharedAccessSignature");
@@ -270,8 +294,11 @@ public class BulkLoad {
         return this;
     }
 
+
     /**
-     * A shared access signature (SAS) provides secure delegated access to resources in your storage account. See: https://learn.microsoft.com/azure/storage/common/storage-sas-overview.Mutually exclusive with an account key
+     * A shared access signature (SAS) provides secure delegated access to resources in your storage
+     * account. See: https://learn.microsoft.com/azure/storage/common/storage-sas-overview.Mutually
+     * exclusive with an account key
      */
     public BulkLoad withSharedAccessSignature(Optional<String> sharedAccessSignature) {
         Utils.checkNotNull(sharedAccessSignature, "sharedAccessSignature");
@@ -279,7 +306,6 @@ public class BulkLoad {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -290,27 +316,22 @@ public class BulkLoad {
         }
         BulkLoad other = (BulkLoad) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.azureBlobStorageAccountKey, other.azureBlobStorageAccountKey) &&
-            Objects.deepEquals(this.azureBlobStorageAccountName, other.azureBlobStorageAccountName) &&
-            Objects.deepEquals(this.azureBlobStorageContainerName, other.azureBlobStorageContainerName) &&
-            Objects.deepEquals(this.bulkLoadDataSource, other.bulkLoadDataSource) &&
-            Objects.deepEquals(this.bulkLoadValidateValuesPreLoad, other.bulkLoadValidateValuesPreLoad) &&
-            Objects.deepEquals(this.loadType, other.loadType) &&
-            Objects.deepEquals(this.sharedAccessSignature, other.sharedAccessSignature);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.azureBlobStorageAccountKey, other.azureBlobStorageAccountKey) &&
+            Utils.enhancedDeepEquals(this.azureBlobStorageAccountName, other.azureBlobStorageAccountName) &&
+            Utils.enhancedDeepEquals(this.azureBlobStorageContainerName, other.azureBlobStorageContainerName) &&
+            Utils.enhancedDeepEquals(this.bulkLoadDataSource, other.bulkLoadDataSource) &&
+            Utils.enhancedDeepEquals(this.bulkLoadValidateValuesPreLoad, other.bulkLoadValidateValuesPreLoad) &&
+            Utils.enhancedDeepEquals(this.loadType, other.loadType) &&
+            Utils.enhancedDeepEquals(this.sharedAccessSignature, other.sharedAccessSignature);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            azureBlobStorageAccountKey,
-            azureBlobStorageAccountName,
-            azureBlobStorageContainerName,
-            bulkLoadDataSource,
-            bulkLoadValidateValuesPreLoad,
-            loadType,
-            sharedAccessSignature);
+        return Utils.enhancedHash(
+            additionalProperties, azureBlobStorageAccountKey, azureBlobStorageAccountName,
+            azureBlobStorageContainerName, bulkLoadDataSource, bulkLoadValidateValuesPreLoad,
+            loadType, sharedAccessSignature);
     }
     
     @Override
@@ -325,25 +346,26 @@ public class BulkLoad {
                 "loadType", loadType,
                 "sharedAccessSignature", sharedAccessSignature);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<String> azureBlobStorageAccountKey = Optional.empty();
- 
+
         private String azureBlobStorageAccountName;
- 
+
         private String azureBlobStorageContainerName;
- 
+
         private String bulkLoadDataSource;
- 
+
         private Optional<Boolean> bulkLoadValidateValuesPreLoad;
- 
+
         private Optional<? extends DestinationMssqlLoadType> loadType;
- 
+
         private Optional<String> sharedAccessSignature = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -364,6 +386,7 @@ public class BulkLoad {
             return this;
         }
 
+
         /**
          * The Azure blob storage account key. Mutually exclusive with a Shared Access Signature
          */
@@ -382,8 +405,10 @@ public class BulkLoad {
             return this;
         }
 
+
         /**
-         * The name of the Azure Blob Storage account. See: https://learn.microsoft.com/azure/storage/blobs/storage-blobs-introduction#storage-accounts
+         * The name of the Azure Blob Storage account. See:
+         * https://learn.microsoft.com/azure/storage/blobs/storage-blobs-introduction#storage-accounts
          */
         public Builder azureBlobStorageAccountName(String azureBlobStorageAccountName) {
             Utils.checkNotNull(azureBlobStorageAccountName, "azureBlobStorageAccountName");
@@ -391,8 +416,10 @@ public class BulkLoad {
             return this;
         }
 
+
         /**
-         * The name of the Azure Blob Storage container. See: https://learn.microsoft.com/azure/storage/blobs/storage-blobs-introduction#containers
+         * The name of the Azure Blob Storage container. See:
+         * https://learn.microsoft.com/azure/storage/blobs/storage-blobs-introduction#containers
          */
         public Builder azureBlobStorageContainerName(String azureBlobStorageContainerName) {
             Utils.checkNotNull(azureBlobStorageContainerName, "azureBlobStorageContainerName");
@@ -400,8 +427,10 @@ public class BulkLoad {
             return this;
         }
 
+
         /**
-         * Specifies the external data source name configured in MSSQL, which references the Azure Blob container. See: https://learn.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql
+         * Specifies the external data source name configured in MSSQL, which references the Azure Blob
+         * container. See: https://learn.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql
          */
         public Builder bulkLoadDataSource(String bulkLoadDataSource) {
             Utils.checkNotNull(bulkLoadDataSource, "bulkLoadDataSource");
@@ -409,8 +438,10 @@ public class BulkLoad {
             return this;
         }
 
+
         /**
-         * When enabled, Airbyte will validate all values before loading them into the destination table. This provides stronger data integrity guarantees but may significantly impact performance.
+         * When enabled, Airbyte will validate all values before loading them into the destination table. This
+         * provides stronger data integrity guarantees but may significantly impact performance.
          */
         public Builder bulkLoadValidateValuesPreLoad(boolean bulkLoadValidateValuesPreLoad) {
             Utils.checkNotNull(bulkLoadValidateValuesPreLoad, "bulkLoadValidateValuesPreLoad");
@@ -419,13 +450,15 @@ public class BulkLoad {
         }
 
         /**
-         * When enabled, Airbyte will validate all values before loading them into the destination table. This provides stronger data integrity guarantees but may significantly impact performance.
+         * When enabled, Airbyte will validate all values before loading them into the destination table. This
+         * provides stronger data integrity guarantees but may significantly impact performance.
          */
         public Builder bulkLoadValidateValuesPreLoad(Optional<Boolean> bulkLoadValidateValuesPreLoad) {
             Utils.checkNotNull(bulkLoadValidateValuesPreLoad, "bulkLoadValidateValuesPreLoad");
             this.bulkLoadValidateValuesPreLoad = bulkLoadValidateValuesPreLoad;
             return this;
         }
+
 
         public Builder loadType(DestinationMssqlLoadType loadType) {
             Utils.checkNotNull(loadType, "loadType");
@@ -439,8 +472,11 @@ public class BulkLoad {
             return this;
         }
 
+
         /**
-         * A shared access signature (SAS) provides secure delegated access to resources in your storage account. See: https://learn.microsoft.com/azure/storage/common/storage-sas-overview.Mutually exclusive with an account key
+         * A shared access signature (SAS) provides secure delegated access to resources in your storage
+         * account. See: https://learn.microsoft.com/azure/storage/common/storage-sas-overview.Mutually
+         * exclusive with an account key
          */
         public Builder sharedAccessSignature(String sharedAccessSignature) {
             Utils.checkNotNull(sharedAccessSignature, "sharedAccessSignature");
@@ -449,14 +485,16 @@ public class BulkLoad {
         }
 
         /**
-         * A shared access signature (SAS) provides secure delegated access to resources in your storage account. See: https://learn.microsoft.com/azure/storage/common/storage-sas-overview.Mutually exclusive with an account key
+         * A shared access signature (SAS) provides secure delegated access to resources in your storage
+         * account. See: https://learn.microsoft.com/azure/storage/common/storage-sas-overview.Mutually
+         * exclusive with an account key
          */
         public Builder sharedAccessSignature(Optional<String> sharedAccessSignature) {
             Utils.checkNotNull(sharedAccessSignature, "sharedAccessSignature");
             this.sharedAccessSignature = sharedAccessSignature;
             return this;
         }
-        
+
         public BulkLoad build() {
             if (bulkLoadValidateValuesPreLoad == null) {
                 bulkLoadValidateValuesPreLoad = _SINGLETON_VALUE_BulkLoadValidateValuesPreLoad.value();
@@ -464,16 +502,14 @@ public class BulkLoad {
             if (loadType == null) {
                 loadType = _SINGLETON_VALUE_LoadType.value();
             }
+
             return new BulkLoad(
-                azureBlobStorageAccountKey,
-                azureBlobStorageAccountName,
-                azureBlobStorageContainerName,
-                bulkLoadDataSource,
-                bulkLoadValidateValuesPreLoad,
-                loadType,
+                azureBlobStorageAccountKey, azureBlobStorageAccountName, azureBlobStorageContainerName,
+                bulkLoadDataSource, bulkLoadValidateValuesPreLoad, loadType,
                 sharedAccessSignature)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_BulkLoadValidateValuesPreLoad =
                 new LazySingletonValue<>(

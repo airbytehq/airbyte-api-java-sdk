@@ -12,21 +12,23 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceFreshchat {
-
     /**
      * The unique account name for your Freshchat instance
      */
     @JsonProperty("account_name")
     private String accountName;
 
+
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonProperty("sourceType")
     private Freshchat sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -68,9 +70,10 @@ public class SourceFreshchat {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The unique account name for your Freshchat instance
@@ -93,7 +96,6 @@ public class SourceFreshchat {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -104,18 +106,16 @@ public class SourceFreshchat {
         }
         SourceFreshchat other = (SourceFreshchat) o;
         return 
-            Objects.deepEquals(this.accountName, other.accountName) &&
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.accountName, other.accountName) &&
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountName,
-            apiKey,
-            sourceType,
+        return Utils.enhancedHash(
+            accountName, apiKey, sourceType,
             startDate);
     }
     
@@ -127,18 +127,20 @@ public class SourceFreshchat {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accountName;
- 
+
         private String apiKey;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The unique account name for your Freshchat instance
@@ -149,24 +151,26 @@ public class SourceFreshchat {
             return this;
         }
 
+
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceFreshchat build() {
+
             return new SourceFreshchat(
-                accountName,
-                apiKey,
-                startDate);
+                accountName, apiKey, startDate);
         }
+
 
         private static final LazySingletonValue<Freshchat> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

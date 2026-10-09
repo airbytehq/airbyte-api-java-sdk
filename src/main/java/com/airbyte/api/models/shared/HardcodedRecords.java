@@ -14,7 +14,7 @@ public enum HardcodedRecords {
     @JsonValue
     private final String value;
 
-    private HardcodedRecords(String value) {
+    HardcodedRecords(String value) {
         this.value = value;
     }
     

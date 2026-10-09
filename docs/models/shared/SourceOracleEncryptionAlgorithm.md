@@ -2,6 +2,14 @@
 
 This parameter defines what encryption algorithm is used.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceOracleEncryptionAlgorithm;
+
+SourceOracleEncryptionAlgorithm value = SourceOracleEncryptionAlgorithm.AES256;
+```
+
 
 ## Values
 

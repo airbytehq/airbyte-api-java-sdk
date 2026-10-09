@@ -19,13 +19,14 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * SourceSapHanaEnterpriseNativeNetworkEncryptionNNE
  * 
- * <p>The native network encryption gives you the ability to encrypt database connections, without the configuration overhead of TCP/IP and SSL/TLS and without the need to open and listen on different ports.
+ * <p>The native network encryption gives you the ability to encrypt database connections, without the
+ * configuration overhead of TCP/IP and SSL/TLS and without the need to open and listen on different
+ * ports.
  */
 public class SourceSapHanaEnterpriseNativeNetworkEncryptionNNE {
 
@@ -38,6 +39,7 @@ public class SourceSapHanaEnterpriseNativeNetworkEncryptionNNE {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("encryption_algorithm")
     private Optional<? extends SourceSapHanaEnterpriseEncryptionAlgorithm> encryptionAlgorithm;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("encryption_method")
@@ -78,9 +80,10 @@ public class SourceSapHanaEnterpriseNativeNetworkEncryptionNNE {
         return (Optional<SourceSapHanaEnterpriseSchemasEncryptionMethod>) encryptionMethod;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceSapHanaEnterpriseNativeNetworkEncryptionNNE withAdditionalProperty(String key, Object value) {
@@ -88,8 +91,7 @@ public class SourceSapHanaEnterpriseNativeNetworkEncryptionNNE {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceSapHanaEnterpriseNativeNetworkEncryptionNNE withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -104,6 +106,7 @@ public class SourceSapHanaEnterpriseNativeNetworkEncryptionNNE {
         this.encryptionAlgorithm = Optional.ofNullable(encryptionAlgorithm);
         return this;
     }
+
 
     /**
      * This parameter defines what encryption algorithm is used.
@@ -120,13 +123,13 @@ public class SourceSapHanaEnterpriseNativeNetworkEncryptionNNE {
         return this;
     }
 
+
     public SourceSapHanaEnterpriseNativeNetworkEncryptionNNE withEncryptionMethod(Optional<? extends SourceSapHanaEnterpriseSchemasEncryptionMethod> encryptionMethod) {
         Utils.checkNotNull(encryptionMethod, "encryptionMethod");
         this.encryptionMethod = encryptionMethod;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -137,17 +140,15 @@ public class SourceSapHanaEnterpriseNativeNetworkEncryptionNNE {
         }
         SourceSapHanaEnterpriseNativeNetworkEncryptionNNE other = (SourceSapHanaEnterpriseNativeNetworkEncryptionNNE) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.encryptionAlgorithm, other.encryptionAlgorithm) &&
-            Objects.deepEquals(this.encryptionMethod, other.encryptionMethod);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.encryptionAlgorithm, other.encryptionAlgorithm) &&
+            Utils.enhancedDeepEquals(this.encryptionMethod, other.encryptionMethod);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            encryptionAlgorithm,
-            encryptionMethod);
+        return Utils.enhancedHash(
+            additionalProperties, encryptionAlgorithm, encryptionMethod);
     }
     
     @Override
@@ -157,15 +158,16 @@ public class SourceSapHanaEnterpriseNativeNetworkEncryptionNNE {
                 "encryptionAlgorithm", encryptionAlgorithm,
                 "encryptionMethod", encryptionMethod);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends SourceSapHanaEnterpriseEncryptionAlgorithm> encryptionAlgorithm;
- 
+
         private Optional<? extends SourceSapHanaEnterpriseSchemasEncryptionMethod> encryptionMethod;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -186,6 +188,7 @@ public class SourceSapHanaEnterpriseNativeNetworkEncryptionNNE {
             return this;
         }
 
+
         /**
          * This parameter defines what encryption algorithm is used.
          */
@@ -204,6 +207,7 @@ public class SourceSapHanaEnterpriseNativeNetworkEncryptionNNE {
             return this;
         }
 
+
         public Builder encryptionMethod(SourceSapHanaEnterpriseSchemasEncryptionMethod encryptionMethod) {
             Utils.checkNotNull(encryptionMethod, "encryptionMethod");
             this.encryptionMethod = Optional.ofNullable(encryptionMethod);
@@ -215,7 +219,7 @@ public class SourceSapHanaEnterpriseNativeNetworkEncryptionNNE {
             this.encryptionMethod = encryptionMethod;
             return this;
         }
-        
+
         public SourceSapHanaEnterpriseNativeNetworkEncryptionNNE build() {
             if (encryptionAlgorithm == null) {
                 encryptionAlgorithm = _SINGLETON_VALUE_EncryptionAlgorithm.value();
@@ -223,11 +227,12 @@ public class SourceSapHanaEnterpriseNativeNetworkEncryptionNNE {
             if (encryptionMethod == null) {
                 encryptionMethod = _SINGLETON_VALUE_EncryptionMethod.value();
             }
+
             return new SourceSapHanaEnterpriseNativeNetworkEncryptionNNE(
-                encryptionAlgorithm,
-                encryptionMethod)
+                encryptionAlgorithm, encryptionMethod)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceSapHanaEnterpriseEncryptionAlgorithm>> _SINGLETON_VALUE_EncryptionAlgorithm =
                 new LazySingletonValue<>(

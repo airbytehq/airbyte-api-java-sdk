@@ -11,7 +11,9 @@ import java.util.Optional;
 /**
  * ConversionReportTime
  * 
- * <p>The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event..
+ * <p>The date by which the conversion metrics returned from this endpoint will be reported. There are two
+ * dates associated with a conversion event: the date that the user interacted with the ad, and the
+ * date that the user completed a conversion event..
  */
 public enum ConversionReportTime {
     TIME_OF_AD_ACTION("TIME_OF_AD_ACTION"),
@@ -20,7 +22,7 @@ public enum ConversionReportTime {
     @JsonValue
     private final String value;
 
-    private ConversionReportTime(String value) {
+    ConversionReportTime(String value) {
         this.value = value;
     }
     

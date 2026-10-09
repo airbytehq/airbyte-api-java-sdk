@@ -14,13 +14,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilter._Deserializer.class)
 public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilter {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilter(TypedObject value) {
         this.value = value;
@@ -28,22 +27,22 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilte
 
     public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilter of(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayStringFilter value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayStringFilter>(){}));
+        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilter of(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayInListFilter value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayInListFilter>(){}));
+        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilter of(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayNumericFilter value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayNumericFilter>(){}));
+        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilter of(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayBetweenFilter value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayBetweenFilter>(){}));
+        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -68,7 +67,7 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilte
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -79,12 +78,12 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilte
             return false;
         }
         SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilter other = (SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilter) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -93,9 +92,9 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilte
         public _Deserializer() {
             super(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilter.class, false,
                   TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayStringFilter>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayBetweenFilter>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayInListFilter>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayNumericFilter>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayInListFilter>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayBetweenFilter>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -104,6 +103,6 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilte
         return Utils.toString(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilter.class,
                 "value", value);
     }
- 
+
 }
 

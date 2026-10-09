@@ -19,7 +19,7 @@ public enum SourceGoogleDirectorySchemasCredentialsTitle {
     @JsonValue
     private final String value;
 
-    private SourceGoogleDirectorySchemasCredentialsTitle(String value) {
+    SourceGoogleDirectorySchemasCredentialsTitle(String value) {
         this.value = value;
     }
     

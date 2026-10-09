@@ -14,7 +14,7 @@ public enum AzureTable {
     @JsonValue
     private final String value;
 
-    private AzureTable(String value) {
+    AzureTable(String value) {
         this.value = value;
     }
     

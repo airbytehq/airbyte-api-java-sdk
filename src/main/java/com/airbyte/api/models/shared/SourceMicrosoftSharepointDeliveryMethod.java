@@ -14,13 +14,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = SourceMicrosoftSharepointDeliveryMethod._Deserializer.class)
 public class SourceMicrosoftSharepointDeliveryMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceMicrosoftSharepointDeliveryMethod(TypedObject value) {
         this.value = value;
@@ -28,12 +27,12 @@ public class SourceMicrosoftSharepointDeliveryMethod {
 
     public static SourceMicrosoftSharepointDeliveryMethod of(SourceMicrosoftSharepointReplicateRecords value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMicrosoftSharepointDeliveryMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMicrosoftSharepointReplicateRecords>(){}));
+        return new SourceMicrosoftSharepointDeliveryMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceMicrosoftSharepointDeliveryMethod of(SourceMicrosoftSharepointCopyRawFiles value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMicrosoftSharepointDeliveryMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMicrosoftSharepointCopyRawFiles>(){}));
+        return new SourceMicrosoftSharepointDeliveryMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -56,7 +55,7 @@ public class SourceMicrosoftSharepointDeliveryMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -67,12 +66,12 @@ public class SourceMicrosoftSharepointDeliveryMethod {
             return false;
         }
         SourceMicrosoftSharepointDeliveryMethod other = (SourceMicrosoftSharepointDeliveryMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -80,8 +79,8 @@ public class SourceMicrosoftSharepointDeliveryMethod {
 
         public _Deserializer() {
             super(SourceMicrosoftSharepointDeliveryMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepointCopyRawFiles>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepointReplicateRecords>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepointReplicateRecords>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepointCopyRawFiles>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -90,6 +89,6 @@ public class SourceMicrosoftSharepointDeliveryMethod {
         return Utils.toString(SourceMicrosoftSharepointDeliveryMethod.class,
                 "value", value);
     }
- 
+
 }
 

@@ -14,7 +14,7 @@ public enum PaypalTransaction {
     @JsonValue
     private final String value;
 
-    private PaypalTransaction(String value) {
+    PaypalTransaction(String value) {
         this.value = value;
     }
     

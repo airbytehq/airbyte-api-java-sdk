@@ -14,7 +14,7 @@ public enum Weatherstack {
     @JsonValue
     private final String value;
 
-    private Weatherstack(String value) {
+    Weatherstack(String value) {
         this.value = value;
     }
     

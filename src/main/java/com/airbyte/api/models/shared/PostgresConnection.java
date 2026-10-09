@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -86,7 +85,8 @@ public class PostgresConnection {
             String database,
             String host,
             String username) {
-        this(credentials, database, Optional.empty(), host, Optional.empty(), username);
+        this(credentials, database, Optional.empty(),
+            host, Optional.empty(), username);
     }
 
     @JsonIgnore
@@ -134,9 +134,10 @@ public class PostgresConnection {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public PostgresConnection withCredentials(DestinationPgvectorCredentials credentials) {
         Utils.checkNotNull(credentials, "credentials");
@@ -161,6 +162,7 @@ public class PostgresConnection {
         this.defaultSchema = Optional.ofNullable(defaultSchema);
         return this;
     }
+
 
     /**
      * Enter the name of the default schema
@@ -189,6 +191,7 @@ public class PostgresConnection {
         return this;
     }
 
+
     /**
      * Enter the port you want to use to access the database
      */
@@ -207,7 +210,6 @@ public class PostgresConnection {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -218,23 +220,19 @@ public class PostgresConnection {
         }
         PostgresConnection other = (PostgresConnection) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.database, other.database) &&
-            Objects.deepEquals(this.defaultSchema, other.defaultSchema) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.database, other.database) &&
+            Utils.enhancedDeepEquals(this.defaultSchema, other.defaultSchema) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            database,
-            defaultSchema,
-            host,
-            port,
-            username);
+        return Utils.enhancedHash(
+            credentials, database, defaultSchema,
+            host, port, username);
     }
     
     @Override
@@ -247,30 +245,33 @@ public class PostgresConnection {
                 "port", port,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private DestinationPgvectorCredentials credentials;
- 
+
         private String database;
- 
+
         private Optional<String> defaultSchema;
- 
+
         private String host;
- 
+
         private Optional<Long> port;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder credentials(DestinationPgvectorCredentials credentials) {
             Utils.checkNotNull(credentials, "credentials");
             this.credentials = credentials;
             return this;
         }
+
 
         /**
          * Enter the name of the database that you want to sync data into
@@ -280,6 +281,7 @@ public class PostgresConnection {
             this.database = database;
             return this;
         }
+
 
         /**
          * Enter the name of the default schema
@@ -299,6 +301,7 @@ public class PostgresConnection {
             return this;
         }
 
+
         /**
          * Enter the account name you want to use to access the database.
          */
@@ -307,6 +310,7 @@ public class PostgresConnection {
             this.host = host;
             return this;
         }
+
 
         /**
          * Enter the port you want to use to access the database
@@ -326,6 +330,7 @@ public class PostgresConnection {
             return this;
         }
 
+
         /**
          * Enter the name of the user you want to use to access the database
          */
@@ -334,7 +339,7 @@ public class PostgresConnection {
             this.username = username;
             return this;
         }
-        
+
         public PostgresConnection build() {
             if (defaultSchema == null) {
                 defaultSchema = _SINGLETON_VALUE_DefaultSchema.value();
@@ -342,14 +347,12 @@ public class PostgresConnection {
             if (port == null) {
                 port = _SINGLETON_VALUE_Port.value();
             }
+
             return new PostgresConnection(
-                credentials,
-                database,
-                defaultSchema,
-                host,
-                port,
-                username);
+                credentials, database, defaultSchema,
+                host, port, username);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_DefaultSchema =
                 new LazySingletonValue<>(

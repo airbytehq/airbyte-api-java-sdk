@@ -14,7 +14,7 @@ public enum SourceTiktokMarketingTiktokMarketing {
     @JsonValue
     private final String value;
 
-    private SourceTiktokMarketingTiktokMarketing(String value) {
+    SourceTiktokMarketingTiktokMarketing(String value) {
         this.value = value;
     }
     

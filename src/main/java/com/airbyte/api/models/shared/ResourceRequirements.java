@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -25,21 +24,26 @@ public class ResourceRequirements {
     @JsonProperty("cpu_limit")
     private Optional<String> cpuLimit;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("cpu_request")
     private Optional<String> cpuRequest;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("ephemeral_storage_limit")
     private Optional<String> ephemeralStorageLimit;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("ephemeral_storage_request")
     private Optional<String> ephemeralStorageRequest;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("memory_limit")
     private Optional<String> memoryLimit;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("memory_request")
@@ -68,7 +72,8 @@ public class ResourceRequirements {
     }
     
     public ResourceRequirements() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     @JsonIgnore
@@ -101,15 +106,17 @@ public class ResourceRequirements {
         return memoryRequest;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public ResourceRequirements withCpuLimit(String cpuLimit) {
         Utils.checkNotNull(cpuLimit, "cpuLimit");
         this.cpuLimit = Optional.ofNullable(cpuLimit);
         return this;
     }
+
 
     public ResourceRequirements withCpuLimit(Optional<String> cpuLimit) {
         Utils.checkNotNull(cpuLimit, "cpuLimit");
@@ -123,6 +130,7 @@ public class ResourceRequirements {
         return this;
     }
 
+
     public ResourceRequirements withCpuRequest(Optional<String> cpuRequest) {
         Utils.checkNotNull(cpuRequest, "cpuRequest");
         this.cpuRequest = cpuRequest;
@@ -134,6 +142,7 @@ public class ResourceRequirements {
         this.ephemeralStorageLimit = Optional.ofNullable(ephemeralStorageLimit);
         return this;
     }
+
 
     public ResourceRequirements withEphemeralStorageLimit(Optional<String> ephemeralStorageLimit) {
         Utils.checkNotNull(ephemeralStorageLimit, "ephemeralStorageLimit");
@@ -147,6 +156,7 @@ public class ResourceRequirements {
         return this;
     }
 
+
     public ResourceRequirements withEphemeralStorageRequest(Optional<String> ephemeralStorageRequest) {
         Utils.checkNotNull(ephemeralStorageRequest, "ephemeralStorageRequest");
         this.ephemeralStorageRequest = ephemeralStorageRequest;
@@ -158,6 +168,7 @@ public class ResourceRequirements {
         this.memoryLimit = Optional.ofNullable(memoryLimit);
         return this;
     }
+
 
     public ResourceRequirements withMemoryLimit(Optional<String> memoryLimit) {
         Utils.checkNotNull(memoryLimit, "memoryLimit");
@@ -171,13 +182,13 @@ public class ResourceRequirements {
         return this;
     }
 
+
     public ResourceRequirements withMemoryRequest(Optional<String> memoryRequest) {
         Utils.checkNotNull(memoryRequest, "memoryRequest");
         this.memoryRequest = memoryRequest;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -188,23 +199,19 @@ public class ResourceRequirements {
         }
         ResourceRequirements other = (ResourceRequirements) o;
         return 
-            Objects.deepEquals(this.cpuLimit, other.cpuLimit) &&
-            Objects.deepEquals(this.cpuRequest, other.cpuRequest) &&
-            Objects.deepEquals(this.ephemeralStorageLimit, other.ephemeralStorageLimit) &&
-            Objects.deepEquals(this.ephemeralStorageRequest, other.ephemeralStorageRequest) &&
-            Objects.deepEquals(this.memoryLimit, other.memoryLimit) &&
-            Objects.deepEquals(this.memoryRequest, other.memoryRequest);
+            Utils.enhancedDeepEquals(this.cpuLimit, other.cpuLimit) &&
+            Utils.enhancedDeepEquals(this.cpuRequest, other.cpuRequest) &&
+            Utils.enhancedDeepEquals(this.ephemeralStorageLimit, other.ephemeralStorageLimit) &&
+            Utils.enhancedDeepEquals(this.ephemeralStorageRequest, other.ephemeralStorageRequest) &&
+            Utils.enhancedDeepEquals(this.memoryLimit, other.memoryLimit) &&
+            Utils.enhancedDeepEquals(this.memoryRequest, other.memoryRequest);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            cpuLimit,
-            cpuRequest,
-            ephemeralStorageLimit,
-            ephemeralStorageRequest,
-            memoryLimit,
-            memoryRequest);
+        return Utils.enhancedHash(
+            cpuLimit, cpuRequest, ephemeralStorageLimit,
+            ephemeralStorageRequest, memoryLimit, memoryRequest);
     }
     
     @Override
@@ -217,24 +224,26 @@ public class ResourceRequirements {
                 "memoryLimit", memoryLimit,
                 "memoryRequest", memoryRequest);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> cpuLimit = Optional.empty();
- 
+
         private Optional<String> cpuRequest = Optional.empty();
- 
+
         private Optional<String> ephemeralStorageLimit = Optional.empty();
- 
+
         private Optional<String> ephemeralStorageRequest = Optional.empty();
- 
+
         private Optional<String> memoryLimit = Optional.empty();
- 
+
         private Optional<String> memoryRequest = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder cpuLimit(String cpuLimit) {
             Utils.checkNotNull(cpuLimit, "cpuLimit");
@@ -248,6 +257,7 @@ public class ResourceRequirements {
             return this;
         }
 
+
         public Builder cpuRequest(String cpuRequest) {
             Utils.checkNotNull(cpuRequest, "cpuRequest");
             this.cpuRequest = Optional.ofNullable(cpuRequest);
@@ -259,6 +269,7 @@ public class ResourceRequirements {
             this.cpuRequest = cpuRequest;
             return this;
         }
+
 
         public Builder ephemeralStorageLimit(String ephemeralStorageLimit) {
             Utils.checkNotNull(ephemeralStorageLimit, "ephemeralStorageLimit");
@@ -272,6 +283,7 @@ public class ResourceRequirements {
             return this;
         }
 
+
         public Builder ephemeralStorageRequest(String ephemeralStorageRequest) {
             Utils.checkNotNull(ephemeralStorageRequest, "ephemeralStorageRequest");
             this.ephemeralStorageRequest = Optional.ofNullable(ephemeralStorageRequest);
@@ -283,6 +295,7 @@ public class ResourceRequirements {
             this.ephemeralStorageRequest = ephemeralStorageRequest;
             return this;
         }
+
 
         public Builder memoryLimit(String memoryLimit) {
             Utils.checkNotNull(memoryLimit, "memoryLimit");
@@ -296,6 +309,7 @@ public class ResourceRequirements {
             return this;
         }
 
+
         public Builder memoryRequest(String memoryRequest) {
             Utils.checkNotNull(memoryRequest, "memoryRequest");
             this.memoryRequest = Optional.ofNullable(memoryRequest);
@@ -307,15 +321,13 @@ public class ResourceRequirements {
             this.memoryRequest = memoryRequest;
             return this;
         }
-        
+
         public ResourceRequirements build() {
+
             return new ResourceRequirements(
-                cpuLimit,
-                cpuRequest,
-                ephemeralStorageLimit,
-                ephemeralStorageRequest,
-                memoryLimit,
-                memoryRequest);
+                cpuLimit, cpuRequest, ephemeralStorageLimit,
+                ephemeralStorageRequest, memoryLimit, memoryRequest);
         }
+
     }
 }

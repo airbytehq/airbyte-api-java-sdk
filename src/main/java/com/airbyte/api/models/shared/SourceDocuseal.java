@@ -14,13 +14,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceDocuseal {
 
+public class SourceDocuseal {
     /**
-     * Your API key for authenticating with the DocuSeal API. Obtain it from the DocuSeal API Console at https://console.docuseal.com/api.
+     * Your API key for authenticating with the DocuSeal API. Obtain it from the DocuSeal API Console at
+     * https://console.docuseal.com/api.
      */
     @JsonProperty("api_key")
     private String apiKey;
@@ -32,8 +32,10 @@ public class SourceDocuseal {
     @JsonProperty("limit")
     private Optional<String> limit;
 
+
     @JsonProperty("sourceType")
     private Docuseal sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -59,7 +61,8 @@ public class SourceDocuseal {
     }
 
     /**
-     * Your API key for authenticating with the DocuSeal API. Obtain it from the DocuSeal API Console at https://console.docuseal.com/api.
+     * Your API key for authenticating with the DocuSeal API. Obtain it from the DocuSeal API Console at
+     * https://console.docuseal.com/api.
      */
     @JsonIgnore
     public String apiKey() {
@@ -84,12 +87,14 @@ public class SourceDocuseal {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Your API key for authenticating with the DocuSeal API. Obtain it from the DocuSeal API Console at https://console.docuseal.com/api.
+     * Your API key for authenticating with the DocuSeal API. Obtain it from the DocuSeal API Console at
+     * https://console.docuseal.com/api.
      */
     public SourceDocuseal withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -106,6 +111,7 @@ public class SourceDocuseal {
         return this;
     }
 
+
     /**
      * The pagination limit
      */
@@ -121,7 +127,6 @@ public class SourceDocuseal {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -132,18 +137,16 @@ public class SourceDocuseal {
         }
         SourceDocuseal other = (SourceDocuseal) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.limit, other.limit) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.limit, other.limit) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            limit,
-            sourceType,
+        return Utils.enhancedHash(
+            apiKey, limit, sourceType,
             startDate);
     }
     
@@ -155,27 +158,31 @@ public class SourceDocuseal {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> limit;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Your API key for authenticating with the DocuSeal API. Obtain it from the DocuSeal API Console at https://console.docuseal.com/api.
+         * Your API key for authenticating with the DocuSeal API. Obtain it from the DocuSeal API Console at
+         * https://console.docuseal.com/api.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * The pagination limit
@@ -195,21 +202,22 @@ public class SourceDocuseal {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceDocuseal build() {
             if (limit == null) {
                 limit = _SINGLETON_VALUE_Limit.value();
             }
+
             return new SourceDocuseal(
-                apiKey,
-                limit,
-                startDate);
+                apiKey, limit, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Limit =
                 new LazySingletonValue<>(

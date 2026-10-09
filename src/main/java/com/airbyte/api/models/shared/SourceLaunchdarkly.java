@@ -11,15 +11,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceLaunchdarkly {
-
     /**
-     * Your Access token. See &lt;a href="https://apidocs.launchdarkly.com/#section/Overview/Authentication"&gt;here&lt;/a&gt;.
+     * Your Access token. See <a
+     * href="https://apidocs.launchdarkly.com/#section/Overview/Authentication">here</a>.
      */
     @JsonProperty("access_token")
     private String accessToken;
+
 
     @JsonProperty("sourceType")
     private Launchdarkly sourceType;
@@ -33,7 +34,8 @@ public class SourceLaunchdarkly {
     }
 
     /**
-     * Your Access token. See &lt;a href="https://apidocs.launchdarkly.com/#section/Overview/Authentication"&gt;here&lt;/a&gt;.
+     * Your Access token. See <a
+     * href="https://apidocs.launchdarkly.com/#section/Overview/Authentication">here</a>.
      */
     @JsonIgnore
     public String accessToken() {
@@ -45,12 +47,14 @@ public class SourceLaunchdarkly {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Your Access token. See &lt;a href="https://apidocs.launchdarkly.com/#section/Overview/Authentication"&gt;here&lt;/a&gt;.
+     * Your Access token. See <a
+     * href="https://apidocs.launchdarkly.com/#section/Overview/Authentication">here</a>.
      */
     public SourceLaunchdarkly withAccessToken(String accessToken) {
         Utils.checkNotNull(accessToken, "accessToken");
@@ -58,7 +62,6 @@ public class SourceLaunchdarkly {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +72,14 @@ public class SourceLaunchdarkly {
         }
         SourceLaunchdarkly other = (SourceLaunchdarkly) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            sourceType);
+        return Utils.enhancedHash(
+            accessToken, sourceType);
     }
     
     @Override
@@ -86,28 +88,33 @@ public class SourceLaunchdarkly {
                 "accessToken", accessToken,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Your Access token. See &lt;a href="https://apidocs.launchdarkly.com/#section/Overview/Authentication"&gt;here&lt;/a&gt;.
+         * Your Access token. See <a
+         * href="https://apidocs.launchdarkly.com/#section/Overview/Authentication">here</a>.
          */
         public Builder accessToken(String accessToken) {
             Utils.checkNotNull(accessToken, "accessToken");
             this.accessToken = accessToken;
             return this;
         }
-        
+
         public SourceLaunchdarkly build() {
+
             return new SourceLaunchdarkly(
                 accessToken);
         }
+
 
         private static final LazySingletonValue<Launchdarkly> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

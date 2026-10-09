@@ -14,7 +14,7 @@ public enum ExchangeRates {
     @JsonValue
     private final String value;
 
-    private ExchangeRates(String value) {
+    ExchangeRates(String value) {
         this.value = value;
     }
     

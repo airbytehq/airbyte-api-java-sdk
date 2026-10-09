@@ -14,18 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceGoogleDriveFormat
  * 
- * <p>The configuration options that are used to alter how to read incoming files that deviate from the standard formatting.
+ * <p>The configuration options that are used to alter how to read incoming files that deviate from the
+ * standard formatting.
  */
 @JsonDeserialize(using = SourceGoogleDriveFormat._Deserializer.class)
 public class SourceGoogleDriveFormat {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceGoogleDriveFormat(TypedObject value) {
         this.value = value;
@@ -33,32 +33,32 @@ public class SourceGoogleDriveFormat {
 
     public static SourceGoogleDriveFormat of(SourceGoogleDriveAvroFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleDriveFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleDriveAvroFormat>(){}));
+        return new SourceGoogleDriveFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceGoogleDriveFormat of(SourceGoogleDriveCSVFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleDriveFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleDriveCSVFormat>(){}));
+        return new SourceGoogleDriveFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceGoogleDriveFormat of(SourceGoogleDriveJsonlFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleDriveFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleDriveJsonlFormat>(){}));
+        return new SourceGoogleDriveFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceGoogleDriveFormat of(SourceGoogleDriveParquetFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleDriveFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleDriveParquetFormat>(){}));
+        return new SourceGoogleDriveFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceGoogleDriveFormat of(SourceGoogleDriveUnstructuredDocumentFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleDriveFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleDriveUnstructuredDocumentFormat>(){}));
+        return new SourceGoogleDriveFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceGoogleDriveFormat of(SourceGoogleDriveExcelFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleDriveFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleDriveExcelFormat>(){}));
+        return new SourceGoogleDriveFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -85,7 +85,7 @@ public class SourceGoogleDriveFormat {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -96,12 +96,12 @@ public class SourceGoogleDriveFormat {
             return false;
         }
         SourceGoogleDriveFormat other = (SourceGoogleDriveFormat) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -109,12 +109,12 @@ public class SourceGoogleDriveFormat {
 
         public _Deserializer() {
             super(SourceGoogleDriveFormat.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleDriveCSVFormat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleDriveUnstructuredDocumentFormat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleDriveParquetFormat>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceGoogleDriveAvroFormat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleDriveExcelFormat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleDriveJsonlFormat>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleDriveCSVFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleDriveJsonlFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleDriveParquetFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleDriveUnstructuredDocumentFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleDriveExcelFormat>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -123,6 +123,6 @@ public class SourceGoogleDriveFormat {
         return Utils.toString(SourceGoogleDriveFormat.class,
                 "value", value);
     }
- 
+
 }
 

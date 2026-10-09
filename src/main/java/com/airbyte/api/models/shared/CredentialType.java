@@ -14,7 +14,7 @@ public enum CredentialType {
     @JsonValue
     private final String value;
 
-    private CredentialType(String value) {
+    CredentialType(String value) {
         this.value = value;
     }
     

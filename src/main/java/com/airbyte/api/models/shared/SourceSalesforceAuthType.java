@@ -14,7 +14,7 @@ public enum SourceSalesforceAuthType {
     @JsonValue
     private final String value;
 
-    private SourceSalesforceAuthType(String value) {
+    SourceSalesforceAuthType(String value) {
         this.value = value;
     }
     

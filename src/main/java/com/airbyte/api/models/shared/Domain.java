@@ -11,7 +11,8 @@ import java.util.Optional;
 /**
  * Domain
  * 
- * <p>The domain suffix for the Zoho Inventory API based on your data center location (e.g., 'com', 'eu', 'in', etc.)
+ * <p>The domain suffix for the Zoho Inventory API based on your data center location (e.g., 'com', 'eu',
+ * 'in', etc.)
  */
 public enum Domain {
     COM("com"),
@@ -26,7 +27,7 @@ public enum Domain {
     @JsonValue
     private final String value;
 
-    private Domain(String value) {
+    Domain(String value) {
         this.value = value;
     }
     

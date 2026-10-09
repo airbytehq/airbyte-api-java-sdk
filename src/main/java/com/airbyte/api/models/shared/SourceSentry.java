@@ -16,13 +16,14 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceSentry {
 
+public class SourceSentry {
     /**
-     * Log into Sentry and then &lt;a href="https://sentry.io/settings/account/api/auth-tokens/"&gt;create authentication tokens&lt;/a&gt;.For self-hosted, you can find or create authentication tokens by visiting "{instance_url_prefix}/settings/account/api/auth-tokens/"
+     * Log into Sentry and then <a href="https://sentry.io/settings/account/api/auth-tokens/">create
+     * authentication tokens</a>.For self-hosted, you can find or create authentication tokens by visiting
+     * "{instance_url_prefix}/settings/account/api/auth-tokens/"
      */
     @JsonProperty("auth_token")
     private String authToken;
@@ -35,7 +36,8 @@ public class SourceSentry {
     private Optional<? extends List<Object>> discoverFields;
 
     /**
-     * Host name of Sentry API server.For self-hosted, specify your host name here. Otherwise, leave it empty.
+     * Host name of Sentry API server.For self-hosted, specify your host name here. Otherwise, leave it
+     * empty.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("hostname")
@@ -52,6 +54,7 @@ public class SourceSentry {
      */
     @JsonProperty("project")
     private String project;
+
 
     @JsonProperty("sourceType")
     private Sentry sourceType;
@@ -80,11 +83,14 @@ public class SourceSentry {
             String authToken,
             String organization,
             String project) {
-        this(authToken, Optional.empty(), Optional.empty(), organization, project);
+        this(authToken, Optional.empty(), Optional.empty(),
+            organization, project);
     }
 
     /**
-     * Log into Sentry and then &lt;a href="https://sentry.io/settings/account/api/auth-tokens/"&gt;create authentication tokens&lt;/a&gt;.For self-hosted, you can find or create authentication tokens by visiting "{instance_url_prefix}/settings/account/api/auth-tokens/"
+     * Log into Sentry and then <a href="https://sentry.io/settings/account/api/auth-tokens/">create
+     * authentication tokens</a>.For self-hosted, you can find or create authentication tokens by visiting
+     * "{instance_url_prefix}/settings/account/api/auth-tokens/"
      */
     @JsonIgnore
     public String authToken() {
@@ -101,7 +107,8 @@ public class SourceSentry {
     }
 
     /**
-     * Host name of Sentry API server.For self-hosted, specify your host name here. Otherwise, leave it empty.
+     * Host name of Sentry API server.For self-hosted, specify your host name here. Otherwise, leave it
+     * empty.
      */
     @JsonIgnore
     public Optional<String> hostname() {
@@ -129,12 +136,15 @@ public class SourceSentry {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Log into Sentry and then &lt;a href="https://sentry.io/settings/account/api/auth-tokens/"&gt;create authentication tokens&lt;/a&gt;.For self-hosted, you can find or create authentication tokens by visiting "{instance_url_prefix}/settings/account/api/auth-tokens/"
+     * Log into Sentry and then <a href="https://sentry.io/settings/account/api/auth-tokens/">create
+     * authentication tokens</a>.For self-hosted, you can find or create authentication tokens by visiting
+     * "{instance_url_prefix}/settings/account/api/auth-tokens/"
      */
     public SourceSentry withAuthToken(String authToken) {
         Utils.checkNotNull(authToken, "authToken");
@@ -151,6 +161,7 @@ public class SourceSentry {
         return this;
     }
 
+
     /**
      * Fields to retrieve when fetching discover events
      */
@@ -161,7 +172,8 @@ public class SourceSentry {
     }
 
     /**
-     * Host name of Sentry API server.For self-hosted, specify your host name here. Otherwise, leave it empty.
+     * Host name of Sentry API server.For self-hosted, specify your host name here. Otherwise, leave it
+     * empty.
      */
     public SourceSentry withHostname(String hostname) {
         Utils.checkNotNull(hostname, "hostname");
@@ -169,8 +181,10 @@ public class SourceSentry {
         return this;
     }
 
+
     /**
-     * Host name of Sentry API server.For self-hosted, specify your host name here. Otherwise, leave it empty.
+     * Host name of Sentry API server.For self-hosted, specify your host name here. Otherwise, leave it
+     * empty.
      */
     public SourceSentry withHostname(Optional<String> hostname) {
         Utils.checkNotNull(hostname, "hostname");
@@ -196,7 +210,6 @@ public class SourceSentry {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -207,23 +220,19 @@ public class SourceSentry {
         }
         SourceSentry other = (SourceSentry) o;
         return 
-            Objects.deepEquals(this.authToken, other.authToken) &&
-            Objects.deepEquals(this.discoverFields, other.discoverFields) &&
-            Objects.deepEquals(this.hostname, other.hostname) &&
-            Objects.deepEquals(this.organization, other.organization) &&
-            Objects.deepEquals(this.project, other.project) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.authToken, other.authToken) &&
+            Utils.enhancedDeepEquals(this.discoverFields, other.discoverFields) &&
+            Utils.enhancedDeepEquals(this.hostname, other.hostname) &&
+            Utils.enhancedDeepEquals(this.organization, other.organization) &&
+            Utils.enhancedDeepEquals(this.project, other.project) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authToken,
-            discoverFields,
-            hostname,
-            organization,
-            project,
-            sourceType);
+        return Utils.enhancedHash(
+            authToken, discoverFields, hostname,
+            organization, project, sourceType);
     }
     
     @Override
@@ -236,31 +245,36 @@ public class SourceSentry {
                 "project", project,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String authToken;
- 
+
         private Optional<? extends List<Object>> discoverFields = Optional.empty();
- 
+
         private Optional<String> hostname;
- 
+
         private String organization;
- 
+
         private String project;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Log into Sentry and then &lt;a href="https://sentry.io/settings/account/api/auth-tokens/"&gt;create authentication tokens&lt;/a&gt;.For self-hosted, you can find or create authentication tokens by visiting "{instance_url_prefix}/settings/account/api/auth-tokens/"
+         * Log into Sentry and then <a href="https://sentry.io/settings/account/api/auth-tokens/">create
+         * authentication tokens</a>.For self-hosted, you can find or create authentication tokens by visiting
+         * "{instance_url_prefix}/settings/account/api/auth-tokens/"
          */
         public Builder authToken(String authToken) {
             Utils.checkNotNull(authToken, "authToken");
             this.authToken = authToken;
             return this;
         }
+
 
         /**
          * Fields to retrieve when fetching discover events
@@ -280,8 +294,10 @@ public class SourceSentry {
             return this;
         }
 
+
         /**
-         * Host name of Sentry API server.For self-hosted, specify your host name here. Otherwise, leave it empty.
+         * Host name of Sentry API server.For self-hosted, specify your host name here. Otherwise, leave it
+         * empty.
          */
         public Builder hostname(String hostname) {
             Utils.checkNotNull(hostname, "hostname");
@@ -290,13 +306,15 @@ public class SourceSentry {
         }
 
         /**
-         * Host name of Sentry API server.For self-hosted, specify your host name here. Otherwise, leave it empty.
+         * Host name of Sentry API server.For self-hosted, specify your host name here. Otherwise, leave it
+         * empty.
          */
         public Builder hostname(Optional<String> hostname) {
             Utils.checkNotNull(hostname, "hostname");
             this.hostname = hostname;
             return this;
         }
+
 
         /**
          * The slug of the organization the groups belong to.
@@ -307,6 +325,7 @@ public class SourceSentry {
             return this;
         }
 
+
         /**
          * The name (slug) of the Project you want to sync.
          */
@@ -315,18 +334,17 @@ public class SourceSentry {
             this.project = project;
             return this;
         }
-        
+
         public SourceSentry build() {
             if (hostname == null) {
                 hostname = _SINGLETON_VALUE_Hostname.value();
             }
+
             return new SourceSentry(
-                authToken,
-                discoverFields,
-                hostname,
-                organization,
-                project);
+                authToken, discoverFields, hostname,
+                organization, project);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Hostname =
                 new LazySingletonValue<>(

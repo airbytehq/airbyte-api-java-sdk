@@ -15,7 +15,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -26,7 +25,6 @@ import java.util.Optional;
  * legacy GCS configs into file based configs using the File-Based CDK.
  */
 public class SourceGcs {
-
     /**
      * Name of the GCS bucket where the file(s) exist.
      */
@@ -39,18 +37,23 @@ public class SourceGcs {
     @JsonProperty("credentials")
     private SourceGcsAuthentication credentials;
 
+
     @JsonProperty("sourceType")
     private SourceGcsGcs sourceType;
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will
+     * not be replicated.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
     private Optional<OffsetDateTime> startDate;
 
     /**
-     * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
+     * Each instance of this configuration defines a <a
+     * href="https://docs.airbyte.com/cloud/core-concepts#stream">stream</a>. Use this to define which
+     * files belong in the stream, their format, and how they should be parsed and validated. When sending
+     * data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
      */
     @JsonProperty("streams")
     private List<SourceGcsFileBasedStreamConfig> streams;
@@ -76,7 +79,8 @@ public class SourceGcs {
             String bucket,
             SourceGcsAuthentication credentials,
             List<SourceGcsFileBasedStreamConfig> streams) {
-        this(bucket, credentials, Optional.empty(), streams);
+        this(bucket, credentials, Optional.empty(),
+            streams);
     }
 
     /**
@@ -101,7 +105,8 @@ public class SourceGcs {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will
+     * not be replicated.
      */
     @JsonIgnore
     public Optional<OffsetDateTime> startDate() {
@@ -109,16 +114,20 @@ public class SourceGcs {
     }
 
     /**
-     * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
+     * Each instance of this configuration defines a <a
+     * href="https://docs.airbyte.com/cloud/core-concepts#stream">stream</a>. Use this to define which
+     * files belong in the stream, their format, and how they should be parsed and validated. When sending
+     * data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
      */
     @JsonIgnore
     public List<SourceGcsFileBasedStreamConfig> streams() {
         return streams;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Name of the GCS bucket where the file(s) exist.
@@ -139,7 +148,8 @@ public class SourceGcs {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will
+     * not be replicated.
      */
     public SourceGcs withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -147,8 +157,10 @@ public class SourceGcs {
         return this;
     }
 
+
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will
+     * not be replicated.
      */
     public SourceGcs withStartDate(Optional<OffsetDateTime> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -157,7 +169,10 @@ public class SourceGcs {
     }
 
     /**
-     * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
+     * Each instance of this configuration defines a <a
+     * href="https://docs.airbyte.com/cloud/core-concepts#stream">stream</a>. Use this to define which
+     * files belong in the stream, their format, and how they should be parsed and validated. When sending
+     * data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
      */
     public SourceGcs withStreams(List<SourceGcsFileBasedStreamConfig> streams) {
         Utils.checkNotNull(streams, "streams");
@@ -165,7 +180,6 @@ public class SourceGcs {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -176,21 +190,18 @@ public class SourceGcs {
         }
         SourceGcs other = (SourceGcs) o;
         return 
-            Objects.deepEquals(this.bucket, other.bucket) &&
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.streams, other.streams);
+            Utils.enhancedDeepEquals(this.bucket, other.bucket) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.streams, other.streams);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            bucket,
-            credentials,
-            sourceType,
-            startDate,
-            streams);
+        return Utils.enhancedHash(
+            bucket, credentials, sourceType,
+            startDate, streams);
     }
     
     @Override
@@ -202,20 +213,22 @@ public class SourceGcs {
                 "startDate", startDate,
                 "streams", streams);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String bucket;
- 
+
         private SourceGcsAuthentication credentials;
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
- 
+
         private List<SourceGcsFileBasedStreamConfig> streams;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Name of the GCS bucket where the file(s) exist.
@@ -226,6 +239,7 @@ public class SourceGcs {
             return this;
         }
 
+
         /**
          * Credentials for connecting to the Google Cloud Storage API
          */
@@ -235,8 +249,10 @@ public class SourceGcs {
             return this;
         }
 
+
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will
+         * not be replicated.
          */
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -245,7 +261,8 @@ public class SourceGcs {
         }
 
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will
+         * not be replicated.
          */
         public Builder startDate(Optional<OffsetDateTime> startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -253,22 +270,26 @@ public class SourceGcs {
             return this;
         }
 
+
         /**
-         * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
+         * Each instance of this configuration defines a <a
+         * href="https://docs.airbyte.com/cloud/core-concepts#stream">stream</a>. Use this to define which
+         * files belong in the stream, their format, and how they should be parsed and validated. When sending
+         * data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
          */
         public Builder streams(List<SourceGcsFileBasedStreamConfig> streams) {
             Utils.checkNotNull(streams, "streams");
             this.streams = streams;
             return this;
         }
-        
+
         public SourceGcs build() {
+
             return new SourceGcs(
-                bucket,
-                credentials,
-                startDate,
+                bucket, credentials, startDate,
                 streams);
         }
+
 
         private static final LazySingletonValue<SourceGcsGcs> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

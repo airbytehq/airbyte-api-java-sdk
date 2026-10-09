@@ -20,7 +20,7 @@ public enum SourceMixpanelRegion {
     @JsonValue
     private final String value;
 
-    private SourceMixpanelRegion(String value) {
+    SourceMixpanelRegion(String value) {
         this.value = value;
     }
     

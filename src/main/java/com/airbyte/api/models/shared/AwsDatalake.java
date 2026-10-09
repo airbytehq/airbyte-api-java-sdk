@@ -14,7 +14,7 @@ public enum AwsDatalake {
     @JsonValue
     private final String value;
 
-    private AwsDatalake(String value) {
+    AwsDatalake(String value) {
         this.value = value;
     }
     

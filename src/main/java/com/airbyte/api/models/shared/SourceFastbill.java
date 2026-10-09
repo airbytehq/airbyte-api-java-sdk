@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceFastbill {
-
     /**
      * Fastbill API key
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Fastbill sourceType;
@@ -62,9 +62,10 @@ public class SourceFastbill {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Fastbill API key
@@ -84,7 +85,6 @@ public class SourceFastbill {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourceFastbill {
         }
         SourceFastbill other = (SourceFastbill) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            username);
+        return Utils.enhancedHash(
+            apiKey, sourceType, username);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SourceFastbill {
                 "sourceType", sourceType,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Fastbill API key
@@ -135,6 +135,7 @@ public class SourceFastbill {
             return this;
         }
 
+
         /**
          * Username for Fastbill account
          */
@@ -143,12 +144,13 @@ public class SourceFastbill {
             this.username = username;
             return this;
         }
-        
+
         public SourceFastbill build() {
+
             return new SourceFastbill(
-                apiKey,
-                username);
+                apiKey, username);
         }
+
 
         private static final LazySingletonValue<Fastbill> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

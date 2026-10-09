@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationMilvusAuthentication
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class DestinationMilvusAuthentication {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationMilvusAuthentication(TypedObject value) {
         this.value = value;
@@ -33,17 +32,17 @@ public class DestinationMilvusAuthentication {
 
     public static DestinationMilvusAuthentication of(DestinationMilvusAPIToken value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationMilvusAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationMilvusAPIToken>(){}));
+        return new DestinationMilvusAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationMilvusAuthentication of(DestinationMilvusUsernamePassword value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationMilvusAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationMilvusUsernamePassword>(){}));
+        return new DestinationMilvusAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationMilvusAuthentication of(NoAuth value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationMilvusAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<NoAuth>(){}));
+        return new DestinationMilvusAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +66,7 @@ public class DestinationMilvusAuthentication {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +77,12 @@ public class DestinationMilvusAuthentication {
             return false;
         }
         DestinationMilvusAuthentication other = (DestinationMilvusAuthentication) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -91,8 +90,8 @@ public class DestinationMilvusAuthentication {
 
         public _Deserializer() {
             super(DestinationMilvusAuthentication.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DestinationMilvusUsernamePassword>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationMilvusAPIToken>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationMilvusUsernamePassword>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<NoAuth>() {}, JsonShape.DEFAULT));
         }
     }
@@ -102,6 +101,6 @@ public class DestinationMilvusAuthentication {
         return Utils.toString(DestinationMilvusAuthentication.class,
                 "value", value);
     }
- 
+
 }
 

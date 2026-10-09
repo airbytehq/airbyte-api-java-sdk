@@ -1,3 +1,7 @@
+**/.speakeasy/temp/
+**/.speakeasy/logs/
+.env
+.env.local
 .speakeasy/reports
 # Ignore IDE-specific configs
 .project

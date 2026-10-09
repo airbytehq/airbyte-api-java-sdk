@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -30,7 +29,6 @@ public class Disable {
 
     @JsonCreator
     public Disable() {
-        
         this.mode = Builder._SINGLETON_VALUE_Mode.value();
     }
 
@@ -40,11 +38,11 @@ public class Disable {
         return (Optional<DestinationPostgresMode>) mode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -55,12 +53,12 @@ public class Disable {
         }
         Disable other = (Disable) o;
         return 
-            Objects.deepEquals(this.mode, other.mode);
+            Utils.enhancedDeepEquals(this.mode, other.mode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             mode);
     }
     
@@ -69,17 +67,20 @@ public class Disable {
         return Utils.toString(Disable.class,
                 "mode", mode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public Disable build() {
+
             return new Disable(
                 );
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationPostgresMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

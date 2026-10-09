@@ -1,8 +1,16 @@
 # Snowflake
 
+## Example Usage
 
-## Fields
+```java
+import com.airbyte.api.models.shared.Snowflake;
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `credentials`                                                                  | [Optional\<SnowflakeCredentials>](../../models/shared/SnowflakeCredentials.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
+Snowflake value = Snowflake.SNOWFLAKE;
+```
+
+
+## Values
+
+| Name        | Value       |
+| ----------- | ----------- |
+| `SNOWFLAKE` | snowflake   |

@@ -14,13 +14,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = SourceTrustpilotAuthorizationMethod._Deserializer.class)
 public class SourceTrustpilotAuthorizationMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceTrustpilotAuthorizationMethod(TypedObject value) {
         this.value = value;
@@ -28,12 +27,12 @@ public class SourceTrustpilotAuthorizationMethod {
 
     public static SourceTrustpilotAuthorizationMethod of(SourceTrustpilotOAuth20 value) {
         Utils.checkNotNull(value, "value");
-        return new SourceTrustpilotAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTrustpilotOAuth20>(){}));
+        return new SourceTrustpilotAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceTrustpilotAuthorizationMethod of(SourceTrustpilotAPIKey value) {
         Utils.checkNotNull(value, "value");
-        return new SourceTrustpilotAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTrustpilotAPIKey>(){}));
+        return new SourceTrustpilotAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -56,7 +55,7 @@ public class SourceTrustpilotAuthorizationMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -67,12 +66,12 @@ public class SourceTrustpilotAuthorizationMethod {
             return false;
         }
         SourceTrustpilotAuthorizationMethod other = (SourceTrustpilotAuthorizationMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -90,6 +89,6 @@ public class SourceTrustpilotAuthorizationMethod {
         return Utils.toString(SourceTrustpilotAuthorizationMethod.class,
                 "value", value);
     }
- 
+
 }
 

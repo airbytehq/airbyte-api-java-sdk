@@ -3,16 +3,21 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
+import com.airbyte.api.operations.DeletePermission;
+import com.airbyte.api.utils.Headers;
 import com.airbyte.api.utils.Utils;
-import java.lang.Exception;
 
 public class DeletePermissionRequestBuilder {
 
     private DeletePermissionRequest request;
-    private final SDKMethodInterfaces.MethodCallDeletePermission sdk;
+    private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
-    public DeletePermissionRequestBuilder(SDKMethodInterfaces.MethodCallDeletePermission sdk) {
-        this.sdk = sdk;
+    public DeletePermissionRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public DeletePermissionRequestBuilder request(DeletePermissionRequest request) {
@@ -21,9 +26,11 @@ public class DeletePermissionRequestBuilder {
         return this;
     }
 
-    public DeletePermissionResponse call() throws Exception {
+    public DeletePermissionResponse call() {
+        
+        RequestOperation<DeletePermissionRequest, DeletePermissionResponse> operation
+              = new DeletePermission.Sync(sdkConfiguration, _headers);
 
-        return sdk.deletePermission(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

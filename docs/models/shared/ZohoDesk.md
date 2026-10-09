@@ -1,5 +1,13 @@
 # ZohoDesk
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.ZohoDesk;
+
+ZohoDesk value = ZohoDesk.ZOHO_DESK;
+```
+
 
 ## Values
 

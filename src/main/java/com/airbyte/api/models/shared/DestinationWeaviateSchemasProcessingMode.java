@@ -14,7 +14,7 @@ public enum DestinationWeaviateSchemasProcessingMode {
     @JsonValue
     private final String value;
 
-    private DestinationWeaviateSchemasProcessingMode(String value) {
+    DestinationWeaviateSchemasProcessingMode(String value) {
         this.value = value;
     }
     

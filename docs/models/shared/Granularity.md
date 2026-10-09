@@ -2,6 +2,14 @@
 
 Chosen granularity for API
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.Granularity;
+
+Granularity value = Granularity.TOTAL;
+```
+
 
 ## Values
 

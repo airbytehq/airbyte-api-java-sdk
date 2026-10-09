@@ -14,7 +14,7 @@ public enum WasabiStatsApi {
     @JsonValue
     private final String value;
 
-    private WasabiStatsApi(String value) {
+    WasabiStatsApi(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum Wrike {
     @JsonValue
     private final String value;
 
-    private Wrike(String value) {
+    Wrike(String value) {
         this.value = value;
     }
     

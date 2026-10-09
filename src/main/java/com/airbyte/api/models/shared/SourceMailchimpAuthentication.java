@@ -14,13 +14,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = SourceMailchimpAuthentication._Deserializer.class)
 public class SourceMailchimpAuthentication {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceMailchimpAuthentication(TypedObject value) {
         this.value = value;
@@ -28,19 +27,19 @@ public class SourceMailchimpAuthentication {
 
     public static SourceMailchimpAuthentication of(SourceMailchimpOAuth20 value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMailchimpAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMailchimpOAuth20>(){}));
+        return new SourceMailchimpAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
-    public static SourceMailchimpAuthentication of(APIKey value) {
+    public static SourceMailchimpAuthentication of(SourceMailchimpAPIKey value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMailchimpAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<APIKey>(){}));
+        return new SourceMailchimpAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
      * <li>{@code com.airbyte.api.models.shared.SourceMailchimpOAuth20}</li>
-     * <li>{@code com.airbyte.api.models.shared.APIKey}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceMailchimpAPIKey}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -56,7 +55,7 @@ public class SourceMailchimpAuthentication {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -67,12 +66,12 @@ public class SourceMailchimpAuthentication {
             return false;
         }
         SourceMailchimpAuthentication other = (SourceMailchimpAuthentication) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -81,7 +80,7 @@ public class SourceMailchimpAuthentication {
         public _Deserializer() {
             super(SourceMailchimpAuthentication.class, false,
                   TypeReferenceWithShape.of(new TypeReference<SourceMailchimpOAuth20>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<APIKey>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceMailchimpAPIKey>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -90,6 +89,6 @@ public class SourceMailchimpAuthentication {
         return Utils.toString(SourceMailchimpAuthentication.class,
                 "value", value);
     }
- 
+
 }
 

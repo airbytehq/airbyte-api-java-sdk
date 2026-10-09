@@ -14,7 +14,7 @@ public enum CastorEdc {
     @JsonValue
     private final String value;
 
-    private CastorEdc(String value) {
+    CastorEdc(String value) {
         this.value = value;
     }
     

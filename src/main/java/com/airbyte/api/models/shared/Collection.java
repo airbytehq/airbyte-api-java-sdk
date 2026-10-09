@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -23,20 +22,23 @@ import java.util.Optional;
  * <p>Settings for the Fauna Collection.
  */
 public class Collection {
-
     /**
-     * &lt;b&gt;This only applies to incremental syncs.&lt;/b&gt; &lt;br&gt;
-     * Enabling deletion mode informs your destination of deleted documents.&lt;br&gt;
-     * Disabled - Leave this feature disabled, and ignore deleted documents.&lt;br&gt;
-     * Enabled - Enables this feature. When a document is deleted, the connector exports a record with a "deleted at" column containing the time that the document was deleted.
+     * <b>This only applies to incremental syncs.</b> <br>
+     * Enabling deletion mode informs your destination of deleted documents.<br>
+     * Disabled - Leave this feature disabled, and ignore deleted documents.<br>
+     * Enabled - Enables this feature. When a document is deleted, the connector exports a record with a
+     * "deleted at" column containing the time that the document was deleted.
      */
     @JsonProperty("deletions")
     private DeletionMode deletions;
 
     /**
-     * The page size used when reading documents from the database. The larger the page size, the faster the connector processes documents. However, if a page is too large, the connector may fail. &lt;br&gt;
-     * Choose your page size based on how large the documents are. &lt;br&gt;
-     * See &lt;a href="https://docs.fauna.com/fauna/current/learn/understanding/types#page"&gt;the docs&lt;/a&gt;.
+     * The page size used when reading documents from the database. The larger the page size, the faster
+     * the connector processes documents. However, if a page is too large, the connector may fail.
+     * 
+     * <p><br>
+     * Choose your page size based on how large the documents are. <br>
+     * See <a href="https://docs.fauna.com/fauna/current/learn/understanding/types#page">the docs</a>.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("page_size")
@@ -58,10 +60,11 @@ public class Collection {
     }
 
     /**
-     * &lt;b&gt;This only applies to incremental syncs.&lt;/b&gt; &lt;br&gt;
-     * Enabling deletion mode informs your destination of deleted documents.&lt;br&gt;
-     * Disabled - Leave this feature disabled, and ignore deleted documents.&lt;br&gt;
-     * Enabled - Enables this feature. When a document is deleted, the connector exports a record with a "deleted at" column containing the time that the document was deleted.
+     * <b>This only applies to incremental syncs.</b> <br>
+     * Enabling deletion mode informs your destination of deleted documents.<br>
+     * Disabled - Leave this feature disabled, and ignore deleted documents.<br>
+     * Enabled - Enables this feature. When a document is deleted, the connector exports a record with a
+     * "deleted at" column containing the time that the document was deleted.
      */
     @JsonIgnore
     public DeletionMode deletions() {
@@ -69,24 +72,29 @@ public class Collection {
     }
 
     /**
-     * The page size used when reading documents from the database. The larger the page size, the faster the connector processes documents. However, if a page is too large, the connector may fail. &lt;br&gt;
-     * Choose your page size based on how large the documents are. &lt;br&gt;
-     * See &lt;a href="https://docs.fauna.com/fauna/current/learn/understanding/types#page"&gt;the docs&lt;/a&gt;.
+     * The page size used when reading documents from the database. The larger the page size, the faster
+     * the connector processes documents. However, if a page is too large, the connector may fail.
+     * 
+     * <p><br>
+     * Choose your page size based on how large the documents are. <br>
+     * See <a href="https://docs.fauna.com/fauna/current/learn/understanding/types#page">the docs</a>.
      */
     @JsonIgnore
     public Optional<Long> pageSize() {
         return pageSize;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * &lt;b&gt;This only applies to incremental syncs.&lt;/b&gt; &lt;br&gt;
-     * Enabling deletion mode informs your destination of deleted documents.&lt;br&gt;
-     * Disabled - Leave this feature disabled, and ignore deleted documents.&lt;br&gt;
-     * Enabled - Enables this feature. When a document is deleted, the connector exports a record with a "deleted at" column containing the time that the document was deleted.
+     * <b>This only applies to incremental syncs.</b> <br>
+     * Enabling deletion mode informs your destination of deleted documents.<br>
+     * Disabled - Leave this feature disabled, and ignore deleted documents.<br>
+     * Enabled - Enables this feature. When a document is deleted, the connector exports a record with a
+     * "deleted at" column containing the time that the document was deleted.
      */
     public Collection withDeletions(DeletionMode deletions) {
         Utils.checkNotNull(deletions, "deletions");
@@ -95,9 +103,12 @@ public class Collection {
     }
 
     /**
-     * The page size used when reading documents from the database. The larger the page size, the faster the connector processes documents. However, if a page is too large, the connector may fail. &lt;br&gt;
-     * Choose your page size based on how large the documents are. &lt;br&gt;
-     * See &lt;a href="https://docs.fauna.com/fauna/current/learn/understanding/types#page"&gt;the docs&lt;/a&gt;.
+     * The page size used when reading documents from the database. The larger the page size, the faster
+     * the connector processes documents. However, if a page is too large, the connector may fail.
+     * 
+     * <p><br>
+     * Choose your page size based on how large the documents are. <br>
+     * See <a href="https://docs.fauna.com/fauna/current/learn/understanding/types#page">the docs</a>.
      */
     public Collection withPageSize(long pageSize) {
         Utils.checkNotNull(pageSize, "pageSize");
@@ -105,10 +116,14 @@ public class Collection {
         return this;
     }
 
+
     /**
-     * The page size used when reading documents from the database. The larger the page size, the faster the connector processes documents. However, if a page is too large, the connector may fail. &lt;br&gt;
-     * Choose your page size based on how large the documents are. &lt;br&gt;
-     * See &lt;a href="https://docs.fauna.com/fauna/current/learn/understanding/types#page"&gt;the docs&lt;/a&gt;.
+     * The page size used when reading documents from the database. The larger the page size, the faster
+     * the connector processes documents. However, if a page is too large, the connector may fail.
+     * 
+     * <p><br>
+     * Choose your page size based on how large the documents are. <br>
+     * See <a href="https://docs.fauna.com/fauna/current/learn/understanding/types#page">the docs</a>.
      */
     public Collection withPageSize(Optional<Long> pageSize) {
         Utils.checkNotNull(pageSize, "pageSize");
@@ -116,7 +131,6 @@ public class Collection {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -127,15 +141,14 @@ public class Collection {
         }
         Collection other = (Collection) o;
         return 
-            Objects.deepEquals(this.deletions, other.deletions) &&
-            Objects.deepEquals(this.pageSize, other.pageSize);
+            Utils.enhancedDeepEquals(this.deletions, other.deletions) &&
+            Utils.enhancedDeepEquals(this.pageSize, other.pageSize);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            deletions,
-            pageSize);
+        return Utils.enhancedHash(
+            deletions, pageSize);
     }
     
     @Override
@@ -144,22 +157,25 @@ public class Collection {
                 "deletions", deletions,
                 "pageSize", pageSize);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private DeletionMode deletions;
- 
+
         private Optional<Long> pageSize;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * &lt;b&gt;This only applies to incremental syncs.&lt;/b&gt; &lt;br&gt;
-         * Enabling deletion mode informs your destination of deleted documents.&lt;br&gt;
-         * Disabled - Leave this feature disabled, and ignore deleted documents.&lt;br&gt;
-         * Enabled - Enables this feature. When a document is deleted, the connector exports a record with a "deleted at" column containing the time that the document was deleted.
+         * <b>This only applies to incremental syncs.</b> <br>
+         * Enabling deletion mode informs your destination of deleted documents.<br>
+         * Disabled - Leave this feature disabled, and ignore deleted documents.<br>
+         * Enabled - Enables this feature. When a document is deleted, the connector exports a record with a
+         * "deleted at" column containing the time that the document was deleted.
          */
         public Builder deletions(DeletionMode deletions) {
             Utils.checkNotNull(deletions, "deletions");
@@ -167,10 +183,14 @@ public class Collection {
             return this;
         }
 
+
         /**
-         * The page size used when reading documents from the database. The larger the page size, the faster the connector processes documents. However, if a page is too large, the connector may fail. &lt;br&gt;
-         * Choose your page size based on how large the documents are. &lt;br&gt;
-         * See &lt;a href="https://docs.fauna.com/fauna/current/learn/understanding/types#page"&gt;the docs&lt;/a&gt;.
+         * The page size used when reading documents from the database. The larger the page size, the faster
+         * the connector processes documents. However, if a page is too large, the connector may fail.
+         * 
+         * <p><br>
+         * Choose your page size based on how large the documents are. <br>
+         * See <a href="https://docs.fauna.com/fauna/current/learn/understanding/types#page">the docs</a>.
          */
         public Builder pageSize(long pageSize) {
             Utils.checkNotNull(pageSize, "pageSize");
@@ -179,24 +199,28 @@ public class Collection {
         }
 
         /**
-         * The page size used when reading documents from the database. The larger the page size, the faster the connector processes documents. However, if a page is too large, the connector may fail. &lt;br&gt;
-         * Choose your page size based on how large the documents are. &lt;br&gt;
-         * See &lt;a href="https://docs.fauna.com/fauna/current/learn/understanding/types#page"&gt;the docs&lt;/a&gt;.
+         * The page size used when reading documents from the database. The larger the page size, the faster
+         * the connector processes documents. However, if a page is too large, the connector may fail.
+         * 
+         * <p><br>
+         * Choose your page size based on how large the documents are. <br>
+         * See <a href="https://docs.fauna.com/fauna/current/learn/understanding/types#page">the docs</a>.
          */
         public Builder pageSize(Optional<Long> pageSize) {
             Utils.checkNotNull(pageSize, "pageSize");
             this.pageSize = pageSize;
             return this;
         }
-        
+
         public Collection build() {
             if (pageSize == null) {
                 pageSize = _SINGLETON_VALUE_PageSize.value();
             }
+
             return new Collection(
-                deletions,
-                pageSize);
+                deletions, pageSize);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_PageSize =
                 new LazySingletonValue<>(

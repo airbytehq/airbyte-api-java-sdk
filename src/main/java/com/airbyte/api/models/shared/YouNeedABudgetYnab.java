@@ -14,7 +14,7 @@ public enum YouNeedABudgetYnab {
     @JsonValue
     private final String value;
 
-    private YouNeedABudgetYnab(String value) {
+    YouNeedABudgetYnab(String value) {
         this.value = value;
     }
     

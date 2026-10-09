@@ -12,7 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -21,7 +20,6 @@ import java.util.Optional;
  * <p>Optional settings for a cohort report.
  */
 public class CohortReportSettings {
-
     /**
      * If true, accumulates the result from first touch day to the end day
      */
@@ -48,9 +46,10 @@ public class CohortReportSettings {
         return accumulate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * If true, accumulates the result from first touch day to the end day
@@ -61,6 +60,7 @@ public class CohortReportSettings {
         return this;
     }
 
+
     /**
      * If true, accumulates the result from first touch day to the end day
      */
@@ -70,7 +70,6 @@ public class CohortReportSettings {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -81,12 +80,12 @@ public class CohortReportSettings {
         }
         CohortReportSettings other = (CohortReportSettings) o;
         return 
-            Objects.deepEquals(this.accumulate, other.accumulate);
+            Utils.enhancedDeepEquals(this.accumulate, other.accumulate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             accumulate);
     }
     
@@ -95,14 +94,16 @@ public class CohortReportSettings {
         return Utils.toString(CohortReportSettings.class,
                 "accumulate", accumulate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> accumulate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * If true, accumulates the result from first touch day to the end day
@@ -121,10 +122,12 @@ public class CohortReportSettings {
             this.accumulate = accumulate;
             return this;
         }
-        
+
         public CohortReportSettings build() {
+
             return new CohortReportSettings(
                 accumulate);
         }
+
     }
 }

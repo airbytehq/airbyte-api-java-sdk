@@ -14,7 +14,7 @@ public enum Looker {
     @JsonValue
     private final String value;
 
-    private Looker(String value) {
+    Looker(String value) {
         this.value = value;
     }
     

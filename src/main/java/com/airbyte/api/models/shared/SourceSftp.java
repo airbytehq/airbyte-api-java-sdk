@@ -15,11 +15,10 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceSftp {
 
+public class SourceSftp {
     /**
      * The server authentication method
      */
@@ -61,6 +60,7 @@ public class SourceSftp {
     @JsonProperty("port")
     private Optional<Long> port;
 
+
     @JsonProperty("sourceType")
     private Sftp sourceType;
 
@@ -99,7 +99,9 @@ public class SourceSftp {
     public SourceSftp(
             String host,
             String user) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), host, Optional.empty(), user);
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), host, Optional.empty(),
+            user);
     }
 
     /**
@@ -164,9 +166,10 @@ public class SourceSftp {
         return user;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The server authentication method
@@ -176,6 +179,7 @@ public class SourceSftp {
         this.credentials = Optional.ofNullable(credentials);
         return this;
     }
+
 
     /**
      * The server authentication method
@@ -195,6 +199,7 @@ public class SourceSftp {
         return this;
     }
 
+
     /**
      * The regular expression to specify files for sync in a chosen Folder Path
      */
@@ -213,6 +218,7 @@ public class SourceSftp {
         return this;
     }
 
+
     /**
      * Coma separated file types. Currently only 'csv' and 'json' types are supported.
      */
@@ -230,6 +236,7 @@ public class SourceSftp {
         this.folderPath = Optional.ofNullable(folderPath);
         return this;
     }
+
 
     /**
      * The directory to search files for sync
@@ -258,6 +265,7 @@ public class SourceSftp {
         return this;
     }
 
+
     /**
      * The server port
      */
@@ -276,7 +284,6 @@ public class SourceSftp {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -287,27 +294,22 @@ public class SourceSftp {
         }
         SourceSftp other = (SourceSftp) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.filePattern, other.filePattern) &&
-            Objects.deepEquals(this.fileTypes, other.fileTypes) &&
-            Objects.deepEquals(this.folderPath, other.folderPath) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.user, other.user);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.filePattern, other.filePattern) &&
+            Utils.enhancedDeepEquals(this.fileTypes, other.fileTypes) &&
+            Utils.enhancedDeepEquals(this.folderPath, other.folderPath) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.user, other.user);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            filePattern,
-            fileTypes,
-            folderPath,
-            host,
-            port,
-            sourceType,
-            user);
+        return Utils.enhancedHash(
+            credentials, filePattern, fileTypes,
+            folderPath, host, port,
+            sourceType, user);
     }
     
     @Override
@@ -322,26 +324,28 @@ public class SourceSftp {
                 "sourceType", sourceType,
                 "user", user);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourceSftpAuthentication> credentials = Optional.empty();
- 
+
         private Optional<String> filePattern;
- 
+
         private Optional<String> fileTypes;
- 
+
         private Optional<String> folderPath;
- 
+
         private String host;
- 
+
         private Optional<Long> port;
- 
+
         private String user;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The server authentication method
@@ -361,6 +365,7 @@ public class SourceSftp {
             return this;
         }
 
+
         /**
          * The regular expression to specify files for sync in a chosen Folder Path
          */
@@ -378,6 +383,7 @@ public class SourceSftp {
             this.filePattern = filePattern;
             return this;
         }
+
 
         /**
          * Coma separated file types. Currently only 'csv' and 'json' types are supported.
@@ -397,6 +403,7 @@ public class SourceSftp {
             return this;
         }
 
+
         /**
          * The directory to search files for sync
          */
@@ -415,6 +422,7 @@ public class SourceSftp {
             return this;
         }
 
+
         /**
          * The server host address
          */
@@ -423,6 +431,7 @@ public class SourceSftp {
             this.host = host;
             return this;
         }
+
 
         /**
          * The server port
@@ -442,6 +451,7 @@ public class SourceSftp {
             return this;
         }
 
+
         /**
          * The server user
          */
@@ -450,7 +460,7 @@ public class SourceSftp {
             this.user = user;
             return this;
         }
-        
+
         public SourceSftp build() {
             if (filePattern == null) {
                 filePattern = _SINGLETON_VALUE_FilePattern.value();
@@ -464,15 +474,13 @@ public class SourceSftp {
             if (port == null) {
                 port = _SINGLETON_VALUE_Port.value();
             }
+
             return new SourceSftp(
-                credentials,
-                filePattern,
-                fileTypes,
-                folderPath,
-                host,
-                port,
+                credentials, filePattern, fileTypes,
+                folderPath, host, port,
                 user);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_FilePattern =
                 new LazySingletonValue<>(

@@ -12,18 +12,21 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Double;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceBox {
 
     @JsonProperty("client_id")
     private String clientId;
 
+
     @JsonProperty("client_secret")
     private String clientSecret;
 
+
     @JsonProperty("sourceType")
     private Box sourceType;
+
 
     @JsonProperty("user")
     private double user;
@@ -62,9 +65,10 @@ public class SourceBox {
         return user;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceBox withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -84,7 +88,6 @@ public class SourceBox {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,18 +98,16 @@ public class SourceBox {
         }
         SourceBox other = (SourceBox) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.user, other.user);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.user, other.user);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            sourceType,
+        return Utils.enhancedHash(
+            clientId, clientSecret, sourceType,
             user);
     }
     
@@ -118,18 +119,20 @@ public class SourceBox {
                 "sourceType", sourceType,
                 "user", user);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private Double user;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -137,24 +140,26 @@ public class SourceBox {
             return this;
         }
 
+
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
 
+
         public Builder user(double user) {
             Utils.checkNotNull(user, "user");
             this.user = user;
             return this;
         }
-        
+
         public SourceBox build() {
+
             return new SourceBox(
-                clientId,
-                clientSecret,
-                user);
+                clientId, clientSecret, user);
         }
+
 
         private static final LazySingletonValue<Box> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

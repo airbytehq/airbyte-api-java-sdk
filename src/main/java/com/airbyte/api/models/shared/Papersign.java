@@ -14,7 +14,7 @@ public enum Papersign {
     @JsonValue
     private final String value;
 
-    private Papersign(String value) {
+    Papersign(String value) {
         this.value = value;
     }
     

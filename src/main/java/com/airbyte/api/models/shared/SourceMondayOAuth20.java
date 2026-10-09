@@ -13,16 +13,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceMondayOAuth20 {
 
+public class SourceMondayOAuth20 {
     /**
      * Access Token for making authenticated requests.
      */
     @JsonProperty("access_token")
     private String accessToken;
+
 
     @JsonProperty("auth_type")
     private SourceMondayAuthType authType;
@@ -67,7 +67,8 @@ public class SourceMondayOAuth20 {
             String accessToken,
             String clientId,
             String clientSecret) {
-        this(accessToken, clientId, clientSecret, Optional.empty());
+        this(accessToken, clientId, clientSecret,
+            Optional.empty());
     }
 
     /**
@@ -107,9 +108,10 @@ public class SourceMondayOAuth20 {
         return subdomain;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Access Token for making authenticated requests.
@@ -147,6 +149,7 @@ public class SourceMondayOAuth20 {
         return this;
     }
 
+
     /**
      * Slug/subdomain of the account, or the first part of the URL that comes before .monday.com
      */
@@ -156,7 +159,6 @@ public class SourceMondayOAuth20 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -167,21 +169,18 @@ public class SourceMondayOAuth20 {
         }
         SourceMondayOAuth20 other = (SourceMondayOAuth20) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.subdomain, other.subdomain);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.subdomain, other.subdomain);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            authType,
-            clientId,
-            clientSecret,
-            subdomain);
+        return Utils.enhancedHash(
+            accessToken, authType, clientId,
+            clientSecret, subdomain);
     }
     
     @Override
@@ -193,20 +192,22 @@ public class SourceMondayOAuth20 {
                 "clientSecret", clientSecret,
                 "subdomain", subdomain);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private Optional<String> subdomain;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Access Token for making authenticated requests.
@@ -217,6 +218,7 @@ public class SourceMondayOAuth20 {
             return this;
         }
 
+
         /**
          * The Client ID of your OAuth application.
          */
@@ -226,6 +228,7 @@ public class SourceMondayOAuth20 {
             return this;
         }
 
+
         /**
          * The Client Secret of your OAuth application.
          */
@@ -234,6 +237,7 @@ public class SourceMondayOAuth20 {
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         /**
          * Slug/subdomain of the account, or the first part of the URL that comes before .monday.com
@@ -252,17 +256,17 @@ public class SourceMondayOAuth20 {
             this.subdomain = subdomain;
             return this;
         }
-        
+
         public SourceMondayOAuth20 build() {
             if (subdomain == null) {
                 subdomain = _SINGLETON_VALUE_Subdomain.value();
             }
+
             return new SourceMondayOAuth20(
-                accessToken,
-                clientId,
-                clientSecret,
+                accessToken, clientId, clientSecret,
                 subdomain);
         }
+
 
         private static final LazySingletonValue<SourceMondayAuthType> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

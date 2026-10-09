@@ -14,7 +14,7 @@ public enum Lokalise {
     @JsonValue
     private final String value;
 
-    private Lokalise(String value) {
+    Lokalise(String value) {
         this.value = value;
     }
     

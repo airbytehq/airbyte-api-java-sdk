@@ -2,6 +2,14 @@
 
 Split code in suitable places based on the programming language
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DestinationMilvusLanguage;
+
+DestinationMilvusLanguage value = DestinationMilvusLanguage.CPP;
+```
+
 
 ## Values
 

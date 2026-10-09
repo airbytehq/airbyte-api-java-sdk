@@ -15,16 +15,15 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * SourceSftpBulkViaAPI
  * 
- * <p>Process files via an API, using the `hi_res` mode. This option is useful for increased performance and accuracy, but requires an API key and a hosted instance of unstructured.
+ * <p>Process files via an API, using the `hi_res` mode. This option is useful for increased performance
+ * and accuracy, but requires an API key and a hosted instance of unstructured.
  */
 public class SourceSftpBulkViaAPI {
-
     /**
      * The API key to use matching the environment
      */
@@ -38,6 +37,7 @@ public class SourceSftpBulkViaAPI {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("api_url")
     private Optional<String> apiUrl;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
@@ -99,9 +99,10 @@ public class SourceSftpBulkViaAPI {
         return (Optional<List<SourceSftpBulkAPIParameterConfigModel>>) parameters;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The API key to use matching the environment
@@ -111,6 +112,7 @@ public class SourceSftpBulkViaAPI {
         this.apiKey = Optional.ofNullable(apiKey);
         return this;
     }
+
 
     /**
      * The API key to use matching the environment
@@ -130,6 +132,7 @@ public class SourceSftpBulkViaAPI {
         return this;
     }
 
+
     /**
      * The URL of the unstructured API to use
      */
@@ -148,6 +151,7 @@ public class SourceSftpBulkViaAPI {
         return this;
     }
 
+
     /**
      * List of parameters send to the API
      */
@@ -157,7 +161,6 @@ public class SourceSftpBulkViaAPI {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -168,18 +171,16 @@ public class SourceSftpBulkViaAPI {
         }
         SourceSftpBulkViaAPI other = (SourceSftpBulkViaAPI) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.apiUrl, other.apiUrl) &&
-            Objects.deepEquals(this.mode, other.mode) &&
-            Objects.deepEquals(this.parameters, other.parameters);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.apiUrl, other.apiUrl) &&
+            Utils.enhancedDeepEquals(this.mode, other.mode) &&
+            Utils.enhancedDeepEquals(this.parameters, other.parameters);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            apiUrl,
-            mode,
+        return Utils.enhancedHash(
+            apiKey, apiUrl, mode,
             parameters);
     }
     
@@ -191,18 +192,20 @@ public class SourceSftpBulkViaAPI {
                 "mode", mode,
                 "parameters", parameters);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> apiKey;
- 
+
         private Optional<String> apiUrl;
- 
+
         private Optional<? extends List<SourceSftpBulkAPIParameterConfigModel>> parameters = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The API key to use matching the environment
@@ -222,6 +225,7 @@ public class SourceSftpBulkViaAPI {
             return this;
         }
 
+
         /**
          * The URL of the unstructured API to use
          */
@@ -240,6 +244,7 @@ public class SourceSftpBulkViaAPI {
             return this;
         }
 
+
         /**
          * List of parameters send to the API
          */
@@ -257,7 +262,7 @@ public class SourceSftpBulkViaAPI {
             this.parameters = parameters;
             return this;
         }
-        
+
         public SourceSftpBulkViaAPI build() {
             if (apiKey == null) {
                 apiKey = _SINGLETON_VALUE_ApiKey.value();
@@ -265,11 +270,11 @@ public class SourceSftpBulkViaAPI {
             if (apiUrl == null) {
                 apiUrl = _SINGLETON_VALUE_ApiUrl.value();
             }
+
             return new SourceSftpBulkViaAPI(
-                apiKey,
-                apiUrl,
-                parameters);
+                apiKey, apiUrl, parameters);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_ApiKey =
                 new LazySingletonValue<>(

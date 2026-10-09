@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * UploadingMethod
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class UploadingMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private UploadingMethod(TypedObject value) {
         this.value = value;
@@ -33,7 +32,7 @@ public class UploadingMethod {
 
     public static UploadingMethod of(AWSS3Staging value) {
         Utils.checkNotNull(value, "value");
-        return new UploadingMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AWSS3Staging>(){}));
+        return new UploadingMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -55,7 +54,7 @@ public class UploadingMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -66,12 +65,12 @@ public class UploadingMethod {
             return false;
         }
         UploadingMethod other = (UploadingMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -88,6 +87,6 @@ public class UploadingMethod {
         return Utils.toString(UploadingMethod.class,
                 "value", value);
     }
- 
+
 }
 

@@ -2,6 +2,14 @@
 
 The definition of conversion count in reports. See <a href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown">the docs</a>.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DefinitionOfConversionCountInReports;
+
+DefinitionOfConversionCountInReports value = DefinitionOfConversionCountInReports.CLICK_VIEW_TIME;
+```
+
 
 ## Values
 

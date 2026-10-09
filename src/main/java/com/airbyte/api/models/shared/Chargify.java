@@ -14,7 +14,7 @@ public enum Chargify {
     @JsonValue
     private final String value;
 
-    private Chargify(String value) {
+    Chargify(String value) {
         this.value = value;
     }
     

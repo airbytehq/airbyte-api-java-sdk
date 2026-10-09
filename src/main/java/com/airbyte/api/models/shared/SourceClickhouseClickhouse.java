@@ -14,7 +14,7 @@ public enum SourceClickhouseClickhouse {
     @JsonValue
     private final String value;
 
-    private SourceClickhouseClickhouse(String value) {
+    SourceClickhouseClickhouse(String value) {
         this.value = value;
     }
     

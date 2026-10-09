@@ -1,5 +1,13 @@
 # SourceNotionAuthType
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceNotionAuthType;
+
+SourceNotionAuthType value = SourceNotionAuthType.O_AUTH20;
+```
+
 
 ## Values
 

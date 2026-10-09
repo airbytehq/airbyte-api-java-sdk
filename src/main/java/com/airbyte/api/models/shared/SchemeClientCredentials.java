@@ -12,15 +12,19 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
+/**
+ * SchemeClientCredentials
+ */
 public class SchemeClientCredentials implements HasSecurity {
 
     @SpeakeasyMetadata("security:name=clientID")
     private String clientID;
 
+
     @SpeakeasyMetadata("security:name=clientSecret")
     private String clientSecret;
+
 
     private String tokenURL;
 
@@ -52,9 +56,10 @@ public class SchemeClientCredentials implements HasSecurity {
         return tokenURL;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SchemeClientCredentials withClientID(String clientID) {
         Utils.checkNotNull(clientID, "clientID");
@@ -74,7 +79,6 @@ public class SchemeClientCredentials implements HasSecurity {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -85,17 +89,15 @@ public class SchemeClientCredentials implements HasSecurity {
         }
         SchemeClientCredentials other = (SchemeClientCredentials) o;
         return 
-            Objects.deepEquals(this.clientID, other.clientID) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.tokenURL, other.tokenURL);
+            Utils.enhancedDeepEquals(this.clientID, other.clientID) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.tokenURL, other.tokenURL);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientID,
-            clientSecret,
-            tokenURL);
+        return Utils.enhancedHash(
+            clientID, clientSecret, tokenURL);
     }
     
     @Override
@@ -105,18 +107,20 @@ public class SchemeClientCredentials implements HasSecurity {
                 "clientSecret", clientSecret,
                 "tokenURL", tokenURL);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientID;
- 
+
         private String clientSecret;
- 
+
         private String tokenURL;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder clientID(String clientID) {
             Utils.checkNotNull(clientID, "clientID");
@@ -124,27 +128,29 @@ public class SchemeClientCredentials implements HasSecurity {
             return this;
         }
 
+
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
 
+
         public Builder tokenURL(String tokenURL) {
             Utils.checkNotNull(tokenURL, "tokenURL");
             this.tokenURL = tokenURL;
             return this;
         }
-        
+
         public SchemeClientCredentials build() {
             if (tokenURL == null) {
                 tokenURL = _SINGLETON_VALUE_TokenURL.value();
             }
+
             return new SchemeClientCredentials(
-                clientID,
-                clientSecret,
-                tokenURL);
+                clientID, clientSecret, tokenURL);
         }
+
 
         private static final LazySingletonValue<String> _SINGLETON_VALUE_TokenURL =
                 new LazySingletonValue<>(

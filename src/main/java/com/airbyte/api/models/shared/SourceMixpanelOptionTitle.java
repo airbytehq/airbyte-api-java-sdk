@@ -14,7 +14,7 @@ public enum SourceMixpanelOptionTitle {
     @JsonValue
     private final String value;
 
-    private SourceMixpanelOptionTitle(String value) {
+    SourceMixpanelOptionTitle(String value) {
         this.value = value;
     }
     

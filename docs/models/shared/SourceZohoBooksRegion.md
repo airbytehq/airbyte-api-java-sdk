@@ -2,6 +2,14 @@
 
 The region code for the Zoho Books API, such as 'com', 'eu', 'in', etc.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceZohoBooksRegion;
+
+SourceZohoBooksRegion value = SourceZohoBooksRegion.COM;
+```
+
 
 ## Values
 
