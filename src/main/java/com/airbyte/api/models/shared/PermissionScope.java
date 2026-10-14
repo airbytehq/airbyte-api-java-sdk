@@ -21,7 +21,7 @@ public enum PermissionScope {
     @JsonValue
     private final String value;
 
-    private PermissionScope(String value) {
+    PermissionScope(String value) {
         this.value = value;
     }
     

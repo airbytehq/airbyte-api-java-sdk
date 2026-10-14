@@ -1,5 +1,13 @@
 # DataCenter
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DataCenter;
+
+DataCenter value = DataCenter.EU_CENTRAL;
+```
+
 
 ## Values
 

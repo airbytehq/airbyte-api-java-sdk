@@ -14,7 +14,7 @@ public enum Calendly {
     @JsonValue
     private final String value;
 
-    private Calendly(String value) {
+    Calendly(String value) {
         this.value = value;
     }
     

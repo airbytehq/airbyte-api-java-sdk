@@ -14,7 +14,7 @@ public enum Trustpilot {
     @JsonValue
     private final String value;
 
-    private Trustpilot(String value) {
+    Trustpilot(String value) {
         this.value = value;
     }
     

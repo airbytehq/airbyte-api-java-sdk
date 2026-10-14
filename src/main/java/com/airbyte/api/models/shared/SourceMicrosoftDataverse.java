@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceMicrosoftDataverse {
 
+public class SourceMicrosoftDataverse {
     /**
      * App Registration Client Id
      */
@@ -37,6 +36,7 @@ public class SourceMicrosoftDataverse {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("odata_maxpagesize")
     private Optional<Long> odataMaxpagesize;
+
 
     @JsonProperty("sourceType")
     private MicrosoftDataverse sourceType;
@@ -78,7 +78,8 @@ public class SourceMicrosoftDataverse {
             String clientSecretValue,
             String tenantId,
             String url) {
-        this(clientId, clientSecretValue, Optional.empty(), tenantId, url);
+        this(clientId, clientSecretValue, Optional.empty(),
+            tenantId, url);
     }
 
     /**
@@ -126,9 +127,10 @@ public class SourceMicrosoftDataverse {
         return url;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * App Registration Client Id
@@ -157,6 +159,7 @@ public class SourceMicrosoftDataverse {
         return this;
     }
 
+
     /**
      * Max number of results per page. Default=5000
      */
@@ -184,7 +187,6 @@ public class SourceMicrosoftDataverse {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -195,23 +197,19 @@ public class SourceMicrosoftDataverse {
         }
         SourceMicrosoftDataverse other = (SourceMicrosoftDataverse) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecretValue, other.clientSecretValue) &&
-            Objects.deepEquals(this.odataMaxpagesize, other.odataMaxpagesize) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.tenantId, other.tenantId) &&
-            Objects.deepEquals(this.url, other.url);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecretValue, other.clientSecretValue) &&
+            Utils.enhancedDeepEquals(this.odataMaxpagesize, other.odataMaxpagesize) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.tenantId, other.tenantId) &&
+            Utils.enhancedDeepEquals(this.url, other.url);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecretValue,
-            odataMaxpagesize,
-            sourceType,
-            tenantId,
-            url);
+        return Utils.enhancedHash(
+            clientId, clientSecretValue, odataMaxpagesize,
+            sourceType, tenantId, url);
     }
     
     @Override
@@ -224,22 +222,24 @@ public class SourceMicrosoftDataverse {
                 "tenantId", tenantId,
                 "url", url);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecretValue;
- 
+
         private Optional<Long> odataMaxpagesize;
- 
+
         private String tenantId;
- 
+
         private String url;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * App Registration Client Id
@@ -250,6 +250,7 @@ public class SourceMicrosoftDataverse {
             return this;
         }
 
+
         /**
          * App Registration Client Secret
          */
@@ -258,6 +259,7 @@ public class SourceMicrosoftDataverse {
             this.clientSecretValue = clientSecretValue;
             return this;
         }
+
 
         /**
          * Max number of results per page. Default=5000
@@ -277,6 +279,7 @@ public class SourceMicrosoftDataverse {
             return this;
         }
 
+
         /**
          * Tenant Id of your Microsoft Dataverse Instance
          */
@@ -286,6 +289,7 @@ public class SourceMicrosoftDataverse {
             return this;
         }
 
+
         /**
          * URL to Microsoft Dataverse API
          */
@@ -294,18 +298,17 @@ public class SourceMicrosoftDataverse {
             this.url = url;
             return this;
         }
-        
+
         public SourceMicrosoftDataverse build() {
             if (odataMaxpagesize == null) {
                 odataMaxpagesize = _SINGLETON_VALUE_OdataMaxpagesize.value();
             }
+
             return new SourceMicrosoftDataverse(
-                clientId,
-                clientSecretValue,
-                odataMaxpagesize,
-                tenantId,
-                url);
+                clientId, clientSecretValue, odataMaxpagesize,
+                tenantId, url);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_OdataMaxpagesize =
                 new LazySingletonValue<>(

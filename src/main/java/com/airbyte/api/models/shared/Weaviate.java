@@ -14,7 +14,7 @@ public enum Weaviate {
     @JsonValue
     private final String value;
 
-    private Weaviate(String value) {
+    Weaviate(String value) {
         this.value = value;
     }
     

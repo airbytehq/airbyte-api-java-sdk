@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class OAuth20 {
 
@@ -79,9 +79,10 @@ public class OAuth20 {
         return refreshToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Client ID of your OAuth application
@@ -110,7 +111,6 @@ public class OAuth20 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -121,18 +121,16 @@ public class OAuth20 {
         }
         OAuth20 other = (OAuth20) o;
         return 
-            Objects.deepEquals(this.authMethod, other.authMethod) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken);
+            Utils.enhancedDeepEquals(this.authMethod, other.authMethod) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authMethod,
-            clientId,
-            clientSecret,
+        return Utils.enhancedHash(
+            authMethod, clientId, clientSecret,
             refreshToken);
     }
     
@@ -144,18 +142,20 @@ public class OAuth20 {
                 "clientSecret", clientSecret,
                 "refreshToken", refreshToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String refreshToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Client ID of your OAuth application
@@ -166,6 +166,7 @@ public class OAuth20 {
             return this;
         }
 
+
         /**
          * The Client Secret of your OAuth application.
          */
@@ -175,6 +176,7 @@ public class OAuth20 {
             return this;
         }
 
+
         /**
          * Refresh Token to obtain new Access Token, when it's expired.
          */
@@ -183,13 +185,13 @@ public class OAuth20 {
             this.refreshToken = refreshToken;
             return this;
         }
-        
+
         public OAuth20 build() {
+
             return new OAuth20(
-                clientId,
-                clientSecret,
-                refreshToken);
+                clientId, clientSecret, refreshToken);
         }
+
 
         private static final LazySingletonValue<SourcePinterestAuthMethod> _SINGLETON_VALUE_AuthMethod =
                 new LazySingletonValue<>(

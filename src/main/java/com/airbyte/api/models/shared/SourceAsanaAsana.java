@@ -14,7 +14,7 @@ public enum SourceAsanaAsana {
     @JsonValue
     private final String value;
 
-    private SourceAsanaAsana(String value) {
+    SourceAsanaAsana(String value) {
         this.value = value;
     }
     

@@ -15,11 +15,10 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceMongodbV2 {
 
+public class SourceMongodbV2 {
     /**
      * Configures the MongoDB cluster type.
      */
@@ -27,11 +26,20 @@ public class SourceMongodbV2 {
     private ClusterType databaseConfig;
 
     /**
-     * The maximum number of documents to sample when attempting to discover the unique fields for a collection.
+     * The maximum number of documents to sample when attempting to discover the unique fields for a
+     * collection.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("discover_sample_size")
     private Optional<Long> discoverSampleSize;
+
+    /**
+     * The amount of time the connector will wait when it discovers a document. Defaults to 600 seconds.
+     * Valid range: 5 seconds to 1200 seconds.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("discover_timeout_seconds")
+    private Optional<Long> discoverTimeoutSeconds;
 
     /**
      * The amount of time an initial load is allowed to continue for before catching up on CDC logs.
@@ -41,31 +49,43 @@ public class SourceMongodbV2 {
     private Optional<Long> initialLoadTimeoutHours;
 
     /**
-     * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 1200 seconds.
+     * The amount of time the connector will wait when it launches to determine if there is new data to
+     * sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 1200 seconds.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("initial_waiting_seconds")
     private Optional<Long> initialWaitingSeconds;
 
     /**
-     * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
+     * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into
+     * the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being
+     * able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a
+     * refresh but could lead to higher cloud costs and data loss.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("invalid_cdc_cursor_position_behavior")
     private Optional<? extends InvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior;
 
     /**
-     * The size of the internal queue. This may interfere with memory consumption and efficiency of the connector, please be careful.
+     * The size of the internal queue. This may interfere with memory consumption and efficiency of the
+     * connector, please be careful.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("queue_size")
     private Optional<Long> queueSize;
 
+
     @JsonProperty("sourceType")
     private MongodbV2 sourceType;
 
     /**
-     * Determines how Airbyte looks up the value of an updated document. If 'Lookup' is chosen, the current value of the document will be read. If 'Post Image' is chosen, then the version of the document immediately after an update will be read. WARNING : Severe data loss will occur if this option is chosen and the appropriate settings are not set on your Mongo instance : https://www.mongodb.com/docs/manual/changeStreams/#change-streams-with-document-pre-and-post-images.
+     * Determines how Airbyte looks up the value of an updated document. If 'Lookup' is chosen, the current
+     * value of the document will be read. If 'Post Image' is chosen, then the version of the document
+     * immediately after an update will be read.
+     * 
+     * <p>WARNING : Severe data loss will occur if this option is chosen and the appropriate settings are not
+     * set on your Mongo instance :
+     * https://www.mongodb.com/docs/manual/changeStreams/#change-streams-with-document-pre-and-post-images.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("update_capture_mode")
@@ -75,6 +95,7 @@ public class SourceMongodbV2 {
     public SourceMongodbV2(
             @JsonProperty("database_config") ClusterType databaseConfig,
             @JsonProperty("discover_sample_size") Optional<Long> discoverSampleSize,
+            @JsonProperty("discover_timeout_seconds") Optional<Long> discoverTimeoutSeconds,
             @JsonProperty("initial_load_timeout_hours") Optional<Long> initialLoadTimeoutHours,
             @JsonProperty("initial_waiting_seconds") Optional<Long> initialWaitingSeconds,
             @JsonProperty("invalid_cdc_cursor_position_behavior") Optional<? extends InvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior,
@@ -82,6 +103,7 @@ public class SourceMongodbV2 {
             @JsonProperty("update_capture_mode") Optional<? extends CaptureModeAdvanced> updateCaptureMode) {
         Utils.checkNotNull(databaseConfig, "databaseConfig");
         Utils.checkNotNull(discoverSampleSize, "discoverSampleSize");
+        Utils.checkNotNull(discoverTimeoutSeconds, "discoverTimeoutSeconds");
         Utils.checkNotNull(initialLoadTimeoutHours, "initialLoadTimeoutHours");
         Utils.checkNotNull(initialWaitingSeconds, "initialWaitingSeconds");
         Utils.checkNotNull(invalidCdcCursorPositionBehavior, "invalidCdcCursorPositionBehavior");
@@ -89,6 +111,7 @@ public class SourceMongodbV2 {
         Utils.checkNotNull(updateCaptureMode, "updateCaptureMode");
         this.databaseConfig = databaseConfig;
         this.discoverSampleSize = discoverSampleSize;
+        this.discoverTimeoutSeconds = discoverTimeoutSeconds;
         this.initialLoadTimeoutHours = initialLoadTimeoutHours;
         this.initialWaitingSeconds = initialWaitingSeconds;
         this.invalidCdcCursorPositionBehavior = invalidCdcCursorPositionBehavior;
@@ -99,7 +122,9 @@ public class SourceMongodbV2 {
     
     public SourceMongodbV2(
             ClusterType databaseConfig) {
-        this(databaseConfig, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(databaseConfig, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty());
     }
 
     /**
@@ -111,11 +136,21 @@ public class SourceMongodbV2 {
     }
 
     /**
-     * The maximum number of documents to sample when attempting to discover the unique fields for a collection.
+     * The maximum number of documents to sample when attempting to discover the unique fields for a
+     * collection.
      */
     @JsonIgnore
     public Optional<Long> discoverSampleSize() {
         return discoverSampleSize;
+    }
+
+    /**
+     * The amount of time the connector will wait when it discovers a document. Defaults to 600 seconds.
+     * Valid range: 5 seconds to 1200 seconds.
+     */
+    @JsonIgnore
+    public Optional<Long> discoverTimeoutSeconds() {
+        return discoverTimeoutSeconds;
     }
 
     /**
@@ -127,7 +162,8 @@ public class SourceMongodbV2 {
     }
 
     /**
-     * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 1200 seconds.
+     * The amount of time the connector will wait when it launches to determine if there is new data to
+     * sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 1200 seconds.
      */
     @JsonIgnore
     public Optional<Long> initialWaitingSeconds() {
@@ -135,7 +171,10 @@ public class SourceMongodbV2 {
     }
 
     /**
-     * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
+     * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into
+     * the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being
+     * able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a
+     * refresh but could lead to higher cloud costs and data loss.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -144,7 +183,8 @@ public class SourceMongodbV2 {
     }
 
     /**
-     * The size of the internal queue. This may interfere with memory consumption and efficiency of the connector, please be careful.
+     * The size of the internal queue. This may interfere with memory consumption and efficiency of the
+     * connector, please be careful.
      */
     @JsonIgnore
     public Optional<Long> queueSize() {
@@ -157,7 +197,13 @@ public class SourceMongodbV2 {
     }
 
     /**
-     * Determines how Airbyte looks up the value of an updated document. If 'Lookup' is chosen, the current value of the document will be read. If 'Post Image' is chosen, then the version of the document immediately after an update will be read. WARNING : Severe data loss will occur if this option is chosen and the appropriate settings are not set on your Mongo instance : https://www.mongodb.com/docs/manual/changeStreams/#change-streams-with-document-pre-and-post-images.
+     * Determines how Airbyte looks up the value of an updated document. If 'Lookup' is chosen, the current
+     * value of the document will be read. If 'Post Image' is chosen, then the version of the document
+     * immediately after an update will be read.
+     * 
+     * <p>WARNING : Severe data loss will occur if this option is chosen and the appropriate settings are not
+     * set on your Mongo instance :
+     * https://www.mongodb.com/docs/manual/changeStreams/#change-streams-with-document-pre-and-post-images.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -165,9 +211,10 @@ public class SourceMongodbV2 {
         return (Optional<CaptureModeAdvanced>) updateCaptureMode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Configures the MongoDB cluster type.
@@ -179,7 +226,8 @@ public class SourceMongodbV2 {
     }
 
     /**
-     * The maximum number of documents to sample when attempting to discover the unique fields for a collection.
+     * The maximum number of documents to sample when attempting to discover the unique fields for a
+     * collection.
      */
     public SourceMongodbV2 withDiscoverSampleSize(long discoverSampleSize) {
         Utils.checkNotNull(discoverSampleSize, "discoverSampleSize");
@@ -187,12 +235,35 @@ public class SourceMongodbV2 {
         return this;
     }
 
+
     /**
-     * The maximum number of documents to sample when attempting to discover the unique fields for a collection.
+     * The maximum number of documents to sample when attempting to discover the unique fields for a
+     * collection.
      */
     public SourceMongodbV2 withDiscoverSampleSize(Optional<Long> discoverSampleSize) {
         Utils.checkNotNull(discoverSampleSize, "discoverSampleSize");
         this.discoverSampleSize = discoverSampleSize;
+        return this;
+    }
+
+    /**
+     * The amount of time the connector will wait when it discovers a document. Defaults to 600 seconds.
+     * Valid range: 5 seconds to 1200 seconds.
+     */
+    public SourceMongodbV2 withDiscoverTimeoutSeconds(long discoverTimeoutSeconds) {
+        Utils.checkNotNull(discoverTimeoutSeconds, "discoverTimeoutSeconds");
+        this.discoverTimeoutSeconds = Optional.ofNullable(discoverTimeoutSeconds);
+        return this;
+    }
+
+
+    /**
+     * The amount of time the connector will wait when it discovers a document. Defaults to 600 seconds.
+     * Valid range: 5 seconds to 1200 seconds.
+     */
+    public SourceMongodbV2 withDiscoverTimeoutSeconds(Optional<Long> discoverTimeoutSeconds) {
+        Utils.checkNotNull(discoverTimeoutSeconds, "discoverTimeoutSeconds");
+        this.discoverTimeoutSeconds = discoverTimeoutSeconds;
         return this;
     }
 
@@ -205,6 +276,7 @@ public class SourceMongodbV2 {
         return this;
     }
 
+
     /**
      * The amount of time an initial load is allowed to continue for before catching up on CDC logs.
      */
@@ -215,7 +287,8 @@ public class SourceMongodbV2 {
     }
 
     /**
-     * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 1200 seconds.
+     * The amount of time the connector will wait when it launches to determine if there is new data to
+     * sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 1200 seconds.
      */
     public SourceMongodbV2 withInitialWaitingSeconds(long initialWaitingSeconds) {
         Utils.checkNotNull(initialWaitingSeconds, "initialWaitingSeconds");
@@ -223,8 +296,10 @@ public class SourceMongodbV2 {
         return this;
     }
 
+
     /**
-     * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 1200 seconds.
+     * The amount of time the connector will wait when it launches to determine if there is new data to
+     * sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 1200 seconds.
      */
     public SourceMongodbV2 withInitialWaitingSeconds(Optional<Long> initialWaitingSeconds) {
         Utils.checkNotNull(initialWaitingSeconds, "initialWaitingSeconds");
@@ -233,7 +308,10 @@ public class SourceMongodbV2 {
     }
 
     /**
-     * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
+     * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into
+     * the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being
+     * able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a
+     * refresh but could lead to higher cloud costs and data loss.
      */
     public SourceMongodbV2 withInvalidCdcCursorPositionBehavior(InvalidCDCPositionBehaviorAdvanced invalidCdcCursorPositionBehavior) {
         Utils.checkNotNull(invalidCdcCursorPositionBehavior, "invalidCdcCursorPositionBehavior");
@@ -241,8 +319,12 @@ public class SourceMongodbV2 {
         return this;
     }
 
+
     /**
-     * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
+     * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into
+     * the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being
+     * able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a
+     * refresh but could lead to higher cloud costs and data loss.
      */
     public SourceMongodbV2 withInvalidCdcCursorPositionBehavior(Optional<? extends InvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior) {
         Utils.checkNotNull(invalidCdcCursorPositionBehavior, "invalidCdcCursorPositionBehavior");
@@ -251,7 +333,8 @@ public class SourceMongodbV2 {
     }
 
     /**
-     * The size of the internal queue. This may interfere with memory consumption and efficiency of the connector, please be careful.
+     * The size of the internal queue. This may interfere with memory consumption and efficiency of the
+     * connector, please be careful.
      */
     public SourceMongodbV2 withQueueSize(long queueSize) {
         Utils.checkNotNull(queueSize, "queueSize");
@@ -259,8 +342,10 @@ public class SourceMongodbV2 {
         return this;
     }
 
+
     /**
-     * The size of the internal queue. This may interfere with memory consumption and efficiency of the connector, please be careful.
+     * The size of the internal queue. This may interfere with memory consumption and efficiency of the
+     * connector, please be careful.
      */
     public SourceMongodbV2 withQueueSize(Optional<Long> queueSize) {
         Utils.checkNotNull(queueSize, "queueSize");
@@ -269,7 +354,13 @@ public class SourceMongodbV2 {
     }
 
     /**
-     * Determines how Airbyte looks up the value of an updated document. If 'Lookup' is chosen, the current value of the document will be read. If 'Post Image' is chosen, then the version of the document immediately after an update will be read. WARNING : Severe data loss will occur if this option is chosen and the appropriate settings are not set on your Mongo instance : https://www.mongodb.com/docs/manual/changeStreams/#change-streams-with-document-pre-and-post-images.
+     * Determines how Airbyte looks up the value of an updated document. If 'Lookup' is chosen, the current
+     * value of the document will be read. If 'Post Image' is chosen, then the version of the document
+     * immediately after an update will be read.
+     * 
+     * <p>WARNING : Severe data loss will occur if this option is chosen and the appropriate settings are not
+     * set on your Mongo instance :
+     * https://www.mongodb.com/docs/manual/changeStreams/#change-streams-with-document-pre-and-post-images.
      */
     public SourceMongodbV2 withUpdateCaptureMode(CaptureModeAdvanced updateCaptureMode) {
         Utils.checkNotNull(updateCaptureMode, "updateCaptureMode");
@@ -277,8 +368,15 @@ public class SourceMongodbV2 {
         return this;
     }
 
+
     /**
-     * Determines how Airbyte looks up the value of an updated document. If 'Lookup' is chosen, the current value of the document will be read. If 'Post Image' is chosen, then the version of the document immediately after an update will be read. WARNING : Severe data loss will occur if this option is chosen and the appropriate settings are not set on your Mongo instance : https://www.mongodb.com/docs/manual/changeStreams/#change-streams-with-document-pre-and-post-images.
+     * Determines how Airbyte looks up the value of an updated document. If 'Lookup' is chosen, the current
+     * value of the document will be read. If 'Post Image' is chosen, then the version of the document
+     * immediately after an update will be read.
+     * 
+     * <p>WARNING : Severe data loss will occur if this option is chosen and the appropriate settings are not
+     * set on your Mongo instance :
+     * https://www.mongodb.com/docs/manual/changeStreams/#change-streams-with-document-pre-and-post-images.
      */
     public SourceMongodbV2 withUpdateCaptureMode(Optional<? extends CaptureModeAdvanced> updateCaptureMode) {
         Utils.checkNotNull(updateCaptureMode, "updateCaptureMode");
@@ -286,7 +384,6 @@ public class SourceMongodbV2 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -297,27 +394,23 @@ public class SourceMongodbV2 {
         }
         SourceMongodbV2 other = (SourceMongodbV2) o;
         return 
-            Objects.deepEquals(this.databaseConfig, other.databaseConfig) &&
-            Objects.deepEquals(this.discoverSampleSize, other.discoverSampleSize) &&
-            Objects.deepEquals(this.initialLoadTimeoutHours, other.initialLoadTimeoutHours) &&
-            Objects.deepEquals(this.initialWaitingSeconds, other.initialWaitingSeconds) &&
-            Objects.deepEquals(this.invalidCdcCursorPositionBehavior, other.invalidCdcCursorPositionBehavior) &&
-            Objects.deepEquals(this.queueSize, other.queueSize) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.updateCaptureMode, other.updateCaptureMode);
+            Utils.enhancedDeepEquals(this.databaseConfig, other.databaseConfig) &&
+            Utils.enhancedDeepEquals(this.discoverSampleSize, other.discoverSampleSize) &&
+            Utils.enhancedDeepEquals(this.discoverTimeoutSeconds, other.discoverTimeoutSeconds) &&
+            Utils.enhancedDeepEquals(this.initialLoadTimeoutHours, other.initialLoadTimeoutHours) &&
+            Utils.enhancedDeepEquals(this.initialWaitingSeconds, other.initialWaitingSeconds) &&
+            Utils.enhancedDeepEquals(this.invalidCdcCursorPositionBehavior, other.invalidCdcCursorPositionBehavior) &&
+            Utils.enhancedDeepEquals(this.queueSize, other.queueSize) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.updateCaptureMode, other.updateCaptureMode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            databaseConfig,
-            discoverSampleSize,
-            initialLoadTimeoutHours,
-            initialWaitingSeconds,
-            invalidCdcCursorPositionBehavior,
-            queueSize,
-            sourceType,
-            updateCaptureMode);
+        return Utils.enhancedHash(
+            databaseConfig, discoverSampleSize, discoverTimeoutSeconds,
+            initialLoadTimeoutHours, initialWaitingSeconds, invalidCdcCursorPositionBehavior,
+            queueSize, sourceType, updateCaptureMode);
     }
     
     @Override
@@ -325,6 +418,7 @@ public class SourceMongodbV2 {
         return Utils.toString(SourceMongodbV2.class,
                 "databaseConfig", databaseConfig,
                 "discoverSampleSize", discoverSampleSize,
+                "discoverTimeoutSeconds", discoverTimeoutSeconds,
                 "initialLoadTimeoutHours", initialLoadTimeoutHours,
                 "initialWaitingSeconds", initialWaitingSeconds,
                 "invalidCdcCursorPositionBehavior", invalidCdcCursorPositionBehavior,
@@ -332,26 +426,30 @@ public class SourceMongodbV2 {
                 "sourceType", sourceType,
                 "updateCaptureMode", updateCaptureMode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private ClusterType databaseConfig;
- 
+
         private Optional<Long> discoverSampleSize;
- 
+
+        private Optional<Long> discoverTimeoutSeconds;
+
         private Optional<Long> initialLoadTimeoutHours;
- 
+
         private Optional<Long> initialWaitingSeconds;
- 
+
         private Optional<? extends InvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior;
- 
+
         private Optional<Long> queueSize;
- 
+
         private Optional<? extends CaptureModeAdvanced> updateCaptureMode;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Configures the MongoDB cluster type.
@@ -362,8 +460,10 @@ public class SourceMongodbV2 {
             return this;
         }
 
+
         /**
-         * The maximum number of documents to sample when attempting to discover the unique fields for a collection.
+         * The maximum number of documents to sample when attempting to discover the unique fields for a
+         * collection.
          */
         public Builder discoverSampleSize(long discoverSampleSize) {
             Utils.checkNotNull(discoverSampleSize, "discoverSampleSize");
@@ -372,13 +472,36 @@ public class SourceMongodbV2 {
         }
 
         /**
-         * The maximum number of documents to sample when attempting to discover the unique fields for a collection.
+         * The maximum number of documents to sample when attempting to discover the unique fields for a
+         * collection.
          */
         public Builder discoverSampleSize(Optional<Long> discoverSampleSize) {
             Utils.checkNotNull(discoverSampleSize, "discoverSampleSize");
             this.discoverSampleSize = discoverSampleSize;
             return this;
         }
+
+
+        /**
+         * The amount of time the connector will wait when it discovers a document. Defaults to 600 seconds.
+         * Valid range: 5 seconds to 1200 seconds.
+         */
+        public Builder discoverTimeoutSeconds(long discoverTimeoutSeconds) {
+            Utils.checkNotNull(discoverTimeoutSeconds, "discoverTimeoutSeconds");
+            this.discoverTimeoutSeconds = Optional.ofNullable(discoverTimeoutSeconds);
+            return this;
+        }
+
+        /**
+         * The amount of time the connector will wait when it discovers a document. Defaults to 600 seconds.
+         * Valid range: 5 seconds to 1200 seconds.
+         */
+        public Builder discoverTimeoutSeconds(Optional<Long> discoverTimeoutSeconds) {
+            Utils.checkNotNull(discoverTimeoutSeconds, "discoverTimeoutSeconds");
+            this.discoverTimeoutSeconds = discoverTimeoutSeconds;
+            return this;
+        }
+
 
         /**
          * The amount of time an initial load is allowed to continue for before catching up on CDC logs.
@@ -398,8 +521,10 @@ public class SourceMongodbV2 {
             return this;
         }
 
+
         /**
-         * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 1200 seconds.
+         * The amount of time the connector will wait when it launches to determine if there is new data to
+         * sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 1200 seconds.
          */
         public Builder initialWaitingSeconds(long initialWaitingSeconds) {
             Utils.checkNotNull(initialWaitingSeconds, "initialWaitingSeconds");
@@ -408,7 +533,8 @@ public class SourceMongodbV2 {
         }
 
         /**
-         * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 1200 seconds.
+         * The amount of time the connector will wait when it launches to determine if there is new data to
+         * sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 1200 seconds.
          */
         public Builder initialWaitingSeconds(Optional<Long> initialWaitingSeconds) {
             Utils.checkNotNull(initialWaitingSeconds, "initialWaitingSeconds");
@@ -416,8 +542,12 @@ public class SourceMongodbV2 {
             return this;
         }
 
+
         /**
-         * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
+         * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into
+         * the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being
+         * able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a
+         * refresh but could lead to higher cloud costs and data loss.
          */
         public Builder invalidCdcCursorPositionBehavior(InvalidCDCPositionBehaviorAdvanced invalidCdcCursorPositionBehavior) {
             Utils.checkNotNull(invalidCdcCursorPositionBehavior, "invalidCdcCursorPositionBehavior");
@@ -426,7 +556,10 @@ public class SourceMongodbV2 {
         }
 
         /**
-         * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
+         * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into
+         * the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being
+         * able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a
+         * refresh but could lead to higher cloud costs and data loss.
          */
         public Builder invalidCdcCursorPositionBehavior(Optional<? extends InvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior) {
             Utils.checkNotNull(invalidCdcCursorPositionBehavior, "invalidCdcCursorPositionBehavior");
@@ -434,8 +567,10 @@ public class SourceMongodbV2 {
             return this;
         }
 
+
         /**
-         * The size of the internal queue. This may interfere with memory consumption and efficiency of the connector, please be careful.
+         * The size of the internal queue. This may interfere with memory consumption and efficiency of the
+         * connector, please be careful.
          */
         public Builder queueSize(long queueSize) {
             Utils.checkNotNull(queueSize, "queueSize");
@@ -444,7 +579,8 @@ public class SourceMongodbV2 {
         }
 
         /**
-         * The size of the internal queue. This may interfere with memory consumption and efficiency of the connector, please be careful.
+         * The size of the internal queue. This may interfere with memory consumption and efficiency of the
+         * connector, please be careful.
          */
         public Builder queueSize(Optional<Long> queueSize) {
             Utils.checkNotNull(queueSize, "queueSize");
@@ -452,8 +588,15 @@ public class SourceMongodbV2 {
             return this;
         }
 
+
         /**
-         * Determines how Airbyte looks up the value of an updated document. If 'Lookup' is chosen, the current value of the document will be read. If 'Post Image' is chosen, then the version of the document immediately after an update will be read. WARNING : Severe data loss will occur if this option is chosen and the appropriate settings are not set on your Mongo instance : https://www.mongodb.com/docs/manual/changeStreams/#change-streams-with-document-pre-and-post-images.
+         * Determines how Airbyte looks up the value of an updated document. If 'Lookup' is chosen, the current
+         * value of the document will be read. If 'Post Image' is chosen, then the version of the document
+         * immediately after an update will be read.
+         * 
+         * <p>WARNING : Severe data loss will occur if this option is chosen and the appropriate settings are not
+         * set on your Mongo instance :
+         * https://www.mongodb.com/docs/manual/changeStreams/#change-streams-with-document-pre-and-post-images.
          */
         public Builder updateCaptureMode(CaptureModeAdvanced updateCaptureMode) {
             Utils.checkNotNull(updateCaptureMode, "updateCaptureMode");
@@ -462,17 +605,26 @@ public class SourceMongodbV2 {
         }
 
         /**
-         * Determines how Airbyte looks up the value of an updated document. If 'Lookup' is chosen, the current value of the document will be read. If 'Post Image' is chosen, then the version of the document immediately after an update will be read. WARNING : Severe data loss will occur if this option is chosen and the appropriate settings are not set on your Mongo instance : https://www.mongodb.com/docs/manual/changeStreams/#change-streams-with-document-pre-and-post-images.
+         * Determines how Airbyte looks up the value of an updated document. If 'Lookup' is chosen, the current
+         * value of the document will be read. If 'Post Image' is chosen, then the version of the document
+         * immediately after an update will be read.
+         * 
+         * <p>WARNING : Severe data loss will occur if this option is chosen and the appropriate settings are not
+         * set on your Mongo instance :
+         * https://www.mongodb.com/docs/manual/changeStreams/#change-streams-with-document-pre-and-post-images.
          */
         public Builder updateCaptureMode(Optional<? extends CaptureModeAdvanced> updateCaptureMode) {
             Utils.checkNotNull(updateCaptureMode, "updateCaptureMode");
             this.updateCaptureMode = updateCaptureMode;
             return this;
         }
-        
+
         public SourceMongodbV2 build() {
             if (discoverSampleSize == null) {
                 discoverSampleSize = _SINGLETON_VALUE_DiscoverSampleSize.value();
+            }
+            if (discoverTimeoutSeconds == null) {
+                discoverTimeoutSeconds = _SINGLETON_VALUE_DiscoverTimeoutSeconds.value();
             }
             if (initialLoadTimeoutHours == null) {
                 initialLoadTimeoutHours = _SINGLETON_VALUE_InitialLoadTimeoutHours.value();
@@ -489,20 +641,24 @@ public class SourceMongodbV2 {
             if (updateCaptureMode == null) {
                 updateCaptureMode = _SINGLETON_VALUE_UpdateCaptureMode.value();
             }
+
             return new SourceMongodbV2(
-                databaseConfig,
-                discoverSampleSize,
-                initialLoadTimeoutHours,
-                initialWaitingSeconds,
-                invalidCdcCursorPositionBehavior,
-                queueSize,
-                updateCaptureMode);
+                databaseConfig, discoverSampleSize, discoverTimeoutSeconds,
+                initialLoadTimeoutHours, initialWaitingSeconds, invalidCdcCursorPositionBehavior,
+                queueSize, updateCaptureMode);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_DiscoverSampleSize =
                 new LazySingletonValue<>(
                         "discover_sample_size",
                         "10000",
+                        new TypeReference<Optional<Long>>() {});
+
+        private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_DiscoverTimeoutSeconds =
+                new LazySingletonValue<>(
+                        "discover_timeout_seconds",
+                        "600",
                         new TypeReference<Optional<Long>>() {});
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_InitialLoadTimeoutHours =

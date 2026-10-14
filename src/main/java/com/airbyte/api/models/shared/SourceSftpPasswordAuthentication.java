@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceSftpPasswordAuthentication {
-
     /**
      * Connect through password authentication
      */
@@ -51,9 +50,10 @@ public class SourceSftpPasswordAuthentication {
         return authUserPassword;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * OS-level password for logging into the jump server host
@@ -64,7 +64,6 @@ public class SourceSftpPasswordAuthentication {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -75,15 +74,14 @@ public class SourceSftpPasswordAuthentication {
         }
         SourceSftpPasswordAuthentication other = (SourceSftpPasswordAuthentication) o;
         return 
-            Objects.deepEquals(this.authMethod, other.authMethod) &&
-            Objects.deepEquals(this.authUserPassword, other.authUserPassword);
+            Utils.enhancedDeepEquals(this.authMethod, other.authMethod) &&
+            Utils.enhancedDeepEquals(this.authUserPassword, other.authUserPassword);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authMethod,
-            authUserPassword);
+        return Utils.enhancedHash(
+            authMethod, authUserPassword);
     }
     
     @Override
@@ -92,14 +90,16 @@ public class SourceSftpPasswordAuthentication {
                 "authMethod", authMethod,
                 "authUserPassword", authUserPassword);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String authUserPassword;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * OS-level password for logging into the jump server host
@@ -109,11 +109,13 @@ public class SourceSftpPasswordAuthentication {
             this.authUserPassword = authUserPassword;
             return this;
         }
-        
+
         public SourceSftpPasswordAuthentication build() {
+
             return new SourceSftpPasswordAuthentication(
                 authUserPassword);
         }
+
 
         private static final LazySingletonValue<SourceSftpAuthMethod> _SINGLETON_VALUE_AuthMethod =
                 new LazySingletonValue<>(

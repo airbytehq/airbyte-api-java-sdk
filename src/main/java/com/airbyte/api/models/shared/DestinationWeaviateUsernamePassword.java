@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -73,9 +72,10 @@ public class DestinationWeaviateUsernamePassword {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Password for the Weaviate cluster
@@ -95,7 +95,6 @@ public class DestinationWeaviateUsernamePassword {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -106,17 +105,15 @@ public class DestinationWeaviateUsernamePassword {
         }
         DestinationWeaviateUsernamePassword other = (DestinationWeaviateUsernamePassword) o;
         return 
-            Objects.deepEquals(this.mode, other.mode) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.mode, other.mode) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            mode,
-            password,
-            username);
+        return Utils.enhancedHash(
+            mode, password, username);
     }
     
     @Override
@@ -126,16 +123,18 @@ public class DestinationWeaviateUsernamePassword {
                 "password", password,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String password;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Password for the Weaviate cluster
@@ -146,6 +145,7 @@ public class DestinationWeaviateUsernamePassword {
             return this;
         }
 
+
         /**
          * Username for the Weaviate cluster
          */
@@ -154,12 +154,13 @@ public class DestinationWeaviateUsernamePassword {
             this.username = username;
             return this;
         }
-        
+
         public DestinationWeaviateUsernamePassword build() {
+
             return new DestinationWeaviateUsernamePassword(
-                password,
-                username);
+                password, username);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationWeaviateSchemasIndexingAuthMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

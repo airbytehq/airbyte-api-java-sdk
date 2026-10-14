@@ -14,7 +14,7 @@ public enum SourceNotionAuthType {
     @JsonValue
     private final String value;
 
-    private SourceNotionAuthType(String value) {
+    SourceNotionAuthType(String value) {
         this.value = value;
     }
     

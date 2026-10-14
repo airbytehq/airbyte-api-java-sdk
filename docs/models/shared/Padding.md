@@ -1,5 +1,13 @@
 # Padding
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.Padding;
+
+Padding value = Padding.NO_PADDING;
+```
+
 
 ## Values
 

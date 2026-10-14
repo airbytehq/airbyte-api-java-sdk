@@ -14,7 +14,7 @@ public enum EmploymentHero {
     @JsonValue
     private final String value;
 
-    private EmploymentHero(String value) {
+    EmploymentHero(String value) {
         this.value = value;
     }
     

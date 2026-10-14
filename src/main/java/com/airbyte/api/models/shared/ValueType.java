@@ -14,7 +14,7 @@ public enum ValueType {
     @JsonValue
     private final String value;
 
-    private ValueType(String value) {
+    ValueType(String value) {
         this.value = value;
     }
     

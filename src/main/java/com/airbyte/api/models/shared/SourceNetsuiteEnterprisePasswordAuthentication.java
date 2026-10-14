@@ -19,7 +19,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -32,9 +31,10 @@ public class SourceNetsuiteEnterprisePasswordAuthentication {
     @JsonIgnore
     private Map<String, Object> additionalProperties;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("authentication_method")
-    private Optional<? extends SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethod> authenticationMethod;
+    private Optional<? extends SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethodAuthenticationMethod> authenticationMethod;
 
     /**
      * The password associated with the username.
@@ -44,7 +44,7 @@ public class SourceNetsuiteEnterprisePasswordAuthentication {
 
     @JsonCreator
     public SourceNetsuiteEnterprisePasswordAuthentication(
-            @JsonProperty("authentication_method") Optional<? extends SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethod> authenticationMethod,
+            @JsonProperty("authentication_method") Optional<? extends SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethodAuthenticationMethod> authenticationMethod,
             @JsonProperty("password") String password) {
         Utils.checkNotNull(authenticationMethod, "authenticationMethod");
         Utils.checkNotNull(password, "password");
@@ -65,8 +65,8 @@ public class SourceNetsuiteEnterprisePasswordAuthentication {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethod> authenticationMethod() {
-        return (Optional<SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethod>) authenticationMethod;
+    public Optional<SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethodAuthenticationMethod> authenticationMethod() {
+        return (Optional<SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethodAuthenticationMethod>) authenticationMethod;
     }
 
     /**
@@ -77,9 +77,10 @@ public class SourceNetsuiteEnterprisePasswordAuthentication {
         return password;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceNetsuiteEnterprisePasswordAuthentication withAdditionalProperty(String key, Object value) {
@@ -87,21 +88,21 @@ public class SourceNetsuiteEnterprisePasswordAuthentication {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceNetsuiteEnterprisePasswordAuthentication withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
         return this;
     }
 
-    public SourceNetsuiteEnterprisePasswordAuthentication withAuthenticationMethod(SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethod authenticationMethod) {
+    public SourceNetsuiteEnterprisePasswordAuthentication withAuthenticationMethod(SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethodAuthenticationMethod authenticationMethod) {
         Utils.checkNotNull(authenticationMethod, "authenticationMethod");
         this.authenticationMethod = Optional.ofNullable(authenticationMethod);
         return this;
     }
 
-    public SourceNetsuiteEnterprisePasswordAuthentication withAuthenticationMethod(Optional<? extends SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethod> authenticationMethod) {
+
+    public SourceNetsuiteEnterprisePasswordAuthentication withAuthenticationMethod(Optional<? extends SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethodAuthenticationMethod> authenticationMethod) {
         Utils.checkNotNull(authenticationMethod, "authenticationMethod");
         this.authenticationMethod = authenticationMethod;
         return this;
@@ -116,7 +117,6 @@ public class SourceNetsuiteEnterprisePasswordAuthentication {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -127,17 +127,15 @@ public class SourceNetsuiteEnterprisePasswordAuthentication {
         }
         SourceNetsuiteEnterprisePasswordAuthentication other = (SourceNetsuiteEnterprisePasswordAuthentication) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.authenticationMethod, other.authenticationMethod) &&
-            Objects.deepEquals(this.password, other.password);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.authenticationMethod, other.authenticationMethod) &&
+            Utils.enhancedDeepEquals(this.password, other.password);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            authenticationMethod,
-            password);
+        return Utils.enhancedHash(
+            additionalProperties, authenticationMethod, password);
     }
     
     @Override
@@ -147,15 +145,16 @@ public class SourceNetsuiteEnterprisePasswordAuthentication {
                 "authenticationMethod", authenticationMethod,
                 "password", password);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
-        private Optional<? extends SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethod> authenticationMethod;
- 
+
+        private Optional<? extends SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethodAuthenticationMethod> authenticationMethod;
+
         private String password;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -176,17 +175,19 @@ public class SourceNetsuiteEnterprisePasswordAuthentication {
             return this;
         }
 
-        public Builder authenticationMethod(SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethod authenticationMethod) {
+
+        public Builder authenticationMethod(SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethodAuthenticationMethod authenticationMethod) {
             Utils.checkNotNull(authenticationMethod, "authenticationMethod");
             this.authenticationMethod = Optional.ofNullable(authenticationMethod);
             return this;
         }
 
-        public Builder authenticationMethod(Optional<? extends SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethod> authenticationMethod) {
+        public Builder authenticationMethod(Optional<? extends SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethodAuthenticationMethod> authenticationMethod) {
             Utils.checkNotNull(authenticationMethod, "authenticationMethod");
             this.authenticationMethod = authenticationMethod;
             return this;
         }
+
 
         /**
          * The password associated with the username.
@@ -196,21 +197,22 @@ public class SourceNetsuiteEnterprisePasswordAuthentication {
             this.password = password;
             return this;
         }
-        
+
         public SourceNetsuiteEnterprisePasswordAuthentication build() {
             if (authenticationMethod == null) {
                 authenticationMethod = _SINGLETON_VALUE_AuthenticationMethod.value();
             }
+
             return new SourceNetsuiteEnterprisePasswordAuthentication(
-                authenticationMethod,
-                password)
+                authenticationMethod, password)
                 .withAdditionalProperties(additionalProperties);
         }
 
-        private static final LazySingletonValue<Optional<? extends SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethod>> _SINGLETON_VALUE_AuthenticationMethod =
+
+        private static final LazySingletonValue<Optional<? extends SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethodAuthenticationMethod>> _SINGLETON_VALUE_AuthenticationMethod =
                 new LazySingletonValue<>(
                         "authentication_method",
                         "\"password_authentication\"",
-                        new TypeReference<Optional<? extends SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethod>>() {});
+                        new TypeReference<Optional<? extends SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethodAuthenticationMethod>>() {});
     }
 }

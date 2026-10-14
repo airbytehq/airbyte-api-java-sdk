@@ -14,7 +14,7 @@ public enum Aircall {
     @JsonValue
     private final String value;
 
-    private Aircall(String value) {
+    Aircall(String value) {
         this.value = value;
     }
     

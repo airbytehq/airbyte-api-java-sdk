@@ -14,7 +14,7 @@ public enum Encharge {
     @JsonValue
     private final String value;
 
-    private Encharge(String value) {
+    Encharge(String value) {
         this.value = value;
     }
     

@@ -11,27 +11,33 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceMicrosoftLists {
 
     @JsonProperty("application_id_uri")
     private String applicationIdUri;
 
+
     @JsonProperty("client_id")
     private String clientId;
+
 
     @JsonProperty("client_secret")
     private String clientSecret;
 
+
     @JsonProperty("domain")
     private String domain;
+
 
     @JsonProperty("site_id")
     private String siteId;
 
+
     @JsonProperty("sourceType")
     private MicrosoftLists sourceType;
+
 
     @JsonProperty("tenant_id")
     private String tenantId;
@@ -94,9 +100,10 @@ public class SourceMicrosoftLists {
         return tenantId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceMicrosoftLists withApplicationIdUri(String applicationIdUri) {
         Utils.checkNotNull(applicationIdUri, "applicationIdUri");
@@ -134,7 +141,6 @@ public class SourceMicrosoftLists {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -145,24 +151,20 @@ public class SourceMicrosoftLists {
         }
         SourceMicrosoftLists other = (SourceMicrosoftLists) o;
         return 
-            Objects.deepEquals(this.applicationIdUri, other.applicationIdUri) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.domain, other.domain) &&
-            Objects.deepEquals(this.siteId, other.siteId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.tenantId, other.tenantId);
+            Utils.enhancedDeepEquals(this.applicationIdUri, other.applicationIdUri) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.domain, other.domain) &&
+            Utils.enhancedDeepEquals(this.siteId, other.siteId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.tenantId, other.tenantId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            applicationIdUri,
-            clientId,
-            clientSecret,
-            domain,
-            siteId,
-            sourceType,
+        return Utils.enhancedHash(
+            applicationIdUri, clientId, clientSecret,
+            domain, siteId, sourceType,
             tenantId);
     }
     
@@ -177,24 +179,26 @@ public class SourceMicrosoftLists {
                 "sourceType", sourceType,
                 "tenantId", tenantId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String applicationIdUri;
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String domain;
- 
+
         private String siteId;
- 
+
         private String tenantId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder applicationIdUri(String applicationIdUri) {
             Utils.checkNotNull(applicationIdUri, "applicationIdUri");
@@ -202,11 +206,13 @@ public class SourceMicrosoftLists {
             return this;
         }
 
+
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
             this.clientId = clientId;
             return this;
         }
+
 
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
@@ -214,11 +220,13 @@ public class SourceMicrosoftLists {
             return this;
         }
 
+
         public Builder domain(String domain) {
             Utils.checkNotNull(domain, "domain");
             this.domain = domain;
             return this;
         }
+
 
         public Builder siteId(String siteId) {
             Utils.checkNotNull(siteId, "siteId");
@@ -226,21 +234,20 @@ public class SourceMicrosoftLists {
             return this;
         }
 
+
         public Builder tenantId(String tenantId) {
             Utils.checkNotNull(tenantId, "tenantId");
             this.tenantId = tenantId;
             return this;
         }
-        
+
         public SourceMicrosoftLists build() {
+
             return new SourceMicrosoftLists(
-                applicationIdUri,
-                clientId,
-                clientSecret,
-                domain,
-                siteId,
-                tenantId);
+                applicationIdUri, clientId, clientSecret,
+                domain, siteId, tenantId);
         }
+
 
         private static final LazySingletonValue<MicrosoftLists> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

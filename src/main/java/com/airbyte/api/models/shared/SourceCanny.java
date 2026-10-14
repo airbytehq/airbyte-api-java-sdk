@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceCanny {
-
     /**
      * You can find your secret API key in Your Canny Subdomain &gt; Settings &gt; API
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Canny sourceType;
@@ -45,9 +45,10 @@ public class SourceCanny {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * You can find your secret API key in Your Canny Subdomain &gt; Settings &gt; API
@@ -58,7 +59,6 @@ public class SourceCanny {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceCanny {
         }
         SourceCanny other = (SourceCanny) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, sourceType);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourceCanny {
                 "apiKey", apiKey,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * You can find your secret API key in Your Canny Subdomain &gt; Settings &gt; API
@@ -103,11 +104,13 @@ public class SourceCanny {
             this.apiKey = apiKey;
             return this;
         }
-        
+
         public SourceCanny build() {
+
             return new SourceCanny(
                 apiKey);
         }
+
 
         private static final LazySingletonValue<Canny> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

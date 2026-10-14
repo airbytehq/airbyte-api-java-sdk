@@ -14,7 +14,7 @@ public enum DestinationTeradataSchemasMode {
     @JsonValue
     private final String value;
 
-    private DestinationTeradataSchemasMode(String value) {
+    DestinationTeradataSchemasMode(String value) {
         this.value = value;
     }
     

@@ -19,13 +19,14 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class Silent {
 
     @JsonIgnore
     private Map<String, Object> additionalProperties;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("test_destination_type")
@@ -54,9 +55,10 @@ public class Silent {
         return (Optional<DestinationDevNullTestDestinationType>) testDestinationType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public Silent withAdditionalProperty(String key, Object value) {
@@ -64,8 +66,7 @@ public class Silent {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public Silent withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -78,13 +79,13 @@ public class Silent {
         return this;
     }
 
+
     public Silent withTestDestinationType(Optional<? extends DestinationDevNullTestDestinationType> testDestinationType) {
         Utils.checkNotNull(testDestinationType, "testDestinationType");
         this.testDestinationType = testDestinationType;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,15 +96,14 @@ public class Silent {
         }
         Silent other = (Silent) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.testDestinationType, other.testDestinationType);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.testDestinationType, other.testDestinationType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            testDestinationType);
+        return Utils.enhancedHash(
+            additionalProperties, testDestinationType);
     }
     
     @Override
@@ -112,13 +112,14 @@ public class Silent {
                 "additionalProperties", additionalProperties,
                 "testDestinationType", testDestinationType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends DestinationDevNullTestDestinationType> testDestinationType;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -139,6 +140,7 @@ public class Silent {
             return this;
         }
 
+
         public Builder testDestinationType(DestinationDevNullTestDestinationType testDestinationType) {
             Utils.checkNotNull(testDestinationType, "testDestinationType");
             this.testDestinationType = Optional.ofNullable(testDestinationType);
@@ -150,15 +152,17 @@ public class Silent {
             this.testDestinationType = testDestinationType;
             return this;
         }
-        
+
         public Silent build() {
             if (testDestinationType == null) {
                 testDestinationType = _SINGLETON_VALUE_TestDestinationType.value();
             }
+
             return new Silent(
                 testDestinationType)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationDevNullTestDestinationType>> _SINGLETON_VALUE_TestDestinationType =
                 new LazySingletonValue<>(

@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * AuthorizationType
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class AuthorizationType {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private AuthorizationType(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class AuthorizationType {
 
     public static AuthorizationType of(DestinationMongodbNone value) {
         Utils.checkNotNull(value, "value");
-        return new AuthorizationType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationMongodbNone>(){}));
+        return new AuthorizationType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static AuthorizationType of(LoginPassword value) {
         Utils.checkNotNull(value, "value");
-        return new AuthorizationType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<LoginPassword>(){}));
+        return new AuthorizationType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class AuthorizationType {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class AuthorizationType {
             return false;
         }
         AuthorizationType other = (AuthorizationType) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,8 +84,8 @@ public class AuthorizationType {
 
         public _Deserializer() {
             super(AuthorizationType.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<LoginPassword>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationMongodbNone>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationMongodbNone>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<LoginPassword>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -95,6 +94,6 @@ public class AuthorizationType {
         return Utils.toString(AuthorizationType.class,
                 "value", value);
     }
- 
+
 }
 

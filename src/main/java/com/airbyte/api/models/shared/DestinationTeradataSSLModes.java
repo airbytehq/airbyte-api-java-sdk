@@ -14,25 +14,31 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationTeradataSSLModes
  * 
- * <p>SSL connection modes. 
- *  &lt;b&gt;disable&lt;/b&gt; - Chose this mode to disable encryption of communication between Airbyte and destination database
- *  &lt;b&gt;allow&lt;/b&gt; - Chose this mode to enable encryption only when required by the destination database
- *  &lt;b&gt;prefer&lt;/b&gt; - Chose this mode to allow unencrypted connection only if the destination database does not support encryption
- *  &lt;b&gt;require&lt;/b&gt; - Chose this mode to always require encryption. If the destination database server does not support encryption, connection will fail
- *   &lt;b&gt;verify-ca&lt;/b&gt; - Chose this mode to always require encryption and to verify that the destination database server has a valid SSL certificate
- *   &lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Chose this mode to always require encryption and to verify the identity of the destination database server
- *  See more information - &lt;a href="https://teradata-docs.s3.amazonaws.com/doc/connectivity/jdbc/reference/current/jdbcug_chapter_2.html#URL_SSLMODE"&gt; in the docs&lt;/a&gt;.
+ * <p>SSL connection modes.
+ * <b>disable</b> - Chose this mode to disable encryption of communication between Airbyte and
+ * destination database
+ * <b>allow</b> - Chose this mode to enable encryption only when required by the destination database
+ * <b>prefer</b> - Chose this mode to allow unencrypted connection only if the destination database
+ * does not support encryption
+ * <b>require</b> - Chose this mode to always require encryption. If the destination database server
+ * does not support encryption, connection will fail
+ * <b>verify-ca</b> - Chose this mode to always require encryption and to verify that the destination
+ * database server has a valid SSL certificate
+ * <b>verify-full</b> - This is the most secure mode. Chose this mode to always require encryption and
+ * to verify the identity of the destination database server
+ * See more information - <a
+ * href="https://teradata-docs.s3.amazonaws.com/doc/connectivity/jdbc/reference/current/jdbcug_chapter_2.html#URL_SSLMODE">
+ * in the docs</a>.
  */
 @JsonDeserialize(using = DestinationTeradataSSLModes._Deserializer.class)
 public class DestinationTeradataSSLModes {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationTeradataSSLModes(TypedObject value) {
         this.value = value;
@@ -40,32 +46,32 @@ public class DestinationTeradataSSLModes {
 
     public static DestinationTeradataSSLModes of(DestinationTeradataDisable value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationTeradataSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationTeradataDisable>(){}));
+        return new DestinationTeradataSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationTeradataSSLModes of(DestinationTeradataAllow value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationTeradataSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationTeradataAllow>(){}));
+        return new DestinationTeradataSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationTeradataSSLModes of(DestinationTeradataPrefer value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationTeradataSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationTeradataPrefer>(){}));
+        return new DestinationTeradataSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationTeradataSSLModes of(DestinationTeradataRequire value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationTeradataSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationTeradataRequire>(){}));
+        return new DestinationTeradataSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationTeradataSSLModes of(DestinationTeradataVerifyCa value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationTeradataSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationTeradataVerifyCa>(){}));
+        return new DestinationTeradataSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationTeradataSSLModes of(DestinationTeradataVerifyFull value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationTeradataSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationTeradataVerifyFull>(){}));
+        return new DestinationTeradataSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -92,7 +98,7 @@ public class DestinationTeradataSSLModes {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -103,12 +109,12 @@ public class DestinationTeradataSSLModes {
             return false;
         }
         DestinationTeradataSSLModes other = (DestinationTeradataSSLModes) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -116,12 +122,12 @@ public class DestinationTeradataSSLModes {
 
         public _Deserializer() {
             super(DestinationTeradataSSLModes.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DestinationTeradataVerifyFull>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationTeradataVerifyCa>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationTeradataRequire>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationTeradataPrefer>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationTeradataDisable>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationTeradataAllow>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationTeradataDisable>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationTeradataPrefer>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationTeradataRequire>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationTeradataVerifyCa>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationTeradataVerifyFull>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -130,6 +136,6 @@ public class DestinationTeradataSSLModes {
         return Utils.toString(DestinationTeradataSSLModes.class,
                 "value", value);
     }
- 
+
 }
 

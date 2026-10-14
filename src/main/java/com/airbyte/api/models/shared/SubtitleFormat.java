@@ -20,7 +20,7 @@ public enum SubtitleFormat {
     @JsonValue
     private final String value;
 
-    private SubtitleFormat(String value) {
+    SubtitleFormat(String value) {
         this.value = value;
     }
     

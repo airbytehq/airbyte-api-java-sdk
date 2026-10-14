@@ -14,7 +14,7 @@ public enum Brex {
     @JsonValue
     private final String value;
 
-    private Brex(String value) {
+    Brex(String value) {
         this.value = value;
     }
     

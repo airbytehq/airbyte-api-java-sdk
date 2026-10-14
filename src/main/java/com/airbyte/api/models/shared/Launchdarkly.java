@@ -14,7 +14,7 @@ public enum Launchdarkly {
     @JsonValue
     private final String value;
 
-    private Launchdarkly(String value) {
+    Launchdarkly(String value) {
         this.value = value;
     }
     

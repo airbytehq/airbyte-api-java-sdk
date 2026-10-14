@@ -1,5 +1,13 @@
 # CredentialType
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.CredentialType;
+
+CredentialType value = CredentialType.HMAC_KEY;
+```
+
 
 ## Values
 

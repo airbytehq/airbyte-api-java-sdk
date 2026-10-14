@@ -14,7 +14,7 @@ public enum Huntr {
     @JsonValue
     private final String value;
 
-    private Huntr(String value) {
+    Huntr(String value) {
         this.value = value;
     }
     

@@ -2,6 +2,14 @@
 
 Attribution window for swipe ups.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SwipeUpAttributionWindow;
+
+SwipeUpAttributionWindow value = SwipeUpAttributionWindow.ONE_DAY;
+```
+
 
 ## Values
 

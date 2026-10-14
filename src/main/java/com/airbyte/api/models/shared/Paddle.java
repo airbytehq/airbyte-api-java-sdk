@@ -14,7 +14,7 @@ public enum Paddle {
     @JsonValue
     private final String value;
 
-    private Paddle(String value) {
+    Paddle(String value) {
         this.value = value;
     }
     

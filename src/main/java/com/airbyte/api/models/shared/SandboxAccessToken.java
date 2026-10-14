@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SandboxAccessToken {
 
+public class SandboxAccessToken {
     /**
      * The long-term authorized access token.
      */
@@ -30,6 +29,7 @@ public class SandboxAccessToken {
      */
     @JsonProperty("advertiser_id")
     private String advertiserId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
@@ -68,9 +68,10 @@ public class SandboxAccessToken {
         return (Optional<SourceTiktokMarketingSchemasAuthType>) authType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The long-term authorized access token.
@@ -90,7 +91,6 @@ public class SandboxAccessToken {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,17 +101,15 @@ public class SandboxAccessToken {
         }
         SandboxAccessToken other = (SandboxAccessToken) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.advertiserId, other.advertiserId) &&
-            Objects.deepEquals(this.authType, other.authType);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.advertiserId, other.advertiserId) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            advertiserId,
-            authType);
+        return Utils.enhancedHash(
+            accessToken, advertiserId, authType);
     }
     
     @Override
@@ -121,16 +119,18 @@ public class SandboxAccessToken {
                 "advertiserId", advertiserId,
                 "authType", authType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private String advertiserId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The long-term authorized access token.
@@ -141,6 +141,7 @@ public class SandboxAccessToken {
             return this;
         }
 
+
         /**
          * The Advertiser ID which generated for the developer's Sandbox application.
          */
@@ -149,12 +150,13 @@ public class SandboxAccessToken {
             this.advertiserId = advertiserId;
             return this;
         }
-        
+
         public SandboxAccessToken build() {
+
             return new SandboxAccessToken(
-                accessToken,
-                advertiserId);
+                accessToken, advertiserId);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceTiktokMarketingSchemasAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

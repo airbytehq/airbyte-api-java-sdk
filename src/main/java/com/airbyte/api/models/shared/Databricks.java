@@ -14,7 +14,7 @@ public enum Databricks {
     @JsonValue
     private final String value;
 
-    private Databricks(String value) {
+    Databricks(String value) {
         this.value = value;
     }
     

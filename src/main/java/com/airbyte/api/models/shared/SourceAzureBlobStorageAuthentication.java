@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceAzureBlobStorageAuthentication
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class SourceAzureBlobStorageAuthentication {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceAzureBlobStorageAuthentication(TypedObject value) {
         this.value = value;
@@ -33,17 +32,17 @@ public class SourceAzureBlobStorageAuthentication {
 
     public static SourceAzureBlobStorageAuthentication of(AuthenticateViaOauth2 value) {
         Utils.checkNotNull(value, "value");
-        return new SourceAzureBlobStorageAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AuthenticateViaOauth2>(){}));
+        return new SourceAzureBlobStorageAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceAzureBlobStorageAuthentication of(AuthenticateViaClientCredentials value) {
         Utils.checkNotNull(value, "value");
-        return new SourceAzureBlobStorageAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AuthenticateViaClientCredentials>(){}));
+        return new SourceAzureBlobStorageAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceAzureBlobStorageAuthentication of(AuthenticateViaStorageAccountKey value) {
         Utils.checkNotNull(value, "value");
-        return new SourceAzureBlobStorageAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AuthenticateViaStorageAccountKey>(){}));
+        return new SourceAzureBlobStorageAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +66,7 @@ public class SourceAzureBlobStorageAuthentication {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +77,12 @@ public class SourceAzureBlobStorageAuthentication {
             return false;
         }
         SourceAzureBlobStorageAuthentication other = (SourceAzureBlobStorageAuthentication) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -102,6 +101,6 @@ public class SourceAzureBlobStorageAuthentication {
         return Utils.toString(SourceAzureBlobStorageAuthentication.class,
                 "value", value);
     }
- 
+
 }
 

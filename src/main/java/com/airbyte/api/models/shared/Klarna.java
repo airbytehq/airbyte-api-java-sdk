@@ -14,7 +14,7 @@ public enum Klarna {
     @JsonValue
     private final String value;
 
-    private Klarna(String value) {
+    Klarna(String value) {
         this.value = value;
     }
     

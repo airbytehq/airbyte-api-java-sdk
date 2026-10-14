@@ -2,6 +2,14 @@
 
 Describes what actions/endpoints the permission entitles to
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.PermissionType;
+
+PermissionType value = PermissionType.INSTANCE_ADMIN;
+```
+
 
 ## Values
 

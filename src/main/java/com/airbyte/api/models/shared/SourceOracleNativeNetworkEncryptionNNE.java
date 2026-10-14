@@ -14,22 +14,23 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * SourceOracleNativeNetworkEncryptionNNE
  * 
- * <p>The native network encryption gives you the ability to encrypt database connections, without the configuration overhead of TCP/IP and SSL/TLS and without the need to open and listen on different ports.
+ * <p>The native network encryption gives you the ability to encrypt database connections, without the
+ * configuration overhead of TCP/IP and SSL/TLS and without the need to open and listen on different
+ * ports.
  */
 public class SourceOracleNativeNetworkEncryptionNNE {
-
     /**
      * This parameter defines what encryption algorithm is used.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("encryption_algorithm")
     private Optional<? extends SourceOracleEncryptionAlgorithm> encryptionAlgorithm;
+
 
     @JsonProperty("encryption_method")
     private SourceOracleSchemasEncryptionMethod encryptionMethod;
@@ -60,9 +61,10 @@ public class SourceOracleNativeNetworkEncryptionNNE {
         return encryptionMethod;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * This parameter defines what encryption algorithm is used.
@@ -73,6 +75,7 @@ public class SourceOracleNativeNetworkEncryptionNNE {
         return this;
     }
 
+
     /**
      * This parameter defines what encryption algorithm is used.
      */
@@ -82,7 +85,6 @@ public class SourceOracleNativeNetworkEncryptionNNE {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -93,15 +95,14 @@ public class SourceOracleNativeNetworkEncryptionNNE {
         }
         SourceOracleNativeNetworkEncryptionNNE other = (SourceOracleNativeNetworkEncryptionNNE) o;
         return 
-            Objects.deepEquals(this.encryptionAlgorithm, other.encryptionAlgorithm) &&
-            Objects.deepEquals(this.encryptionMethod, other.encryptionMethod);
+            Utils.enhancedDeepEquals(this.encryptionAlgorithm, other.encryptionAlgorithm) &&
+            Utils.enhancedDeepEquals(this.encryptionMethod, other.encryptionMethod);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            encryptionAlgorithm,
-            encryptionMethod);
+        return Utils.enhancedHash(
+            encryptionAlgorithm, encryptionMethod);
     }
     
     @Override
@@ -110,14 +111,16 @@ public class SourceOracleNativeNetworkEncryptionNNE {
                 "encryptionAlgorithm", encryptionAlgorithm,
                 "encryptionMethod", encryptionMethod);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourceOracleEncryptionAlgorithm> encryptionAlgorithm;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * This parameter defines what encryption algorithm is used.
@@ -136,14 +139,16 @@ public class SourceOracleNativeNetworkEncryptionNNE {
             this.encryptionAlgorithm = encryptionAlgorithm;
             return this;
         }
-        
+
         public SourceOracleNativeNetworkEncryptionNNE build() {
             if (encryptionAlgorithm == null) {
                 encryptionAlgorithm = _SINGLETON_VALUE_EncryptionAlgorithm.value();
             }
+
             return new SourceOracleNativeNetworkEncryptionNNE(
                 encryptionAlgorithm);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceOracleEncryptionAlgorithm>> _SINGLETON_VALUE_EncryptionAlgorithm =
                 new LazySingletonValue<>(

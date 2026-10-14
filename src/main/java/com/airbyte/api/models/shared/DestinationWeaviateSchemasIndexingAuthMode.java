@@ -14,7 +14,7 @@ public enum DestinationWeaviateSchemasIndexingAuthMode {
     @JsonValue
     private final String value;
 
-    private DestinationWeaviateSchemasIndexingAuthMode(String value) {
+    DestinationWeaviateSchemasIndexingAuthMode(String value) {
         this.value = value;
     }
     

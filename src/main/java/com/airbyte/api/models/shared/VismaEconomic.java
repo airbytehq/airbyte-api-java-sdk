@@ -14,7 +14,7 @@ public enum VismaEconomic {
     @JsonValue
     private final String value;
 
-    private VismaEconomic(String value) {
+    VismaEconomic(String value) {
         this.value = value;
     }
     

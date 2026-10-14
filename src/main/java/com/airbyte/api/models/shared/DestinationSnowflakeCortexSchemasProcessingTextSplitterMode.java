@@ -14,7 +14,7 @@ public enum DestinationSnowflakeCortexSchemasProcessingTextSplitterMode {
     @JsonValue
     private final String value;
 
-    private DestinationSnowflakeCortexSchemasProcessingTextSplitterMode(String value) {
+    DestinationSnowflakeCortexSchemasProcessingTextSplitterMode(String value) {
         this.value = value;
     }
     

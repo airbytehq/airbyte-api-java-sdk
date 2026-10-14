@@ -19,7 +19,7 @@ public enum SourcePostgresSchemasTunnelMethodTunnelMethod {
     @JsonValue
     private final String value;
 
-    private SourcePostgresSchemasTunnelMethodTunnelMethod(String value) {
+    SourcePostgresSchemasTunnelMethodTunnelMethod(String value) {
         this.value = value;
     }
     

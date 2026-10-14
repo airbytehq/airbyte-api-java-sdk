@@ -2,6 +2,14 @@
 
 https://apiz.sandbox.ebay.com for sandbox & https://apiz.ebay.com for production
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.APIHost;
+
+APIHost value = APIHost.HTTPS_APIZ_SANDBOX_EBAY_COM;
+```
+
 
 ## Values
 

@@ -14,19 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourcePostgresSSLModes
  * 
- * <p>SSL connection modes. 
- *   Read more &lt;a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"&gt; in the docs&lt;/a&gt;.
+ * <p>SSL connection modes.
+ * Read more <a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"> in the docs</a>.
  */
 @JsonDeserialize(using = SourcePostgresSSLModes._Deserializer.class)
 public class SourcePostgresSSLModes {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourcePostgresSSLModes(TypedObject value) {
         this.value = value;
@@ -34,32 +33,32 @@ public class SourcePostgresSSLModes {
 
     public static SourcePostgresSSLModes of(SourcePostgresDisable value) {
         Utils.checkNotNull(value, "value");
-        return new SourcePostgresSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePostgresDisable>(){}));
+        return new SourcePostgresSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourcePostgresSSLModes of(SourcePostgresAllow value) {
         Utils.checkNotNull(value, "value");
-        return new SourcePostgresSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePostgresAllow>(){}));
+        return new SourcePostgresSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourcePostgresSSLModes of(SourcePostgresPrefer value) {
         Utils.checkNotNull(value, "value");
-        return new SourcePostgresSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePostgresPrefer>(){}));
+        return new SourcePostgresSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourcePostgresSSLModes of(SourcePostgresRequire value) {
         Utils.checkNotNull(value, "value");
-        return new SourcePostgresSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePostgresRequire>(){}));
+        return new SourcePostgresSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourcePostgresSSLModes of(SourcePostgresVerifyCa value) {
         Utils.checkNotNull(value, "value");
-        return new SourcePostgresSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePostgresVerifyCa>(){}));
+        return new SourcePostgresSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourcePostgresSSLModes of(SourcePostgresVerifyFull value) {
         Utils.checkNotNull(value, "value");
-        return new SourcePostgresSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePostgresVerifyFull>(){}));
+        return new SourcePostgresSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -86,7 +85,7 @@ public class SourcePostgresSSLModes {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -97,12 +96,12 @@ public class SourcePostgresSSLModes {
             return false;
         }
         SourcePostgresSSLModes other = (SourcePostgresSSLModes) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -110,12 +109,12 @@ public class SourcePostgresSSLModes {
 
         public _Deserializer() {
             super(SourcePostgresSSLModes.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourcePostgresVerifyFull>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePostgresVerifyCa>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePostgresRequire>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePostgresPrefer>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePostgresDisable>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourcePostgresAllow>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourcePostgresDisable>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourcePostgresPrefer>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePostgresRequire>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePostgresVerifyCa>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourcePostgresVerifyFull>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -124,6 +123,6 @@ public class SourcePostgresSSLModes {
         return Utils.toString(SourcePostgresSSLModes.class,
                 "value", value);
     }
- 
+
 }
 

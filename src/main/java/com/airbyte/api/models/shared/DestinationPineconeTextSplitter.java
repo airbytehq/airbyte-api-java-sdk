@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationPineconeTextSplitter
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class DestinationPineconeTextSplitter {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationPineconeTextSplitter(TypedObject value) {
         this.value = value;
@@ -33,17 +32,17 @@ public class DestinationPineconeTextSplitter {
 
     public static DestinationPineconeTextSplitter of(DestinationPineconeBySeparator value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationPineconeTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationPineconeBySeparator>(){}));
+        return new DestinationPineconeTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationPineconeTextSplitter of(DestinationPineconeByMarkdownHeader value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationPineconeTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationPineconeByMarkdownHeader>(){}));
+        return new DestinationPineconeTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationPineconeTextSplitter of(DestinationPineconeByProgrammingLanguage value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationPineconeTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationPineconeByProgrammingLanguage>(){}));
+        return new DestinationPineconeTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +66,7 @@ public class DestinationPineconeTextSplitter {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +77,12 @@ public class DestinationPineconeTextSplitter {
             return false;
         }
         DestinationPineconeTextSplitter other = (DestinationPineconeTextSplitter) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -92,8 +91,8 @@ public class DestinationPineconeTextSplitter {
         public _Deserializer() {
             super(DestinationPineconeTextSplitter.class, false,
                   TypeReferenceWithShape.of(new TypeReference<DestinationPineconeBySeparator>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationPineconeByProgrammingLanguage>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationPineconeByMarkdownHeader>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationPineconeByMarkdownHeader>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationPineconeByProgrammingLanguage>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -102,6 +101,6 @@ public class DestinationPineconeTextSplitter {
         return Utils.toString(DestinationPineconeTextSplitter.class,
                 "value", value);
     }
- 
+
 }
 

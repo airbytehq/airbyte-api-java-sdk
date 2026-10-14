@@ -11,7 +11,8 @@ import java.util.Optional;
 /**
  * SourceS3ValidationPolicy
  * 
- * <p>The name of the validation policy that dictates sync behavior when a record does not adhere to the stream schema.
+ * <p>The name of the validation policy that dictates sync behavior when a record does not adhere to the
+ * stream schema.
  */
 public enum SourceS3ValidationPolicy {
     EMIT_RECORD("Emit Record"),
@@ -21,7 +22,7 @@ public enum SourceS3ValidationPolicy {
     @JsonValue
     private final String value;
 
-    private SourceS3ValidationPolicy(String value) {
+    SourceS3ValidationPolicy(String value) {
         this.value = value;
     }
     

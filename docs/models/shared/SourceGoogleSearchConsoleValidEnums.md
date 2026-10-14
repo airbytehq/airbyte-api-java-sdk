@@ -2,6 +2,14 @@
 
 An enumeration of dimensions.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceGoogleSearchConsoleValidEnums;
+
+SourceGoogleSearchConsoleValidEnums value = SourceGoogleSearchConsoleValidEnums.COUNTRY;
+```
+
 
 ## Values
 

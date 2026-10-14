@@ -11,21 +11,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceZohoBilling {
 
     @JsonProperty("client_id")
     private String clientId;
 
+
     @JsonProperty("client_secret")
     private String clientSecret;
+
 
     @JsonProperty("refresh_token")
     private String refreshToken;
 
+
     @JsonProperty("region")
     private SourceZohoBillingRegion region;
+
 
     @JsonProperty("sourceType")
     private ZohoBilling sourceType;
@@ -72,9 +76,10 @@ public class SourceZohoBilling {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceZohoBilling withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -100,7 +105,6 @@ public class SourceZohoBilling {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -111,21 +115,18 @@ public class SourceZohoBilling {
         }
         SourceZohoBilling other = (SourceZohoBilling) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken) &&
-            Objects.deepEquals(this.region, other.region) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.region, other.region) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            refreshToken,
-            region,
-            sourceType);
+        return Utils.enhancedHash(
+            clientId, clientSecret, refreshToken,
+            region, sourceType);
     }
     
     @Override
@@ -137,20 +138,22 @@ public class SourceZohoBilling {
                 "region", region,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String refreshToken;
- 
+
         private SourceZohoBillingRegion region;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -158,11 +161,13 @@ public class SourceZohoBilling {
             return this;
         }
 
+
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         public Builder refreshToken(String refreshToken) {
             Utils.checkNotNull(refreshToken, "refreshToken");
@@ -170,19 +175,20 @@ public class SourceZohoBilling {
             return this;
         }
 
+
         public Builder region(SourceZohoBillingRegion region) {
             Utils.checkNotNull(region, "region");
             this.region = region;
             return this;
         }
-        
+
         public SourceZohoBilling build() {
+
             return new SourceZohoBilling(
-                clientId,
-                clientSecret,
-                refreshToken,
+                clientId, clientSecret, refreshToken,
                 region);
         }
+
 
         private static final LazySingletonValue<ZohoBilling> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

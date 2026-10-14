@@ -9,12 +9,12 @@ import java.util.Objects;
 import java.util.Optional;
 
 public enum SourceSnowflakeAuthType {
-    O_AUTH("OAuth");
+    KEY_PAIR_AUTHENTICATION("Key Pair Authentication");
 
     @JsonValue
     private final String value;
 
-    private SourceSnowflakeAuthType(String value) {
+    SourceSnowflakeAuthType(String value) {
         this.value = value;
     }
     

@@ -14,13 +14,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = SourceSalesloftCredentials._Deserializer.class)
 public class SourceSalesloftCredentials {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceSalesloftCredentials(TypedObject value) {
         this.value = value;
@@ -28,12 +27,12 @@ public class SourceSalesloftCredentials {
 
     public static SourceSalesloftCredentials of(AuthenticateViaOAuth value) {
         Utils.checkNotNull(value, "value");
-        return new SourceSalesloftCredentials(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AuthenticateViaOAuth>(){}));
+        return new SourceSalesloftCredentials(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceSalesloftCredentials of(AuthenticateViaAPIKey value) {
         Utils.checkNotNull(value, "value");
-        return new SourceSalesloftCredentials(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AuthenticateViaAPIKey>(){}));
+        return new SourceSalesloftCredentials(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -56,7 +55,7 @@ public class SourceSalesloftCredentials {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -67,12 +66,12 @@ public class SourceSalesloftCredentials {
             return false;
         }
         SourceSalesloftCredentials other = (SourceSalesloftCredentials) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -90,6 +89,6 @@ public class SourceSalesloftCredentials {
         return Utils.toString(SourceSalesloftCredentials.class,
                 "value", value);
     }
- 
+
 }
 

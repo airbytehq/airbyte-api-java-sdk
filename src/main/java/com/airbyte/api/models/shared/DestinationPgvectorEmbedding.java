@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationPgvectorEmbedding
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class DestinationPgvectorEmbedding {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationPgvectorEmbedding(TypedObject value) {
         this.value = value;
@@ -33,27 +32,27 @@ public class DestinationPgvectorEmbedding {
 
     public static DestinationPgvectorEmbedding of(DestinationPgvectorOpenAI value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationPgvectorEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationPgvectorOpenAI>(){}));
+        return new DestinationPgvectorEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationPgvectorEmbedding of(DestinationPgvectorCohere value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationPgvectorEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationPgvectorCohere>(){}));
+        return new DestinationPgvectorEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationPgvectorEmbedding of(DestinationPgvectorFake value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationPgvectorEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationPgvectorFake>(){}));
+        return new DestinationPgvectorEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationPgvectorEmbedding of(DestinationPgvectorAzureOpenAI value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationPgvectorEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationPgvectorAzureOpenAI>(){}));
+        return new DestinationPgvectorEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationPgvectorEmbedding of(DestinationPgvectorOpenAICompatible value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationPgvectorEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationPgvectorOpenAICompatible>(){}));
+        return new DestinationPgvectorEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -79,7 +78,7 @@ public class DestinationPgvectorEmbedding {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -90,12 +89,12 @@ public class DestinationPgvectorEmbedding {
             return false;
         }
         DestinationPgvectorEmbedding other = (DestinationPgvectorEmbedding) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -103,11 +102,11 @@ public class DestinationPgvectorEmbedding {
 
         public _Deserializer() {
             super(DestinationPgvectorEmbedding.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DestinationPgvectorOpenAICompatible>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationPgvectorAzureOpenAI>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationPgvectorCohere>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationPgvectorOpenAI>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationPgvectorFake>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationPgvectorCohere>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationPgvectorFake>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationPgvectorAzureOpenAI>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationPgvectorOpenAICompatible>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -116,6 +115,6 @@ public class DestinationPgvectorEmbedding {
         return Utils.toString(DestinationPgvectorEmbedding.class,
                 "value", value);
     }
- 
+
 }
 

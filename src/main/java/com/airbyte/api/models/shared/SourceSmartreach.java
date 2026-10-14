@@ -12,15 +12,17 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Double;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceSmartreach {
 
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonProperty("sourceType")
     private Smartreach sourceType;
+
 
     @JsonProperty("teamid")
     private double teamid;
@@ -51,9 +53,10 @@ public class SourceSmartreach {
         return teamid;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceSmartreach withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -67,7 +70,6 @@ public class SourceSmartreach {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,17 +80,15 @@ public class SourceSmartreach {
         }
         SourceSmartreach other = (SourceSmartreach) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.teamid, other.teamid);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.teamid, other.teamid);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            teamid);
+        return Utils.enhancedHash(
+            apiKey, sourceType, teamid);
     }
     
     @Override
@@ -98,16 +98,18 @@ public class SourceSmartreach {
                 "sourceType", sourceType,
                 "teamid", teamid);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Double teamid;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -115,17 +117,19 @@ public class SourceSmartreach {
             return this;
         }
 
+
         public Builder teamid(double teamid) {
             Utils.checkNotNull(teamid, "teamid");
             this.teamid = teamid;
             return this;
         }
-        
+
         public SourceSmartreach build() {
+
             return new SourceSmartreach(
-                apiKey,
-                teamid);
+                apiKey, teamid);
         }
+
 
         private static final LazySingletonValue<Smartreach> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

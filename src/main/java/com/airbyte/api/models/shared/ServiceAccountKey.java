@@ -14,18 +14,19 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * ServiceAccountKey
  * 
- * <p>For these scenario user should obtain service account's credentials from the Google API Console and provide delegated email.
+ * <p>For these scenario user should obtain service account's credentials from the Google API Console and
+ * provide delegated email.
  */
 public class ServiceAccountKey {
-
     /**
-     * The contents of the JSON service account key. See the &lt;a href="https://developers.google.com/admin-sdk/directory/v1/guides/delegation"&gt;docs&lt;/a&gt; for more information on how to generate this key.
+     * The contents of the JSON service account key. See the <a
+     * href="https://developers.google.com/admin-sdk/directory/v1/guides/delegation">docs</a> for more
+     * information on how to generate this key.
      */
     @JsonProperty("credentials_json")
     private String credentialsJson;
@@ -55,7 +56,9 @@ public class ServiceAccountKey {
     }
 
     /**
-     * The contents of the JSON service account key. See the &lt;a href="https://developers.google.com/admin-sdk/directory/v1/guides/delegation"&gt;docs&lt;/a&gt; for more information on how to generate this key.
+     * The contents of the JSON service account key. See the <a
+     * href="https://developers.google.com/admin-sdk/directory/v1/guides/delegation">docs</a> for more
+     * information on how to generate this key.
      */
     @JsonIgnore
     public String credentialsJson() {
@@ -79,12 +82,15 @@ public class ServiceAccountKey {
         return email;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The contents of the JSON service account key. See the &lt;a href="https://developers.google.com/admin-sdk/directory/v1/guides/delegation"&gt;docs&lt;/a&gt; for more information on how to generate this key.
+     * The contents of the JSON service account key. See the <a
+     * href="https://developers.google.com/admin-sdk/directory/v1/guides/delegation">docs</a> for more
+     * information on how to generate this key.
      */
     public ServiceAccountKey withCredentialsJson(String credentialsJson) {
         Utils.checkNotNull(credentialsJson, "credentialsJson");
@@ -101,7 +107,6 @@ public class ServiceAccountKey {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -112,17 +117,15 @@ public class ServiceAccountKey {
         }
         ServiceAccountKey other = (ServiceAccountKey) o;
         return 
-            Objects.deepEquals(this.credentialsJson, other.credentialsJson) &&
-            Objects.deepEquals(this.credentialsTitle, other.credentialsTitle) &&
-            Objects.deepEquals(this.email, other.email);
+            Utils.enhancedDeepEquals(this.credentialsJson, other.credentialsJson) &&
+            Utils.enhancedDeepEquals(this.credentialsTitle, other.credentialsTitle) &&
+            Utils.enhancedDeepEquals(this.email, other.email);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentialsJson,
-            credentialsTitle,
-            email);
+        return Utils.enhancedHash(
+            credentialsJson, credentialsTitle, email);
     }
     
     @Override
@@ -132,25 +135,30 @@ public class ServiceAccountKey {
                 "credentialsTitle", credentialsTitle,
                 "email", email);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String credentialsJson;
- 
+
         private String email;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The contents of the JSON service account key. See the &lt;a href="https://developers.google.com/admin-sdk/directory/v1/guides/delegation"&gt;docs&lt;/a&gt; for more information on how to generate this key.
+         * The contents of the JSON service account key. See the <a
+         * href="https://developers.google.com/admin-sdk/directory/v1/guides/delegation">docs</a> for more
+         * information on how to generate this key.
          */
         public Builder credentialsJson(String credentialsJson) {
             Utils.checkNotNull(credentialsJson, "credentialsJson");
             this.credentialsJson = credentialsJson;
             return this;
         }
+
 
         /**
          * The email of the user, which has permissions to access the Google Workspace Admin APIs.
@@ -160,12 +168,13 @@ public class ServiceAccountKey {
             this.email = email;
             return this;
         }
-        
+
         public ServiceAccountKey build() {
+
             return new ServiceAccountKey(
-                credentialsJson,
-                email);
+                credentialsJson, email);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceGoogleDirectorySchemasCredentialsTitle>> _SINGLETON_VALUE_CredentialsTitle =
                 new LazySingletonValue<>(

@@ -19,8 +19,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class AuthenticateWithAPIToken {
 
@@ -28,10 +28,12 @@ public class AuthenticateWithAPIToken {
     private Map<String, Object> additionalProperties;
 
     /**
-     * Retently API Token. See the &lt;a href="https://app.retently.com/settings/api/tokens"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+     * Retently API Token. See the <a href="https://app.retently.com/settings/api/tokens">docs</a> for more
+     * information on how to obtain this key.
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
@@ -52,7 +54,8 @@ public class AuthenticateWithAPIToken {
     }
 
     /**
-     * Retently API Token. See the &lt;a href="https://app.retently.com/settings/api/tokens"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+     * Retently API Token. See the <a href="https://app.retently.com/settings/api/tokens">docs</a> for more
+     * information on how to obtain this key.
      */
     @JsonIgnore
     public String apiKey() {
@@ -65,9 +68,10 @@ public class AuthenticateWithAPIToken {
         return (Optional<SourceRetentlySchemasAuthType>) authType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public AuthenticateWithAPIToken withAdditionalProperty(String key, Object value) {
@@ -75,8 +79,7 @@ public class AuthenticateWithAPIToken {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public AuthenticateWithAPIToken withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -84,7 +87,8 @@ public class AuthenticateWithAPIToken {
     }
 
     /**
-     * Retently API Token. See the &lt;a href="https://app.retently.com/settings/api/tokens"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+     * Retently API Token. See the <a href="https://app.retently.com/settings/api/tokens">docs</a> for more
+     * information on how to obtain this key.
      */
     public AuthenticateWithAPIToken withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -92,7 +96,6 @@ public class AuthenticateWithAPIToken {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -103,17 +106,15 @@ public class AuthenticateWithAPIToken {
         }
         AuthenticateWithAPIToken other = (AuthenticateWithAPIToken) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.authType, other.authType);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            apiKey,
-            authType);
+        return Utils.enhancedHash(
+            additionalProperties, apiKey, authType);
     }
     
     @Override
@@ -123,13 +124,14 @@ public class AuthenticateWithAPIToken {
                 "apiKey", apiKey,
                 "authType", authType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private String apiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -150,20 +152,24 @@ public class AuthenticateWithAPIToken {
             return this;
         }
 
+
         /**
-         * Retently API Token. See the &lt;a href="https://app.retently.com/settings/api/tokens"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+         * Retently API Token. See the <a href="https://app.retently.com/settings/api/tokens">docs</a> for more
+         * information on how to obtain this key.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
-        
+
         public AuthenticateWithAPIToken build() {
+
             return new AuthenticateWithAPIToken(
                 apiKey)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceRetentlySchemasAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

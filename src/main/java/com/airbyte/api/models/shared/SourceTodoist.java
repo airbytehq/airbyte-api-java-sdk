@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceTodoist {
 
@@ -45,9 +45,10 @@ public class SourceTodoist {
         return token;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API authorization bearer token for authenticating the API
@@ -58,7 +59,6 @@ public class SourceTodoist {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceTodoist {
         }
         SourceTodoist other = (SourceTodoist) o;
         return 
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.token, other.token);
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.token, other.token);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            sourceType,
-            token);
+        return Utils.enhancedHash(
+            sourceType, token);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourceTodoist {
                 "sourceType", sourceType,
                 "token", token);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String token;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API authorization bearer token for authenticating the API
@@ -103,11 +104,13 @@ public class SourceTodoist {
             this.token = token;
             return this;
         }
-        
+
         public SourceTodoist build() {
+
             return new SourceTodoist(
                 token);
         }
+
 
         private static final LazySingletonValue<Todoist> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

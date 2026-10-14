@@ -11,21 +11,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceZohoCampaign {
 
     @JsonProperty("client_id_2")
     private String clientId2;
 
+
     @JsonProperty("client_refresh_token")
     private String clientRefreshToken;
+
 
     @JsonProperty("client_secret_2")
     private String clientSecret2;
 
+
     @JsonProperty("data_center")
     private SourceZohoCampaignDataCenter dataCenter;
+
 
     @JsonProperty("sourceType")
     private ZohoCampaign sourceType;
@@ -72,9 +76,10 @@ public class SourceZohoCampaign {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceZohoCampaign withClientId2(String clientId2) {
         Utils.checkNotNull(clientId2, "clientId2");
@@ -100,7 +105,6 @@ public class SourceZohoCampaign {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -111,21 +115,18 @@ public class SourceZohoCampaign {
         }
         SourceZohoCampaign other = (SourceZohoCampaign) o;
         return 
-            Objects.deepEquals(this.clientId2, other.clientId2) &&
-            Objects.deepEquals(this.clientRefreshToken, other.clientRefreshToken) &&
-            Objects.deepEquals(this.clientSecret2, other.clientSecret2) &&
-            Objects.deepEquals(this.dataCenter, other.dataCenter) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.clientId2, other.clientId2) &&
+            Utils.enhancedDeepEquals(this.clientRefreshToken, other.clientRefreshToken) &&
+            Utils.enhancedDeepEquals(this.clientSecret2, other.clientSecret2) &&
+            Utils.enhancedDeepEquals(this.dataCenter, other.dataCenter) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId2,
-            clientRefreshToken,
-            clientSecret2,
-            dataCenter,
-            sourceType);
+        return Utils.enhancedHash(
+            clientId2, clientRefreshToken, clientSecret2,
+            dataCenter, sourceType);
     }
     
     @Override
@@ -137,20 +138,22 @@ public class SourceZohoCampaign {
                 "dataCenter", dataCenter,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId2;
- 
+
         private String clientRefreshToken;
- 
+
         private String clientSecret2;
- 
+
         private SourceZohoCampaignDataCenter dataCenter;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder clientId2(String clientId2) {
             Utils.checkNotNull(clientId2, "clientId2");
@@ -158,11 +161,13 @@ public class SourceZohoCampaign {
             return this;
         }
 
+
         public Builder clientRefreshToken(String clientRefreshToken) {
             Utils.checkNotNull(clientRefreshToken, "clientRefreshToken");
             this.clientRefreshToken = clientRefreshToken;
             return this;
         }
+
 
         public Builder clientSecret2(String clientSecret2) {
             Utils.checkNotNull(clientSecret2, "clientSecret2");
@@ -170,19 +175,20 @@ public class SourceZohoCampaign {
             return this;
         }
 
+
         public Builder dataCenter(SourceZohoCampaignDataCenter dataCenter) {
             Utils.checkNotNull(dataCenter, "dataCenter");
             this.dataCenter = dataCenter;
             return this;
         }
-        
+
         public SourceZohoCampaign build() {
+
             return new SourceZohoCampaign(
-                clientId2,
-                clientRefreshToken,
-                clientSecret2,
+                clientId2, clientRefreshToken, clientSecret2,
                 dataCenter);
         }
+
 
         private static final LazySingletonValue<ZohoCampaign> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

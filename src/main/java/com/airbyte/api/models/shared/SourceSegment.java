@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceSegment {
 
+public class SourceSegment {
     /**
      * API token to use. Generate it in Segment's Workspace settings.
      */
@@ -32,8 +31,10 @@ public class SourceSegment {
     @JsonProperty("region")
     private Optional<String> region;
 
+
     @JsonProperty("sourceType")
     private Segment sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -84,9 +85,10 @@ public class SourceSegment {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API token to use. Generate it in Segment's Workspace settings.
@@ -106,6 +108,7 @@ public class SourceSegment {
         return this;
     }
 
+
     /**
      * The region for the API, e.g., 'api' for US or 'eu1' for EU
      */
@@ -121,7 +124,6 @@ public class SourceSegment {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -132,18 +134,16 @@ public class SourceSegment {
         }
         SourceSegment other = (SourceSegment) o;
         return 
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.region, other.region) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.region, other.region) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiToken,
-            region,
-            sourceType,
+        return Utils.enhancedHash(
+            apiToken, region, sourceType,
             startDate);
     }
     
@@ -155,18 +155,20 @@ public class SourceSegment {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiToken;
- 
+
         private Optional<String> region;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API token to use. Generate it in Segment's Workspace settings.
@@ -176,6 +178,7 @@ public class SourceSegment {
             this.apiToken = apiToken;
             return this;
         }
+
 
         /**
          * The region for the API, e.g., 'api' for US or 'eu1' for EU
@@ -195,21 +198,22 @@ public class SourceSegment {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceSegment build() {
             if (region == null) {
                 region = _SINGLETON_VALUE_Region.value();
             }
+
             return new SourceSegment(
-                apiToken,
-                region,
-                startDate);
+                apiToken, region, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Region =
                 new LazySingletonValue<>(

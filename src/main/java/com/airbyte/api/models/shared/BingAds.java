@@ -13,11 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class BingAds {
 
+public class BingAds {
     /**
      * The Client ID of your Microsoft Advertising developer application.
      */
@@ -62,9 +61,10 @@ public class BingAds {
         return clientSecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Client ID of your Microsoft Advertising developer application.
@@ -74,6 +74,7 @@ public class BingAds {
         this.clientId = Optional.ofNullable(clientId);
         return this;
     }
+
 
     /**
      * The Client ID of your Microsoft Advertising developer application.
@@ -93,6 +94,7 @@ public class BingAds {
         return this;
     }
 
+
     /**
      * The Client Secret of your Microsoft Advertising developer application.
      */
@@ -102,7 +104,6 @@ public class BingAds {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,15 +114,14 @@ public class BingAds {
         }
         BingAds other = (BingAds) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret);
+        return Utils.enhancedHash(
+            clientId, clientSecret);
     }
     
     @Override
@@ -130,16 +130,18 @@ public class BingAds {
                 "clientId", clientId,
                 "clientSecret", clientSecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> clientId = Optional.empty();
- 
+
         private Optional<String> clientSecret;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Client ID of your Microsoft Advertising developer application.
@@ -159,6 +161,7 @@ public class BingAds {
             return this;
         }
 
+
         /**
          * The Client Secret of your Microsoft Advertising developer application.
          */
@@ -176,15 +179,16 @@ public class BingAds {
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public BingAds build() {
             if (clientSecret == null) {
                 clientSecret = _SINGLETON_VALUE_ClientSecret.value();
             }
+
             return new BingAds(
-                clientId,
-                clientSecret);
+                clientId, clientSecret);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_ClientSecret =
                 new LazySingletonValue<>(

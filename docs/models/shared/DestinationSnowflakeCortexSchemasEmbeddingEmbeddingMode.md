@@ -1,5 +1,13 @@
 # DestinationSnowflakeCortexSchemasEmbeddingEmbeddingMode
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DestinationSnowflakeCortexSchemasEmbeddingEmbeddingMode;
+
+DestinationSnowflakeCortexSchemasEmbeddingEmbeddingMode value = DestinationSnowflakeCortexSchemasEmbeddingEmbeddingMode.AZURE_OPENAI;
+```
+
 
 ## Values
 

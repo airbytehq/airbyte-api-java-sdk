@@ -14,7 +14,7 @@ public enum Teradata {
     @JsonValue
     private final String value;
 
-    private Teradata(String value) {
+    Teradata(String value) {
         this.value = value;
     }
     

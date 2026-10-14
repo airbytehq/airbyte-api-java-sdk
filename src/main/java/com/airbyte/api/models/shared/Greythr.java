@@ -14,7 +14,7 @@ public enum Greythr {
     @JsonValue
     private final String value;
 
-    private Greythr(String value) {
+    Greythr(String value) {
         this.value = value;
     }
     

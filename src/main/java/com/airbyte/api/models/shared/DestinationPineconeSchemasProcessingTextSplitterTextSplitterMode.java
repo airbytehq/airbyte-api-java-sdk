@@ -14,7 +14,7 @@ public enum DestinationPineconeSchemasProcessingTextSplitterTextSplitterMode {
     @JsonValue
     private final String value;
 
-    private DestinationPineconeSchemasProcessingTextSplitterTextSplitterMode(String value) {
+    DestinationPineconeSchemasProcessingTextSplitterTextSplitterMode(String value) {
         this.value = value;
     }
     

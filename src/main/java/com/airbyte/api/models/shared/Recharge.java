@@ -14,7 +14,7 @@ public enum Recharge {
     @JsonValue
     private final String value;
 
-    private Recharge(String value) {
+    Recharge(String value) {
         this.value = value;
     }
     

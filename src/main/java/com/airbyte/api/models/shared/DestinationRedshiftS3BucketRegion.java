@@ -52,7 +52,7 @@ public enum DestinationRedshiftS3BucketRegion {
     @JsonValue
     private final String value;
 
-    private DestinationRedshiftS3BucketRegion(String value) {
+    DestinationRedshiftS3BucketRegion(String value) {
         this.value = value;
     }
     

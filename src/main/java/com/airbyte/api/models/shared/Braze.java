@@ -14,7 +14,7 @@ public enum Braze {
     @JsonValue
     private final String value;
 
-    private Braze(String value) {
+    Braze(String value) {
         this.value = value;
     }
     

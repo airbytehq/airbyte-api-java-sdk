@@ -14,7 +14,7 @@ public enum Front {
     @JsonValue
     private final String value;
 
-    private Front(String value) {
+    Front(String value) {
         this.value = value;
     }
     

@@ -14,13 +14,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = SourceLinkedinPagesAuthentication._Deserializer.class)
 public class SourceLinkedinPagesAuthentication {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceLinkedinPagesAuthentication(TypedObject value) {
         this.value = value;
@@ -28,12 +27,12 @@ public class SourceLinkedinPagesAuthentication {
 
     public static SourceLinkedinPagesAuthentication of(SourceLinkedinPagesOAuth20 value) {
         Utils.checkNotNull(value, "value");
-        return new SourceLinkedinPagesAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceLinkedinPagesOAuth20>(){}));
+        return new SourceLinkedinPagesAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceLinkedinPagesAuthentication of(SourceLinkedinPagesAccessToken value) {
         Utils.checkNotNull(value, "value");
-        return new SourceLinkedinPagesAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceLinkedinPagesAccessToken>(){}));
+        return new SourceLinkedinPagesAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -56,7 +55,7 @@ public class SourceLinkedinPagesAuthentication {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -67,12 +66,12 @@ public class SourceLinkedinPagesAuthentication {
             return false;
         }
         SourceLinkedinPagesAuthentication other = (SourceLinkedinPagesAuthentication) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -90,6 +89,6 @@ public class SourceLinkedinPagesAuthentication {
         return Utils.toString(SourceLinkedinPagesAuthentication.class,
                 "value", value);
     }
- 
+
 }
 

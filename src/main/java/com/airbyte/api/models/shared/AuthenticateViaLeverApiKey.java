@@ -14,16 +14,16 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class AuthenticateViaLeverApiKey {
 
+public class AuthenticateViaLeverApiKey {
     /**
      * The Api Key of your Lever Hiring account.
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
@@ -51,9 +51,10 @@ public class AuthenticateViaLeverApiKey {
         return (Optional<SourceLeverHiringSchemasAuthType>) authType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Api Key of your Lever Hiring account.
@@ -64,7 +65,6 @@ public class AuthenticateViaLeverApiKey {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -75,15 +75,14 @@ public class AuthenticateViaLeverApiKey {
         }
         AuthenticateViaLeverApiKey other = (AuthenticateViaLeverApiKey) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.authType, other.authType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            authType);
+        return Utils.enhancedHash(
+            apiKey, authType);
     }
     
     @Override
@@ -92,14 +91,16 @@ public class AuthenticateViaLeverApiKey {
                 "apiKey", apiKey,
                 "authType", authType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Api Key of your Lever Hiring account.
@@ -109,11 +110,13 @@ public class AuthenticateViaLeverApiKey {
             this.apiKey = apiKey;
             return this;
         }
-        
+
         public AuthenticateViaLeverApiKey build() {
+
             return new AuthenticateViaLeverApiKey(
                 apiKey);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceLeverHiringSchemasAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

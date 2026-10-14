@@ -19,7 +19,7 @@ public enum SourceSftpSchemasAuthMethod {
     @JsonValue
     private final String value;
 
-    private SourceSftpSchemasAuthMethod(String value) {
+    SourceSftpSchemasAuthMethod(String value) {
         this.value = value;
     }
     

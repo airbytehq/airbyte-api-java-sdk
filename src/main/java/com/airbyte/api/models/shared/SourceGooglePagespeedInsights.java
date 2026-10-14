@@ -14,23 +14,28 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceGooglePagespeedInsights {
 
+public class SourceGooglePagespeedInsights {
     /**
-     * Google PageSpeed API Key. See &lt;a href="https://developers.google.com/speed/docs/insights/v5/get-started#APIKey"&gt;here&lt;/a&gt;. The key is optional - however the API is heavily rate limited when using without API Key. Creating and using the API key therefore is recommended. The key is case sensitive.
+     * Google PageSpeed API Key. See <a
+     * href="https://developers.google.com/speed/docs/insights/v5/get-started#APIKey">here</a>. The key is
+     * optional - however the API is heavily rate limited when using without API Key.
+     * 
+     * <p>Creating and using the API key therefore is recommended. The key is case sensitive.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("api_key")
     private Optional<String> apiKey;
 
     /**
-     * Defines which Lighthouse category to run. One or many of: "accessibility", "best-practices", "performance", "pwa", "seo".
+     * Defines which Lighthouse category to run. One or many of: "accessibility", "best-practices",
+     * "performance", "pwa", "seo".
      */
     @JsonProperty("categories")
     private List<Categories> categories;
+
 
     @JsonProperty("sourceType")
     private GooglePagespeedInsights sourceType;
@@ -42,7 +47,8 @@ public class SourceGooglePagespeedInsights {
     private List<Strategies> strategies;
 
     /**
-     * The URLs to retrieve pagespeed information from. The connector will attempt to sync PageSpeed reports for all the defined URLs. Format: https://(www.)url.domain
+     * The URLs to retrieve pagespeed information from. The connector will attempt to sync PageSpeed
+     * reports for all the defined URLs. Format: https://(www.)url.domain
      */
     @JsonProperty("urls")
     private List<String> urls;
@@ -68,11 +74,16 @@ public class SourceGooglePagespeedInsights {
             List<Categories> categories,
             List<Strategies> strategies,
             List<String> urls) {
-        this(Optional.empty(), categories, strategies, urls);
+        this(Optional.empty(), categories, strategies,
+            urls);
     }
 
     /**
-     * Google PageSpeed API Key. See &lt;a href="https://developers.google.com/speed/docs/insights/v5/get-started#APIKey"&gt;here&lt;/a&gt;. The key is optional - however the API is heavily rate limited when using without API Key. Creating and using the API key therefore is recommended. The key is case sensitive.
+     * Google PageSpeed API Key. See <a
+     * href="https://developers.google.com/speed/docs/insights/v5/get-started#APIKey">here</a>. The key is
+     * optional - however the API is heavily rate limited when using without API Key.
+     * 
+     * <p>Creating and using the API key therefore is recommended. The key is case sensitive.
      */
     @JsonIgnore
     public Optional<String> apiKey() {
@@ -80,7 +91,8 @@ public class SourceGooglePagespeedInsights {
     }
 
     /**
-     * Defines which Lighthouse category to run. One or many of: "accessibility", "best-practices", "performance", "pwa", "seo".
+     * Defines which Lighthouse category to run. One or many of: "accessibility", "best-practices",
+     * "performance", "pwa", "seo".
      */
     @JsonIgnore
     public List<Categories> categories() {
@@ -101,19 +113,25 @@ public class SourceGooglePagespeedInsights {
     }
 
     /**
-     * The URLs to retrieve pagespeed information from. The connector will attempt to sync PageSpeed reports for all the defined URLs. Format: https://(www.)url.domain
+     * The URLs to retrieve pagespeed information from. The connector will attempt to sync PageSpeed
+     * reports for all the defined URLs. Format: https://(www.)url.domain
      */
     @JsonIgnore
     public List<String> urls() {
         return urls;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Google PageSpeed API Key. See &lt;a href="https://developers.google.com/speed/docs/insights/v5/get-started#APIKey"&gt;here&lt;/a&gt;. The key is optional - however the API is heavily rate limited when using without API Key. Creating and using the API key therefore is recommended. The key is case sensitive.
+     * Google PageSpeed API Key. See <a
+     * href="https://developers.google.com/speed/docs/insights/v5/get-started#APIKey">here</a>. The key is
+     * optional - however the API is heavily rate limited when using without API Key.
+     * 
+     * <p>Creating and using the API key therefore is recommended. The key is case sensitive.
      */
     public SourceGooglePagespeedInsights withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -121,8 +139,13 @@ public class SourceGooglePagespeedInsights {
         return this;
     }
 
+
     /**
-     * Google PageSpeed API Key. See &lt;a href="https://developers.google.com/speed/docs/insights/v5/get-started#APIKey"&gt;here&lt;/a&gt;. The key is optional - however the API is heavily rate limited when using without API Key. Creating and using the API key therefore is recommended. The key is case sensitive.
+     * Google PageSpeed API Key. See <a
+     * href="https://developers.google.com/speed/docs/insights/v5/get-started#APIKey">here</a>. The key is
+     * optional - however the API is heavily rate limited when using without API Key.
+     * 
+     * <p>Creating and using the API key therefore is recommended. The key is case sensitive.
      */
     public SourceGooglePagespeedInsights withApiKey(Optional<String> apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -131,7 +154,8 @@ public class SourceGooglePagespeedInsights {
     }
 
     /**
-     * Defines which Lighthouse category to run. One or many of: "accessibility", "best-practices", "performance", "pwa", "seo".
+     * Defines which Lighthouse category to run. One or many of: "accessibility", "best-practices",
+     * "performance", "pwa", "seo".
      */
     public SourceGooglePagespeedInsights withCategories(List<Categories> categories) {
         Utils.checkNotNull(categories, "categories");
@@ -149,7 +173,8 @@ public class SourceGooglePagespeedInsights {
     }
 
     /**
-     * The URLs to retrieve pagespeed information from. The connector will attempt to sync PageSpeed reports for all the defined URLs. Format: https://(www.)url.domain
+     * The URLs to retrieve pagespeed information from. The connector will attempt to sync PageSpeed
+     * reports for all the defined URLs. Format: https://(www.)url.domain
      */
     public SourceGooglePagespeedInsights withUrls(List<String> urls) {
         Utils.checkNotNull(urls, "urls");
@@ -157,7 +182,6 @@ public class SourceGooglePagespeedInsights {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -168,21 +192,18 @@ public class SourceGooglePagespeedInsights {
         }
         SourceGooglePagespeedInsights other = (SourceGooglePagespeedInsights) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.categories, other.categories) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.strategies, other.strategies) &&
-            Objects.deepEquals(this.urls, other.urls);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.categories, other.categories) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.strategies, other.strategies) &&
+            Utils.enhancedDeepEquals(this.urls, other.urls);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            categories,
-            sourceType,
-            strategies,
-            urls);
+        return Utils.enhancedHash(
+            apiKey, categories, sourceType,
+            strategies, urls);
     }
     
     @Override
@@ -194,23 +215,29 @@ public class SourceGooglePagespeedInsights {
                 "strategies", strategies,
                 "urls", urls);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> apiKey = Optional.empty();
- 
+
         private List<Categories> categories;
- 
+
         private List<Strategies> strategies;
- 
+
         private List<String> urls;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Google PageSpeed API Key. See &lt;a href="https://developers.google.com/speed/docs/insights/v5/get-started#APIKey"&gt;here&lt;/a&gt;. The key is optional - however the API is heavily rate limited when using without API Key. Creating and using the API key therefore is recommended. The key is case sensitive.
+         * Google PageSpeed API Key. See <a
+         * href="https://developers.google.com/speed/docs/insights/v5/get-started#APIKey">here</a>. The key is
+         * optional - however the API is heavily rate limited when using without API Key.
+         * 
+         * <p>Creating and using the API key therefore is recommended. The key is case sensitive.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -219,7 +246,11 @@ public class SourceGooglePagespeedInsights {
         }
 
         /**
-         * Google PageSpeed API Key. See &lt;a href="https://developers.google.com/speed/docs/insights/v5/get-started#APIKey"&gt;here&lt;/a&gt;. The key is optional - however the API is heavily rate limited when using without API Key. Creating and using the API key therefore is recommended. The key is case sensitive.
+         * Google PageSpeed API Key. See <a
+         * href="https://developers.google.com/speed/docs/insights/v5/get-started#APIKey">here</a>. The key is
+         * optional - however the API is heavily rate limited when using without API Key.
+         * 
+         * <p>Creating and using the API key therefore is recommended. The key is case sensitive.
          */
         public Builder apiKey(Optional<String> apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -227,14 +258,17 @@ public class SourceGooglePagespeedInsights {
             return this;
         }
 
+
         /**
-         * Defines which Lighthouse category to run. One or many of: "accessibility", "best-practices", "performance", "pwa", "seo".
+         * Defines which Lighthouse category to run. One or many of: "accessibility", "best-practices",
+         * "performance", "pwa", "seo".
          */
         public Builder categories(List<Categories> categories) {
             Utils.checkNotNull(categories, "categories");
             this.categories = categories;
             return this;
         }
+
 
         /**
          * The analyses strategy to use. Either "desktop" or "mobile".
@@ -245,22 +279,24 @@ public class SourceGooglePagespeedInsights {
             return this;
         }
 
+
         /**
-         * The URLs to retrieve pagespeed information from. The connector will attempt to sync PageSpeed reports for all the defined URLs. Format: https://(www.)url.domain
+         * The URLs to retrieve pagespeed information from. The connector will attempt to sync PageSpeed
+         * reports for all the defined URLs. Format: https://(www.)url.domain
          */
         public Builder urls(List<String> urls) {
             Utils.checkNotNull(urls, "urls");
             this.urls = urls;
             return this;
         }
-        
+
         public SourceGooglePagespeedInsights build() {
+
             return new SourceGooglePagespeedInsights(
-                apiKey,
-                categories,
-                strategies,
+                apiKey, categories, strategies,
                 urls);
         }
+
 
         private static final LazySingletonValue<GooglePagespeedInsights> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

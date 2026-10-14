@@ -15,11 +15,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceCastorEdc {
 
+public class SourceCastorEdc {
     /**
      * Visit `https://YOUR_REGION.castoredc.com/account/settings`
      */
@@ -32,8 +31,10 @@ public class SourceCastorEdc {
     @JsonProperty("client_secret")
     private String clientSecret;
 
+
     @JsonProperty("sourceType")
     private CastorEdc sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -66,7 +67,8 @@ public class SourceCastorEdc {
             String clientId,
             String clientSecret,
             OffsetDateTime startDate) {
-        this(clientId, clientSecret, startDate, Optional.empty());
+        this(clientId, clientSecret, startDate,
+            Optional.empty());
     }
 
     /**
@@ -104,9 +106,10 @@ public class SourceCastorEdc {
         return (Optional<URLRegion>) urlRegion;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Visit `https://YOUR_REGION.castoredc.com/account/settings`
@@ -141,6 +144,7 @@ public class SourceCastorEdc {
         return this;
     }
 
+
     /**
      * The url region given at time of registration
      */
@@ -150,7 +154,6 @@ public class SourceCastorEdc {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -161,21 +164,18 @@ public class SourceCastorEdc {
         }
         SourceCastorEdc other = (SourceCastorEdc) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.urlRegion, other.urlRegion);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.urlRegion, other.urlRegion);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            sourceType,
-            startDate,
-            urlRegion);
+        return Utils.enhancedHash(
+            clientId, clientSecret, sourceType,
+            startDate, urlRegion);
     }
     
     @Override
@@ -187,20 +187,22 @@ public class SourceCastorEdc {
                 "startDate", startDate,
                 "urlRegion", urlRegion);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private OffsetDateTime startDate;
- 
+
         private Optional<? extends URLRegion> urlRegion;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Visit `https://YOUR_REGION.castoredc.com/account/settings`
@@ -211,6 +213,7 @@ public class SourceCastorEdc {
             return this;
         }
 
+
         /**
          * Visit `https://YOUR_REGION.castoredc.com/account/settings`
          */
@@ -220,11 +223,13 @@ public class SourceCastorEdc {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * The url region given at time of registration
@@ -243,17 +248,17 @@ public class SourceCastorEdc {
             this.urlRegion = urlRegion;
             return this;
         }
-        
+
         public SourceCastorEdc build() {
             if (urlRegion == null) {
                 urlRegion = _SINGLETON_VALUE_UrlRegion.value();
             }
+
             return new SourceCastorEdc(
-                clientId,
-                clientSecret,
-                startDate,
+                clientId, clientSecret, startDate,
                 urlRegion);
         }
+
 
         private static final LazySingletonValue<CastorEdc> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceApptivo {
 
@@ -23,6 +23,7 @@ public class SourceApptivo {
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Apptivo sourceType;
@@ -56,9 +57,10 @@ public class SourceApptivo {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceApptivo withAccessKey(String accessKey) {
         Utils.checkNotNull(accessKey, "accessKey");
@@ -75,7 +77,6 @@ public class SourceApptivo {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -86,17 +87,15 @@ public class SourceApptivo {
         }
         SourceApptivo other = (SourceApptivo) o;
         return 
-            Objects.deepEquals(this.accessKey, other.accessKey) &&
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.accessKey, other.accessKey) &&
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessKey,
-            apiKey,
-            sourceType);
+        return Utils.enhancedHash(
+            accessKey, apiKey, sourceType);
     }
     
     @Override
@@ -106,22 +105,25 @@ public class SourceApptivo {
                 "apiKey", apiKey,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessKey;
- 
+
         private String apiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder accessKey(String accessKey) {
             Utils.checkNotNull(accessKey, "accessKey");
             this.accessKey = accessKey;
             return this;
         }
+
 
         /**
          * API key to use. Find it in your Apptivo account under Business Settings -&gt; API Access.
@@ -131,12 +133,13 @@ public class SourceApptivo {
             this.apiKey = apiKey;
             return this;
         }
-        
+
         public SourceApptivo build() {
+
             return new SourceApptivo(
-                accessKey,
-                apiKey);
+                accessKey, apiKey);
         }
+
 
         private static final LazySingletonValue<Apptivo> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

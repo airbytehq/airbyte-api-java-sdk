@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class DeleteWorkspaceRequest {
 
@@ -28,9 +28,10 @@ public class DeleteWorkspaceRequest {
         return workspaceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public DeleteWorkspaceRequest withWorkspaceId(String workspaceId) {
         Utils.checkNotNull(workspaceId, "workspaceId");
@@ -38,7 +39,6 @@ public class DeleteWorkspaceRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -49,12 +49,12 @@ public class DeleteWorkspaceRequest {
         }
         DeleteWorkspaceRequest other = (DeleteWorkspaceRequest) o;
         return 
-            Objects.deepEquals(this.workspaceId, other.workspaceId);
+            Utils.enhancedDeepEquals(this.workspaceId, other.workspaceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             workspaceId);
     }
     
@@ -63,24 +63,28 @@ public class DeleteWorkspaceRequest {
         return Utils.toString(DeleteWorkspaceRequest.class,
                 "workspaceId", workspaceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String workspaceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder workspaceId(String workspaceId) {
             Utils.checkNotNull(workspaceId, "workspaceId");
             this.workspaceId = workspaceId;
             return this;
         }
-        
+
         public DeleteWorkspaceRequest build() {
+
             return new DeleteWorkspaceRequest(
                 workspaceId);
         }
+
     }
 }

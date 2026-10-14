@@ -20,7 +20,7 @@ public enum GoCardlessAPIEnvironment {
     @JsonValue
     private final String value;
 
-    private GoCardlessAPIEnvironment(String value) {
+    GoCardlessAPIEnvironment(String value) {
         this.value = value;
     }
     

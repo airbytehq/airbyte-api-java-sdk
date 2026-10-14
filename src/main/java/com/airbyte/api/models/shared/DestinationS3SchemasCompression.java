@@ -14,18 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationS3SchemasCompression
  * 
- * <p>Whether the output files should be compressed. If compression is selected, the output filename will have an extra extension (GZIP: ".jsonl.gz").
+ * <p>Whether the output files should be compressed. If compression is selected, the output filename will
+ * have an extra extension (GZIP: ".jsonl.gz").
  */
 @JsonDeserialize(using = DestinationS3SchemasCompression._Deserializer.class)
 public class DestinationS3SchemasCompression {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationS3SchemasCompression(TypedObject value) {
         this.value = value;
@@ -33,12 +33,12 @@ public class DestinationS3SchemasCompression {
 
     public static DestinationS3SchemasCompression of(DestinationS3SchemasNoCompression value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationS3SchemasCompression(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationS3SchemasNoCompression>(){}));
+        return new DestinationS3SchemasCompression(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationS3SchemasCompression of(DestinationS3SchemasGZIP value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationS3SchemasCompression(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationS3SchemasGZIP>(){}));
+        return new DestinationS3SchemasCompression(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +61,7 @@ public class DestinationS3SchemasCompression {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +72,12 @@ public class DestinationS3SchemasCompression {
             return false;
         }
         DestinationS3SchemasCompression other = (DestinationS3SchemasCompression) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,8 +85,8 @@ public class DestinationS3SchemasCompression {
 
         public _Deserializer() {
             super(DestinationS3SchemasCompression.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DestinationS3SchemasGZIP>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationS3SchemasNoCompression>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationS3SchemasNoCompression>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationS3SchemasGZIP>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -95,6 +95,6 @@ public class DestinationS3SchemasCompression {
         return Utils.toString(DestinationS3SchemasCompression.class,
                 "value", value);
     }
- 
+
 }
 

@@ -14,7 +14,7 @@ public enum SourceSurveySparrowUrlBase {
     @JsonValue
     private final String value;
 
-    private SourceSurveySparrowUrlBase(String value) {
+    SourceSurveySparrowUrlBase(String value) {
         this.value = value;
     }
     

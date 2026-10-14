@@ -14,7 +14,7 @@ public enum BunnyInc {
     @JsonValue
     private final String value;
 
-    private BunnyInc(String value) {
+    BunnyInc(String value) {
         this.value = value;
     }
     

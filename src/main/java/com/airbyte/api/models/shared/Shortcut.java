@@ -14,7 +14,7 @@ public enum Shortcut {
     @JsonValue
     private final String value;
 
-    private Shortcut(String value) {
+    Shortcut(String value) {
         this.value = value;
     }
     

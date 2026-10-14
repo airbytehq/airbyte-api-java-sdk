@@ -16,19 +16,27 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationClickhouse {
 
+public class DestinationClickhouse {
     /**
      * Name of the database.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("database")
-    private String database;
+    private Optional<String> database;
+
 
     @JsonProperty("destinationType")
     private Clickhouse destinationType;
+
+    /**
+     * Use the JSON type for Object fields. If disabled, the JSON will be converted to a string.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("enable_json")
+    private Optional<Boolean> enableJson;
 
     /**
      * Hostname of the database.
@@ -37,42 +45,36 @@ public class DestinationClickhouse {
     private String host;
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("jdbc_url_params")
-    private Optional<String> jdbcUrlParams;
-
-    /**
      * Password associated with the username.
      */
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
-    private Optional<String> password;
+    private String password;
 
     /**
-     * HTTP port of the database.
+     * HTTP port of the database. Default(s) HTTP: 8123 — HTTPS: 8443
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("port")
-    private Optional<Long> port;
+    private Optional<String> port;
 
     /**
-     * The schema to write raw tables into (default: airbyte_internal)
+     * Protocol for the database connection string.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("raw_data_schema")
-    private Optional<String> rawDataSchema;
+    @JsonProperty("protocol")
+    private Optional<? extends Protocol> protocol;
 
     /**
-     * Encrypt data using SSL.
+     * Warning: Tuning this parameter can impact the performances. The maximum number of records that
+     * should be written to a batch. The batch size limit is still limited to 70 Mb
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("ssl")
-    private Optional<Boolean> ssl;
+    @JsonProperty("record_window_size")
+    private Optional<Long> recordWindowSize;
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
@@ -81,59 +83,69 @@ public class DestinationClickhouse {
     /**
      * Username to use to access the database.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("username")
-    private String username;
+    private Optional<String> username;
 
     @JsonCreator
     public DestinationClickhouse(
-            @JsonProperty("database") String database,
+            @JsonProperty("database") Optional<String> database,
+            @JsonProperty("enable_json") Optional<Boolean> enableJson,
             @JsonProperty("host") String host,
-            @JsonProperty("jdbc_url_params") Optional<String> jdbcUrlParams,
-            @JsonProperty("password") Optional<String> password,
-            @JsonProperty("port") Optional<Long> port,
-            @JsonProperty("raw_data_schema") Optional<String> rawDataSchema,
-            @JsonProperty("ssl") Optional<Boolean> ssl,
+            @JsonProperty("password") String password,
+            @JsonProperty("port") Optional<String> port,
+            @JsonProperty("protocol") Optional<? extends Protocol> protocol,
+            @JsonProperty("record_window_size") Optional<Long> recordWindowSize,
             @JsonProperty("tunnel_method") Optional<? extends SSHTunnelMethod> tunnelMethod,
-            @JsonProperty("username") String username) {
+            @JsonProperty("username") Optional<String> username) {
         Utils.checkNotNull(database, "database");
+        Utils.checkNotNull(enableJson, "enableJson");
         Utils.checkNotNull(host, "host");
-        Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
         Utils.checkNotNull(password, "password");
         Utils.checkNotNull(port, "port");
-        Utils.checkNotNull(rawDataSchema, "rawDataSchema");
-        Utils.checkNotNull(ssl, "ssl");
+        Utils.checkNotNull(protocol, "protocol");
+        Utils.checkNotNull(recordWindowSize, "recordWindowSize");
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
         Utils.checkNotNull(username, "username");
         this.database = database;
         this.destinationType = Builder._SINGLETON_VALUE_DestinationType.value();
+        this.enableJson = enableJson;
         this.host = host;
-        this.jdbcUrlParams = jdbcUrlParams;
         this.password = password;
         this.port = port;
-        this.rawDataSchema = rawDataSchema;
-        this.ssl = ssl;
+        this.protocol = protocol;
+        this.recordWindowSize = recordWindowSize;
         this.tunnelMethod = tunnelMethod;
         this.username = username;
     }
     
     public DestinationClickhouse(
-            String database,
             String host,
-            String username) {
-        this(database, host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+            String password) {
+        this(Optional.empty(), Optional.empty(), host,
+            password, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
      * Name of the database.
      */
     @JsonIgnore
-    public String database() {
+    public Optional<String> database() {
         return database;
     }
 
     @JsonIgnore
     public Clickhouse destinationType() {
         return destinationType;
+    }
+
+    /**
+     * Use the JSON type for Object fields. If disabled, the JSON will be converted to a string.
+     */
+    @JsonIgnore
+    public Optional<Boolean> enableJson() {
+        return enableJson;
     }
 
     /**
@@ -145,47 +157,42 @@ public class DestinationClickhouse {
     }
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
-     */
-    @JsonIgnore
-    public Optional<String> jdbcUrlParams() {
-        return jdbcUrlParams;
-    }
-
-    /**
      * Password associated with the username.
      */
     @JsonIgnore
-    public Optional<String> password() {
+    public String password() {
         return password;
     }
 
     /**
-     * HTTP port of the database.
+     * HTTP port of the database. Default(s) HTTP: 8123 — HTTPS: 8443
      */
     @JsonIgnore
-    public Optional<Long> port() {
+    public Optional<String> port() {
         return port;
     }
 
     /**
-     * The schema to write raw tables into (default: airbyte_internal)
+     * Protocol for the database connection string.
      */
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<String> rawDataSchema() {
-        return rawDataSchema;
+    public Optional<Protocol> protocol() {
+        return (Optional<Protocol>) protocol;
     }
 
     /**
-     * Encrypt data using SSL.
+     * Warning: Tuning this parameter can impact the performances. The maximum number of records that
+     * should be written to a batch. The batch size limit is still limited to 70 Mb
      */
     @JsonIgnore
-    public Optional<Boolean> ssl() {
-        return ssl;
+    public Optional<Long> recordWindowSize() {
+        return recordWindowSize;
     }
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -197,20 +204,50 @@ public class DestinationClickhouse {
      * Username to use to access the database.
      */
     @JsonIgnore
-    public String username() {
+    public Optional<String> username() {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Name of the database.
      */
     public DestinationClickhouse withDatabase(String database) {
         Utils.checkNotNull(database, "database");
+        this.database = Optional.ofNullable(database);
+        return this;
+    }
+
+
+    /**
+     * Name of the database.
+     */
+    public DestinationClickhouse withDatabase(Optional<String> database) {
+        Utils.checkNotNull(database, "database");
         this.database = database;
+        return this;
+    }
+
+    /**
+     * Use the JSON type for Object fields. If disabled, the JSON will be converted to a string.
+     */
+    public DestinationClickhouse withEnableJson(boolean enableJson) {
+        Utils.checkNotNull(enableJson, "enableJson");
+        this.enableJson = Optional.ofNullable(enableJson);
+        return this;
+    }
+
+
+    /**
+     * Use the JSON type for Object fields. If disabled, the JSON will be converted to a string.
+     */
+    public DestinationClickhouse withEnableJson(Optional<Boolean> enableJson) {
+        Utils.checkNotNull(enableJson, "enableJson");
+        this.enableJson = enableJson;
         return this;
     }
 
@@ -224,97 +261,76 @@ public class DestinationClickhouse {
     }
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
-     */
-    public DestinationClickhouse withJdbcUrlParams(String jdbcUrlParams) {
-        Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
-        this.jdbcUrlParams = Optional.ofNullable(jdbcUrlParams);
-        return this;
-    }
-
-    /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
-     */
-    public DestinationClickhouse withJdbcUrlParams(Optional<String> jdbcUrlParams) {
-        Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
-        this.jdbcUrlParams = jdbcUrlParams;
-        return this;
-    }
-
-    /**
      * Password associated with the username.
      */
     public DestinationClickhouse withPassword(String password) {
-        Utils.checkNotNull(password, "password");
-        this.password = Optional.ofNullable(password);
-        return this;
-    }
-
-    /**
-     * Password associated with the username.
-     */
-    public DestinationClickhouse withPassword(Optional<String> password) {
         Utils.checkNotNull(password, "password");
         this.password = password;
         return this;
     }
 
     /**
-     * HTTP port of the database.
+     * HTTP port of the database. Default(s) HTTP: 8123 — HTTPS: 8443
      */
-    public DestinationClickhouse withPort(long port) {
+    public DestinationClickhouse withPort(String port) {
         Utils.checkNotNull(port, "port");
         this.port = Optional.ofNullable(port);
         return this;
     }
 
+
     /**
-     * HTTP port of the database.
+     * HTTP port of the database. Default(s) HTTP: 8123 — HTTPS: 8443
      */
-    public DestinationClickhouse withPort(Optional<Long> port) {
+    public DestinationClickhouse withPort(Optional<String> port) {
         Utils.checkNotNull(port, "port");
         this.port = port;
         return this;
     }
 
     /**
-     * The schema to write raw tables into (default: airbyte_internal)
+     * Protocol for the database connection string.
      */
-    public DestinationClickhouse withRawDataSchema(String rawDataSchema) {
-        Utils.checkNotNull(rawDataSchema, "rawDataSchema");
-        this.rawDataSchema = Optional.ofNullable(rawDataSchema);
+    public DestinationClickhouse withProtocol(Protocol protocol) {
+        Utils.checkNotNull(protocol, "protocol");
+        this.protocol = Optional.ofNullable(protocol);
+        return this;
+    }
+
+
+    /**
+     * Protocol for the database connection string.
+     */
+    public DestinationClickhouse withProtocol(Optional<? extends Protocol> protocol) {
+        Utils.checkNotNull(protocol, "protocol");
+        this.protocol = protocol;
         return this;
     }
 
     /**
-     * The schema to write raw tables into (default: airbyte_internal)
+     * Warning: Tuning this parameter can impact the performances. The maximum number of records that
+     * should be written to a batch. The batch size limit is still limited to 70 Mb
      */
-    public DestinationClickhouse withRawDataSchema(Optional<String> rawDataSchema) {
-        Utils.checkNotNull(rawDataSchema, "rawDataSchema");
-        this.rawDataSchema = rawDataSchema;
+    public DestinationClickhouse withRecordWindowSize(long recordWindowSize) {
+        Utils.checkNotNull(recordWindowSize, "recordWindowSize");
+        this.recordWindowSize = Optional.ofNullable(recordWindowSize);
+        return this;
+    }
+
+
+    /**
+     * Warning: Tuning this parameter can impact the performances. The maximum number of records that
+     * should be written to a batch. The batch size limit is still limited to 70 Mb
+     */
+    public DestinationClickhouse withRecordWindowSize(Optional<Long> recordWindowSize) {
+        Utils.checkNotNull(recordWindowSize, "recordWindowSize");
+        this.recordWindowSize = recordWindowSize;
         return this;
     }
 
     /**
-     * Encrypt data using SSL.
-     */
-    public DestinationClickhouse withSsl(boolean ssl) {
-        Utils.checkNotNull(ssl, "ssl");
-        this.ssl = Optional.ofNullable(ssl);
-        return this;
-    }
-
-    /**
-     * Encrypt data using SSL.
-     */
-    public DestinationClickhouse withSsl(Optional<Boolean> ssl) {
-        Utils.checkNotNull(ssl, "ssl");
-        this.ssl = ssl;
-        return this;
-    }
-
-    /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     public DestinationClickhouse withTunnelMethod(SSHTunnelMethod tunnelMethod) {
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -322,8 +338,10 @@ public class DestinationClickhouse {
         return this;
     }
 
+
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     public DestinationClickhouse withTunnelMethod(Optional<? extends SSHTunnelMethod> tunnelMethod) {
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -336,11 +354,20 @@ public class DestinationClickhouse {
      */
     public DestinationClickhouse withUsername(String username) {
         Utils.checkNotNull(username, "username");
+        this.username = Optional.ofNullable(username);
+        return this;
+    }
+
+
+    /**
+     * Username to use to access the database.
+     */
+    public DestinationClickhouse withUsername(Optional<String> username) {
+        Utils.checkNotNull(username, "username");
         this.username = username;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -351,30 +378,24 @@ public class DestinationClickhouse {
         }
         DestinationClickhouse other = (DestinationClickhouse) o;
         return 
-            Objects.deepEquals(this.database, other.database) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.rawDataSchema, other.rawDataSchema) &&
-            Objects.deepEquals(this.ssl, other.ssl) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.database, other.database) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.enableJson, other.enableJson) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.protocol, other.protocol) &&
+            Utils.enhancedDeepEquals(this.recordWindowSize, other.recordWindowSize) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            database,
-            destinationType,
-            host,
-            jdbcUrlParams,
-            password,
-            port,
-            rawDataSchema,
-            ssl,
-            tunnelMethod,
+        return Utils.enhancedHash(
+            database, destinationType, enableJson,
+            host, password, port,
+            protocol, recordWindowSize, tunnelMethod,
             username);
     }
     
@@ -383,48 +404,79 @@ public class DestinationClickhouse {
         return Utils.toString(DestinationClickhouse.class,
                 "database", database,
                 "destinationType", destinationType,
+                "enableJson", enableJson,
                 "host", host,
-                "jdbcUrlParams", jdbcUrlParams,
                 "password", password,
                 "port", port,
-                "rawDataSchema", rawDataSchema,
-                "ssl", ssl,
+                "protocol", protocol,
+                "recordWindowSize", recordWindowSize,
                 "tunnelMethod", tunnelMethod,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
-        private String database;
- 
+
+        private Optional<String> database;
+
+        private Optional<Boolean> enableJson;
+
         private String host;
- 
-        private Optional<String> jdbcUrlParams = Optional.empty();
- 
-        private Optional<String> password = Optional.empty();
- 
-        private Optional<Long> port;
- 
-        private Optional<String> rawDataSchema = Optional.empty();
- 
-        private Optional<Boolean> ssl;
- 
+
+        private String password;
+
+        private Optional<String> port;
+
+        private Optional<? extends Protocol> protocol;
+
+        private Optional<Long> recordWindowSize = Optional.empty();
+
         private Optional<? extends SSHTunnelMethod> tunnelMethod = Optional.empty();
- 
-        private String username;
-        
+
+        private Optional<String> username;
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Name of the database.
          */
         public Builder database(String database) {
             Utils.checkNotNull(database, "database");
+            this.database = Optional.ofNullable(database);
+            return this;
+        }
+
+        /**
+         * Name of the database.
+         */
+        public Builder database(Optional<String> database) {
+            Utils.checkNotNull(database, "database");
             this.database = database;
             return this;
         }
+
+
+        /**
+         * Use the JSON type for Object fields. If disabled, the JSON will be converted to a string.
+         */
+        public Builder enableJson(boolean enableJson) {
+            Utils.checkNotNull(enableJson, "enableJson");
+            this.enableJson = Optional.ofNullable(enableJson);
+            return this;
+        }
+
+        /**
+         * Use the JSON type for Object fields. If disabled, the JSON will be converted to a string.
+         */
+        public Builder enableJson(Optional<Boolean> enableJson) {
+            Utils.checkNotNull(enableJson, "enableJson");
+            this.enableJson = enableJson;
+            return this;
+        }
+
 
         /**
          * Hostname of the database.
@@ -435,98 +487,79 @@ public class DestinationClickhouse {
             return this;
         }
 
-        /**
-         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
-         */
-        public Builder jdbcUrlParams(String jdbcUrlParams) {
-            Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
-            this.jdbcUrlParams = Optional.ofNullable(jdbcUrlParams);
-            return this;
-        }
-
-        /**
-         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
-         */
-        public Builder jdbcUrlParams(Optional<String> jdbcUrlParams) {
-            Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
-            this.jdbcUrlParams = jdbcUrlParams;
-            return this;
-        }
 
         /**
          * Password associated with the username.
          */
         public Builder password(String password) {
             Utils.checkNotNull(password, "password");
-            this.password = Optional.ofNullable(password);
-            return this;
-        }
-
-        /**
-         * Password associated with the username.
-         */
-        public Builder password(Optional<String> password) {
-            Utils.checkNotNull(password, "password");
             this.password = password;
             return this;
         }
 
+
         /**
-         * HTTP port of the database.
+         * HTTP port of the database. Default(s) HTTP: 8123 — HTTPS: 8443
          */
-        public Builder port(long port) {
+        public Builder port(String port) {
             Utils.checkNotNull(port, "port");
             this.port = Optional.ofNullable(port);
             return this;
         }
 
         /**
-         * HTTP port of the database.
+         * HTTP port of the database. Default(s) HTTP: 8123 — HTTPS: 8443
          */
-        public Builder port(Optional<Long> port) {
+        public Builder port(Optional<String> port) {
             Utils.checkNotNull(port, "port");
             this.port = port;
             return this;
         }
 
+
         /**
-         * The schema to write raw tables into (default: airbyte_internal)
+         * Protocol for the database connection string.
          */
-        public Builder rawDataSchema(String rawDataSchema) {
-            Utils.checkNotNull(rawDataSchema, "rawDataSchema");
-            this.rawDataSchema = Optional.ofNullable(rawDataSchema);
+        public Builder protocol(Protocol protocol) {
+            Utils.checkNotNull(protocol, "protocol");
+            this.protocol = Optional.ofNullable(protocol);
             return this;
         }
 
         /**
-         * The schema to write raw tables into (default: airbyte_internal)
+         * Protocol for the database connection string.
          */
-        public Builder rawDataSchema(Optional<String> rawDataSchema) {
-            Utils.checkNotNull(rawDataSchema, "rawDataSchema");
-            this.rawDataSchema = rawDataSchema;
+        public Builder protocol(Optional<? extends Protocol> protocol) {
+            Utils.checkNotNull(protocol, "protocol");
+            this.protocol = protocol;
+            return this;
+        }
+
+
+        /**
+         * Warning: Tuning this parameter can impact the performances. The maximum number of records that
+         * should be written to a batch. The batch size limit is still limited to 70 Mb
+         */
+        public Builder recordWindowSize(long recordWindowSize) {
+            Utils.checkNotNull(recordWindowSize, "recordWindowSize");
+            this.recordWindowSize = Optional.ofNullable(recordWindowSize);
             return this;
         }
 
         /**
-         * Encrypt data using SSL.
+         * Warning: Tuning this parameter can impact the performances. The maximum number of records that
+         * should be written to a batch. The batch size limit is still limited to 70 Mb
          */
-        public Builder ssl(boolean ssl) {
-            Utils.checkNotNull(ssl, "ssl");
-            this.ssl = Optional.ofNullable(ssl);
+        public Builder recordWindowSize(Optional<Long> recordWindowSize) {
+            Utils.checkNotNull(recordWindowSize, "recordWindowSize");
+            this.recordWindowSize = recordWindowSize;
             return this;
         }
 
-        /**
-         * Encrypt data using SSL.
-         */
-        public Builder ssl(Optional<Boolean> ssl) {
-            Utils.checkNotNull(ssl, "ssl");
-            this.ssl = ssl;
-            return this;
-        }
 
         /**
-         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+         * authentication to use.
          */
         public Builder tunnelMethod(SSHTunnelMethod tunnelMethod) {
             Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -535,7 +568,8 @@ public class DestinationClickhouse {
         }
 
         /**
-         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+         * authentication to use.
          */
         public Builder tunnelMethod(Optional<? extends SSHTunnelMethod> tunnelMethod) {
             Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -543,33 +577,54 @@ public class DestinationClickhouse {
             return this;
         }
 
+
         /**
          * Username to use to access the database.
          */
         public Builder username(String username) {
             Utils.checkNotNull(username, "username");
+            this.username = Optional.ofNullable(username);
+            return this;
+        }
+
+        /**
+         * Username to use to access the database.
+         */
+        public Builder username(Optional<String> username) {
+            Utils.checkNotNull(username, "username");
             this.username = username;
             return this;
         }
-        
+
         public DestinationClickhouse build() {
+            if (database == null) {
+                database = _SINGLETON_VALUE_Database.value();
+            }
+            if (enableJson == null) {
+                enableJson = _SINGLETON_VALUE_EnableJson.value();
+            }
             if (port == null) {
                 port = _SINGLETON_VALUE_Port.value();
             }
-            if (ssl == null) {
-                ssl = _SINGLETON_VALUE_Ssl.value();
+            if (protocol == null) {
+                protocol = _SINGLETON_VALUE_Protocol.value();
             }
+            if (username == null) {
+                username = _SINGLETON_VALUE_Username.value();
+            }
+
             return new DestinationClickhouse(
-                database,
-                host,
-                jdbcUrlParams,
-                password,
-                port,
-                rawDataSchema,
-                ssl,
-                tunnelMethod,
-                username);
+                database, enableJson, host,
+                password, port, protocol,
+                recordWindowSize, tunnelMethod, username);
         }
+
+
+        private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Database =
+                new LazySingletonValue<>(
+                        "database",
+                        "\"default\"",
+                        new TypeReference<Optional<String>>() {});
 
         private static final LazySingletonValue<Clickhouse> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(
@@ -577,16 +632,28 @@ public class DestinationClickhouse {
                         "\"clickhouse\"",
                         new TypeReference<Clickhouse>() {});
 
-        private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_Port =
+        private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_EnableJson =
                 new LazySingletonValue<>(
-                        "port",
-                        "8123",
-                        new TypeReference<Optional<Long>>() {});
-
-        private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_Ssl =
-                new LazySingletonValue<>(
-                        "ssl",
+                        "enable_json",
                         "false",
                         new TypeReference<Optional<Boolean>>() {});
+
+        private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Port =
+                new LazySingletonValue<>(
+                        "port",
+                        "\"8443\"",
+                        new TypeReference<Optional<String>>() {});
+
+        private static final LazySingletonValue<Optional<? extends Protocol>> _SINGLETON_VALUE_Protocol =
+                new LazySingletonValue<>(
+                        "protocol",
+                        "\"https\"",
+                        new TypeReference<Optional<? extends Protocol>>() {});
+
+        private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Username =
+                new LazySingletonValue<>(
+                        "username",
+                        "\"default\"",
+                        new TypeReference<Optional<String>>() {});
     }
 }

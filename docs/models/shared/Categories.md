@@ -1,5 +1,13 @@
 # Categories
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.Categories;
+
+Categories value = Categories.ACCESSIBILITY;
+```
+
 
 ## Values
 

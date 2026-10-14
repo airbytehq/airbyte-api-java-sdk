@@ -17,11 +17,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.LocalDate;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceTiktokMarketing {
 
+public class SourceTiktokMarketing {
     /**
      * The attribution window in days.
      */
@@ -37,25 +36,30 @@ public class SourceTiktokMarketing {
     private Optional<? extends SourceTiktokMarketingAuthenticationMethod> credentials;
 
     /**
-     * The date until which you'd like to replicate data for all incremental streams, in the format YYYY-MM-DD. All data generated between start_date and this date will be replicated. Not setting this option will result in always syncing the data till the current date.
+     * The date until which you'd like to replicate data for all incremental streams, in the format
+     * YYYY-MM-DD. All data generated between start_date and this date will be replicated. Not setting this
+     * option will result in always syncing the data till the current date.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("end_date")
     private Optional<LocalDate> endDate;
 
     /**
-     * Set to active if you want to include deleted data in report based streams and Ads, Ad Groups and Campaign streams.
+     * Set to active if you want to include deleted data in report based streams and Ads, Ad Groups and
+     * Campaign streams.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("include_deleted")
     private Optional<Boolean> includeDeleted;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceType")
     private Optional<? extends SourceTiktokMarketingTiktokMarketing> sourceType;
 
     /**
-     * The Start Date in format: YYYY-MM-DD. Any data before this date will not be replicated. If this parameter is not set, all data will be replicated.
+     * The Start Date in format: YYYY-MM-DD. Any data before this date will not be replicated. If this
+     * parameter is not set, all data will be replicated.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
@@ -82,7 +86,8 @@ public class SourceTiktokMarketing {
     }
     
     public SourceTiktokMarketing() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty());
     }
 
     /**
@@ -103,7 +108,9 @@ public class SourceTiktokMarketing {
     }
 
     /**
-     * The date until which you'd like to replicate data for all incremental streams, in the format YYYY-MM-DD. All data generated between start_date and this date will be replicated. Not setting this option will result in always syncing the data till the current date.
+     * The date until which you'd like to replicate data for all incremental streams, in the format
+     * YYYY-MM-DD. All data generated between start_date and this date will be replicated. Not setting this
+     * option will result in always syncing the data till the current date.
      */
     @JsonIgnore
     public Optional<LocalDate> endDate() {
@@ -111,7 +118,8 @@ public class SourceTiktokMarketing {
     }
 
     /**
-     * Set to active if you want to include deleted data in report based streams and Ads, Ad Groups and Campaign streams.
+     * Set to active if you want to include deleted data in report based streams and Ads, Ad Groups and
+     * Campaign streams.
      */
     @JsonIgnore
     public Optional<Boolean> includeDeleted() {
@@ -125,16 +133,18 @@ public class SourceTiktokMarketing {
     }
 
     /**
-     * The Start Date in format: YYYY-MM-DD. Any data before this date will not be replicated. If this parameter is not set, all data will be replicated.
+     * The Start Date in format: YYYY-MM-DD. Any data before this date will not be replicated. If this
+     * parameter is not set, all data will be replicated.
      */
     @JsonIgnore
     public Optional<LocalDate> startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The attribution window in days.
@@ -144,6 +154,7 @@ public class SourceTiktokMarketing {
         this.attributionWindow = Optional.ofNullable(attributionWindow);
         return this;
     }
+
 
     /**
      * The attribution window in days.
@@ -163,6 +174,7 @@ public class SourceTiktokMarketing {
         return this;
     }
 
+
     /**
      * Authentication method
      */
@@ -173,7 +185,9 @@ public class SourceTiktokMarketing {
     }
 
     /**
-     * The date until which you'd like to replicate data for all incremental streams, in the format YYYY-MM-DD. All data generated between start_date and this date will be replicated. Not setting this option will result in always syncing the data till the current date.
+     * The date until which you'd like to replicate data for all incremental streams, in the format
+     * YYYY-MM-DD. All data generated between start_date and this date will be replicated. Not setting this
+     * option will result in always syncing the data till the current date.
      */
     public SourceTiktokMarketing withEndDate(LocalDate endDate) {
         Utils.checkNotNull(endDate, "endDate");
@@ -181,8 +195,11 @@ public class SourceTiktokMarketing {
         return this;
     }
 
+
     /**
-     * The date until which you'd like to replicate data for all incremental streams, in the format YYYY-MM-DD. All data generated between start_date and this date will be replicated. Not setting this option will result in always syncing the data till the current date.
+     * The date until which you'd like to replicate data for all incremental streams, in the format
+     * YYYY-MM-DD. All data generated between start_date and this date will be replicated. Not setting this
+     * option will result in always syncing the data till the current date.
      */
     public SourceTiktokMarketing withEndDate(Optional<LocalDate> endDate) {
         Utils.checkNotNull(endDate, "endDate");
@@ -191,7 +208,8 @@ public class SourceTiktokMarketing {
     }
 
     /**
-     * Set to active if you want to include deleted data in report based streams and Ads, Ad Groups and Campaign streams.
+     * Set to active if you want to include deleted data in report based streams and Ads, Ad Groups and
+     * Campaign streams.
      */
     public SourceTiktokMarketing withIncludeDeleted(boolean includeDeleted) {
         Utils.checkNotNull(includeDeleted, "includeDeleted");
@@ -199,8 +217,10 @@ public class SourceTiktokMarketing {
         return this;
     }
 
+
     /**
-     * Set to active if you want to include deleted data in report based streams and Ads, Ad Groups and Campaign streams.
+     * Set to active if you want to include deleted data in report based streams and Ads, Ad Groups and
+     * Campaign streams.
      */
     public SourceTiktokMarketing withIncludeDeleted(Optional<Boolean> includeDeleted) {
         Utils.checkNotNull(includeDeleted, "includeDeleted");
@@ -209,7 +229,8 @@ public class SourceTiktokMarketing {
     }
 
     /**
-     * The Start Date in format: YYYY-MM-DD. Any data before this date will not be replicated. If this parameter is not set, all data will be replicated.
+     * The Start Date in format: YYYY-MM-DD. Any data before this date will not be replicated. If this
+     * parameter is not set, all data will be replicated.
      */
     public SourceTiktokMarketing withStartDate(LocalDate startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -217,8 +238,10 @@ public class SourceTiktokMarketing {
         return this;
     }
 
+
     /**
-     * The Start Date in format: YYYY-MM-DD. Any data before this date will not be replicated. If this parameter is not set, all data will be replicated.
+     * The Start Date in format: YYYY-MM-DD. Any data before this date will not be replicated. If this
+     * parameter is not set, all data will be replicated.
      */
     public SourceTiktokMarketing withStartDate(Optional<LocalDate> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -226,7 +249,6 @@ public class SourceTiktokMarketing {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -237,23 +259,19 @@ public class SourceTiktokMarketing {
         }
         SourceTiktokMarketing other = (SourceTiktokMarketing) o;
         return 
-            Objects.deepEquals(this.attributionWindow, other.attributionWindow) &&
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.includeDeleted, other.includeDeleted) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.attributionWindow, other.attributionWindow) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.includeDeleted, other.includeDeleted) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            attributionWindow,
-            credentials,
-            endDate,
-            includeDeleted,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            attributionWindow, credentials, endDate,
+            includeDeleted, sourceType, startDate);
     }
     
     @Override
@@ -266,22 +284,24 @@ public class SourceTiktokMarketing {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Long> attributionWindow;
- 
+
         private Optional<? extends SourceTiktokMarketingAuthenticationMethod> credentials = Optional.empty();
- 
+
         private Optional<LocalDate> endDate = Optional.empty();
- 
+
         private Optional<Boolean> includeDeleted;
- 
+
         private Optional<LocalDate> startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The attribution window in days.
@@ -301,6 +321,7 @@ public class SourceTiktokMarketing {
             return this;
         }
 
+
         /**
          * Authentication method
          */
@@ -319,8 +340,11 @@ public class SourceTiktokMarketing {
             return this;
         }
 
+
         /**
-         * The date until which you'd like to replicate data for all incremental streams, in the format YYYY-MM-DD. All data generated between start_date and this date will be replicated. Not setting this option will result in always syncing the data till the current date.
+         * The date until which you'd like to replicate data for all incremental streams, in the format
+         * YYYY-MM-DD. All data generated between start_date and this date will be replicated. Not setting this
+         * option will result in always syncing the data till the current date.
          */
         public Builder endDate(LocalDate endDate) {
             Utils.checkNotNull(endDate, "endDate");
@@ -329,7 +353,9 @@ public class SourceTiktokMarketing {
         }
 
         /**
-         * The date until which you'd like to replicate data for all incremental streams, in the format YYYY-MM-DD. All data generated between start_date and this date will be replicated. Not setting this option will result in always syncing the data till the current date.
+         * The date until which you'd like to replicate data for all incremental streams, in the format
+         * YYYY-MM-DD. All data generated between start_date and this date will be replicated. Not setting this
+         * option will result in always syncing the data till the current date.
          */
         public Builder endDate(Optional<LocalDate> endDate) {
             Utils.checkNotNull(endDate, "endDate");
@@ -337,8 +363,10 @@ public class SourceTiktokMarketing {
             return this;
         }
 
+
         /**
-         * Set to active if you want to include deleted data in report based streams and Ads, Ad Groups and Campaign streams.
+         * Set to active if you want to include deleted data in report based streams and Ads, Ad Groups and
+         * Campaign streams.
          */
         public Builder includeDeleted(boolean includeDeleted) {
             Utils.checkNotNull(includeDeleted, "includeDeleted");
@@ -347,7 +375,8 @@ public class SourceTiktokMarketing {
         }
 
         /**
-         * Set to active if you want to include deleted data in report based streams and Ads, Ad Groups and Campaign streams.
+         * Set to active if you want to include deleted data in report based streams and Ads, Ad Groups and
+         * Campaign streams.
          */
         public Builder includeDeleted(Optional<Boolean> includeDeleted) {
             Utils.checkNotNull(includeDeleted, "includeDeleted");
@@ -355,8 +384,10 @@ public class SourceTiktokMarketing {
             return this;
         }
 
+
         /**
-         * The Start Date in format: YYYY-MM-DD. Any data before this date will not be replicated. If this parameter is not set, all data will be replicated.
+         * The Start Date in format: YYYY-MM-DD. Any data before this date will not be replicated. If this
+         * parameter is not set, all data will be replicated.
          */
         public Builder startDate(LocalDate startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -365,14 +396,15 @@ public class SourceTiktokMarketing {
         }
 
         /**
-         * The Start Date in format: YYYY-MM-DD. Any data before this date will not be replicated. If this parameter is not set, all data will be replicated.
+         * The Start Date in format: YYYY-MM-DD. Any data before this date will not be replicated. If this
+         * parameter is not set, all data will be replicated.
          */
         public Builder startDate(Optional<LocalDate> startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceTiktokMarketing build() {
             if (attributionWindow == null) {
                 attributionWindow = _SINGLETON_VALUE_AttributionWindow.value();
@@ -383,13 +415,12 @@ public class SourceTiktokMarketing {
             if (startDate == null) {
                 startDate = _SINGLETON_VALUE_StartDate.value();
             }
+
             return new SourceTiktokMarketing(
-                attributionWindow,
-                credentials,
-                endDate,
-                includeDeleted,
-                startDate);
+                attributionWindow, credentials, endDate,
+                includeDeleted, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_AttributionWindow =
                 new LazySingletonValue<>(

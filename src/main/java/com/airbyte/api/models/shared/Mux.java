@@ -14,7 +14,7 @@ public enum Mux {
     @JsonValue
     private final String value;
 
-    private Mux(String value) {
+    Mux(String value) {
         this.value = value;
     }
     

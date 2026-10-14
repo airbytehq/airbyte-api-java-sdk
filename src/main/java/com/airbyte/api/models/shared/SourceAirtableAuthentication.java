@@ -14,13 +14,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = SourceAirtableAuthentication._Deserializer.class)
 public class SourceAirtableAuthentication {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceAirtableAuthentication(TypedObject value) {
         this.value = value;
@@ -28,12 +27,12 @@ public class SourceAirtableAuthentication {
 
     public static SourceAirtableAuthentication of(SourceAirtableOAuth20 value) {
         Utils.checkNotNull(value, "value");
-        return new SourceAirtableAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAirtableOAuth20>(){}));
+        return new SourceAirtableAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceAirtableAuthentication of(SourceAirtablePersonalAccessToken value) {
         Utils.checkNotNull(value, "value");
-        return new SourceAirtableAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAirtablePersonalAccessToken>(){}));
+        return new SourceAirtableAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -56,7 +55,7 @@ public class SourceAirtableAuthentication {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -67,12 +66,12 @@ public class SourceAirtableAuthentication {
             return false;
         }
         SourceAirtableAuthentication other = (SourceAirtableAuthentication) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -90,6 +89,6 @@ public class SourceAirtableAuthentication {
         return Utils.toString(SourceAirtableAuthentication.class,
                 "value", value);
     }
- 
+
 }
 

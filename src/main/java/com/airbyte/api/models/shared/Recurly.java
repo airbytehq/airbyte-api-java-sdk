@@ -14,7 +14,7 @@ public enum Recurly {
     @JsonValue
     private final String value;
 
-    private Recurly(String value) {
+    Recurly(String value) {
         this.value = value;
     }
     

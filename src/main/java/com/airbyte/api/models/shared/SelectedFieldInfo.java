@@ -13,13 +13,14 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * SelectedFieldInfo
  * 
- * <p>Path to a field/column/property in a stream to be selected. For example, if the field to be selected is a database column called "foo", this will be ["foo"]. Use multiple path elements for nested schemas.
+ * <p>Path to a field/column/property in a stream to be selected. For example, if the field to be selected
+ * is a database column called "foo", this will be ["foo"]. Use multiple path elements for nested
+ * schemas.
  */
 public class SelectedFieldInfo {
 
@@ -44,9 +45,10 @@ public class SelectedFieldInfo {
         return (Optional<List<String>>) fieldPath;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SelectedFieldInfo withFieldPath(List<String> fieldPath) {
         Utils.checkNotNull(fieldPath, "fieldPath");
@@ -54,13 +56,13 @@ public class SelectedFieldInfo {
         return this;
     }
 
+
     public SelectedFieldInfo withFieldPath(Optional<? extends List<String>> fieldPath) {
         Utils.checkNotNull(fieldPath, "fieldPath");
         this.fieldPath = fieldPath;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -71,12 +73,12 @@ public class SelectedFieldInfo {
         }
         SelectedFieldInfo other = (SelectedFieldInfo) o;
         return 
-            Objects.deepEquals(this.fieldPath, other.fieldPath);
+            Utils.enhancedDeepEquals(this.fieldPath, other.fieldPath);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             fieldPath);
     }
     
@@ -85,14 +87,16 @@ public class SelectedFieldInfo {
         return Utils.toString(SelectedFieldInfo.class,
                 "fieldPath", fieldPath);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends List<String>> fieldPath = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder fieldPath(List<String> fieldPath) {
             Utils.checkNotNull(fieldPath, "fieldPath");
@@ -105,10 +109,12 @@ public class SelectedFieldInfo {
             this.fieldPath = fieldPath;
             return this;
         }
-        
+
         public SelectedFieldInfo build() {
+
             return new SelectedFieldInfo(
                 fieldPath);
         }
+
     }
 }

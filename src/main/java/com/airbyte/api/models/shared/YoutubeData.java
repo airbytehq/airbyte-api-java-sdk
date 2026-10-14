@@ -14,7 +14,7 @@ public enum YoutubeData {
     @JsonValue
     private final String value;
 
-    private YoutubeData(String value) {
+    YoutubeData(String value) {
         this.value = value;
     }
     
