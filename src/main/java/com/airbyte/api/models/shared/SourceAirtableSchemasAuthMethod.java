@@ -14,7 +14,7 @@ public enum SourceAirtableSchemasAuthMethod {
     @JsonValue
     private final String value;
 
-    private SourceAirtableSchemasAuthMethod(String value) {
+    SourceAirtableSchemasAuthMethod(String value) {
         this.value = value;
     }
     

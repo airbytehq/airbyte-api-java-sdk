@@ -1,5 +1,13 @@
 # SourceGoogleSearchConsoleGoogleSearchConsole
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceGoogleSearchConsoleGoogleSearchConsole;
+
+SourceGoogleSearchConsoleGoogleSearchConsole value = SourceGoogleSearchConsoleGoogleSearchConsole.GOOGLE_SEARCH_CONSOLE;
+```
+
 
 ## Values
 

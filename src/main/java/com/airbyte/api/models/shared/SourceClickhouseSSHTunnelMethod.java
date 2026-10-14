@@ -14,18 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceClickhouseSSHTunnelMethod
  * 
- * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+ * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+ * authentication to use.
  */
 @JsonDeserialize(using = SourceClickhouseSSHTunnelMethod._Deserializer.class)
 public class SourceClickhouseSSHTunnelMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceClickhouseSSHTunnelMethod(TypedObject value) {
         this.value = value;
@@ -33,17 +33,17 @@ public class SourceClickhouseSSHTunnelMethod {
 
     public static SourceClickhouseSSHTunnelMethod of(SourceClickhouseNoTunnel value) {
         Utils.checkNotNull(value, "value");
-        return new SourceClickhouseSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceClickhouseNoTunnel>(){}));
+        return new SourceClickhouseSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceClickhouseSSHTunnelMethod of(SourceClickhouseSSHKeyAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new SourceClickhouseSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceClickhouseSSHKeyAuthentication>(){}));
+        return new SourceClickhouseSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceClickhouseSSHTunnelMethod of(SourceClickhousePasswordAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new SourceClickhouseSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceClickhousePasswordAuthentication>(){}));
+        return new SourceClickhouseSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +67,7 @@ public class SourceClickhouseSSHTunnelMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +78,12 @@ public class SourceClickhouseSSHTunnelMethod {
             return false;
         }
         SourceClickhouseSSHTunnelMethod other = (SourceClickhouseSSHTunnelMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -91,9 +91,9 @@ public class SourceClickhouseSSHTunnelMethod {
 
         public _Deserializer() {
             super(SourceClickhouseSSHTunnelMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceClickhousePasswordAuthentication>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceClickhouseNoTunnel>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceClickhouseSSHKeyAuthentication>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceClickhouseNoTunnel>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceClickhousePasswordAuthentication>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -102,6 +102,6 @@ public class SourceClickhouseSSHTunnelMethod {
         return Utils.toString(SourceClickhouseSSHTunnelMethod.class,
                 "value", value);
     }
- 
+
 }
 

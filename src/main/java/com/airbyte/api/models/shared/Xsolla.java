@@ -14,7 +14,7 @@ public enum Xsolla {
     @JsonValue
     private final String value;
 
-    private Xsolla(String value) {
+    Xsolla(String value) {
         this.value = value;
     }
     

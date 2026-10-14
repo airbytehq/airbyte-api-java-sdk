@@ -16,26 +16,28 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * SourceS3
  * 
- * <p>NOTE: When this Spec is changed, legacy_config_transformer.py must also be modified to uptake the changes
- * because it is responsible for converting legacy S3 v3 configs into v4 configs using the File-Based CDK.
+ * <p>NOTE: When this Spec is changed, legacy_config_transformer.py must also be modified to uptake the
+ * changes
+ * because it is responsible for converting legacy S3 v3 configs into v4 configs using the File-Based
+ * CDK.
  */
 public class SourceS3 {
-
     /**
-     * In order to access private Buckets stored on AWS S3, this connector requires credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
+     * In order to access private Buckets stored on AWS S3, this connector requires credentials with the
+     * proper permissions. If accessing publicly available data, this field is not necessary.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("aws_access_key_id")
     private Optional<String> awsAccessKeyId;
 
     /**
-     * In order to access private Buckets stored on AWS S3, this connector requires credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
+     * In order to access private Buckets stored on AWS S3, this connector requires credentials with the
+     * proper permissions. If accessing publicly available data, this field is not necessary.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("aws_secret_access_key")
@@ -46,6 +48,7 @@ public class SourceS3 {
      */
     @JsonProperty("bucket")
     private String bucket;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("delivery_method")
@@ -59,31 +62,39 @@ public class SourceS3 {
     private Optional<String> endpoint;
 
     /**
-     * AWS region where the S3 bucket is located. If not provided, the region will be determined automatically.
+     * AWS region where the S3 bucket is located. If not provided, the region will be determined
+     * automatically.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("region_name")
     private Optional<String> regionName;
 
     /**
-     * Specifies the Amazon Resource Name (ARN) of an IAM role that you want to use to perform operations requested using this profile. Set the External ID to the Airbyte workspace ID, which can be found in the URL of this page.
+     * Specifies the Amazon Resource Name (ARN) of an IAM role that you want to use to perform operations
+     * requested using this profile. Set the External ID to the Airbyte workspace ID, which can be found in
+     * the URL of this page.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("role_arn")
     private Optional<String> roleArn;
 
+
     @JsonProperty("sourceType")
     private SourceS3S3 sourceType;
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will
+     * not be replicated.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
     private Optional<OffsetDateTime> startDate;
 
     /**
-     * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
+     * Each instance of this configuration defines a <a
+     * href="https://docs.airbyte.com/cloud/core-concepts#stream">stream</a>. Use this to define which
+     * files belong in the stream, their format, and how they should be parsed and validated. When sending
+     * data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
      */
     @JsonProperty("streams")
     private List<SourceS3FileBasedStreamConfig> streams;
@@ -123,11 +134,14 @@ public class SourceS3 {
     public SourceS3(
             String bucket,
             List<SourceS3FileBasedStreamConfig> streams) {
-        this(Optional.empty(), Optional.empty(), bucket, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), streams);
+        this(Optional.empty(), Optional.empty(), bucket,
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), streams);
     }
 
     /**
-     * In order to access private Buckets stored on AWS S3, this connector requires credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
+     * In order to access private Buckets stored on AWS S3, this connector requires credentials with the
+     * proper permissions. If accessing publicly available data, this field is not necessary.
      */
     @JsonIgnore
     public Optional<String> awsAccessKeyId() {
@@ -135,7 +149,8 @@ public class SourceS3 {
     }
 
     /**
-     * In order to access private Buckets stored on AWS S3, this connector requires credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
+     * In order to access private Buckets stored on AWS S3, this connector requires credentials with the
+     * proper permissions. If accessing publicly available data, this field is not necessary.
      */
     @JsonIgnore
     public Optional<String> awsSecretAccessKey() {
@@ -165,7 +180,8 @@ public class SourceS3 {
     }
 
     /**
-     * AWS region where the S3 bucket is located. If not provided, the region will be determined automatically.
+     * AWS region where the S3 bucket is located. If not provided, the region will be determined
+     * automatically.
      */
     @JsonIgnore
     public Optional<String> regionName() {
@@ -173,7 +189,9 @@ public class SourceS3 {
     }
 
     /**
-     * Specifies the Amazon Resource Name (ARN) of an IAM role that you want to use to perform operations requested using this profile. Set the External ID to the Airbyte workspace ID, which can be found in the URL of this page.
+     * Specifies the Amazon Resource Name (ARN) of an IAM role that you want to use to perform operations
+     * requested using this profile. Set the External ID to the Airbyte workspace ID, which can be found in
+     * the URL of this page.
      */
     @JsonIgnore
     public Optional<String> roleArn() {
@@ -186,7 +204,8 @@ public class SourceS3 {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will
+     * not be replicated.
      */
     @JsonIgnore
     public Optional<OffsetDateTime> startDate() {
@@ -194,19 +213,24 @@ public class SourceS3 {
     }
 
     /**
-     * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
+     * Each instance of this configuration defines a <a
+     * href="https://docs.airbyte.com/cloud/core-concepts#stream">stream</a>. Use this to define which
+     * files belong in the stream, their format, and how they should be parsed and validated. When sending
+     * data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
      */
     @JsonIgnore
     public List<SourceS3FileBasedStreamConfig> streams() {
         return streams;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * In order to access private Buckets stored on AWS S3, this connector requires credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
+     * In order to access private Buckets stored on AWS S3, this connector requires credentials with the
+     * proper permissions. If accessing publicly available data, this field is not necessary.
      */
     public SourceS3 withAwsAccessKeyId(String awsAccessKeyId) {
         Utils.checkNotNull(awsAccessKeyId, "awsAccessKeyId");
@@ -214,8 +238,10 @@ public class SourceS3 {
         return this;
     }
 
+
     /**
-     * In order to access private Buckets stored on AWS S3, this connector requires credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
+     * In order to access private Buckets stored on AWS S3, this connector requires credentials with the
+     * proper permissions. If accessing publicly available data, this field is not necessary.
      */
     public SourceS3 withAwsAccessKeyId(Optional<String> awsAccessKeyId) {
         Utils.checkNotNull(awsAccessKeyId, "awsAccessKeyId");
@@ -224,7 +250,8 @@ public class SourceS3 {
     }
 
     /**
-     * In order to access private Buckets stored on AWS S3, this connector requires credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
+     * In order to access private Buckets stored on AWS S3, this connector requires credentials with the
+     * proper permissions. If accessing publicly available data, this field is not necessary.
      */
     public SourceS3 withAwsSecretAccessKey(String awsSecretAccessKey) {
         Utils.checkNotNull(awsSecretAccessKey, "awsSecretAccessKey");
@@ -232,8 +259,10 @@ public class SourceS3 {
         return this;
     }
 
+
     /**
-     * In order to access private Buckets stored on AWS S3, this connector requires credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
+     * In order to access private Buckets stored on AWS S3, this connector requires credentials with the
+     * proper permissions. If accessing publicly available data, this field is not necessary.
      */
     public SourceS3 withAwsSecretAccessKey(Optional<String> awsSecretAccessKey) {
         Utils.checkNotNull(awsSecretAccessKey, "awsSecretAccessKey");
@@ -256,6 +285,7 @@ public class SourceS3 {
         return this;
     }
 
+
     public SourceS3 withDeliveryMethod(Optional<? extends SourceS3DeliveryMethod> deliveryMethod) {
         Utils.checkNotNull(deliveryMethod, "deliveryMethod");
         this.deliveryMethod = deliveryMethod;
@@ -271,6 +301,7 @@ public class SourceS3 {
         return this;
     }
 
+
     /**
      * Endpoint to an S3 compatible service. Leave empty to use AWS.
      */
@@ -281,7 +312,8 @@ public class SourceS3 {
     }
 
     /**
-     * AWS region where the S3 bucket is located. If not provided, the region will be determined automatically.
+     * AWS region where the S3 bucket is located. If not provided, the region will be determined
+     * automatically.
      */
     public SourceS3 withRegionName(String regionName) {
         Utils.checkNotNull(regionName, "regionName");
@@ -289,8 +321,10 @@ public class SourceS3 {
         return this;
     }
 
+
     /**
-     * AWS region where the S3 bucket is located. If not provided, the region will be determined automatically.
+     * AWS region where the S3 bucket is located. If not provided, the region will be determined
+     * automatically.
      */
     public SourceS3 withRegionName(Optional<String> regionName) {
         Utils.checkNotNull(regionName, "regionName");
@@ -299,7 +333,9 @@ public class SourceS3 {
     }
 
     /**
-     * Specifies the Amazon Resource Name (ARN) of an IAM role that you want to use to perform operations requested using this profile. Set the External ID to the Airbyte workspace ID, which can be found in the URL of this page.
+     * Specifies the Amazon Resource Name (ARN) of an IAM role that you want to use to perform operations
+     * requested using this profile. Set the External ID to the Airbyte workspace ID, which can be found in
+     * the URL of this page.
      */
     public SourceS3 withRoleArn(String roleArn) {
         Utils.checkNotNull(roleArn, "roleArn");
@@ -307,8 +343,11 @@ public class SourceS3 {
         return this;
     }
 
+
     /**
-     * Specifies the Amazon Resource Name (ARN) of an IAM role that you want to use to perform operations requested using this profile. Set the External ID to the Airbyte workspace ID, which can be found in the URL of this page.
+     * Specifies the Amazon Resource Name (ARN) of an IAM role that you want to use to perform operations
+     * requested using this profile. Set the External ID to the Airbyte workspace ID, which can be found in
+     * the URL of this page.
      */
     public SourceS3 withRoleArn(Optional<String> roleArn) {
         Utils.checkNotNull(roleArn, "roleArn");
@@ -317,7 +356,8 @@ public class SourceS3 {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will
+     * not be replicated.
      */
     public SourceS3 withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -325,8 +365,10 @@ public class SourceS3 {
         return this;
     }
 
+
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will
+     * not be replicated.
      */
     public SourceS3 withStartDate(Optional<OffsetDateTime> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -335,7 +377,10 @@ public class SourceS3 {
     }
 
     /**
-     * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
+     * Each instance of this configuration defines a <a
+     * href="https://docs.airbyte.com/cloud/core-concepts#stream">stream</a>. Use this to define which
+     * files belong in the stream, their format, and how they should be parsed and validated. When sending
+     * data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
      */
     public SourceS3 withStreams(List<SourceS3FileBasedStreamConfig> streams) {
         Utils.checkNotNull(streams, "streams");
@@ -343,7 +388,6 @@ public class SourceS3 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -354,30 +398,24 @@ public class SourceS3 {
         }
         SourceS3 other = (SourceS3) o;
         return 
-            Objects.deepEquals(this.awsAccessKeyId, other.awsAccessKeyId) &&
-            Objects.deepEquals(this.awsSecretAccessKey, other.awsSecretAccessKey) &&
-            Objects.deepEquals(this.bucket, other.bucket) &&
-            Objects.deepEquals(this.deliveryMethod, other.deliveryMethod) &&
-            Objects.deepEquals(this.endpoint, other.endpoint) &&
-            Objects.deepEquals(this.regionName, other.regionName) &&
-            Objects.deepEquals(this.roleArn, other.roleArn) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.streams, other.streams);
+            Utils.enhancedDeepEquals(this.awsAccessKeyId, other.awsAccessKeyId) &&
+            Utils.enhancedDeepEquals(this.awsSecretAccessKey, other.awsSecretAccessKey) &&
+            Utils.enhancedDeepEquals(this.bucket, other.bucket) &&
+            Utils.enhancedDeepEquals(this.deliveryMethod, other.deliveryMethod) &&
+            Utils.enhancedDeepEquals(this.endpoint, other.endpoint) &&
+            Utils.enhancedDeepEquals(this.regionName, other.regionName) &&
+            Utils.enhancedDeepEquals(this.roleArn, other.roleArn) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.streams, other.streams);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            awsAccessKeyId,
-            awsSecretAccessKey,
-            bucket,
-            deliveryMethod,
-            endpoint,
-            regionName,
-            roleArn,
-            sourceType,
-            startDate,
+        return Utils.enhancedHash(
+            awsAccessKeyId, awsSecretAccessKey, bucket,
+            deliveryMethod, endpoint, regionName,
+            roleArn, sourceType, startDate,
             streams);
     }
     
@@ -395,33 +433,36 @@ public class SourceS3 {
                 "startDate", startDate,
                 "streams", streams);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> awsAccessKeyId = Optional.empty();
- 
+
         private Optional<String> awsSecretAccessKey = Optional.empty();
- 
+
         private String bucket;
- 
+
         private Optional<? extends SourceS3DeliveryMethod> deliveryMethod = Optional.empty();
- 
+
         private Optional<String> endpoint;
- 
+
         private Optional<String> regionName = Optional.empty();
- 
+
         private Optional<String> roleArn = Optional.empty();
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
- 
+
         private List<SourceS3FileBasedStreamConfig> streams;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * In order to access private Buckets stored on AWS S3, this connector requires credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
+         * In order to access private Buckets stored on AWS S3, this connector requires credentials with the
+         * proper permissions. If accessing publicly available data, this field is not necessary.
          */
         public Builder awsAccessKeyId(String awsAccessKeyId) {
             Utils.checkNotNull(awsAccessKeyId, "awsAccessKeyId");
@@ -430,7 +471,8 @@ public class SourceS3 {
         }
 
         /**
-         * In order to access private Buckets stored on AWS S3, this connector requires credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
+         * In order to access private Buckets stored on AWS S3, this connector requires credentials with the
+         * proper permissions. If accessing publicly available data, this field is not necessary.
          */
         public Builder awsAccessKeyId(Optional<String> awsAccessKeyId) {
             Utils.checkNotNull(awsAccessKeyId, "awsAccessKeyId");
@@ -438,8 +480,10 @@ public class SourceS3 {
             return this;
         }
 
+
         /**
-         * In order to access private Buckets stored on AWS S3, this connector requires credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
+         * In order to access private Buckets stored on AWS S3, this connector requires credentials with the
+         * proper permissions. If accessing publicly available data, this field is not necessary.
          */
         public Builder awsSecretAccessKey(String awsSecretAccessKey) {
             Utils.checkNotNull(awsSecretAccessKey, "awsSecretAccessKey");
@@ -448,13 +492,15 @@ public class SourceS3 {
         }
 
         /**
-         * In order to access private Buckets stored on AWS S3, this connector requires credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
+         * In order to access private Buckets stored on AWS S3, this connector requires credentials with the
+         * proper permissions. If accessing publicly available data, this field is not necessary.
          */
         public Builder awsSecretAccessKey(Optional<String> awsSecretAccessKey) {
             Utils.checkNotNull(awsSecretAccessKey, "awsSecretAccessKey");
             this.awsSecretAccessKey = awsSecretAccessKey;
             return this;
         }
+
 
         /**
          * Name of the S3 bucket where the file(s) exist.
@@ -464,6 +510,7 @@ public class SourceS3 {
             this.bucket = bucket;
             return this;
         }
+
 
         public Builder deliveryMethod(SourceS3DeliveryMethod deliveryMethod) {
             Utils.checkNotNull(deliveryMethod, "deliveryMethod");
@@ -476,6 +523,7 @@ public class SourceS3 {
             this.deliveryMethod = deliveryMethod;
             return this;
         }
+
 
         /**
          * Endpoint to an S3 compatible service. Leave empty to use AWS.
@@ -495,8 +543,10 @@ public class SourceS3 {
             return this;
         }
 
+
         /**
-         * AWS region where the S3 bucket is located. If not provided, the region will be determined automatically.
+         * AWS region where the S3 bucket is located. If not provided, the region will be determined
+         * automatically.
          */
         public Builder regionName(String regionName) {
             Utils.checkNotNull(regionName, "regionName");
@@ -505,7 +555,8 @@ public class SourceS3 {
         }
 
         /**
-         * AWS region where the S3 bucket is located. If not provided, the region will be determined automatically.
+         * AWS region where the S3 bucket is located. If not provided, the region will be determined
+         * automatically.
          */
         public Builder regionName(Optional<String> regionName) {
             Utils.checkNotNull(regionName, "regionName");
@@ -513,8 +564,11 @@ public class SourceS3 {
             return this;
         }
 
+
         /**
-         * Specifies the Amazon Resource Name (ARN) of an IAM role that you want to use to perform operations requested using this profile. Set the External ID to the Airbyte workspace ID, which can be found in the URL of this page.
+         * Specifies the Amazon Resource Name (ARN) of an IAM role that you want to use to perform operations
+         * requested using this profile. Set the External ID to the Airbyte workspace ID, which can be found in
+         * the URL of this page.
          */
         public Builder roleArn(String roleArn) {
             Utils.checkNotNull(roleArn, "roleArn");
@@ -523,7 +577,9 @@ public class SourceS3 {
         }
 
         /**
-         * Specifies the Amazon Resource Name (ARN) of an IAM role that you want to use to perform operations requested using this profile. Set the External ID to the Airbyte workspace ID, which can be found in the URL of this page.
+         * Specifies the Amazon Resource Name (ARN) of an IAM role that you want to use to perform operations
+         * requested using this profile. Set the External ID to the Airbyte workspace ID, which can be found in
+         * the URL of this page.
          */
         public Builder roleArn(Optional<String> roleArn) {
             Utils.checkNotNull(roleArn, "roleArn");
@@ -531,8 +587,10 @@ public class SourceS3 {
             return this;
         }
 
+
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will
+         * not be replicated.
          */
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -541,7 +599,8 @@ public class SourceS3 {
         }
 
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will
+         * not be replicated.
          */
         public Builder startDate(Optional<OffsetDateTime> startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -549,30 +608,30 @@ public class SourceS3 {
             return this;
         }
 
+
         /**
-         * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
+         * Each instance of this configuration defines a <a
+         * href="https://docs.airbyte.com/cloud/core-concepts#stream">stream</a>. Use this to define which
+         * files belong in the stream, their format, and how they should be parsed and validated. When sending
+         * data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
          */
         public Builder streams(List<SourceS3FileBasedStreamConfig> streams) {
             Utils.checkNotNull(streams, "streams");
             this.streams = streams;
             return this;
         }
-        
+
         public SourceS3 build() {
             if (endpoint == null) {
                 endpoint = _SINGLETON_VALUE_Endpoint.value();
             }
+
             return new SourceS3(
-                awsAccessKeyId,
-                awsSecretAccessKey,
-                bucket,
-                deliveryMethod,
-                endpoint,
-                regionName,
-                roleArn,
-                startDate,
-                streams);
+                awsAccessKeyId, awsSecretAccessKey, bucket,
+                deliveryMethod, endpoint, regionName,
+                roleArn, startDate, streams);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Endpoint =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum BambooHr {
     @JsonValue
     private final String value;
 
-    private BambooHr(String value) {
+    BambooHr(String value) {
         this.value = value;
     }
     

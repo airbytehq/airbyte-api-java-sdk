@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationMilvusEmbedding
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class DestinationMilvusEmbedding {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationMilvusEmbedding(TypedObject value) {
         this.value = value;
@@ -33,27 +32,27 @@ public class DestinationMilvusEmbedding {
 
     public static DestinationMilvusEmbedding of(DestinationMilvusOpenAI value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationMilvusEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationMilvusOpenAI>(){}));
+        return new DestinationMilvusEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationMilvusEmbedding of(DestinationMilvusCohere value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationMilvusEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationMilvusCohere>(){}));
+        return new DestinationMilvusEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationMilvusEmbedding of(DestinationMilvusFake value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationMilvusEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationMilvusFake>(){}));
+        return new DestinationMilvusEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationMilvusEmbedding of(DestinationMilvusAzureOpenAI value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationMilvusEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationMilvusAzureOpenAI>(){}));
+        return new DestinationMilvusEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationMilvusEmbedding of(DestinationMilvusOpenAICompatible value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationMilvusEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationMilvusOpenAICompatible>(){}));
+        return new DestinationMilvusEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -79,7 +78,7 @@ public class DestinationMilvusEmbedding {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -90,12 +89,12 @@ public class DestinationMilvusEmbedding {
             return false;
         }
         DestinationMilvusEmbedding other = (DestinationMilvusEmbedding) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -103,11 +102,11 @@ public class DestinationMilvusEmbedding {
 
         public _Deserializer() {
             super(DestinationMilvusEmbedding.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DestinationMilvusOpenAICompatible>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationMilvusAzureOpenAI>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationMilvusCohere>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationMilvusOpenAI>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationMilvusFake>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationMilvusCohere>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationMilvusFake>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationMilvusAzureOpenAI>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationMilvusOpenAICompatible>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -116,6 +115,6 @@ public class DestinationMilvusEmbedding {
         return Utils.toString(DestinationMilvusEmbedding.class,
                 "value", value);
     }
- 
+
 }
 

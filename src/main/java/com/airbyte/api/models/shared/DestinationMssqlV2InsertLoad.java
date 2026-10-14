@@ -19,7 +19,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -31,6 +30,7 @@ public class DestinationMssqlV2InsertLoad {
 
     @JsonIgnore
     private Map<String, Object> additionalProperties;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("load_type")
@@ -59,9 +59,10 @@ public class DestinationMssqlV2InsertLoad {
         return (Optional<DestinationMssqlV2SchemasLoadTypeLoadType>) loadType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public DestinationMssqlV2InsertLoad withAdditionalProperty(String key, Object value) {
@@ -69,8 +70,7 @@ public class DestinationMssqlV2InsertLoad {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public DestinationMssqlV2InsertLoad withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -83,13 +83,13 @@ public class DestinationMssqlV2InsertLoad {
         return this;
     }
 
+
     public DestinationMssqlV2InsertLoad withLoadType(Optional<? extends DestinationMssqlV2SchemasLoadTypeLoadType> loadType) {
         Utils.checkNotNull(loadType, "loadType");
         this.loadType = loadType;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,15 +100,14 @@ public class DestinationMssqlV2InsertLoad {
         }
         DestinationMssqlV2InsertLoad other = (DestinationMssqlV2InsertLoad) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.loadType, other.loadType);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.loadType, other.loadType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            loadType);
+        return Utils.enhancedHash(
+            additionalProperties, loadType);
     }
     
     @Override
@@ -117,13 +116,14 @@ public class DestinationMssqlV2InsertLoad {
                 "additionalProperties", additionalProperties,
                 "loadType", loadType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends DestinationMssqlV2SchemasLoadTypeLoadType> loadType;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -144,6 +144,7 @@ public class DestinationMssqlV2InsertLoad {
             return this;
         }
 
+
         public Builder loadType(DestinationMssqlV2SchemasLoadTypeLoadType loadType) {
             Utils.checkNotNull(loadType, "loadType");
             this.loadType = Optional.ofNullable(loadType);
@@ -155,15 +156,17 @@ public class DestinationMssqlV2InsertLoad {
             this.loadType = loadType;
             return this;
         }
-        
+
         public DestinationMssqlV2InsertLoad build() {
             if (loadType == null) {
                 loadType = _SINGLETON_VALUE_LoadType.value();
             }
+
             return new DestinationMssqlV2InsertLoad(
                 loadType)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationMssqlV2SchemasLoadTypeLoadType>> _SINGLETON_VALUE_LoadType =
                 new LazySingletonValue<>(

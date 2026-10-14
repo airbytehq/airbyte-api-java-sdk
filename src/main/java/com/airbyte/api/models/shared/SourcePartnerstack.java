@@ -13,11 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourcePartnerstack {
 
+public class SourcePartnerstack {
     /**
      * The Live Private Key for a Partnerstack account.
      */
@@ -30,11 +29,13 @@ public class SourcePartnerstack {
     @JsonProperty("public_key")
     private String publicKey;
 
+
     @JsonProperty("sourceType")
     private Partnerstack sourceType;
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
@@ -82,16 +83,18 @@ public class SourcePartnerstack {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     @JsonIgnore
     public Optional<String> startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Live Private Key for a Partnerstack account.
@@ -112,7 +115,8 @@ public class SourcePartnerstack {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     public SourcePartnerstack withStartDate(String startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -120,8 +124,10 @@ public class SourcePartnerstack {
         return this;
     }
 
+
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     public SourcePartnerstack withStartDate(Optional<String> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -129,7 +135,6 @@ public class SourcePartnerstack {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -140,18 +145,16 @@ public class SourcePartnerstack {
         }
         SourcePartnerstack other = (SourcePartnerstack) o;
         return 
-            Objects.deepEquals(this.privateKey, other.privateKey) &&
-            Objects.deepEquals(this.publicKey, other.publicKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.privateKey, other.privateKey) &&
+            Utils.enhancedDeepEquals(this.publicKey, other.publicKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            privateKey,
-            publicKey,
-            sourceType,
+        return Utils.enhancedHash(
+            privateKey, publicKey, sourceType,
             startDate);
     }
     
@@ -163,18 +166,20 @@ public class SourcePartnerstack {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String privateKey;
- 
+
         private String publicKey;
- 
+
         private Optional<String> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Live Private Key for a Partnerstack account.
@@ -185,6 +190,7 @@ public class SourcePartnerstack {
             return this;
         }
 
+
         /**
          * The Live Public Key for a Partnerstack account.
          */
@@ -194,8 +200,10 @@ public class SourcePartnerstack {
             return this;
         }
 
+
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+         * replicated.
          */
         public Builder startDate(String startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -204,20 +212,21 @@ public class SourcePartnerstack {
         }
 
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+         * replicated.
          */
         public Builder startDate(Optional<String> startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourcePartnerstack build() {
+
             return new SourcePartnerstack(
-                privateKey,
-                publicKey,
-                startDate);
+                privateKey, publicKey, startDate);
         }
+
 
         private static final LazySingletonValue<Partnerstack> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

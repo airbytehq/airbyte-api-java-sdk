@@ -1,5 +1,13 @@
 # DestinationWeaviateSchemasMode
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DestinationWeaviateSchemasMode;
+
+DestinationWeaviateSchemasMode value = DestinationWeaviateSchemasMode.AZURE_OPENAI;
+```
+
 
 ## Values
 

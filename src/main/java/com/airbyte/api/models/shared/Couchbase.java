@@ -14,7 +14,7 @@ public enum Couchbase {
     @JsonValue
     private final String value;
 
-    private Couchbase(String value) {
+    Couchbase(String value) {
         this.value = value;
     }
     

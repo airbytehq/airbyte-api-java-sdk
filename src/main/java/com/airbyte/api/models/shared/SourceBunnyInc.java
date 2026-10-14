@@ -14,16 +14,18 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceBunnyInc {
 
     @JsonProperty("apikey")
     private String apikey;
 
+
     @JsonProperty("sourceType")
     private BunnyInc sourceType;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
@@ -78,9 +80,10 @@ public class SourceBunnyInc {
         return subdomain;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceBunnyInc withApikey(String apikey) {
         Utils.checkNotNull(apikey, "apikey");
@@ -93,6 +96,7 @@ public class SourceBunnyInc {
         this.startDate = Optional.ofNullable(startDate);
         return this;
     }
+
 
     public SourceBunnyInc withStartDate(Optional<OffsetDateTime> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -109,7 +113,6 @@ public class SourceBunnyInc {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,18 +123,16 @@ public class SourceBunnyInc {
         }
         SourceBunnyInc other = (SourceBunnyInc) o;
         return 
-            Objects.deepEquals(this.apikey, other.apikey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.subdomain, other.subdomain);
+            Utils.enhancedDeepEquals(this.apikey, other.apikey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.subdomain, other.subdomain);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apikey,
-            sourceType,
-            startDate,
+        return Utils.enhancedHash(
+            apikey, sourceType, startDate,
             subdomain);
     }
     
@@ -143,24 +144,27 @@ public class SourceBunnyInc {
                 "startDate", startDate,
                 "subdomain", subdomain);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apikey;
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
- 
+
         private String subdomain;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apikey(String apikey) {
             Utils.checkNotNull(apikey, "apikey");
             this.apikey = apikey;
             return this;
         }
+
 
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -174,6 +178,7 @@ public class SourceBunnyInc {
             return this;
         }
 
+
         /**
          * The subdomain specific to your Bunny account or service.
          */
@@ -182,13 +187,13 @@ public class SourceBunnyInc {
             this.subdomain = subdomain;
             return this;
         }
-        
+
         public SourceBunnyInc build() {
+
             return new SourceBunnyInc(
-                apikey,
-                startDate,
-                subdomain);
+                apikey, startDate, subdomain);
         }
+
 
         private static final LazySingletonValue<BunnyInc> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

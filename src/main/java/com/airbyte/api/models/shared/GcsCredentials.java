@@ -11,11 +11,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class GcsCredentials {
 
+public class GcsCredentials {
     /**
      * Client ID
      */
@@ -60,9 +59,10 @@ public class GcsCredentials {
         return clientSecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Client ID
@@ -72,6 +72,7 @@ public class GcsCredentials {
         this.clientId = Optional.ofNullable(clientId);
         return this;
     }
+
 
     /**
      * Client ID
@@ -91,6 +92,7 @@ public class GcsCredentials {
         return this;
     }
 
+
     /**
      * Client Secret
      */
@@ -100,7 +102,6 @@ public class GcsCredentials {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -111,15 +112,14 @@ public class GcsCredentials {
         }
         GcsCredentials other = (GcsCredentials) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret);
+        return Utils.enhancedHash(
+            clientId, clientSecret);
     }
     
     @Override
@@ -128,16 +128,18 @@ public class GcsCredentials {
                 "clientId", clientId,
                 "clientSecret", clientSecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> clientId = Optional.empty();
- 
+
         private Optional<String> clientSecret = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Client ID
@@ -157,6 +159,7 @@ public class GcsCredentials {
             return this;
         }
 
+
         /**
          * Client Secret
          */
@@ -174,11 +177,12 @@ public class GcsCredentials {
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public GcsCredentials build() {
+
             return new GcsCredentials(
-                clientId,
-                clientSecret);
+                clientId, clientSecret);
         }
+
     }
 }

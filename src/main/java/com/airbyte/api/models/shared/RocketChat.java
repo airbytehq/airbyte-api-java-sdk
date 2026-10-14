@@ -14,7 +14,7 @@ public enum RocketChat {
     @JsonValue
     private final String value;
 
-    private RocketChat(String value) {
+    RocketChat(String value) {
         this.value = value;
     }
     

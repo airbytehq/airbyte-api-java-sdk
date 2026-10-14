@@ -11,12 +11,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceNorthpassLms {
 
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private NorthpassLms sourceType;
@@ -39,9 +40,10 @@ public class SourceNorthpassLms {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceNorthpassLms withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -49,7 +51,6 @@ public class SourceNorthpassLms {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -60,15 +61,14 @@ public class SourceNorthpassLms {
         }
         SourceNorthpassLms other = (SourceNorthpassLms) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, sourceType);
     }
     
     @Override
@@ -77,25 +77,29 @@ public class SourceNorthpassLms {
                 "apiKey", apiKey,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
-        
+
         public SourceNorthpassLms build() {
+
             return new SourceNorthpassLms(
                 apiKey);
         }
+
 
         private static final LazySingletonValue<NorthpassLms> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

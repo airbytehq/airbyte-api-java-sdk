@@ -14,7 +14,7 @@ public enum Justcall {
     @JsonValue
     private final String value;
 
-    private Justcall(String value) {
+    Justcall(String value) {
         this.value = value;
     }
     

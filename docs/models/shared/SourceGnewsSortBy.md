@@ -6,6 +6,14 @@ publication date are returned first
   - relevance = sort by best match to keywords, the articles with the best
 match are returned first
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceGnewsSortBy;
+
+SourceGnewsSortBy value = SourceGnewsSortBy.PUBLISHED_AT;
+```
+
 
 ## Values
 

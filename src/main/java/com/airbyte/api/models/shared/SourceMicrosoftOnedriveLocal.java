@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -30,7 +29,6 @@ public class SourceMicrosoftOnedriveLocal {
 
     @JsonCreator
     public SourceMicrosoftOnedriveLocal() {
-        
         this.mode = Builder._SINGLETON_VALUE_Mode.value();
     }
 
@@ -40,11 +38,11 @@ public class SourceMicrosoftOnedriveLocal {
         return (Optional<SourceMicrosoftOnedriveMode>) mode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -55,12 +53,12 @@ public class SourceMicrosoftOnedriveLocal {
         }
         SourceMicrosoftOnedriveLocal other = (SourceMicrosoftOnedriveLocal) o;
         return 
-            Objects.deepEquals(this.mode, other.mode);
+            Utils.enhancedDeepEquals(this.mode, other.mode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             mode);
     }
     
@@ -69,17 +67,20 @@ public class SourceMicrosoftOnedriveLocal {
         return Utils.toString(SourceMicrosoftOnedriveLocal.class,
                 "mode", mode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public SourceMicrosoftOnedriveLocal build() {
+
             return new SourceMicrosoftOnedriveLocal(
                 );
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceMicrosoftOnedriveMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

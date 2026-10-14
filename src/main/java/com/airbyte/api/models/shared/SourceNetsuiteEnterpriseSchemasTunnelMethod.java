@@ -14,7 +14,7 @@ public enum SourceNetsuiteEnterpriseSchemasTunnelMethod {
     @JsonValue
     private final String value;
 
-    private SourceNetsuiteEnterpriseSchemasTunnelMethod(String value) {
+    SourceNetsuiteEnterpriseSchemasTunnelMethod(String value) {
         this.value = value;
     }
     

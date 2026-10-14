@@ -16,7 +16,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -25,24 +24,24 @@ import java.util.Optional;
  * <p>Provides details of a single connection.
  */
 public class ConnectionResponse {
-
     /**
      * A list of configured stream options for a connection.
      */
     @JsonProperty("configurations")
     private StreamConfigurations configurations;
 
+
     @JsonProperty("connectionId")
     private String connectionId;
+
 
     @JsonProperty("createdAt")
     private long createdAt;
 
-    @JsonProperty("dataResidency")
-    private String dataResidency;
 
     @JsonProperty("destinationId")
     private String destinationId;
+
 
     @JsonProperty("name")
     private String name;
@@ -53,6 +52,7 @@ public class ConnectionResponse {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("namespaceDefinition")
     private Optional<? extends NamespaceDefinitionEnum> namespaceDefinition;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("namespaceFormat")
@@ -65,6 +65,7 @@ public class ConnectionResponse {
     @JsonProperty("nonBreakingSchemaUpdatesBehavior")
     private Optional<? extends NonBreakingSchemaUpdatesBehaviorEnum> nonBreakingSchemaUpdatesBehavior;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("prefix")
     private Optional<String> prefix;
@@ -75,14 +76,23 @@ public class ConnectionResponse {
     @JsonProperty("schedule")
     private ConnectionScheduleResponse schedule;
 
+
     @JsonProperty("sourceId")
     private String sourceId;
+
 
     @JsonProperty("status")
     private ConnectionStatusEnum status;
 
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("statusReason")
+    private Optional<String> statusReason;
+
+
     @JsonProperty("tags")
     private List<Tag> tags;
+
 
     @JsonProperty("workspaceId")
     private String workspaceId;
@@ -92,7 +102,6 @@ public class ConnectionResponse {
             @JsonProperty("configurations") StreamConfigurations configurations,
             @JsonProperty("connectionId") String connectionId,
             @JsonProperty("createdAt") long createdAt,
-            @JsonProperty("dataResidency") String dataResidency,
             @JsonProperty("destinationId") String destinationId,
             @JsonProperty("name") String name,
             @JsonProperty("namespaceDefinition") Optional<? extends NamespaceDefinitionEnum> namespaceDefinition,
@@ -102,12 +111,12 @@ public class ConnectionResponse {
             @JsonProperty("schedule") ConnectionScheduleResponse schedule,
             @JsonProperty("sourceId") String sourceId,
             @JsonProperty("status") ConnectionStatusEnum status,
+            @JsonProperty("statusReason") Optional<String> statusReason,
             @JsonProperty("tags") List<Tag> tags,
             @JsonProperty("workspaceId") String workspaceId) {
         Utils.checkNotNull(configurations, "configurations");
         Utils.checkNotNull(connectionId, "connectionId");
         Utils.checkNotNull(createdAt, "createdAt");
-        Utils.checkNotNull(dataResidency, "dataResidency");
         Utils.checkNotNull(destinationId, "destinationId");
         Utils.checkNotNull(name, "name");
         Utils.checkNotNull(namespaceDefinition, "namespaceDefinition");
@@ -117,12 +126,12 @@ public class ConnectionResponse {
         Utils.checkNotNull(schedule, "schedule");
         Utils.checkNotNull(sourceId, "sourceId");
         Utils.checkNotNull(status, "status");
+        Utils.checkNotNull(statusReason, "statusReason");
         Utils.checkNotNull(tags, "tags");
         Utils.checkNotNull(workspaceId, "workspaceId");
         this.configurations = configurations;
         this.connectionId = connectionId;
         this.createdAt = createdAt;
-        this.dataResidency = dataResidency;
         this.destinationId = destinationId;
         this.name = name;
         this.namespaceDefinition = namespaceDefinition;
@@ -132,6 +141,7 @@ public class ConnectionResponse {
         this.schedule = schedule;
         this.sourceId = sourceId;
         this.status = status;
+        this.statusReason = statusReason;
         this.tags = tags;
         this.workspaceId = workspaceId;
     }
@@ -140,7 +150,6 @@ public class ConnectionResponse {
             StreamConfigurations configurations,
             String connectionId,
             long createdAt,
-            String dataResidency,
             String destinationId,
             String name,
             ConnectionScheduleResponse schedule,
@@ -148,7 +157,11 @@ public class ConnectionResponse {
             ConnectionStatusEnum status,
             List<Tag> tags,
             String workspaceId) {
-        this(configurations, connectionId, createdAt, dataResidency, destinationId, name, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), schedule, sourceId, status, tags, workspaceId);
+        this(configurations, connectionId, createdAt,
+            destinationId, name, Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            schedule, sourceId, status,
+            Optional.empty(), tags, workspaceId);
     }
 
     /**
@@ -167,11 +180,6 @@ public class ConnectionResponse {
     @JsonIgnore
     public long createdAt() {
         return createdAt;
-    }
-
-    @JsonIgnore
-    public String dataResidency() {
-        return dataResidency;
     }
 
     @JsonIgnore
@@ -231,6 +239,11 @@ public class ConnectionResponse {
     }
 
     @JsonIgnore
+    public Optional<String> statusReason() {
+        return statusReason;
+    }
+
+    @JsonIgnore
     public List<Tag> tags() {
         return tags;
     }
@@ -240,9 +253,10 @@ public class ConnectionResponse {
         return workspaceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * A list of configured stream options for a connection.
@@ -262,12 +276,6 @@ public class ConnectionResponse {
     public ConnectionResponse withCreatedAt(long createdAt) {
         Utils.checkNotNull(createdAt, "createdAt");
         this.createdAt = createdAt;
-        return this;
-    }
-
-    public ConnectionResponse withDataResidency(String dataResidency) {
-        Utils.checkNotNull(dataResidency, "dataResidency");
-        this.dataResidency = dataResidency;
         return this;
     }
 
@@ -292,6 +300,7 @@ public class ConnectionResponse {
         return this;
     }
 
+
     /**
      * Define the location where the data will be stored in the destination
      */
@@ -306,6 +315,7 @@ public class ConnectionResponse {
         this.namespaceFormat = Optional.ofNullable(namespaceFormat);
         return this;
     }
+
 
     public ConnectionResponse withNamespaceFormat(Optional<String> namespaceFormat) {
         Utils.checkNotNull(namespaceFormat, "namespaceFormat");
@@ -322,6 +332,7 @@ public class ConnectionResponse {
         return this;
     }
 
+
     /**
      * Set how Airbyte handles syncs when it detects a non-breaking schema change in the source
      */
@@ -336,6 +347,7 @@ public class ConnectionResponse {
         this.prefix = Optional.ofNullable(prefix);
         return this;
     }
+
 
     public ConnectionResponse withPrefix(Optional<String> prefix) {
         Utils.checkNotNull(prefix, "prefix");
@@ -364,6 +376,19 @@ public class ConnectionResponse {
         return this;
     }
 
+    public ConnectionResponse withStatusReason(String statusReason) {
+        Utils.checkNotNull(statusReason, "statusReason");
+        this.statusReason = Optional.ofNullable(statusReason);
+        return this;
+    }
+
+
+    public ConnectionResponse withStatusReason(Optional<String> statusReason) {
+        Utils.checkNotNull(statusReason, "statusReason");
+        this.statusReason = statusReason;
+        return this;
+    }
+
     public ConnectionResponse withTags(List<Tag> tags) {
         Utils.checkNotNull(tags, "tags");
         this.tags = tags;
@@ -376,7 +401,6 @@ public class ConnectionResponse {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -387,41 +411,31 @@ public class ConnectionResponse {
         }
         ConnectionResponse other = (ConnectionResponse) o;
         return 
-            Objects.deepEquals(this.configurations, other.configurations) &&
-            Objects.deepEquals(this.connectionId, other.connectionId) &&
-            Objects.deepEquals(this.createdAt, other.createdAt) &&
-            Objects.deepEquals(this.dataResidency, other.dataResidency) &&
-            Objects.deepEquals(this.destinationId, other.destinationId) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.namespaceDefinition, other.namespaceDefinition) &&
-            Objects.deepEquals(this.namespaceFormat, other.namespaceFormat) &&
-            Objects.deepEquals(this.nonBreakingSchemaUpdatesBehavior, other.nonBreakingSchemaUpdatesBehavior) &&
-            Objects.deepEquals(this.prefix, other.prefix) &&
-            Objects.deepEquals(this.schedule, other.schedule) &&
-            Objects.deepEquals(this.sourceId, other.sourceId) &&
-            Objects.deepEquals(this.status, other.status) &&
-            Objects.deepEquals(this.tags, other.tags) &&
-            Objects.deepEquals(this.workspaceId, other.workspaceId);
+            Utils.enhancedDeepEquals(this.configurations, other.configurations) &&
+            Utils.enhancedDeepEquals(this.connectionId, other.connectionId) &&
+            Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
+            Utils.enhancedDeepEquals(this.destinationId, other.destinationId) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.namespaceDefinition, other.namespaceDefinition) &&
+            Utils.enhancedDeepEquals(this.namespaceFormat, other.namespaceFormat) &&
+            Utils.enhancedDeepEquals(this.nonBreakingSchemaUpdatesBehavior, other.nonBreakingSchemaUpdatesBehavior) &&
+            Utils.enhancedDeepEquals(this.prefix, other.prefix) &&
+            Utils.enhancedDeepEquals(this.schedule, other.schedule) &&
+            Utils.enhancedDeepEquals(this.sourceId, other.sourceId) &&
+            Utils.enhancedDeepEquals(this.status, other.status) &&
+            Utils.enhancedDeepEquals(this.statusReason, other.statusReason) &&
+            Utils.enhancedDeepEquals(this.tags, other.tags) &&
+            Utils.enhancedDeepEquals(this.workspaceId, other.workspaceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            configurations,
-            connectionId,
-            createdAt,
-            dataResidency,
-            destinationId,
-            name,
-            namespaceDefinition,
-            namespaceFormat,
-            nonBreakingSchemaUpdatesBehavior,
-            prefix,
-            schedule,
-            sourceId,
-            status,
-            tags,
-            workspaceId);
+        return Utils.enhancedHash(
+            configurations, connectionId, createdAt,
+            destinationId, name, namespaceDefinition,
+            namespaceFormat, nonBreakingSchemaUpdatesBehavior, prefix,
+            schedule, sourceId, status,
+            statusReason, tags, workspaceId);
     }
     
     @Override
@@ -430,7 +444,6 @@ public class ConnectionResponse {
                 "configurations", configurations,
                 "connectionId", connectionId,
                 "createdAt", createdAt,
-                "dataResidency", dataResidency,
                 "destinationId", destinationId,
                 "name", name,
                 "namespaceDefinition", namespaceDefinition,
@@ -440,45 +453,48 @@ public class ConnectionResponse {
                 "schedule", schedule,
                 "sourceId", sourceId,
                 "status", status,
+                "statusReason", statusReason,
                 "tags", tags,
                 "workspaceId", workspaceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private StreamConfigurations configurations;
- 
+
         private String connectionId;
- 
+
         private Long createdAt;
- 
-        private String dataResidency;
- 
+
         private String destinationId;
- 
+
         private String name;
- 
+
         private Optional<? extends NamespaceDefinitionEnum> namespaceDefinition;
- 
+
         private Optional<String> namespaceFormat = Optional.empty();
- 
+
         private Optional<? extends NonBreakingSchemaUpdatesBehaviorEnum> nonBreakingSchemaUpdatesBehavior;
- 
+
         private Optional<String> prefix = Optional.empty();
- 
+
         private ConnectionScheduleResponse schedule;
- 
+
         private String sourceId;
- 
+
         private ConnectionStatusEnum status;
- 
+
+        private Optional<String> statusReason = Optional.empty();
+
         private List<Tag> tags;
- 
+
         private String workspaceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * A list of configured stream options for a connection.
@@ -489,11 +505,13 @@ public class ConnectionResponse {
             return this;
         }
 
+
         public Builder connectionId(String connectionId) {
             Utils.checkNotNull(connectionId, "connectionId");
             this.connectionId = connectionId;
             return this;
         }
+
 
         public Builder createdAt(long createdAt) {
             Utils.checkNotNull(createdAt, "createdAt");
@@ -501,11 +519,6 @@ public class ConnectionResponse {
             return this;
         }
 
-        public Builder dataResidency(String dataResidency) {
-            Utils.checkNotNull(dataResidency, "dataResidency");
-            this.dataResidency = dataResidency;
-            return this;
-        }
 
         public Builder destinationId(String destinationId) {
             Utils.checkNotNull(destinationId, "destinationId");
@@ -513,11 +526,13 @@ public class ConnectionResponse {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = name;
             return this;
         }
+
 
         /**
          * Define the location where the data will be stored in the destination
@@ -537,6 +552,7 @@ public class ConnectionResponse {
             return this;
         }
 
+
         public Builder namespaceFormat(String namespaceFormat) {
             Utils.checkNotNull(namespaceFormat, "namespaceFormat");
             this.namespaceFormat = Optional.ofNullable(namespaceFormat);
@@ -548,6 +564,7 @@ public class ConnectionResponse {
             this.namespaceFormat = namespaceFormat;
             return this;
         }
+
 
         /**
          * Set how Airbyte handles syncs when it detects a non-breaking schema change in the source
@@ -567,6 +584,7 @@ public class ConnectionResponse {
             return this;
         }
 
+
         public Builder prefix(String prefix) {
             Utils.checkNotNull(prefix, "prefix");
             this.prefix = Optional.ofNullable(prefix);
@@ -579,6 +597,7 @@ public class ConnectionResponse {
             return this;
         }
 
+
         /**
          * schedule for when the the connection should run, per the schedule type
          */
@@ -588,11 +607,13 @@ public class ConnectionResponse {
             return this;
         }
 
+
         public Builder sourceId(String sourceId) {
             Utils.checkNotNull(sourceId, "sourceId");
             this.sourceId = sourceId;
             return this;
         }
+
 
         public Builder status(ConnectionStatusEnum status) {
             Utils.checkNotNull(status, "status");
@@ -600,18 +621,33 @@ public class ConnectionResponse {
             return this;
         }
 
+
+        public Builder statusReason(String statusReason) {
+            Utils.checkNotNull(statusReason, "statusReason");
+            this.statusReason = Optional.ofNullable(statusReason);
+            return this;
+        }
+
+        public Builder statusReason(Optional<String> statusReason) {
+            Utils.checkNotNull(statusReason, "statusReason");
+            this.statusReason = statusReason;
+            return this;
+        }
+
+
         public Builder tags(List<Tag> tags) {
             Utils.checkNotNull(tags, "tags");
             this.tags = tags;
             return this;
         }
 
+
         public Builder workspaceId(String workspaceId) {
             Utils.checkNotNull(workspaceId, "workspaceId");
             this.workspaceId = workspaceId;
             return this;
         }
-        
+
         public ConnectionResponse build() {
             if (namespaceDefinition == null) {
                 namespaceDefinition = _SINGLETON_VALUE_NamespaceDefinition.value();
@@ -619,23 +655,15 @@ public class ConnectionResponse {
             if (nonBreakingSchemaUpdatesBehavior == null) {
                 nonBreakingSchemaUpdatesBehavior = _SINGLETON_VALUE_NonBreakingSchemaUpdatesBehavior.value();
             }
+
             return new ConnectionResponse(
-                configurations,
-                connectionId,
-                createdAt,
-                dataResidency,
-                destinationId,
-                name,
-                namespaceDefinition,
-                namespaceFormat,
-                nonBreakingSchemaUpdatesBehavior,
-                prefix,
-                schedule,
-                sourceId,
-                status,
-                tags,
-                workspaceId);
+                configurations, connectionId, createdAt,
+                destinationId, name, namespaceDefinition,
+                namespaceFormat, nonBreakingSchemaUpdatesBehavior, prefix,
+                schedule, sourceId, status,
+                statusReason, tags, workspaceId);
         }
+
 
         private static final LazySingletonValue<Optional<? extends NamespaceDefinitionEnum>> _SINGLETON_VALUE_NamespaceDefinition =
                 new LazySingletonValue<>(

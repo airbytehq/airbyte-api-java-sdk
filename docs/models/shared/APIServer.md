@@ -1,5 +1,13 @@
 # APIServer
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.APIServer;
+
+APIServer value = APIServer.US;
+```
+
 
 ## Values
 

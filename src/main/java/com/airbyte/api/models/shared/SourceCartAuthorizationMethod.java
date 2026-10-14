@@ -14,13 +14,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = SourceCartAuthorizationMethod._Deserializer.class)
 public class SourceCartAuthorizationMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceCartAuthorizationMethod(TypedObject value) {
         this.value = value;
@@ -28,12 +27,12 @@ public class SourceCartAuthorizationMethod {
 
     public static SourceCartAuthorizationMethod of(CentralAPIRouter value) {
         Utils.checkNotNull(value, "value");
-        return new SourceCartAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<CentralAPIRouter>(){}));
+        return new SourceCartAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceCartAuthorizationMethod of(SingleStoreAccessToken value) {
         Utils.checkNotNull(value, "value");
-        return new SourceCartAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SingleStoreAccessToken>(){}));
+        return new SourceCartAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -56,7 +55,7 @@ public class SourceCartAuthorizationMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -67,12 +66,12 @@ public class SourceCartAuthorizationMethod {
             return false;
         }
         SourceCartAuthorizationMethod other = (SourceCartAuthorizationMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -90,6 +89,6 @@ public class SourceCartAuthorizationMethod {
         return Utils.toString(SourceCartAuthorizationMethod.class,
                 "value", value);
     }
- 
+
 }
 

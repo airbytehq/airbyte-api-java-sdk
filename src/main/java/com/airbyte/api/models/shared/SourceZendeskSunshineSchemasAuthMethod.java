@@ -14,7 +14,7 @@ public enum SourceZendeskSunshineSchemasAuthMethod {
     @JsonValue
     private final String value;
 
-    private SourceZendeskSunshineSchemasAuthMethod(String value) {
+    SourceZendeskSunshineSchemasAuthMethod(String value) {
         this.value = value;
     }
     

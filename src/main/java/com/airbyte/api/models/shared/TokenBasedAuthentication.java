@@ -19,43 +19,48 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * TokenBasedAuthentication
  * 
- * <p>Authenticate using a token-based authentication method. This requires a consumer key and secret, as well as a token ID and secret.
+ * <p>Authenticate using a token-based authentication method. This requires a consumer key and secret, as
+ * well as a token ID and secret.
  */
 public class TokenBasedAuthentication {
 
     @JsonIgnore
     private Map<String, Object> additionalProperties;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("authentication_method")
     private Optional<? extends SourceNetsuiteEnterpriseSchemasAuthenticationMethod> authenticationMethod;
 
     /**
-     * The consumer key used for token-based authentication. This is generated in NetSuite when creating an integration record.
+     * The consumer key used for token-based authentication. This is generated in NetSuite when creating an
+     * integration record.
      */
     @JsonProperty("client_id")
     private String clientId;
 
     /**
-     * The consumer secret used for token-based authentication. This is generated in NetSuite when creating an integration record.
+     * The consumer secret used for token-based authentication. This is generated in NetSuite when creating
+     * an integration record.
      */
     @JsonProperty("client_secret")
     private String clientSecret;
 
     /**
-     * The token ID used for token-based authentication. This is generated in NetSuite when creating a token-based role.
+     * The token ID used for token-based authentication. This is generated in NetSuite when creating a
+     * token-based role.
      */
     @JsonProperty("token_id")
     private String tokenId;
 
     /**
-     * The token secret used for token-based authentication. This is generated in NetSuite when creating a token-based role.Ensure to keep this value secure.
+     * The token secret used for token-based authentication. This is generated in NetSuite when creating a
+     * token-based role.Ensure to keep this value secure.
      */
     @JsonProperty("token_secret")
     private String tokenSecret;
@@ -85,7 +90,8 @@ public class TokenBasedAuthentication {
             String clientSecret,
             String tokenId,
             String tokenSecret) {
-        this(Optional.empty(), clientId, clientSecret, tokenId, tokenSecret);
+        this(Optional.empty(), clientId, clientSecret,
+            tokenId, tokenSecret);
     }
 
     @JsonAnyGetter
@@ -100,7 +106,8 @@ public class TokenBasedAuthentication {
     }
 
     /**
-     * The consumer key used for token-based authentication. This is generated in NetSuite when creating an integration record.
+     * The consumer key used for token-based authentication. This is generated in NetSuite when creating an
+     * integration record.
      */
     @JsonIgnore
     public String clientId() {
@@ -108,7 +115,8 @@ public class TokenBasedAuthentication {
     }
 
     /**
-     * The consumer secret used for token-based authentication. This is generated in NetSuite when creating an integration record.
+     * The consumer secret used for token-based authentication. This is generated in NetSuite when creating
+     * an integration record.
      */
     @JsonIgnore
     public String clientSecret() {
@@ -116,7 +124,8 @@ public class TokenBasedAuthentication {
     }
 
     /**
-     * The token ID used for token-based authentication. This is generated in NetSuite when creating a token-based role.
+     * The token ID used for token-based authentication. This is generated in NetSuite when creating a
+     * token-based role.
      */
     @JsonIgnore
     public String tokenId() {
@@ -124,16 +133,18 @@ public class TokenBasedAuthentication {
     }
 
     /**
-     * The token secret used for token-based authentication. This is generated in NetSuite when creating a token-based role.Ensure to keep this value secure.
+     * The token secret used for token-based authentication. This is generated in NetSuite when creating a
+     * token-based role.Ensure to keep this value secure.
      */
     @JsonIgnore
     public String tokenSecret() {
         return tokenSecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public TokenBasedAuthentication withAdditionalProperty(String key, Object value) {
@@ -141,8 +152,7 @@ public class TokenBasedAuthentication {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public TokenBasedAuthentication withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -155,6 +165,7 @@ public class TokenBasedAuthentication {
         return this;
     }
 
+
     public TokenBasedAuthentication withAuthenticationMethod(Optional<? extends SourceNetsuiteEnterpriseSchemasAuthenticationMethod> authenticationMethod) {
         Utils.checkNotNull(authenticationMethod, "authenticationMethod");
         this.authenticationMethod = authenticationMethod;
@@ -162,7 +173,8 @@ public class TokenBasedAuthentication {
     }
 
     /**
-     * The consumer key used for token-based authentication. This is generated in NetSuite when creating an integration record.
+     * The consumer key used for token-based authentication. This is generated in NetSuite when creating an
+     * integration record.
      */
     public TokenBasedAuthentication withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -171,7 +183,8 @@ public class TokenBasedAuthentication {
     }
 
     /**
-     * The consumer secret used for token-based authentication. This is generated in NetSuite when creating an integration record.
+     * The consumer secret used for token-based authentication. This is generated in NetSuite when creating
+     * an integration record.
      */
     public TokenBasedAuthentication withClientSecret(String clientSecret) {
         Utils.checkNotNull(clientSecret, "clientSecret");
@@ -180,7 +193,8 @@ public class TokenBasedAuthentication {
     }
 
     /**
-     * The token ID used for token-based authentication. This is generated in NetSuite when creating a token-based role.
+     * The token ID used for token-based authentication. This is generated in NetSuite when creating a
+     * token-based role.
      */
     public TokenBasedAuthentication withTokenId(String tokenId) {
         Utils.checkNotNull(tokenId, "tokenId");
@@ -189,7 +203,8 @@ public class TokenBasedAuthentication {
     }
 
     /**
-     * The token secret used for token-based authentication. This is generated in NetSuite when creating a token-based role.Ensure to keep this value secure.
+     * The token secret used for token-based authentication. This is generated in NetSuite when creating a
+     * token-based role.Ensure to keep this value secure.
      */
     public TokenBasedAuthentication withTokenSecret(String tokenSecret) {
         Utils.checkNotNull(tokenSecret, "tokenSecret");
@@ -197,7 +212,6 @@ public class TokenBasedAuthentication {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -208,23 +222,19 @@ public class TokenBasedAuthentication {
         }
         TokenBasedAuthentication other = (TokenBasedAuthentication) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.authenticationMethod, other.authenticationMethod) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.tokenId, other.tokenId) &&
-            Objects.deepEquals(this.tokenSecret, other.tokenSecret);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.authenticationMethod, other.authenticationMethod) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.tokenId, other.tokenId) &&
+            Utils.enhancedDeepEquals(this.tokenSecret, other.tokenSecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            authenticationMethod,
-            clientId,
-            clientSecret,
-            tokenId,
-            tokenSecret);
+        return Utils.enhancedHash(
+            additionalProperties, authenticationMethod, clientId,
+            clientSecret, tokenId, tokenSecret);
     }
     
     @Override
@@ -237,21 +247,22 @@ public class TokenBasedAuthentication {
                 "tokenId", tokenId,
                 "tokenSecret", tokenSecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends SourceNetsuiteEnterpriseSchemasAuthenticationMethod> authenticationMethod;
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String tokenId;
- 
+
         private String tokenSecret;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -272,6 +283,7 @@ public class TokenBasedAuthentication {
             return this;
         }
 
+
         public Builder authenticationMethod(SourceNetsuiteEnterpriseSchemasAuthenticationMethod authenticationMethod) {
             Utils.checkNotNull(authenticationMethod, "authenticationMethod");
             this.authenticationMethod = Optional.ofNullable(authenticationMethod);
@@ -284,8 +296,10 @@ public class TokenBasedAuthentication {
             return this;
         }
 
+
         /**
-         * The consumer key used for token-based authentication. This is generated in NetSuite when creating an integration record.
+         * The consumer key used for token-based authentication. This is generated in NetSuite when creating an
+         * integration record.
          */
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -293,8 +307,10 @@ public class TokenBasedAuthentication {
             return this;
         }
 
+
         /**
-         * The consumer secret used for token-based authentication. This is generated in NetSuite when creating an integration record.
+         * The consumer secret used for token-based authentication. This is generated in NetSuite when creating
+         * an integration record.
          */
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
@@ -302,8 +318,10 @@ public class TokenBasedAuthentication {
             return this;
         }
 
+
         /**
-         * The token ID used for token-based authentication. This is generated in NetSuite when creating a token-based role.
+         * The token ID used for token-based authentication. This is generated in NetSuite when creating a
+         * token-based role.
          */
         public Builder tokenId(String tokenId) {
             Utils.checkNotNull(tokenId, "tokenId");
@@ -311,27 +329,28 @@ public class TokenBasedAuthentication {
             return this;
         }
 
+
         /**
-         * The token secret used for token-based authentication. This is generated in NetSuite when creating a token-based role.Ensure to keep this value secure.
+         * The token secret used for token-based authentication. This is generated in NetSuite when creating a
+         * token-based role.Ensure to keep this value secure.
          */
         public Builder tokenSecret(String tokenSecret) {
             Utils.checkNotNull(tokenSecret, "tokenSecret");
             this.tokenSecret = tokenSecret;
             return this;
         }
-        
+
         public TokenBasedAuthentication build() {
             if (authenticationMethod == null) {
                 authenticationMethod = _SINGLETON_VALUE_AuthenticationMethod.value();
             }
+
             return new TokenBasedAuthentication(
-                authenticationMethod,
-                clientId,
-                clientSecret,
-                tokenId,
-                tokenSecret)
+                authenticationMethod, clientId, clientSecret,
+                tokenId, tokenSecret)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceNetsuiteEnterpriseSchemasAuthenticationMethod>> _SINGLETON_VALUE_AuthenticationMethod =
                 new LazySingletonValue<>(

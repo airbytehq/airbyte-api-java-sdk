@@ -12,10 +12,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceDelighted {
-
     /**
      * A Delighted API key.
      */
@@ -27,6 +26,7 @@ public class SourceDelighted {
      */
     @JsonProperty("since")
     private OffsetDateTime since;
+
 
     @JsonProperty("sourceType")
     private Delighted sourceType;
@@ -63,9 +63,10 @@ public class SourceDelighted {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * A Delighted API key.
@@ -85,7 +86,6 @@ public class SourceDelighted {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -96,17 +96,15 @@ public class SourceDelighted {
         }
         SourceDelighted other = (SourceDelighted) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.since, other.since) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.since, other.since) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            since,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, since, sourceType);
     }
     
     @Override
@@ -116,16 +114,18 @@ public class SourceDelighted {
                 "since", since,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private OffsetDateTime since;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * A Delighted API key.
@@ -136,6 +136,7 @@ public class SourceDelighted {
             return this;
         }
 
+
         /**
          * The date from which you'd like to replicate the data
          */
@@ -144,12 +145,13 @@ public class SourceDelighted {
             this.since = since;
             return this;
         }
-        
+
         public SourceDelighted build() {
+
             return new SourceDelighted(
-                apiKey,
-                since);
+                apiKey, since);
         }
+
 
         private static final LazySingletonValue<Delighted> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

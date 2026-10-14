@@ -14,7 +14,7 @@ public enum Savvycal {
     @JsonValue
     private final String value;
 
-    private Savvycal(String value) {
+    Savvycal(String value) {
         this.value = value;
     }
     

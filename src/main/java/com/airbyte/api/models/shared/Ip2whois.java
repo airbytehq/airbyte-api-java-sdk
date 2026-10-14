@@ -14,7 +14,7 @@ public enum Ip2whois {
     @JsonValue
     private final String value;
 
-    private Ip2whois(String value) {
+    Ip2whois(String value) {
         this.value = value;
     }
     

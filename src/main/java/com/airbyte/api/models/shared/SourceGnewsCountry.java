@@ -11,7 +11,9 @@ import java.util.Optional;
 /**
  * SourceGnewsCountry
  * 
- * <p>This parameter allows you to specify the country where the news articles returned by the API were published, the contents of the articles are not necessarily related to the specified country. You have to set as value the 2 letters code of the country you want to filter.
+ * <p>This parameter allows you to specify the country where the news articles returned by the API were
+ * published, the contents of the articles are not necessarily related to the specified country. You
+ * have to set as value the 2 letters code of the country you want to filter.
  */
 public enum SourceGnewsCountry {
     AU("au"),
@@ -48,7 +50,7 @@ public enum SourceGnewsCountry {
     @JsonValue
     private final String value;
 
-    private SourceGnewsCountry(String value) {
+    SourceGnewsCountry(String value) {
         this.value = value;
     }
     

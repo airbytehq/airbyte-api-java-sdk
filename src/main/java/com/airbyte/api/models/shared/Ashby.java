@@ -14,7 +14,7 @@ public enum Ashby {
     @JsonValue
     private final String value;
 
-    private Ashby(String value) {
+    Ashby(String value) {
         this.value = value;
     }
     

@@ -14,13 +14,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = Value._Deserializer.class)
 public class Value {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private Value(TypedObject value) {
         this.value = value;
@@ -28,12 +27,12 @@ public class Value {
 
     public static Value of(Int64Value value) {
         Utils.checkNotNull(value, "value");
-        return new Value(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Int64Value>(){}));
+        return new Value(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static Value of(DoubleValue value) {
         Utils.checkNotNull(value, "value");
-        return new Value(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DoubleValue>(){}));
+        return new Value(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -56,7 +55,7 @@ public class Value {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -67,12 +66,12 @@ public class Value {
             return false;
         }
         Value other = (Value) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -80,8 +79,8 @@ public class Value {
 
         public _Deserializer() {
             super(Value.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DoubleValue>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Int64Value>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Int64Value>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DoubleValue>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -90,6 +89,6 @@ public class Value {
         return Utils.toString(Value.class,
                 "value", value);
     }
- 
+
 }
 

@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * LoggingConfiguration
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class LoggingConfiguration {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private LoggingConfiguration(TypedObject value) {
         this.value = value;
@@ -33,17 +32,17 @@ public class LoggingConfiguration {
 
     public static LoggingConfiguration of(FirstNEntries value) {
         Utils.checkNotNull(value, "value");
-        return new LoggingConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<FirstNEntries>(){}));
+        return new LoggingConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static LoggingConfiguration of(EveryNThEntry value) {
         Utils.checkNotNull(value, "value");
-        return new LoggingConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<EveryNThEntry>(){}));
+        return new LoggingConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static LoggingConfiguration of(RandomSampling value) {
         Utils.checkNotNull(value, "value");
-        return new LoggingConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<RandomSampling>(){}));
+        return new LoggingConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +66,7 @@ public class LoggingConfiguration {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +77,12 @@ public class LoggingConfiguration {
             return false;
         }
         LoggingConfiguration other = (LoggingConfiguration) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -91,9 +90,9 @@ public class LoggingConfiguration {
 
         public _Deserializer() {
             super(LoggingConfiguration.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<RandomSampling>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<FirstNEntries>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<EveryNThEntry>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<FirstNEntries>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<RandomSampling>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -102,6 +101,6 @@ public class LoggingConfiguration {
         return Utils.toString(LoggingConfiguration.class,
                 "value", value);
     }
- 
+
 }
 

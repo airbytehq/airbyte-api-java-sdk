@@ -26,7 +26,7 @@ public enum Days {
     @JsonValue
     private final String value;
 
-    private Days(String value) {
+    Days(String value) {
         this.value = value;
     }
     

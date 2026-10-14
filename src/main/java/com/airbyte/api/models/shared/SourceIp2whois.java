@@ -13,24 +13,24 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceIp2whois {
 
+public class SourceIp2whois {
     /**
-     * Your API Key. See &lt;a href="https://www.ip2whois.com/developers-api"&gt;here&lt;/a&gt;.
+     * Your API Key. See <a href="https://www.ip2whois.com/developers-api">here</a>.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("api_key")
     private Optional<String> apiKey;
 
     /**
-     * Domain name. See &lt;a href="https://www.ip2whois.com/developers-api"&gt;here&lt;/a&gt;.
+     * Domain name. See <a href="https://www.ip2whois.com/developers-api">here</a>.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("domain")
     private Optional<String> domain;
+
 
     @JsonProperty("sourceType")
     private Ip2whois sourceType;
@@ -51,7 +51,7 @@ public class SourceIp2whois {
     }
 
     /**
-     * Your API Key. See &lt;a href="https://www.ip2whois.com/developers-api"&gt;here&lt;/a&gt;.
+     * Your API Key. See <a href="https://www.ip2whois.com/developers-api">here</a>.
      */
     @JsonIgnore
     public Optional<String> apiKey() {
@@ -59,7 +59,7 @@ public class SourceIp2whois {
     }
 
     /**
-     * Domain name. See &lt;a href="https://www.ip2whois.com/developers-api"&gt;here&lt;/a&gt;.
+     * Domain name. See <a href="https://www.ip2whois.com/developers-api">here</a>.
      */
     @JsonIgnore
     public Optional<String> domain() {
@@ -71,12 +71,13 @@ public class SourceIp2whois {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Your API Key. See &lt;a href="https://www.ip2whois.com/developers-api"&gt;here&lt;/a&gt;.
+     * Your API Key. See <a href="https://www.ip2whois.com/developers-api">here</a>.
      */
     public SourceIp2whois withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -84,8 +85,9 @@ public class SourceIp2whois {
         return this;
     }
 
+
     /**
-     * Your API Key. See &lt;a href="https://www.ip2whois.com/developers-api"&gt;here&lt;/a&gt;.
+     * Your API Key. See <a href="https://www.ip2whois.com/developers-api">here</a>.
      */
     public SourceIp2whois withApiKey(Optional<String> apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -94,7 +96,7 @@ public class SourceIp2whois {
     }
 
     /**
-     * Domain name. See &lt;a href="https://www.ip2whois.com/developers-api"&gt;here&lt;/a&gt;.
+     * Domain name. See <a href="https://www.ip2whois.com/developers-api">here</a>.
      */
     public SourceIp2whois withDomain(String domain) {
         Utils.checkNotNull(domain, "domain");
@@ -102,8 +104,9 @@ public class SourceIp2whois {
         return this;
     }
 
+
     /**
-     * Domain name. See &lt;a href="https://www.ip2whois.com/developers-api"&gt;here&lt;/a&gt;.
+     * Domain name. See <a href="https://www.ip2whois.com/developers-api">here</a>.
      */
     public SourceIp2whois withDomain(Optional<String> domain) {
         Utils.checkNotNull(domain, "domain");
@@ -111,7 +114,6 @@ public class SourceIp2whois {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -122,17 +124,15 @@ public class SourceIp2whois {
         }
         SourceIp2whois other = (SourceIp2whois) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.domain, other.domain) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.domain, other.domain) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            domain,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, domain, sourceType);
     }
     
     @Override
@@ -142,19 +142,21 @@ public class SourceIp2whois {
                 "domain", domain,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> apiKey = Optional.empty();
- 
+
         private Optional<String> domain = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Your API Key. See &lt;a href="https://www.ip2whois.com/developers-api"&gt;here&lt;/a&gt;.
+         * Your API Key. See <a href="https://www.ip2whois.com/developers-api">here</a>.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -163,7 +165,7 @@ public class SourceIp2whois {
         }
 
         /**
-         * Your API Key. See &lt;a href="https://www.ip2whois.com/developers-api"&gt;here&lt;/a&gt;.
+         * Your API Key. See <a href="https://www.ip2whois.com/developers-api">here</a>.
          */
         public Builder apiKey(Optional<String> apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -171,8 +173,9 @@ public class SourceIp2whois {
             return this;
         }
 
+
         /**
-         * Domain name. See &lt;a href="https://www.ip2whois.com/developers-api"&gt;here&lt;/a&gt;.
+         * Domain name. See <a href="https://www.ip2whois.com/developers-api">here</a>.
          */
         public Builder domain(String domain) {
             Utils.checkNotNull(domain, "domain");
@@ -181,19 +184,20 @@ public class SourceIp2whois {
         }
 
         /**
-         * Domain name. See &lt;a href="https://www.ip2whois.com/developers-api"&gt;here&lt;/a&gt;.
+         * Domain name. See <a href="https://www.ip2whois.com/developers-api">here</a>.
          */
         public Builder domain(Optional<String> domain) {
             Utils.checkNotNull(domain, "domain");
             this.domain = domain;
             return this;
         }
-        
+
         public SourceIp2whois build() {
+
             return new SourceIp2whois(
-                apiKey,
-                domain);
+                apiKey, domain);
         }
+
 
         private static final LazySingletonValue<Ip2whois> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

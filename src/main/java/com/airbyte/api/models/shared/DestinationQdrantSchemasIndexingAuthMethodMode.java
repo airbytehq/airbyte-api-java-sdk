@@ -14,7 +14,7 @@ public enum DestinationQdrantSchemasIndexingAuthMethodMode {
     @JsonValue
     private final String value;
 
-    private DestinationQdrantSchemasIndexingAuthMethodMode(String value) {
+    DestinationQdrantSchemasIndexingAuthMethodMode(String value) {
         this.value = value;
     }
     

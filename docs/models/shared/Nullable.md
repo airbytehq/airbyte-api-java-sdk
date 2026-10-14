@@ -1,5 +1,13 @@
 # Nullable
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.Nullable;
+
+Nullable value = Nullable.TITLE;
+```
+
 
 ## Values
 

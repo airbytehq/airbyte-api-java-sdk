@@ -14,7 +14,7 @@ public enum SourceMondaySchemasAuthType {
     @JsonValue
     private final String value;
 
-    private SourceMondaySchemasAuthType(String value) {
+    SourceMondaySchemasAuthType(String value) {
         this.value = value;
     }
     

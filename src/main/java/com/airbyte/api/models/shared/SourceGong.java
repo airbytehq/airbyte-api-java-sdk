@@ -13,11 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceGong {
 
+public class SourceGong {
     /**
      * Gong Access Key
      */
@@ -30,11 +29,14 @@ public class SourceGong {
     @JsonProperty("access_key_secret")
     private String accessKeySecret;
 
+
     @JsonProperty("sourceType")
     private Gong sourceType;
 
     /**
-     * The date from which to list calls, in the ISO-8601 format; if not specified, the calls start with the earliest recorded call. For web-conference calls recorded by Gong, the date denotes its scheduled time, otherwise, it denotes its actual start time.
+     * The date from which to list calls, in the ISO-8601 format; if not specified, the calls start with
+     * the earliest recorded call. For web-conference calls recorded by Gong, the date denotes its
+     * scheduled time, otherwise, it denotes its actual start time.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
@@ -82,16 +84,19 @@ public class SourceGong {
     }
 
     /**
-     * The date from which to list calls, in the ISO-8601 format; if not specified, the calls start with the earliest recorded call. For web-conference calls recorded by Gong, the date denotes its scheduled time, otherwise, it denotes its actual start time.
+     * The date from which to list calls, in the ISO-8601 format; if not specified, the calls start with
+     * the earliest recorded call. For web-conference calls recorded by Gong, the date denotes its
+     * scheduled time, otherwise, it denotes its actual start time.
      */
     @JsonIgnore
     public Optional<String> startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Gong Access Key
@@ -112,7 +117,9 @@ public class SourceGong {
     }
 
     /**
-     * The date from which to list calls, in the ISO-8601 format; if not specified, the calls start with the earliest recorded call. For web-conference calls recorded by Gong, the date denotes its scheduled time, otherwise, it denotes its actual start time.
+     * The date from which to list calls, in the ISO-8601 format; if not specified, the calls start with
+     * the earliest recorded call. For web-conference calls recorded by Gong, the date denotes its
+     * scheduled time, otherwise, it denotes its actual start time.
      */
     public SourceGong withStartDate(String startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -120,8 +127,11 @@ public class SourceGong {
         return this;
     }
 
+
     /**
-     * The date from which to list calls, in the ISO-8601 format; if not specified, the calls start with the earliest recorded call. For web-conference calls recorded by Gong, the date denotes its scheduled time, otherwise, it denotes its actual start time.
+     * The date from which to list calls, in the ISO-8601 format; if not specified, the calls start with
+     * the earliest recorded call. For web-conference calls recorded by Gong, the date denotes its
+     * scheduled time, otherwise, it denotes its actual start time.
      */
     public SourceGong withStartDate(Optional<String> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -129,7 +139,6 @@ public class SourceGong {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -140,18 +149,16 @@ public class SourceGong {
         }
         SourceGong other = (SourceGong) o;
         return 
-            Objects.deepEquals(this.accessKey, other.accessKey) &&
-            Objects.deepEquals(this.accessKeySecret, other.accessKeySecret) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.accessKey, other.accessKey) &&
+            Utils.enhancedDeepEquals(this.accessKeySecret, other.accessKeySecret) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessKey,
-            accessKeySecret,
-            sourceType,
+        return Utils.enhancedHash(
+            accessKey, accessKeySecret, sourceType,
             startDate);
     }
     
@@ -163,18 +170,20 @@ public class SourceGong {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessKey;
- 
+
         private String accessKeySecret;
- 
+
         private Optional<String> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Gong Access Key
@@ -185,6 +194,7 @@ public class SourceGong {
             return this;
         }
 
+
         /**
          * Gong Access Key Secret
          */
@@ -194,8 +204,11 @@ public class SourceGong {
             return this;
         }
 
+
         /**
-         * The date from which to list calls, in the ISO-8601 format; if not specified, the calls start with the earliest recorded call. For web-conference calls recorded by Gong, the date denotes its scheduled time, otherwise, it denotes its actual start time.
+         * The date from which to list calls, in the ISO-8601 format; if not specified, the calls start with
+         * the earliest recorded call. For web-conference calls recorded by Gong, the date denotes its
+         * scheduled time, otherwise, it denotes its actual start time.
          */
         public Builder startDate(String startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -204,20 +217,22 @@ public class SourceGong {
         }
 
         /**
-         * The date from which to list calls, in the ISO-8601 format; if not specified, the calls start with the earliest recorded call. For web-conference calls recorded by Gong, the date denotes its scheduled time, otherwise, it denotes its actual start time.
+         * The date from which to list calls, in the ISO-8601 format; if not specified, the calls start with
+         * the earliest recorded call. For web-conference calls recorded by Gong, the date denotes its
+         * scheduled time, otherwise, it denotes its actual start time.
          */
         public Builder startDate(Optional<String> startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceGong build() {
+
             return new SourceGong(
-                accessKey,
-                accessKeySecret,
-                startDate);
+                accessKey, accessKeySecret, startDate);
         }
+
 
         private static final LazySingletonValue<Gong> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -1,5 +1,13 @@
 # DestinationMilvusSchemasEmbeddingEmbeddingMode
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DestinationMilvusSchemasEmbeddingEmbeddingMode;
+
+DestinationMilvusSchemasEmbeddingEmbeddingMode value = DestinationMilvusSchemasEmbeddingEmbeddingMode.AZURE_OPENAI;
+```
+
 
 ## Values
 

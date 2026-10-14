@@ -14,7 +14,7 @@ public enum Xkcd {
     @JsonValue
     private final String value;
 
-    private Xkcd(String value) {
+    Xkcd(String value) {
         this.value = value;
     }
     

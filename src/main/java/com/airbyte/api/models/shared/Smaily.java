@@ -14,7 +14,7 @@ public enum Smaily {
     @JsonValue
     private final String value;
 
-    private Smaily(String value) {
+    Smaily(String value) {
         this.value = value;
     }
     

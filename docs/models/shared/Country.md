@@ -4,6 +4,14 @@ The 2-letter ISO 3166-1 code of the country you want to get headlines
 for. You can't mix this with the sources parameter.
 
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.Country;
+
+Country value = Country.AE;
+```
+
 
 ## Values
 

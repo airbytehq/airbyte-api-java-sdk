@@ -14,7 +14,7 @@ public enum SourceGoogleDriveSchemasStreamsFiletype {
     @JsonValue
     private final String value;
 
-    private SourceGoogleDriveSchemasStreamsFiletype(String value) {
+    SourceGoogleDriveSchemasStreamsFiletype(String value) {
         this.value = value;
     }
     

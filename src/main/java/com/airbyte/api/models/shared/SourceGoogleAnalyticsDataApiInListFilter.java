@@ -15,8 +15,8 @@ import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceGoogleAnalyticsDataApiInListFilter {
 
@@ -24,8 +24,10 @@ public class SourceGoogleAnalyticsDataApiInListFilter {
     @JsonProperty("caseSensitive")
     private Optional<Boolean> caseSensitive;
 
+
     @JsonProperty("filter_name")
     private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilterFilterName filterName;
+
 
     @JsonProperty("values")
     private List<String> values;
@@ -61,15 +63,17 @@ public class SourceGoogleAnalyticsDataApiInListFilter {
         return values;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceGoogleAnalyticsDataApiInListFilter withCaseSensitive(boolean caseSensitive) {
         Utils.checkNotNull(caseSensitive, "caseSensitive");
         this.caseSensitive = Optional.ofNullable(caseSensitive);
         return this;
     }
+
 
     public SourceGoogleAnalyticsDataApiInListFilter withCaseSensitive(Optional<Boolean> caseSensitive) {
         Utils.checkNotNull(caseSensitive, "caseSensitive");
@@ -83,7 +87,6 @@ public class SourceGoogleAnalyticsDataApiInListFilter {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -94,17 +97,15 @@ public class SourceGoogleAnalyticsDataApiInListFilter {
         }
         SourceGoogleAnalyticsDataApiInListFilter other = (SourceGoogleAnalyticsDataApiInListFilter) o;
         return 
-            Objects.deepEquals(this.caseSensitive, other.caseSensitive) &&
-            Objects.deepEquals(this.filterName, other.filterName) &&
-            Objects.deepEquals(this.values, other.values);
+            Utils.enhancedDeepEquals(this.caseSensitive, other.caseSensitive) &&
+            Utils.enhancedDeepEquals(this.filterName, other.filterName) &&
+            Utils.enhancedDeepEquals(this.values, other.values);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            caseSensitive,
-            filterName,
-            values);
+        return Utils.enhancedHash(
+            caseSensitive, filterName, values);
     }
     
     @Override
@@ -114,16 +115,18 @@ public class SourceGoogleAnalyticsDataApiInListFilter {
                 "filterName", filterName,
                 "values", values);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> caseSensitive = Optional.empty();
- 
+
         private List<String> values;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder caseSensitive(boolean caseSensitive) {
             Utils.checkNotNull(caseSensitive, "caseSensitive");
@@ -137,17 +140,19 @@ public class SourceGoogleAnalyticsDataApiInListFilter {
             return this;
         }
 
+
         public Builder values(List<String> values) {
             Utils.checkNotNull(values, "values");
             this.values = values;
             return this;
         }
-        
+
         public SourceGoogleAnalyticsDataApiInListFilter build() {
+
             return new SourceGoogleAnalyticsDataApiInListFilter(
-                caseSensitive,
-                values);
+                caseSensitive, values);
         }
+
 
         private static final LazySingletonValue<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilterFilterName> _SINGLETON_VALUE_FilterName =
                 new LazySingletonValue<>(

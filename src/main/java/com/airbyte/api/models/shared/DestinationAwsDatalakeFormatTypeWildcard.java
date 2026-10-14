@@ -14,7 +14,7 @@ public enum DestinationAwsDatalakeFormatTypeWildcard {
     @JsonValue
     private final String value;
 
-    private DestinationAwsDatalakeFormatTypeWildcard(String value) {
+    DestinationAwsDatalakeFormatTypeWildcard(String value) {
         this.value = value;
     }
     

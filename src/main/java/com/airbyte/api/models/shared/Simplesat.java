@@ -14,7 +14,7 @@ public enum Simplesat {
     @JsonValue
     private final String value;
 
-    private Simplesat(String value) {
+    Simplesat(String value) {
         this.value = value;
     }
     

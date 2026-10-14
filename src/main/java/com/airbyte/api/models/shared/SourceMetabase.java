@@ -13,16 +13,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceMetabase {
 
+public class SourceMetabase {
     /**
      * URL to your metabase instance API
      */
     @JsonProperty("instance_api_url")
     private String instanceApiUrl;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
@@ -30,9 +30,9 @@ public class SourceMetabase {
 
     /**
      * To generate your session token, you need to run the following command: ``` curl -X POST \
-     *   -H "Content-Type: application/json" \
-     *   -d '{"username": "person@metabase.com", "password": "fakepassword"}' \
-     *   http://localhost:3000/api/session
+     * -H "Content-Type: application/json" \
+     * -d '{"username": "person@metabase.com", "password": "fakepassword"}' \
+     * http://localhost:3000/api/session
      * ``` Then copy the value of the `id` field returned by a successful call to that API.
      * Note that by default, sessions are good for 14 days and needs to be regenerated.
      */
@@ -40,8 +40,10 @@ public class SourceMetabase {
     @JsonProperty("session_token")
     private Optional<String> sessionToken;
 
+
     @JsonProperty("sourceType")
     private Metabase sourceType;
+
 
     @JsonProperty("username")
     private String username;
@@ -66,7 +68,8 @@ public class SourceMetabase {
     public SourceMetabase(
             String instanceApiUrl,
             String username) {
-        this(instanceApiUrl, Optional.empty(), Optional.empty(), username);
+        this(instanceApiUrl, Optional.empty(), Optional.empty(),
+            username);
     }
 
     /**
@@ -84,9 +87,9 @@ public class SourceMetabase {
 
     /**
      * To generate your session token, you need to run the following command: ``` curl -X POST \
-     *   -H "Content-Type: application/json" \
-     *   -d '{"username": "person@metabase.com", "password": "fakepassword"}' \
-     *   http://localhost:3000/api/session
+     * -H "Content-Type: application/json" \
+     * -d '{"username": "person@metabase.com", "password": "fakepassword"}' \
+     * http://localhost:3000/api/session
      * ``` Then copy the value of the `id` field returned by a successful call to that API.
      * Note that by default, sessions are good for 14 days and needs to be regenerated.
      */
@@ -105,9 +108,10 @@ public class SourceMetabase {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * URL to your metabase instance API
@@ -124,6 +128,7 @@ public class SourceMetabase {
         return this;
     }
 
+
     public SourceMetabase withPassword(Optional<String> password) {
         Utils.checkNotNull(password, "password");
         this.password = password;
@@ -132,9 +137,9 @@ public class SourceMetabase {
 
     /**
      * To generate your session token, you need to run the following command: ``` curl -X POST \
-     *   -H "Content-Type: application/json" \
-     *   -d '{"username": "person@metabase.com", "password": "fakepassword"}' \
-     *   http://localhost:3000/api/session
+     * -H "Content-Type: application/json" \
+     * -d '{"username": "person@metabase.com", "password": "fakepassword"}' \
+     * http://localhost:3000/api/session
      * ``` Then copy the value of the `id` field returned by a successful call to that API.
      * Note that by default, sessions are good for 14 days and needs to be regenerated.
      */
@@ -144,11 +149,12 @@ public class SourceMetabase {
         return this;
     }
 
+
     /**
      * To generate your session token, you need to run the following command: ``` curl -X POST \
-     *   -H "Content-Type: application/json" \
-     *   -d '{"username": "person@metabase.com", "password": "fakepassword"}' \
-     *   http://localhost:3000/api/session
+     * -H "Content-Type: application/json" \
+     * -d '{"username": "person@metabase.com", "password": "fakepassword"}' \
+     * http://localhost:3000/api/session
      * ``` Then copy the value of the `id` field returned by a successful call to that API.
      * Note that by default, sessions are good for 14 days and needs to be regenerated.
      */
@@ -164,7 +170,6 @@ public class SourceMetabase {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -175,21 +180,18 @@ public class SourceMetabase {
         }
         SourceMetabase other = (SourceMetabase) o;
         return 
-            Objects.deepEquals(this.instanceApiUrl, other.instanceApiUrl) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.sessionToken, other.sessionToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.instanceApiUrl, other.instanceApiUrl) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.sessionToken, other.sessionToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            instanceApiUrl,
-            password,
-            sessionToken,
-            sourceType,
-            username);
+        return Utils.enhancedHash(
+            instanceApiUrl, password, sessionToken,
+            sourceType, username);
     }
     
     @Override
@@ -201,20 +203,22 @@ public class SourceMetabase {
                 "sourceType", sourceType,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String instanceApiUrl;
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private Optional<String> sessionToken = Optional.empty();
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * URL to your metabase instance API
@@ -224,6 +228,7 @@ public class SourceMetabase {
             this.instanceApiUrl = instanceApiUrl;
             return this;
         }
+
 
         public Builder password(String password) {
             Utils.checkNotNull(password, "password");
@@ -237,11 +242,12 @@ public class SourceMetabase {
             return this;
         }
 
+
         /**
          * To generate your session token, you need to run the following command: ``` curl -X POST \
-         *   -H "Content-Type: application/json" \
-         *   -d '{"username": "person@metabase.com", "password": "fakepassword"}' \
-         *   http://localhost:3000/api/session
+         * -H "Content-Type: application/json" \
+         * -d '{"username": "person@metabase.com", "password": "fakepassword"}' \
+         * http://localhost:3000/api/session
          * ``` Then copy the value of the `id` field returned by a successful call to that API.
          * Note that by default, sessions are good for 14 days and needs to be regenerated.
          */
@@ -253,9 +259,9 @@ public class SourceMetabase {
 
         /**
          * To generate your session token, you need to run the following command: ``` curl -X POST \
-         *   -H "Content-Type: application/json" \
-         *   -d '{"username": "person@metabase.com", "password": "fakepassword"}' \
-         *   http://localhost:3000/api/session
+         * -H "Content-Type: application/json" \
+         * -d '{"username": "person@metabase.com", "password": "fakepassword"}' \
+         * http://localhost:3000/api/session
          * ``` Then copy the value of the `id` field returned by a successful call to that API.
          * Note that by default, sessions are good for 14 days and needs to be regenerated.
          */
@@ -265,19 +271,20 @@ public class SourceMetabase {
             return this;
         }
 
+
         public Builder username(String username) {
             Utils.checkNotNull(username, "username");
             this.username = username;
             return this;
         }
-        
+
         public SourceMetabase build() {
+
             return new SourceMetabase(
-                instanceApiUrl,
-                password,
-                sessionToken,
+                instanceApiUrl, password, sessionToken,
                 username);
         }
+
 
         private static final LazySingletonValue<Metabase> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

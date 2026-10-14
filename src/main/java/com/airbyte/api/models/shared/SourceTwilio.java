@@ -15,11 +15,10 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceTwilio {
 
+public class SourceTwilio {
     /**
      * Twilio account SID
      */
@@ -39,11 +38,20 @@ public class SourceTwilio {
     @JsonProperty("lookback_window")
     private Optional<Long> lookbackWindow;
 
+    /**
+     * The number of worker threads to use for the sync.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("num_worker")
+    private Optional<Long> numWorker;
+
+
     @JsonProperty("sourceType")
     private Twilio sourceType;
 
     /**
-     * UTC date and time in the format 2020-10-01T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2020-10-01T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -53,14 +61,17 @@ public class SourceTwilio {
             @JsonProperty("account_sid") String accountSid,
             @JsonProperty("auth_token") String authToken,
             @JsonProperty("lookback_window") Optional<Long> lookbackWindow,
+            @JsonProperty("num_worker") Optional<Long> numWorker,
             @JsonProperty("start_date") OffsetDateTime startDate) {
         Utils.checkNotNull(accountSid, "accountSid");
         Utils.checkNotNull(authToken, "authToken");
         Utils.checkNotNull(lookbackWindow, "lookbackWindow");
+        Utils.checkNotNull(numWorker, "numWorker");
         Utils.checkNotNull(startDate, "startDate");
         this.accountSid = accountSid;
         this.authToken = authToken;
         this.lookbackWindow = lookbackWindow;
+        this.numWorker = numWorker;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
@@ -69,7 +80,8 @@ public class SourceTwilio {
             String accountSid,
             String authToken,
             OffsetDateTime startDate) {
-        this(accountSid, authToken, Optional.empty(), startDate);
+        this(accountSid, authToken, Optional.empty(),
+            Optional.empty(), startDate);
     }
 
     /**
@@ -96,22 +108,32 @@ public class SourceTwilio {
         return lookbackWindow;
     }
 
+    /**
+     * The number of worker threads to use for the sync.
+     */
+    @JsonIgnore
+    public Optional<Long> numWorker() {
+        return numWorker;
+    }
+
     @JsonIgnore
     public Twilio sourceType() {
         return sourceType;
     }
 
     /**
-     * UTC date and time in the format 2020-10-01T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2020-10-01T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Twilio account SID
@@ -140,6 +162,7 @@ public class SourceTwilio {
         return this;
     }
 
+
     /**
      * How far into the past to look for records. (in minutes)
      */
@@ -150,7 +173,27 @@ public class SourceTwilio {
     }
 
     /**
-     * UTC date and time in the format 2020-10-01T00:00:00Z. Any data before this date will not be replicated.
+     * The number of worker threads to use for the sync.
+     */
+    public SourceTwilio withNumWorker(long numWorker) {
+        Utils.checkNotNull(numWorker, "numWorker");
+        this.numWorker = Optional.ofNullable(numWorker);
+        return this;
+    }
+
+
+    /**
+     * The number of worker threads to use for the sync.
+     */
+    public SourceTwilio withNumWorker(Optional<Long> numWorker) {
+        Utils.checkNotNull(numWorker, "numWorker");
+        this.numWorker = numWorker;
+        return this;
+    }
+
+    /**
+     * UTC date and time in the format 2020-10-01T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     public SourceTwilio withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -158,7 +201,6 @@ public class SourceTwilio {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -169,21 +211,19 @@ public class SourceTwilio {
         }
         SourceTwilio other = (SourceTwilio) o;
         return 
-            Objects.deepEquals(this.accountSid, other.accountSid) &&
-            Objects.deepEquals(this.authToken, other.authToken) &&
-            Objects.deepEquals(this.lookbackWindow, other.lookbackWindow) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.accountSid, other.accountSid) &&
+            Utils.enhancedDeepEquals(this.authToken, other.authToken) &&
+            Utils.enhancedDeepEquals(this.lookbackWindow, other.lookbackWindow) &&
+            Utils.enhancedDeepEquals(this.numWorker, other.numWorker) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountSid,
-            authToken,
-            lookbackWindow,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            accountSid, authToken, lookbackWindow,
+            numWorker, sourceType, startDate);
     }
     
     @Override
@@ -192,23 +232,28 @@ public class SourceTwilio {
                 "accountSid", accountSid,
                 "authToken", authToken,
                 "lookbackWindow", lookbackWindow,
+                "numWorker", numWorker,
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accountSid;
- 
+
         private String authToken;
- 
+
         private Optional<Long> lookbackWindow;
- 
+
+        private Optional<Long> numWorker;
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Twilio account SID
@@ -219,6 +264,7 @@ public class SourceTwilio {
             return this;
         }
 
+
         /**
          * Twilio Auth Token.
          */
@@ -227,6 +273,7 @@ public class SourceTwilio {
             this.authToken = authToken;
             return this;
         }
+
 
         /**
          * How far into the past to look for records. (in minutes)
@@ -246,30 +293,60 @@ public class SourceTwilio {
             return this;
         }
 
+
         /**
-         * UTC date and time in the format 2020-10-01T00:00:00Z. Any data before this date will not be replicated.
+         * The number of worker threads to use for the sync.
+         */
+        public Builder numWorker(long numWorker) {
+            Utils.checkNotNull(numWorker, "numWorker");
+            this.numWorker = Optional.ofNullable(numWorker);
+            return this;
+        }
+
+        /**
+         * The number of worker threads to use for the sync.
+         */
+        public Builder numWorker(Optional<Long> numWorker) {
+            Utils.checkNotNull(numWorker, "numWorker");
+            this.numWorker = numWorker;
+            return this;
+        }
+
+
+        /**
+         * UTC date and time in the format 2020-10-01T00:00:00Z. Any data before this date will not be
+         * replicated.
          */
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceTwilio build() {
             if (lookbackWindow == null) {
                 lookbackWindow = _SINGLETON_VALUE_LookbackWindow.value();
             }
+            if (numWorker == null) {
+                numWorker = _SINGLETON_VALUE_NumWorker.value();
+            }
+
             return new SourceTwilio(
-                accountSid,
-                authToken,
-                lookbackWindow,
-                startDate);
+                accountSid, authToken, lookbackWindow,
+                numWorker, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_LookbackWindow =
                 new LazySingletonValue<>(
                         "lookback_window",
                         "0",
+                        new TypeReference<Optional<Long>>() {});
+
+        private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_NumWorker =
+                new LazySingletonValue<>(
+                        "num_worker",
+                        "3",
                         new TypeReference<Optional<Long>>() {});
 
         private static final LazySingletonValue<Twilio> _SINGLETON_VALUE_SourceType =

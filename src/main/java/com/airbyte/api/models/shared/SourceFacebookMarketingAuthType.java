@@ -14,7 +14,7 @@ public enum SourceFacebookMarketingAuthType {
     @JsonValue
     private final String value;
 
-    private SourceFacebookMarketingAuthType(String value) {
+    SourceFacebookMarketingAuthType(String value) {
         this.value = value;
     }
     

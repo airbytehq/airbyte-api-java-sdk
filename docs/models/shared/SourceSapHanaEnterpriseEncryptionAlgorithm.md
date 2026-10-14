@@ -2,6 +2,14 @@
 
 This parameter defines what encryption algorithm is used.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceSapHanaEnterpriseEncryptionAlgorithm;
+
+SourceSapHanaEnterpriseEncryptionAlgorithm value = SourceSapHanaEnterpriseEncryptionAlgorithm.AES256;
+```
+
 
 ## Values
 

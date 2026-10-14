@@ -20,7 +20,7 @@ public enum Kind {
     @JsonValue
     private final String value;
 
-    private Kind(String value) {
+    Kind(String value) {
         this.value = value;
     }
     

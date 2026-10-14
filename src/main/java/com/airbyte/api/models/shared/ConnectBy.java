@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * ConnectBy
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class ConnectBy {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private ConnectBy(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class ConnectBy {
 
     public static ConnectBy of(ServiceName value) {
         Utils.checkNotNull(value, "value");
-        return new ConnectBy(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ServiceName>(){}));
+        return new ConnectBy(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static ConnectBy of(SystemIDSID value) {
         Utils.checkNotNull(value, "value");
-        return new ConnectBy(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SystemIDSID>(){}));
+        return new ConnectBy(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class ConnectBy {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class ConnectBy {
             return false;
         }
         ConnectBy other = (ConnectBy) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,8 +84,8 @@ public class ConnectBy {
 
         public _Deserializer() {
             super(ConnectBy.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SystemIDSID>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<ServiceName>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<ServiceName>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SystemIDSID>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -95,6 +94,6 @@ public class ConnectBy {
         return Utils.toString(ConnectBy.class,
                 "value", value);
     }
- 
+
 }
 

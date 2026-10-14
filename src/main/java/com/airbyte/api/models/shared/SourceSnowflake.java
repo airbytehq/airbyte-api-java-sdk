@@ -11,17 +11,50 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
+import java.lang.Boolean;
+import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
+
 public class SourceSnowflake {
+    /**
+     * When this feature is enabled, during schema discovery the connector will query each table or view
+     * individually to check access privileges and inaccessible tables, views, or columns therein will be
+     * removed. In large schemas, this might cause schema discovery to take too long, in which case it
+     * might be advisable to disable this feature.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("check_privileges")
+    private Optional<Boolean> checkPrivileges;
+
+    /**
+     * How often (in seconds) a stream should checkpoint, when possible.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("checkpoint_target_interval_seconds")
+    private Optional<Long> checkpointTargetIntervalSeconds;
+
+    /**
+     * Maximum number of concurrent queries to the database.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("concurrency")
+    private Optional<Long> concurrency;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     private Optional<? extends SourceSnowflakeAuthorizationMethod> credentials;
+
+    /**
+     * Configures how data is extracted from the database.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("cursor")
+    private Optional<? extends SourceSnowflakeUpdateMethod> cursor;
 
     /**
      * The database you created for Airbyte to access data.
@@ -30,13 +63,16 @@ public class SourceSnowflake {
     private String database;
 
     /**
-     * The host domain of the snowflake instance (must include the account, region, cloud environment, and end with snowflakecomputing.com).
+     * The host domain of the snowflake instance (must include the account, region, cloud environment, and
+     * end with snowflakecomputing.com).
      */
     @JsonProperty("host")
     private String host;
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("jdbc_url_params")
@@ -55,6 +91,7 @@ public class SourceSnowflake {
     @JsonProperty("schema")
     private Optional<String> schema;
 
+
     @JsonProperty("sourceType")
     private SourceSnowflakeSnowflake sourceType;
 
@@ -66,21 +103,33 @@ public class SourceSnowflake {
 
     @JsonCreator
     public SourceSnowflake(
+            @JsonProperty("check_privileges") Optional<Boolean> checkPrivileges,
+            @JsonProperty("checkpoint_target_interval_seconds") Optional<Long> checkpointTargetIntervalSeconds,
+            @JsonProperty("concurrency") Optional<Long> concurrency,
             @JsonProperty("credentials") Optional<? extends SourceSnowflakeAuthorizationMethod> credentials,
+            @JsonProperty("cursor") Optional<? extends SourceSnowflakeUpdateMethod> cursor,
             @JsonProperty("database") String database,
             @JsonProperty("host") String host,
             @JsonProperty("jdbc_url_params") Optional<String> jdbcUrlParams,
             @JsonProperty("role") String role,
             @JsonProperty("schema") Optional<String> schema,
             @JsonProperty("warehouse") String warehouse) {
+        Utils.checkNotNull(checkPrivileges, "checkPrivileges");
+        Utils.checkNotNull(checkpointTargetIntervalSeconds, "checkpointTargetIntervalSeconds");
+        Utils.checkNotNull(concurrency, "concurrency");
         Utils.checkNotNull(credentials, "credentials");
+        Utils.checkNotNull(cursor, "cursor");
         Utils.checkNotNull(database, "database");
         Utils.checkNotNull(host, "host");
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
         Utils.checkNotNull(role, "role");
         Utils.checkNotNull(schema, "schema");
         Utils.checkNotNull(warehouse, "warehouse");
+        this.checkPrivileges = checkPrivileges;
+        this.checkpointTargetIntervalSeconds = checkpointTargetIntervalSeconds;
+        this.concurrency = concurrency;
         this.credentials = credentials;
+        this.cursor = cursor;
         this.database = database;
         this.host = host;
         this.jdbcUrlParams = jdbcUrlParams;
@@ -95,13 +144,52 @@ public class SourceSnowflake {
             String host,
             String role,
             String warehouse) {
-        this(Optional.empty(), database, host, Optional.empty(), role, Optional.empty(), warehouse);
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), database,
+            host, Optional.empty(), role,
+            Optional.empty(), warehouse);
+    }
+
+    /**
+     * When this feature is enabled, during schema discovery the connector will query each table or view
+     * individually to check access privileges and inaccessible tables, views, or columns therein will be
+     * removed. In large schemas, this might cause schema discovery to take too long, in which case it
+     * might be advisable to disable this feature.
+     */
+    @JsonIgnore
+    public Optional<Boolean> checkPrivileges() {
+        return checkPrivileges;
+    }
+
+    /**
+     * How often (in seconds) a stream should checkpoint, when possible.
+     */
+    @JsonIgnore
+    public Optional<Long> checkpointTargetIntervalSeconds() {
+        return checkpointTargetIntervalSeconds;
+    }
+
+    /**
+     * Maximum number of concurrent queries to the database.
+     */
+    @JsonIgnore
+    public Optional<Long> concurrency() {
+        return concurrency;
     }
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public Optional<SourceSnowflakeAuthorizationMethod> credentials() {
         return (Optional<SourceSnowflakeAuthorizationMethod>) credentials;
+    }
+
+    /**
+     * Configures how data is extracted from the database.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceSnowflakeUpdateMethod> cursor() {
+        return (Optional<SourceSnowflakeUpdateMethod>) cursor;
     }
 
     /**
@@ -113,7 +201,8 @@ public class SourceSnowflake {
     }
 
     /**
-     * The host domain of the snowflake instance (must include the account, region, cloud environment, and end with snowflakecomputing.com).
+     * The host domain of the snowflake instance (must include the account, region, cloud environment, and
+     * end with snowflakecomputing.com).
      */
     @JsonIgnore
     public String host() {
@@ -121,7 +210,9 @@ public class SourceSnowflake {
     }
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     @JsonIgnore
     public Optional<String> jdbcUrlParams() {
@@ -157,9 +248,73 @@ public class SourceSnowflake {
         return warehouse;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
+
+    /**
+     * When this feature is enabled, during schema discovery the connector will query each table or view
+     * individually to check access privileges and inaccessible tables, views, or columns therein will be
+     * removed. In large schemas, this might cause schema discovery to take too long, in which case it
+     * might be advisable to disable this feature.
+     */
+    public SourceSnowflake withCheckPrivileges(boolean checkPrivileges) {
+        Utils.checkNotNull(checkPrivileges, "checkPrivileges");
+        this.checkPrivileges = Optional.ofNullable(checkPrivileges);
+        return this;
+    }
+
+
+    /**
+     * When this feature is enabled, during schema discovery the connector will query each table or view
+     * individually to check access privileges and inaccessible tables, views, or columns therein will be
+     * removed. In large schemas, this might cause schema discovery to take too long, in which case it
+     * might be advisable to disable this feature.
+     */
+    public SourceSnowflake withCheckPrivileges(Optional<Boolean> checkPrivileges) {
+        Utils.checkNotNull(checkPrivileges, "checkPrivileges");
+        this.checkPrivileges = checkPrivileges;
+        return this;
+    }
+
+    /**
+     * How often (in seconds) a stream should checkpoint, when possible.
+     */
+    public SourceSnowflake withCheckpointTargetIntervalSeconds(long checkpointTargetIntervalSeconds) {
+        Utils.checkNotNull(checkpointTargetIntervalSeconds, "checkpointTargetIntervalSeconds");
+        this.checkpointTargetIntervalSeconds = Optional.ofNullable(checkpointTargetIntervalSeconds);
+        return this;
+    }
+
+
+    /**
+     * How often (in seconds) a stream should checkpoint, when possible.
+     */
+    public SourceSnowflake withCheckpointTargetIntervalSeconds(Optional<Long> checkpointTargetIntervalSeconds) {
+        Utils.checkNotNull(checkpointTargetIntervalSeconds, "checkpointTargetIntervalSeconds");
+        this.checkpointTargetIntervalSeconds = checkpointTargetIntervalSeconds;
+        return this;
+    }
+
+    /**
+     * Maximum number of concurrent queries to the database.
+     */
+    public SourceSnowflake withConcurrency(long concurrency) {
+        Utils.checkNotNull(concurrency, "concurrency");
+        this.concurrency = Optional.ofNullable(concurrency);
+        return this;
+    }
+
+
+    /**
+     * Maximum number of concurrent queries to the database.
+     */
+    public SourceSnowflake withConcurrency(Optional<Long> concurrency) {
+        Utils.checkNotNull(concurrency, "concurrency");
+        this.concurrency = concurrency;
+        return this;
+    }
 
     public SourceSnowflake withCredentials(SourceSnowflakeAuthorizationMethod credentials) {
         Utils.checkNotNull(credentials, "credentials");
@@ -167,9 +322,29 @@ public class SourceSnowflake {
         return this;
     }
 
+
     public SourceSnowflake withCredentials(Optional<? extends SourceSnowflakeAuthorizationMethod> credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = credentials;
+        return this;
+    }
+
+    /**
+     * Configures how data is extracted from the database.
+     */
+    public SourceSnowflake withCursor(SourceSnowflakeUpdateMethod cursor) {
+        Utils.checkNotNull(cursor, "cursor");
+        this.cursor = Optional.ofNullable(cursor);
+        return this;
+    }
+
+
+    /**
+     * Configures how data is extracted from the database.
+     */
+    public SourceSnowflake withCursor(Optional<? extends SourceSnowflakeUpdateMethod> cursor) {
+        Utils.checkNotNull(cursor, "cursor");
+        this.cursor = cursor;
         return this;
     }
 
@@ -183,7 +358,8 @@ public class SourceSnowflake {
     }
 
     /**
-     * The host domain of the snowflake instance (must include the account, region, cloud environment, and end with snowflakecomputing.com).
+     * The host domain of the snowflake instance (must include the account, region, cloud environment, and
+     * end with snowflakecomputing.com).
      */
     public SourceSnowflake withHost(String host) {
         Utils.checkNotNull(host, "host");
@@ -192,7 +368,9 @@ public class SourceSnowflake {
     }
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     public SourceSnowflake withJdbcUrlParams(String jdbcUrlParams) {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -200,8 +378,11 @@ public class SourceSnowflake {
         return this;
     }
 
+
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     public SourceSnowflake withJdbcUrlParams(Optional<String> jdbcUrlParams) {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -227,6 +408,7 @@ public class SourceSnowflake {
         return this;
     }
 
+
     /**
      * The source Snowflake schema tables. Leave empty to access tables from multiple schemas.
      */
@@ -245,7 +427,6 @@ public class SourceSnowflake {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -256,33 +437,37 @@ public class SourceSnowflake {
         }
         SourceSnowflake other = (SourceSnowflake) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.database, other.database) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
-            Objects.deepEquals(this.role, other.role) &&
-            Objects.deepEquals(this.schema, other.schema) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.warehouse, other.warehouse);
+            Utils.enhancedDeepEquals(this.checkPrivileges, other.checkPrivileges) &&
+            Utils.enhancedDeepEquals(this.checkpointTargetIntervalSeconds, other.checkpointTargetIntervalSeconds) &&
+            Utils.enhancedDeepEquals(this.concurrency, other.concurrency) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.cursor, other.cursor) &&
+            Utils.enhancedDeepEquals(this.database, other.database) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
+            Utils.enhancedDeepEquals(this.role, other.role) &&
+            Utils.enhancedDeepEquals(this.schema, other.schema) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.warehouse, other.warehouse);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            database,
-            host,
-            jdbcUrlParams,
-            role,
-            schema,
-            sourceType,
-            warehouse);
+        return Utils.enhancedHash(
+            checkPrivileges, checkpointTargetIntervalSeconds, concurrency,
+            credentials, cursor, database,
+            host, jdbcUrlParams, role,
+            schema, sourceType, warehouse);
     }
     
     @Override
     public String toString() {
         return Utils.toString(SourceSnowflake.class,
+                "checkPrivileges", checkPrivileges,
+                "checkpointTargetIntervalSeconds", checkpointTargetIntervalSeconds,
+                "concurrency", concurrency,
                 "credentials", credentials,
+                "cursor", cursor,
                 "database", database,
                 "host", host,
                 "jdbcUrlParams", jdbcUrlParams,
@@ -291,26 +476,99 @@ public class SourceSnowflake {
                 "sourceType", sourceType,
                 "warehouse", warehouse);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
+        private Optional<Boolean> checkPrivileges;
+
+        private Optional<Long> checkpointTargetIntervalSeconds;
+
+        private Optional<Long> concurrency;
+
         private Optional<? extends SourceSnowflakeAuthorizationMethod> credentials = Optional.empty();
- 
+
+        private Optional<? extends SourceSnowflakeUpdateMethod> cursor = Optional.empty();
+
         private String database;
- 
+
         private String host;
- 
+
         private Optional<String> jdbcUrlParams = Optional.empty();
- 
+
         private String role;
- 
+
         private Optional<String> schema = Optional.empty();
- 
+
         private String warehouse;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
+
+        /**
+         * When this feature is enabled, during schema discovery the connector will query each table or view
+         * individually to check access privileges and inaccessible tables, views, or columns therein will be
+         * removed. In large schemas, this might cause schema discovery to take too long, in which case it
+         * might be advisable to disable this feature.
+         */
+        public Builder checkPrivileges(boolean checkPrivileges) {
+            Utils.checkNotNull(checkPrivileges, "checkPrivileges");
+            this.checkPrivileges = Optional.ofNullable(checkPrivileges);
+            return this;
+        }
+
+        /**
+         * When this feature is enabled, during schema discovery the connector will query each table or view
+         * individually to check access privileges and inaccessible tables, views, or columns therein will be
+         * removed. In large schemas, this might cause schema discovery to take too long, in which case it
+         * might be advisable to disable this feature.
+         */
+        public Builder checkPrivileges(Optional<Boolean> checkPrivileges) {
+            Utils.checkNotNull(checkPrivileges, "checkPrivileges");
+            this.checkPrivileges = checkPrivileges;
+            return this;
+        }
+
+
+        /**
+         * How often (in seconds) a stream should checkpoint, when possible.
+         */
+        public Builder checkpointTargetIntervalSeconds(long checkpointTargetIntervalSeconds) {
+            Utils.checkNotNull(checkpointTargetIntervalSeconds, "checkpointTargetIntervalSeconds");
+            this.checkpointTargetIntervalSeconds = Optional.ofNullable(checkpointTargetIntervalSeconds);
+            return this;
+        }
+
+        /**
+         * How often (in seconds) a stream should checkpoint, when possible.
+         */
+        public Builder checkpointTargetIntervalSeconds(Optional<Long> checkpointTargetIntervalSeconds) {
+            Utils.checkNotNull(checkpointTargetIntervalSeconds, "checkpointTargetIntervalSeconds");
+            this.checkpointTargetIntervalSeconds = checkpointTargetIntervalSeconds;
+            return this;
+        }
+
+
+        /**
+         * Maximum number of concurrent queries to the database.
+         */
+        public Builder concurrency(long concurrency) {
+            Utils.checkNotNull(concurrency, "concurrency");
+            this.concurrency = Optional.ofNullable(concurrency);
+            return this;
+        }
+
+        /**
+         * Maximum number of concurrent queries to the database.
+         */
+        public Builder concurrency(Optional<Long> concurrency) {
+            Utils.checkNotNull(concurrency, "concurrency");
+            this.concurrency = concurrency;
+            return this;
+        }
+
 
         public Builder credentials(SourceSnowflakeAuthorizationMethod credentials) {
             Utils.checkNotNull(credentials, "credentials");
@@ -324,6 +582,26 @@ public class SourceSnowflake {
             return this;
         }
 
+
+        /**
+         * Configures how data is extracted from the database.
+         */
+        public Builder cursor(SourceSnowflakeUpdateMethod cursor) {
+            Utils.checkNotNull(cursor, "cursor");
+            this.cursor = Optional.ofNullable(cursor);
+            return this;
+        }
+
+        /**
+         * Configures how data is extracted from the database.
+         */
+        public Builder cursor(Optional<? extends SourceSnowflakeUpdateMethod> cursor) {
+            Utils.checkNotNull(cursor, "cursor");
+            this.cursor = cursor;
+            return this;
+        }
+
+
         /**
          * The database you created for Airbyte to access data.
          */
@@ -333,8 +611,10 @@ public class SourceSnowflake {
             return this;
         }
 
+
         /**
-         * The host domain of the snowflake instance (must include the account, region, cloud environment, and end with snowflakecomputing.com).
+         * The host domain of the snowflake instance (must include the account, region, cloud environment, and
+         * end with snowflakecomputing.com).
          */
         public Builder host(String host) {
             Utils.checkNotNull(host, "host");
@@ -342,8 +622,11 @@ public class SourceSnowflake {
             return this;
         }
 
+
         /**
-         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+         * 'key=value' pairs separated by the symbol '&amp;'. (example:
+         * key1=value1&amp;key2=value2&amp;key3=value3).
          */
         public Builder jdbcUrlParams(String jdbcUrlParams) {
             Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -352,13 +635,16 @@ public class SourceSnowflake {
         }
 
         /**
-         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+         * 'key=value' pairs separated by the symbol '&amp;'. (example:
+         * key1=value1&amp;key2=value2&amp;key3=value3).
          */
         public Builder jdbcUrlParams(Optional<String> jdbcUrlParams) {
             Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
             this.jdbcUrlParams = jdbcUrlParams;
             return this;
         }
+
 
         /**
          * The role you created for Airbyte to access Snowflake.
@@ -368,6 +654,7 @@ public class SourceSnowflake {
             this.role = role;
             return this;
         }
+
 
         /**
          * The source Snowflake schema tables. Leave empty to access tables from multiple schemas.
@@ -387,6 +674,7 @@ public class SourceSnowflake {
             return this;
         }
 
+
         /**
          * The warehouse you created for Airbyte to access data.
          */
@@ -395,17 +683,43 @@ public class SourceSnowflake {
             this.warehouse = warehouse;
             return this;
         }
-        
+
         public SourceSnowflake build() {
+            if (checkPrivileges == null) {
+                checkPrivileges = _SINGLETON_VALUE_CheckPrivileges.value();
+            }
+            if (checkpointTargetIntervalSeconds == null) {
+                checkpointTargetIntervalSeconds = _SINGLETON_VALUE_CheckpointTargetIntervalSeconds.value();
+            }
+            if (concurrency == null) {
+                concurrency = _SINGLETON_VALUE_Concurrency.value();
+            }
+
             return new SourceSnowflake(
-                credentials,
-                database,
-                host,
-                jdbcUrlParams,
-                role,
-                schema,
-                warehouse);
+                checkPrivileges, checkpointTargetIntervalSeconds, concurrency,
+                credentials, cursor, database,
+                host, jdbcUrlParams, role,
+                schema, warehouse);
         }
+
+
+        private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_CheckPrivileges =
+                new LazySingletonValue<>(
+                        "check_privileges",
+                        "true",
+                        new TypeReference<Optional<Boolean>>() {});
+
+        private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_CheckpointTargetIntervalSeconds =
+                new LazySingletonValue<>(
+                        "checkpoint_target_interval_seconds",
+                        "300",
+                        new TypeReference<Optional<Long>>() {});
+
+        private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_Concurrency =
+                new LazySingletonValue<>(
+                        "concurrency",
+                        "1",
+                        new TypeReference<Optional<Long>>() {});
 
         private static final LazySingletonValue<SourceSnowflakeSnowflake> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

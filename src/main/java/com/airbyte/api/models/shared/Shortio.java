@@ -14,7 +14,7 @@ public enum Shortio {
     @JsonValue
     private final String value;
 
-    private Shortio(String value) {
+    Shortio(String value) {
         this.value = value;
     }
     

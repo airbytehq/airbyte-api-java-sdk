@@ -14,7 +14,7 @@ public enum SourceMicrosoftOnedriveSchemasHeaderDefinitionType {
     @JsonValue
     private final String value;
 
-    private SourceMicrosoftOnedriveSchemasHeaderDefinitionType(String value) {
+    SourceMicrosoftOnedriveSchemasHeaderDefinitionType(String value) {
         this.value = value;
     }
     

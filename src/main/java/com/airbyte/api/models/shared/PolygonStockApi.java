@@ -14,7 +14,7 @@ public enum PolygonStockApi {
     @JsonValue
     private final String value;
 
-    private PolygonStockApi(String value) {
+    PolygonStockApi(String value) {
         this.value = value;
     }
     

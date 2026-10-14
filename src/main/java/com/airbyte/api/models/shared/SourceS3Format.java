@@ -14,18 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceS3Format
  * 
- * <p>The configuration options that are used to alter how to read incoming files that deviate from the standard formatting.
+ * <p>The configuration options that are used to alter how to read incoming files that deviate from the
+ * standard formatting.
  */
 @JsonDeserialize(using = SourceS3Format._Deserializer.class)
 public class SourceS3Format {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceS3Format(TypedObject value) {
         this.value = value;
@@ -33,32 +33,32 @@ public class SourceS3Format {
 
     public static SourceS3Format of(SourceS3AvroFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceS3Format(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceS3AvroFormat>(){}));
+        return new SourceS3Format(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceS3Format of(SourceS3CSVFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceS3Format(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceS3CSVFormat>(){}));
+        return new SourceS3Format(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceS3Format of(SourceS3JsonlFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceS3Format(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceS3JsonlFormat>(){}));
+        return new SourceS3Format(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceS3Format of(SourceS3ParquetFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceS3Format(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceS3ParquetFormat>(){}));
+        return new SourceS3Format(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceS3Format of(SourceS3UnstructuredDocumentFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceS3Format(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceS3UnstructuredDocumentFormat>(){}));
+        return new SourceS3Format(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceS3Format of(SourceS3ExcelFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceS3Format(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceS3ExcelFormat>(){}));
+        return new SourceS3Format(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -85,7 +85,7 @@ public class SourceS3Format {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -96,12 +96,12 @@ public class SourceS3Format {
             return false;
         }
         SourceS3Format other = (SourceS3Format) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -109,12 +109,12 @@ public class SourceS3Format {
 
         public _Deserializer() {
             super(SourceS3Format.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceS3CSVFormat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceS3UnstructuredDocumentFormat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceS3ParquetFormat>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceS3AvroFormat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceS3ExcelFormat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceS3JsonlFormat>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceS3CSVFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceS3JsonlFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceS3ParquetFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceS3UnstructuredDocumentFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceS3ExcelFormat>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -123,6 +123,6 @@ public class SourceS3Format {
         return Utils.toString(SourceS3Format.class,
                 "value", value);
     }
- 
+
 }
 

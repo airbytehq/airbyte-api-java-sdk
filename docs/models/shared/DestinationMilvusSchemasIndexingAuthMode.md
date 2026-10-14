@@ -1,5 +1,13 @@
 # DestinationMilvusSchemasIndexingAuthMode
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DestinationMilvusSchemasIndexingAuthMode;
+
+DestinationMilvusSchemasIndexingAuthMode value = DestinationMilvusSchemasIndexingAuthMode.USERNAME_PASSWORD;
+```
+
 
 ## Values
 

@@ -1,5 +1,13 @@
 # SourceTiktokMarketingSchemasAuthType
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceTiktokMarketingSchemasAuthType;
+
+SourceTiktokMarketingSchemasAuthType value = SourceTiktokMarketingSchemasAuthType.SANDBOX_ACCESS_TOKEN;
+```
+
 
 ## Values
 

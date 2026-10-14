@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class ReplicaSet {
 
@@ -76,15 +76,17 @@ public class ReplicaSet {
         return serverAddresses;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public ReplicaSet withInstance(DestinationMongodbInstance instance) {
         Utils.checkNotNull(instance, "instance");
         this.instance = Optional.ofNullable(instance);
         return this;
     }
+
 
     public ReplicaSet withInstance(Optional<? extends DestinationMongodbInstance> instance) {
         Utils.checkNotNull(instance, "instance");
@@ -100,6 +102,7 @@ public class ReplicaSet {
         this.replicaSet = Optional.ofNullable(replicaSet);
         return this;
     }
+
 
     /**
      * A replica set name.
@@ -119,7 +122,6 @@ public class ReplicaSet {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -130,17 +132,15 @@ public class ReplicaSet {
         }
         ReplicaSet other = (ReplicaSet) o;
         return 
-            Objects.deepEquals(this.instance, other.instance) &&
-            Objects.deepEquals(this.replicaSet, other.replicaSet) &&
-            Objects.deepEquals(this.serverAddresses, other.serverAddresses);
+            Utils.enhancedDeepEquals(this.instance, other.instance) &&
+            Utils.enhancedDeepEquals(this.replicaSet, other.replicaSet) &&
+            Utils.enhancedDeepEquals(this.serverAddresses, other.serverAddresses);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            instance,
-            replicaSet,
-            serverAddresses);
+        return Utils.enhancedHash(
+            instance, replicaSet, serverAddresses);
     }
     
     @Override
@@ -150,18 +150,20 @@ public class ReplicaSet {
                 "replicaSet", replicaSet,
                 "serverAddresses", serverAddresses);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends DestinationMongodbInstance> instance;
- 
+
         private Optional<String> replicaSet = Optional.empty();
- 
+
         private String serverAddresses;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder instance(DestinationMongodbInstance instance) {
             Utils.checkNotNull(instance, "instance");
@@ -174,6 +176,7 @@ public class ReplicaSet {
             this.instance = instance;
             return this;
         }
+
 
         /**
          * A replica set name.
@@ -193,6 +196,7 @@ public class ReplicaSet {
             return this;
         }
 
+
         /**
          * The members of a replica set. Please specify `host`:`port` of each member seperated by comma.
          */
@@ -201,16 +205,16 @@ public class ReplicaSet {
             this.serverAddresses = serverAddresses;
             return this;
         }
-        
+
         public ReplicaSet build() {
             if (instance == null) {
                 instance = _SINGLETON_VALUE_Instance.value();
             }
+
             return new ReplicaSet(
-                instance,
-                replicaSet,
-                serverAddresses);
+                instance, replicaSet, serverAddresses);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationMongodbInstance>> _SINGLETON_VALUE_Instance =
                 new LazySingletonValue<>(

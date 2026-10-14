@@ -51,7 +51,7 @@ public enum SourceAmazonSqsAWSRegion {
     @JsonValue
     private final String value;
 
-    private SourceAmazonSqsAWSRegion(String value) {
+    SourceAmazonSqsAWSRegion(String value) {
         this.value = value;
     }
     

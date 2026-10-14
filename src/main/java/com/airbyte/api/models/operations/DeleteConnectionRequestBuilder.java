@@ -3,16 +3,21 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
+import com.airbyte.api.operations.DeleteConnection;
+import com.airbyte.api.utils.Headers;
 import com.airbyte.api.utils.Utils;
-import java.lang.Exception;
 
 public class DeleteConnectionRequestBuilder {
 
     private DeleteConnectionRequest request;
-    private final SDKMethodInterfaces.MethodCallDeleteConnection sdk;
+    private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
-    public DeleteConnectionRequestBuilder(SDKMethodInterfaces.MethodCallDeleteConnection sdk) {
-        this.sdk = sdk;
+    public DeleteConnectionRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public DeleteConnectionRequestBuilder request(DeleteConnectionRequest request) {
@@ -21,9 +26,11 @@ public class DeleteConnectionRequestBuilder {
         return this;
     }
 
-    public DeleteConnectionResponse call() throws Exception {
+    public DeleteConnectionResponse call() {
+        
+        RequestOperation<DeleteConnectionRequest, DeleteConnectionResponse> operation
+              = new DeleteConnection.Sync(sdkConfiguration, _headers);
 
-        return sdk.deleteConnection(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

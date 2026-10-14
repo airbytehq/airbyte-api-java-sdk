@@ -14,7 +14,7 @@ public enum Basecamp {
     @JsonValue
     private final String value;
 
-    private Basecamp(String value) {
+    Basecamp(String value) {
         this.value = value;
     }
     

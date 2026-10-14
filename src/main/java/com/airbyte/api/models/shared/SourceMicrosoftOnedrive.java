@@ -16,7 +16,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -26,7 +25,6 @@ import java.util.Optional;
  * This class combines the authentication details with additional configuration for the OneDrive API.
  */
 public class SourceMicrosoftOnedrive {
-
     /**
      * Credentials for connecting to the One Drive API
      */
@@ -41,31 +39,39 @@ public class SourceMicrosoftOnedrive {
     private Optional<String> driveName;
 
     /**
-     * Path to a specific folder within the drives to search for files. Leave empty to search all folders of the drives. This does not apply to shared items.
+     * Path to a specific folder within the drives to search for files. Leave empty to search all folders
+     * of the drives. This does not apply to shared items.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("folder_path")
     private Optional<String> folderPath;
 
     /**
-     * Specifies the location(s) to search for files. Valid options are 'ACCESSIBLE_DRIVES' to search in the selected OneDrive drive, 'SHARED_ITEMS' for shared items the user has access to, and 'ALL' to search both.
+     * Specifies the location(s) to search for files. Valid options are 'ACCESSIBLE_DRIVES' to search in
+     * the selected OneDrive drive, 'SHARED_ITEMS' for shared items the user has access to, and 'ALL' to
+     * search both.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("search_scope")
     private Optional<? extends SearchScope> searchScope;
 
+
     @JsonProperty("sourceType")
     private SourceMicrosoftOnedriveMicrosoftOnedrive sourceType;
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will
+     * not be replicated.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
     private Optional<OffsetDateTime> startDate;
 
     /**
-     * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
+     * Each instance of this configuration defines a <a
+     * href="https://docs.airbyte.com/cloud/core-concepts#stream">stream</a>. Use this to define which
+     * files belong in the stream, their format, and how they should be parsed and validated. When sending
+     * data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
      */
     @JsonProperty("streams")
     private List<SourceMicrosoftOnedriveFileBasedStreamConfig> streams;
@@ -96,7 +102,8 @@ public class SourceMicrosoftOnedrive {
     public SourceMicrosoftOnedrive(
             SourceMicrosoftOnedriveAuthentication credentials,
             List<SourceMicrosoftOnedriveFileBasedStreamConfig> streams) {
-        this(credentials, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), streams);
+        this(credentials, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), streams);
     }
 
     /**
@@ -116,7 +123,8 @@ public class SourceMicrosoftOnedrive {
     }
 
     /**
-     * Path to a specific folder within the drives to search for files. Leave empty to search all folders of the drives. This does not apply to shared items.
+     * Path to a specific folder within the drives to search for files. Leave empty to search all folders
+     * of the drives. This does not apply to shared items.
      */
     @JsonIgnore
     public Optional<String> folderPath() {
@@ -124,7 +132,9 @@ public class SourceMicrosoftOnedrive {
     }
 
     /**
-     * Specifies the location(s) to search for files. Valid options are 'ACCESSIBLE_DRIVES' to search in the selected OneDrive drive, 'SHARED_ITEMS' for shared items the user has access to, and 'ALL' to search both.
+     * Specifies the location(s) to search for files. Valid options are 'ACCESSIBLE_DRIVES' to search in
+     * the selected OneDrive drive, 'SHARED_ITEMS' for shared items the user has access to, and 'ALL' to
+     * search both.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -138,7 +148,8 @@ public class SourceMicrosoftOnedrive {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will
+     * not be replicated.
      */
     @JsonIgnore
     public Optional<OffsetDateTime> startDate() {
@@ -146,16 +157,20 @@ public class SourceMicrosoftOnedrive {
     }
 
     /**
-     * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
+     * Each instance of this configuration defines a <a
+     * href="https://docs.airbyte.com/cloud/core-concepts#stream">stream</a>. Use this to define which
+     * files belong in the stream, their format, and how they should be parsed and validated. When sending
+     * data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
      */
     @JsonIgnore
     public List<SourceMicrosoftOnedriveFileBasedStreamConfig> streams() {
         return streams;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Credentials for connecting to the One Drive API
@@ -175,6 +190,7 @@ public class SourceMicrosoftOnedrive {
         return this;
     }
 
+
     /**
      * Name of the Microsoft OneDrive drive where the file(s) exist.
      */
@@ -185,7 +201,8 @@ public class SourceMicrosoftOnedrive {
     }
 
     /**
-     * Path to a specific folder within the drives to search for files. Leave empty to search all folders of the drives. This does not apply to shared items.
+     * Path to a specific folder within the drives to search for files. Leave empty to search all folders
+     * of the drives. This does not apply to shared items.
      */
     public SourceMicrosoftOnedrive withFolderPath(String folderPath) {
         Utils.checkNotNull(folderPath, "folderPath");
@@ -193,8 +210,10 @@ public class SourceMicrosoftOnedrive {
         return this;
     }
 
+
     /**
-     * Path to a specific folder within the drives to search for files. Leave empty to search all folders of the drives. This does not apply to shared items.
+     * Path to a specific folder within the drives to search for files. Leave empty to search all folders
+     * of the drives. This does not apply to shared items.
      */
     public SourceMicrosoftOnedrive withFolderPath(Optional<String> folderPath) {
         Utils.checkNotNull(folderPath, "folderPath");
@@ -203,7 +222,9 @@ public class SourceMicrosoftOnedrive {
     }
 
     /**
-     * Specifies the location(s) to search for files. Valid options are 'ACCESSIBLE_DRIVES' to search in the selected OneDrive drive, 'SHARED_ITEMS' for shared items the user has access to, and 'ALL' to search both.
+     * Specifies the location(s) to search for files. Valid options are 'ACCESSIBLE_DRIVES' to search in
+     * the selected OneDrive drive, 'SHARED_ITEMS' for shared items the user has access to, and 'ALL' to
+     * search both.
      */
     public SourceMicrosoftOnedrive withSearchScope(SearchScope searchScope) {
         Utils.checkNotNull(searchScope, "searchScope");
@@ -211,8 +232,11 @@ public class SourceMicrosoftOnedrive {
         return this;
     }
 
+
     /**
-     * Specifies the location(s) to search for files. Valid options are 'ACCESSIBLE_DRIVES' to search in the selected OneDrive drive, 'SHARED_ITEMS' for shared items the user has access to, and 'ALL' to search both.
+     * Specifies the location(s) to search for files. Valid options are 'ACCESSIBLE_DRIVES' to search in
+     * the selected OneDrive drive, 'SHARED_ITEMS' for shared items the user has access to, and 'ALL' to
+     * search both.
      */
     public SourceMicrosoftOnedrive withSearchScope(Optional<? extends SearchScope> searchScope) {
         Utils.checkNotNull(searchScope, "searchScope");
@@ -221,7 +245,8 @@ public class SourceMicrosoftOnedrive {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will
+     * not be replicated.
      */
     public SourceMicrosoftOnedrive withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -229,8 +254,10 @@ public class SourceMicrosoftOnedrive {
         return this;
     }
 
+
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will
+     * not be replicated.
      */
     public SourceMicrosoftOnedrive withStartDate(Optional<OffsetDateTime> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -239,7 +266,10 @@ public class SourceMicrosoftOnedrive {
     }
 
     /**
-     * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
+     * Each instance of this configuration defines a <a
+     * href="https://docs.airbyte.com/cloud/core-concepts#stream">stream</a>. Use this to define which
+     * files belong in the stream, their format, and how they should be parsed and validated. When sending
+     * data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
      */
     public SourceMicrosoftOnedrive withStreams(List<SourceMicrosoftOnedriveFileBasedStreamConfig> streams) {
         Utils.checkNotNull(streams, "streams");
@@ -247,7 +277,6 @@ public class SourceMicrosoftOnedrive {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -258,24 +287,20 @@ public class SourceMicrosoftOnedrive {
         }
         SourceMicrosoftOnedrive other = (SourceMicrosoftOnedrive) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.driveName, other.driveName) &&
-            Objects.deepEquals(this.folderPath, other.folderPath) &&
-            Objects.deepEquals(this.searchScope, other.searchScope) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.streams, other.streams);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.driveName, other.driveName) &&
+            Utils.enhancedDeepEquals(this.folderPath, other.folderPath) &&
+            Utils.enhancedDeepEquals(this.searchScope, other.searchScope) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.streams, other.streams);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            driveName,
-            folderPath,
-            searchScope,
-            sourceType,
-            startDate,
+        return Utils.enhancedHash(
+            credentials, driveName, folderPath,
+            searchScope, sourceType, startDate,
             streams);
     }
     
@@ -290,24 +315,26 @@ public class SourceMicrosoftOnedrive {
                 "startDate", startDate,
                 "streams", streams);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private SourceMicrosoftOnedriveAuthentication credentials;
- 
+
         private Optional<String> driveName;
- 
+
         private Optional<String> folderPath;
- 
+
         private Optional<? extends SearchScope> searchScope;
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
- 
+
         private List<SourceMicrosoftOnedriveFileBasedStreamConfig> streams;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Credentials for connecting to the One Drive API
@@ -317,6 +344,7 @@ public class SourceMicrosoftOnedrive {
             this.credentials = credentials;
             return this;
         }
+
 
         /**
          * Name of the Microsoft OneDrive drive where the file(s) exist.
@@ -336,8 +364,10 @@ public class SourceMicrosoftOnedrive {
             return this;
         }
 
+
         /**
-         * Path to a specific folder within the drives to search for files. Leave empty to search all folders of the drives. This does not apply to shared items.
+         * Path to a specific folder within the drives to search for files. Leave empty to search all folders
+         * of the drives. This does not apply to shared items.
          */
         public Builder folderPath(String folderPath) {
             Utils.checkNotNull(folderPath, "folderPath");
@@ -346,7 +376,8 @@ public class SourceMicrosoftOnedrive {
         }
 
         /**
-         * Path to a specific folder within the drives to search for files. Leave empty to search all folders of the drives. This does not apply to shared items.
+         * Path to a specific folder within the drives to search for files. Leave empty to search all folders
+         * of the drives. This does not apply to shared items.
          */
         public Builder folderPath(Optional<String> folderPath) {
             Utils.checkNotNull(folderPath, "folderPath");
@@ -354,8 +385,11 @@ public class SourceMicrosoftOnedrive {
             return this;
         }
 
+
         /**
-         * Specifies the location(s) to search for files. Valid options are 'ACCESSIBLE_DRIVES' to search in the selected OneDrive drive, 'SHARED_ITEMS' for shared items the user has access to, and 'ALL' to search both.
+         * Specifies the location(s) to search for files. Valid options are 'ACCESSIBLE_DRIVES' to search in
+         * the selected OneDrive drive, 'SHARED_ITEMS' for shared items the user has access to, and 'ALL' to
+         * search both.
          */
         public Builder searchScope(SearchScope searchScope) {
             Utils.checkNotNull(searchScope, "searchScope");
@@ -364,7 +398,9 @@ public class SourceMicrosoftOnedrive {
         }
 
         /**
-         * Specifies the location(s) to search for files. Valid options are 'ACCESSIBLE_DRIVES' to search in the selected OneDrive drive, 'SHARED_ITEMS' for shared items the user has access to, and 'ALL' to search both.
+         * Specifies the location(s) to search for files. Valid options are 'ACCESSIBLE_DRIVES' to search in
+         * the selected OneDrive drive, 'SHARED_ITEMS' for shared items the user has access to, and 'ALL' to
+         * search both.
          */
         public Builder searchScope(Optional<? extends SearchScope> searchScope) {
             Utils.checkNotNull(searchScope, "searchScope");
@@ -372,8 +408,10 @@ public class SourceMicrosoftOnedrive {
             return this;
         }
 
+
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will
+         * not be replicated.
          */
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -382,7 +420,8 @@ public class SourceMicrosoftOnedrive {
         }
 
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will
+         * not be replicated.
          */
         public Builder startDate(Optional<OffsetDateTime> startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -390,15 +429,19 @@ public class SourceMicrosoftOnedrive {
             return this;
         }
 
+
         /**
-         * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
+         * Each instance of this configuration defines a <a
+         * href="https://docs.airbyte.com/cloud/core-concepts#stream">stream</a>. Use this to define which
+         * files belong in the stream, their format, and how they should be parsed and validated. When sending
+         * data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
          */
         public Builder streams(List<SourceMicrosoftOnedriveFileBasedStreamConfig> streams) {
             Utils.checkNotNull(streams, "streams");
             this.streams = streams;
             return this;
         }
-        
+
         public SourceMicrosoftOnedrive build() {
             if (driveName == null) {
                 driveName = _SINGLETON_VALUE_DriveName.value();
@@ -409,14 +452,12 @@ public class SourceMicrosoftOnedrive {
             if (searchScope == null) {
                 searchScope = _SINGLETON_VALUE_SearchScope.value();
             }
+
             return new SourceMicrosoftOnedrive(
-                credentials,
-                driveName,
-                folderPath,
-                searchScope,
-                startDate,
-                streams);
+                credentials, driveName, folderPath,
+                searchScope, startDate, streams);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_DriveName =
                 new LazySingletonValue<>(

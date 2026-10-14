@@ -14,16 +14,17 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+import java.lang.SuppressWarnings;
 import java.util.Optional;
 
-public class DestinationMssql {
 
+public class DestinationMssql {
     /**
      * The name of the MSSQL database.
      */
     @JsonProperty("database")
     private String database;
+
 
     @JsonProperty("destinationType")
     private Mssql destinationType;
@@ -35,7 +36,9 @@ public class DestinationMssql {
     private String host;
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("jdbc_url_params")
@@ -61,7 +64,8 @@ public class DestinationMssql {
     private long port;
 
     /**
-     * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
+     * The default schema tables are written to if the source does not specify a namespace. The usual value
+     * for this field is "public".
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("schema")
@@ -72,6 +76,14 @@ public class DestinationMssql {
      */
     @JsonProperty("ssl_method")
     private SSLMethod sslMethod;
+
+    /**
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("tunnel_method")
+    private Optional<? extends DestinationMssqlSSHTunnelMethod> tunnelMethod;
 
     /**
      * The username which is used to access the database.
@@ -89,6 +101,7 @@ public class DestinationMssql {
             @JsonProperty("port") long port,
             @JsonProperty("schema") Optional<String> schema,
             @JsonProperty("ssl_method") SSLMethod sslMethod,
+            @JsonProperty("tunnel_method") Optional<? extends DestinationMssqlSSHTunnelMethod> tunnelMethod,
             @JsonProperty("user") String user) {
         Utils.checkNotNull(database, "database");
         Utils.checkNotNull(host, "host");
@@ -98,6 +111,7 @@ public class DestinationMssql {
         Utils.checkNotNull(port, "port");
         Utils.checkNotNull(schema, "schema");
         Utils.checkNotNull(sslMethod, "sslMethod");
+        Utils.checkNotNull(tunnelMethod, "tunnelMethod");
         Utils.checkNotNull(user, "user");
         this.database = database;
         this.destinationType = Builder._SINGLETON_VALUE_DestinationType.value();
@@ -108,6 +122,7 @@ public class DestinationMssql {
         this.port = port;
         this.schema = schema;
         this.sslMethod = sslMethod;
+        this.tunnelMethod = tunnelMethod;
         this.user = user;
     }
     
@@ -118,7 +133,10 @@ public class DestinationMssql {
             long port,
             SSLMethod sslMethod,
             String user) {
-        this(database, host, Optional.empty(), loadType, Optional.empty(), port, Optional.empty(), sslMethod, user);
+        this(database, host, Optional.empty(),
+            loadType, Optional.empty(), port,
+            Optional.empty(), sslMethod, Optional.empty(),
+            user);
     }
 
     /**
@@ -143,7 +161,9 @@ public class DestinationMssql {
     }
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     @JsonIgnore
     public Optional<String> jdbcUrlParams() {
@@ -175,7 +195,8 @@ public class DestinationMssql {
     }
 
     /**
-     * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
+     * The default schema tables are written to if the source does not specify a namespace. The usual value
+     * for this field is "public".
      */
     @JsonIgnore
     public Optional<String> schema() {
@@ -191,6 +212,16 @@ public class DestinationMssql {
     }
 
     /**
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationMssqlSSHTunnelMethod> tunnelMethod() {
+        return (Optional<DestinationMssqlSSHTunnelMethod>) tunnelMethod;
+    }
+
+    /**
      * The username which is used to access the database.
      */
     @JsonIgnore
@@ -198,9 +229,10 @@ public class DestinationMssql {
         return user;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The name of the MSSQL database.
@@ -221,7 +253,9 @@ public class DestinationMssql {
     }
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     public DestinationMssql withJdbcUrlParams(String jdbcUrlParams) {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -229,8 +263,11 @@ public class DestinationMssql {
         return this;
     }
 
+
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     public DestinationMssql withJdbcUrlParams(Optional<String> jdbcUrlParams) {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -256,6 +293,7 @@ public class DestinationMssql {
         return this;
     }
 
+
     /**
      * The password associated with this username.
      */
@@ -275,7 +313,8 @@ public class DestinationMssql {
     }
 
     /**
-     * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
+     * The default schema tables are written to if the source does not specify a namespace. The usual value
+     * for this field is "public".
      */
     public DestinationMssql withSchema(String schema) {
         Utils.checkNotNull(schema, "schema");
@@ -283,8 +322,10 @@ public class DestinationMssql {
         return this;
     }
 
+
     /**
-     * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
+     * The default schema tables are written to if the source does not specify a namespace. The usual value
+     * for this field is "public".
      */
     public DestinationMssql withSchema(Optional<String> schema) {
         Utils.checkNotNull(schema, "schema");
@@ -302,6 +343,27 @@ public class DestinationMssql {
     }
 
     /**
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
+     */
+    public DestinationMssql withTunnelMethod(DestinationMssqlSSHTunnelMethod tunnelMethod) {
+        Utils.checkNotNull(tunnelMethod, "tunnelMethod");
+        this.tunnelMethod = Optional.ofNullable(tunnelMethod);
+        return this;
+    }
+
+
+    /**
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
+     */
+    public DestinationMssql withTunnelMethod(Optional<? extends DestinationMssqlSSHTunnelMethod> tunnelMethod) {
+        Utils.checkNotNull(tunnelMethod, "tunnelMethod");
+        this.tunnelMethod = tunnelMethod;
+        return this;
+    }
+
+    /**
      * The username which is used to access the database.
      */
     public DestinationMssql withUser(String user) {
@@ -310,7 +372,6 @@ public class DestinationMssql {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -321,31 +382,26 @@ public class DestinationMssql {
         }
         DestinationMssql other = (DestinationMssql) o;
         return 
-            Objects.deepEquals(this.database, other.database) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
-            Objects.deepEquals(this.loadType, other.loadType) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.schema, other.schema) &&
-            Objects.deepEquals(this.sslMethod, other.sslMethod) &&
-            Objects.deepEquals(this.user, other.user);
+            Utils.enhancedDeepEquals(this.database, other.database) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
+            Utils.enhancedDeepEquals(this.loadType, other.loadType) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.schema, other.schema) &&
+            Utils.enhancedDeepEquals(this.sslMethod, other.sslMethod) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.user, other.user);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            database,
-            destinationType,
-            host,
-            jdbcUrlParams,
-            loadType,
-            password,
-            port,
-            schema,
-            sslMethod,
-            user);
+        return Utils.enhancedHash(
+            database, destinationType, host,
+            jdbcUrlParams, loadType, password,
+            port, schema, sslMethod,
+            tunnelMethod, user);
     }
     
     @Override
@@ -360,32 +416,37 @@ public class DestinationMssql {
                 "port", port,
                 "schema", schema,
                 "sslMethod", sslMethod,
+                "tunnelMethod", tunnelMethod,
                 "user", user);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String database;
- 
+
         private String host;
- 
+
         private Optional<String> jdbcUrlParams = Optional.empty();
- 
+
         private LoadType loadType;
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private Long port;
- 
+
         private Optional<String> schema;
- 
+
         private SSLMethod sslMethod;
- 
+
+        private Optional<? extends DestinationMssqlSSHTunnelMethod> tunnelMethod = Optional.empty();
+
         private String user;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The name of the MSSQL database.
@@ -396,6 +457,7 @@ public class DestinationMssql {
             return this;
         }
 
+
         /**
          * The host name of the MSSQL database.
          */
@@ -405,8 +467,11 @@ public class DestinationMssql {
             return this;
         }
 
+
         /**
-         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+         * 'key=value' pairs separated by the symbol '&amp;'. (example:
+         * key1=value1&amp;key2=value2&amp;key3=value3).
          */
         public Builder jdbcUrlParams(String jdbcUrlParams) {
             Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -415,13 +480,16 @@ public class DestinationMssql {
         }
 
         /**
-         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+         * 'key=value' pairs separated by the symbol '&amp;'. (example:
+         * key1=value1&amp;key2=value2&amp;key3=value3).
          */
         public Builder jdbcUrlParams(Optional<String> jdbcUrlParams) {
             Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
             this.jdbcUrlParams = jdbcUrlParams;
             return this;
         }
+
 
         /**
          * Specifies the type of load mechanism (e.g., BULK, INSERT) and its associated configuration.
@@ -431,6 +499,7 @@ public class DestinationMssql {
             this.loadType = loadType;
             return this;
         }
+
 
         /**
          * The password associated with this username.
@@ -450,6 +519,7 @@ public class DestinationMssql {
             return this;
         }
 
+
         /**
          * The port of the MSSQL database.
          */
@@ -459,8 +529,10 @@ public class DestinationMssql {
             return this;
         }
 
+
         /**
-         * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
+         * The default schema tables are written to if the source does not specify a namespace. The usual value
+         * for this field is "public".
          */
         public Builder schema(String schema) {
             Utils.checkNotNull(schema, "schema");
@@ -469,13 +541,15 @@ public class DestinationMssql {
         }
 
         /**
-         * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
+         * The default schema tables are written to if the source does not specify a namespace. The usual value
+         * for this field is "public".
          */
         public Builder schema(Optional<String> schema) {
             Utils.checkNotNull(schema, "schema");
             this.schema = schema;
             return this;
         }
+
 
         /**
          * The encryption method which is used to communicate with the database.
@@ -486,6 +560,28 @@ public class DestinationMssql {
             return this;
         }
 
+
+        /**
+         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+         * authentication to use.
+         */
+        public Builder tunnelMethod(DestinationMssqlSSHTunnelMethod tunnelMethod) {
+            Utils.checkNotNull(tunnelMethod, "tunnelMethod");
+            this.tunnelMethod = Optional.ofNullable(tunnelMethod);
+            return this;
+        }
+
+        /**
+         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+         * authentication to use.
+         */
+        public Builder tunnelMethod(Optional<? extends DestinationMssqlSSHTunnelMethod> tunnelMethod) {
+            Utils.checkNotNull(tunnelMethod, "tunnelMethod");
+            this.tunnelMethod = tunnelMethod;
+            return this;
+        }
+
+
         /**
          * The username which is used to access the database.
          */
@@ -494,22 +590,19 @@ public class DestinationMssql {
             this.user = user;
             return this;
         }
-        
+
         public DestinationMssql build() {
             if (schema == null) {
                 schema = _SINGLETON_VALUE_Schema.value();
             }
+
             return new DestinationMssql(
-                database,
-                host,
-                jdbcUrlParams,
-                loadType,
-                password,
-                port,
-                schema,
-                sslMethod,
+                database, host, jdbcUrlParams,
+                loadType, password, port,
+                schema, sslMethod, tunnelMethod,
                 user);
         }
+
 
         private static final LazySingletonValue<Mssql> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

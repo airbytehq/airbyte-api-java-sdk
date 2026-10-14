@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 /**
  * UserResponse
@@ -67,9 +66,10 @@ public class UserResponse {
         return name;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public UserResponse withEmail(String email) {
         Utils.checkNotNull(email, "email");
@@ -95,7 +95,6 @@ public class UserResponse {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -106,17 +105,15 @@ public class UserResponse {
         }
         UserResponse other = (UserResponse) o;
         return 
-            Objects.deepEquals(this.email, other.email) &&
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.name, other.name);
+            Utils.enhancedDeepEquals(this.email, other.email) &&
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.name, other.name);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            email,
-            id,
-            name);
+        return Utils.enhancedHash(
+            email, id, name);
     }
     
     @Override
@@ -126,24 +123,27 @@ public class UserResponse {
                 "id", id,
                 "name", name);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String email;
- 
+
         private String id;
- 
+
         private String name;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder email(String email) {
             Utils.checkNotNull(email, "email");
             this.email = email;
             return this;
         }
+
 
         /**
          * Internal Airbyte user ID
@@ -154,6 +154,7 @@ public class UserResponse {
             return this;
         }
 
+
         /**
          * Name of the user
          */
@@ -162,12 +163,12 @@ public class UserResponse {
             this.name = name;
             return this;
         }
-        
+
         public UserResponse build() {
+
             return new UserResponse(
-                email,
-                id,
-                name);
+                email, id, name);
         }
+
     }
 }

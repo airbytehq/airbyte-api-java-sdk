@@ -14,7 +14,7 @@ public enum Drip {
     @JsonValue
     private final String value;
 
-    private Drip(String value) {
+    Drip(String value) {
         this.value = value;
     }
     

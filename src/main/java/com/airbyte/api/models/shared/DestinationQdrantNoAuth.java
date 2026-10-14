@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class DestinationQdrantNoAuth {
 
@@ -25,7 +25,6 @@ public class DestinationQdrantNoAuth {
 
     @JsonCreator
     public DestinationQdrantNoAuth() {
-        
         this.mode = Builder._SINGLETON_VALUE_Mode.value();
     }
 
@@ -35,11 +34,11 @@ public class DestinationQdrantNoAuth {
         return (Optional<DestinationQdrantSchemasIndexingAuthMethodMode>) mode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -50,12 +49,12 @@ public class DestinationQdrantNoAuth {
         }
         DestinationQdrantNoAuth other = (DestinationQdrantNoAuth) o;
         return 
-            Objects.deepEquals(this.mode, other.mode);
+            Utils.enhancedDeepEquals(this.mode, other.mode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             mode);
     }
     
@@ -64,17 +63,20 @@ public class DestinationQdrantNoAuth {
         return Utils.toString(DestinationQdrantNoAuth.class,
                 "mode", mode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public DestinationQdrantNoAuth build() {
+
             return new DestinationQdrantNoAuth(
                 );
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationQdrantSchemasIndexingAuthMethodMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

@@ -7,37 +7,49 @@ import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+import java.time.OffsetDateTime;
+import java.util.Optional;
+
 
 public class SourceConvertkit {
 
-    /**
-     * API Secret
-     */
-    @JsonProperty("api_secret")
-    private String apiSecret;
+    @JsonProperty("credentials")
+    private AuthenticationType credentials;
+
 
     @JsonProperty("sourceType")
     private Convertkit sourceType;
 
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("start_date")
+    private Optional<OffsetDateTime> startDate;
+
     @JsonCreator
     public SourceConvertkit(
-            @JsonProperty("api_secret") String apiSecret) {
-        Utils.checkNotNull(apiSecret, "apiSecret");
-        this.apiSecret = apiSecret;
+            @JsonProperty("credentials") AuthenticationType credentials,
+            @JsonProperty("start_date") Optional<OffsetDateTime> startDate) {
+        Utils.checkNotNull(credentials, "credentials");
+        Utils.checkNotNull(startDate, "startDate");
+        this.credentials = credentials;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
+        this.startDate = startDate;
+    }
+    
+    public SourceConvertkit(
+            AuthenticationType credentials) {
+        this(credentials, Optional.empty());
     }
 
-    /**
-     * API Secret
-     */
     @JsonIgnore
-    public String apiSecret() {
-        return apiSecret;
+    public AuthenticationType credentials() {
+        return credentials;
     }
 
     @JsonIgnore
@@ -45,20 +57,35 @@ public class SourceConvertkit {
         return sourceType;
     }
 
-    public final static Builder builder() {
-        return new Builder();
-    }    
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return startDate;
+    }
 
-    /**
-     * API Secret
-     */
-    public SourceConvertkit withApiSecret(String apiSecret) {
-        Utils.checkNotNull(apiSecret, "apiSecret");
-        this.apiSecret = apiSecret;
+    public static Builder builder() {
+        return new Builder();
+    }
+
+
+    public SourceConvertkit withCredentials(AuthenticationType credentials) {
+        Utils.checkNotNull(credentials, "credentials");
+        this.credentials = credentials;
         return this;
     }
 
-    
+    public SourceConvertkit withStartDate(OffsetDateTime startDate) {
+        Utils.checkNotNull(startDate, "startDate");
+        this.startDate = Optional.ofNullable(startDate);
+        return this;
+    }
+
+
+    public SourceConvertkit withStartDate(Optional<OffsetDateTime> startDate) {
+        Utils.checkNotNull(startDate, "startDate");
+        this.startDate = startDate;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,50 +96,76 @@ public class SourceConvertkit {
         }
         SourceConvertkit other = (SourceConvertkit) o;
         return 
-            Objects.deepEquals(this.apiSecret, other.apiSecret) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiSecret,
-            sourceType);
+        return Utils.enhancedHash(
+            credentials, sourceType, startDate);
     }
     
     @Override
     public String toString() {
         return Utils.toString(SourceConvertkit.class,
-                "apiSecret", apiSecret,
-                "sourceType", sourceType);
+                "credentials", credentials,
+                "sourceType", sourceType,
+                "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
-        private String apiSecret;
-        
+
+        private AuthenticationType credentials;
+
+        private Optional<OffsetDateTime> startDate;
+
         private Builder() {
           // force use of static builder() method
         }
 
-        /**
-         * API Secret
-         */
-        public Builder apiSecret(String apiSecret) {
-            Utils.checkNotNull(apiSecret, "apiSecret");
-            this.apiSecret = apiSecret;
+
+        public Builder credentials(AuthenticationType credentials) {
+            Utils.checkNotNull(credentials, "credentials");
+            this.credentials = credentials;
             return this;
         }
-        
-        public SourceConvertkit build() {
-            return new SourceConvertkit(
-                apiSecret);
+
+
+        public Builder startDate(OffsetDateTime startDate) {
+            Utils.checkNotNull(startDate, "startDate");
+            this.startDate = Optional.ofNullable(startDate);
+            return this;
         }
+
+        public Builder startDate(Optional<OffsetDateTime> startDate) {
+            Utils.checkNotNull(startDate, "startDate");
+            this.startDate = startDate;
+            return this;
+        }
+
+        public SourceConvertkit build() {
+            if (startDate == null) {
+                startDate = _SINGLETON_VALUE_StartDate.value();
+            }
+
+            return new SourceConvertkit(
+                credentials, startDate);
+        }
+
 
         private static final LazySingletonValue<Convertkit> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(
                         "sourceType",
                         "\"convertkit\"",
                         new TypeReference<Convertkit>() {});
+
+        private static final LazySingletonValue<Optional<OffsetDateTime>> _SINGLETON_VALUE_StartDate =
+                new LazySingletonValue<>(
+                        "start_date",
+                        "\"2013-01-01T00:00:00Z\"",
+                        new TypeReference<Optional<OffsetDateTime>>() {});
     }
 }

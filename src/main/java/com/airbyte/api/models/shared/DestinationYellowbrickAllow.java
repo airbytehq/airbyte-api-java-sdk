@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -30,7 +29,6 @@ public class DestinationYellowbrickAllow {
 
     @JsonCreator
     public DestinationYellowbrickAllow() {
-        
         this.mode = Builder._SINGLETON_VALUE_Mode.value();
     }
 
@@ -40,11 +38,11 @@ public class DestinationYellowbrickAllow {
         return (Optional<DestinationYellowbrickSchemasMode>) mode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -55,12 +53,12 @@ public class DestinationYellowbrickAllow {
         }
         DestinationYellowbrickAllow other = (DestinationYellowbrickAllow) o;
         return 
-            Objects.deepEquals(this.mode, other.mode);
+            Utils.enhancedDeepEquals(this.mode, other.mode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             mode);
     }
     
@@ -69,17 +67,20 @@ public class DestinationYellowbrickAllow {
         return Utils.toString(DestinationYellowbrickAllow.class,
                 "mode", mode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public DestinationYellowbrickAllow build() {
+
             return new DestinationYellowbrickAllow(
                 );
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationYellowbrickSchemasMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

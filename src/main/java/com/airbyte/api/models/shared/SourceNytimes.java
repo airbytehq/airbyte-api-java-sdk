@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceNytimes {
 
+public class SourceNytimes {
     /**
      * API Key
      */
@@ -44,6 +43,7 @@ public class SourceNytimes {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("share_type")
     private Optional<? extends ShareTypeUsedForMostPopularSharedStream> shareType;
+
 
     @JsonProperty("sourceType")
     private Nytimes sourceType;
@@ -78,7 +78,8 @@ public class SourceNytimes {
             String apiKey,
             PeriodUsedForMostPopularStreams period,
             String startDate) {
-        this(apiKey, Optional.empty(), period, Optional.empty(), startDate);
+        this(apiKey, Optional.empty(), period,
+            Optional.empty(), startDate);
     }
 
     /**
@@ -127,9 +128,10 @@ public class SourceNytimes {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API Key
@@ -148,6 +150,7 @@ public class SourceNytimes {
         this.endDate = Optional.ofNullable(endDate);
         return this;
     }
+
 
     /**
      * End date to stop the article retrieval (format YYYY-MM)
@@ -176,6 +179,7 @@ public class SourceNytimes {
         return this;
     }
 
+
     /**
      * Share Type
      */
@@ -194,7 +198,6 @@ public class SourceNytimes {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -205,23 +208,19 @@ public class SourceNytimes {
         }
         SourceNytimes other = (SourceNytimes) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.period, other.period) &&
-            Objects.deepEquals(this.shareType, other.shareType) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.period, other.period) &&
+            Utils.enhancedDeepEquals(this.shareType, other.shareType) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            endDate,
-            period,
-            shareType,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKey, endDate, period,
+            shareType, sourceType, startDate);
     }
     
     @Override
@@ -234,22 +233,24 @@ public class SourceNytimes {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> endDate = Optional.empty();
- 
+
         private PeriodUsedForMostPopularStreams period;
- 
+
         private Optional<? extends ShareTypeUsedForMostPopularSharedStream> shareType = Optional.empty();
- 
+
         private String startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API Key
@@ -259,6 +260,7 @@ public class SourceNytimes {
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * End date to stop the article retrieval (format YYYY-MM)
@@ -278,6 +280,7 @@ public class SourceNytimes {
             return this;
         }
 
+
         /**
          * Period of time (in days)
          */
@@ -286,6 +289,7 @@ public class SourceNytimes {
             this.period = period;
             return this;
         }
+
 
         /**
          * Share Type
@@ -305,6 +309,7 @@ public class SourceNytimes {
             return this;
         }
 
+
         /**
          * Start date to begin the article retrieval (format YYYY-MM)
          */
@@ -313,15 +318,14 @@ public class SourceNytimes {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceNytimes build() {
+
             return new SourceNytimes(
-                apiKey,
-                endDate,
-                period,
-                shareType,
-                startDate);
+                apiKey, endDate, period,
+                shareType, startDate);
         }
+
 
         private static final LazySingletonValue<Nytimes> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

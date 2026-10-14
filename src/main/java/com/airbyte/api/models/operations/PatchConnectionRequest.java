@@ -10,12 +10,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class PatchConnectionRequest {
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private ConnectionPatchRequest connectionPatchRequest;
+
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=connectionId")
     private String connectionId;
@@ -40,9 +41,10 @@ public class PatchConnectionRequest {
         return connectionId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public PatchConnectionRequest withConnectionPatchRequest(ConnectionPatchRequest connectionPatchRequest) {
         Utils.checkNotNull(connectionPatchRequest, "connectionPatchRequest");
@@ -56,7 +58,6 @@ public class PatchConnectionRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -67,15 +68,14 @@ public class PatchConnectionRequest {
         }
         PatchConnectionRequest other = (PatchConnectionRequest) o;
         return 
-            Objects.deepEquals(this.connectionPatchRequest, other.connectionPatchRequest) &&
-            Objects.deepEquals(this.connectionId, other.connectionId);
+            Utils.enhancedDeepEquals(this.connectionPatchRequest, other.connectionPatchRequest) &&
+            Utils.enhancedDeepEquals(this.connectionId, other.connectionId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            connectionPatchRequest,
-            connectionId);
+        return Utils.enhancedHash(
+            connectionPatchRequest, connectionId);
     }
     
     @Override
@@ -84,16 +84,18 @@ public class PatchConnectionRequest {
                 "connectionPatchRequest", connectionPatchRequest,
                 "connectionId", connectionId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private ConnectionPatchRequest connectionPatchRequest;
- 
+
         private String connectionId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder connectionPatchRequest(ConnectionPatchRequest connectionPatchRequest) {
             Utils.checkNotNull(connectionPatchRequest, "connectionPatchRequest");
@@ -101,16 +103,18 @@ public class PatchConnectionRequest {
             return this;
         }
 
+
         public Builder connectionId(String connectionId) {
             Utils.checkNotNull(connectionId, "connectionId");
             this.connectionId = connectionId;
             return this;
         }
-        
+
         public PatchConnectionRequest build() {
+
             return new PatchConnectionRequest(
-                connectionPatchRequest,
-                connectionId);
+                connectionPatchRequest, connectionId);
         }
+
     }
 }

@@ -7,11 +7,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.http.HttpResponse;
 import java.net.ConnectException;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 import java.util.List;
 
 public class Retries {
+
+    private static final SpeakeasyLogger logger = SpeakeasyLogger.getLogger(Retries.class);
 
     private final Callable<HttpResponse<InputStream>> action;
     private final RetryConfig retryConfig;
@@ -31,33 +35,7 @@ public class Retries {
         this.retryConfig = retryConfig;
         this.statusCodes = statusCodes;
     }
-
-    @SuppressWarnings("serial")
-    public static final class NonRetryableException extends Exception {
-        private final Exception exception;
-
-        public NonRetryableException(Exception exception) {
-            super(exception);
-            this.exception = exception;
-        }
-        
-        public Exception exception() {
-            return exception;
-        } 
-    }
-
-    @SuppressWarnings("serial")
-    public static final class RetryableException extends Exception {
-        private final HttpResponse<InputStream> response;
-
-        public RetryableException(HttpResponse<InputStream> response) {
-            this.response = response;
-        }
-        
-        public HttpResponse<InputStream> response() {
-            return response;
-        }
-    }
+    
 
     public HttpResponse<InputStream> run() throws Exception {
 
@@ -120,6 +98,34 @@ public class Retries {
         }
     }
 
+    private static long retryAfterMs(HttpResponse<InputStream> response) {
+        String retryAfterMs = response.headers().firstValue("retry-after-ms").orElse(null);
+        if (retryAfterMs != null && !retryAfterMs.isEmpty()) {
+            try {
+                long milliseconds = Long.parseLong(retryAfterMs);
+                return milliseconds < 0 ? 0 : milliseconds;
+            } catch (NumberFormatException ignored) {
+            }
+        }
+
+        String retryAfter = response.headers().firstValue("retry-after").orElse(null);
+        if (retryAfter == null || retryAfter.isEmpty()) {
+            return 0;
+        }
+        try {
+            long seconds = Long.parseLong(retryAfter);
+            return seconds < 0 ? 0 : seconds * 1000;
+        } catch (NumberFormatException ignored) {
+        }
+        try {
+            ZonedDateTime retryDate = ZonedDateTime.parse(retryAfter, DateTimeFormatter.RFC_1123_DATE_TIME);
+            long deltaMs = retryDate.toInstant().toEpochMilli() - System.currentTimeMillis();
+            return deltaMs > 0 ? deltaMs : 0;
+        } catch (Exception ignored) {
+        }
+        return 0;
+    }
+
     private HttpResponse<InputStream> retryWithBackoff(boolean retryConnectError, boolean retryReadTimeoutError) throws Exception {
         BackoffStrategy backoff = retryConfig.backoff().get();
         long initialIntervalMs = backoff.initialIntervalMs();
@@ -128,28 +134,48 @@ public class Retries {
 
         while(true) {
             try {
+                if (numAttempts > 0) {
+                    logger.debug("Retry attempt {} after backoff", numAttempts);
+                }
                 return getResponse(retryConnectError, retryReadTimeoutError);
             } catch(NonRetryableException e) {
-                throw e.exception();
+                logger.debug("Non-retryable exception encountered: {}", e.exception().getClass().getSimpleName());
+                throw Exceptions.coerceException(e.exception());
             } catch(IOException | RetryableException e) {
                 long nowMs = System.currentTimeMillis();
                 if (nowMs - startMs > backoff.maxElapsedTimeMs()) {
+                    logger.debug("Retry exhausted after {}ms, {} attempts", nowMs - startMs, numAttempts + 1);
                     if ( e instanceof RetryableException ) {
                         return ((RetryableException)e).response();
                     }
                     throw e;
                 }
 
-                double intervalMs = initialIntervalMs * Math.pow(backoff.baseFactor(), numAttempts);
-                double jitterMs = backoff.jitterFactor() * intervalMs;
-                intervalMs = intervalMs - jitterMs + Math.random()*(2*jitterMs + 1);
-
-                double maxIntervalMs = backoff.maxIntervalMs();
-                if (intervalMs > maxIntervalMs) {
-                    intervalMs = maxIntervalMs;
+                long sleepMs;
+                if (e instanceof RetryableException) {
+                    sleepMs = retryAfterMs(((RetryableException) e).response());
+                } else {
+                    sleepMs = 0;
                 }
 
-                long sleepMs = (long) intervalMs;
+                if (sleepMs <= 0) {
+                    double intervalMs = initialIntervalMs * Math.pow(backoff.baseFactor(), numAttempts);
+                    double jitterMs = backoff.jitterFactor() * intervalMs;
+                    intervalMs = intervalMs - jitterMs + Math.random()*(2*jitterMs + 1);
+
+                    double maxIntervalMs = backoff.maxIntervalMs();
+                    if (intervalMs > maxIntervalMs) {
+                        intervalMs = maxIntervalMs;
+                    }
+                    sleepMs = (long) intervalMs;
+                }
+
+                if (logger.isTraceEnabled()) {
+                    String reason = e instanceof RetryableException
+                        ? "status " + ((RetryableException)e).response().statusCode()
+                        : e.getClass().getSimpleName();
+                    logger.trace("Retrying due to {} - waiting {}ms before attempt {}", reason, sleepMs, numAttempts + 1);
+                }
                 TimeUnit.MILLISECONDS.sleep(sleepMs);
                 numAttempts += 1;
             }

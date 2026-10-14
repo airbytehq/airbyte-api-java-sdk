@@ -2,6 +2,14 @@
 
 The data center where the Bigin account's resources are hosted
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceZohoBiginDataCenter;
+
+SourceZohoBiginDataCenter value = SourceZohoBiginDataCenter.COM;
+```
+
 
 ## Values
 

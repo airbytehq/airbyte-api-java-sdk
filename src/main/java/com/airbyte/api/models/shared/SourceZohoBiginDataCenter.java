@@ -24,7 +24,7 @@ public enum SourceZohoBiginDataCenter {
     @JsonValue
     private final String value;
 
-    private SourceZohoBiginDataCenter(String value) {
+    SourceZohoBiginDataCenter(String value) {
         this.value = value;
     }
     

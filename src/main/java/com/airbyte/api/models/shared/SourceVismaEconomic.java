@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceVismaEconomic {
-
     /**
      * Identifier for the grant issued by an agreement
      */
@@ -26,6 +25,7 @@ public class SourceVismaEconomic {
      */
     @JsonProperty("app_secret_token")
     private String appSecretToken;
+
 
     @JsonProperty("sourceType")
     private VismaEconomic sourceType;
@@ -62,9 +62,10 @@ public class SourceVismaEconomic {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Identifier for the grant issued by an agreement
@@ -84,7 +85,6 @@ public class SourceVismaEconomic {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourceVismaEconomic {
         }
         SourceVismaEconomic other = (SourceVismaEconomic) o;
         return 
-            Objects.deepEquals(this.agreementGrantToken, other.agreementGrantToken) &&
-            Objects.deepEquals(this.appSecretToken, other.appSecretToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.agreementGrantToken, other.agreementGrantToken) &&
+            Utils.enhancedDeepEquals(this.appSecretToken, other.appSecretToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            agreementGrantToken,
-            appSecretToken,
-            sourceType);
+        return Utils.enhancedHash(
+            agreementGrantToken, appSecretToken, sourceType);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SourceVismaEconomic {
                 "appSecretToken", appSecretToken,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String agreementGrantToken;
- 
+
         private String appSecretToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Identifier for the grant issued by an agreement
@@ -135,6 +135,7 @@ public class SourceVismaEconomic {
             return this;
         }
 
+
         /**
          * Identification token for app accessing data
          */
@@ -143,12 +144,13 @@ public class SourceVismaEconomic {
             this.appSecretToken = appSecretToken;
             return this;
         }
-        
+
         public SourceVismaEconomic build() {
+
             return new SourceVismaEconomic(
-                agreementGrantToken,
-                appSecretToken);
+                agreementGrantToken, appSecretToken);
         }
+
 
         private static final LazySingletonValue<VismaEconomic> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum Apptivo {
     @JsonValue
     private final String value;
 
-    private Apptivo(String value) {
+    Apptivo(String value) {
         this.value = value;
     }
     

@@ -9,10 +9,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class Queries {
-
     /**
      * A data source that is powered by the platform.
      */
@@ -68,9 +67,10 @@ public class Queries {
         return query;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * A data source that is powered by the platform.
@@ -99,7 +99,6 @@ public class Queries {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -110,17 +109,15 @@ public class Queries {
         }
         Queries other = (Queries) o;
         return 
-            Objects.deepEquals(this.dataSource, other.dataSource) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.query, other.query);
+            Utils.enhancedDeepEquals(this.dataSource, other.dataSource) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.query, other.query);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            dataSource,
-            name,
-            query);
+        return Utils.enhancedHash(
+            dataSource, name, query);
     }
     
     @Override
@@ -130,18 +127,20 @@ public class Queries {
                 "name", name,
                 "query", query);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private DataSource dataSource;
- 
+
         private String name;
- 
+
         private String query;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * A data source that is powered by the platform.
@@ -152,6 +151,7 @@ public class Queries {
             return this;
         }
 
+
         /**
          * The variable name for use in queries.
          */
@@ -161,6 +161,7 @@ public class Queries {
             return this;
         }
 
+
         /**
          * A classic query string.
          */
@@ -169,12 +170,12 @@ public class Queries {
             this.query = query;
             return this;
         }
-        
+
         public Queries build() {
+
             return new Queries(
-                dataSource,
-                name,
-                query);
+                dataSource, name, query);
         }
+
     }
 }

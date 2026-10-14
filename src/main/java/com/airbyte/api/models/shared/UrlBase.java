@@ -14,7 +14,7 @@ public enum UrlBase {
     @JsonValue
     private final String value;
 
-    private UrlBase(String value) {
+    UrlBase(String value) {
         this.value = value;
     }
     

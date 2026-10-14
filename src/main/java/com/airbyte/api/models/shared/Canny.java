@@ -14,7 +14,7 @@ public enum Canny {
     @JsonValue
     private final String value;
 
-    private Canny(String value) {
+    Canny(String value) {
         this.value = value;
     }
     

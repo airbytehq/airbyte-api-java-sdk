@@ -19,7 +19,7 @@ public enum SourceMssqlTunnelMethod {
     @JsonValue
     private final String value;
 
-    private SourceMssqlTunnelMethod(String value) {
+    SourceMssqlTunnelMethod(String value) {
         this.value = value;
     }
     

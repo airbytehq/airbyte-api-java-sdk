@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceHellobaton {
-
     /**
      * authentication key required to access the api endpoints
      */
@@ -26,6 +25,7 @@ public class SourceHellobaton {
      */
     @JsonProperty("company")
     private String company;
+
 
     @JsonProperty("sourceType")
     private Hellobaton sourceType;
@@ -62,9 +62,10 @@ public class SourceHellobaton {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * authentication key required to access the api endpoints
@@ -84,7 +85,6 @@ public class SourceHellobaton {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourceHellobaton {
         }
         SourceHellobaton other = (SourceHellobaton) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.company, other.company) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.company, other.company) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            company,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, company, sourceType);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SourceHellobaton {
                 "company", company,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String company;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * authentication key required to access the api endpoints
@@ -135,6 +135,7 @@ public class SourceHellobaton {
             return this;
         }
 
+
         /**
          * Company name that generates your base api url
          */
@@ -143,12 +144,13 @@ public class SourceHellobaton {
             this.company = company;
             return this;
         }
-        
+
         public SourceHellobaton build() {
+
             return new SourceHellobaton(
-                apiKey,
-                company);
+                apiKey, company);
         }
+
 
         private static final LazySingletonValue<Hellobaton> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum NorthpassLms {
     @JsonValue
     private final String value;
 
-    private NorthpassLms(String value) {
+    NorthpassLms(String value) {
         this.value = value;
     }
     

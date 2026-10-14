@@ -14,16 +14,17 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceLinkedinPagesAccessToken {
 
+public class SourceLinkedinPagesAccessToken {
     /**
-     * The token value generated using the LinkedIn Developers OAuth Token Tools. See the &lt;a href="https://docs.airbyte.com/integrations/sources/linkedin-pages/"&gt;docs&lt;/a&gt; to obtain yours.
+     * The token value generated using the LinkedIn Developers OAuth Token Tools. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/linkedin-pages/">docs</a> to obtain yours.
      */
     @JsonProperty("access_token")
     private String accessToken;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_method")
@@ -38,7 +39,8 @@ public class SourceLinkedinPagesAccessToken {
     }
 
     /**
-     * The token value generated using the LinkedIn Developers OAuth Token Tools. See the &lt;a href="https://docs.airbyte.com/integrations/sources/linkedin-pages/"&gt;docs&lt;/a&gt; to obtain yours.
+     * The token value generated using the LinkedIn Developers OAuth Token Tools. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/linkedin-pages/">docs</a> to obtain yours.
      */
     @JsonIgnore
     public String accessToken() {
@@ -51,12 +53,14 @@ public class SourceLinkedinPagesAccessToken {
         return (Optional<SourceLinkedinPagesSchemasAuthMethod>) authMethod;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The token value generated using the LinkedIn Developers OAuth Token Tools. See the &lt;a href="https://docs.airbyte.com/integrations/sources/linkedin-pages/"&gt;docs&lt;/a&gt; to obtain yours.
+     * The token value generated using the LinkedIn Developers OAuth Token Tools. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/linkedin-pages/">docs</a> to obtain yours.
      */
     public SourceLinkedinPagesAccessToken withAccessToken(String accessToken) {
         Utils.checkNotNull(accessToken, "accessToken");
@@ -64,7 +68,6 @@ public class SourceLinkedinPagesAccessToken {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -75,15 +78,14 @@ public class SourceLinkedinPagesAccessToken {
         }
         SourceLinkedinPagesAccessToken other = (SourceLinkedinPagesAccessToken) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.authMethod, other.authMethod);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.authMethod, other.authMethod);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            authMethod);
+        return Utils.enhancedHash(
+            accessToken, authMethod);
     }
     
     @Override
@@ -92,28 +94,33 @@ public class SourceLinkedinPagesAccessToken {
                 "accessToken", accessToken,
                 "authMethod", authMethod);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The token value generated using the LinkedIn Developers OAuth Token Tools. See the &lt;a href="https://docs.airbyte.com/integrations/sources/linkedin-pages/"&gt;docs&lt;/a&gt; to obtain yours.
+         * The token value generated using the LinkedIn Developers OAuth Token Tools. See the <a
+         * href="https://docs.airbyte.com/integrations/sources/linkedin-pages/">docs</a> to obtain yours.
          */
         public Builder accessToken(String accessToken) {
             Utils.checkNotNull(accessToken, "accessToken");
             this.accessToken = accessToken;
             return this;
         }
-        
+
         public SourceLinkedinPagesAccessToken build() {
+
             return new SourceLinkedinPagesAccessToken(
                 accessToken);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceLinkedinPagesSchemasAuthMethod>> _SINGLETON_VALUE_AuthMethod =
                 new LazySingletonValue<>(

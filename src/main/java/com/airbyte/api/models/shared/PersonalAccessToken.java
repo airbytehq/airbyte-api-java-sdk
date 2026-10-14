@@ -11,12 +11,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class PersonalAccessToken {
 
     @JsonProperty("auth_type")
-    private DestinationDatabricksSchemasAuthType authType;
+    private DestinationDatabricksAuthType authType;
+
 
     @JsonProperty("personal_access_token")
     private String personalAccessToken;
@@ -30,7 +31,7 @@ public class PersonalAccessToken {
     }
 
     @JsonIgnore
-    public DestinationDatabricksSchemasAuthType authType() {
+    public DestinationDatabricksAuthType authType() {
         return authType;
     }
 
@@ -39,9 +40,10 @@ public class PersonalAccessToken {
         return personalAccessToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public PersonalAccessToken withPersonalAccessToken(String personalAccessToken) {
         Utils.checkNotNull(personalAccessToken, "personalAccessToken");
@@ -49,7 +51,6 @@ public class PersonalAccessToken {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -60,15 +61,14 @@ public class PersonalAccessToken {
         }
         PersonalAccessToken other = (PersonalAccessToken) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.personalAccessToken, other.personalAccessToken);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.personalAccessToken, other.personalAccessToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            personalAccessToken);
+        return Utils.enhancedHash(
+            authType, personalAccessToken);
     }
     
     @Override
@@ -77,30 +77,34 @@ public class PersonalAccessToken {
                 "authType", authType,
                 "personalAccessToken", personalAccessToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String personalAccessToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder personalAccessToken(String personalAccessToken) {
             Utils.checkNotNull(personalAccessToken, "personalAccessToken");
             this.personalAccessToken = personalAccessToken;
             return this;
         }
-        
+
         public PersonalAccessToken build() {
+
             return new PersonalAccessToken(
                 personalAccessToken);
         }
 
-        private static final LazySingletonValue<DestinationDatabricksSchemasAuthType> _SINGLETON_VALUE_AuthType =
+
+        private static final LazySingletonValue<DestinationDatabricksAuthType> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(
                         "auth_type",
                         "\"BASIC\"",
-                        new TypeReference<DestinationDatabricksSchemasAuthType>() {});
+                        new TypeReference<DestinationDatabricksAuthType>() {});
     }
 }

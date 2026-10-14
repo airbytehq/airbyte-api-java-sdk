@@ -14,7 +14,7 @@ public enum Fleetio {
     @JsonValue
     private final String value;
 
-    private Fleetio(String value) {
+    Fleetio(String value) {
         this.value = value;
     }
     

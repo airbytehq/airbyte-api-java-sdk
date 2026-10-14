@@ -14,7 +14,7 @@ public enum Wordpress {
     @JsonValue
     private final String value;
 
-    private Wordpress(String value) {
+    Wordpress(String value) {
         this.value = value;
     }
     

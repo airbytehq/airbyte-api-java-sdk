@@ -14,7 +14,7 @@ public enum Buildkite {
     @JsonValue
     private final String value;
 
-    private Buildkite(String value) {
+    Buildkite(String value) {
         this.value = value;
     }
     

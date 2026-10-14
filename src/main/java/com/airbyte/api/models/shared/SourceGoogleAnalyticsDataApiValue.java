@@ -14,13 +14,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = SourceGoogleAnalyticsDataApiValue._Deserializer.class)
 public class SourceGoogleAnalyticsDataApiValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceGoogleAnalyticsDataApiValue(TypedObject value) {
         this.value = value;
@@ -28,12 +27,12 @@ public class SourceGoogleAnalyticsDataApiValue {
 
     public static SourceGoogleAnalyticsDataApiValue of(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayInt64Value value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayInt64Value>(){}));
+        return new SourceGoogleAnalyticsDataApiValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceGoogleAnalyticsDataApiValue of(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDoubleValue value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDoubleValue>(){}));
+        return new SourceGoogleAnalyticsDataApiValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -56,7 +55,7 @@ public class SourceGoogleAnalyticsDataApiValue {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -67,12 +66,12 @@ public class SourceGoogleAnalyticsDataApiValue {
             return false;
         }
         SourceGoogleAnalyticsDataApiValue other = (SourceGoogleAnalyticsDataApiValue) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -80,8 +79,8 @@ public class SourceGoogleAnalyticsDataApiValue {
 
         public _Deserializer() {
             super(SourceGoogleAnalyticsDataApiValue.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDoubleValue>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayInt64Value>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayInt64Value>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDoubleValue>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -90,6 +89,6 @@ public class SourceGoogleAnalyticsDataApiValue {
         return Utils.toString(SourceGoogleAnalyticsDataApiValue.class,
                 "value", value);
     }
- 
+
 }
 

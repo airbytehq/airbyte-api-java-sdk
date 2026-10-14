@@ -11,13 +11,22 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
+import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
+
 public class CustomReportConfig {
+    /**
+     * When enabled, disables the automatic conversion of custom report names from camelCase to snake_case.
+     * By default, custom report names are automatically converted (e.g., 'MyCustomReport' becomes
+     * 'my_custom_report'). Enable this option if you want to use the exact report names you specify.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("disable_custom_report_names_camel_to_snake_conversion")
+    private Optional<Boolean> disableCustomReportNamesCamelToSnakeConversion;
 
     /**
      * The name of the custom report, this name would be used as stream name
@@ -28,32 +37,36 @@ public class CustomReportConfig {
     /**
      * A list of available aggregations.
      */
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("report_aggregation")
-    private Optional<String> reportAggregation;
+    private String reportAggregation;
 
     /**
-     * A list of available report object columns. You can find it in description of reporting object that you want to add to custom report.
+     * A list of available report object columns. You can find it in description of reporting object that
+     * you want to add to custom report.
      */
     @JsonProperty("report_columns")
     private List<String> reportColumns;
 
     /**
-     * The name of the the object derives from the ReportRequest object. You can find it in Bing Ads Api docs - Reporting API - Reporting Data Objects.
+     * The name of the the object derives from the ReportRequest object. You can find it in Bing Ads Api
+     * docs - Reporting API - Reporting Data Objects.
      */
     @JsonProperty("reporting_object")
     private ReportingDataObject reportingObject;
 
     @JsonCreator
     public CustomReportConfig(
+            @JsonProperty("disable_custom_report_names_camel_to_snake_conversion") Optional<Boolean> disableCustomReportNamesCamelToSnakeConversion,
             @JsonProperty("name") String name,
-            @JsonProperty("report_aggregation") Optional<String> reportAggregation,
+            @JsonProperty("report_aggregation") String reportAggregation,
             @JsonProperty("report_columns") List<String> reportColumns,
             @JsonProperty("reporting_object") ReportingDataObject reportingObject) {
+        Utils.checkNotNull(disableCustomReportNamesCamelToSnakeConversion, "disableCustomReportNamesCamelToSnakeConversion");
         Utils.checkNotNull(name, "name");
         Utils.checkNotNull(reportAggregation, "reportAggregation");
         Utils.checkNotNull(reportColumns, "reportColumns");
         Utils.checkNotNull(reportingObject, "reportingObject");
+        this.disableCustomReportNamesCamelToSnakeConversion = disableCustomReportNamesCamelToSnakeConversion;
         this.name = name;
         this.reportAggregation = reportAggregation;
         this.reportColumns = reportColumns;
@@ -62,9 +75,21 @@ public class CustomReportConfig {
     
     public CustomReportConfig(
             String name,
+            String reportAggregation,
             List<String> reportColumns,
             ReportingDataObject reportingObject) {
-        this(name, Optional.empty(), reportColumns, reportingObject);
+        this(Optional.empty(), name, reportAggregation,
+            reportColumns, reportingObject);
+    }
+
+    /**
+     * When enabled, disables the automatic conversion of custom report names from camelCase to snake_case.
+     * By default, custom report names are automatically converted (e.g., 'MyCustomReport' becomes
+     * 'my_custom_report'). Enable this option if you want to use the exact report names you specify.
+     */
+    @JsonIgnore
+    public Optional<Boolean> disableCustomReportNamesCamelToSnakeConversion() {
+        return disableCustomReportNamesCamelToSnakeConversion;
     }
 
     /**
@@ -79,12 +104,13 @@ public class CustomReportConfig {
      * A list of available aggregations.
      */
     @JsonIgnore
-    public Optional<String> reportAggregation() {
+    public String reportAggregation() {
         return reportAggregation;
     }
 
     /**
-     * A list of available report object columns. You can find it in description of reporting object that you want to add to custom report.
+     * A list of available report object columns. You can find it in description of reporting object that
+     * you want to add to custom report.
      */
     @JsonIgnore
     public List<String> reportColumns() {
@@ -92,16 +118,41 @@ public class CustomReportConfig {
     }
 
     /**
-     * The name of the the object derives from the ReportRequest object. You can find it in Bing Ads Api docs - Reporting API - Reporting Data Objects.
+     * The name of the the object derives from the ReportRequest object. You can find it in Bing Ads Api
+     * docs - Reporting API - Reporting Data Objects.
      */
     @JsonIgnore
     public ReportingDataObject reportingObject() {
         return reportingObject;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
+
+    /**
+     * When enabled, disables the automatic conversion of custom report names from camelCase to snake_case.
+     * By default, custom report names are automatically converted (e.g., 'MyCustomReport' becomes
+     * 'my_custom_report'). Enable this option if you want to use the exact report names you specify.
+     */
+    public CustomReportConfig withDisableCustomReportNamesCamelToSnakeConversion(boolean disableCustomReportNamesCamelToSnakeConversion) {
+        Utils.checkNotNull(disableCustomReportNamesCamelToSnakeConversion, "disableCustomReportNamesCamelToSnakeConversion");
+        this.disableCustomReportNamesCamelToSnakeConversion = Optional.ofNullable(disableCustomReportNamesCamelToSnakeConversion);
+        return this;
+    }
+
+
+    /**
+     * When enabled, disables the automatic conversion of custom report names from camelCase to snake_case.
+     * By default, custom report names are automatically converted (e.g., 'MyCustomReport' becomes
+     * 'my_custom_report'). Enable this option if you want to use the exact report names you specify.
+     */
+    public CustomReportConfig withDisableCustomReportNamesCamelToSnakeConversion(Optional<Boolean> disableCustomReportNamesCamelToSnakeConversion) {
+        Utils.checkNotNull(disableCustomReportNamesCamelToSnakeConversion, "disableCustomReportNamesCamelToSnakeConversion");
+        this.disableCustomReportNamesCamelToSnakeConversion = disableCustomReportNamesCamelToSnakeConversion;
+        return this;
+    }
 
     /**
      * The name of the custom report, this name would be used as stream name
@@ -117,21 +168,13 @@ public class CustomReportConfig {
      */
     public CustomReportConfig withReportAggregation(String reportAggregation) {
         Utils.checkNotNull(reportAggregation, "reportAggregation");
-        this.reportAggregation = Optional.ofNullable(reportAggregation);
-        return this;
-    }
-
-    /**
-     * A list of available aggregations.
-     */
-    public CustomReportConfig withReportAggregation(Optional<String> reportAggregation) {
-        Utils.checkNotNull(reportAggregation, "reportAggregation");
         this.reportAggregation = reportAggregation;
         return this;
     }
 
     /**
-     * A list of available report object columns. You can find it in description of reporting object that you want to add to custom report.
+     * A list of available report object columns. You can find it in description of reporting object that
+     * you want to add to custom report.
      */
     public CustomReportConfig withReportColumns(List<String> reportColumns) {
         Utils.checkNotNull(reportColumns, "reportColumns");
@@ -140,7 +183,8 @@ public class CustomReportConfig {
     }
 
     /**
-     * The name of the the object derives from the ReportRequest object. You can find it in Bing Ads Api docs - Reporting API - Reporting Data Objects.
+     * The name of the the object derives from the ReportRequest object. You can find it in Bing Ads Api
+     * docs - Reporting API - Reporting Data Objects.
      */
     public CustomReportConfig withReportingObject(ReportingDataObject reportingObject) {
         Utils.checkNotNull(reportingObject, "reportingObject");
@@ -148,7 +192,6 @@ public class CustomReportConfig {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -159,43 +202,70 @@ public class CustomReportConfig {
         }
         CustomReportConfig other = (CustomReportConfig) o;
         return 
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.reportAggregation, other.reportAggregation) &&
-            Objects.deepEquals(this.reportColumns, other.reportColumns) &&
-            Objects.deepEquals(this.reportingObject, other.reportingObject);
+            Utils.enhancedDeepEquals(this.disableCustomReportNamesCamelToSnakeConversion, other.disableCustomReportNamesCamelToSnakeConversion) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.reportAggregation, other.reportAggregation) &&
+            Utils.enhancedDeepEquals(this.reportColumns, other.reportColumns) &&
+            Utils.enhancedDeepEquals(this.reportingObject, other.reportingObject);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            name,
-            reportAggregation,
-            reportColumns,
-            reportingObject);
+        return Utils.enhancedHash(
+            disableCustomReportNamesCamelToSnakeConversion, name, reportAggregation,
+            reportColumns, reportingObject);
     }
     
     @Override
     public String toString() {
         return Utils.toString(CustomReportConfig.class,
+                "disableCustomReportNamesCamelToSnakeConversion", disableCustomReportNamesCamelToSnakeConversion,
                 "name", name,
                 "reportAggregation", reportAggregation,
                 "reportColumns", reportColumns,
                 "reportingObject", reportingObject);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
+        private Optional<Boolean> disableCustomReportNamesCamelToSnakeConversion;
+
         private String name;
- 
-        private Optional<String> reportAggregation;
- 
+
+        private String reportAggregation;
+
         private List<String> reportColumns;
- 
+
         private ReportingDataObject reportingObject;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
+
+        /**
+         * When enabled, disables the automatic conversion of custom report names from camelCase to snake_case.
+         * By default, custom report names are automatically converted (e.g., 'MyCustomReport' becomes
+         * 'my_custom_report'). Enable this option if you want to use the exact report names you specify.
+         */
+        public Builder disableCustomReportNamesCamelToSnakeConversion(boolean disableCustomReportNamesCamelToSnakeConversion) {
+            Utils.checkNotNull(disableCustomReportNamesCamelToSnakeConversion, "disableCustomReportNamesCamelToSnakeConversion");
+            this.disableCustomReportNamesCamelToSnakeConversion = Optional.ofNullable(disableCustomReportNamesCamelToSnakeConversion);
+            return this;
+        }
+
+        /**
+         * When enabled, disables the automatic conversion of custom report names from camelCase to snake_case.
+         * By default, custom report names are automatically converted (e.g., 'MyCustomReport' becomes
+         * 'my_custom_report'). Enable this option if you want to use the exact report names you specify.
+         */
+        public Builder disableCustomReportNamesCamelToSnakeConversion(Optional<Boolean> disableCustomReportNamesCamelToSnakeConversion) {
+            Utils.checkNotNull(disableCustomReportNamesCamelToSnakeConversion, "disableCustomReportNamesCamelToSnakeConversion");
+            this.disableCustomReportNamesCamelToSnakeConversion = disableCustomReportNamesCamelToSnakeConversion;
+            return this;
+        }
+
 
         /**
          * The name of the custom report, this name would be used as stream name
@@ -206,26 +276,20 @@ public class CustomReportConfig {
             return this;
         }
 
+
         /**
          * A list of available aggregations.
          */
         public Builder reportAggregation(String reportAggregation) {
             Utils.checkNotNull(reportAggregation, "reportAggregation");
-            this.reportAggregation = Optional.ofNullable(reportAggregation);
-            return this;
-        }
-
-        /**
-         * A list of available aggregations.
-         */
-        public Builder reportAggregation(Optional<String> reportAggregation) {
-            Utils.checkNotNull(reportAggregation, "reportAggregation");
             this.reportAggregation = reportAggregation;
             return this;
         }
 
+
         /**
-         * A list of available report object columns. You can find it in description of reporting object that you want to add to custom report.
+         * A list of available report object columns. You can find it in description of reporting object that
+         * you want to add to custom report.
          */
         public Builder reportColumns(List<String> reportColumns) {
             Utils.checkNotNull(reportColumns, "reportColumns");
@@ -233,30 +297,32 @@ public class CustomReportConfig {
             return this;
         }
 
+
         /**
-         * The name of the the object derives from the ReportRequest object. You can find it in Bing Ads Api docs - Reporting API - Reporting Data Objects.
+         * The name of the the object derives from the ReportRequest object. You can find it in Bing Ads Api
+         * docs - Reporting API - Reporting Data Objects.
          */
         public Builder reportingObject(ReportingDataObject reportingObject) {
             Utils.checkNotNull(reportingObject, "reportingObject");
             this.reportingObject = reportingObject;
             return this;
         }
-        
+
         public CustomReportConfig build() {
-            if (reportAggregation == null) {
-                reportAggregation = _SINGLETON_VALUE_ReportAggregation.value();
+            if (disableCustomReportNamesCamelToSnakeConversion == null) {
+                disableCustomReportNamesCamelToSnakeConversion = _SINGLETON_VALUE_DisableCustomReportNamesCamelToSnakeConversion.value();
             }
+
             return new CustomReportConfig(
-                name,
-                reportAggregation,
-                reportColumns,
-                reportingObject);
+                disableCustomReportNamesCamelToSnakeConversion, name, reportAggregation,
+                reportColumns, reportingObject);
         }
 
-        private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_ReportAggregation =
+
+        private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_DisableCustomReportNamesCamelToSnakeConversion =
                 new LazySingletonValue<>(
-                        "report_aggregation",
-                        "\"[Hourly]\"",
-                        new TypeReference<Optional<String>>() {});
+                        "disable_custom_report_names_camel_to_snake_conversion",
+                        "false",
+                        new TypeReference<Optional<Boolean>>() {});
     }
 }

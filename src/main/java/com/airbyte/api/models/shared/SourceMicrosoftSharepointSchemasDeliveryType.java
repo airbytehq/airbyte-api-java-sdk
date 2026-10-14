@@ -14,7 +14,7 @@ public enum SourceMicrosoftSharepointSchemasDeliveryType {
     @JsonValue
     private final String value;
 
-    private SourceMicrosoftSharepointSchemasDeliveryType(String value) {
+    SourceMicrosoftSharepointSchemasDeliveryType(String value) {
         this.value = value;
     }
     

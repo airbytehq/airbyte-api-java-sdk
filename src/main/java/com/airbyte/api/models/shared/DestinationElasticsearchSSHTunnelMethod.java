@@ -14,18 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationElasticsearchSSHTunnelMethod
  * 
- * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+ * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+ * authentication to use.
  */
 @JsonDeserialize(using = DestinationElasticsearchSSHTunnelMethod._Deserializer.class)
 public class DestinationElasticsearchSSHTunnelMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationElasticsearchSSHTunnelMethod(TypedObject value) {
         this.value = value;
@@ -33,17 +33,17 @@ public class DestinationElasticsearchSSHTunnelMethod {
 
     public static DestinationElasticsearchSSHTunnelMethod of(DestinationElasticsearchNoTunnel value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationElasticsearchSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationElasticsearchNoTunnel>(){}));
+        return new DestinationElasticsearchSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationElasticsearchSSHTunnelMethod of(DestinationElasticsearchSSHKeyAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationElasticsearchSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationElasticsearchSSHKeyAuthentication>(){}));
+        return new DestinationElasticsearchSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationElasticsearchSSHTunnelMethod of(DestinationElasticsearchPasswordAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationElasticsearchSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationElasticsearchPasswordAuthentication>(){}));
+        return new DestinationElasticsearchSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +67,7 @@ public class DestinationElasticsearchSSHTunnelMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +78,12 @@ public class DestinationElasticsearchSSHTunnelMethod {
             return false;
         }
         DestinationElasticsearchSSHTunnelMethod other = (DestinationElasticsearchSSHTunnelMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -91,9 +91,9 @@ public class DestinationElasticsearchSSHTunnelMethod {
 
         public _Deserializer() {
             super(DestinationElasticsearchSSHTunnelMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DestinationElasticsearchPasswordAuthentication>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationElasticsearchNoTunnel>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationElasticsearchSSHKeyAuthentication>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationElasticsearchNoTunnel>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationElasticsearchPasswordAuthentication>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -102,6 +102,6 @@ public class DestinationElasticsearchSSHTunnelMethod {
         return Utils.toString(DestinationElasticsearchSSHTunnelMethod.class,
                 "value", value);
     }
- 
+
 }
 

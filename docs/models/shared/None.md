@@ -1,10 +1,9 @@
 # None
 
-No authentication will be used
-
 
 ## Fields
 
-| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
-| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `method`                                                                                | [DestinationElasticsearchMethod](../../models/shared/DestinationElasticsearchMethod.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `additionalProperties`                                       | Map\<String, *Object*>                                       | :heavy_minus_sign:                                           | N/A                                                          |
+| `storageType`                                                | [Optional\<StorageType>](../../models/shared/StorageType.md) | :heavy_minus_sign:                                           | N/A                                                          |

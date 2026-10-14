@@ -14,7 +14,7 @@ public enum Watchmode {
     @JsonValue
     private final String value;
 
-    private Watchmode(String value) {
+    Watchmode(String value) {
         this.value = value;
     }
     

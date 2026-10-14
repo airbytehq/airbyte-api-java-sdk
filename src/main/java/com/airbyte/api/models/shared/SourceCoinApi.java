@@ -15,11 +15,10 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceCoinApi {
 
+public class SourceCoinApi {
     /**
      * API Key
      */
@@ -56,6 +55,7 @@ public class SourceCoinApi {
      */
     @JsonProperty("period")
     private String period;
+
 
     @JsonProperty("sourceType")
     private CoinApi sourceType;
@@ -104,7 +104,9 @@ public class SourceCoinApi {
             String period,
             String startDate,
             String symbolId) {
-        this(apiKey, Optional.empty(), Optional.empty(), Optional.empty(), period, startDate, symbolId);
+        this(apiKey, Optional.empty(), Optional.empty(),
+            Optional.empty(), period, startDate,
+            symbolId);
     }
 
     /**
@@ -174,9 +176,10 @@ public class SourceCoinApi {
         return symbolId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API Key
@@ -198,6 +201,7 @@ public class SourceCoinApi {
         return this;
     }
 
+
     /**
      * The end date in ISO 8601 format. If not supplied, data will be returned
      * from the start date to the current time, or when the count of result
@@ -218,6 +222,7 @@ public class SourceCoinApi {
         return this;
     }
 
+
     /**
      * The environment to use. Either sandbox or production.
      */
@@ -237,6 +242,7 @@ public class SourceCoinApi {
         this.limit = Optional.ofNullable(limit);
         return this;
     }
+
 
     /**
      * The maximum number of elements to return. If not supplied, the default
@@ -277,7 +283,6 @@ public class SourceCoinApi {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -288,27 +293,22 @@ public class SourceCoinApi {
         }
         SourceCoinApi other = (SourceCoinApi) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.environment, other.environment) &&
-            Objects.deepEquals(this.limit, other.limit) &&
-            Objects.deepEquals(this.period, other.period) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.symbolId, other.symbolId);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.environment, other.environment) &&
+            Utils.enhancedDeepEquals(this.limit, other.limit) &&
+            Utils.enhancedDeepEquals(this.period, other.period) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.symbolId, other.symbolId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            endDate,
-            environment,
-            limit,
-            period,
-            sourceType,
-            startDate,
-            symbolId);
+        return Utils.enhancedHash(
+            apiKey, endDate, environment,
+            limit, period, sourceType,
+            startDate, symbolId);
     }
     
     @Override
@@ -323,26 +323,28 @@ public class SourceCoinApi {
                 "startDate", startDate,
                 "symbolId", symbolId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> endDate = Optional.empty();
- 
+
         private Optional<? extends Environment> environment;
- 
+
         private Optional<Long> limit;
- 
+
         private String period;
- 
+
         private String startDate;
- 
+
         private String symbolId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API Key
@@ -352,6 +354,7 @@ public class SourceCoinApi {
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * The end date in ISO 8601 format. If not supplied, data will be returned
@@ -375,6 +378,7 @@ public class SourceCoinApi {
             return this;
         }
 
+
         /**
          * The environment to use. Either sandbox or production.
          */
@@ -392,6 +396,7 @@ public class SourceCoinApi {
             this.environment = environment;
             return this;
         }
+
 
         /**
          * The maximum number of elements to return. If not supplied, the default
@@ -415,6 +420,7 @@ public class SourceCoinApi {
             return this;
         }
 
+
         /**
          * The period to use. See the documentation for a list. https://docs.coinapi.io/#list-all-periods-get
          */
@@ -423,6 +429,7 @@ public class SourceCoinApi {
             this.period = period;
             return this;
         }
+
 
         /**
          * The start date in ISO 8601 format.
@@ -433,6 +440,7 @@ public class SourceCoinApi {
             return this;
         }
 
+
         /**
          * The symbol ID to use. See the documentation for a list.
          * https://docs.coinapi.io/#list-all-symbols-get
@@ -442,7 +450,7 @@ public class SourceCoinApi {
             this.symbolId = symbolId;
             return this;
         }
-        
+
         public SourceCoinApi build() {
             if (environment == null) {
                 environment = _SINGLETON_VALUE_Environment.value();
@@ -450,15 +458,13 @@ public class SourceCoinApi {
             if (limit == null) {
                 limit = _SINGLETON_VALUE_Limit.value();
             }
+
             return new SourceCoinApi(
-                apiKey,
-                endDate,
-                environment,
-                limit,
-                period,
-                startDate,
+                apiKey, endDate, environment,
+                limit, period, startDate,
                 symbolId);
         }
+
 
         private static final LazySingletonValue<Optional<? extends Environment>> _SINGLETON_VALUE_Environment =
                 new LazySingletonValue<>(

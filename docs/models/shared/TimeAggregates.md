@@ -2,6 +2,14 @@
 
 Size of the time
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.TimeAggregates;
+
+TimeAggregates value = TimeAggregates.MINUTE;
+```
+
 
 ## Values
 

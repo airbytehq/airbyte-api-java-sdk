@@ -14,7 +14,7 @@ public enum SourceGitlabGitlab {
     @JsonValue
     private final String value;
 
-    private SourceGitlabGitlab(String value) {
+    SourceGitlabGitlab(String value) {
         this.value = value;
     }
     

@@ -14,14 +14,15 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceAirtable {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     private Optional<? extends SourceAirtableAuthentication> credentials;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceType")
@@ -51,9 +52,10 @@ public class SourceAirtable {
         return (Optional<SourceAirtableAirtable>) sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceAirtable withCredentials(SourceAirtableAuthentication credentials) {
         Utils.checkNotNull(credentials, "credentials");
@@ -61,13 +63,13 @@ public class SourceAirtable {
         return this;
     }
 
+
     public SourceAirtable withCredentials(Optional<? extends SourceAirtableAuthentication> credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = credentials;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,15 +80,14 @@ public class SourceAirtable {
         }
         SourceAirtable other = (SourceAirtable) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            sourceType);
+        return Utils.enhancedHash(
+            credentials, sourceType);
     }
     
     @Override
@@ -95,14 +96,16 @@ public class SourceAirtable {
                 "credentials", credentials,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourceAirtableAuthentication> credentials = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder credentials(SourceAirtableAuthentication credentials) {
             Utils.checkNotNull(credentials, "credentials");
@@ -115,11 +118,13 @@ public class SourceAirtable {
             this.credentials = credentials;
             return this;
         }
-        
+
         public SourceAirtable build() {
+
             return new SourceAirtable(
                 credentials);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceAirtableAirtable>> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

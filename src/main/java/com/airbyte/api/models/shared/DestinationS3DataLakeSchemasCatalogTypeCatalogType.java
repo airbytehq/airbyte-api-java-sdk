@@ -9,12 +9,12 @@ import java.util.Objects;
 import java.util.Optional;
 
 public enum DestinationS3DataLakeSchemasCatalogTypeCatalogType {
-    NESSIE("NESSIE");
+    POLARIS("POLARIS");
 
     @JsonValue
     private final String value;
 
-    private DestinationS3DataLakeSchemasCatalogTypeCatalogType(String value) {
+    DestinationS3DataLakeSchemasCatalogTypeCatalogType(String value) {
         this.value = value;
     }
     

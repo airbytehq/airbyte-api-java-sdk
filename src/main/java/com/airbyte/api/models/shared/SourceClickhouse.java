@@ -16,11 +16,10 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceClickhouse {
 
+public class SourceClickhouse {
     /**
      * The name of the database.
      */
@@ -34,7 +33,12 @@ public class SourceClickhouse {
     private String host;
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (Eg. key1=value1&amp;key2=value2&amp;key3=value3). For more information read about &lt;a href="https://jdbc.postgresql.org/documentation/head/connect.html"&gt;JDBC URL parameters&lt;/a&gt;.
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (Eg.
+     * key1=value1&amp;key2=value2&amp;key3=value3).
+     * 
+     * <p>For more information read about <a
+     * href="https://jdbc.postgresql.org/documentation/head/connect.html">JDBC URL parameters</a>.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("jdbc_url_params")
@@ -54,6 +58,7 @@ public class SourceClickhouse {
     @JsonProperty("port")
     private Optional<Long> port;
 
+
     @JsonProperty("sourceType")
     private SourceClickhouseClickhouse sourceType;
 
@@ -65,7 +70,8 @@ public class SourceClickhouse {
     private Optional<Boolean> ssl;
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
@@ -110,7 +116,9 @@ public class SourceClickhouse {
             String database,
             String host,
             String username) {
-        this(database, host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+        this(database, host, Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), username);
     }
 
     /**
@@ -130,7 +138,12 @@ public class SourceClickhouse {
     }
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (Eg. key1=value1&amp;key2=value2&amp;key3=value3). For more information read about &lt;a href="https://jdbc.postgresql.org/documentation/head/connect.html"&gt;JDBC URL parameters&lt;/a&gt;.
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (Eg.
+     * key1=value1&amp;key2=value2&amp;key3=value3).
+     * 
+     * <p>For more information read about <a
+     * href="https://jdbc.postgresql.org/documentation/head/connect.html">JDBC URL parameters</a>.
      */
     @JsonIgnore
     public Optional<String> jdbcUrlParams() {
@@ -167,7 +180,8 @@ public class SourceClickhouse {
     }
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -183,9 +197,10 @@ public class SourceClickhouse {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The name of the database.
@@ -206,7 +221,12 @@ public class SourceClickhouse {
     }
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (Eg. key1=value1&amp;key2=value2&amp;key3=value3). For more information read about &lt;a href="https://jdbc.postgresql.org/documentation/head/connect.html"&gt;JDBC URL parameters&lt;/a&gt;.
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (Eg.
+     * key1=value1&amp;key2=value2&amp;key3=value3).
+     * 
+     * <p>For more information read about <a
+     * href="https://jdbc.postgresql.org/documentation/head/connect.html">JDBC URL parameters</a>.
      */
     public SourceClickhouse withJdbcUrlParams(String jdbcUrlParams) {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -214,8 +234,14 @@ public class SourceClickhouse {
         return this;
     }
 
+
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (Eg. key1=value1&amp;key2=value2&amp;key3=value3). For more information read about &lt;a href="https://jdbc.postgresql.org/documentation/head/connect.html"&gt;JDBC URL parameters&lt;/a&gt;.
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (Eg.
+     * key1=value1&amp;key2=value2&amp;key3=value3).
+     * 
+     * <p>For more information read about <a
+     * href="https://jdbc.postgresql.org/documentation/head/connect.html">JDBC URL parameters</a>.
      */
     public SourceClickhouse withJdbcUrlParams(Optional<String> jdbcUrlParams) {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -231,6 +257,7 @@ public class SourceClickhouse {
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     /**
      * The password associated with this username.
@@ -250,6 +277,7 @@ public class SourceClickhouse {
         return this;
     }
 
+
     /**
      * The port of the database.
      */
@@ -268,6 +296,7 @@ public class SourceClickhouse {
         return this;
     }
 
+
     /**
      * Encrypt data using SSL.
      */
@@ -278,7 +307,8 @@ public class SourceClickhouse {
     }
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     public SourceClickhouse withTunnelMethod(SourceClickhouseSSHTunnelMethod tunnelMethod) {
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -286,8 +316,10 @@ public class SourceClickhouse {
         return this;
     }
 
+
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     public SourceClickhouse withTunnelMethod(Optional<? extends SourceClickhouseSSHTunnelMethod> tunnelMethod) {
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -304,7 +336,6 @@ public class SourceClickhouse {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -315,29 +346,23 @@ public class SourceClickhouse {
         }
         SourceClickhouse other = (SourceClickhouse) o;
         return 
-            Objects.deepEquals(this.database, other.database) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.ssl, other.ssl) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.database, other.database) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.ssl, other.ssl) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            database,
-            host,
-            jdbcUrlParams,
-            password,
-            port,
-            sourceType,
-            ssl,
-            tunnelMethod,
-            username);
+        return Utils.enhancedHash(
+            database, host, jdbcUrlParams,
+            password, port, sourceType,
+            ssl, tunnelMethod, username);
     }
     
     @Override
@@ -353,28 +378,30 @@ public class SourceClickhouse {
                 "tunnelMethod", tunnelMethod,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String database;
- 
+
         private String host;
- 
+
         private Optional<String> jdbcUrlParams = Optional.empty();
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private Optional<Long> port;
- 
+
         private Optional<Boolean> ssl;
- 
+
         private Optional<? extends SourceClickhouseSSHTunnelMethod> tunnelMethod = Optional.empty();
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The name of the database.
@@ -385,6 +412,7 @@ public class SourceClickhouse {
             return this;
         }
 
+
         /**
          * The host endpoint of the Clickhouse cluster.
          */
@@ -394,8 +422,14 @@ public class SourceClickhouse {
             return this;
         }
 
+
         /**
-         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (Eg. key1=value1&amp;key2=value2&amp;key3=value3). For more information read about &lt;a href="https://jdbc.postgresql.org/documentation/head/connect.html"&gt;JDBC URL parameters&lt;/a&gt;.
+         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+         * 'key=value' pairs separated by the symbol '&amp;'. (Eg.
+         * key1=value1&amp;key2=value2&amp;key3=value3).
+         * 
+         * <p>For more information read about <a
+         * href="https://jdbc.postgresql.org/documentation/head/connect.html">JDBC URL parameters</a>.
          */
         public Builder jdbcUrlParams(String jdbcUrlParams) {
             Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -404,13 +438,19 @@ public class SourceClickhouse {
         }
 
         /**
-         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (Eg. key1=value1&amp;key2=value2&amp;key3=value3). For more information read about &lt;a href="https://jdbc.postgresql.org/documentation/head/connect.html"&gt;JDBC URL parameters&lt;/a&gt;.
+         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+         * 'key=value' pairs separated by the symbol '&amp;'. (Eg.
+         * key1=value1&amp;key2=value2&amp;key3=value3).
+         * 
+         * <p>For more information read about <a
+         * href="https://jdbc.postgresql.org/documentation/head/connect.html">JDBC URL parameters</a>.
          */
         public Builder jdbcUrlParams(Optional<String> jdbcUrlParams) {
             Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
             this.jdbcUrlParams = jdbcUrlParams;
             return this;
         }
+
 
         /**
          * The password associated with this username.
@@ -430,6 +470,7 @@ public class SourceClickhouse {
             return this;
         }
 
+
         /**
          * The port of the database.
          */
@@ -447,6 +488,7 @@ public class SourceClickhouse {
             this.port = port;
             return this;
         }
+
 
         /**
          * Encrypt data using SSL.
@@ -466,8 +508,10 @@ public class SourceClickhouse {
             return this;
         }
 
+
         /**
-         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+         * authentication to use.
          */
         public Builder tunnelMethod(SourceClickhouseSSHTunnelMethod tunnelMethod) {
             Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -476,13 +520,15 @@ public class SourceClickhouse {
         }
 
         /**
-         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+         * authentication to use.
          */
         public Builder tunnelMethod(Optional<? extends SourceClickhouseSSHTunnelMethod> tunnelMethod) {
             Utils.checkNotNull(tunnelMethod, "tunnelMethod");
             this.tunnelMethod = tunnelMethod;
             return this;
         }
+
 
         /**
          * The username which is used to access the database.
@@ -492,7 +538,7 @@ public class SourceClickhouse {
             this.username = username;
             return this;
         }
-        
+
         public SourceClickhouse build() {
             if (port == null) {
                 port = _SINGLETON_VALUE_Port.value();
@@ -500,16 +546,13 @@ public class SourceClickhouse {
             if (ssl == null) {
                 ssl = _SINGLETON_VALUE_Ssl.value();
             }
+
             return new SourceClickhouse(
-                database,
-                host,
-                jdbcUrlParams,
-                password,
-                port,
-                ssl,
-                tunnelMethod,
-                username);
+                database, host, jdbcUrlParams,
+                password, port, ssl,
+                tunnelMethod, username);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_Port =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum SourceGoogleAnalyticsDataApiFilterName {
     @JsonValue
     private final String value;
 
-    private SourceGoogleAnalyticsDataApiFilterName(String value) {
+    SourceGoogleAnalyticsDataApiFilterName(String value) {
         this.value = value;
     }
     
