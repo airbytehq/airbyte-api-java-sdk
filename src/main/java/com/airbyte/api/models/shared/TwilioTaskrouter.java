@@ -14,7 +14,7 @@ public enum TwilioTaskrouter {
     @JsonValue
     private final String value;
 
-    private TwilioTaskrouter(String value) {
+    TwilioTaskrouter(String value) {
         this.value = value;
     }
     

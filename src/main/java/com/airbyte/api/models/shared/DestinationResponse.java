@@ -13,7 +13,6 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -22,34 +21,44 @@ import java.util.Optional;
  * <p>Provides details of a single destination.
  */
 public class DestinationResponse {
-
     /**
      * The values required to configure the destination.
      */
     @JsonProperty("configuration")
     private DestinationConfiguration configuration;
 
+
     @JsonProperty("createdAt")
     private long createdAt;
+
 
     @JsonProperty("definitionId")
     private String definitionId;
 
+
     @JsonProperty("destinationId")
     private String destinationId;
 
+
     @JsonProperty("destinationType")
     private String destinationType;
+
 
     @JsonProperty("name")
     private String name;
 
     /**
-     * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
+     * actor or actor definition specific resource requirements. if default is set, these are the
+     * requirements that should be set for ALL jobs run for this actor definition. it is overriden by the
+     * job type specific configurations.
+     * 
+     * <p>if not set, the platform will use defaults. these values will be overriden by configuration at the
+     * connection level.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("resourceAllocation")
     private Optional<? extends ScopedResourceRequirements> resourceAllocation;
+
 
     @JsonProperty("workspaceId")
     private String workspaceId;
@@ -90,7 +99,9 @@ public class DestinationResponse {
             String destinationType,
             String name,
             String workspaceId) {
-        this(configuration, createdAt, definitionId, destinationId, destinationType, name, Optional.empty(), workspaceId);
+        this(configuration, createdAt, definitionId,
+            destinationId, destinationType, name,
+            Optional.empty(), workspaceId);
     }
 
     /**
@@ -127,7 +138,12 @@ public class DestinationResponse {
     }
 
     /**
-     * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
+     * actor or actor definition specific resource requirements. if default is set, these are the
+     * requirements that should be set for ALL jobs run for this actor definition. it is overriden by the
+     * job type specific configurations.
+     * 
+     * <p>if not set, the platform will use defaults. these values will be overriden by configuration at the
+     * connection level.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -140,9 +156,10 @@ public class DestinationResponse {
         return workspaceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The values required to configure the destination.
@@ -184,7 +201,12 @@ public class DestinationResponse {
     }
 
     /**
-     * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
+     * actor or actor definition specific resource requirements. if default is set, these are the
+     * requirements that should be set for ALL jobs run for this actor definition. it is overriden by the
+     * job type specific configurations.
+     * 
+     * <p>if not set, the platform will use defaults. these values will be overriden by configuration at the
+     * connection level.
      */
     public DestinationResponse withResourceAllocation(ScopedResourceRequirements resourceAllocation) {
         Utils.checkNotNull(resourceAllocation, "resourceAllocation");
@@ -192,8 +214,14 @@ public class DestinationResponse {
         return this;
     }
 
+
     /**
-     * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
+     * actor or actor definition specific resource requirements. if default is set, these are the
+     * requirements that should be set for ALL jobs run for this actor definition. it is overriden by the
+     * job type specific configurations.
+     * 
+     * <p>if not set, the platform will use defaults. these values will be overriden by configuration at the
+     * connection level.
      */
     public DestinationResponse withResourceAllocation(Optional<? extends ScopedResourceRequirements> resourceAllocation) {
         Utils.checkNotNull(resourceAllocation, "resourceAllocation");
@@ -207,7 +235,6 @@ public class DestinationResponse {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -218,27 +245,22 @@ public class DestinationResponse {
         }
         DestinationResponse other = (DestinationResponse) o;
         return 
-            Objects.deepEquals(this.configuration, other.configuration) &&
-            Objects.deepEquals(this.createdAt, other.createdAt) &&
-            Objects.deepEquals(this.definitionId, other.definitionId) &&
-            Objects.deepEquals(this.destinationId, other.destinationId) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.resourceAllocation, other.resourceAllocation) &&
-            Objects.deepEquals(this.workspaceId, other.workspaceId);
+            Utils.enhancedDeepEquals(this.configuration, other.configuration) &&
+            Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
+            Utils.enhancedDeepEquals(this.definitionId, other.definitionId) &&
+            Utils.enhancedDeepEquals(this.destinationId, other.destinationId) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.resourceAllocation, other.resourceAllocation) &&
+            Utils.enhancedDeepEquals(this.workspaceId, other.workspaceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            configuration,
-            createdAt,
-            definitionId,
-            destinationId,
-            destinationType,
-            name,
-            resourceAllocation,
-            workspaceId);
+        return Utils.enhancedHash(
+            configuration, createdAt, definitionId,
+            destinationId, destinationType, name,
+            resourceAllocation, workspaceId);
     }
     
     @Override
@@ -253,28 +275,30 @@ public class DestinationResponse {
                 "resourceAllocation", resourceAllocation,
                 "workspaceId", workspaceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private DestinationConfiguration configuration;
- 
+
         private Long createdAt;
- 
+
         private String definitionId;
- 
+
         private String destinationId;
- 
+
         private String destinationType;
- 
+
         private String name;
- 
+
         private Optional<? extends ScopedResourceRequirements> resourceAllocation = Optional.empty();
- 
+
         private String workspaceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The values required to configure the destination.
@@ -285,11 +309,13 @@ public class DestinationResponse {
             return this;
         }
 
+
         public Builder createdAt(long createdAt) {
             Utils.checkNotNull(createdAt, "createdAt");
             this.createdAt = createdAt;
             return this;
         }
+
 
         public Builder definitionId(String definitionId) {
             Utils.checkNotNull(definitionId, "definitionId");
@@ -297,11 +323,13 @@ public class DestinationResponse {
             return this;
         }
 
+
         public Builder destinationId(String destinationId) {
             Utils.checkNotNull(destinationId, "destinationId");
             this.destinationId = destinationId;
             return this;
         }
+
 
         public Builder destinationType(String destinationType) {
             Utils.checkNotNull(destinationType, "destinationType");
@@ -309,14 +337,21 @@ public class DestinationResponse {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = name;
             return this;
         }
 
+
         /**
-         * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
+         * actor or actor definition specific resource requirements. if default is set, these are the
+         * requirements that should be set for ALL jobs run for this actor definition. it is overriden by the
+         * job type specific configurations.
+         * 
+         * <p>if not set, the platform will use defaults. these values will be overriden by configuration at the
+         * connection level.
          */
         public Builder resourceAllocation(ScopedResourceRequirements resourceAllocation) {
             Utils.checkNotNull(resourceAllocation, "resourceAllocation");
@@ -325,7 +360,12 @@ public class DestinationResponse {
         }
 
         /**
-         * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
+         * actor or actor definition specific resource requirements. if default is set, these are the
+         * requirements that should be set for ALL jobs run for this actor definition. it is overriden by the
+         * job type specific configurations.
+         * 
+         * <p>if not set, the platform will use defaults. these values will be overriden by configuration at the
+         * connection level.
          */
         public Builder resourceAllocation(Optional<? extends ScopedResourceRequirements> resourceAllocation) {
             Utils.checkNotNull(resourceAllocation, "resourceAllocation");
@@ -333,22 +373,20 @@ public class DestinationResponse {
             return this;
         }
 
+
         public Builder workspaceId(String workspaceId) {
             Utils.checkNotNull(workspaceId, "workspaceId");
             this.workspaceId = workspaceId;
             return this;
         }
-        
+
         public DestinationResponse build() {
+
             return new DestinationResponse(
-                configuration,
-                createdAt,
-                definitionId,
-                destinationId,
-                destinationType,
-                name,
-                resourceAllocation,
-                workspaceId);
+                configuration, createdAt, definitionId,
+                destinationId, destinationType, name,
+                resourceAllocation, workspaceId);
         }
+
     }
 }

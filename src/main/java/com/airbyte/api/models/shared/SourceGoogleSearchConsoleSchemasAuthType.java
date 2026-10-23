@@ -14,7 +14,7 @@ public enum SourceGoogleSearchConsoleSchemasAuthType {
     @JsonValue
     private final String value;
 
-    private SourceGoogleSearchConsoleSchemasAuthType(String value) {
+    SourceGoogleSearchConsoleSchemasAuthType(String value) {
         this.value = value;
     }
     

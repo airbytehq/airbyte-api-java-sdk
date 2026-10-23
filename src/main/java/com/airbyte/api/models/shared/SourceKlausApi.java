@@ -15,11 +15,10 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceKlausApi {
 
+public class SourceKlausApi {
     /**
      * getting data by account
      */
@@ -31,6 +30,7 @@ public class SourceKlausApi {
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private KlausApi sourceType;
@@ -69,7 +69,8 @@ public class SourceKlausApi {
             long account,
             String apiKey,
             long workspace) {
-        this(account, apiKey, Optional.empty(), workspace);
+        this(account, apiKey, Optional.empty(),
+            workspace);
     }
 
     /**
@@ -109,9 +110,10 @@ public class SourceKlausApi {
         return workspace;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * getting data by account
@@ -140,6 +142,7 @@ public class SourceKlausApi {
         return this;
     }
 
+
     /**
      * Start getting data from that date.
      */
@@ -158,7 +161,6 @@ public class SourceKlausApi {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -169,21 +171,18 @@ public class SourceKlausApi {
         }
         SourceKlausApi other = (SourceKlausApi) o;
         return 
-            Objects.deepEquals(this.account, other.account) &&
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.workspace, other.workspace);
+            Utils.enhancedDeepEquals(this.account, other.account) &&
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.workspace, other.workspace);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            account,
-            apiKey,
-            sourceType,
-            startDate,
-            workspace);
+        return Utils.enhancedHash(
+            account, apiKey, sourceType,
+            startDate, workspace);
     }
     
     @Override
@@ -195,20 +194,22 @@ public class SourceKlausApi {
                 "startDate", startDate,
                 "workspace", workspace);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Long account;
- 
+
         private String apiKey;
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
- 
+
         private Long workspace;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * getting data by account
@@ -219,6 +220,7 @@ public class SourceKlausApi {
             return this;
         }
 
+
         /**
          * API access key used to retrieve data from the KLAUS API.
          */
@@ -227,6 +229,7 @@ public class SourceKlausApi {
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Start getting data from that date.
@@ -246,6 +249,7 @@ public class SourceKlausApi {
             return this;
         }
 
+
         /**
          * getting data by workspace
          */
@@ -254,14 +258,14 @@ public class SourceKlausApi {
             this.workspace = workspace;
             return this;
         }
-        
+
         public SourceKlausApi build() {
+
             return new SourceKlausApi(
-                account,
-                apiKey,
-                startDate,
+                account, apiKey, startDate,
                 workspace);
         }
+
 
         private static final LazySingletonValue<KlausApi> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

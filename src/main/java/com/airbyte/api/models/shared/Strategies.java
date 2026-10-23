@@ -15,7 +15,7 @@ public enum Strategies {
     @JsonValue
     private final String value;
 
-    private Strategies(String value) {
+    Strategies(String value) {
         this.value = value;
     }
     

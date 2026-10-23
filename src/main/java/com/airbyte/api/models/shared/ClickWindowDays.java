@@ -23,7 +23,7 @@ public enum ClickWindowDays {
     @JsonValue
     private final long value;
 
-    private ClickWindowDays(long value) {
+    ClickWindowDays(long value) {
         this.value = value;
     }
     

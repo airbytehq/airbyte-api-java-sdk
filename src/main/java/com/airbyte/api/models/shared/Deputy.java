@@ -14,7 +14,7 @@ public enum Deputy {
     @JsonValue
     private final String value;
 
-    private Deputy(String value) {
+    Deputy(String value) {
         this.value = value;
     }
     

@@ -24,7 +24,7 @@ public enum ValidCampaignStatuses {
     @JsonValue
     private final String value;
 
-    private ValidCampaignStatuses(String value) {
+    ValidCampaignStatuses(String value) {
         this.value = value;
     }
     

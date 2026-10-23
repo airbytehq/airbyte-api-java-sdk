@@ -14,7 +14,7 @@ public enum SourceMssqlMssql {
     @JsonValue
     private final String value;
 
-    private SourceMssqlMssql(String value) {
+    SourceMssqlMssql(String value) {
         this.value = value;
     }
     

@@ -11,16 +11,18 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class Security implements HasSecurity {
 
     @SpeakeasyMetadata("security:scheme=true,type=http,subtype=basic")
     private Optional<? extends SchemeBasicAuth> basicAuth;
 
+
     @SpeakeasyMetadata("security:scheme=true,type=http,subtype=bearer,name=Authorization")
     private Optional<String> bearerAuth;
+
 
     @SpeakeasyMetadata("security:scheme=true,type=oauth2,subtype=client_credentials")
     private Optional<? extends SchemeClientCredentials> clientCredentials;
@@ -59,15 +61,17 @@ public class Security implements HasSecurity {
         return (Optional<SchemeClientCredentials>) clientCredentials;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public Security withBasicAuth(SchemeBasicAuth basicAuth) {
         Utils.checkNotNull(basicAuth, "basicAuth");
         this.basicAuth = Optional.ofNullable(basicAuth);
         return this;
     }
+
 
     public Security withBasicAuth(Optional<? extends SchemeBasicAuth> basicAuth) {
         Utils.checkNotNull(basicAuth, "basicAuth");
@@ -81,6 +85,7 @@ public class Security implements HasSecurity {
         return this;
     }
 
+
     public Security withBearerAuth(Optional<String> bearerAuth) {
         Utils.checkNotNull(bearerAuth, "bearerAuth");
         this.bearerAuth = bearerAuth;
@@ -93,13 +98,13 @@ public class Security implements HasSecurity {
         return this;
     }
 
+
     public Security withClientCredentials(Optional<? extends SchemeClientCredentials> clientCredentials) {
         Utils.checkNotNull(clientCredentials, "clientCredentials");
         this.clientCredentials = clientCredentials;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -110,17 +115,15 @@ public class Security implements HasSecurity {
         }
         Security other = (Security) o;
         return 
-            Objects.deepEquals(this.basicAuth, other.basicAuth) &&
-            Objects.deepEquals(this.bearerAuth, other.bearerAuth) &&
-            Objects.deepEquals(this.clientCredentials, other.clientCredentials);
+            Utils.enhancedDeepEquals(this.basicAuth, other.basicAuth) &&
+            Utils.enhancedDeepEquals(this.bearerAuth, other.bearerAuth) &&
+            Utils.enhancedDeepEquals(this.clientCredentials, other.clientCredentials);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            basicAuth,
-            bearerAuth,
-            clientCredentials);
+        return Utils.enhancedHash(
+            basicAuth, bearerAuth, clientCredentials);
     }
     
     @Override
@@ -130,18 +133,20 @@ public class Security implements HasSecurity {
                 "bearerAuth", bearerAuth,
                 "clientCredentials", clientCredentials);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SchemeBasicAuth> basicAuth = Optional.empty();
- 
+
         private Optional<String> bearerAuth = Optional.empty();
- 
+
         private Optional<? extends SchemeClientCredentials> clientCredentials = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder basicAuth(SchemeBasicAuth basicAuth) {
             Utils.checkNotNull(basicAuth, "basicAuth");
@@ -155,6 +160,7 @@ public class Security implements HasSecurity {
             return this;
         }
 
+
         public Builder bearerAuth(String bearerAuth) {
             Utils.checkNotNull(bearerAuth, "bearerAuth");
             this.bearerAuth = Optional.ofNullable(bearerAuth);
@@ -167,6 +173,7 @@ public class Security implements HasSecurity {
             return this;
         }
 
+
         public Builder clientCredentials(SchemeClientCredentials clientCredentials) {
             Utils.checkNotNull(clientCredentials, "clientCredentials");
             this.clientCredentials = Optional.ofNullable(clientCredentials);
@@ -178,12 +185,12 @@ public class Security implements HasSecurity {
             this.clientCredentials = clientCredentials;
             return this;
         }
-        
+
         public Security build() {
+
             return new Security(
-                basicAuth,
-                bearerAuth,
-                clientCredentials);
+                basicAuth, bearerAuth, clientCredentials);
         }
+
     }
 }

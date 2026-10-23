@@ -14,16 +14,16 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class AvroApacheAvro {
 
+public class AvroApacheAvro {
     /**
      * The compression algorithm used to compress data. Default to no compression.
      */
     @JsonProperty("compression_codec")
     private CompressionCodec compressionCodec;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("format_type")
@@ -58,9 +58,10 @@ public class AvroApacheAvro {
         return (Optional<DestinationGcsFormatType>) formatType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The compression algorithm used to compress data. Default to no compression.
@@ -77,13 +78,13 @@ public class AvroApacheAvro {
         return this;
     }
 
+
     public AvroApacheAvro withFormatType(Optional<? extends DestinationGcsFormatType> formatType) {
         Utils.checkNotNull(formatType, "formatType");
         this.formatType = formatType;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -94,15 +95,14 @@ public class AvroApacheAvro {
         }
         AvroApacheAvro other = (AvroApacheAvro) o;
         return 
-            Objects.deepEquals(this.compressionCodec, other.compressionCodec) &&
-            Objects.deepEquals(this.formatType, other.formatType);
+            Utils.enhancedDeepEquals(this.compressionCodec, other.compressionCodec) &&
+            Utils.enhancedDeepEquals(this.formatType, other.formatType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            compressionCodec,
-            formatType);
+        return Utils.enhancedHash(
+            compressionCodec, formatType);
     }
     
     @Override
@@ -111,16 +111,18 @@ public class AvroApacheAvro {
                 "compressionCodec", compressionCodec,
                 "formatType", formatType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private CompressionCodec compressionCodec;
- 
+
         private Optional<? extends DestinationGcsFormatType> formatType;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The compression algorithm used to compress data. Default to no compression.
@@ -130,6 +132,7 @@ public class AvroApacheAvro {
             this.compressionCodec = compressionCodec;
             return this;
         }
+
 
         public Builder formatType(DestinationGcsFormatType formatType) {
             Utils.checkNotNull(formatType, "formatType");
@@ -142,15 +145,16 @@ public class AvroApacheAvro {
             this.formatType = formatType;
             return this;
         }
-        
+
         public AvroApacheAvro build() {
             if (formatType == null) {
                 formatType = _SINGLETON_VALUE_FormatType.value();
             }
+
             return new AvroApacheAvro(
-                compressionCodec,
-                formatType);
+                compressionCodec, formatType);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationGcsFormatType>> _SINGLETON_VALUE_FormatType =
                 new LazySingletonValue<>(

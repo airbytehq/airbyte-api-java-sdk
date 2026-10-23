@@ -11,7 +11,8 @@ import java.util.Optional;
 /**
  * Normalization
  * 
- * <p>Whether the input JSON data should be normalized (flattened) in the output CSV. Please refer to docs for details.
+ * <p>Whether the input JSON data should be normalized (flattened) in the output CSV. Please refer to docs
+ * for details.
  */
 public enum Normalization {
     NO_FLATTENING("No flattening"),
@@ -20,7 +21,7 @@ public enum Normalization {
     @JsonValue
     private final String value;
 
-    private Normalization(String value) {
+    Normalization(String value) {
         this.value = value;
     }
     

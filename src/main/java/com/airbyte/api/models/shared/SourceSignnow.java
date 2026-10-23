@@ -17,11 +17,10 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceSignnow {
 
+public class SourceSignnow {
     /**
      * Api key which could be found in API section after enlarging keys section
      */
@@ -29,7 +28,8 @@ public class SourceSignnow {
     private String apiKeyId;
 
     /**
-     * The authorization token is needed for `signing_links` stream which could be seen from enlarged view of `https://app.signnow.com/webapp/api-dashboard/keys`
+     * The authorization token is needed for `signing_links` stream which could be seen from enlarged view
+     * of `https://app.signnow.com/webapp/api-dashboard/keys`
      */
     @JsonProperty("auth_token")
     private String authToken;
@@ -41,8 +41,10 @@ public class SourceSignnow {
     @JsonProperty("name_filter_for_documents")
     private Optional<? extends List<Object>> nameFilterForDocuments;
 
+
     @JsonProperty("sourceType")
     private Signnow sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -68,7 +70,8 @@ public class SourceSignnow {
             String apiKeyId,
             String authToken,
             OffsetDateTime startDate) {
-        this(apiKeyId, authToken, Optional.empty(), startDate);
+        this(apiKeyId, authToken, Optional.empty(),
+            startDate);
     }
 
     /**
@@ -80,7 +83,8 @@ public class SourceSignnow {
     }
 
     /**
-     * The authorization token is needed for `signing_links` stream which could be seen from enlarged view of `https://app.signnow.com/webapp/api-dashboard/keys`
+     * The authorization token is needed for `signing_links` stream which could be seen from enlarged view
+     * of `https://app.signnow.com/webapp/api-dashboard/keys`
      */
     @JsonIgnore
     public String authToken() {
@@ -106,9 +110,10 @@ public class SourceSignnow {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Api key which could be found in API section after enlarging keys section
@@ -120,7 +125,8 @@ public class SourceSignnow {
     }
 
     /**
-     * The authorization token is needed for `signing_links` stream which could be seen from enlarged view of `https://app.signnow.com/webapp/api-dashboard/keys`
+     * The authorization token is needed for `signing_links` stream which could be seen from enlarged view
+     * of `https://app.signnow.com/webapp/api-dashboard/keys`
      */
     public SourceSignnow withAuthToken(String authToken) {
         Utils.checkNotNull(authToken, "authToken");
@@ -137,6 +143,7 @@ public class SourceSignnow {
         return this;
     }
 
+
     /**
      * Name filter for documents stream
      */
@@ -152,7 +159,6 @@ public class SourceSignnow {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -163,21 +169,18 @@ public class SourceSignnow {
         }
         SourceSignnow other = (SourceSignnow) o;
         return 
-            Objects.deepEquals(this.apiKeyId, other.apiKeyId) &&
-            Objects.deepEquals(this.authToken, other.authToken) &&
-            Objects.deepEquals(this.nameFilterForDocuments, other.nameFilterForDocuments) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKeyId, other.apiKeyId) &&
+            Utils.enhancedDeepEquals(this.authToken, other.authToken) &&
+            Utils.enhancedDeepEquals(this.nameFilterForDocuments, other.nameFilterForDocuments) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKeyId,
-            authToken,
-            nameFilterForDocuments,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKeyId, authToken, nameFilterForDocuments,
+            sourceType, startDate);
     }
     
     @Override
@@ -189,20 +192,22 @@ public class SourceSignnow {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKeyId;
- 
+
         private String authToken;
- 
+
         private Optional<? extends List<Object>> nameFilterForDocuments = Optional.empty();
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Api key which could be found in API section after enlarging keys section
@@ -213,14 +218,17 @@ public class SourceSignnow {
             return this;
         }
 
+
         /**
-         * The authorization token is needed for `signing_links` stream which could be seen from enlarged view of `https://app.signnow.com/webapp/api-dashboard/keys`
+         * The authorization token is needed for `signing_links` stream which could be seen from enlarged view
+         * of `https://app.signnow.com/webapp/api-dashboard/keys`
          */
         public Builder authToken(String authToken) {
             Utils.checkNotNull(authToken, "authToken");
             this.authToken = authToken;
             return this;
         }
+
 
         /**
          * Name filter for documents stream
@@ -240,19 +248,20 @@ public class SourceSignnow {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceSignnow build() {
+
             return new SourceSignnow(
-                apiKeyId,
-                authToken,
-                nameFilterForDocuments,
+                apiKeyId, authToken, nameFilterForDocuments,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Signnow> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

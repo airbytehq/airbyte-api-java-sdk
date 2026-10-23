@@ -14,7 +14,7 @@ public enum SourceAzureBlobStorageSchemasCredentialsAuthType {
     @JsonValue
     private final String value;
 
-    private SourceAzureBlobStorageSchemasCredentialsAuthType(String value) {
+    SourceAzureBlobStorageSchemasCredentialsAuthType(String value) {
         this.value = value;
     }
     

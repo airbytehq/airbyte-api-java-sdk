@@ -14,13 +14,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * NoAuth
  * 
- * <p>Do not authenticate (suitable for locally running test clusters, do not use for clusters with public IP addresses)
+ * <p>Do not authenticate (suitable for locally running test clusters, do not use for clusters with public
+ * IP addresses)
  */
 public class NoAuth {
 
@@ -30,7 +30,6 @@ public class NoAuth {
 
     @JsonCreator
     public NoAuth() {
-        
         this.mode = Builder._SINGLETON_VALUE_Mode.value();
     }
 
@@ -40,11 +39,11 @@ public class NoAuth {
         return (Optional<DestinationMilvusSchemasIndexingAuthAuthenticationMode>) mode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -55,12 +54,12 @@ public class NoAuth {
         }
         NoAuth other = (NoAuth) o;
         return 
-            Objects.deepEquals(this.mode, other.mode);
+            Utils.enhancedDeepEquals(this.mode, other.mode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             mode);
     }
     
@@ -69,17 +68,20 @@ public class NoAuth {
         return Utils.toString(NoAuth.class,
                 "mode", mode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public NoAuth build() {
+
             return new NoAuth(
                 );
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationMilvusSchemasIndexingAuthAuthenticationMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

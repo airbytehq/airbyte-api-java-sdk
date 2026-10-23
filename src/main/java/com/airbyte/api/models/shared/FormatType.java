@@ -14,7 +14,7 @@ public enum FormatType {
     @JsonValue
     private final String value;
 
-    private FormatType(String value) {
+    FormatType(String value) {
         this.value = value;
     }
     

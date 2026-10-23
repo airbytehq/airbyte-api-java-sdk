@@ -14,7 +14,7 @@ public enum Strava {
     @JsonValue
     private final String value;
 
-    private Strava(String value) {
+    Strava(String value) {
         this.value = value;
     }
     

@@ -12,7 +12,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * OrGroup
@@ -23,6 +22,7 @@ public class OrGroup {
 
     @JsonProperty("expressions")
     private List<SourceGoogleAnalyticsDataApiExpression> expressions;
+
 
     @JsonProperty("filter_type")
     private SourceGoogleAnalyticsDataApiFilterType filterType;
@@ -45,9 +45,10 @@ public class OrGroup {
         return filterType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public OrGroup withExpressions(List<SourceGoogleAnalyticsDataApiExpression> expressions) {
         Utils.checkNotNull(expressions, "expressions");
@@ -55,7 +56,6 @@ public class OrGroup {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -66,15 +66,14 @@ public class OrGroup {
         }
         OrGroup other = (OrGroup) o;
         return 
-            Objects.deepEquals(this.expressions, other.expressions) &&
-            Objects.deepEquals(this.filterType, other.filterType);
+            Utils.enhancedDeepEquals(this.expressions, other.expressions) &&
+            Utils.enhancedDeepEquals(this.filterType, other.filterType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            expressions,
-            filterType);
+        return Utils.enhancedHash(
+            expressions, filterType);
     }
     
     @Override
@@ -83,25 +82,29 @@ public class OrGroup {
                 "expressions", expressions,
                 "filterType", filterType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private List<SourceGoogleAnalyticsDataApiExpression> expressions;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder expressions(List<SourceGoogleAnalyticsDataApiExpression> expressions) {
             Utils.checkNotNull(expressions, "expressions");
             this.expressions = expressions;
             return this;
         }
-        
+
         public OrGroup build() {
+
             return new OrGroup(
                 expressions);
         }
+
 
         private static final LazySingletonValue<SourceGoogleAnalyticsDataApiFilterType> _SINGLETON_VALUE_FilterType =
                 new LazySingletonValue<>(

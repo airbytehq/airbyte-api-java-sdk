@@ -14,7 +14,7 @@ public enum Amplitude {
     @JsonValue
     private final String value;
 
-    private Amplitude(String value) {
+    Amplitude(String value) {
         this.value = value;
     }
     

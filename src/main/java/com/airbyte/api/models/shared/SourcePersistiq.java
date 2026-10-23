@@ -11,15 +11,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourcePersistiq {
-
     /**
-     * PersistIq API Key. See the &lt;a href="https://apidocs.persistiq.com/#authentication"&gt;docs&lt;/a&gt; for more information on where to find that key.
+     * PersistIq API Key. See the <a href="https://apidocs.persistiq.com/#authentication">docs</a> for more
+     * information on where to find that key.
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Persistiq sourceType;
@@ -33,7 +34,8 @@ public class SourcePersistiq {
     }
 
     /**
-     * PersistIq API Key. See the &lt;a href="https://apidocs.persistiq.com/#authentication"&gt;docs&lt;/a&gt; for more information on where to find that key.
+     * PersistIq API Key. See the <a href="https://apidocs.persistiq.com/#authentication">docs</a> for more
+     * information on where to find that key.
      */
     @JsonIgnore
     public String apiKey() {
@@ -45,12 +47,14 @@ public class SourcePersistiq {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * PersistIq API Key. See the &lt;a href="https://apidocs.persistiq.com/#authentication"&gt;docs&lt;/a&gt; for more information on where to find that key.
+     * PersistIq API Key. See the <a href="https://apidocs.persistiq.com/#authentication">docs</a> for more
+     * information on where to find that key.
      */
     public SourcePersistiq withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -58,7 +62,6 @@ public class SourcePersistiq {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +72,14 @@ public class SourcePersistiq {
         }
         SourcePersistiq other = (SourcePersistiq) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, sourceType);
     }
     
     @Override
@@ -86,28 +88,33 @@ public class SourcePersistiq {
                 "apiKey", apiKey,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * PersistIq API Key. See the &lt;a href="https://apidocs.persistiq.com/#authentication"&gt;docs&lt;/a&gt; for more information on where to find that key.
+         * PersistIq API Key. See the <a href="https://apidocs.persistiq.com/#authentication">docs</a> for more
+         * information on where to find that key.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
-        
+
         public SourcePersistiq build() {
+
             return new SourcePersistiq(
                 apiKey);
         }
+
 
         private static final LazySingletonValue<Persistiq> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

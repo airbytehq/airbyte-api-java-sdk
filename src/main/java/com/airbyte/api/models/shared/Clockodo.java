@@ -14,7 +14,7 @@ public enum Clockodo {
     @JsonValue
     private final String value;
 
-    private Clockodo(String value) {
+    Clockodo(String value) {
         this.value = value;
     }
     

@@ -2,6 +2,14 @@
 
 One of DEMA, EMA, SMA, WMA, RSI, TEMA, Williams, ADX 
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.TechnicalIndicatorType;
+
+TechnicalIndicatorType value = TechnicalIndicatorType.DEMA;
+```
+
 
 ## Values
 

@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class OauthAuthentication {
 
@@ -79,9 +79,10 @@ public class OauthAuthentication {
         return refreshToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Square-issued ID of your application
@@ -110,7 +111,6 @@ public class OauthAuthentication {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -121,18 +121,16 @@ public class OauthAuthentication {
         }
         OauthAuthentication other = (OauthAuthentication) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            clientId,
-            clientSecret,
+        return Utils.enhancedHash(
+            authType, clientId, clientSecret,
             refreshToken);
     }
     
@@ -144,18 +142,20 @@ public class OauthAuthentication {
                 "clientSecret", clientSecret,
                 "refreshToken", refreshToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String refreshToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Square-issued ID of your application
@@ -166,6 +166,7 @@ public class OauthAuthentication {
             return this;
         }
 
+
         /**
          * The Square-issued application secret for your application
          */
@@ -175,6 +176,7 @@ public class OauthAuthentication {
             return this;
         }
 
+
         /**
          * A refresh token generated using the above client ID and secret
          */
@@ -183,13 +185,13 @@ public class OauthAuthentication {
             this.refreshToken = refreshToken;
             return this;
         }
-        
+
         public OauthAuthentication build() {
+
             return new OauthAuthentication(
-                clientId,
-                clientSecret,
-                refreshToken);
+                clientId, clientSecret, refreshToken);
         }
+
 
         private static final LazySingletonValue<SourceSquareAuthType> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

@@ -1,5 +1,13 @@
 # DestinationQdrantSchemasIndexingAuthMethodMode
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DestinationQdrantSchemasIndexingAuthMethodMode;
+
+DestinationQdrantSchemasIndexingAuthMethodMode value = DestinationQdrantSchemasIndexingAuthMethodMode.NO_AUTH;
+```
+
 
 ## Values
 

@@ -17,11 +17,10 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceFinnworlds {
 
+public class SourceFinnworlds {
     /**
      * For example 10y, 5y, 2y...
      */
@@ -30,7 +29,7 @@ public class SourceFinnworlds {
     private Optional<? extends List<Object>> bondType;
 
     /**
-     * Options Available: beef, cheese, oil, ...
+     * Options Available: beef, cheese, oil,...
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("commodities")
@@ -43,6 +42,7 @@ public class SourceFinnworlds {
     @JsonProperty("countries")
     private Optional<? extends List<Object>> countries;
 
+
     @JsonProperty("key")
     private String key;
 
@@ -53,12 +53,15 @@ public class SourceFinnworlds {
     @JsonProperty("list")
     private Optional<String> list;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("list_countries_for_bonds")
     private Optional<String> listCountriesForBonds;
 
+
     @JsonProperty("sourceType")
     private Finnworlds sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -102,7 +105,9 @@ public class SourceFinnworlds {
     public SourceFinnworlds(
             String key,
             OffsetDateTime startDate) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), key, Optional.empty(), Optional.empty(), startDate, Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            key, Optional.empty(), Optional.empty(),
+            startDate, Optional.empty());
     }
 
     /**
@@ -115,7 +120,7 @@ public class SourceFinnworlds {
     }
 
     /**
-     * Options Available: beef, cheese, oil, ...
+     * Options Available: beef, cheese, oil,...
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -169,9 +174,10 @@ public class SourceFinnworlds {
         return (Optional<List<Object>>) tickers;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * For example 10y, 5y, 2y...
@@ -181,6 +187,7 @@ public class SourceFinnworlds {
         this.bondType = Optional.ofNullable(bondType);
         return this;
     }
+
 
     /**
      * For example 10y, 5y, 2y...
@@ -192,7 +199,7 @@ public class SourceFinnworlds {
     }
 
     /**
-     * Options Available: beef, cheese, oil, ...
+     * Options Available: beef, cheese, oil,...
      */
     public SourceFinnworlds withCommodities(List<Object> commodities) {
         Utils.checkNotNull(commodities, "commodities");
@@ -200,8 +207,9 @@ public class SourceFinnworlds {
         return this;
     }
 
+
     /**
-     * Options Available: beef, cheese, oil, ...
+     * Options Available: beef, cheese, oil,...
      */
     public SourceFinnworlds withCommodities(Optional<? extends List<Object>> commodities) {
         Utils.checkNotNull(commodities, "commodities");
@@ -217,6 +225,7 @@ public class SourceFinnworlds {
         this.countries = Optional.ofNullable(countries);
         return this;
     }
+
 
     /**
      * brazil, united states, italia, japan
@@ -242,6 +251,7 @@ public class SourceFinnworlds {
         return this;
     }
 
+
     /**
      * Choose isin, ticker, reg_lei or cik
      */
@@ -256,6 +266,7 @@ public class SourceFinnworlds {
         this.listCountriesForBonds = Optional.ofNullable(listCountriesForBonds);
         return this;
     }
+
 
     public SourceFinnworlds withListCountriesForBonds(Optional<String> listCountriesForBonds) {
         Utils.checkNotNull(listCountriesForBonds, "listCountriesForBonds");
@@ -278,6 +289,7 @@ public class SourceFinnworlds {
         return this;
     }
 
+
     /**
      * AAPL, T, MU, GOOG
      */
@@ -287,7 +299,6 @@ public class SourceFinnworlds {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -298,29 +309,23 @@ public class SourceFinnworlds {
         }
         SourceFinnworlds other = (SourceFinnworlds) o;
         return 
-            Objects.deepEquals(this.bondType, other.bondType) &&
-            Objects.deepEquals(this.commodities, other.commodities) &&
-            Objects.deepEquals(this.countries, other.countries) &&
-            Objects.deepEquals(this.key, other.key) &&
-            Objects.deepEquals(this.list, other.list) &&
-            Objects.deepEquals(this.listCountriesForBonds, other.listCountriesForBonds) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.tickers, other.tickers);
+            Utils.enhancedDeepEquals(this.bondType, other.bondType) &&
+            Utils.enhancedDeepEquals(this.commodities, other.commodities) &&
+            Utils.enhancedDeepEquals(this.countries, other.countries) &&
+            Utils.enhancedDeepEquals(this.key, other.key) &&
+            Utils.enhancedDeepEquals(this.list, other.list) &&
+            Utils.enhancedDeepEquals(this.listCountriesForBonds, other.listCountriesForBonds) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.tickers, other.tickers);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            bondType,
-            commodities,
-            countries,
-            key,
-            list,
-            listCountriesForBonds,
-            sourceType,
-            startDate,
-            tickers);
+        return Utils.enhancedHash(
+            bondType, commodities, countries,
+            key, list, listCountriesForBonds,
+            sourceType, startDate, tickers);
     }
     
     @Override
@@ -336,28 +341,30 @@ public class SourceFinnworlds {
                 "startDate", startDate,
                 "tickers", tickers);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends List<Object>> bondType = Optional.empty();
- 
+
         private Optional<? extends List<Object>> commodities = Optional.empty();
- 
+
         private Optional<? extends List<Object>> countries = Optional.empty();
- 
+
         private String key;
- 
+
         private Optional<String> list;
- 
+
         private Optional<String> listCountriesForBonds;
- 
+
         private OffsetDateTime startDate;
- 
+
         private Optional<? extends List<Object>> tickers = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * For example 10y, 5y, 2y...
@@ -377,8 +384,9 @@ public class SourceFinnworlds {
             return this;
         }
 
+
         /**
-         * Options Available: beef, cheese, oil, ...
+         * Options Available: beef, cheese, oil,...
          */
         public Builder commodities(List<Object> commodities) {
             Utils.checkNotNull(commodities, "commodities");
@@ -387,13 +395,14 @@ public class SourceFinnworlds {
         }
 
         /**
-         * Options Available: beef, cheese, oil, ...
+         * Options Available: beef, cheese, oil,...
          */
         public Builder commodities(Optional<? extends List<Object>> commodities) {
             Utils.checkNotNull(commodities, "commodities");
             this.commodities = commodities;
             return this;
         }
+
 
         /**
          * brazil, united states, italia, japan
@@ -413,11 +422,13 @@ public class SourceFinnworlds {
             return this;
         }
 
+
         public Builder key(String key) {
             Utils.checkNotNull(key, "key");
             this.key = key;
             return this;
         }
+
 
         /**
          * Choose isin, ticker, reg_lei or cik
@@ -437,6 +448,7 @@ public class SourceFinnworlds {
             return this;
         }
 
+
         public Builder listCountriesForBonds(String listCountriesForBonds) {
             Utils.checkNotNull(listCountriesForBonds, "listCountriesForBonds");
             this.listCountriesForBonds = Optional.ofNullable(listCountriesForBonds);
@@ -449,11 +461,13 @@ public class SourceFinnworlds {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * AAPL, T, MU, GOOG
@@ -472,7 +486,7 @@ public class SourceFinnworlds {
             this.tickers = tickers;
             return this;
         }
-        
+
         public SourceFinnworlds build() {
             if (list == null) {
                 list = _SINGLETON_VALUE_List.value();
@@ -480,16 +494,13 @@ public class SourceFinnworlds {
             if (listCountriesForBonds == null) {
                 listCountriesForBonds = _SINGLETON_VALUE_ListCountriesForBonds.value();
             }
+
             return new SourceFinnworlds(
-                bondType,
-                commodities,
-                countries,
-                key,
-                list,
-                listCountriesForBonds,
-                startDate,
-                tickers);
+                bondType, commodities, countries,
+                key, list, listCountriesForBonds,
+                startDate, tickers);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_List =
                 new LazySingletonValue<>(

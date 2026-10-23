@@ -15,26 +15,31 @@ import java.lang.Double;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceZohoAnalyticsMetadataApi {
 
     @JsonProperty("client_id")
     private String clientId;
 
+
     @JsonProperty("client_secret")
     private String clientSecret;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("data_center")
     private Optional<? extends SourceZohoAnalyticsMetadataApiDataCenter> dataCenter;
 
+
     @JsonProperty("org_id")
     private double orgId;
 
+
     @JsonProperty("refresh_token")
     private String refreshToken;
+
 
     @JsonProperty("sourceType")
     private ZohoAnalyticsMetadataApi sourceType;
@@ -64,7 +69,8 @@ public class SourceZohoAnalyticsMetadataApi {
             String clientSecret,
             double orgId,
             String refreshToken) {
-        this(clientId, clientSecret, Optional.empty(), orgId, refreshToken);
+        this(clientId, clientSecret, Optional.empty(),
+            orgId, refreshToken);
     }
 
     @JsonIgnore
@@ -98,9 +104,10 @@ public class SourceZohoAnalyticsMetadataApi {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceZohoAnalyticsMetadataApi withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -120,6 +127,7 @@ public class SourceZohoAnalyticsMetadataApi {
         return this;
     }
 
+
     public SourceZohoAnalyticsMetadataApi withDataCenter(Optional<? extends SourceZohoAnalyticsMetadataApiDataCenter> dataCenter) {
         Utils.checkNotNull(dataCenter, "dataCenter");
         this.dataCenter = dataCenter;
@@ -138,7 +146,6 @@ public class SourceZohoAnalyticsMetadataApi {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -149,23 +156,19 @@ public class SourceZohoAnalyticsMetadataApi {
         }
         SourceZohoAnalyticsMetadataApi other = (SourceZohoAnalyticsMetadataApi) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.dataCenter, other.dataCenter) &&
-            Objects.deepEquals(this.orgId, other.orgId) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.dataCenter, other.dataCenter) &&
+            Utils.enhancedDeepEquals(this.orgId, other.orgId) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            dataCenter,
-            orgId,
-            refreshToken,
-            sourceType);
+        return Utils.enhancedHash(
+            clientId, clientSecret, dataCenter,
+            orgId, refreshToken, sourceType);
     }
     
     @Override
@@ -178,22 +181,24 @@ public class SourceZohoAnalyticsMetadataApi {
                 "refreshToken", refreshToken,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private Optional<? extends SourceZohoAnalyticsMetadataApiDataCenter> dataCenter;
- 
+
         private Double orgId;
- 
+
         private String refreshToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -201,11 +206,13 @@ public class SourceZohoAnalyticsMetadataApi {
             return this;
         }
 
+
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         public Builder dataCenter(SourceZohoAnalyticsMetadataApiDataCenter dataCenter) {
             Utils.checkNotNull(dataCenter, "dataCenter");
@@ -219,29 +226,30 @@ public class SourceZohoAnalyticsMetadataApi {
             return this;
         }
 
+
         public Builder orgId(double orgId) {
             Utils.checkNotNull(orgId, "orgId");
             this.orgId = orgId;
             return this;
         }
 
+
         public Builder refreshToken(String refreshToken) {
             Utils.checkNotNull(refreshToken, "refreshToken");
             this.refreshToken = refreshToken;
             return this;
         }
-        
+
         public SourceZohoAnalyticsMetadataApi build() {
             if (dataCenter == null) {
                 dataCenter = _SINGLETON_VALUE_DataCenter.value();
             }
+
             return new SourceZohoAnalyticsMetadataApi(
-                clientId,
-                clientSecret,
-                dataCenter,
-                orgId,
-                refreshToken);
+                clientId, clientSecret, dataCenter,
+                orgId, refreshToken);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceZohoAnalyticsMetadataApiDataCenter>> _SINGLETON_VALUE_DataCenter =
                 new LazySingletonValue<>(

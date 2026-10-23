@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -23,7 +22,6 @@ import java.util.Optional;
  * <p>For these scenario user only needs to give permission to read Google Directory data.
  */
 public class SignInViaGoogleOAuth {
-
     /**
      * The Client ID of the developer application.
      */
@@ -96,9 +94,10 @@ public class SignInViaGoogleOAuth {
         return refreshToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Client ID of the developer application.
@@ -127,7 +126,6 @@ public class SignInViaGoogleOAuth {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -138,18 +136,16 @@ public class SignInViaGoogleOAuth {
         }
         SignInViaGoogleOAuth other = (SignInViaGoogleOAuth) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.credentialsTitle, other.credentialsTitle) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.credentialsTitle, other.credentialsTitle) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            credentialsTitle,
+        return Utils.enhancedHash(
+            clientId, clientSecret, credentialsTitle,
             refreshToken);
     }
     
@@ -161,18 +157,20 @@ public class SignInViaGoogleOAuth {
                 "credentialsTitle", credentialsTitle,
                 "refreshToken", refreshToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String refreshToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Client ID of the developer application.
@@ -183,6 +181,7 @@ public class SignInViaGoogleOAuth {
             return this;
         }
 
+
         /**
          * The Client Secret of the developer application.
          */
@@ -192,6 +191,7 @@ public class SignInViaGoogleOAuth {
             return this;
         }
 
+
         /**
          * The Token for obtaining a new access token.
          */
@@ -200,13 +200,13 @@ public class SignInViaGoogleOAuth {
             this.refreshToken = refreshToken;
             return this;
         }
-        
+
         public SignInViaGoogleOAuth build() {
+
             return new SignInViaGoogleOAuth(
-                clientId,
-                clientSecret,
-                refreshToken);
+                clientId, clientSecret, refreshToken);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceGoogleDirectoryCredentialsTitle>> _SINGLETON_VALUE_CredentialsTitle =
                 new LazySingletonValue<>(

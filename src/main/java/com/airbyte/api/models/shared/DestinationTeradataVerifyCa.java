@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -29,8 +28,11 @@ public class DestinationTeradataVerifyCa {
     private Optional<? extends DestinationTeradataSchemasSSLModeSSLModes5Mode> mode;
 
     /**
-     * Specifies the file name of a PEM file that contains Certificate Authority (CA) certificates for use with SSLMODE=verify-ca.
-     *  See more information - &lt;a href="https://teradata-docs.s3.amazonaws.com/doc/connectivity/jdbc/reference/current/jdbcug_chapter_2.html#URL_SSLCA"&gt; in the docs&lt;/a&gt;.
+     * Specifies the file name of a PEM file that contains Certificate Authority (CA) certificates for use
+     * with SSLMODE=verify-ca.
+     * See more information - <a
+     * href="https://teradata-docs.s3.amazonaws.com/doc/connectivity/jdbc/reference/current/jdbcug_chapter_2.html#URL_SSLCA">
+     * in the docs</a>.
      */
     @JsonProperty("ssl_ca_certificate")
     private String sslCaCertificate;
@@ -50,21 +52,28 @@ public class DestinationTeradataVerifyCa {
     }
 
     /**
-     * Specifies the file name of a PEM file that contains Certificate Authority (CA) certificates for use with SSLMODE=verify-ca.
-     *  See more information - &lt;a href="https://teradata-docs.s3.amazonaws.com/doc/connectivity/jdbc/reference/current/jdbcug_chapter_2.html#URL_SSLCA"&gt; in the docs&lt;/a&gt;.
+     * Specifies the file name of a PEM file that contains Certificate Authority (CA) certificates for use
+     * with SSLMODE=verify-ca.
+     * See more information - <a
+     * href="https://teradata-docs.s3.amazonaws.com/doc/connectivity/jdbc/reference/current/jdbcug_chapter_2.html#URL_SSLCA">
+     * in the docs</a>.
      */
     @JsonIgnore
     public String sslCaCertificate() {
         return sslCaCertificate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Specifies the file name of a PEM file that contains Certificate Authority (CA) certificates for use with SSLMODE=verify-ca.
-     *  See more information - &lt;a href="https://teradata-docs.s3.amazonaws.com/doc/connectivity/jdbc/reference/current/jdbcug_chapter_2.html#URL_SSLCA"&gt; in the docs&lt;/a&gt;.
+     * Specifies the file name of a PEM file that contains Certificate Authority (CA) certificates for use
+     * with SSLMODE=verify-ca.
+     * See more information - <a
+     * href="https://teradata-docs.s3.amazonaws.com/doc/connectivity/jdbc/reference/current/jdbcug_chapter_2.html#URL_SSLCA">
+     * in the docs</a>.
      */
     public DestinationTeradataVerifyCa withSslCaCertificate(String sslCaCertificate) {
         Utils.checkNotNull(sslCaCertificate, "sslCaCertificate");
@@ -72,7 +81,6 @@ public class DestinationTeradataVerifyCa {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -83,15 +91,14 @@ public class DestinationTeradataVerifyCa {
         }
         DestinationTeradataVerifyCa other = (DestinationTeradataVerifyCa) o;
         return 
-            Objects.deepEquals(this.mode, other.mode) &&
-            Objects.deepEquals(this.sslCaCertificate, other.sslCaCertificate);
+            Utils.enhancedDeepEquals(this.mode, other.mode) &&
+            Utils.enhancedDeepEquals(this.sslCaCertificate, other.sslCaCertificate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            mode,
-            sslCaCertificate);
+        return Utils.enhancedHash(
+            mode, sslCaCertificate);
     }
     
     @Override
@@ -100,29 +107,36 @@ public class DestinationTeradataVerifyCa {
                 "mode", mode,
                 "sslCaCertificate", sslCaCertificate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String sslCaCertificate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Specifies the file name of a PEM file that contains Certificate Authority (CA) certificates for use with SSLMODE=verify-ca.
-         *  See more information - &lt;a href="https://teradata-docs.s3.amazonaws.com/doc/connectivity/jdbc/reference/current/jdbcug_chapter_2.html#URL_SSLCA"&gt; in the docs&lt;/a&gt;.
+         * Specifies the file name of a PEM file that contains Certificate Authority (CA) certificates for use
+         * with SSLMODE=verify-ca.
+         * See more information - <a
+         * href="https://teradata-docs.s3.amazonaws.com/doc/connectivity/jdbc/reference/current/jdbcug_chapter_2.html#URL_SSLCA">
+         * in the docs</a>.
          */
         public Builder sslCaCertificate(String sslCaCertificate) {
             Utils.checkNotNull(sslCaCertificate, "sslCaCertificate");
             this.sslCaCertificate = sslCaCertificate;
             return this;
         }
-        
+
         public DestinationTeradataVerifyCa build() {
+
             return new DestinationTeradataVerifyCa(
                 sslCaCertificate);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationTeradataSchemasSSLModeSSLModes5Mode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

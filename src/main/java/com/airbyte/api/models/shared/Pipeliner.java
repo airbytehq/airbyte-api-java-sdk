@@ -14,7 +14,7 @@ public enum Pipeliner {
     @JsonValue
     private final String value;
 
-    private Pipeliner(String value) {
+    Pipeliner(String value) {
         this.value = value;
     }
     

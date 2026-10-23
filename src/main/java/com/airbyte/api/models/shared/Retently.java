@@ -14,7 +14,7 @@ public enum Retently {
     @JsonValue
     private final String value;
 
-    private Retently(String value) {
+    Retently(String value) {
         this.value = value;
     }
     

@@ -17,11 +17,10 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceSnapchatMarketing {
 
+public class SourceSnapchatMarketing {
     /**
      * Specifies the principle for conversion reporting.
      */
@@ -67,6 +66,7 @@ public class SourceSnapchatMarketing {
      */
     @JsonProperty("refresh_token")
     private String refreshToken;
+
 
     @JsonProperty("sourceType")
     private SourceSnapchatMarketingSnapchatMarketing sourceType;
@@ -131,7 +131,10 @@ public class SourceSnapchatMarketing {
             String clientId,
             String clientSecret,
             String refreshToken) {
-        this(Optional.empty(), Optional.empty(), clientId, clientSecret, Optional.empty(), Optional.empty(), refreshToken, Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), clientId,
+            clientSecret, Optional.empty(), Optional.empty(),
+            refreshToken, Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -224,9 +227,10 @@ public class SourceSnapchatMarketing {
         return (Optional<ViewAttributionWindow>) viewAttributionWindow;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Specifies the principle for conversion reporting.
@@ -236,6 +240,7 @@ public class SourceSnapchatMarketing {
         this.actionReportTime = Optional.ofNullable(actionReportTime);
         return this;
     }
+
 
     /**
      * Specifies the principle for conversion reporting.
@@ -254,6 +259,7 @@ public class SourceSnapchatMarketing {
         this.adAccountIds = Optional.ofNullable(adAccountIds);
         return this;
     }
+
 
     /**
      * Ad Account IDs of the ad accounts to retrieve
@@ -291,6 +297,7 @@ public class SourceSnapchatMarketing {
         return this;
     }
 
+
     /**
      * Date in the format 2017-01-25. Any data after this date will not be replicated.
      */
@@ -308,6 +315,7 @@ public class SourceSnapchatMarketing {
         this.organizationIds = Optional.ofNullable(organizationIds);
         return this;
     }
+
 
     /**
      * The IDs of the organizations to retrieve
@@ -336,6 +344,7 @@ public class SourceSnapchatMarketing {
         return this;
     }
 
+
     /**
      * Date in the format 2022-01-01. Any data before this date will not be replicated.
      */
@@ -353,6 +362,7 @@ public class SourceSnapchatMarketing {
         this.swipeUpAttributionWindow = Optional.ofNullable(swipeUpAttributionWindow);
         return this;
     }
+
 
     /**
      * Attribution window for swipe ups.
@@ -372,6 +382,7 @@ public class SourceSnapchatMarketing {
         return this;
     }
 
+
     /**
      * Attribution window for views.
      */
@@ -381,7 +392,6 @@ public class SourceSnapchatMarketing {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -392,33 +402,26 @@ public class SourceSnapchatMarketing {
         }
         SourceSnapchatMarketing other = (SourceSnapchatMarketing) o;
         return 
-            Objects.deepEquals(this.actionReportTime, other.actionReportTime) &&
-            Objects.deepEquals(this.adAccountIds, other.adAccountIds) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.organizationIds, other.organizationIds) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.swipeUpAttributionWindow, other.swipeUpAttributionWindow) &&
-            Objects.deepEquals(this.viewAttributionWindow, other.viewAttributionWindow);
+            Utils.enhancedDeepEquals(this.actionReportTime, other.actionReportTime) &&
+            Utils.enhancedDeepEquals(this.adAccountIds, other.adAccountIds) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.organizationIds, other.organizationIds) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.swipeUpAttributionWindow, other.swipeUpAttributionWindow) &&
+            Utils.enhancedDeepEquals(this.viewAttributionWindow, other.viewAttributionWindow);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            actionReportTime,
-            adAccountIds,
-            clientId,
-            clientSecret,
-            endDate,
-            organizationIds,
-            refreshToken,
-            sourceType,
-            startDate,
-            swipeUpAttributionWindow,
-            viewAttributionWindow);
+        return Utils.enhancedHash(
+            actionReportTime, adAccountIds, clientId,
+            clientSecret, endDate, organizationIds,
+            refreshToken, sourceType, startDate,
+            swipeUpAttributionWindow, viewAttributionWindow);
     }
     
     @Override
@@ -436,32 +439,34 @@ public class SourceSnapchatMarketing {
                 "swipeUpAttributionWindow", swipeUpAttributionWindow,
                 "viewAttributionWindow", viewAttributionWindow);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends ActionReportTime> actionReportTime;
- 
+
         private Optional<? extends List<Object>> adAccountIds = Optional.empty();
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private Optional<LocalDate> endDate = Optional.empty();
- 
+
         private Optional<? extends List<Object>> organizationIds = Optional.empty();
- 
+
         private String refreshToken;
- 
+
         private Optional<LocalDate> startDate;
- 
+
         private Optional<? extends SwipeUpAttributionWindow> swipeUpAttributionWindow;
- 
+
         private Optional<? extends ViewAttributionWindow> viewAttributionWindow;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Specifies the principle for conversion reporting.
@@ -481,6 +486,7 @@ public class SourceSnapchatMarketing {
             return this;
         }
 
+
         /**
          * Ad Account IDs of the ad accounts to retrieve
          */
@@ -499,6 +505,7 @@ public class SourceSnapchatMarketing {
             return this;
         }
 
+
         /**
          * The Client ID of your Snapchat developer application.
          */
@@ -508,6 +515,7 @@ public class SourceSnapchatMarketing {
             return this;
         }
 
+
         /**
          * The Client Secret of your Snapchat developer application.
          */
@@ -516,6 +524,7 @@ public class SourceSnapchatMarketing {
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         /**
          * Date in the format 2017-01-25. Any data after this date will not be replicated.
@@ -535,6 +544,7 @@ public class SourceSnapchatMarketing {
             return this;
         }
 
+
         /**
          * The IDs of the organizations to retrieve
          */
@@ -553,6 +563,7 @@ public class SourceSnapchatMarketing {
             return this;
         }
 
+
         /**
          * Refresh Token to renew the expired Access Token.
          */
@@ -561,6 +572,7 @@ public class SourceSnapchatMarketing {
             this.refreshToken = refreshToken;
             return this;
         }
+
 
         /**
          * Date in the format 2022-01-01. Any data before this date will not be replicated.
@@ -580,6 +592,7 @@ public class SourceSnapchatMarketing {
             return this;
         }
 
+
         /**
          * Attribution window for swipe ups.
          */
@@ -598,6 +611,7 @@ public class SourceSnapchatMarketing {
             return this;
         }
 
+
         /**
          * Attribution window for views.
          */
@@ -615,7 +629,7 @@ public class SourceSnapchatMarketing {
             this.viewAttributionWindow = viewAttributionWindow;
             return this;
         }
-        
+
         public SourceSnapchatMarketing build() {
             if (actionReportTime == null) {
                 actionReportTime = _SINGLETON_VALUE_ActionReportTime.value();
@@ -629,18 +643,14 @@ public class SourceSnapchatMarketing {
             if (viewAttributionWindow == null) {
                 viewAttributionWindow = _SINGLETON_VALUE_ViewAttributionWindow.value();
             }
+
             return new SourceSnapchatMarketing(
-                actionReportTime,
-                adAccountIds,
-                clientId,
-                clientSecret,
-                endDate,
-                organizationIds,
-                refreshToken,
-                startDate,
-                swipeUpAttributionWindow,
+                actionReportTime, adAccountIds, clientId,
+                clientSecret, endDate, organizationIds,
+                refreshToken, startDate, swipeUpAttributionWindow,
                 viewAttributionWindow);
         }
+
 
         private static final LazySingletonValue<Optional<? extends ActionReportTime>> _SINGLETON_VALUE_ActionReportTime =
                 new LazySingletonValue<>(

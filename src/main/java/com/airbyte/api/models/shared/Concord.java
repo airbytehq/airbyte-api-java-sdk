@@ -14,7 +14,7 @@ public enum Concord {
     @JsonValue
     private final String value;
 
-    private Concord(String value) {
+    Concord(String value) {
         this.value = value;
     }
     

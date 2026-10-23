@@ -23,7 +23,7 @@ public enum SourceGoogleSearchConsoleValidEnums {
     @JsonValue
     private final String value;
 
-    private SourceGoogleSearchConsoleValidEnums(String value) {
+    SourceGoogleSearchConsoleValidEnums(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceGoogleDriveAuthentication
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class SourceGoogleDriveAuthentication {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceGoogleDriveAuthentication(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class SourceGoogleDriveAuthentication {
 
     public static SourceGoogleDriveAuthentication of(SourceGoogleDriveAuthenticateViaGoogleOAuth value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleDriveAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleDriveAuthenticateViaGoogleOAuth>(){}));
+        return new SourceGoogleDriveAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceGoogleDriveAuthentication of(SourceGoogleDriveServiceAccountKeyAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleDriveAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleDriveServiceAccountKeyAuthentication>(){}));
+        return new SourceGoogleDriveAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class SourceGoogleDriveAuthentication {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class SourceGoogleDriveAuthentication {
             return false;
         }
         SourceGoogleDriveAuthentication other = (SourceGoogleDriveAuthentication) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -95,6 +94,6 @@ public class SourceGoogleDriveAuthentication {
         return Utils.toString(SourceGoogleDriveAuthentication.class,
                 "value", value);
     }
- 
+
 }
 

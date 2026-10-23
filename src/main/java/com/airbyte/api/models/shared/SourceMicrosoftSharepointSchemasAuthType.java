@@ -14,7 +14,7 @@ public enum SourceMicrosoftSharepointSchemasAuthType {
     @JsonValue
     private final String value;
 
-    private SourceMicrosoftSharepointSchemasAuthType(String value) {
+    SourceMicrosoftSharepointSchemasAuthType(String value) {
         this.value = value;
     }
     

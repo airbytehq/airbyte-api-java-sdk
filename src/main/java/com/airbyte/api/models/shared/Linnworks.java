@@ -14,7 +14,7 @@ public enum Linnworks {
     @JsonValue
     private final String value;
 
-    private Linnworks(String value) {
+    Linnworks(String value) {
         this.value = value;
     }
     

@@ -14,13 +14,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = APIEndpoint._Deserializer.class)
 public class APIEndpoint {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private APIEndpoint(TypedObject value) {
         this.value = value;
@@ -28,12 +27,12 @@ public class APIEndpoint {
 
     public static APIEndpoint of(Basic value) {
         Utils.checkNotNull(value, "value");
-        return new APIEndpoint(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Basic>(){}));
+        return new APIEndpoint(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static APIEndpoint of(Enterprise value) {
         Utils.checkNotNull(value, "value");
-        return new APIEndpoint(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Enterprise>(){}));
+        return new APIEndpoint(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -56,7 +55,7 @@ public class APIEndpoint {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -67,12 +66,12 @@ public class APIEndpoint {
             return false;
         }
         APIEndpoint other = (APIEndpoint) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -80,8 +79,8 @@ public class APIEndpoint {
 
         public _Deserializer() {
             super(APIEndpoint.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<Enterprise>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Basic>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Basic>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<Enterprise>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -90,6 +89,6 @@ public class APIEndpoint {
         return Utils.toString(APIEndpoint.class,
                 "value", value);
     }
- 
+
 }
 

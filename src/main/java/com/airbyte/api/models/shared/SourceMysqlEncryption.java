@@ -14,18 +14,17 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceMysqlEncryption
  * 
- * <p>The encryption method with is used when communicating with the database.
+ * <p>The encryption method which is used when communicating with the database.
  */
 @JsonDeserialize(using = SourceMysqlEncryption._Deserializer.class)
 public class SourceMysqlEncryption {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceMysqlEncryption(TypedObject value) {
         this.value = value;
@@ -33,22 +32,22 @@ public class SourceMysqlEncryption {
 
     public static SourceMysqlEncryption of(Preferred value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMysqlEncryption(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Preferred>(){}));
+        return new SourceMysqlEncryption(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceMysqlEncryption of(Required value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMysqlEncryption(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Required>(){}));
+        return new SourceMysqlEncryption(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceMysqlEncryption of(SourceMysqlVerifyCa value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMysqlEncryption(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMysqlVerifyCa>(){}));
+        return new SourceMysqlEncryption(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceMysqlEncryption of(VerifyIdentity value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMysqlEncryption(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<VerifyIdentity>(){}));
+        return new SourceMysqlEncryption(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -73,7 +72,7 @@ public class SourceMysqlEncryption {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -84,12 +83,12 @@ public class SourceMysqlEncryption {
             return false;
         }
         SourceMysqlEncryption other = (SourceMysqlEncryption) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -97,10 +96,10 @@ public class SourceMysqlEncryption {
 
         public _Deserializer() {
             super(SourceMysqlEncryption.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<VerifyIdentity>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMysqlVerifyCa>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<Preferred>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<Required>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Preferred>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceMysqlVerifyCa>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<VerifyIdentity>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -109,6 +108,6 @@ public class SourceMysqlEncryption {
         return Utils.toString(SourceMysqlEncryption.class,
                 "value", value);
     }
- 
+
 }
 

@@ -14,7 +14,7 @@ public enum Typesense {
     @JsonValue
     private final String value;
 
-    private Typesense(String value) {
+    Typesense(String value) {
         this.value = value;
     }
     

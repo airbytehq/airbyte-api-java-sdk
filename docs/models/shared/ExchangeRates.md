@@ -1,5 +1,13 @@
 # ExchangeRates
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.ExchangeRates;
+
+ExchangeRates value = ExchangeRates.EXCHANGE_RATES;
+```
+
 
 ## Values
 

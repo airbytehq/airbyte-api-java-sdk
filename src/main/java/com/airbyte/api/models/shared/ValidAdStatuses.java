@@ -30,7 +30,7 @@ public enum ValidAdStatuses {
     @JsonValue
     private final String value;
 
-    private ValidAdStatuses(String value) {
+    ValidAdStatuses(String value) {
         this.value = value;
     }
     

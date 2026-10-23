@@ -14,7 +14,7 @@ public enum Docuseal {
     @JsonValue
     private final String value;
 
-    private Docuseal(String value) {
+    Docuseal(String value) {
         this.value = value;
     }
     

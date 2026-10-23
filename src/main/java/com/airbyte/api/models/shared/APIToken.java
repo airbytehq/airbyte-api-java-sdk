@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class APIToken {
-
     /**
      * API Token for making authenticated requests.
      */
     @JsonProperty("api_token")
     private String apiToken;
+
 
     @JsonProperty("auth_type")
     private SourceMondaySchemasAuthType authType;
@@ -45,9 +45,10 @@ public class APIToken {
         return authType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API Token for making authenticated requests.
@@ -58,7 +59,6 @@ public class APIToken {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class APIToken {
         }
         APIToken other = (APIToken) o;
         return 
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.authType, other.authType);
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiToken,
-            authType);
+        return Utils.enhancedHash(
+            apiToken, authType);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class APIToken {
                 "apiToken", apiToken,
                 "authType", authType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API Token for making authenticated requests.
@@ -103,11 +104,13 @@ public class APIToken {
             this.apiToken = apiToken;
             return this;
         }
-        
+
         public APIToken build() {
+
             return new APIToken(
                 apiToken);
         }
+
 
         private static final LazySingletonValue<SourceMondaySchemasAuthType> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

@@ -11,18 +11,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceHubspotOAuth {
-
     /**
-     * The Client ID of your HubSpot developer application. See the &lt;a href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart"&gt;Hubspot docs&lt;/a&gt; if you need help finding this ID.
+     * The Client ID of your HubSpot developer application. See the <a
+     * href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart">Hubspot docs</a> if you
+     * need help finding this ID.
      */
     @JsonProperty("client_id")
     private String clientId;
 
     /**
-     * The client secret for your HubSpot developer application. See the &lt;a href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart"&gt;Hubspot docs&lt;/a&gt; if you need help finding this secret.
+     * The client secret for your HubSpot developer application. See the <a
+     * href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart">Hubspot docs</a> if you
+     * need help finding this secret.
      */
     @JsonProperty("client_secret")
     private String clientSecret;
@@ -34,7 +37,9 @@ public class SourceHubspotOAuth {
     private SourceHubspotAuthType credentialsTitle;
 
     /**
-     * Refresh token to renew an expired access token. See the &lt;a href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart"&gt;Hubspot docs&lt;/a&gt; if you need help finding this token.
+     * Refresh token to renew an expired access token. See the <a
+     * href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart">Hubspot docs</a> if you
+     * need help finding this token.
      */
     @JsonProperty("refresh_token")
     private String refreshToken;
@@ -54,7 +59,9 @@ public class SourceHubspotOAuth {
     }
 
     /**
-     * The Client ID of your HubSpot developer application. See the &lt;a href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart"&gt;Hubspot docs&lt;/a&gt; if you need help finding this ID.
+     * The Client ID of your HubSpot developer application. See the <a
+     * href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart">Hubspot docs</a> if you
+     * need help finding this ID.
      */
     @JsonIgnore
     public String clientId() {
@@ -62,7 +69,9 @@ public class SourceHubspotOAuth {
     }
 
     /**
-     * The client secret for your HubSpot developer application. See the &lt;a href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart"&gt;Hubspot docs&lt;/a&gt; if you need help finding this secret.
+     * The client secret for your HubSpot developer application. See the <a
+     * href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart">Hubspot docs</a> if you
+     * need help finding this secret.
      */
     @JsonIgnore
     public String clientSecret() {
@@ -78,19 +87,24 @@ public class SourceHubspotOAuth {
     }
 
     /**
-     * Refresh token to renew an expired access token. See the &lt;a href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart"&gt;Hubspot docs&lt;/a&gt; if you need help finding this token.
+     * Refresh token to renew an expired access token. See the <a
+     * href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart">Hubspot docs</a> if you
+     * need help finding this token.
      */
     @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The Client ID of your HubSpot developer application. See the &lt;a href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart"&gt;Hubspot docs&lt;/a&gt; if you need help finding this ID.
+     * The Client ID of your HubSpot developer application. See the <a
+     * href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart">Hubspot docs</a> if you
+     * need help finding this ID.
      */
     public SourceHubspotOAuth withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -99,7 +113,9 @@ public class SourceHubspotOAuth {
     }
 
     /**
-     * The client secret for your HubSpot developer application. See the &lt;a href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart"&gt;Hubspot docs&lt;/a&gt; if you need help finding this secret.
+     * The client secret for your HubSpot developer application. See the <a
+     * href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart">Hubspot docs</a> if you
+     * need help finding this secret.
      */
     public SourceHubspotOAuth withClientSecret(String clientSecret) {
         Utils.checkNotNull(clientSecret, "clientSecret");
@@ -108,7 +124,9 @@ public class SourceHubspotOAuth {
     }
 
     /**
-     * Refresh token to renew an expired access token. See the &lt;a href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart"&gt;Hubspot docs&lt;/a&gt; if you need help finding this token.
+     * Refresh token to renew an expired access token. See the <a
+     * href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart">Hubspot docs</a> if you
+     * need help finding this token.
      */
     public SourceHubspotOAuth withRefreshToken(String refreshToken) {
         Utils.checkNotNull(refreshToken, "refreshToken");
@@ -116,7 +134,6 @@ public class SourceHubspotOAuth {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -127,18 +144,16 @@ public class SourceHubspotOAuth {
         }
         SourceHubspotOAuth other = (SourceHubspotOAuth) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.credentialsTitle, other.credentialsTitle) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.credentialsTitle, other.credentialsTitle) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            credentialsTitle,
+        return Utils.enhancedHash(
+            clientId, clientSecret, credentialsTitle,
             refreshToken);
     }
     
@@ -150,21 +165,25 @@ public class SourceHubspotOAuth {
                 "credentialsTitle", credentialsTitle,
                 "refreshToken", refreshToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String refreshToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The Client ID of your HubSpot developer application. See the &lt;a href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart"&gt;Hubspot docs&lt;/a&gt; if you need help finding this ID.
+         * The Client ID of your HubSpot developer application. See the <a
+         * href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart">Hubspot docs</a> if you
+         * need help finding this ID.
          */
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -172,8 +191,11 @@ public class SourceHubspotOAuth {
             return this;
         }
 
+
         /**
-         * The client secret for your HubSpot developer application. See the &lt;a href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart"&gt;Hubspot docs&lt;/a&gt; if you need help finding this secret.
+         * The client secret for your HubSpot developer application. See the <a
+         * href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart">Hubspot docs</a> if you
+         * need help finding this secret.
          */
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
@@ -181,21 +203,24 @@ public class SourceHubspotOAuth {
             return this;
         }
 
+
         /**
-         * Refresh token to renew an expired access token. See the &lt;a href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart"&gt;Hubspot docs&lt;/a&gt; if you need help finding this token.
+         * Refresh token to renew an expired access token. See the <a
+         * href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart">Hubspot docs</a> if you
+         * need help finding this token.
          */
         public Builder refreshToken(String refreshToken) {
             Utils.checkNotNull(refreshToken, "refreshToken");
             this.refreshToken = refreshToken;
             return this;
         }
-        
+
         public SourceHubspotOAuth build() {
+
             return new SourceHubspotOAuth(
-                clientId,
-                clientSecret,
-                refreshToken);
+                clientId, clientSecret, refreshToken);
         }
+
 
         private static final LazySingletonValue<SourceHubspotAuthType> _SINGLETON_VALUE_CredentialsTitle =
                 new LazySingletonValue<>(

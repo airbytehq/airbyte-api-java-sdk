@@ -10,15 +10,17 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class UpdateDestinationDefinitionRequest {
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private UpdateDefinitionRequest updateDefinitionRequest;
 
+
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=definitionId")
     private String definitionId;
+
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspaceId")
     private String workspaceId;
@@ -51,9 +53,10 @@ public class UpdateDestinationDefinitionRequest {
         return workspaceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public UpdateDestinationDefinitionRequest withUpdateDefinitionRequest(UpdateDefinitionRequest updateDefinitionRequest) {
         Utils.checkNotNull(updateDefinitionRequest, "updateDefinitionRequest");
@@ -73,7 +76,6 @@ public class UpdateDestinationDefinitionRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -84,17 +86,15 @@ public class UpdateDestinationDefinitionRequest {
         }
         UpdateDestinationDefinitionRequest other = (UpdateDestinationDefinitionRequest) o;
         return 
-            Objects.deepEquals(this.updateDefinitionRequest, other.updateDefinitionRequest) &&
-            Objects.deepEquals(this.definitionId, other.definitionId) &&
-            Objects.deepEquals(this.workspaceId, other.workspaceId);
+            Utils.enhancedDeepEquals(this.updateDefinitionRequest, other.updateDefinitionRequest) &&
+            Utils.enhancedDeepEquals(this.definitionId, other.definitionId) &&
+            Utils.enhancedDeepEquals(this.workspaceId, other.workspaceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            updateDefinitionRequest,
-            definitionId,
-            workspaceId);
+        return Utils.enhancedHash(
+            updateDefinitionRequest, definitionId, workspaceId);
     }
     
     @Override
@@ -104,18 +104,20 @@ public class UpdateDestinationDefinitionRequest {
                 "definitionId", definitionId,
                 "workspaceId", workspaceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private UpdateDefinitionRequest updateDefinitionRequest;
- 
+
         private String definitionId;
- 
+
         private String workspaceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder updateDefinitionRequest(UpdateDefinitionRequest updateDefinitionRequest) {
             Utils.checkNotNull(updateDefinitionRequest, "updateDefinitionRequest");
@@ -123,23 +125,25 @@ public class UpdateDestinationDefinitionRequest {
             return this;
         }
 
+
         public Builder definitionId(String definitionId) {
             Utils.checkNotNull(definitionId, "definitionId");
             this.definitionId = definitionId;
             return this;
         }
 
+
         public Builder workspaceId(String workspaceId) {
             Utils.checkNotNull(workspaceId, "workspaceId");
             this.workspaceId = workspaceId;
             return this;
         }
-        
+
         public UpdateDestinationDefinitionRequest build() {
+
             return new UpdateDestinationDefinitionRequest(
-                updateDefinitionRequest,
-                definitionId,
-                workspaceId);
+                updateDefinitionRequest, definitionId, workspaceId);
         }
+
     }
 }

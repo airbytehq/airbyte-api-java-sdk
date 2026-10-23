@@ -1,5 +1,13 @@
 # ClarifAi
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.ClarifAi;
+
+ClarifAi value = ClarifAi.CLARIF_AI;
+```
+
 
 ## Values
 

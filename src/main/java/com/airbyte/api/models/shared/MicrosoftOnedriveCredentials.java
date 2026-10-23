@@ -11,11 +11,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class MicrosoftOnedriveCredentials {
 
+public class MicrosoftOnedriveCredentials {
     /**
      * Client ID of your Microsoft developer application
      */
@@ -60,9 +59,10 @@ public class MicrosoftOnedriveCredentials {
         return clientSecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Client ID of your Microsoft developer application
@@ -72,6 +72,7 @@ public class MicrosoftOnedriveCredentials {
         this.clientId = Optional.ofNullable(clientId);
         return this;
     }
+
 
     /**
      * Client ID of your Microsoft developer application
@@ -91,6 +92,7 @@ public class MicrosoftOnedriveCredentials {
         return this;
     }
 
+
     /**
      * Client Secret of your Microsoft developer application
      */
@@ -100,7 +102,6 @@ public class MicrosoftOnedriveCredentials {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -111,15 +112,14 @@ public class MicrosoftOnedriveCredentials {
         }
         MicrosoftOnedriveCredentials other = (MicrosoftOnedriveCredentials) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret);
+        return Utils.enhancedHash(
+            clientId, clientSecret);
     }
     
     @Override
@@ -128,16 +128,18 @@ public class MicrosoftOnedriveCredentials {
                 "clientId", clientId,
                 "clientSecret", clientSecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> clientId = Optional.empty();
- 
+
         private Optional<String> clientSecret = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Client ID of your Microsoft developer application
@@ -157,6 +159,7 @@ public class MicrosoftOnedriveCredentials {
             return this;
         }
 
+
         /**
          * Client Secret of your Microsoft developer application
          */
@@ -174,11 +177,12 @@ public class MicrosoftOnedriveCredentials {
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public MicrosoftOnedriveCredentials build() {
+
             return new MicrosoftOnedriveCredentials(
-                clientId,
-                clientSecret);
+                clientId, clientSecret);
         }
+
     }
 }

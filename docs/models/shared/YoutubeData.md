@@ -1,5 +1,13 @@
 # YoutubeData
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.YoutubeData;
+
+YoutubeData value = YoutubeData.YOUTUBE_DATA;
+```
+
 
 ## Values
 

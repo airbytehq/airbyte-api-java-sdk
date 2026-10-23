@@ -22,7 +22,7 @@ public enum SortBy {
     @JsonValue
     private final String value;
 
-    private SortBy(String value) {
+    SortBy(String value) {
         this.value = value;
     }
     

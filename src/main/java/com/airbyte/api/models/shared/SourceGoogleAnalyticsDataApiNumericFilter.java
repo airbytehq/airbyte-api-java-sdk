@@ -12,15 +12,17 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
-import java.util.Objects;
+
 
 public class SourceGoogleAnalyticsDataApiNumericFilter {
 
     @JsonProperty("filter_name")
     private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter4FilterName filterName;
 
+
     @JsonProperty("operation")
     private List<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterValidEnums> operation;
+
 
     @JsonProperty("value")
     private SourceGoogleAnalyticsDataApiValue value;
@@ -51,9 +53,10 @@ public class SourceGoogleAnalyticsDataApiNumericFilter {
         return value;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceGoogleAnalyticsDataApiNumericFilter withOperation(List<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterValidEnums> operation) {
         Utils.checkNotNull(operation, "operation");
@@ -67,7 +70,6 @@ public class SourceGoogleAnalyticsDataApiNumericFilter {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,17 +80,15 @@ public class SourceGoogleAnalyticsDataApiNumericFilter {
         }
         SourceGoogleAnalyticsDataApiNumericFilter other = (SourceGoogleAnalyticsDataApiNumericFilter) o;
         return 
-            Objects.deepEquals(this.filterName, other.filterName) &&
-            Objects.deepEquals(this.operation, other.operation) &&
-            Objects.deepEquals(this.value, other.value);
+            Utils.enhancedDeepEquals(this.filterName, other.filterName) &&
+            Utils.enhancedDeepEquals(this.operation, other.operation) &&
+            Utils.enhancedDeepEquals(this.value, other.value);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            filterName,
-            operation,
-            value);
+        return Utils.enhancedHash(
+            filterName, operation, value);
     }
     
     @Override
@@ -98,16 +98,18 @@ public class SourceGoogleAnalyticsDataApiNumericFilter {
                 "operation", operation,
                 "value", value);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private List<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterValidEnums> operation;
- 
+
         private SourceGoogleAnalyticsDataApiValue value;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder operation(List<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterValidEnums> operation) {
             Utils.checkNotNull(operation, "operation");
@@ -115,17 +117,19 @@ public class SourceGoogleAnalyticsDataApiNumericFilter {
             return this;
         }
 
+
         public Builder value(SourceGoogleAnalyticsDataApiValue value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
             return this;
         }
-        
+
         public SourceGoogleAnalyticsDataApiNumericFilter build() {
+
             return new SourceGoogleAnalyticsDataApiNumericFilter(
-                operation,
-                value);
+                operation, value);
         }
+
 
         private static final LazySingletonValue<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter4FilterName> _SINGLETON_VALUE_FilterName =
                 new LazySingletonValue<>(

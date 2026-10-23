@@ -12,12 +12,13 @@ public enum StreamMapperType {
     HASHING("hashing"),
     FIELD_RENAMING("field-renaming"),
     ROW_FILTERING("row-filtering"),
-    ENCRYPTION("encryption");
+    ENCRYPTION("encryption"),
+    FIELD_FILTERING("field-filtering");
 
     @JsonValue
     private final String value;
 
-    private StreamMapperType(String value) {
+    StreamMapperType(String value) {
         this.value = value;
     }
     

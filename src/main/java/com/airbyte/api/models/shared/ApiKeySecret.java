@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 /**
  * ApiKeySecret
@@ -19,7 +18,6 @@ import java.util.Objects;
  * <p>Use a api key and secret combination to authenticate
  */
 public class ApiKeySecret {
-
     /**
      * The Key ID to used when accessing an enterprise Elasticsearch instance.
      */
@@ -31,6 +29,7 @@ public class ApiKeySecret {
      */
     @JsonProperty("apiKeySecret")
     private String apiKeySecret;
+
 
     @JsonProperty("method")
     private DestinationElasticsearchSchemasMethod method;
@@ -67,9 +66,10 @@ public class ApiKeySecret {
         return method;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Key ID to used when accessing an enterprise Elasticsearch instance.
@@ -89,7 +89,6 @@ public class ApiKeySecret {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,17 +99,15 @@ public class ApiKeySecret {
         }
         ApiKeySecret other = (ApiKeySecret) o;
         return 
-            Objects.deepEquals(this.apiKeyId, other.apiKeyId) &&
-            Objects.deepEquals(this.apiKeySecret, other.apiKeySecret) &&
-            Objects.deepEquals(this.method, other.method);
+            Utils.enhancedDeepEquals(this.apiKeyId, other.apiKeyId) &&
+            Utils.enhancedDeepEquals(this.apiKeySecret, other.apiKeySecret) &&
+            Utils.enhancedDeepEquals(this.method, other.method);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKeyId,
-            apiKeySecret,
-            method);
+        return Utils.enhancedHash(
+            apiKeyId, apiKeySecret, method);
     }
     
     @Override
@@ -120,16 +117,18 @@ public class ApiKeySecret {
                 "apiKeySecret", apiKeySecret,
                 "method", method);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKeyId;
- 
+
         private String apiKeySecret;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Key ID to used when accessing an enterprise Elasticsearch instance.
@@ -140,6 +139,7 @@ public class ApiKeySecret {
             return this;
         }
 
+
         /**
          * The secret associated with the API Key ID.
          */
@@ -148,12 +148,13 @@ public class ApiKeySecret {
             this.apiKeySecret = apiKeySecret;
             return this;
         }
-        
+
         public ApiKeySecret build() {
+
             return new ApiKeySecret(
-                apiKeyId,
-                apiKeySecret);
+                apiKeyId, apiKeySecret);
         }
+
 
         private static final LazySingletonValue<DestinationElasticsearchSchemasMethod> _SINGLETON_VALUE_Method =
                 new LazySingletonValue<>(

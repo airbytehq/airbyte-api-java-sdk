@@ -1,5 +1,4 @@
 # Workspaces
-(*workspaces()*)
 
 ## Overview
 
@@ -8,6 +7,7 @@
 * [createOrUpdateWorkspaceOAuthCredentials](#createorupdateworkspaceoauthcredentials) - Create OAuth override credentials for a workspace and source type.
 * [createWorkspace](#createworkspace) - Create a workspace
 * [deleteWorkspace](#deleteworkspace) - Delete a Workspace
+* [deleteWorkspaceOAuthCredentials](#deleteworkspaceoauthcredentials) - Delete OAuth override credentials for a workspace and source/destination type.
 * [getWorkspace](#getworkspace) - Get Workspace details
 * [listWorkspaces](#listworkspaces) - List workspaces
 * [updateWorkspace](#updateworkspace) - Update a workspace
@@ -19,6 +19,7 @@ In order to determine what the credential configuration needs to be, please see 
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="createOrUpdateWorkspaceOAuthCredentials" method="put" path="/workspaces/{workspaceId}/oauthCredentials" -->
 ```java
 package hello.world;
 
@@ -45,9 +46,9 @@ public class Application {
         CreateOrUpdateWorkspaceOAuthCredentialsRequest req = CreateOrUpdateWorkspaceOAuthCredentialsRequest.builder()
                 .workspaceOAuthCredentialsRequest(WorkspaceOAuthCredentialsRequest.builder()
                     .actorType(ActorTypeEnum.DESTINATION)
-                    .configuration(OAuthCredentialsConfiguration.of(Map.ofEntries(
-                        Map.entry("user", "charles"))))
-                    .name(OAuthActorNames.AIRTABLE)
+                    .configuration(Map.ofEntries(
+                    ))
+                    .name(OAuthActorNames.TRELLO)
                     .build())
                 .workspaceId("<value>")
                 .build();
@@ -81,8 +82,9 @@ public class Application {
 
 Create a workspace
 
-### Example Usage
+### Example Usage: Workspace Creation Request Example
 
+<!-- UsageSnippet language="java" operationID="createWorkspace" method="post" path="/workspaces" example="Workspace Creation Request Example" -->
 ```java
 package hello.world;
 
@@ -113,7 +115,45 @@ public class Application {
                 .call();
 
         if (res.workspaceResponse().isPresent()) {
-            // handle response
+            System.out.println(res.workspaceResponse().get());
+        }
+    }
+}
+```
+### Example Usage: Workspace Creation Response Example
+
+<!-- UsageSnippet language="java" operationID="createWorkspace" method="post" path="/workspaces" example="Workspace Creation Response Example" -->
+```java
+package hello.world;
+
+import com.airbyte.api.Airbyte;
+import com.airbyte.api.models.operations.CreateWorkspaceResponse;
+import com.airbyte.api.models.shared.*;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        Airbyte sdk = Airbyte.builder()
+                .security(Security.builder()
+                    .basicAuth(SchemeBasicAuth.builder()
+                        .password("")
+                        .username("")
+                        .build())
+                    .build())
+            .build();
+
+        WorkspaceCreateRequest req = WorkspaceCreateRequest.builder()
+                .name("<value>")
+                .build();
+
+        CreateWorkspaceResponse res = sdk.workspaces().createWorkspace()
+                .request(req)
+                .call();
+
+        if (res.workspaceResponse().isPresent()) {
+            System.out.println(res.workspaceResponse().get());
         }
     }
 }
@@ -141,6 +181,7 @@ Delete a Workspace
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="deleteWorkspace" method="delete" path="/workspaces/{workspaceId}" -->
 ```java
 package hello.world;
 
@@ -193,12 +234,77 @@ public class Application {
 | ---------------------- | ---------------------- | ---------------------- |
 | models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
+## deleteWorkspaceOAuthCredentials
+
+Delete a set of OAuth credentials that overrides the Airbyte-provided OAuth credentials used for source/destination OAuth.
+
+> 🚧 Warning
+>
+> Deleting an override that is actively used by existing sources or destinations will cause those connectors to fail on their next sync and require re-authentication.
+
+### Example Usage
+
+<!-- UsageSnippet language="java" operationID="deleteWorkspaceOAuthCredentials" method="delete" path="/workspaces/{workspaceId}/oauthCredentials/{actorType}/{name}" -->
+```java
+package hello.world;
+
+import com.airbyte.api.Airbyte;
+import com.airbyte.api.models.operations.DeleteWorkspaceOAuthCredentialsRequest;
+import com.airbyte.api.models.operations.DeleteWorkspaceOAuthCredentialsResponse;
+import com.airbyte.api.models.shared.*;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        Airbyte sdk = Airbyte.builder()
+                .security(Security.builder()
+                    .basicAuth(SchemeBasicAuth.builder()
+                        .password("")
+                        .username("")
+                        .build())
+                    .build())
+            .build();
+
+        DeleteWorkspaceOAuthCredentialsRequest req = DeleteWorkspaceOAuthCredentialsRequest.builder()
+                .actorType(ActorTypeEnum.SOURCE)
+                .name("<value>")
+                .workspaceId("<value>")
+                .build();
+
+        DeleteWorkspaceOAuthCredentialsResponse res = sdk.workspaces().deleteWorkspaceOAuthCredentials()
+                .request(req)
+                .call();
+
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                   | [DeleteWorkspaceOAuthCredentialsRequest](../../models/operations/DeleteWorkspaceOAuthCredentialsRequest.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
+
+### Response
+
+**[DeleteWorkspaceOAuthCredentialsResponse](../../models/operations/DeleteWorkspaceOAuthCredentialsResponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
 ## getWorkspace
 
 Get Workspace details
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="getWorkspace" method="get" path="/workspaces/{workspaceId}" example="Workspace Get Response Example" -->
 ```java
 package hello.world;
 
@@ -231,7 +337,7 @@ public class Application {
                 .call();
 
         if (res.workspaceResponse().isPresent()) {
-            // handle response
+            System.out.println(res.workspaceResponse().get());
         }
     }
 }
@@ -259,6 +365,7 @@ List workspaces
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="listWorkspaces" method="get" path="/workspaces" -->
 ```java
 package hello.world;
 
@@ -290,7 +397,7 @@ public class Application {
                 .call();
 
         if (res.workspacesResponse().isPresent()) {
-            // handle response
+            System.out.println(res.workspacesResponse().get());
         }
     }
 }
@@ -316,8 +423,9 @@ public class Application {
 
 Update a workspace
 
-### Example Usage
+### Example Usage: Workspace Update Request Example
 
+<!-- UsageSnippet language="java" operationID="updateWorkspace" method="patch" path="/workspaces/{workspaceId}" example="Workspace Update Request Example" -->
 ```java
 package hello.world;
 
@@ -352,7 +460,48 @@ public class Application {
                 .call();
 
         if (res.workspaceResponse().isPresent()) {
-            // handle response
+            System.out.println(res.workspaceResponse().get());
+        }
+    }
+}
+```
+### Example Usage: Workspace Update Response Example
+
+<!-- UsageSnippet language="java" operationID="updateWorkspace" method="patch" path="/workspaces/{workspaceId}" example="Workspace Update Response Example" -->
+```java
+package hello.world;
+
+import com.airbyte.api.Airbyte;
+import com.airbyte.api.models.operations.UpdateWorkspaceRequest;
+import com.airbyte.api.models.operations.UpdateWorkspaceResponse;
+import com.airbyte.api.models.shared.*;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        Airbyte sdk = Airbyte.builder()
+                .security(Security.builder()
+                    .basicAuth(SchemeBasicAuth.builder()
+                        .password("")
+                        .username("")
+                        .build())
+                    .build())
+            .build();
+
+        UpdateWorkspaceRequest req = UpdateWorkspaceRequest.builder()
+                .workspaceUpdateRequest(WorkspaceUpdateRequest.builder()
+                    .build())
+                .workspaceId("<value>")
+                .build();
+
+        UpdateWorkspaceResponse res = sdk.workspaces().updateWorkspace()
+                .request(req)
+                .call();
+
+        if (res.workspaceResponse().isPresent()) {
+            System.out.println(res.workspaceResponse().get());
         }
     }
 }

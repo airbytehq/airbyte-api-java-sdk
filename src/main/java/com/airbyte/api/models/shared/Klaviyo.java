@@ -14,7 +14,7 @@ public enum Klaviyo {
     @JsonValue
     private final String value;
 
-    private Klaviyo(String value) {
+    Klaviyo(String value) {
         this.value = value;
     }
     

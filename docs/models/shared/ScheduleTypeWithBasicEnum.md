@@ -1,5 +1,13 @@
 # ScheduleTypeWithBasicEnum
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.ScheduleTypeWithBasicEnum;
+
+ScheduleTypeWithBasicEnum value = ScheduleTypeWithBasicEnum.MANUAL;
+```
+
 
 ## Values
 

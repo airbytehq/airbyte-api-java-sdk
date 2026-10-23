@@ -21,7 +21,7 @@ public enum SourcePhylloEnvironment {
     @JsonValue
     private final String value;
 
-    private SourcePhylloEnvironment(String value) {
+    SourcePhylloEnvironment(String value) {
         this.value = value;
     }
     

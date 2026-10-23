@@ -14,7 +14,7 @@ public enum SourceSapHanaEnterpriseSchemasEncryptionMethod {
     @JsonValue
     private final String value;
 
-    private SourceSapHanaEnterpriseSchemasEncryptionMethod(String value) {
+    SourceSapHanaEnterpriseSchemasEncryptionMethod(String value) {
         this.value = value;
     }
     

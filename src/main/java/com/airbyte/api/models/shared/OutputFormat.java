@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * OutputFormat
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class OutputFormat {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private OutputFormat(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class OutputFormat {
 
     public static OutputFormat of(CSVCommaSeparatedValues value) {
         Utils.checkNotNull(value, "value");
-        return new OutputFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<CSVCommaSeparatedValues>(){}));
+        return new OutputFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static OutputFormat of(DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON value) {
         Utils.checkNotNull(value, "value");
-        return new OutputFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON>(){}));
+        return new OutputFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class OutputFormat {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class OutputFormat {
             return false;
         }
         OutputFormat other = (OutputFormat) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,8 +84,8 @@ public class OutputFormat {
 
         public _Deserializer() {
             super(OutputFormat.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<CSVCommaSeparatedValues>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<CSVCommaSeparatedValues>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -95,6 +94,6 @@ public class OutputFormat {
         return Utils.toString(OutputFormat.class,
                 "value", value);
     }
- 
+
 }
 

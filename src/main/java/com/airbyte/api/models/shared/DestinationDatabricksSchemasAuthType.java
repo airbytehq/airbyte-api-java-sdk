@@ -9,12 +9,12 @@ import java.util.Objects;
 import java.util.Optional;
 
 public enum DestinationDatabricksSchemasAuthType {
-    BASIC("BASIC");
+    OAUTH("OAUTH");
 
     @JsonValue
     private final String value;
 
-    private DestinationDatabricksSchemasAuthType(String value) {
+    DestinationDatabricksSchemasAuthType(String value) {
         this.value = value;
     }
     

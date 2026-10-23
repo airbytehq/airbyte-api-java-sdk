@@ -1,5 +1,13 @@
 # SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayValidEnums
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayValidEnums;
+
+SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayValidEnums value = SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayValidEnums.MATCH_TYPE_UNSPECIFIED;
+```
+
 
 ## Values
 

@@ -14,7 +14,7 @@ public enum ZonkaFeedback {
     @JsonValue
     private final String value;
 
-    private ZonkaFeedback(String value) {
+    ZonkaFeedback(String value) {
         this.value = value;
     }
     

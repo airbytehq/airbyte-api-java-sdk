@@ -14,7 +14,7 @@ public enum DestinationMilvusSchemasIndexingAuthAuthenticationMode {
     @JsonValue
     private final String value;
 
-    private DestinationMilvusSchemasIndexingAuthAuthenticationMode(String value) {
+    DestinationMilvusSchemasIndexingAuthAuthenticationMode(String value) {
         this.value = value;
     }
     

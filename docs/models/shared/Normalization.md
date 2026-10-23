@@ -2,6 +2,14 @@
 
 Whether the input JSON data should be normalized (flattened) in the output CSV. Please refer to docs for details.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.Normalization;
+
+Normalization value = Normalization.NO_FLATTENING;
+```
+
 
 ## Values
 

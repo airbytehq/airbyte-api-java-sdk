@@ -14,7 +14,7 @@ public enum GoogleTasks {
     @JsonValue
     private final String value;
 
-    private GoogleTasks(String value) {
+    GoogleTasks(String value) {
         this.value = value;
     }
     

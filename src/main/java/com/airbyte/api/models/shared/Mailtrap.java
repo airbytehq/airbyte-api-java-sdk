@@ -14,7 +14,7 @@ public enum Mailtrap {
     @JsonValue
     private final String value;
 
-    private Mailtrap(String value) {
+    Mailtrap(String value) {
         this.value = value;
     }
     

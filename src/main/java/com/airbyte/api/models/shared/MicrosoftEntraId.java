@@ -14,7 +14,7 @@ public enum MicrosoftEntraId {
     @JsonValue
     private final String value;
 
-    private MicrosoftEntraId(String value) {
+    MicrosoftEntraId(String value) {
         this.value = value;
     }
     

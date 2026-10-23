@@ -14,18 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationGcsCompression
  * 
- * <p>Whether the output files should be compressed. If compression is selected, the output filename will have an extra extension (GZIP: ".jsonl.gz").
+ * <p>Whether the output files should be compressed. If compression is selected, the output filename will
+ * have an extra extension (GZIP: ".jsonl.gz").
  */
 @JsonDeserialize(using = DestinationGcsCompression._Deserializer.class)
 public class DestinationGcsCompression {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationGcsCompression(TypedObject value) {
         this.value = value;
@@ -33,12 +33,12 @@ public class DestinationGcsCompression {
 
     public static DestinationGcsCompression of(DestinationGcsSchemasNoCompression value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationGcsCompression(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationGcsSchemasNoCompression>(){}));
+        return new DestinationGcsCompression(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationGcsCompression of(DestinationGcsGZIP value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationGcsCompression(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationGcsGZIP>(){}));
+        return new DestinationGcsCompression(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +61,7 @@ public class DestinationGcsCompression {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +72,12 @@ public class DestinationGcsCompression {
             return false;
         }
         DestinationGcsCompression other = (DestinationGcsCompression) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,8 +85,8 @@ public class DestinationGcsCompression {
 
         public _Deserializer() {
             super(DestinationGcsCompression.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DestinationGcsGZIP>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationGcsSchemasNoCompression>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationGcsSchemasNoCompression>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationGcsGZIP>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -95,6 +95,6 @@ public class DestinationGcsCompression {
         return Utils.toString(DestinationGcsCompression.class,
                 "value", value);
     }
- 
+
 }
 

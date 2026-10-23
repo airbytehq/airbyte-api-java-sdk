@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceOutbrainAmplifyAuthenticationMethod
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class SourceOutbrainAmplifyAuthenticationMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceOutbrainAmplifyAuthenticationMethod(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class SourceOutbrainAmplifyAuthenticationMethod {
 
     public static SourceOutbrainAmplifyAuthenticationMethod of(SourceOutbrainAmplifyAccessToken value) {
         Utils.checkNotNull(value, "value");
-        return new SourceOutbrainAmplifyAuthenticationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOutbrainAmplifyAccessToken>(){}));
+        return new SourceOutbrainAmplifyAuthenticationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceOutbrainAmplifyAuthenticationMethod of(SourceOutbrainAmplifyUsernamePassword value) {
         Utils.checkNotNull(value, "value");
-        return new SourceOutbrainAmplifyAuthenticationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOutbrainAmplifyUsernamePassword>(){}));
+        return new SourceOutbrainAmplifyAuthenticationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class SourceOutbrainAmplifyAuthenticationMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class SourceOutbrainAmplifyAuthenticationMethod {
             return false;
         }
         SourceOutbrainAmplifyAuthenticationMethod other = (SourceOutbrainAmplifyAuthenticationMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,8 +84,8 @@ public class SourceOutbrainAmplifyAuthenticationMethod {
 
         public _Deserializer() {
             super(SourceOutbrainAmplifyAuthenticationMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceOutbrainAmplifyUsernamePassword>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceOutbrainAmplifyAccessToken>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceOutbrainAmplifyAccessToken>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceOutbrainAmplifyUsernamePassword>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -95,6 +94,6 @@ public class SourceOutbrainAmplifyAuthenticationMethod {
         return Utils.toString(SourceOutbrainAmplifyAuthenticationMethod.class,
                 "value", value);
     }
- 
+
 }
 

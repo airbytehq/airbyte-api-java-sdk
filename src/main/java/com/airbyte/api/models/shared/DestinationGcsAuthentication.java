@@ -14,18 +14,19 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationGcsAuthentication
  * 
- * <p>An HMAC key is a type of credential and can be associated with a service account or a user account in Cloud Storage. Read more &lt;a href="https://cloud.google.com/storage/docs/authentication/hmackeys"&gt;here&lt;/a&gt;.
+ * <p>An HMAC key is a type of credential and can be associated with a service account or a user account
+ * in Cloud Storage. Read more <a
+ * href="https://cloud.google.com/storage/docs/authentication/hmackeys">here</a>.
  */
 @JsonDeserialize(using = DestinationGcsAuthentication._Deserializer.class)
 public class DestinationGcsAuthentication {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationGcsAuthentication(TypedObject value) {
         this.value = value;
@@ -33,7 +34,7 @@ public class DestinationGcsAuthentication {
 
     public static DestinationGcsAuthentication of(HMACKey value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationGcsAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<HMACKey>(){}));
+        return new DestinationGcsAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -55,7 +56,7 @@ public class DestinationGcsAuthentication {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -66,12 +67,12 @@ public class DestinationGcsAuthentication {
             return false;
         }
         DestinationGcsAuthentication other = (DestinationGcsAuthentication) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -88,6 +89,6 @@ public class DestinationGcsAuthentication {
         return Utils.toString(DestinationGcsAuthentication.class,
                 "value", value);
     }
- 
+
 }
 

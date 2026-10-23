@@ -12,15 +12,17 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceLeadfeeder {
 
     @JsonProperty("api_token")
     private String apiToken;
 
+
     @JsonProperty("sourceType")
     private Leadfeeder sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -51,9 +53,10 @@ public class SourceLeadfeeder {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceLeadfeeder withApiToken(String apiToken) {
         Utils.checkNotNull(apiToken, "apiToken");
@@ -67,7 +70,6 @@ public class SourceLeadfeeder {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,17 +80,15 @@ public class SourceLeadfeeder {
         }
         SourceLeadfeeder other = (SourceLeadfeeder) o;
         return 
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiToken,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiToken, sourceType, startDate);
     }
     
     @Override
@@ -98,16 +98,18 @@ public class SourceLeadfeeder {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiToken;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiToken(String apiToken) {
             Utils.checkNotNull(apiToken, "apiToken");
@@ -115,17 +117,19 @@ public class SourceLeadfeeder {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceLeadfeeder build() {
+
             return new SourceLeadfeeder(
-                apiToken,
-                startDate);
+                apiToken, startDate);
         }
+
 
         private static final LazySingletonValue<Leadfeeder> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

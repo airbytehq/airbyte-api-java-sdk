@@ -2,6 +2,14 @@
 
 Amplitude data region server
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DataRegion;
+
+DataRegion value = DataRegion.STANDARD_SERVER;
+```
+
 
 ## Values
 

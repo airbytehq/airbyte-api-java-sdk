@@ -11,11 +11,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class TiktokMarketingCredentials {
 
+public class TiktokMarketingCredentials {
     /**
      * The Developer Application App ID.
      */
@@ -60,9 +59,10 @@ public class TiktokMarketingCredentials {
         return secret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Developer Application App ID.
@@ -72,6 +72,7 @@ public class TiktokMarketingCredentials {
         this.appId = Optional.ofNullable(appId);
         return this;
     }
+
 
     /**
      * The Developer Application App ID.
@@ -91,6 +92,7 @@ public class TiktokMarketingCredentials {
         return this;
     }
 
+
     /**
      * The Developer Application Secret.
      */
@@ -100,7 +102,6 @@ public class TiktokMarketingCredentials {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -111,15 +112,14 @@ public class TiktokMarketingCredentials {
         }
         TiktokMarketingCredentials other = (TiktokMarketingCredentials) o;
         return 
-            Objects.deepEquals(this.appId, other.appId) &&
-            Objects.deepEquals(this.secret, other.secret);
+            Utils.enhancedDeepEquals(this.appId, other.appId) &&
+            Utils.enhancedDeepEquals(this.secret, other.secret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            appId,
-            secret);
+        return Utils.enhancedHash(
+            appId, secret);
     }
     
     @Override
@@ -128,16 +128,18 @@ public class TiktokMarketingCredentials {
                 "appId", appId,
                 "secret", secret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> appId = Optional.empty();
- 
+
         private Optional<String> secret = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Developer Application App ID.
@@ -157,6 +159,7 @@ public class TiktokMarketingCredentials {
             return this;
         }
 
+
         /**
          * The Developer Application Secret.
          */
@@ -174,11 +177,12 @@ public class TiktokMarketingCredentials {
             this.secret = secret;
             return this;
         }
-        
+
         public TiktokMarketingCredentials build() {
+
             return new TiktokMarketingCredentials(
-                appId,
-                secret);
+                appId, secret);
         }
+
     }
 }

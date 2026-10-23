@@ -14,16 +14,16 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class MongoDBAtlas {
 
+public class MongoDBAtlas {
     /**
      * URL of a cluster to connect to.
      */
     @JsonProperty("cluster_url")
     private String clusterUrl;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("instance")
@@ -58,9 +58,10 @@ public class MongoDBAtlas {
         return (Optional<DestinationMongodbSchemasInstance>) instance;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * URL of a cluster to connect to.
@@ -77,13 +78,13 @@ public class MongoDBAtlas {
         return this;
     }
 
+
     public MongoDBAtlas withInstance(Optional<? extends DestinationMongodbSchemasInstance> instance) {
         Utils.checkNotNull(instance, "instance");
         this.instance = instance;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -94,15 +95,14 @@ public class MongoDBAtlas {
         }
         MongoDBAtlas other = (MongoDBAtlas) o;
         return 
-            Objects.deepEquals(this.clusterUrl, other.clusterUrl) &&
-            Objects.deepEquals(this.instance, other.instance);
+            Utils.enhancedDeepEquals(this.clusterUrl, other.clusterUrl) &&
+            Utils.enhancedDeepEquals(this.instance, other.instance);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clusterUrl,
-            instance);
+        return Utils.enhancedHash(
+            clusterUrl, instance);
     }
     
     @Override
@@ -111,16 +111,18 @@ public class MongoDBAtlas {
                 "clusterUrl", clusterUrl,
                 "instance", instance);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clusterUrl;
- 
+
         private Optional<? extends DestinationMongodbSchemasInstance> instance;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * URL of a cluster to connect to.
@@ -130,6 +132,7 @@ public class MongoDBAtlas {
             this.clusterUrl = clusterUrl;
             return this;
         }
+
 
         public Builder instance(DestinationMongodbSchemasInstance instance) {
             Utils.checkNotNull(instance, "instance");
@@ -142,15 +145,16 @@ public class MongoDBAtlas {
             this.instance = instance;
             return this;
         }
-        
+
         public MongoDBAtlas build() {
             if (instance == null) {
                 instance = _SINGLETON_VALUE_Instance.value();
             }
+
             return new MongoDBAtlas(
-                clusterUrl,
-                instance);
+                clusterUrl, instance);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationMongodbSchemasInstance>> _SINGLETON_VALUE_Instance =
                 new LazySingletonValue<>(

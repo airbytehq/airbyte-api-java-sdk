@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceDingConnect {
 
+public class SourceDingConnect {
     /**
      * Optional header to correlate HTTP requests between a client and server.
      */
@@ -27,13 +26,16 @@ public class SourceDingConnect {
     private Optional<String> xCorrelationId;
 
     /**
-     * Your API key for authenticating with the DingConnect API. You can generate this key by navigating to the Developer tab in the Account Settings section of your DingConnect account.
+     * Your API key for authenticating with the DingConnect API. You can generate this key by navigating to
+     * the Developer tab in the Account Settings section of your DingConnect account.
      */
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonProperty("sourceType")
     private DingConnect sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -67,7 +69,8 @@ public class SourceDingConnect {
     }
 
     /**
-     * Your API key for authenticating with the DingConnect API. You can generate this key by navigating to the Developer tab in the Account Settings section of your DingConnect account.
+     * Your API key for authenticating with the DingConnect API. You can generate this key by navigating to
+     * the Developer tab in the Account Settings section of your DingConnect account.
      */
     @JsonIgnore
     public String apiKey() {
@@ -84,9 +87,10 @@ public class SourceDingConnect {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Optional header to correlate HTTP requests between a client and server.
@@ -96,6 +100,7 @@ public class SourceDingConnect {
         this.xCorrelationId = Optional.ofNullable(xCorrelationId);
         return this;
     }
+
 
     /**
      * Optional header to correlate HTTP requests between a client and server.
@@ -107,7 +112,8 @@ public class SourceDingConnect {
     }
 
     /**
-     * Your API key for authenticating with the DingConnect API. You can generate this key by navigating to the Developer tab in the Account Settings section of your DingConnect account.
+     * Your API key for authenticating with the DingConnect API. You can generate this key by navigating to
+     * the Developer tab in the Account Settings section of your DingConnect account.
      */
     public SourceDingConnect withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -121,7 +127,6 @@ public class SourceDingConnect {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -132,18 +137,16 @@ public class SourceDingConnect {
         }
         SourceDingConnect other = (SourceDingConnect) o;
         return 
-            Objects.deepEquals(this.xCorrelationId, other.xCorrelationId) &&
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.xCorrelationId, other.xCorrelationId) &&
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            xCorrelationId,
-            apiKey,
-            sourceType,
+        return Utils.enhancedHash(
+            xCorrelationId, apiKey, sourceType,
             startDate);
     }
     
@@ -155,18 +158,20 @@ public class SourceDingConnect {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> xCorrelationId = Optional.empty();
- 
+
         private String apiKey;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Optional header to correlate HTTP requests between a client and server.
@@ -186,8 +191,10 @@ public class SourceDingConnect {
             return this;
         }
 
+
         /**
-         * Your API key for authenticating with the DingConnect API. You can generate this key by navigating to the Developer tab in the Account Settings section of your DingConnect account.
+         * Your API key for authenticating with the DingConnect API. You can generate this key by navigating to
+         * the Developer tab in the Account Settings section of your DingConnect account.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -195,18 +202,19 @@ public class SourceDingConnect {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceDingConnect build() {
+
             return new SourceDingConnect(
-                xCorrelationId,
-                apiKey,
-                startDate);
+                xCorrelationId, apiKey, startDate);
         }
+
 
         private static final LazySingletonValue<DingConnect> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

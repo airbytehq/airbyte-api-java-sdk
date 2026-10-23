@@ -16,16 +16,16 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * BySeparator
  * 
- * <p>Split the text by the list of separators until the chunk size is reached, using the earlier mentioned separators where possible. This is useful for splitting text fields by paragraphs, sentences, words, etc.
+ * <p>Split the text by the list of separators until the chunk size is reached, using the earlier
+ * mentioned separators where possible. This is useful for splitting text fields by paragraphs,
+ * sentences, words, etc.
  */
 public class BySeparator {
-
     /**
      * Whether to keep the separator in the resulting chunks
      */
@@ -33,12 +33,16 @@ public class BySeparator {
     @JsonProperty("keep_separator")
     private Optional<Boolean> keepSeparator;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
     private Optional<? extends DestinationAstraSchemasProcessingMode> mode;
 
     /**
-     * List of separator strings to split text fields by. The separator itself needs to be wrapped in double quotes, e.g. to split by the dot character, use ".". To split by a newline, use "\n".
+     * List of separator strings to split text fields by. The separator itself needs to be wrapped in
+     * double quotes, e.g. to split by the dot character, use ".".
+     * 
+     * <p>To split by a newline, use "\n".
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("separators")
@@ -74,7 +78,10 @@ public class BySeparator {
     }
 
     /**
-     * List of separator strings to split text fields by. The separator itself needs to be wrapped in double quotes, e.g. to split by the dot character, use ".". To split by a newline, use "\n".
+     * List of separator strings to split text fields by. The separator itself needs to be wrapped in
+     * double quotes, e.g. to split by the dot character, use ".".
+     * 
+     * <p>To split by a newline, use "\n".
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -82,9 +89,10 @@ public class BySeparator {
         return (Optional<List<String>>) separators;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Whether to keep the separator in the resulting chunks
@@ -94,6 +102,7 @@ public class BySeparator {
         this.keepSeparator = Optional.ofNullable(keepSeparator);
         return this;
     }
+
 
     /**
      * Whether to keep the separator in the resulting chunks
@@ -105,7 +114,10 @@ public class BySeparator {
     }
 
     /**
-     * List of separator strings to split text fields by. The separator itself needs to be wrapped in double quotes, e.g. to split by the dot character, use ".". To split by a newline, use "\n".
+     * List of separator strings to split text fields by. The separator itself needs to be wrapped in
+     * double quotes, e.g. to split by the dot character, use ".".
+     * 
+     * <p>To split by a newline, use "\n".
      */
     public BySeparator withSeparators(List<String> separators) {
         Utils.checkNotNull(separators, "separators");
@@ -113,8 +125,12 @@ public class BySeparator {
         return this;
     }
 
+
     /**
-     * List of separator strings to split text fields by. The separator itself needs to be wrapped in double quotes, e.g. to split by the dot character, use ".". To split by a newline, use "\n".
+     * List of separator strings to split text fields by. The separator itself needs to be wrapped in
+     * double quotes, e.g. to split by the dot character, use ".".
+     * 
+     * <p>To split by a newline, use "\n".
      */
     public BySeparator withSeparators(Optional<? extends List<String>> separators) {
         Utils.checkNotNull(separators, "separators");
@@ -122,7 +138,6 @@ public class BySeparator {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -133,17 +148,15 @@ public class BySeparator {
         }
         BySeparator other = (BySeparator) o;
         return 
-            Objects.deepEquals(this.keepSeparator, other.keepSeparator) &&
-            Objects.deepEquals(this.mode, other.mode) &&
-            Objects.deepEquals(this.separators, other.separators);
+            Utils.enhancedDeepEquals(this.keepSeparator, other.keepSeparator) &&
+            Utils.enhancedDeepEquals(this.mode, other.mode) &&
+            Utils.enhancedDeepEquals(this.separators, other.separators);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            keepSeparator,
-            mode,
-            separators);
+        return Utils.enhancedHash(
+            keepSeparator, mode, separators);
     }
     
     @Override
@@ -153,16 +166,18 @@ public class BySeparator {
                 "mode", mode,
                 "separators", separators);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> keepSeparator;
- 
+
         private Optional<? extends List<String>> separators = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Whether to keep the separator in the resulting chunks
@@ -182,8 +197,12 @@ public class BySeparator {
             return this;
         }
 
+
         /**
-         * List of separator strings to split text fields by. The separator itself needs to be wrapped in double quotes, e.g. to split by the dot character, use ".". To split by a newline, use "\n".
+         * List of separator strings to split text fields by. The separator itself needs to be wrapped in
+         * double quotes, e.g. to split by the dot character, use ".".
+         * 
+         * <p>To split by a newline, use "\n".
          */
         public Builder separators(List<String> separators) {
             Utils.checkNotNull(separators, "separators");
@@ -192,22 +211,26 @@ public class BySeparator {
         }
 
         /**
-         * List of separator strings to split text fields by. The separator itself needs to be wrapped in double quotes, e.g. to split by the dot character, use ".". To split by a newline, use "\n".
+         * List of separator strings to split text fields by. The separator itself needs to be wrapped in
+         * double quotes, e.g. to split by the dot character, use ".".
+         * 
+         * <p>To split by a newline, use "\n".
          */
         public Builder separators(Optional<? extends List<String>> separators) {
             Utils.checkNotNull(separators, "separators");
             this.separators = separators;
             return this;
         }
-        
+
         public BySeparator build() {
             if (keepSeparator == null) {
                 keepSeparator = _SINGLETON_VALUE_KeepSeparator.value();
             }
+
             return new BySeparator(
-                keepSeparator,
-                separators);
+                keepSeparator, separators);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_KeepSeparator =
                 new LazySingletonValue<>(

@@ -12,18 +12,20 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceSolarwindsServiceDesk {
-
     /**
-     * Refer to `https://documentation.solarwinds.com/en/success_center/swsd/content/completeguidetoswsd/token-authentication-for-api-integration.htm#link4`
+     * Refer to
+     * `https://documentation.solarwinds.com/en/success_center/swsd/content/completeguidetoswsd/token-authentication-for-api-integration.htm#link4`
      */
     @JsonProperty("api_key_2")
     private String apiKey2;
 
+
     @JsonProperty("sourceType")
     private SolarwindsServiceDesk sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -40,7 +42,8 @@ public class SourceSolarwindsServiceDesk {
     }
 
     /**
-     * Refer to `https://documentation.solarwinds.com/en/success_center/swsd/content/completeguidetoswsd/token-authentication-for-api-integration.htm#link4`
+     * Refer to
+     * `https://documentation.solarwinds.com/en/success_center/swsd/content/completeguidetoswsd/token-authentication-for-api-integration.htm#link4`
      */
     @JsonIgnore
     public String apiKey2() {
@@ -57,12 +60,14 @@ public class SourceSolarwindsServiceDesk {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Refer to `https://documentation.solarwinds.com/en/success_center/swsd/content/completeguidetoswsd/token-authentication-for-api-integration.htm#link4`
+     * Refer to
+     * `https://documentation.solarwinds.com/en/success_center/swsd/content/completeguidetoswsd/token-authentication-for-api-integration.htm#link4`
      */
     public SourceSolarwindsServiceDesk withApiKey2(String apiKey2) {
         Utils.checkNotNull(apiKey2, "apiKey2");
@@ -76,7 +81,6 @@ public class SourceSolarwindsServiceDesk {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -87,17 +91,15 @@ public class SourceSolarwindsServiceDesk {
         }
         SourceSolarwindsServiceDesk other = (SourceSolarwindsServiceDesk) o;
         return 
-            Objects.deepEquals(this.apiKey2, other.apiKey2) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey2, other.apiKey2) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey2,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKey2, sourceType, startDate);
     }
     
     @Override
@@ -107,19 +109,22 @@ public class SourceSolarwindsServiceDesk {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey2;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Refer to `https://documentation.solarwinds.com/en/success_center/swsd/content/completeguidetoswsd/token-authentication-for-api-integration.htm#link4`
+         * Refer to
+         * `https://documentation.solarwinds.com/en/success_center/swsd/content/completeguidetoswsd/token-authentication-for-api-integration.htm#link4`
          */
         public Builder apiKey2(String apiKey2) {
             Utils.checkNotNull(apiKey2, "apiKey2");
@@ -127,17 +132,19 @@ public class SourceSolarwindsServiceDesk {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceSolarwindsServiceDesk build() {
+
             return new SourceSolarwindsServiceDesk(
-                apiKey2,
-                startDate);
+                apiKey2, startDate);
         }
+
 
         private static final LazySingletonValue<SolarwindsServiceDesk> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

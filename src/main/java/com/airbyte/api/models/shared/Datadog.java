@@ -14,7 +14,7 @@ public enum Datadog {
     @JsonValue
     private final String value;
 
-    private Datadog(String value) {
+    Datadog(String value) {
         this.value = value;
     }
     

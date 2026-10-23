@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 /**
  * TagResponse
@@ -17,18 +16,20 @@ import java.util.Objects;
  * <p>Provides details of a single tag.
  */
 public class TagResponse {
-
     /**
      * A hexadecimal color value
      */
     @JsonProperty("color")
     private String color;
 
+
     @JsonProperty("name")
     private String name;
 
+
     @JsonProperty("tagId")
     private String tagId;
+
 
     @JsonProperty("workspaceId")
     private String workspaceId;
@@ -72,9 +73,10 @@ public class TagResponse {
         return workspaceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * A hexadecimal color value
@@ -103,7 +105,6 @@ public class TagResponse {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -114,18 +115,16 @@ public class TagResponse {
         }
         TagResponse other = (TagResponse) o;
         return 
-            Objects.deepEquals(this.color, other.color) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.tagId, other.tagId) &&
-            Objects.deepEquals(this.workspaceId, other.workspaceId);
+            Utils.enhancedDeepEquals(this.color, other.color) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.tagId, other.tagId) &&
+            Utils.enhancedDeepEquals(this.workspaceId, other.workspaceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            color,
-            name,
-            tagId,
+        return Utils.enhancedHash(
+            color, name, tagId,
             workspaceId);
     }
     
@@ -137,20 +136,22 @@ public class TagResponse {
                 "tagId", tagId,
                 "workspaceId", workspaceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String color;
- 
+
         private String name;
- 
+
         private String tagId;
- 
+
         private String workspaceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * A hexadecimal color value
@@ -161,11 +162,13 @@ public class TagResponse {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = name;
             return this;
         }
+
 
         public Builder tagId(String tagId) {
             Utils.checkNotNull(tagId, "tagId");
@@ -173,18 +176,19 @@ public class TagResponse {
             return this;
         }
 
+
         public Builder workspaceId(String workspaceId) {
             Utils.checkNotNull(workspaceId, "workspaceId");
             this.workspaceId = workspaceId;
             return this;
         }
-        
+
         public TagResponse build() {
+
             return new TagResponse(
-                color,
-                name,
-                tagId,
+                color, name, tagId,
                 workspaceId);
         }
+
     }
 }

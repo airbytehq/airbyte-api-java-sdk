@@ -20,7 +20,7 @@ public enum PeriodUsedForMostPopularStreams {
     @JsonValue
     private final long value;
 
-    private PeriodUsedForMostPopularStreams(long value) {
+    PeriodUsedForMostPopularStreams(long value) {
         this.value = value;
     }
     

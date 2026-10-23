@@ -19,7 +19,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -32,12 +31,14 @@ public class SourceSapHanaEnterpriseTLSEncryptedVerifyCertificate {
     @JsonIgnore
     private Map<String, Object> additionalProperties;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("encryption_method")
     private Optional<? extends SourceSapHanaEnterpriseSchemasEncryptionEncryptionMethod> encryptionMethod;
 
     /**
-     * Privacy Enhanced Mail (PEM) files are concatenated certificate containers frequently used in certificate installations.
+     * Privacy Enhanced Mail (PEM) files are concatenated certificate containers frequently used in
+     * certificate installations.
      */
     @JsonProperty("ssl_certificate")
     private String sslCertificate;
@@ -70,16 +71,18 @@ public class SourceSapHanaEnterpriseTLSEncryptedVerifyCertificate {
     }
 
     /**
-     * Privacy Enhanced Mail (PEM) files are concatenated certificate containers frequently used in certificate installations.
+     * Privacy Enhanced Mail (PEM) files are concatenated certificate containers frequently used in
+     * certificate installations.
      */
     @JsonIgnore
     public String sslCertificate() {
         return sslCertificate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceSapHanaEnterpriseTLSEncryptedVerifyCertificate withAdditionalProperty(String key, Object value) {
@@ -87,8 +90,7 @@ public class SourceSapHanaEnterpriseTLSEncryptedVerifyCertificate {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceSapHanaEnterpriseTLSEncryptedVerifyCertificate withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -101,6 +103,7 @@ public class SourceSapHanaEnterpriseTLSEncryptedVerifyCertificate {
         return this;
     }
 
+
     public SourceSapHanaEnterpriseTLSEncryptedVerifyCertificate withEncryptionMethod(Optional<? extends SourceSapHanaEnterpriseSchemasEncryptionEncryptionMethod> encryptionMethod) {
         Utils.checkNotNull(encryptionMethod, "encryptionMethod");
         this.encryptionMethod = encryptionMethod;
@@ -108,7 +111,8 @@ public class SourceSapHanaEnterpriseTLSEncryptedVerifyCertificate {
     }
 
     /**
-     * Privacy Enhanced Mail (PEM) files are concatenated certificate containers frequently used in certificate installations.
+     * Privacy Enhanced Mail (PEM) files are concatenated certificate containers frequently used in
+     * certificate installations.
      */
     public SourceSapHanaEnterpriseTLSEncryptedVerifyCertificate withSslCertificate(String sslCertificate) {
         Utils.checkNotNull(sslCertificate, "sslCertificate");
@@ -116,7 +120,6 @@ public class SourceSapHanaEnterpriseTLSEncryptedVerifyCertificate {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -127,17 +130,15 @@ public class SourceSapHanaEnterpriseTLSEncryptedVerifyCertificate {
         }
         SourceSapHanaEnterpriseTLSEncryptedVerifyCertificate other = (SourceSapHanaEnterpriseTLSEncryptedVerifyCertificate) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.encryptionMethod, other.encryptionMethod) &&
-            Objects.deepEquals(this.sslCertificate, other.sslCertificate);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.encryptionMethod, other.encryptionMethod) &&
+            Utils.enhancedDeepEquals(this.sslCertificate, other.sslCertificate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            encryptionMethod,
-            sslCertificate);
+        return Utils.enhancedHash(
+            additionalProperties, encryptionMethod, sslCertificate);
     }
     
     @Override
@@ -147,15 +148,16 @@ public class SourceSapHanaEnterpriseTLSEncryptedVerifyCertificate {
                 "encryptionMethod", encryptionMethod,
                 "sslCertificate", sslCertificate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends SourceSapHanaEnterpriseSchemasEncryptionEncryptionMethod> encryptionMethod;
- 
+
         private String sslCertificate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -176,6 +178,7 @@ public class SourceSapHanaEnterpriseTLSEncryptedVerifyCertificate {
             return this;
         }
 
+
         public Builder encryptionMethod(SourceSapHanaEnterpriseSchemasEncryptionEncryptionMethod encryptionMethod) {
             Utils.checkNotNull(encryptionMethod, "encryptionMethod");
             this.encryptionMethod = Optional.ofNullable(encryptionMethod);
@@ -188,24 +191,27 @@ public class SourceSapHanaEnterpriseTLSEncryptedVerifyCertificate {
             return this;
         }
 
+
         /**
-         * Privacy Enhanced Mail (PEM) files are concatenated certificate containers frequently used in certificate installations.
+         * Privacy Enhanced Mail (PEM) files are concatenated certificate containers frequently used in
+         * certificate installations.
          */
         public Builder sslCertificate(String sslCertificate) {
             Utils.checkNotNull(sslCertificate, "sslCertificate");
             this.sslCertificate = sslCertificate;
             return this;
         }
-        
+
         public SourceSapHanaEnterpriseTLSEncryptedVerifyCertificate build() {
             if (encryptionMethod == null) {
                 encryptionMethod = _SINGLETON_VALUE_EncryptionMethod.value();
             }
+
             return new SourceSapHanaEnterpriseTLSEncryptedVerifyCertificate(
-                encryptionMethod,
-                sslCertificate)
+                encryptionMethod, sslCertificate)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceSapHanaEnterpriseSchemasEncryptionEncryptionMethod>> _SINGLETON_VALUE_EncryptionMethod =
                 new LazySingletonValue<>(

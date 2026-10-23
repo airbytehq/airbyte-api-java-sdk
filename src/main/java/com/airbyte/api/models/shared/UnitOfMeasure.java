@@ -15,7 +15,7 @@ public enum UnitOfMeasure {
     @JsonValue
     private final String value;
 
-    private UnitOfMeasure(String value) {
+    UnitOfMeasure(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum SourceYoutubeAnalyticsYoutubeAnalytics {
     @JsonValue
     private final String value;
 
-    private SourceYoutubeAnalyticsYoutubeAnalytics(String value) {
+    SourceYoutubeAnalyticsYoutubeAnalytics(String value) {
         this.value = value;
     }
     

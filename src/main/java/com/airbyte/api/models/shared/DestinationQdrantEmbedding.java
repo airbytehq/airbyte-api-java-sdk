@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationQdrantEmbedding
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class DestinationQdrantEmbedding {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationQdrantEmbedding(TypedObject value) {
         this.value = value;
@@ -33,27 +32,27 @@ public class DestinationQdrantEmbedding {
 
     public static DestinationQdrantEmbedding of(DestinationQdrantOpenAI value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationQdrantEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationQdrantOpenAI>(){}));
+        return new DestinationQdrantEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationQdrantEmbedding of(DestinationQdrantCohere value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationQdrantEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationQdrantCohere>(){}));
+        return new DestinationQdrantEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationQdrantEmbedding of(DestinationQdrantFake value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationQdrantEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationQdrantFake>(){}));
+        return new DestinationQdrantEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationQdrantEmbedding of(DestinationQdrantAzureOpenAI value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationQdrantEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationQdrantAzureOpenAI>(){}));
+        return new DestinationQdrantEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationQdrantEmbedding of(DestinationQdrantOpenAICompatible value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationQdrantEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationQdrantOpenAICompatible>(){}));
+        return new DestinationQdrantEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -79,7 +78,7 @@ public class DestinationQdrantEmbedding {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -90,12 +89,12 @@ public class DestinationQdrantEmbedding {
             return false;
         }
         DestinationQdrantEmbedding other = (DestinationQdrantEmbedding) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -103,11 +102,11 @@ public class DestinationQdrantEmbedding {
 
         public _Deserializer() {
             super(DestinationQdrantEmbedding.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DestinationQdrantOpenAICompatible>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationQdrantAzureOpenAI>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationQdrantCohere>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationQdrantOpenAI>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationQdrantFake>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationQdrantCohere>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationQdrantFake>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationQdrantAzureOpenAI>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationQdrantOpenAICompatible>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -116,6 +115,6 @@ public class DestinationQdrantEmbedding {
         return Utils.toString(DestinationQdrantEmbedding.class,
                 "value", value);
     }
- 
+
 }
 

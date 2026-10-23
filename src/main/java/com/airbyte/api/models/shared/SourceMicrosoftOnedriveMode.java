@@ -14,7 +14,7 @@ public enum SourceMicrosoftOnedriveMode {
     @JsonValue
     private final String value;
 
-    private SourceMicrosoftOnedriveMode(String value) {
+    SourceMicrosoftOnedriveMode(String value) {
         this.value = value;
     }
     

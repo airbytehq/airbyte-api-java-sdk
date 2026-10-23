@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceTmdb {
-
     /**
      * API Key from tmdb account
      */
@@ -38,6 +37,7 @@ public class SourceTmdb {
      */
     @JsonProperty("query")
     private String query;
+
 
     @JsonProperty("sourceType")
     private Tmdb sourceType;
@@ -96,9 +96,10 @@ public class SourceTmdb {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API Key from tmdb account
@@ -136,7 +137,6 @@ public class SourceTmdb {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -147,21 +147,18 @@ public class SourceTmdb {
         }
         SourceTmdb other = (SourceTmdb) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.language, other.language) &&
-            Objects.deepEquals(this.movieId, other.movieId) &&
-            Objects.deepEquals(this.query, other.query) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.language, other.language) &&
+            Utils.enhancedDeepEquals(this.movieId, other.movieId) &&
+            Utils.enhancedDeepEquals(this.query, other.query) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            language,
-            movieId,
-            query,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, language, movieId,
+            query, sourceType);
     }
     
     @Override
@@ -173,20 +170,22 @@ public class SourceTmdb {
                 "query", query,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String language;
- 
+
         private String movieId;
- 
+
         private String query;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API Key from tmdb account
@@ -197,6 +196,7 @@ public class SourceTmdb {
             return this;
         }
 
+
         /**
          * Language expressed in ISO 639-1 scheme, Mandate for required streams (Example en-US)
          */
@@ -205,6 +205,7 @@ public class SourceTmdb {
             this.language = language;
             return this;
         }
+
 
         /**
          * Target movie ID, Mandate for movie streams (Example is 550)
@@ -215,6 +216,7 @@ public class SourceTmdb {
             return this;
         }
 
+
         /**
          * Target movie ID, Mandate for search streams
          */
@@ -223,14 +225,14 @@ public class SourceTmdb {
             this.query = query;
             return this;
         }
-        
+
         public SourceTmdb build() {
+
             return new SourceTmdb(
-                apiKey,
-                language,
-                movieId,
+                apiKey, language, movieId,
                 query);
         }
+
 
         private static final LazySingletonValue<Tmdb> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(
