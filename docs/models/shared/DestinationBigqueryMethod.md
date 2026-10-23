@@ -1,5 +1,13 @@
 # DestinationBigqueryMethod
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DestinationBigqueryMethod;
+
+DestinationBigqueryMethod value = DestinationBigqueryMethod.GCS_STAGING;
+```
+
 
 ## Values
 

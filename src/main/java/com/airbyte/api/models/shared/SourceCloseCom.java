@@ -14,22 +14,24 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.LocalDate;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceCloseCom {
 
+public class SourceCloseCom {
     /**
-     * Close.com API key (usually starts with 'api_'; find yours &lt;a href="https://app.close.com/settings/api/"&gt;here&lt;/a&gt;).
+     * Close.com API key (usually starts with 'api_'; find yours <a
+     * href="https://app.close.com/settings/api/">here</a>).
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private CloseCom sourceType;
 
     /**
-     * The start date to sync data; all data after this date will be replicated. Leave blank to retrieve all the data available in the account. Format: YYYY-MM-DD.
+     * The start date to sync data; all data after this date will be replicated. Leave blank to retrieve
+     * all the data available in the account. Format: YYYY-MM-DD.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
@@ -52,7 +54,8 @@ public class SourceCloseCom {
     }
 
     /**
-     * Close.com API key (usually starts with 'api_'; find yours &lt;a href="https://app.close.com/settings/api/"&gt;here&lt;/a&gt;).
+     * Close.com API key (usually starts with 'api_'; find yours <a
+     * href="https://app.close.com/settings/api/">here</a>).
      */
     @JsonIgnore
     public String apiKey() {
@@ -65,19 +68,22 @@ public class SourceCloseCom {
     }
 
     /**
-     * The start date to sync data; all data after this date will be replicated. Leave blank to retrieve all the data available in the account. Format: YYYY-MM-DD.
+     * The start date to sync data; all data after this date will be replicated. Leave blank to retrieve
+     * all the data available in the account. Format: YYYY-MM-DD.
      */
     @JsonIgnore
     public Optional<LocalDate> startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Close.com API key (usually starts with 'api_'; find yours &lt;a href="https://app.close.com/settings/api/"&gt;here&lt;/a&gt;).
+     * Close.com API key (usually starts with 'api_'; find yours <a
+     * href="https://app.close.com/settings/api/">here</a>).
      */
     public SourceCloseCom withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -86,7 +92,8 @@ public class SourceCloseCom {
     }
 
     /**
-     * The start date to sync data; all data after this date will be replicated. Leave blank to retrieve all the data available in the account. Format: YYYY-MM-DD.
+     * The start date to sync data; all data after this date will be replicated. Leave blank to retrieve
+     * all the data available in the account. Format: YYYY-MM-DD.
      */
     public SourceCloseCom withStartDate(LocalDate startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -94,8 +101,10 @@ public class SourceCloseCom {
         return this;
     }
 
+
     /**
-     * The start date to sync data; all data after this date will be replicated. Leave blank to retrieve all the data available in the account. Format: YYYY-MM-DD.
+     * The start date to sync data; all data after this date will be replicated. Leave blank to retrieve
+     * all the data available in the account. Format: YYYY-MM-DD.
      */
     public SourceCloseCom withStartDate(Optional<LocalDate> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -103,7 +112,6 @@ public class SourceCloseCom {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -114,17 +122,15 @@ public class SourceCloseCom {
         }
         SourceCloseCom other = (SourceCloseCom) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKey, sourceType, startDate);
     }
     
     @Override
@@ -134,19 +140,22 @@ public class SourceCloseCom {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<LocalDate> startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Close.com API key (usually starts with 'api_'; find yours &lt;a href="https://app.close.com/settings/api/"&gt;here&lt;/a&gt;).
+         * Close.com API key (usually starts with 'api_'; find yours <a
+         * href="https://app.close.com/settings/api/">here</a>).
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -154,8 +163,10 @@ public class SourceCloseCom {
             return this;
         }
 
+
         /**
-         * The start date to sync data; all data after this date will be replicated. Leave blank to retrieve all the data available in the account. Format: YYYY-MM-DD.
+         * The start date to sync data; all data after this date will be replicated. Leave blank to retrieve
+         * all the data available in the account. Format: YYYY-MM-DD.
          */
         public Builder startDate(LocalDate startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -164,22 +175,24 @@ public class SourceCloseCom {
         }
 
         /**
-         * The start date to sync data; all data after this date will be replicated. Leave blank to retrieve all the data available in the account. Format: YYYY-MM-DD.
+         * The start date to sync data; all data after this date will be replicated. Leave blank to retrieve
+         * all the data available in the account. Format: YYYY-MM-DD.
          */
         public Builder startDate(Optional<LocalDate> startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceCloseCom build() {
             if (startDate == null) {
                 startDate = _SINGLETON_VALUE_StartDate.value();
             }
+
             return new SourceCloseCom(
-                apiKey,
-                startDate);
+                apiKey, startDate);
         }
+
 
         private static final LazySingletonValue<CloseCom> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

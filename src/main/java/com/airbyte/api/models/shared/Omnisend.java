@@ -14,7 +14,7 @@ public enum Omnisend {
     @JsonValue
     private final String value;
 
-    private Omnisend(String value) {
+    Omnisend(String value) {
         this.value = value;
     }
     

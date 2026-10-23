@@ -3,106 +3,32 @@
  */
 package com.airbyte.api.models.shared;
 
-import com.airbyte.api.utils.Utils;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import java.lang.Override;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
-import java.lang.SuppressWarnings;
 import java.util.Objects;
 import java.util.Optional;
 
-public class Snowflake {
+public enum Snowflake {
+    SNOWFLAKE("snowflake");
 
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("credentials")
-    private Optional<? extends SnowflakeCredentials> credentials;
+    @JsonValue
+    private final String value;
 
-    @JsonCreator
-    public Snowflake(
-            @JsonProperty("credentials") Optional<? extends SnowflakeCredentials> credentials) {
-        Utils.checkNotNull(credentials, "credentials");
-        this.credentials = credentials;
+    Snowflake(String value) {
+        this.value = value;
     }
     
-    public Snowflake() {
-        this(Optional.empty());
-    }
-
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<SnowflakeCredentials> credentials() {
-        return (Optional<SnowflakeCredentials>) credentials;
-    }
-
-    public final static Builder builder() {
-        return new Builder();
-    }    
-
-    public Snowflake withCredentials(SnowflakeCredentials credentials) {
-        Utils.checkNotNull(credentials, "credentials");
-        this.credentials = Optional.ofNullable(credentials);
-        return this;
-    }
-
-    public Snowflake withCredentials(Optional<? extends SnowflakeCredentials> credentials) {
-        Utils.checkNotNull(credentials, "credentials");
-        this.credentials = credentials;
-        return this;
-    }
-
-    
-    @Override
-    public boolean equals(java.lang.Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Snowflake other = (Snowflake) o;
-        return 
-            Objects.deepEquals(this.credentials, other.credentials);
+    public String value() {
+        return value;
     }
     
-    @Override
-    public int hashCode() {
-        return Objects.hash(
-            credentials);
-    }
-    
-    @Override
-    public String toString() {
-        return Utils.toString(Snowflake.class,
-                "credentials", credentials);
-    }
-    
-    public final static class Builder {
- 
-        private Optional<? extends SnowflakeCredentials> credentials = Optional.empty();
-        
-        private Builder() {
-          // force use of static builder() method
+    public static Optional<Snowflake> fromValue(String value) {
+        for (Snowflake o: Snowflake.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
         }
-
-        public Builder credentials(SnowflakeCredentials credentials) {
-            Utils.checkNotNull(credentials, "credentials");
-            this.credentials = Optional.ofNullable(credentials);
-            return this;
-        }
-
-        public Builder credentials(Optional<? extends SnowflakeCredentials> credentials) {
-            Utils.checkNotNull(credentials, "credentials");
-            this.credentials = credentials;
-            return this;
-        }
-        
-        public Snowflake build() {
-            return new Snowflake(
-                credentials);
-        }
+        return Optional.empty();
     }
 }
+

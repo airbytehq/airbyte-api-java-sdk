@@ -19,8 +19,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class Logging {
 
@@ -32,6 +32,7 @@ public class Logging {
      */
     @JsonProperty("logging_config")
     private LoggingConfiguration loggingConfig;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("test_destination_type")
@@ -72,9 +73,10 @@ public class Logging {
         return (Optional<TestDestinationType>) testDestinationType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public Logging withAdditionalProperty(String key, Object value) {
@@ -82,8 +84,7 @@ public class Logging {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public Logging withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -105,13 +106,13 @@ public class Logging {
         return this;
     }
 
+
     public Logging withTestDestinationType(Optional<? extends TestDestinationType> testDestinationType) {
         Utils.checkNotNull(testDestinationType, "testDestinationType");
         this.testDestinationType = testDestinationType;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -122,17 +123,15 @@ public class Logging {
         }
         Logging other = (Logging) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.loggingConfig, other.loggingConfig) &&
-            Objects.deepEquals(this.testDestinationType, other.testDestinationType);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.loggingConfig, other.loggingConfig) &&
+            Utils.enhancedDeepEquals(this.testDestinationType, other.testDestinationType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            loggingConfig,
-            testDestinationType);
+        return Utils.enhancedHash(
+            additionalProperties, loggingConfig, testDestinationType);
     }
     
     @Override
@@ -142,15 +141,16 @@ public class Logging {
                 "loggingConfig", loggingConfig,
                 "testDestinationType", testDestinationType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private LoggingConfiguration loggingConfig;
- 
+
         private Optional<? extends TestDestinationType> testDestinationType;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -171,6 +171,7 @@ public class Logging {
             return this;
         }
 
+
         /**
          * Configurate how the messages are logged.
          */
@@ -179,6 +180,7 @@ public class Logging {
             this.loggingConfig = loggingConfig;
             return this;
         }
+
 
         public Builder testDestinationType(TestDestinationType testDestinationType) {
             Utils.checkNotNull(testDestinationType, "testDestinationType");
@@ -191,16 +193,17 @@ public class Logging {
             this.testDestinationType = testDestinationType;
             return this;
         }
-        
+
         public Logging build() {
             if (testDestinationType == null) {
                 testDestinationType = _SINGLETON_VALUE_TestDestinationType.value();
             }
+
             return new Logging(
-                loggingConfig,
-                testDestinationType)
+                loggingConfig, testDestinationType)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends TestDestinationType>> _SINGLETON_VALUE_TestDestinationType =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum Filetype {
     @JsonValue
     private final String value;
 
-    private Filetype(String value) {
+    Filetype(String value) {
         this.value = value;
     }
     

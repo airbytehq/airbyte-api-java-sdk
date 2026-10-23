@@ -1,5 +1,13 @@
 # SourceRdStationMarketingRdStationMarketing
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceRdStationMarketingRdStationMarketing;
+
+SourceRdStationMarketingRdStationMarketing value = SourceRdStationMarketingRdStationMarketing.RD_STATION_MARKETING;
+```
+
 
 ## Values
 

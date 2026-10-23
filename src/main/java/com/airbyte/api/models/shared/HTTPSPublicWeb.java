@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class HTTPSPublicWeb {
 
@@ -54,9 +54,10 @@ public class HTTPSPublicWeb {
         return userAgent;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Add User-Agent to request
@@ -67,6 +68,7 @@ public class HTTPSPublicWeb {
         return this;
     }
 
+
     /**
      * Add User-Agent to request
      */
@@ -76,7 +78,6 @@ public class HTTPSPublicWeb {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -87,15 +88,14 @@ public class HTTPSPublicWeb {
         }
         HTTPSPublicWeb other = (HTTPSPublicWeb) o;
         return 
-            Objects.deepEquals(this.storage, other.storage) &&
-            Objects.deepEquals(this.userAgent, other.userAgent);
+            Utils.enhancedDeepEquals(this.storage, other.storage) &&
+            Utils.enhancedDeepEquals(this.userAgent, other.userAgent);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            storage,
-            userAgent);
+        return Utils.enhancedHash(
+            storage, userAgent);
     }
     
     @Override
@@ -104,14 +104,16 @@ public class HTTPSPublicWeb {
                 "storage", storage,
                 "userAgent", userAgent);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> userAgent;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Add User-Agent to request
@@ -130,14 +132,16 @@ public class HTTPSPublicWeb {
             this.userAgent = userAgent;
             return this;
         }
-        
+
         public HTTPSPublicWeb build() {
             if (userAgent == null) {
                 userAgent = _SINGLETON_VALUE_UserAgent.value();
             }
+
             return new HTTPSPublicWeb(
                 userAgent);
         }
+
 
         private static final LazySingletonValue<Storage> _SINGLETON_VALUE_Storage =
                 new LazySingletonValue<>(

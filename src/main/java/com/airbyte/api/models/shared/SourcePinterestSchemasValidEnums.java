@@ -130,7 +130,7 @@ public enum SourcePinterestSchemasValidEnums {
     @JsonValue
     private final String value;
 
-    private SourcePinterestSchemasValidEnums(String value) {
+    SourcePinterestSchemasValidEnums(String value) {
         this.value = value;
     }
     

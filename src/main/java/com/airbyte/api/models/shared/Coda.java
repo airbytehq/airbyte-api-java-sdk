@@ -14,7 +14,7 @@ public enum Coda {
     @JsonValue
     private final String value;
 
-    private Coda(String value) {
+    Coda(String value) {
         this.value = value;
     }
     

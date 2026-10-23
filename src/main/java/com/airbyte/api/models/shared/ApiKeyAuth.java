@@ -14,16 +14,16 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class ApiKeyAuth {
 
+public class ApiKeyAuth {
     /**
      * API Key for the Qdrant instance
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
@@ -51,9 +51,10 @@ public class ApiKeyAuth {
         return (Optional<DestinationQdrantSchemasIndexingMode>) mode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API Key for the Qdrant instance
@@ -64,7 +65,6 @@ public class ApiKeyAuth {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -75,15 +75,14 @@ public class ApiKeyAuth {
         }
         ApiKeyAuth other = (ApiKeyAuth) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.mode, other.mode);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.mode, other.mode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            mode);
+        return Utils.enhancedHash(
+            apiKey, mode);
     }
     
     @Override
@@ -92,14 +91,16 @@ public class ApiKeyAuth {
                 "apiKey", apiKey,
                 "mode", mode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API Key for the Qdrant instance
@@ -109,11 +110,13 @@ public class ApiKeyAuth {
             this.apiKey = apiKey;
             return this;
         }
-        
+
         public ApiKeyAuth build() {
+
             return new ApiKeyAuth(
                 apiKey);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationQdrantSchemasIndexingMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

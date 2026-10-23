@@ -14,7 +14,7 @@ public enum Vectara {
     @JsonValue
     private final String value;
 
-    private Vectara(String value) {
+    Vectara(String value) {
         this.value = value;
     }
     

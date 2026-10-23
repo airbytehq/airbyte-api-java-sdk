@@ -11,7 +11,10 @@ import java.util.Optional;
 /**
  * TimeGranularity
  * 
- * <p>Choose how to group the data in your report by time. The options are:&lt;br&gt;- 'ALL': A single result summarizing the entire time range.&lt;br&gt;- 'DAILY': Group results by each day.&lt;br&gt;- 'MONTHLY': Group results by each month.&lt;br&gt;- 'YEARLY': Group results by each year.&lt;br&gt;Selecting a time grouping helps you analyze trends and patterns over different time periods.
+ * <p>Choose how to group the data in your report by time. The options are:<br>- 'ALL': A single result
+ * summarizing the entire time range.<br>- 'DAILY': Group results by each day.<br>- 'MONTHLY': Group
+ * results by each month.<br>- 'YEARLY': Group results by each year.<br>Selecting a time grouping helps
+ * you analyze trends and patterns over different time periods.
  */
 public enum TimeGranularity {
     ALL("ALL"),
@@ -22,7 +25,7 @@ public enum TimeGranularity {
     @JsonValue
     private final String value;
 
-    private TimeGranularity(String value) {
+    TimeGranularity(String value) {
         this.value = value;
     }
     

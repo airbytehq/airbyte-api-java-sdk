@@ -1,5 +1,4 @@
 # Permissions
-(*permissions()*)
 
 ## Overview
 
@@ -15,8 +14,9 @@
 
 Create a permission
 
-### Example Usage
+### Example Usage: Permission Creation Request Example
 
+<!-- UsageSnippet language="java" operationID="createPermission" method="post" path="/permissions" example="Permission Creation Request Example" -->
 ```java
 package hello.world;
 
@@ -49,7 +49,46 @@ public class Application {
                 .call();
 
         if (res.permissionResponse().isPresent()) {
-            // handle response
+            System.out.println(res.permissionResponse().get());
+        }
+    }
+}
+```
+### Example Usage: Permission Creation Response Example
+
+<!-- UsageSnippet language="java" operationID="createPermission" method="post" path="/permissions" example="Permission Creation Response Example" -->
+```java
+package hello.world;
+
+import com.airbyte.api.Airbyte;
+import com.airbyte.api.models.operations.CreatePermissionResponse;
+import com.airbyte.api.models.shared.*;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        Airbyte sdk = Airbyte.builder()
+                .security(Security.builder()
+                    .basicAuth(SchemeBasicAuth.builder()
+                        .password("")
+                        .username("")
+                        .build())
+                    .build())
+            .build();
+
+        PermissionCreateRequest req = PermissionCreateRequest.builder()
+                .permissionType(PublicPermissionType.WORKSPACE_READER)
+                .userId("dc1309ac-0e0a-43cf-80a3-b39dea83440d")
+                .build();
+
+        CreatePermissionResponse res = sdk.permissions().createPermission()
+                .request(req)
+                .call();
+
+        if (res.permissionResponse().isPresent()) {
+            System.out.println(res.permissionResponse().get());
         }
     }
 }
@@ -77,6 +116,7 @@ Delete a Permission
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="deletePermission" method="delete" path="/permissions/{permissionId}" -->
 ```java
 package hello.world;
 
@@ -135,6 +175,7 @@ Get Permission details
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="getPermission" method="get" path="/permissions/{permissionId}" -->
 ```java
 package hello.world;
 
@@ -167,7 +208,7 @@ public class Application {
                 .call();
 
         if (res.permissionResponse().isPresent()) {
-            // handle response
+            System.out.println(res.permissionResponse().get());
         }
     }
 }
@@ -195,11 +236,11 @@ List Permissions by user id
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="listPermissions" method="get" path="/permissions" -->
 ```java
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.ListPermissionsRequest;
 import com.airbyte.api.models.operations.ListPermissionsResponse;
 import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
@@ -218,15 +259,11 @@ public class Application {
                     .build())
             .build();
 
-        ListPermissionsRequest req = ListPermissionsRequest.builder()
-                .build();
-
         ListPermissionsResponse res = sdk.permissions().listPermissions()
-                .request(req)
                 .call();
 
         if (res.permissionsResponse().isPresent()) {
-            // handle response
+            System.out.println(res.permissionsResponse().get());
         }
     }
 }
@@ -254,6 +291,7 @@ Update a permission
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="updatePermission" method="patch" path="/permissions/{permissionId}" -->
 ```java
 package hello.world;
 
@@ -278,7 +316,7 @@ public class Application {
 
         UpdatePermissionRequest req = UpdatePermissionRequest.builder()
                 .permissionUpdateRequest(PermissionUpdateRequest.builder()
-                    .permissionType(PermissionType.WORKSPACE_OWNER)
+                    .permissionType(PermissionType.ORGANIZATION_READER)
                     .build())
                 .permissionId("<value>")
                 .build();
@@ -288,7 +326,7 @@ public class Application {
                 .call();
 
         if (res.permissionResponse().isPresent()) {
-            // handle response
+            System.out.println(res.permissionResponse().get());
         }
     }
 }

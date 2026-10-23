@@ -14,7 +14,7 @@ public enum Intruder {
     @JsonValue
     private final String value;
 
-    private Intruder(String value) {
+    Intruder(String value) {
         this.value = value;
     }
     

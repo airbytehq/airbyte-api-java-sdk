@@ -14,7 +14,7 @@ public enum Motherduck {
     @JsonValue
     private final String value;
 
-    private Motherduck(String value) {
+    Motherduck(String value) {
         this.value = value;
     }
     

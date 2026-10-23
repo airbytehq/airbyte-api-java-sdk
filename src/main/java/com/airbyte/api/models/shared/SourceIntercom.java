@@ -15,13 +15,14 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceIntercom {
 
+public class SourceIntercom {
     /**
-     * Access token for making authenticated requests. See the &lt;a href="https://developers.intercom.com/building-apps/docs/authentication-types#how-to-get-your-access-token"&gt;Intercom docs&lt;/a&gt; for more information.
+     * Access token for making authenticated requests. See the <a
+     * href="https://developers.intercom.com/building-apps/docs/authentication-types#how-to-get-your-access-token">Intercom
+     * docs</a> for more information.
      */
     @JsonProperty("access_token")
     private String accessToken;
@@ -54,11 +55,13 @@ public class SourceIntercom {
     @JsonProperty("lookback_window")
     private Optional<Long> lookbackWindow;
 
+
     @JsonProperty("sourceType")
     private Intercom sourceType;
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -89,11 +92,14 @@ public class SourceIntercom {
     public SourceIntercom(
             String accessToken,
             OffsetDateTime startDate) {
-        this(accessToken, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), startDate);
+        this(accessToken, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), startDate);
     }
 
     /**
-     * Access token for making authenticated requests. See the &lt;a href="https://developers.intercom.com/building-apps/docs/authentication-types#how-to-get-your-access-token"&gt;Intercom docs&lt;/a&gt; for more information.
+     * Access token for making authenticated requests. See the <a
+     * href="https://developers.intercom.com/building-apps/docs/authentication-types#how-to-get-your-access-token">Intercom
+     * docs</a> for more information.
      */
     @JsonIgnore
     public String accessToken() {
@@ -138,19 +144,23 @@ public class SourceIntercom {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Access token for making authenticated requests. See the &lt;a href="https://developers.intercom.com/building-apps/docs/authentication-types#how-to-get-your-access-token"&gt;Intercom docs&lt;/a&gt; for more information.
+     * Access token for making authenticated requests. See the <a
+     * href="https://developers.intercom.com/building-apps/docs/authentication-types#how-to-get-your-access-token">Intercom
+     * docs</a> for more information.
      */
     public SourceIntercom withAccessToken(String accessToken) {
         Utils.checkNotNull(accessToken, "accessToken");
@@ -166,6 +176,7 @@ public class SourceIntercom {
         this.activityLogsTimeStep = Optional.ofNullable(activityLogsTimeStep);
         return this;
     }
+
 
     /**
      * Set lower value in case of failing long running sync of Activity Logs stream.
@@ -185,6 +196,7 @@ public class SourceIntercom {
         return this;
     }
 
+
     /**
      * Client Id for your Intercom application.
      */
@@ -202,6 +214,7 @@ public class SourceIntercom {
         this.clientSecret = Optional.ofNullable(clientSecret);
         return this;
     }
+
 
     /**
      * Client Secret for your Intercom application.
@@ -221,6 +234,7 @@ public class SourceIntercom {
         return this;
     }
 
+
     /**
      * The number of days to shift the state value backward for record sync
      */
@@ -231,7 +245,8 @@ public class SourceIntercom {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     public SourceIntercom withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -239,7 +254,6 @@ public class SourceIntercom {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -250,24 +264,20 @@ public class SourceIntercom {
         }
         SourceIntercom other = (SourceIntercom) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.activityLogsTimeStep, other.activityLogsTimeStep) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.lookbackWindow, other.lookbackWindow) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.activityLogsTimeStep, other.activityLogsTimeStep) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.lookbackWindow, other.lookbackWindow) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            activityLogsTimeStep,
-            clientId,
-            clientSecret,
-            lookbackWindow,
-            sourceType,
+        return Utils.enhancedHash(
+            accessToken, activityLogsTimeStep, clientId,
+            clientSecret, lookbackWindow, sourceType,
             startDate);
     }
     
@@ -282,33 +292,38 @@ public class SourceIntercom {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private Optional<Long> activityLogsTimeStep;
- 
+
         private Optional<String> clientId = Optional.empty();
- 
+
         private Optional<String> clientSecret = Optional.empty();
- 
+
         private Optional<Long> lookbackWindow;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Access token for making authenticated requests. See the &lt;a href="https://developers.intercom.com/building-apps/docs/authentication-types#how-to-get-your-access-token"&gt;Intercom docs&lt;/a&gt; for more information.
+         * Access token for making authenticated requests. See the <a
+         * href="https://developers.intercom.com/building-apps/docs/authentication-types#how-to-get-your-access-token">Intercom
+         * docs</a> for more information.
          */
         public Builder accessToken(String accessToken) {
             Utils.checkNotNull(accessToken, "accessToken");
             this.accessToken = accessToken;
             return this;
         }
+
 
         /**
          * Set lower value in case of failing long running sync of Activity Logs stream.
@@ -328,6 +343,7 @@ public class SourceIntercom {
             return this;
         }
 
+
         /**
          * Client Id for your Intercom application.
          */
@@ -345,6 +361,7 @@ public class SourceIntercom {
             this.clientId = clientId;
             return this;
         }
+
 
         /**
          * Client Secret for your Intercom application.
@@ -364,6 +381,7 @@ public class SourceIntercom {
             return this;
         }
 
+
         /**
          * The number of days to shift the state value backward for record sync
          */
@@ -382,15 +400,17 @@ public class SourceIntercom {
             return this;
         }
 
+
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+         * replicated.
          */
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceIntercom build() {
             if (activityLogsTimeStep == null) {
                 activityLogsTimeStep = _SINGLETON_VALUE_ActivityLogsTimeStep.value();
@@ -398,14 +418,12 @@ public class SourceIntercom {
             if (lookbackWindow == null) {
                 lookbackWindow = _SINGLETON_VALUE_LookbackWindow.value();
             }
+
             return new SourceIntercom(
-                accessToken,
-                activityLogsTimeStep,
-                clientId,
-                clientSecret,
-                lookbackWindow,
-                startDate);
+                accessToken, activityLogsTimeStep, clientId,
+                clientSecret, lookbackWindow, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_ActivityLogsTimeStep =
                 new LazySingletonValue<>(

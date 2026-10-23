@@ -14,7 +14,7 @@ public enum DestinationS3SchemasFormatOutputFormatCodec {
     @JsonValue
     private final String value;
 
-    private DestinationS3SchemasFormatOutputFormatCodec(String value) {
+    DestinationS3SchemasFormatOutputFormatCodec(String value) {
         this.value = value;
     }
     

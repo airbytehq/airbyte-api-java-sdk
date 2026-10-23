@@ -14,7 +14,7 @@ public enum Nutshell {
     @JsonValue
     private final String value;
 
-    private Nutshell(String value) {
+    Nutshell(String value) {
         this.value = value;
     }
     

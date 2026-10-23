@@ -19,8 +19,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class DestinationS3AvroApacheAvro {
 
@@ -32,6 +32,7 @@ public class DestinationS3AvroApacheAvro {
      */
     @JsonProperty("compression_codec")
     private DestinationS3CompressionCodec compressionCodec;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("format_type")
@@ -72,9 +73,10 @@ public class DestinationS3AvroApacheAvro {
         return (Optional<DestinationS3SchemasFormatFormatType>) formatType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public DestinationS3AvroApacheAvro withAdditionalProperty(String key, Object value) {
@@ -82,8 +84,7 @@ public class DestinationS3AvroApacheAvro {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public DestinationS3AvroApacheAvro withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -105,13 +106,13 @@ public class DestinationS3AvroApacheAvro {
         return this;
     }
 
+
     public DestinationS3AvroApacheAvro withFormatType(Optional<? extends DestinationS3SchemasFormatFormatType> formatType) {
         Utils.checkNotNull(formatType, "formatType");
         this.formatType = formatType;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -122,17 +123,15 @@ public class DestinationS3AvroApacheAvro {
         }
         DestinationS3AvroApacheAvro other = (DestinationS3AvroApacheAvro) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.compressionCodec, other.compressionCodec) &&
-            Objects.deepEquals(this.formatType, other.formatType);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.compressionCodec, other.compressionCodec) &&
+            Utils.enhancedDeepEquals(this.formatType, other.formatType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            compressionCodec,
-            formatType);
+        return Utils.enhancedHash(
+            additionalProperties, compressionCodec, formatType);
     }
     
     @Override
@@ -142,15 +141,16 @@ public class DestinationS3AvroApacheAvro {
                 "compressionCodec", compressionCodec,
                 "formatType", formatType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private DestinationS3CompressionCodec compressionCodec;
- 
+
         private Optional<? extends DestinationS3SchemasFormatFormatType> formatType;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -171,6 +171,7 @@ public class DestinationS3AvroApacheAvro {
             return this;
         }
 
+
         /**
          * The compression algorithm used to compress data. Default to no compression.
          */
@@ -179,6 +180,7 @@ public class DestinationS3AvroApacheAvro {
             this.compressionCodec = compressionCodec;
             return this;
         }
+
 
         public Builder formatType(DestinationS3SchemasFormatFormatType formatType) {
             Utils.checkNotNull(formatType, "formatType");
@@ -191,16 +193,17 @@ public class DestinationS3AvroApacheAvro {
             this.formatType = formatType;
             return this;
         }
-        
+
         public DestinationS3AvroApacheAvro build() {
             if (formatType == null) {
                 formatType = _SINGLETON_VALUE_FormatType.value();
             }
+
             return new DestinationS3AvroApacheAvro(
-                compressionCodec,
-                formatType)
+                compressionCodec, formatType)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationS3SchemasFormatFormatType>> _SINGLETON_VALUE_FormatType =
                 new LazySingletonValue<>(

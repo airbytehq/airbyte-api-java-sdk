@@ -21,7 +21,7 @@ public enum Filter {
     @JsonValue
     private final String value;
 
-    private Filter(String value) {
+    Filter(String value) {
         this.value = value;
     }
     

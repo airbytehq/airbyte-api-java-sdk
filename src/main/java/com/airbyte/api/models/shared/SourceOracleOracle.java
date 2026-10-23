@@ -14,7 +14,7 @@ public enum SourceOracleOracle {
     @JsonValue
     private final String value;
 
-    private SourceOracleOracle(String value) {
+    SourceOracleOracle(String value) {
         this.value = value;
     }
     

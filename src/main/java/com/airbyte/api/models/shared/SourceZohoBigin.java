@@ -14,16 +14,18 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceZohoBigin {
 
     @JsonProperty("client_id")
     private String clientId;
 
+
     @JsonProperty("client_refresh_token")
     private String clientRefreshToken;
+
 
     @JsonProperty("client_secret")
     private String clientSecret;
@@ -35,8 +37,10 @@ public class SourceZohoBigin {
     @JsonProperty("data_center")
     private Optional<? extends SourceZohoBiginDataCenter> dataCenter;
 
+
     @JsonProperty("module_name")
     private String moduleName;
+
 
     @JsonProperty("sourceType")
     private ZohoBigin sourceType;
@@ -66,7 +70,8 @@ public class SourceZohoBigin {
             String clientRefreshToken,
             String clientSecret,
             String moduleName) {
-        this(clientId, clientRefreshToken, clientSecret, Optional.empty(), moduleName);
+        this(clientId, clientRefreshToken, clientSecret,
+            Optional.empty(), moduleName);
     }
 
     @JsonIgnore
@@ -103,9 +108,10 @@ public class SourceZohoBigin {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceZohoBigin withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -134,6 +140,7 @@ public class SourceZohoBigin {
         return this;
     }
 
+
     /**
      * The data center where the Bigin account's resources are hosted
      */
@@ -149,7 +156,6 @@ public class SourceZohoBigin {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -160,23 +166,19 @@ public class SourceZohoBigin {
         }
         SourceZohoBigin other = (SourceZohoBigin) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientRefreshToken, other.clientRefreshToken) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.dataCenter, other.dataCenter) &&
-            Objects.deepEquals(this.moduleName, other.moduleName) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientRefreshToken, other.clientRefreshToken) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.dataCenter, other.dataCenter) &&
+            Utils.enhancedDeepEquals(this.moduleName, other.moduleName) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientRefreshToken,
-            clientSecret,
-            dataCenter,
-            moduleName,
-            sourceType);
+        return Utils.enhancedHash(
+            clientId, clientRefreshToken, clientSecret,
+            dataCenter, moduleName, sourceType);
     }
     
     @Override
@@ -189,22 +191,24 @@ public class SourceZohoBigin {
                 "moduleName", moduleName,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientRefreshToken;
- 
+
         private String clientSecret;
- 
+
         private Optional<? extends SourceZohoBiginDataCenter> dataCenter;
- 
+
         private String moduleName;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -212,17 +216,20 @@ public class SourceZohoBigin {
             return this;
         }
 
+
         public Builder clientRefreshToken(String clientRefreshToken) {
             Utils.checkNotNull(clientRefreshToken, "clientRefreshToken");
             this.clientRefreshToken = clientRefreshToken;
             return this;
         }
 
+
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         /**
          * The data center where the Bigin account's resources are hosted
@@ -242,23 +249,23 @@ public class SourceZohoBigin {
             return this;
         }
 
+
         public Builder moduleName(String moduleName) {
             Utils.checkNotNull(moduleName, "moduleName");
             this.moduleName = moduleName;
             return this;
         }
-        
+
         public SourceZohoBigin build() {
             if (dataCenter == null) {
                 dataCenter = _SINGLETON_VALUE_DataCenter.value();
             }
+
             return new SourceZohoBigin(
-                clientId,
-                clientRefreshToken,
-                clientSecret,
-                dataCenter,
-                moduleName);
+                clientId, clientRefreshToken, clientSecret,
+                dataCenter, moduleName);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceZohoBiginDataCenter>> _SINGLETON_VALUE_DataCenter =
                 new LazySingletonValue<>(

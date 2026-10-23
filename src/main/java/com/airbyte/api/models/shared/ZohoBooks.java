@@ -14,7 +14,7 @@ public enum ZohoBooks {
     @JsonValue
     private final String value;
 
-    private ZohoBooks(String value) {
+    ZohoBooks(String value) {
         this.value = value;
     }
     

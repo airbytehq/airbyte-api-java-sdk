@@ -13,14 +13,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceJamfPro {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
     private Optional<String> password;
+
 
     @JsonProperty("sourceType")
     private JamfPro sourceType;
@@ -30,6 +31,7 @@ public class SourceJamfPro {
      */
     @JsonProperty("subdomain")
     private String subdomain;
+
 
     @JsonProperty("username")
     private String username;
@@ -77,15 +79,17 @@ public class SourceJamfPro {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceJamfPro withPassword(String password) {
         Utils.checkNotNull(password, "password");
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     public SourceJamfPro withPassword(Optional<String> password) {
         Utils.checkNotNull(password, "password");
@@ -108,7 +112,6 @@ public class SourceJamfPro {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -119,18 +122,16 @@ public class SourceJamfPro {
         }
         SourceJamfPro other = (SourceJamfPro) o;
         return 
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.subdomain, other.subdomain) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.subdomain, other.subdomain) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            password,
-            sourceType,
-            subdomain,
+        return Utils.enhancedHash(
+            password, sourceType, subdomain,
             username);
     }
     
@@ -142,18 +143,20 @@ public class SourceJamfPro {
                 "subdomain", subdomain,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private String subdomain;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder password(String password) {
             Utils.checkNotNull(password, "password");
@@ -167,6 +170,7 @@ public class SourceJamfPro {
             return this;
         }
 
+
         /**
          * The unique subdomain for your Jamf Pro instance.
          */
@@ -176,18 +180,19 @@ public class SourceJamfPro {
             return this;
         }
 
+
         public Builder username(String username) {
             Utils.checkNotNull(username, "username");
             this.username = username;
             return this;
         }
-        
+
         public SourceJamfPro build() {
+
             return new SourceJamfPro(
-                password,
-                subdomain,
-                username);
+                password, subdomain, username);
         }
+
 
         private static final LazySingletonValue<JamfPro> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

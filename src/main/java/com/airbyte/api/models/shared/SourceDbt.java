@@ -11,15 +11,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceDbt {
 
     @JsonProperty("account_id")
     private String accountId;
 
+
     @JsonProperty("api_key_2")
     private String apiKey2;
+
 
     @JsonProperty("sourceType")
     private Dbt sourceType;
@@ -50,9 +52,10 @@ public class SourceDbt {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceDbt withAccountId(String accountId) {
         Utils.checkNotNull(accountId, "accountId");
@@ -66,7 +69,6 @@ public class SourceDbt {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -77,17 +79,15 @@ public class SourceDbt {
         }
         SourceDbt other = (SourceDbt) o;
         return 
-            Objects.deepEquals(this.accountId, other.accountId) &&
-            Objects.deepEquals(this.apiKey2, other.apiKey2) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.accountId, other.accountId) &&
+            Utils.enhancedDeepEquals(this.apiKey2, other.apiKey2) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountId,
-            apiKey2,
-            sourceType);
+        return Utils.enhancedHash(
+            accountId, apiKey2, sourceType);
     }
     
     @Override
@@ -97,16 +97,18 @@ public class SourceDbt {
                 "apiKey2", apiKey2,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accountId;
- 
+
         private String apiKey2;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder accountId(String accountId) {
             Utils.checkNotNull(accountId, "accountId");
@@ -114,17 +116,19 @@ public class SourceDbt {
             return this;
         }
 
+
         public Builder apiKey2(String apiKey2) {
             Utils.checkNotNull(apiKey2, "apiKey2");
             this.apiKey2 = apiKey2;
             return this;
         }
-        
+
         public SourceDbt build() {
+
             return new SourceDbt(
-                accountId,
-                apiKey2);
+                accountId, apiKey2);
         }
+
 
         private static final LazySingletonValue<Dbt> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

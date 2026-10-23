@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceWaiteraid {
-
     /**
      * Your WaiterAid API key, obtained from API request with Username and Password
      */
@@ -26,6 +25,7 @@ public class SourceWaiteraid {
      */
     @JsonProperty("restid")
     private String restid;
+
 
     @JsonProperty("sourceType")
     private Waiteraid sourceType;
@@ -79,9 +79,10 @@ public class SourceWaiteraid {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your WaiterAid API key, obtained from API request with Username and Password
@@ -110,7 +111,6 @@ public class SourceWaiteraid {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -121,18 +121,16 @@ public class SourceWaiteraid {
         }
         SourceWaiteraid other = (SourceWaiteraid) o;
         return 
-            Objects.deepEquals(this.authHash, other.authHash) &&
-            Objects.deepEquals(this.restid, other.restid) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.authHash, other.authHash) &&
+            Utils.enhancedDeepEquals(this.restid, other.restid) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authHash,
-            restid,
-            sourceType,
+        return Utils.enhancedHash(
+            authHash, restid, sourceType,
             startDate);
     }
     
@@ -144,18 +142,20 @@ public class SourceWaiteraid {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String authHash;
- 
+
         private String restid;
- 
+
         private String startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your WaiterAid API key, obtained from API request with Username and Password
@@ -166,6 +166,7 @@ public class SourceWaiteraid {
             return this;
         }
 
+
         /**
          * Your WaiterAid restaurant id from API request to getRestaurants
          */
@@ -175,6 +176,7 @@ public class SourceWaiteraid {
             return this;
         }
 
+
         /**
          * Start getting data from that date.
          */
@@ -183,13 +185,13 @@ public class SourceWaiteraid {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceWaiteraid build() {
+
             return new SourceWaiteraid(
-                authHash,
-                restid,
-                startDate);
+                authHash, restid, startDate);
         }
+
 
         private static final LazySingletonValue<Waiteraid> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

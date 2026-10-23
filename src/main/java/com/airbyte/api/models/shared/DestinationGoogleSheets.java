@@ -11,21 +11,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class DestinationGoogleSheets {
-
     /**
      * Authentication method to access Google Sheets
      */
     @JsonProperty("credentials")
     private DestinationGoogleSheetsAuthentication credentials;
 
+
     @JsonProperty("destinationType")
     private DestinationGoogleSheetsGoogleSheets destinationType;
 
     /**
-     * The link to your spreadsheet. See &lt;a href='https://docs.airbyte.com/integrations/destinations/google-sheets#sheetlink'&gt;this guide&lt;/a&gt; for more details.
+     * The link to your spreadsheet. See &lt;a
+     * href='https://docs.airbyte.com/integrations/destinations/google-sheets#sheetlink'&gt;this
+     * guide&lt;/a&gt; for more details.
      */
     @JsonProperty("spreadsheet_id")
     private String spreadsheetId;
@@ -55,16 +57,19 @@ public class DestinationGoogleSheets {
     }
 
     /**
-     * The link to your spreadsheet. See &lt;a href='https://docs.airbyte.com/integrations/destinations/google-sheets#sheetlink'&gt;this guide&lt;/a&gt; for more details.
+     * The link to your spreadsheet. See &lt;a
+     * href='https://docs.airbyte.com/integrations/destinations/google-sheets#sheetlink'&gt;this
+     * guide&lt;/a&gt; for more details.
      */
     @JsonIgnore
     public String spreadsheetId() {
         return spreadsheetId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Authentication method to access Google Sheets
@@ -76,7 +81,9 @@ public class DestinationGoogleSheets {
     }
 
     /**
-     * The link to your spreadsheet. See &lt;a href='https://docs.airbyte.com/integrations/destinations/google-sheets#sheetlink'&gt;this guide&lt;/a&gt; for more details.
+     * The link to your spreadsheet. See &lt;a
+     * href='https://docs.airbyte.com/integrations/destinations/google-sheets#sheetlink'&gt;this
+     * guide&lt;/a&gt; for more details.
      */
     public DestinationGoogleSheets withSpreadsheetId(String spreadsheetId) {
         Utils.checkNotNull(spreadsheetId, "spreadsheetId");
@@ -84,7 +91,6 @@ public class DestinationGoogleSheets {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +101,15 @@ public class DestinationGoogleSheets {
         }
         DestinationGoogleSheets other = (DestinationGoogleSheets) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.spreadsheetId, other.spreadsheetId);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.spreadsheetId, other.spreadsheetId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            destinationType,
-            spreadsheetId);
+        return Utils.enhancedHash(
+            credentials, destinationType, spreadsheetId);
     }
     
     @Override
@@ -115,16 +119,18 @@ public class DestinationGoogleSheets {
                 "destinationType", destinationType,
                 "spreadsheetId", spreadsheetId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private DestinationGoogleSheetsAuthentication credentials;
- 
+
         private String spreadsheetId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Authentication method to access Google Sheets
@@ -135,20 +141,24 @@ public class DestinationGoogleSheets {
             return this;
         }
 
+
         /**
-         * The link to your spreadsheet. See &lt;a href='https://docs.airbyte.com/integrations/destinations/google-sheets#sheetlink'&gt;this guide&lt;/a&gt; for more details.
+         * The link to your spreadsheet. See &lt;a
+         * href='https://docs.airbyte.com/integrations/destinations/google-sheets#sheetlink'&gt;this
+         * guide&lt;/a&gt; for more details.
          */
         public Builder spreadsheetId(String spreadsheetId) {
             Utils.checkNotNull(spreadsheetId, "spreadsheetId");
             this.spreadsheetId = spreadsheetId;
             return this;
         }
-        
+
         public DestinationGoogleSheets build() {
+
             return new DestinationGoogleSheets(
-                credentials,
-                spreadsheetId);
+                credentials, spreadsheetId);
         }
+
 
         private static final LazySingletonValue<DestinationGoogleSheetsGoogleSheets> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

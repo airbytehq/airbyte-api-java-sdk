@@ -10,6 +10,7 @@ import java.util.Optional;
 
 public enum JobStatusEnum {
     PENDING("pending"),
+    QUEUED("queued"),
     RUNNING("running"),
     INCOMPLETE("incomplete"),
     FAILED("failed"),
@@ -19,7 +20,7 @@ public enum JobStatusEnum {
     @JsonValue
     private final String value;
 
-    private JobStatusEnum(String value) {
+    JobStatusEnum(String value) {
         this.value = value;
     }
     

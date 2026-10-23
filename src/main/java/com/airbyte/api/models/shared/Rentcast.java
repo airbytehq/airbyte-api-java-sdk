@@ -14,7 +14,7 @@ public enum Rentcast {
     @JsonValue
     private final String value;
 
-    private Rentcast(String value) {
+    Rentcast(String value) {
         this.value = value;
     }
     

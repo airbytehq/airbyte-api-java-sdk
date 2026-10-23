@@ -14,7 +14,7 @@ public enum Workramp {
     @JsonValue
     private final String value;
 
-    private Workramp(String value) {
+    Workramp(String value) {
         this.value = value;
     }
     

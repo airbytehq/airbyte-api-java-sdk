@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -26,6 +25,7 @@ public class DestinationMilvusCohere {
 
     @JsonProperty("cohere_key")
     private String cohereKey;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
@@ -50,9 +50,10 @@ public class DestinationMilvusCohere {
         return (Optional<DestinationMilvusSchemasMode>) mode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public DestinationMilvusCohere withCohereKey(String cohereKey) {
         Utils.checkNotNull(cohereKey, "cohereKey");
@@ -60,7 +61,6 @@ public class DestinationMilvusCohere {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -71,15 +71,14 @@ public class DestinationMilvusCohere {
         }
         DestinationMilvusCohere other = (DestinationMilvusCohere) o;
         return 
-            Objects.deepEquals(this.cohereKey, other.cohereKey) &&
-            Objects.deepEquals(this.mode, other.mode);
+            Utils.enhancedDeepEquals(this.cohereKey, other.cohereKey) &&
+            Utils.enhancedDeepEquals(this.mode, other.mode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            cohereKey,
-            mode);
+        return Utils.enhancedHash(
+            cohereKey, mode);
     }
     
     @Override
@@ -88,25 +87,29 @@ public class DestinationMilvusCohere {
                 "cohereKey", cohereKey,
                 "mode", mode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String cohereKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder cohereKey(String cohereKey) {
             Utils.checkNotNull(cohereKey, "cohereKey");
             this.cohereKey = cohereKey;
             return this;
         }
-        
+
         public DestinationMilvusCohere build() {
+
             return new DestinationMilvusCohere(
                 cohereKey);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationMilvusSchemasMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

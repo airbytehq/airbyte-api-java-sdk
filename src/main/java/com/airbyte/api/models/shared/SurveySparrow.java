@@ -14,7 +14,7 @@ public enum SurveySparrow {
     @JsonValue
     private final String value;
 
-    private SurveySparrow(String value) {
+    SurveySparrow(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum SourceGcsSchemasFiletype {
     @JsonValue
     private final String value;
 
-    private SourceGcsSchemasFiletype(String value) {
+    SourceGcsSchemasFiletype(String value) {
         this.value = value;
     }
     

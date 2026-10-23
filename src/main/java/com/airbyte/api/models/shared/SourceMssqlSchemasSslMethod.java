@@ -14,7 +14,7 @@ public enum SourceMssqlSchemasSslMethod {
     @JsonValue
     private final String value;
 
-    private SourceMssqlSchemasSslMethod(String value) {
+    SourceMssqlSchemasSslMethod(String value) {
         this.value = value;
     }
     

@@ -11,12 +11,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceN8n {
-
     /**
-     * Your API KEY. See &lt;a href="https://docs.n8n.io/api/authentication"&gt;here&lt;/a&gt;
+     * Your API KEY. See <a href="https://docs.n8n.io/api/authentication">here</a>
      */
     @JsonProperty("api_key")
     private String apiKey;
@@ -26,6 +25,7 @@ public class SourceN8n {
      */
     @JsonProperty("host")
     private String host;
+
 
     @JsonProperty("sourceType")
     private N8n sourceType;
@@ -42,7 +42,7 @@ public class SourceN8n {
     }
 
     /**
-     * Your API KEY. See &lt;a href="https://docs.n8n.io/api/authentication"&gt;here&lt;/a&gt;
+     * Your API KEY. See <a href="https://docs.n8n.io/api/authentication">here</a>
      */
     @JsonIgnore
     public String apiKey() {
@@ -62,12 +62,13 @@ public class SourceN8n {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Your API KEY. See &lt;a href="https://docs.n8n.io/api/authentication"&gt;here&lt;/a&gt;
+     * Your API KEY. See <a href="https://docs.n8n.io/api/authentication">here</a>
      */
     public SourceN8n withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -84,7 +85,6 @@ public class SourceN8n {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourceN8n {
         }
         SourceN8n other = (SourceN8n) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            host,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, host, sourceType);
     }
     
     @Override
@@ -115,25 +113,28 @@ public class SourceN8n {
                 "host", host,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String host;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Your API KEY. See &lt;a href="https://docs.n8n.io/api/authentication"&gt;here&lt;/a&gt;
+         * Your API KEY. See <a href="https://docs.n8n.io/api/authentication">here</a>
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Hostname of the n8n instance
@@ -143,12 +144,13 @@ public class SourceN8n {
             this.host = host;
             return this;
         }
-        
+
         public SourceN8n build() {
+
             return new SourceN8n(
-                apiKey,
-                host);
+                apiKey, host);
         }
+
 
         private static final LazySingletonValue<N8n> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -56,9 +55,10 @@ public class DestinationMilvusAPIToken {
         return token;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API Token for the Milvus instance
@@ -69,7 +69,6 @@ public class DestinationMilvusAPIToken {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -80,15 +79,14 @@ public class DestinationMilvusAPIToken {
         }
         DestinationMilvusAPIToken other = (DestinationMilvusAPIToken) o;
         return 
-            Objects.deepEquals(this.mode, other.mode) &&
-            Objects.deepEquals(this.token, other.token);
+            Utils.enhancedDeepEquals(this.mode, other.mode) &&
+            Utils.enhancedDeepEquals(this.token, other.token);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            mode,
-            token);
+        return Utils.enhancedHash(
+            mode, token);
     }
     
     @Override
@@ -97,14 +95,16 @@ public class DestinationMilvusAPIToken {
                 "mode", mode,
                 "token", token);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String token;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API Token for the Milvus instance
@@ -114,11 +114,13 @@ public class DestinationMilvusAPIToken {
             this.token = token;
             return this;
         }
-        
+
         public DestinationMilvusAPIToken build() {
+
             return new DestinationMilvusAPIToken(
                 token);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationMilvusSchemasIndexingMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

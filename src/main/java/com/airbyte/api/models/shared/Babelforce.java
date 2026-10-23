@@ -14,7 +14,7 @@ public enum Babelforce {
     @JsonValue
     private final String value;
 
-    private Babelforce(String value) {
+    Babelforce(String value) {
         this.value = value;
     }
     

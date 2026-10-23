@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DimensionsFilter
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class DimensionsFilter {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DimensionsFilter(TypedObject value) {
         this.value = value;
@@ -33,22 +32,22 @@ public class DimensionsFilter {
 
     public static DimensionsFilter of(AndGroup value) {
         Utils.checkNotNull(value, "value");
-        return new DimensionsFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AndGroup>(){}));
+        return new DimensionsFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DimensionsFilter of(OrGroup value) {
         Utils.checkNotNull(value, "value");
-        return new DimensionsFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<OrGroup>(){}));
+        return new DimensionsFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DimensionsFilter of(NotExpression value) {
         Utils.checkNotNull(value, "value");
-        return new DimensionsFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<NotExpression>(){}));
+        return new DimensionsFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DimensionsFilter of(SourceGoogleAnalyticsDataApiFilter value) {
         Utils.checkNotNull(value, "value");
-        return new DimensionsFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiFilter>(){}));
+        return new DimensionsFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -73,7 +72,7 @@ public class DimensionsFilter {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -84,12 +83,12 @@ public class DimensionsFilter {
             return false;
         }
         DimensionsFilter other = (DimensionsFilter) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -97,10 +96,10 @@ public class DimensionsFilter {
 
         public _Deserializer() {
             super(DimensionsFilter.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiFilter>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<NotExpression>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<AndGroup>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<OrGroup>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<AndGroup>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<NotExpression>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiFilter>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -109,6 +108,6 @@ public class DimensionsFilter {
         return Utils.toString(DimensionsFilter.class,
                 "value", value);
     }
- 
+
 }
 

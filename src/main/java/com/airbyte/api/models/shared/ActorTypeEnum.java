@@ -20,7 +20,7 @@ public enum ActorTypeEnum {
     @JsonValue
     private final String value;
 
-    private ActorTypeEnum(String value) {
+    ActorTypeEnum(String value) {
         this.value = value;
     }
     

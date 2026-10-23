@@ -11,18 +11,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceTremendous {
-
     /**
-     * API key to use. You can generate an API key through the Tremendous dashboard under Team Settings &gt; Developers. Save the key once you’ve generated it.
+     * API key to use. You can generate an API key through the Tremendous dashboard under Team Settings
+     * &gt; Developers. Save the key once you’ve generated it.
      */
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonProperty("environment")
     private SourceTremendousEnvironment environment;
+
 
     @JsonProperty("sourceType")
     private Tremendous sourceType;
@@ -39,7 +41,8 @@ public class SourceTremendous {
     }
 
     /**
-     * API key to use. You can generate an API key through the Tremendous dashboard under Team Settings &gt; Developers. Save the key once you’ve generated it.
+     * API key to use. You can generate an API key through the Tremendous dashboard under Team Settings
+     * &gt; Developers. Save the key once you’ve generated it.
      */
     @JsonIgnore
     public String apiKey() {
@@ -56,12 +59,14 @@ public class SourceTremendous {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * API key to use. You can generate an API key through the Tremendous dashboard under Team Settings &gt; Developers. Save the key once you’ve generated it.
+     * API key to use. You can generate an API key through the Tremendous dashboard under Team Settings
+     * &gt; Developers. Save the key once you’ve generated it.
      */
     public SourceTremendous withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -75,7 +80,6 @@ public class SourceTremendous {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -86,17 +90,15 @@ public class SourceTremendous {
         }
         SourceTremendous other = (SourceTremendous) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.environment, other.environment) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.environment, other.environment) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            environment,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, environment, sourceType);
     }
     
     @Override
@@ -106,19 +108,22 @@ public class SourceTremendous {
                 "environment", environment,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private SourceTremendousEnvironment environment;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * API key to use. You can generate an API key through the Tremendous dashboard under Team Settings &gt; Developers. Save the key once you’ve generated it.
+         * API key to use. You can generate an API key through the Tremendous dashboard under Team Settings
+         * &gt; Developers. Save the key once you’ve generated it.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -126,17 +131,19 @@ public class SourceTremendous {
             return this;
         }
 
+
         public Builder environment(SourceTremendousEnvironment environment) {
             Utils.checkNotNull(environment, "environment");
             this.environment = environment;
             return this;
         }
-        
+
         public SourceTremendous build() {
+
             return new SourceTremendous(
-                apiKey,
-                environment);
+                apiKey, environment);
         }
+
 
         private static final LazySingletonValue<Tremendous> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

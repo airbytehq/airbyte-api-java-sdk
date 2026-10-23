@@ -14,13 +14,14 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class AuthenticateViaAsanaOauth {
 
     @JsonProperty("client_id")
     private String clientId;
+
 
     @JsonProperty("client_secret")
     private String clientSecret;
@@ -31,6 +32,7 @@ public class AuthenticateViaAsanaOauth {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("option_title")
     private Optional<? extends SourceAsanaCredentialsTitle> optionTitle;
+
 
     @JsonProperty("refresh_token")
     private String refreshToken;
@@ -73,9 +75,10 @@ public class AuthenticateViaAsanaOauth {
         return refreshToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AuthenticateViaAsanaOauth withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -95,7 +98,6 @@ public class AuthenticateViaAsanaOauth {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -106,18 +108,16 @@ public class AuthenticateViaAsanaOauth {
         }
         AuthenticateViaAsanaOauth other = (AuthenticateViaAsanaOauth) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.optionTitle, other.optionTitle) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.optionTitle, other.optionTitle) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            optionTitle,
+        return Utils.enhancedHash(
+            clientId, clientSecret, optionTitle,
             refreshToken);
     }
     
@@ -129,18 +129,20 @@ public class AuthenticateViaAsanaOauth {
                 "optionTitle", optionTitle,
                 "refreshToken", refreshToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String refreshToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -148,24 +150,26 @@ public class AuthenticateViaAsanaOauth {
             return this;
         }
 
+
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
 
+
         public Builder refreshToken(String refreshToken) {
             Utils.checkNotNull(refreshToken, "refreshToken");
             this.refreshToken = refreshToken;
             return this;
         }
-        
+
         public AuthenticateViaAsanaOauth build() {
+
             return new AuthenticateViaAsanaOauth(
-                clientId,
-                clientSecret,
-                refreshToken);
+                clientId, clientSecret, refreshToken);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceAsanaCredentialsTitle>> _SINGLETON_VALUE_OptionTitle =
                 new LazySingletonValue<>(

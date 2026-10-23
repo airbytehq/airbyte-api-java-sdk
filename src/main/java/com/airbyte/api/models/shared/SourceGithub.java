@@ -17,11 +17,10 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceGithub {
 
+public class SourceGithub {
     /**
      * Please enter your basic URL from self-hosted GitHub instance or leave it empty to use GitHub.
      */
@@ -30,7 +29,8 @@ public class SourceGithub {
     private Optional<String> apiUrl;
 
     /**
-     * List of GitHub repository branches to pull commits for, e.g. `airbytehq/airbyte/master`. If no branches are specified for a repository, the default branch will be pulled.
+     * List of GitHub repository branches to pull commits for, e.g. `airbytehq/airbyte/master`. If no
+     * branches are specified for a repository, the default branch will be pulled.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("branches")
@@ -43,23 +43,32 @@ public class SourceGithub {
     private SourceGithubAuthentication credentials;
 
     /**
-     * Max Waiting Time for rate limit. Set higher value to wait till rate limits will be resetted to continue sync
+     * Max Waiting Time for rate limit. Set higher value to wait till rate limits will be resetted to
+     * continue sync
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("max_waiting_time")
     private Optional<Long> maxWaitingTime;
 
     /**
-     * List of GitHub organizations/repositories, e.g. `airbytehq/airbyte` for single repository, `airbytehq/*` for get all repositories from organization and `airbytehq/a* for matching multiple repositories by pattern.
+     * List of GitHub organizations/repositories, e.g. `airbytehq/airbyte` for single repository,
+     * `airbytehq/*` for get all repositories from organization and `airbytehq/a* for matching multiple
+     * repositories by pattern.
      */
     @JsonProperty("repositories")
     private List<String> repositories;
+
 
     @JsonProperty("sourceType")
     private SourceGithubGithub sourceType;
 
     /**
-     * The date from which you'd like to replicate data from GitHub in the format YYYY-MM-DDT00:00:00Z. If the date is not set, all data will be replicated.  For the streams which support this configuration, only data generated on or after the start date will be replicated. This field doesn't apply to all streams, see the &lt;a href="https://docs.airbyte.com/integrations/sources/github"&gt;docs&lt;/a&gt; for more info
+     * The date from which you'd like to replicate data from GitHub in the format YYYY-MM-DDT00:00:00Z. If
+     * the date is not set, all data will be replicated. For the streams which support this configuration,
+     * only data generated on or after the start date will be replicated.
+     * 
+     * <p>This field doesn't apply to all streams, see the <a
+     * href="https://docs.airbyte.com/integrations/sources/github">docs</a> for more info
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
@@ -91,7 +100,8 @@ public class SourceGithub {
     public SourceGithub(
             SourceGithubAuthentication credentials,
             List<String> repositories) {
-        this(Optional.empty(), Optional.empty(), credentials, Optional.empty(), repositories, Optional.empty());
+        this(Optional.empty(), Optional.empty(), credentials,
+            Optional.empty(), repositories, Optional.empty());
     }
 
     /**
@@ -103,7 +113,8 @@ public class SourceGithub {
     }
 
     /**
-     * List of GitHub repository branches to pull commits for, e.g. `airbytehq/airbyte/master`. If no branches are specified for a repository, the default branch will be pulled.
+     * List of GitHub repository branches to pull commits for, e.g. `airbytehq/airbyte/master`. If no
+     * branches are specified for a repository, the default branch will be pulled.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -120,7 +131,8 @@ public class SourceGithub {
     }
 
     /**
-     * Max Waiting Time for rate limit. Set higher value to wait till rate limits will be resetted to continue sync
+     * Max Waiting Time for rate limit. Set higher value to wait till rate limits will be resetted to
+     * continue sync
      */
     @JsonIgnore
     public Optional<Long> maxWaitingTime() {
@@ -128,7 +140,9 @@ public class SourceGithub {
     }
 
     /**
-     * List of GitHub organizations/repositories, e.g. `airbytehq/airbyte` for single repository, `airbytehq/*` for get all repositories from organization and `airbytehq/a* for matching multiple repositories by pattern.
+     * List of GitHub organizations/repositories, e.g. `airbytehq/airbyte` for single repository,
+     * `airbytehq/*` for get all repositories from organization and `airbytehq/a* for matching multiple
+     * repositories by pattern.
      */
     @JsonIgnore
     public List<String> repositories() {
@@ -141,16 +155,22 @@ public class SourceGithub {
     }
 
     /**
-     * The date from which you'd like to replicate data from GitHub in the format YYYY-MM-DDT00:00:00Z. If the date is not set, all data will be replicated.  For the streams which support this configuration, only data generated on or after the start date will be replicated. This field doesn't apply to all streams, see the &lt;a href="https://docs.airbyte.com/integrations/sources/github"&gt;docs&lt;/a&gt; for more info
+     * The date from which you'd like to replicate data from GitHub in the format YYYY-MM-DDT00:00:00Z. If
+     * the date is not set, all data will be replicated. For the streams which support this configuration,
+     * only data generated on or after the start date will be replicated.
+     * 
+     * <p>This field doesn't apply to all streams, see the <a
+     * href="https://docs.airbyte.com/integrations/sources/github">docs</a> for more info
      */
     @JsonIgnore
     public Optional<OffsetDateTime> startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Please enter your basic URL from self-hosted GitHub instance or leave it empty to use GitHub.
@@ -160,6 +180,7 @@ public class SourceGithub {
         this.apiUrl = Optional.ofNullable(apiUrl);
         return this;
     }
+
 
     /**
      * Please enter your basic URL from self-hosted GitHub instance or leave it empty to use GitHub.
@@ -171,7 +192,8 @@ public class SourceGithub {
     }
 
     /**
-     * List of GitHub repository branches to pull commits for, e.g. `airbytehq/airbyte/master`. If no branches are specified for a repository, the default branch will be pulled.
+     * List of GitHub repository branches to pull commits for, e.g. `airbytehq/airbyte/master`. If no
+     * branches are specified for a repository, the default branch will be pulled.
      */
     public SourceGithub withBranches(List<String> branches) {
         Utils.checkNotNull(branches, "branches");
@@ -179,8 +201,10 @@ public class SourceGithub {
         return this;
     }
 
+
     /**
-     * List of GitHub repository branches to pull commits for, e.g. `airbytehq/airbyte/master`. If no branches are specified for a repository, the default branch will be pulled.
+     * List of GitHub repository branches to pull commits for, e.g. `airbytehq/airbyte/master`. If no
+     * branches are specified for a repository, the default branch will be pulled.
      */
     public SourceGithub withBranches(Optional<? extends List<String>> branches) {
         Utils.checkNotNull(branches, "branches");
@@ -198,7 +222,8 @@ public class SourceGithub {
     }
 
     /**
-     * Max Waiting Time for rate limit. Set higher value to wait till rate limits will be resetted to continue sync
+     * Max Waiting Time for rate limit. Set higher value to wait till rate limits will be resetted to
+     * continue sync
      */
     public SourceGithub withMaxWaitingTime(long maxWaitingTime) {
         Utils.checkNotNull(maxWaitingTime, "maxWaitingTime");
@@ -206,8 +231,10 @@ public class SourceGithub {
         return this;
     }
 
+
     /**
-     * Max Waiting Time for rate limit. Set higher value to wait till rate limits will be resetted to continue sync
+     * Max Waiting Time for rate limit. Set higher value to wait till rate limits will be resetted to
+     * continue sync
      */
     public SourceGithub withMaxWaitingTime(Optional<Long> maxWaitingTime) {
         Utils.checkNotNull(maxWaitingTime, "maxWaitingTime");
@@ -216,7 +243,9 @@ public class SourceGithub {
     }
 
     /**
-     * List of GitHub organizations/repositories, e.g. `airbytehq/airbyte` for single repository, `airbytehq/*` for get all repositories from organization and `airbytehq/a* for matching multiple repositories by pattern.
+     * List of GitHub organizations/repositories, e.g. `airbytehq/airbyte` for single repository,
+     * `airbytehq/*` for get all repositories from organization and `airbytehq/a* for matching multiple
+     * repositories by pattern.
      */
     public SourceGithub withRepositories(List<String> repositories) {
         Utils.checkNotNull(repositories, "repositories");
@@ -225,7 +254,12 @@ public class SourceGithub {
     }
 
     /**
-     * The date from which you'd like to replicate data from GitHub in the format YYYY-MM-DDT00:00:00Z. If the date is not set, all data will be replicated.  For the streams which support this configuration, only data generated on or after the start date will be replicated. This field doesn't apply to all streams, see the &lt;a href="https://docs.airbyte.com/integrations/sources/github"&gt;docs&lt;/a&gt; for more info
+     * The date from which you'd like to replicate data from GitHub in the format YYYY-MM-DDT00:00:00Z. If
+     * the date is not set, all data will be replicated. For the streams which support this configuration,
+     * only data generated on or after the start date will be replicated.
+     * 
+     * <p>This field doesn't apply to all streams, see the <a
+     * href="https://docs.airbyte.com/integrations/sources/github">docs</a> for more info
      */
     public SourceGithub withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -233,8 +267,14 @@ public class SourceGithub {
         return this;
     }
 
+
     /**
-     * The date from which you'd like to replicate data from GitHub in the format YYYY-MM-DDT00:00:00Z. If the date is not set, all data will be replicated.  For the streams which support this configuration, only data generated on or after the start date will be replicated. This field doesn't apply to all streams, see the &lt;a href="https://docs.airbyte.com/integrations/sources/github"&gt;docs&lt;/a&gt; for more info
+     * The date from which you'd like to replicate data from GitHub in the format YYYY-MM-DDT00:00:00Z. If
+     * the date is not set, all data will be replicated. For the streams which support this configuration,
+     * only data generated on or after the start date will be replicated.
+     * 
+     * <p>This field doesn't apply to all streams, see the <a
+     * href="https://docs.airbyte.com/integrations/sources/github">docs</a> for more info
      */
     public SourceGithub withStartDate(Optional<OffsetDateTime> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -242,7 +282,6 @@ public class SourceGithub {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -253,24 +292,20 @@ public class SourceGithub {
         }
         SourceGithub other = (SourceGithub) o;
         return 
-            Objects.deepEquals(this.apiUrl, other.apiUrl) &&
-            Objects.deepEquals(this.branches, other.branches) &&
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.maxWaitingTime, other.maxWaitingTime) &&
-            Objects.deepEquals(this.repositories, other.repositories) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiUrl, other.apiUrl) &&
+            Utils.enhancedDeepEquals(this.branches, other.branches) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.maxWaitingTime, other.maxWaitingTime) &&
+            Utils.enhancedDeepEquals(this.repositories, other.repositories) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiUrl,
-            branches,
-            credentials,
-            maxWaitingTime,
-            repositories,
-            sourceType,
+        return Utils.enhancedHash(
+            apiUrl, branches, credentials,
+            maxWaitingTime, repositories, sourceType,
             startDate);
     }
     
@@ -285,24 +320,26 @@ public class SourceGithub {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> apiUrl;
- 
+
         private Optional<? extends List<String>> branches = Optional.empty();
- 
+
         private SourceGithubAuthentication credentials;
- 
+
         private Optional<Long> maxWaitingTime;
- 
+
         private List<String> repositories;
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Please enter your basic URL from self-hosted GitHub instance or leave it empty to use GitHub.
@@ -322,8 +359,10 @@ public class SourceGithub {
             return this;
         }
 
+
         /**
-         * List of GitHub repository branches to pull commits for, e.g. `airbytehq/airbyte/master`. If no branches are specified for a repository, the default branch will be pulled.
+         * List of GitHub repository branches to pull commits for, e.g. `airbytehq/airbyte/master`. If no
+         * branches are specified for a repository, the default branch will be pulled.
          */
         public Builder branches(List<String> branches) {
             Utils.checkNotNull(branches, "branches");
@@ -332,13 +371,15 @@ public class SourceGithub {
         }
 
         /**
-         * List of GitHub repository branches to pull commits for, e.g. `airbytehq/airbyte/master`. If no branches are specified for a repository, the default branch will be pulled.
+         * List of GitHub repository branches to pull commits for, e.g. `airbytehq/airbyte/master`. If no
+         * branches are specified for a repository, the default branch will be pulled.
          */
         public Builder branches(Optional<? extends List<String>> branches) {
             Utils.checkNotNull(branches, "branches");
             this.branches = branches;
             return this;
         }
+
 
         /**
          * Choose how to authenticate to GitHub
@@ -349,8 +390,10 @@ public class SourceGithub {
             return this;
         }
 
+
         /**
-         * Max Waiting Time for rate limit. Set higher value to wait till rate limits will be resetted to continue sync
+         * Max Waiting Time for rate limit. Set higher value to wait till rate limits will be resetted to
+         * continue sync
          */
         public Builder maxWaitingTime(long maxWaitingTime) {
             Utils.checkNotNull(maxWaitingTime, "maxWaitingTime");
@@ -359,7 +402,8 @@ public class SourceGithub {
         }
 
         /**
-         * Max Waiting Time for rate limit. Set higher value to wait till rate limits will be resetted to continue sync
+         * Max Waiting Time for rate limit. Set higher value to wait till rate limits will be resetted to
+         * continue sync
          */
         public Builder maxWaitingTime(Optional<Long> maxWaitingTime) {
             Utils.checkNotNull(maxWaitingTime, "maxWaitingTime");
@@ -367,8 +411,11 @@ public class SourceGithub {
             return this;
         }
 
+
         /**
-         * List of GitHub organizations/repositories, e.g. `airbytehq/airbyte` for single repository, `airbytehq/*` for get all repositories from organization and `airbytehq/a* for matching multiple repositories by pattern.
+         * List of GitHub organizations/repositories, e.g. `airbytehq/airbyte` for single repository,
+         * `airbytehq/*` for get all repositories from organization and `airbytehq/a* for matching multiple
+         * repositories by pattern.
          */
         public Builder repositories(List<String> repositories) {
             Utils.checkNotNull(repositories, "repositories");
@@ -376,8 +423,14 @@ public class SourceGithub {
             return this;
         }
 
+
         /**
-         * The date from which you'd like to replicate data from GitHub in the format YYYY-MM-DDT00:00:00Z. If the date is not set, all data will be replicated.  For the streams which support this configuration, only data generated on or after the start date will be replicated. This field doesn't apply to all streams, see the &lt;a href="https://docs.airbyte.com/integrations/sources/github"&gt;docs&lt;/a&gt; for more info
+         * The date from which you'd like to replicate data from GitHub in the format YYYY-MM-DDT00:00:00Z. If
+         * the date is not set, all data will be replicated. For the streams which support this configuration,
+         * only data generated on or after the start date will be replicated.
+         * 
+         * <p>This field doesn't apply to all streams, see the <a
+         * href="https://docs.airbyte.com/integrations/sources/github">docs</a> for more info
          */
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -386,14 +439,19 @@ public class SourceGithub {
         }
 
         /**
-         * The date from which you'd like to replicate data from GitHub in the format YYYY-MM-DDT00:00:00Z. If the date is not set, all data will be replicated.  For the streams which support this configuration, only data generated on or after the start date will be replicated. This field doesn't apply to all streams, see the &lt;a href="https://docs.airbyte.com/integrations/sources/github"&gt;docs&lt;/a&gt; for more info
+         * The date from which you'd like to replicate data from GitHub in the format YYYY-MM-DDT00:00:00Z. If
+         * the date is not set, all data will be replicated. For the streams which support this configuration,
+         * only data generated on or after the start date will be replicated.
+         * 
+         * <p>This field doesn't apply to all streams, see the <a
+         * href="https://docs.airbyte.com/integrations/sources/github">docs</a> for more info
          */
         public Builder startDate(Optional<OffsetDateTime> startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceGithub build() {
             if (apiUrl == null) {
                 apiUrl = _SINGLETON_VALUE_ApiUrl.value();
@@ -401,14 +459,12 @@ public class SourceGithub {
             if (maxWaitingTime == null) {
                 maxWaitingTime = _SINGLETON_VALUE_MaxWaitingTime.value();
             }
+
             return new SourceGithub(
-                apiUrl,
-                branches,
-                credentials,
-                maxWaitingTime,
-                repositories,
-                startDate);
+                apiUrl, branches, credentials,
+                maxWaitingTime, repositories, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_ApiUrl =
                 new LazySingletonValue<>(

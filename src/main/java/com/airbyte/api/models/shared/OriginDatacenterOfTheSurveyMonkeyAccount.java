@@ -11,7 +11,8 @@ import java.util.Optional;
 /**
  * OriginDatacenterOfTheSurveyMonkeyAccount
  * 
- * <p>Depending on the originating datacenter of the SurveyMonkey account, the API access URL may be different.
+ * <p>Depending on the originating datacenter of the SurveyMonkey account, the API access URL may be
+ * different.
  */
 public enum OriginDatacenterOfTheSurveyMonkeyAccount {
     USA("USA"),
@@ -21,7 +22,7 @@ public enum OriginDatacenterOfTheSurveyMonkeyAccount {
     @JsonValue
     private final String value;
 
-    private OriginDatacenterOfTheSurveyMonkeyAccount(String value) {
+    OriginDatacenterOfTheSurveyMonkeyAccount(String value) {
         this.value = value;
     }
     

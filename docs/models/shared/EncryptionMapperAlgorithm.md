@@ -1,5 +1,13 @@
 # EncryptionMapperAlgorithm
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.EncryptionMapperAlgorithm;
+
+EncryptionMapperAlgorithm value = EncryptionMapperAlgorithm.RSA;
+```
+
 
 ## Values
 

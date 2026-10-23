@@ -19,7 +19,7 @@ public enum Mode {
     @JsonValue
     private final String value;
 
-    private Mode(String value) {
+    Mode(String value) {
         this.value = value;
     }
     

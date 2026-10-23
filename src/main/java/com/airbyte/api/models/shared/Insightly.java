@@ -14,7 +14,7 @@ public enum Insightly {
     @JsonValue
     private final String value;
 
-    private Insightly(String value) {
+    Insightly(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum DestinationQdrantSchemasEmbeddingEmbeddingMode {
     @JsonValue
     private final String value;
 
-    private DestinationQdrantSchemasEmbeddingEmbeddingMode(String value) {
+    DestinationQdrantSchemasEmbeddingEmbeddingMode(String value) {
         this.value = value;
     }
     

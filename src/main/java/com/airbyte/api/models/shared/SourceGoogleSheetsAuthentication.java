@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceGoogleSheetsAuthentication
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class SourceGoogleSheetsAuthentication {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceGoogleSheetsAuthentication(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class SourceGoogleSheetsAuthentication {
 
     public static SourceGoogleSheetsAuthentication of(SourceGoogleSheetsAuthenticateViaGoogleOAuth value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleSheetsAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleSheetsAuthenticateViaGoogleOAuth>(){}));
+        return new SourceGoogleSheetsAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceGoogleSheetsAuthentication of(SourceGoogleSheetsServiceAccountKeyAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleSheetsAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleSheetsServiceAccountKeyAuthentication>(){}));
+        return new SourceGoogleSheetsAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class SourceGoogleSheetsAuthentication {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class SourceGoogleSheetsAuthentication {
             return false;
         }
         SourceGoogleSheetsAuthentication other = (SourceGoogleSheetsAuthentication) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -95,6 +94,6 @@ public class SourceGoogleSheetsAuthentication {
         return Utils.toString(SourceGoogleSheetsAuthentication.class,
                 "value", value);
     }
- 
+
 }
 

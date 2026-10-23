@@ -3,16 +3,21 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
+import com.airbyte.api.operations.UpdateDeclarativeSourceDefinition;
+import com.airbyte.api.utils.Headers;
 import com.airbyte.api.utils.Utils;
-import java.lang.Exception;
 
 public class UpdateDeclarativeSourceDefinitionRequestBuilder {
 
     private UpdateDeclarativeSourceDefinitionRequest request;
-    private final SDKMethodInterfaces.MethodCallUpdateDeclarativeSourceDefinition sdk;
+    private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
-    public UpdateDeclarativeSourceDefinitionRequestBuilder(SDKMethodInterfaces.MethodCallUpdateDeclarativeSourceDefinition sdk) {
-        this.sdk = sdk;
+    public UpdateDeclarativeSourceDefinitionRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public UpdateDeclarativeSourceDefinitionRequestBuilder request(UpdateDeclarativeSourceDefinitionRequest request) {
@@ -21,9 +26,11 @@ public class UpdateDeclarativeSourceDefinitionRequestBuilder {
         return this;
     }
 
-    public UpdateDeclarativeSourceDefinitionResponse call() throws Exception {
+    public UpdateDeclarativeSourceDefinitionResponse call() {
+        
+        RequestOperation<UpdateDeclarativeSourceDefinitionRequest, UpdateDeclarativeSourceDefinitionResponse> operation
+              = new UpdateDeclarativeSourceDefinition.Sync(sdkConfiguration, _headers);
 
-        return sdk.updateDeclarativeSourceDefinition(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

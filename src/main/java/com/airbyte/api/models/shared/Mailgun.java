@@ -14,7 +14,7 @@ public enum Mailgun {
     @JsonValue
     private final String value;
 
-    private Mailgun(String value) {
+    Mailgun(String value) {
         this.value = value;
     }
     

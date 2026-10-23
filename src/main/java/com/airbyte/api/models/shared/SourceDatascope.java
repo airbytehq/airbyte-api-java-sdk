@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceDatascope {
-
     /**
      * API Key
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Datascope sourceType;
@@ -62,9 +62,10 @@ public class SourceDatascope {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API Key
@@ -84,7 +85,6 @@ public class SourceDatascope {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourceDatascope {
         }
         SourceDatascope other = (SourceDatascope) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKey, sourceType, startDate);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SourceDatascope {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API Key
@@ -135,6 +135,7 @@ public class SourceDatascope {
             return this;
         }
 
+
         /**
          * Start date for the data to be replicated
          */
@@ -143,12 +144,13 @@ public class SourceDatascope {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceDatascope build() {
+
             return new SourceDatascope(
-                apiKey,
-                startDate);
+                apiKey, startDate);
         }
+
 
         private static final LazySingletonValue<Datascope> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

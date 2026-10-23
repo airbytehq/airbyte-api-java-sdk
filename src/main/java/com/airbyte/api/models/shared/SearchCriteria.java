@@ -21,7 +21,7 @@ public enum SearchCriteria {
     @JsonValue
     private final String value;
 
-    private SearchCriteria(String value) {
+    SearchCriteria(String value) {
         this.value = value;
     }
     

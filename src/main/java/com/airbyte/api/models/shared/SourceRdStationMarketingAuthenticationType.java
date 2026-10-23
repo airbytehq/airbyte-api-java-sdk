@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceRdStationMarketingAuthenticationType
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class SourceRdStationMarketingAuthenticationType {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceRdStationMarketingAuthenticationType(TypedObject value) {
         this.value = value;
@@ -33,7 +32,7 @@ public class SourceRdStationMarketingAuthenticationType {
 
     public static SourceRdStationMarketingAuthenticationType of(SignInViaRDStationOAuth value) {
         Utils.checkNotNull(value, "value");
-        return new SourceRdStationMarketingAuthenticationType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SignInViaRDStationOAuth>(){}));
+        return new SourceRdStationMarketingAuthenticationType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -55,7 +54,7 @@ public class SourceRdStationMarketingAuthenticationType {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -66,12 +65,12 @@ public class SourceRdStationMarketingAuthenticationType {
             return false;
         }
         SourceRdStationMarketingAuthenticationType other = (SourceRdStationMarketingAuthenticationType) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -88,6 +87,6 @@ public class SourceRdStationMarketingAuthenticationType {
         return Utils.toString(SourceRdStationMarketingAuthenticationType.class,
                 "value", value);
     }
- 
+
 }
 

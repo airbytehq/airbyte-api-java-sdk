@@ -26,7 +26,7 @@ public enum DefaultVectorizer {
     @JsonValue
     private final String value;
 
-    private DefaultVectorizer(String value) {
+    DefaultVectorizer(String value) {
         this.value = value;
     }
     

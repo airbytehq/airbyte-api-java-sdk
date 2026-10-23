@@ -14,7 +14,7 @@ public enum Opsgenie {
     @JsonValue
     private final String value;
 
-    private Opsgenie(String value) {
+    Opsgenie(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum Fullstory {
     @JsonValue
     private final String value;
 
-    private Fullstory(String value) {
+    Fullstory(String value) {
         this.value = value;
     }
     

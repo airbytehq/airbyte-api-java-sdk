@@ -19,26 +19,28 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor
  * 
- * <p>Incrementally detects new inserts and updates using the &lt;a href="https://docs.airbyte.com/understanding-airbyte/connections/incremental-append/#user-defined-cursor"&gt;cursor column&lt;/a&gt; chosen when configuring a connection (e.g. created_at, updated_at).
+ * <p>Incrementally detects new inserts and updates using the <a
+ * href="https://docs.airbyte.com/understanding-airbyte/connections/incremental-append/#user-defined-cursor">cursor
+ * column</a> chosen when configuring a connection (e.g. created_at, updated_at).
  */
 public class SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor {
 
     @JsonIgnore
     private Map<String, Object> additionalProperties;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("cursor_method")
-    private Optional<? extends CursorMethod> cursorMethod;
+    private Optional<? extends SourceNetsuiteEnterpriseCursorMethod> cursorMethod;
 
     @JsonCreator
     public SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor(
-            @JsonProperty("cursor_method") Optional<? extends CursorMethod> cursorMethod) {
+            @JsonProperty("cursor_method") Optional<? extends SourceNetsuiteEnterpriseCursorMethod> cursorMethod) {
         Utils.checkNotNull(cursorMethod, "cursorMethod");
         this.additionalProperties = new HashMap<>();
         this.cursorMethod = cursorMethod;
@@ -55,13 +57,14 @@ public class SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<CursorMethod> cursorMethod() {
-        return (Optional<CursorMethod>) cursorMethod;
+    public Optional<SourceNetsuiteEnterpriseCursorMethod> cursorMethod() {
+        return (Optional<SourceNetsuiteEnterpriseCursorMethod>) cursorMethod;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor withAdditionalProperty(String key, Object value) {
@@ -69,27 +72,26 @@ public class SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
         return this;
     }
 
-    public SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor withCursorMethod(CursorMethod cursorMethod) {
+    public SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor withCursorMethod(SourceNetsuiteEnterpriseCursorMethod cursorMethod) {
         Utils.checkNotNull(cursorMethod, "cursorMethod");
         this.cursorMethod = Optional.ofNullable(cursorMethod);
         return this;
     }
 
-    public SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor withCursorMethod(Optional<? extends CursorMethod> cursorMethod) {
+
+    public SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor withCursorMethod(Optional<? extends SourceNetsuiteEnterpriseCursorMethod> cursorMethod) {
         Utils.checkNotNull(cursorMethod, "cursorMethod");
         this.cursorMethod = cursorMethod;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,15 +102,14 @@ public class SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor {
         }
         SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor other = (SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.cursorMethod, other.cursorMethod);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.cursorMethod, other.cursorMethod);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            cursorMethod);
+        return Utils.enhancedHash(
+            additionalProperties, cursorMethod);
     }
     
     @Override
@@ -117,13 +118,14 @@ public class SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor {
                 "additionalProperties", additionalProperties,
                 "cursorMethod", cursorMethod);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
-        private Optional<? extends CursorMethod> cursorMethod;
-        
+
+        private Optional<? extends SourceNetsuiteEnterpriseCursorMethod> cursorMethod;
+
         private Builder() {
           // force use of static builder() method
         }
@@ -144,31 +146,34 @@ public class SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor {
             return this;
         }
 
-        public Builder cursorMethod(CursorMethod cursorMethod) {
+
+        public Builder cursorMethod(SourceNetsuiteEnterpriseCursorMethod cursorMethod) {
             Utils.checkNotNull(cursorMethod, "cursorMethod");
             this.cursorMethod = Optional.ofNullable(cursorMethod);
             return this;
         }
 
-        public Builder cursorMethod(Optional<? extends CursorMethod> cursorMethod) {
+        public Builder cursorMethod(Optional<? extends SourceNetsuiteEnterpriseCursorMethod> cursorMethod) {
             Utils.checkNotNull(cursorMethod, "cursorMethod");
             this.cursorMethod = cursorMethod;
             return this;
         }
-        
+
         public SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor build() {
             if (cursorMethod == null) {
                 cursorMethod = _SINGLETON_VALUE_CursorMethod.value();
             }
+
             return new SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor(
                 cursorMethod)
                 .withAdditionalProperties(additionalProperties);
         }
 
-        private static final LazySingletonValue<Optional<? extends CursorMethod>> _SINGLETON_VALUE_CursorMethod =
+
+        private static final LazySingletonValue<Optional<? extends SourceNetsuiteEnterpriseCursorMethod>> _SINGLETON_VALUE_CursorMethod =
                 new LazySingletonValue<>(
                         "cursor_method",
                         "\"user_defined\"",
-                        new TypeReference<Optional<? extends CursorMethod>>() {});
+                        new TypeReference<Optional<? extends SourceNetsuiteEnterpriseCursorMethod>>() {});
     }
 }

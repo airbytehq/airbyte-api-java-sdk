@@ -1,5 +1,13 @@
 # JustSift
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.JustSift;
+
+JustSift value = JustSift.JUST_SIFT;
+```
+
 
 ## Values
 

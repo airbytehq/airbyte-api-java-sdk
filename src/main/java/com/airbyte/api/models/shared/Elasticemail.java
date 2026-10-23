@@ -14,7 +14,7 @@ public enum Elasticemail {
     @JsonValue
     private final String value;
 
-    private Elasticemail(String value) {
+    Elasticemail(String value) {
         this.value = value;
     }
     

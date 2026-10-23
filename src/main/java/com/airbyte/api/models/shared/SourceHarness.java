@@ -13,16 +13,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceHarness {
 
+public class SourceHarness {
     /**
      * Harness Account ID
      */
     @JsonProperty("account_id")
     private String accountId;
+
 
     @JsonProperty("api_key")
     private String apiKey;
@@ -33,6 +33,7 @@ public class SourceHarness {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("api_url")
     private Optional<String> apiUrl;
+
 
     @JsonProperty("sourceType")
     private Harness sourceType;
@@ -83,9 +84,10 @@ public class SourceHarness {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Harness Account ID
@@ -111,6 +113,7 @@ public class SourceHarness {
         return this;
     }
 
+
     /**
      * The API URL for fetching data from Harness
      */
@@ -120,7 +123,6 @@ public class SourceHarness {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -131,18 +133,16 @@ public class SourceHarness {
         }
         SourceHarness other = (SourceHarness) o;
         return 
-            Objects.deepEquals(this.accountId, other.accountId) &&
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.apiUrl, other.apiUrl) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.accountId, other.accountId) &&
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.apiUrl, other.apiUrl) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountId,
-            apiKey,
-            apiUrl,
+        return Utils.enhancedHash(
+            accountId, apiKey, apiUrl,
             sourceType);
     }
     
@@ -154,18 +154,20 @@ public class SourceHarness {
                 "apiUrl", apiUrl,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accountId;
- 
+
         private String apiKey;
- 
+
         private Optional<String> apiUrl;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Harness Account ID
@@ -176,11 +178,13 @@ public class SourceHarness {
             return this;
         }
 
+
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * The API URL for fetching data from Harness
@@ -199,16 +203,16 @@ public class SourceHarness {
             this.apiUrl = apiUrl;
             return this;
         }
-        
+
         public SourceHarness build() {
             if (apiUrl == null) {
                 apiUrl = _SINGLETON_VALUE_ApiUrl.value();
             }
+
             return new SourceHarness(
-                accountId,
-                apiKey,
-                apiUrl);
+                accountId, apiKey, apiUrl);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_ApiUrl =
                 new LazySingletonValue<>(

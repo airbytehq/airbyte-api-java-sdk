@@ -1,5 +1,13 @@
 # SourceNewsdataCategory
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceNewsdataCategory;
+
+SourceNewsdataCategory value = SourceNewsdataCategory.BUSINESS;
+```
+
 
 ## Values
 

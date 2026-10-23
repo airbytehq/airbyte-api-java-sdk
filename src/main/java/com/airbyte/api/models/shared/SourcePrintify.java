@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourcePrintify {
-
     /**
      * Your Printify API token. Obtain it from your Printify account settings.
      */
     @JsonProperty("api_token")
     private String apiToken;
+
 
     @JsonProperty("sourceType")
     private Printify sourceType;
@@ -45,9 +45,10 @@ public class SourcePrintify {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your Printify API token. Obtain it from your Printify account settings.
@@ -58,7 +59,6 @@ public class SourcePrintify {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourcePrintify {
         }
         SourcePrintify other = (SourcePrintify) o;
         return 
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiToken,
-            sourceType);
+        return Utils.enhancedHash(
+            apiToken, sourceType);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourcePrintify {
                 "apiToken", apiToken,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your Printify API token. Obtain it from your Printify account settings.
@@ -103,11 +104,13 @@ public class SourcePrintify {
             this.apiToken = apiToken;
             return this;
         }
-        
+
         public SourcePrintify build() {
+
             return new SourcePrintify(
                 apiToken);
         }
+
 
         private static final LazySingletonValue<Printify> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

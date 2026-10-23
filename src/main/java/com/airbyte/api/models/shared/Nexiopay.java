@@ -14,7 +14,7 @@ public enum Nexiopay {
     @JsonValue
     private final String value;
 
-    private Nexiopay(String value) {
+    Nexiopay(String value) {
         this.value = value;
     }
     

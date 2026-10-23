@@ -25,7 +25,7 @@ public enum TimeAggregates {
     @JsonValue
     private final String value;
 
-    private TimeAggregates(String value) {
+    TimeAggregates(String value) {
         this.value = value;
     }
     

@@ -18,7 +18,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -58,6 +57,7 @@ public class SourcePostgresVerifyCa {
     @JsonProperty("client_key_password")
     private Optional<String> clientKeyPassword;
 
+
     @JsonProperty("mode")
     private SourcePostgresSchemasSSLModeSSLModes5Mode mode;
 
@@ -81,7 +81,8 @@ public class SourcePostgresVerifyCa {
     
     public SourcePostgresVerifyCa(
             String caCertificate) {
-        this(caCertificate, Optional.empty(), Optional.empty(), Optional.empty());
+        this(caCertificate, Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     @JsonAnyGetter
@@ -126,9 +127,10 @@ public class SourcePostgresVerifyCa {
         return mode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourcePostgresVerifyCa withAdditionalProperty(String key, Object value) {
@@ -136,8 +138,7 @@ public class SourcePostgresVerifyCa {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourcePostgresVerifyCa withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -162,6 +163,7 @@ public class SourcePostgresVerifyCa {
         return this;
     }
 
+
     /**
      * Client certificate
      */
@@ -179,6 +181,7 @@ public class SourcePostgresVerifyCa {
         this.clientKey = Optional.ofNullable(clientKey);
         return this;
     }
+
 
     /**
      * Client key
@@ -198,6 +201,7 @@ public class SourcePostgresVerifyCa {
         return this;
     }
 
+
     /**
      * Password for keystorage. If you do not add it - the password will be generated automatically.
      */
@@ -207,7 +211,6 @@ public class SourcePostgresVerifyCa {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -218,23 +221,19 @@ public class SourcePostgresVerifyCa {
         }
         SourcePostgresVerifyCa other = (SourcePostgresVerifyCa) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.caCertificate, other.caCertificate) &&
-            Objects.deepEquals(this.clientCertificate, other.clientCertificate) &&
-            Objects.deepEquals(this.clientKey, other.clientKey) &&
-            Objects.deepEquals(this.clientKeyPassword, other.clientKeyPassword) &&
-            Objects.deepEquals(this.mode, other.mode);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.caCertificate, other.caCertificate) &&
+            Utils.enhancedDeepEquals(this.clientCertificate, other.clientCertificate) &&
+            Utils.enhancedDeepEquals(this.clientKey, other.clientKey) &&
+            Utils.enhancedDeepEquals(this.clientKeyPassword, other.clientKeyPassword) &&
+            Utils.enhancedDeepEquals(this.mode, other.mode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            caCertificate,
-            clientCertificate,
-            clientKey,
-            clientKeyPassword,
-            mode);
+        return Utils.enhancedHash(
+            additionalProperties, caCertificate, clientCertificate,
+            clientKey, clientKeyPassword, mode);
     }
     
     @Override
@@ -247,19 +246,20 @@ public class SourcePostgresVerifyCa {
                 "clientKeyPassword", clientKeyPassword,
                 "mode", mode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private String caCertificate;
- 
+
         private Optional<String> clientCertificate = Optional.empty();
- 
+
         private Optional<String> clientKey = Optional.empty();
- 
+
         private Optional<String> clientKeyPassword = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -280,6 +280,7 @@ public class SourcePostgresVerifyCa {
             return this;
         }
 
+
         /**
          * CA certificate
          */
@@ -288,6 +289,7 @@ public class SourcePostgresVerifyCa {
             this.caCertificate = caCertificate;
             return this;
         }
+
 
         /**
          * Client certificate
@@ -307,6 +309,7 @@ public class SourcePostgresVerifyCa {
             return this;
         }
 
+
         /**
          * Client key
          */
@@ -325,6 +328,7 @@ public class SourcePostgresVerifyCa {
             return this;
         }
 
+
         /**
          * Password for keystorage. If you do not add it - the password will be generated automatically.
          */
@@ -342,15 +346,15 @@ public class SourcePostgresVerifyCa {
             this.clientKeyPassword = clientKeyPassword;
             return this;
         }
-        
+
         public SourcePostgresVerifyCa build() {
+
             return new SourcePostgresVerifyCa(
-                caCertificate,
-                clientCertificate,
-                clientKey,
+                caCertificate, clientCertificate, clientKey,
                 clientKeyPassword)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<SourcePostgresSchemasSSLModeSSLModes5Mode> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

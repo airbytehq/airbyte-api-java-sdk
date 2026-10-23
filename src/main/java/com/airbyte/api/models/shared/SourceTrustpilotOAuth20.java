@@ -15,16 +15,16 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceTrustpilotOAuth20 {
 
+public class SourceTrustpilotOAuth20 {
     /**
      * Access Token for making authenticated requests.
      */
     @JsonProperty("access_token")
     private String accessToken;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
@@ -120,9 +120,10 @@ public class SourceTrustpilotOAuth20 {
         return tokenExpiryDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Access Token for making authenticated requests.
@@ -169,7 +170,6 @@ public class SourceTrustpilotOAuth20 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -180,23 +180,19 @@ public class SourceTrustpilotOAuth20 {
         }
         SourceTrustpilotOAuth20 other = (SourceTrustpilotOAuth20) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken) &&
-            Objects.deepEquals(this.tokenExpiryDate, other.tokenExpiryDate);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.tokenExpiryDate, other.tokenExpiryDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            authType,
-            clientId,
-            clientSecret,
-            refreshToken,
-            tokenExpiryDate);
+        return Utils.enhancedHash(
+            accessToken, authType, clientId,
+            clientSecret, refreshToken, tokenExpiryDate);
     }
     
     @Override
@@ -209,22 +205,24 @@ public class SourceTrustpilotOAuth20 {
                 "refreshToken", refreshToken,
                 "tokenExpiryDate", tokenExpiryDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String refreshToken;
- 
+
         private OffsetDateTime tokenExpiryDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Access Token for making authenticated requests.
@@ -235,6 +233,7 @@ public class SourceTrustpilotOAuth20 {
             return this;
         }
 
+
         /**
          * The API key of the Trustpilot API application. (represents the OAuth Client ID)
          */
@@ -243,6 +242,7 @@ public class SourceTrustpilotOAuth20 {
             this.clientId = clientId;
             return this;
         }
+
 
         /**
          * The Secret of the Trustpilot API application. (represents the OAuth Client Secret)
@@ -253,6 +253,7 @@ public class SourceTrustpilotOAuth20 {
             return this;
         }
 
+
         /**
          * The key to refresh the expired access_token.
          */
@@ -262,6 +263,7 @@ public class SourceTrustpilotOAuth20 {
             return this;
         }
 
+
         /**
          * The date-time when the access token should be refreshed.
          */
@@ -270,15 +272,14 @@ public class SourceTrustpilotOAuth20 {
             this.tokenExpiryDate = tokenExpiryDate;
             return this;
         }
-        
+
         public SourceTrustpilotOAuth20 build() {
+
             return new SourceTrustpilotOAuth20(
-                accessToken,
-                clientId,
-                clientSecret,
-                refreshToken,
-                tokenExpiryDate);
+                accessToken, clientId, clientSecret,
+                refreshToken, tokenExpiryDate);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceTrustpilotAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

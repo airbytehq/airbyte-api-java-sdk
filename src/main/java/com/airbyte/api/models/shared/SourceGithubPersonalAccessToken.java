@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceGithubPersonalAccessToken {
 
@@ -24,7 +24,9 @@ public class SourceGithubPersonalAccessToken {
     private Optional<? extends SourceGithubOptionTitle> optionTitle;
 
     /**
-     * Log into GitHub and then generate a &lt;a href="https://github.com/settings/tokens"&gt;personal access token&lt;/a&gt;. To load balance your API quota consumption across multiple API tokens, input multiple tokens separated with ","
+     * Log into GitHub and then generate a <a href="https://github.com/settings/tokens">personal access
+     * token</a>. To load balance your API quota consumption across multiple API tokens, input multiple
+     * tokens separated with ","
      */
     @JsonProperty("personal_access_token")
     private String personalAccessToken;
@@ -44,19 +46,24 @@ public class SourceGithubPersonalAccessToken {
     }
 
     /**
-     * Log into GitHub and then generate a &lt;a href="https://github.com/settings/tokens"&gt;personal access token&lt;/a&gt;. To load balance your API quota consumption across multiple API tokens, input multiple tokens separated with ","
+     * Log into GitHub and then generate a <a href="https://github.com/settings/tokens">personal access
+     * token</a>. To load balance your API quota consumption across multiple API tokens, input multiple
+     * tokens separated with ","
      */
     @JsonIgnore
     public String personalAccessToken() {
         return personalAccessToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Log into GitHub and then generate a &lt;a href="https://github.com/settings/tokens"&gt;personal access token&lt;/a&gt;. To load balance your API quota consumption across multiple API tokens, input multiple tokens separated with ","
+     * Log into GitHub and then generate a <a href="https://github.com/settings/tokens">personal access
+     * token</a>. To load balance your API quota consumption across multiple API tokens, input multiple
+     * tokens separated with ","
      */
     public SourceGithubPersonalAccessToken withPersonalAccessToken(String personalAccessToken) {
         Utils.checkNotNull(personalAccessToken, "personalAccessToken");
@@ -64,7 +71,6 @@ public class SourceGithubPersonalAccessToken {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -75,15 +81,14 @@ public class SourceGithubPersonalAccessToken {
         }
         SourceGithubPersonalAccessToken other = (SourceGithubPersonalAccessToken) o;
         return 
-            Objects.deepEquals(this.optionTitle, other.optionTitle) &&
-            Objects.deepEquals(this.personalAccessToken, other.personalAccessToken);
+            Utils.enhancedDeepEquals(this.optionTitle, other.optionTitle) &&
+            Utils.enhancedDeepEquals(this.personalAccessToken, other.personalAccessToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            optionTitle,
-            personalAccessToken);
+        return Utils.enhancedHash(
+            optionTitle, personalAccessToken);
     }
     
     @Override
@@ -92,28 +97,34 @@ public class SourceGithubPersonalAccessToken {
                 "optionTitle", optionTitle,
                 "personalAccessToken", personalAccessToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String personalAccessToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Log into GitHub and then generate a &lt;a href="https://github.com/settings/tokens"&gt;personal access token&lt;/a&gt;. To load balance your API quota consumption across multiple API tokens, input multiple tokens separated with ","
+         * Log into GitHub and then generate a <a href="https://github.com/settings/tokens">personal access
+         * token</a>. To load balance your API quota consumption across multiple API tokens, input multiple
+         * tokens separated with ","
          */
         public Builder personalAccessToken(String personalAccessToken) {
             Utils.checkNotNull(personalAccessToken, "personalAccessToken");
             this.personalAccessToken = personalAccessToken;
             return this;
         }
-        
+
         public SourceGithubPersonalAccessToken build() {
+
             return new SourceGithubPersonalAccessToken(
                 personalAccessToken);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceGithubOptionTitle>> _SINGLETON_VALUE_OptionTitle =
                 new LazySingletonValue<>(

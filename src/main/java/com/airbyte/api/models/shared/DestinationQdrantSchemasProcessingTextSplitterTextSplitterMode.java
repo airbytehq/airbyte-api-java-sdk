@@ -14,7 +14,7 @@ public enum DestinationQdrantSchemasProcessingTextSplitterTextSplitterMode {
     @JsonValue
     private final String value;
 
-    private DestinationQdrantSchemasProcessingTextSplitterTextSplitterMode(String value) {
+    DestinationQdrantSchemasProcessingTextSplitterTextSplitterMode(String value) {
         this.value = value;
     }
     

@@ -19,7 +19,7 @@ public enum DestinationMongodbSchemasTunnelMethodTunnelMethod {
     @JsonValue
     private final String value;
 
-    private DestinationMongodbSchemasTunnelMethodTunnelMethod(String value) {
+    DestinationMongodbSchemasTunnelMethodTunnelMethod(String value) {
         this.value = value;
     }
     

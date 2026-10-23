@@ -14,7 +14,7 @@ public enum SourcePinterestPinterest {
     @JsonValue
     private final String value;
 
-    private SourcePinterestPinterest(String value) {
+    SourcePinterestPinterest(String value) {
         this.value = value;
     }
     

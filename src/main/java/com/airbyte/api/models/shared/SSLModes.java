@@ -14,25 +14,30 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SSLModes
  * 
- * <p>SSL connection modes. 
- *  &lt;b&gt;disable&lt;/b&gt; - Chose this mode to disable encryption of communication between Airbyte and destination database
- *  &lt;b&gt;allow&lt;/b&gt; - Chose this mode to enable encryption only when required by the source database
- *  &lt;b&gt;prefer&lt;/b&gt; - Chose this mode to allow unencrypted connection only if the source database does not support encryption
- *  &lt;b&gt;require&lt;/b&gt; - Chose this mode to always require encryption. If the source database server does not support encryption, connection will fail
- *   &lt;b&gt;verify-ca&lt;/b&gt; - Chose this mode to always require encryption and to verify that the source database server has a valid SSL certificate
- *   &lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Chose this mode to always require encryption and to verify the identity of the source database server
- *  See more information - &lt;a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"&gt; in the docs&lt;/a&gt;.
+ * <p>SSL connection modes.
+ * <b>disable</b> - Chose this mode to disable encryption of communication between Airbyte and
+ * destination database
+ * <b>allow</b> - Chose this mode to enable encryption only when required by the source database
+ * <b>prefer</b> - Chose this mode to allow unencrypted connection only if the source database does not
+ * support encryption
+ * <b>require</b> - Chose this mode to always require encryption. If the source database server does
+ * not support encryption, connection will fail
+ * <b>verify-ca</b> - Chose this mode to always require encryption and to verify that the source
+ * database server has a valid SSL certificate
+ * <b>verify-full</b> - This is the most secure mode. Chose this mode to always require encryption and
+ * to verify the identity of the source database server
+ * See more information - <a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"> in
+ * the docs</a>.
  */
 @JsonDeserialize(using = SSLModes._Deserializer.class)
 public class SSLModes {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SSLModes(TypedObject value) {
         this.value = value;
@@ -40,32 +45,32 @@ public class SSLModes {
 
     public static SSLModes of(Disable value) {
         Utils.checkNotNull(value, "value");
-        return new SSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Disable>(){}));
+        return new SSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SSLModes of(Allow value) {
         Utils.checkNotNull(value, "value");
-        return new SSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Allow>(){}));
+        return new SSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SSLModes of(Prefer value) {
         Utils.checkNotNull(value, "value");
-        return new SSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Prefer>(){}));
+        return new SSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SSLModes of(Require value) {
         Utils.checkNotNull(value, "value");
-        return new SSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Require>(){}));
+        return new SSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SSLModes of(VerifyCa value) {
         Utils.checkNotNull(value, "value");
-        return new SSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<VerifyCa>(){}));
+        return new SSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SSLModes of(VerifyFull value) {
         Utils.checkNotNull(value, "value");
-        return new SSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<VerifyFull>(){}));
+        return new SSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -92,7 +97,7 @@ public class SSLModes {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -103,12 +108,12 @@ public class SSLModes {
             return false;
         }
         SSLModes other = (SSLModes) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -116,12 +121,12 @@ public class SSLModes {
 
         public _Deserializer() {
             super(SSLModes.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<VerifyFull>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<VerifyCa>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Require>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Prefer>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<Disable>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<Allow>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Disable>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<Prefer>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<Require>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<VerifyCa>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<VerifyFull>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -130,6 +135,6 @@ public class SSLModes {
         return Utils.toString(SSLModes.class,
                 "value", value);
     }
- 
+
 }
 

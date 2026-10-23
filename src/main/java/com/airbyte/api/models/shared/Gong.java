@@ -14,7 +14,7 @@ public enum Gong {
     @JsonValue
     private final String value;
 
-    private Gong(String value) {
+    Gong(String value) {
         this.value = value;
     }
     

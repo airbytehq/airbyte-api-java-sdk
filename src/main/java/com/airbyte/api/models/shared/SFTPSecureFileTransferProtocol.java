@@ -13,24 +13,28 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SFTPSecureFileTransferProtocol {
 
     @JsonProperty("host")
     private String host;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
     private Optional<String> password;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("port")
     private Optional<String> port;
 
+
     @JsonProperty("storage")
     private SourceFileSchemasProviderStorageProvider7Storage storage;
+
 
     @JsonProperty("user")
     private String user;
@@ -55,7 +59,8 @@ public class SFTPSecureFileTransferProtocol {
     public SFTPSecureFileTransferProtocol(
             String host,
             String user) {
-        this(host, Optional.empty(), Optional.empty(), user);
+        this(host, Optional.empty(), Optional.empty(),
+            user);
     }
 
     @JsonIgnore
@@ -83,9 +88,10 @@ public class SFTPSecureFileTransferProtocol {
         return user;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SFTPSecureFileTransferProtocol withHost(String host) {
         Utils.checkNotNull(host, "host");
@@ -99,6 +105,7 @@ public class SFTPSecureFileTransferProtocol {
         return this;
     }
 
+
     public SFTPSecureFileTransferProtocol withPassword(Optional<String> password) {
         Utils.checkNotNull(password, "password");
         this.password = password;
@@ -110,6 +117,7 @@ public class SFTPSecureFileTransferProtocol {
         this.port = Optional.ofNullable(port);
         return this;
     }
+
 
     public SFTPSecureFileTransferProtocol withPort(Optional<String> port) {
         Utils.checkNotNull(port, "port");
@@ -123,7 +131,6 @@ public class SFTPSecureFileTransferProtocol {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -134,21 +141,18 @@ public class SFTPSecureFileTransferProtocol {
         }
         SFTPSecureFileTransferProtocol other = (SFTPSecureFileTransferProtocol) o;
         return 
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.storage, other.storage) &&
-            Objects.deepEquals(this.user, other.user);
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.storage, other.storage) &&
+            Utils.enhancedDeepEquals(this.user, other.user);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            host,
-            password,
-            port,
-            storage,
-            user);
+        return Utils.enhancedHash(
+            host, password, port,
+            storage, user);
     }
     
     @Override
@@ -160,26 +164,29 @@ public class SFTPSecureFileTransferProtocol {
                 "storage", storage,
                 "user", user);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String host;
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private Optional<String> port;
- 
+
         private String user;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder host(String host) {
             Utils.checkNotNull(host, "host");
             this.host = host;
             return this;
         }
+
 
         public Builder password(String password) {
             Utils.checkNotNull(password, "password");
@@ -193,6 +200,7 @@ public class SFTPSecureFileTransferProtocol {
             return this;
         }
 
+
         public Builder port(String port) {
             Utils.checkNotNull(port, "port");
             this.port = Optional.ofNullable(port);
@@ -205,22 +213,23 @@ public class SFTPSecureFileTransferProtocol {
             return this;
         }
 
+
         public Builder user(String user) {
             Utils.checkNotNull(user, "user");
             this.user = user;
             return this;
         }
-        
+
         public SFTPSecureFileTransferProtocol build() {
             if (port == null) {
                 port = _SINGLETON_VALUE_Port.value();
             }
+
             return new SFTPSecureFileTransferProtocol(
-                host,
-                password,
-                port,
+                host, password, port,
                 user);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Port =
                 new LazySingletonValue<>(

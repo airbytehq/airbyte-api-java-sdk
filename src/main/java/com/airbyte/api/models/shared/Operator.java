@@ -11,7 +11,10 @@ import java.util.Optional;
 /**
  * Operator
  * 
- * <p>An Operator that will be used to filter accounts. The Contains predicate has features for matching words, matching inflectional forms of words, searching using wildcard characters, and searching using proximity. The Equals is used to return all rows where account name is equal(=) to the string that you provided
+ * <p>An Operator that will be used to filter accounts. The Contains predicate has features for matching
+ * words, matching inflectional forms of words, searching using wildcard characters, and searching
+ * using proximity. The Equals is used to return all rows where account name is equal(=) to the string
+ * that you provided
  */
 public enum Operator {
     CONTAINS("Contains"),
@@ -20,7 +23,7 @@ public enum Operator {
     @JsonValue
     private final String value;
 
-    private Operator(String value) {
+    Operator(String value) {
         this.value = value;
     }
     

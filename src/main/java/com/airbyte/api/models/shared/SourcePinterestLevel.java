@@ -30,7 +30,7 @@ public enum SourcePinterestLevel {
     @JsonValue
     private final String value;
 
-    private SourcePinterestLevel(String value) {
+    SourcePinterestLevel(String value) {
         this.value = value;
     }
     

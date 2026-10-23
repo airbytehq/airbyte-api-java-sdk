@@ -14,7 +14,7 @@ public enum DestinationMssqlLoadType {
     @JsonValue
     private final String value;
 
-    private DestinationMssqlLoadType(String value) {
+    DestinationMssqlLoadType(String value) {
         this.value = value;
     }
     

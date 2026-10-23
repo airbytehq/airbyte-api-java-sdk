@@ -10,12 +10,15 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
+/**
+ * SchemeBasicAuth
+ */
 public class SchemeBasicAuth implements HasSecurity {
 
     @SpeakeasyMetadata("security:name=password")
     private String password;
+
 
     @SpeakeasyMetadata("security:name=username")
     private String username;
@@ -40,9 +43,10 @@ public class SchemeBasicAuth implements HasSecurity {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SchemeBasicAuth withPassword(String password) {
         Utils.checkNotNull(password, "password");
@@ -56,7 +60,6 @@ public class SchemeBasicAuth implements HasSecurity {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -67,15 +70,14 @@ public class SchemeBasicAuth implements HasSecurity {
         }
         SchemeBasicAuth other = (SchemeBasicAuth) o;
         return 
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            password,
-            username);
+        return Utils.enhancedHash(
+            password, username);
     }
     
     @Override
@@ -84,16 +86,18 @@ public class SchemeBasicAuth implements HasSecurity {
                 "password", password,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String password;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder password(String password) {
             Utils.checkNotNull(password, "password");
@@ -101,16 +105,18 @@ public class SchemeBasicAuth implements HasSecurity {
             return this;
         }
 
+
         public Builder username(String username) {
             Utils.checkNotNull(username, "username");
             this.username = username;
             return this;
         }
-        
+
         public SchemeBasicAuth build() {
+
             return new SchemeBasicAuth(
-                password,
-                username);
+                password, username);
         }
+
     }
 }

@@ -14,7 +14,7 @@ public enum DestinationRedisSchemasMode {
     @JsonValue
     private final String value;
 
-    private DestinationRedisSchemasMode(String value) {
+    DestinationRedisSchemasMode(String value) {
         this.value = value;
     }
     

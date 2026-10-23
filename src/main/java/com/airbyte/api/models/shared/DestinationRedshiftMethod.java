@@ -14,7 +14,7 @@ public enum DestinationRedshiftMethod {
     @JsonValue
     private final String value;
 
-    private DestinationRedshiftMethod(String value) {
+    DestinationRedshiftMethod(String value) {
         this.value = value;
     }
     

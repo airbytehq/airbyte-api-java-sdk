@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceShipstation {
 
@@ -23,11 +23,14 @@ public class SourceShipstation {
     @JsonProperty("password")
     private Optional<String> password;
 
+
     @JsonProperty("sourceType")
     private Shipstation sourceType;
 
+
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
+
 
     @JsonProperty("username")
     private String username;
@@ -72,15 +75,17 @@ public class SourceShipstation {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceShipstation withPassword(String password) {
         Utils.checkNotNull(password, "password");
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     public SourceShipstation withPassword(Optional<String> password) {
         Utils.checkNotNull(password, "password");
@@ -100,7 +105,6 @@ public class SourceShipstation {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -111,18 +115,16 @@ public class SourceShipstation {
         }
         SourceShipstation other = (SourceShipstation) o;
         return 
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            password,
-            sourceType,
-            startDate,
+        return Utils.enhancedHash(
+            password, sourceType, startDate,
             username);
     }
     
@@ -134,18 +136,20 @@ public class SourceShipstation {
                 "startDate", startDate,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private OffsetDateTime startDate;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder password(String password) {
             Utils.checkNotNull(password, "password");
@@ -159,24 +163,26 @@ public class SourceShipstation {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
 
+
         public Builder username(String username) {
             Utils.checkNotNull(username, "username");
             this.username = username;
             return this;
         }
-        
+
         public SourceShipstation build() {
+
             return new SourceShipstation(
-                password,
-                startDate,
-                username);
+                password, startDate, username);
         }
+
 
         private static final LazySingletonValue<Shipstation> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum Timely {
     @JsonValue
     private final String value;
 
-    private Timely(String value) {
+    Timely(String value) {
         this.value = value;
     }
     

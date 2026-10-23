@@ -1,5 +1,13 @@
 # ReportName
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.ReportName;
+
+ReportName value = ReportName.GET_AFN_INVENTORY_DATA;
+```
+
 
 ## Values
 

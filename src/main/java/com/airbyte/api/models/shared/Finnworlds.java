@@ -14,7 +14,7 @@ public enum Finnworlds {
     @JsonValue
     private final String value;
 
-    private Finnworlds(String value) {
+    Finnworlds(String value) {
         this.value = value;
     }
     

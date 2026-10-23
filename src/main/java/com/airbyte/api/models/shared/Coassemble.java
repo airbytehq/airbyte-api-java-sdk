@@ -14,7 +14,7 @@ public enum Coassemble {
     @JsonValue
     private final String value;
 
-    private Coassemble(String value) {
+    Coassemble(String value) {
         this.value = value;
     }
     

@@ -15,7 +15,7 @@ public enum DestinationS3SchemasFlattening {
     @JsonValue
     private final String value;
 
-    private DestinationS3SchemasFlattening(String value) {
+    DestinationS3SchemasFlattening(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * MongoDbInstanceType
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class MongoDbInstanceType {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private MongoDbInstanceType(TypedObject value) {
         this.value = value;
@@ -33,17 +32,17 @@ public class MongoDbInstanceType {
 
     public static MongoDbInstanceType of(StandaloneMongoDbInstance value) {
         Utils.checkNotNull(value, "value");
-        return new MongoDbInstanceType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<StandaloneMongoDbInstance>(){}));
+        return new MongoDbInstanceType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static MongoDbInstanceType of(ReplicaSet value) {
         Utils.checkNotNull(value, "value");
-        return new MongoDbInstanceType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ReplicaSet>(){}));
+        return new MongoDbInstanceType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static MongoDbInstanceType of(MongoDBAtlas value) {
         Utils.checkNotNull(value, "value");
-        return new MongoDbInstanceType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<MongoDBAtlas>(){}));
+        return new MongoDbInstanceType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +66,7 @@ public class MongoDbInstanceType {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +77,12 @@ public class MongoDbInstanceType {
             return false;
         }
         MongoDbInstanceType other = (MongoDbInstanceType) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -102,6 +101,6 @@ public class MongoDbInstanceType {
         return Utils.toString(MongoDbInstanceType.class,
                 "value", value);
     }
- 
+
 }
 

@@ -14,7 +14,7 @@ public enum Customerly {
     @JsonValue
     private final String value;
 
-    private Customerly(String value) {
+    Customerly(String value) {
         this.value = value;
     }
     

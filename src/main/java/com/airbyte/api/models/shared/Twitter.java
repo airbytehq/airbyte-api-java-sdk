@@ -14,7 +14,7 @@ public enum Twitter {
     @JsonValue
     private final String value;
 
-    private Twitter(String value) {
+    Twitter(String value) {
         this.value = value;
     }
     

@@ -15,7 +15,7 @@ public enum RefreshTokenEndpoint {
     @JsonValue
     private final String value;
 
-    private RefreshTokenEndpoint(String value) {
+    RefreshTokenEndpoint(String value) {
         this.value = value;
     }
     

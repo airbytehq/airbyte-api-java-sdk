@@ -34,7 +34,7 @@ public enum DestinationMilvusLanguage {
     @JsonValue
     private final String value;
 
-    private DestinationMilvusLanguage(String value) {
+    DestinationMilvusLanguage(String value) {
         this.value = value;
     }
     

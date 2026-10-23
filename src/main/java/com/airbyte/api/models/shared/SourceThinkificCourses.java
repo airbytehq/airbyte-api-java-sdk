@@ -11,15 +11,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceThinkificCourses {
 
     @JsonProperty("X-Auth-Subdomain")
     private String xAuthSubdomain;
 
+
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private ThinkificCourses sourceType;
@@ -50,9 +52,10 @@ public class SourceThinkificCourses {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceThinkificCourses withXAuthSubdomain(String xAuthSubdomain) {
         Utils.checkNotNull(xAuthSubdomain, "xAuthSubdomain");
@@ -66,7 +69,6 @@ public class SourceThinkificCourses {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -77,17 +79,15 @@ public class SourceThinkificCourses {
         }
         SourceThinkificCourses other = (SourceThinkificCourses) o;
         return 
-            Objects.deepEquals(this.xAuthSubdomain, other.xAuthSubdomain) &&
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.xAuthSubdomain, other.xAuthSubdomain) &&
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            xAuthSubdomain,
-            apiKey,
-            sourceType);
+        return Utils.enhancedHash(
+            xAuthSubdomain, apiKey, sourceType);
     }
     
     @Override
@@ -97,16 +97,18 @@ public class SourceThinkificCourses {
                 "apiKey", apiKey,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String xAuthSubdomain;
- 
+
         private String apiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder xAuthSubdomain(String xAuthSubdomain) {
             Utils.checkNotNull(xAuthSubdomain, "xAuthSubdomain");
@@ -114,17 +116,19 @@ public class SourceThinkificCourses {
             return this;
         }
 
+
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
-        
+
         public SourceThinkificCourses build() {
+
             return new SourceThinkificCourses(
-                xAuthSubdomain,
-                apiKey);
+                xAuthSubdomain, apiKey);
         }
+
 
         private static final LazySingletonValue<ThinkificCourses> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -3,17 +3,22 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
 import com.airbyte.api.models.shared.JobCreateRequest;
+import com.airbyte.api.operations.CreateJob;
+import com.airbyte.api.utils.Headers;
 import com.airbyte.api.utils.Utils;
-import java.lang.Exception;
 
 public class CreateJobRequestBuilder {
 
     private JobCreateRequest request;
-    private final SDKMethodInterfaces.MethodCallCreateJob sdk;
+    private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
-    public CreateJobRequestBuilder(SDKMethodInterfaces.MethodCallCreateJob sdk) {
-        this.sdk = sdk;
+    public CreateJobRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public CreateJobRequestBuilder request(JobCreateRequest request) {
@@ -22,9 +27,11 @@ public class CreateJobRequestBuilder {
         return this;
     }
 
-    public CreateJobResponse call() throws Exception {
+    public CreateJobResponse call() {
+        
+        RequestOperation<JobCreateRequest, CreateJobResponse> operation
+              = new CreateJob.Sync(sdkConfiguration, _headers);
 
-        return sdk.createJob(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

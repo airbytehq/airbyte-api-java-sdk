@@ -14,7 +14,7 @@ public enum Testrail {
     @JsonValue
     private final String value;
 
-    private Testrail(String value) {
+    Testrail(String value) {
         this.value = value;
     }
     

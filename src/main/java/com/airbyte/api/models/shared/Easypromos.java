@@ -14,7 +14,7 @@ public enum Easypromos {
     @JsonValue
     private final String value;
 
-    private Easypromos(String value) {
+    Easypromos(String value) {
         this.value = value;
     }
     
