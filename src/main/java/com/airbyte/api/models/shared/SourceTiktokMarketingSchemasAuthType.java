@@ -14,7 +14,7 @@ public enum SourceTiktokMarketingSchemasAuthType {
     @JsonValue
     private final String value;
 
-    private SourceTiktokMarketingSchemasAuthType(String value) {
+    SourceTiktokMarketingSchemasAuthType(String value) {
         this.value = value;
     }
     

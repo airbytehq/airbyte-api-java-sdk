@@ -3,16 +3,21 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
+import com.airbyte.api.operations.CancelJob;
+import com.airbyte.api.utils.Headers;
 import com.airbyte.api.utils.Utils;
-import java.lang.Exception;
 
 public class CancelJobRequestBuilder {
 
     private CancelJobRequest request;
-    private final SDKMethodInterfaces.MethodCallCancelJob sdk;
+    private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
-    public CancelJobRequestBuilder(SDKMethodInterfaces.MethodCallCancelJob sdk) {
-        this.sdk = sdk;
+    public CancelJobRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public CancelJobRequestBuilder request(CancelJobRequest request) {
@@ -21,9 +26,11 @@ public class CancelJobRequestBuilder {
         return this;
     }
 
-    public CancelJobResponse call() throws Exception {
+    public CancelJobResponse call() {
+        
+        RequestOperation<CancelJobRequest, CancelJobResponse> operation
+              = new CancelJob.Sync(sdkConfiguration, _headers);
 
-        return sdk.cancelJob(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

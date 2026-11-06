@@ -15,17 +15,18 @@ import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class ParquetFormat {
 
+public class ParquetFormat {
     /**
-     * Whether to convert decimal fields to floats. There is a loss of precision when converting decimals to floats, so this is not recommended.
+     * Whether to convert decimal fields to floats. There is a loss of precision when converting decimals
+     * to floats, so this is not recommended.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("decimal_as_float")
     private Optional<Boolean> decimalAsFloat;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("filetype")
@@ -44,7 +45,8 @@ public class ParquetFormat {
     }
 
     /**
-     * Whether to convert decimal fields to floats. There is a loss of precision when converting decimals to floats, so this is not recommended.
+     * Whether to convert decimal fields to floats. There is a loss of precision when converting decimals
+     * to floats, so this is not recommended.
      */
     @JsonIgnore
     public Optional<Boolean> decimalAsFloat() {
@@ -57,12 +59,14 @@ public class ParquetFormat {
         return (Optional<SourceAzureBlobStorageSchemasStreamsFiletype>) filetype;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Whether to convert decimal fields to floats. There is a loss of precision when converting decimals to floats, so this is not recommended.
+     * Whether to convert decimal fields to floats. There is a loss of precision when converting decimals
+     * to floats, so this is not recommended.
      */
     public ParquetFormat withDecimalAsFloat(boolean decimalAsFloat) {
         Utils.checkNotNull(decimalAsFloat, "decimalAsFloat");
@@ -70,8 +74,10 @@ public class ParquetFormat {
         return this;
     }
 
+
     /**
-     * Whether to convert decimal fields to floats. There is a loss of precision when converting decimals to floats, so this is not recommended.
+     * Whether to convert decimal fields to floats. There is a loss of precision when converting decimals
+     * to floats, so this is not recommended.
      */
     public ParquetFormat withDecimalAsFloat(Optional<Boolean> decimalAsFloat) {
         Utils.checkNotNull(decimalAsFloat, "decimalAsFloat");
@@ -79,7 +85,6 @@ public class ParquetFormat {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -90,15 +95,14 @@ public class ParquetFormat {
         }
         ParquetFormat other = (ParquetFormat) o;
         return 
-            Objects.deepEquals(this.decimalAsFloat, other.decimalAsFloat) &&
-            Objects.deepEquals(this.filetype, other.filetype);
+            Utils.enhancedDeepEquals(this.decimalAsFloat, other.decimalAsFloat) &&
+            Utils.enhancedDeepEquals(this.filetype, other.filetype);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            decimalAsFloat,
-            filetype);
+        return Utils.enhancedHash(
+            decimalAsFloat, filetype);
     }
     
     @Override
@@ -107,17 +111,20 @@ public class ParquetFormat {
                 "decimalAsFloat", decimalAsFloat,
                 "filetype", filetype);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> decimalAsFloat;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Whether to convert decimal fields to floats. There is a loss of precision when converting decimals to floats, so this is not recommended.
+         * Whether to convert decimal fields to floats. There is a loss of precision when converting decimals
+         * to floats, so this is not recommended.
          */
         public Builder decimalAsFloat(boolean decimalAsFloat) {
             Utils.checkNotNull(decimalAsFloat, "decimalAsFloat");
@@ -126,21 +133,24 @@ public class ParquetFormat {
         }
 
         /**
-         * Whether to convert decimal fields to floats. There is a loss of precision when converting decimals to floats, so this is not recommended.
+         * Whether to convert decimal fields to floats. There is a loss of precision when converting decimals
+         * to floats, so this is not recommended.
          */
         public Builder decimalAsFloat(Optional<Boolean> decimalAsFloat) {
             Utils.checkNotNull(decimalAsFloat, "decimalAsFloat");
             this.decimalAsFloat = decimalAsFloat;
             return this;
         }
-        
+
         public ParquetFormat build() {
             if (decimalAsFloat == null) {
                 decimalAsFloat = _SINGLETON_VALUE_DecimalAsFloat.value();
             }
+
             return new ParquetFormat(
                 decimalAsFloat);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_DecimalAsFloat =
                 new LazySingletonValue<>(

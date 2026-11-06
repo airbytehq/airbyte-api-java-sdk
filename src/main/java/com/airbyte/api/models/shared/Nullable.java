@@ -16,7 +16,7 @@ public enum Nullable {
     @JsonValue
     private final String value;
 
-    private Nullable(String value) {
+    Nullable(String value) {
         this.value = value;
     }
     

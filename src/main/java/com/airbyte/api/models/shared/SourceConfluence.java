@@ -11,12 +11,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceConfluence {
-
     /**
-     * Please follow the Jira confluence for generating an API token: &lt;a href="https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/"&gt;generating an API token&lt;/a&gt;.
+     * Please follow the Jira confluence for generating an API token: <a
+     * href="https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/">generating
+     * an API token</a>.
      */
     @JsonProperty("api_token")
     private String apiToken;
@@ -32,6 +33,7 @@ public class SourceConfluence {
      */
     @JsonProperty("email")
     private String email;
+
 
     @JsonProperty("sourceType")
     private Confluence sourceType;
@@ -51,7 +53,9 @@ public class SourceConfluence {
     }
 
     /**
-     * Please follow the Jira confluence for generating an API token: &lt;a href="https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/"&gt;generating an API token&lt;/a&gt;.
+     * Please follow the Jira confluence for generating an API token: <a
+     * href="https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/">generating
+     * an API token</a>.
      */
     @JsonIgnore
     public String apiToken() {
@@ -79,12 +83,15 @@ public class SourceConfluence {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Please follow the Jira confluence for generating an API token: &lt;a href="https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/"&gt;generating an API token&lt;/a&gt;.
+     * Please follow the Jira confluence for generating an API token: <a
+     * href="https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/">generating
+     * an API token</a>.
      */
     public SourceConfluence withApiToken(String apiToken) {
         Utils.checkNotNull(apiToken, "apiToken");
@@ -110,7 +117,6 @@ public class SourceConfluence {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -121,18 +127,16 @@ public class SourceConfluence {
         }
         SourceConfluence other = (SourceConfluence) o;
         return 
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.domainName, other.domainName) &&
-            Objects.deepEquals(this.email, other.email) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.domainName, other.domainName) &&
+            Utils.enhancedDeepEquals(this.email, other.email) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiToken,
-            domainName,
-            email,
+        return Utils.enhancedHash(
+            apiToken, domainName, email,
             sourceType);
     }
     
@@ -144,27 +148,32 @@ public class SourceConfluence {
                 "email", email,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiToken;
- 
+
         private String domainName;
- 
+
         private String email;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Please follow the Jira confluence for generating an API token: &lt;a href="https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/"&gt;generating an API token&lt;/a&gt;.
+         * Please follow the Jira confluence for generating an API token: <a
+         * href="https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/">generating
+         * an API token</a>.
          */
         public Builder apiToken(String apiToken) {
             Utils.checkNotNull(apiToken, "apiToken");
             this.apiToken = apiToken;
             return this;
         }
+
 
         /**
          * Your Confluence domain name
@@ -175,6 +184,7 @@ public class SourceConfluence {
             return this;
         }
 
+
         /**
          * Your Confluence login email
          */
@@ -183,13 +193,13 @@ public class SourceConfluence {
             this.email = email;
             return this;
         }
-        
+
         public SourceConfluence build() {
+
             return new SourceConfluence(
-                apiToken,
-                domainName,
-                email);
+                apiToken, domainName, email);
         }
+
 
         private static final LazySingletonValue<Confluence> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

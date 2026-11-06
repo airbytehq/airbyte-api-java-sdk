@@ -11,12 +11,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceTeamtailor {
 
     @JsonProperty("api")
     private String api;
+
 
     @JsonProperty("sourceType")
     private Teamtailor sourceType;
@@ -56,9 +57,10 @@ public class SourceTeamtailor {
         return xApiVersion;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceTeamtailor withApi(String api) {
         Utils.checkNotNull(api, "api");
@@ -75,7 +77,6 @@ public class SourceTeamtailor {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -86,17 +87,15 @@ public class SourceTeamtailor {
         }
         SourceTeamtailor other = (SourceTeamtailor) o;
         return 
-            Objects.deepEquals(this.api, other.api) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.xApiVersion, other.xApiVersion);
+            Utils.enhancedDeepEquals(this.api, other.api) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.xApiVersion, other.xApiVersion);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            api,
-            sourceType,
-            xApiVersion);
+        return Utils.enhancedHash(
+            api, sourceType, xApiVersion);
     }
     
     @Override
@@ -106,22 +105,25 @@ public class SourceTeamtailor {
                 "sourceType", sourceType,
                 "xApiVersion", xApiVersion);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String api;
- 
+
         private String xApiVersion;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder api(String api) {
             Utils.checkNotNull(api, "api");
             this.api = api;
             return this;
         }
+
 
         /**
          * The version of the API
@@ -131,12 +133,13 @@ public class SourceTeamtailor {
             this.xApiVersion = xApiVersion;
             return this;
         }
-        
+
         public SourceTeamtailor build() {
+
             return new SourceTeamtailor(
-                api,
-                xApiVersion);
+                api, xApiVersion);
         }
+
 
         private static final LazySingletonValue<Teamtailor> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

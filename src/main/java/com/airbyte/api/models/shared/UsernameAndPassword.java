@@ -5,19 +5,32 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
+import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
+/**
+ * UsernameAndPassword
+ * 
+ * <p>Configuration details for the Username and Password Authentication.
+ */
 public class UsernameAndPassword {
+
+    @JsonIgnore
+    private Map<String, Object> additionalProperties;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
@@ -31,10 +44,23 @@ public class UsernameAndPassword {
 
     @JsonCreator
     public UsernameAndPassword(
+            @JsonProperty("auth_type") Optional<? extends DestinationSnowflakeSchemasAuthType> authType,
             @JsonProperty("password") String password) {
+        Utils.checkNotNull(authType, "authType");
         Utils.checkNotNull(password, "password");
-        this.authType = Builder._SINGLETON_VALUE_AuthType.value();
+        this.additionalProperties = new HashMap<>();
+        this.authType = authType;
         this.password = password;
+    }
+    
+    public UsernameAndPassword(
+            String password) {
+        this(Optional.empty(), password);
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> additionalProperties() {
+        return additionalProperties;
     }
 
     @SuppressWarnings("unchecked")
@@ -51,9 +77,36 @@ public class UsernameAndPassword {
         return password;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
+
+    @JsonAnySetter
+    public UsernameAndPassword withAdditionalProperty(String key, Object value) {
+        // note that value can be null because of the way JsonAnySetter works
+        Utils.checkNotNull(key, "key");
+        additionalProperties.put(key, value); 
+        return this;
+    }
+    public UsernameAndPassword withAdditionalProperties(Map<String, Object> additionalProperties) {
+        Utils.checkNotNull(additionalProperties, "additionalProperties");
+        this.additionalProperties = additionalProperties;
+        return this;
+    }
+
+    public UsernameAndPassword withAuthType(DestinationSnowflakeSchemasAuthType authType) {
+        Utils.checkNotNull(authType, "authType");
+        this.authType = Optional.ofNullable(authType);
+        return this;
+    }
+
+
+    public UsernameAndPassword withAuthType(Optional<? extends DestinationSnowflakeSchemasAuthType> authType) {
+        Utils.checkNotNull(authType, "authType");
+        this.authType = authType;
+        return this;
+    }
 
     /**
      * Enter the password associated with the username.
@@ -64,7 +117,6 @@ public class UsernameAndPassword {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -75,31 +127,67 @@ public class UsernameAndPassword {
         }
         UsernameAndPassword other = (UsernameAndPassword) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.password, other.password);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.password, other.password);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            password);
+        return Utils.enhancedHash(
+            additionalProperties, authType, password);
     }
     
     @Override
     public String toString() {
         return Utils.toString(UsernameAndPassword.class,
+                "additionalProperties", additionalProperties,
                 "authType", authType,
                 "password", password);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
+        private Map<String, Object> additionalProperties = new HashMap<>();
+
+        private Optional<? extends DestinationSnowflakeSchemasAuthType> authType;
+
         private String password;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
+        public Builder additionalProperty(String key, Object value) {
+            Utils.checkNotNull(key, "key");
+            // we could be strict about null values (force the user
+            // to pass `JsonNullable.of(null)`) but likely to be a bit 
+            // annoying for additional properties building so we'll 
+            // relax preconditions.
+            this.additionalProperties.put(key, value);
+            return this;
+        }
+
+        public Builder additionalProperties(Map<String, Object> additionalProperties) {
+            Utils.checkNotNull(additionalProperties, "additionalProperties");
+            this.additionalProperties = additionalProperties;
+            return this;
+        }
+
+
+        public Builder authType(DestinationSnowflakeSchemasAuthType authType) {
+            Utils.checkNotNull(authType, "authType");
+            this.authType = Optional.ofNullable(authType);
+            return this;
+        }
+
+        public Builder authType(Optional<? extends DestinationSnowflakeSchemasAuthType> authType) {
+            Utils.checkNotNull(authType, "authType");
+            this.authType = authType;
+            return this;
+        }
+
 
         /**
          * Enter the password associated with the username.
@@ -109,11 +197,17 @@ public class UsernameAndPassword {
             this.password = password;
             return this;
         }
-        
+
         public UsernameAndPassword build() {
+            if (authType == null) {
+                authType = _SINGLETON_VALUE_AuthType.value();
+            }
+
             return new UsernameAndPassword(
-                password);
+                authType, password)
+                .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationSnowflakeSchemasAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

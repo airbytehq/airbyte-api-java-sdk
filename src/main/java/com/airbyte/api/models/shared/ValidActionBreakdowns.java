@@ -33,7 +33,7 @@ public enum ValidActionBreakdowns {
     @JsonValue
     private final String value;
 
-    private ValidActionBreakdowns(String value) {
+    ValidActionBreakdowns(String value) {
         this.value = value;
     }
     

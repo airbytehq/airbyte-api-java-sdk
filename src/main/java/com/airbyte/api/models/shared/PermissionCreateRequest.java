@@ -11,8 +11,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class PermissionCreateRequest {
 
@@ -31,6 +31,7 @@ public class PermissionCreateRequest {
      */
     @JsonProperty("userId")
     private String userId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("workspaceId")
@@ -55,7 +56,8 @@ public class PermissionCreateRequest {
     public PermissionCreateRequest(
             PublicPermissionType permissionType,
             String userId) {
-        this(Optional.empty(), permissionType, userId, Optional.empty());
+        this(Optional.empty(), permissionType, userId,
+            Optional.empty());
     }
 
     @JsonIgnore
@@ -84,15 +86,17 @@ public class PermissionCreateRequest {
         return workspaceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public PermissionCreateRequest withOrganizationId(String organizationId) {
         Utils.checkNotNull(organizationId, "organizationId");
         this.organizationId = Optional.ofNullable(organizationId);
         return this;
     }
+
 
     public PermissionCreateRequest withOrganizationId(Optional<String> organizationId) {
         Utils.checkNotNull(organizationId, "organizationId");
@@ -124,13 +128,13 @@ public class PermissionCreateRequest {
         return this;
     }
 
+
     public PermissionCreateRequest withWorkspaceId(Optional<String> workspaceId) {
         Utils.checkNotNull(workspaceId, "workspaceId");
         this.workspaceId = workspaceId;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -141,18 +145,16 @@ public class PermissionCreateRequest {
         }
         PermissionCreateRequest other = (PermissionCreateRequest) o;
         return 
-            Objects.deepEquals(this.organizationId, other.organizationId) &&
-            Objects.deepEquals(this.permissionType, other.permissionType) &&
-            Objects.deepEquals(this.userId, other.userId) &&
-            Objects.deepEquals(this.workspaceId, other.workspaceId);
+            Utils.enhancedDeepEquals(this.organizationId, other.organizationId) &&
+            Utils.enhancedDeepEquals(this.permissionType, other.permissionType) &&
+            Utils.enhancedDeepEquals(this.userId, other.userId) &&
+            Utils.enhancedDeepEquals(this.workspaceId, other.workspaceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            organizationId,
-            permissionType,
-            userId,
+        return Utils.enhancedHash(
+            organizationId, permissionType, userId,
             workspaceId);
     }
     
@@ -164,20 +166,22 @@ public class PermissionCreateRequest {
                 "userId", userId,
                 "workspaceId", workspaceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> organizationId = Optional.empty();
- 
+
         private PublicPermissionType permissionType;
- 
+
         private String userId;
- 
+
         private Optional<String> workspaceId = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder organizationId(String organizationId) {
             Utils.checkNotNull(organizationId, "organizationId");
@@ -191,6 +195,7 @@ public class PermissionCreateRequest {
             return this;
         }
 
+
         /**
          * Subset of `PermissionType` (removing `instance_admin`), could be used in public-api.
          */
@@ -200,6 +205,7 @@ public class PermissionCreateRequest {
             return this;
         }
 
+
         /**
          * Internal Airbyte user ID
          */
@@ -208,6 +214,7 @@ public class PermissionCreateRequest {
             this.userId = userId;
             return this;
         }
+
 
         public Builder workspaceId(String workspaceId) {
             Utils.checkNotNull(workspaceId, "workspaceId");
@@ -220,13 +227,13 @@ public class PermissionCreateRequest {
             this.workspaceId = workspaceId;
             return this;
         }
-        
+
         public PermissionCreateRequest build() {
+
             return new PermissionCreateRequest(
-                organizationId,
-                permissionType,
-                userId,
+                organizationId, permissionType, userId,
                 workspaceId);
         }
+
     }
 }

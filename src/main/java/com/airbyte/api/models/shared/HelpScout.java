@@ -14,7 +14,7 @@ public enum HelpScout {
     @JsonValue
     private final String value;
 
-    private HelpScout(String value) {
+    HelpScout(String value) {
         this.value = value;
     }
     

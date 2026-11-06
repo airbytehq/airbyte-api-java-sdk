@@ -14,7 +14,7 @@ public enum SourceGithubOptionTitle {
     @JsonValue
     private final String value;
 
-    private SourceGithubOptionTitle(String value) {
+    SourceGithubOptionTitle(String value) {
         this.value = value;
     }
     

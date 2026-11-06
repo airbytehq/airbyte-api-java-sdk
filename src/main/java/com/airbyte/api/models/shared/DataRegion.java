@@ -20,7 +20,7 @@ public enum DataRegion {
     @JsonValue
     private final String value;
 
-    private DataRegion(String value) {
+    DataRegion(String value) {
         this.value = value;
     }
     

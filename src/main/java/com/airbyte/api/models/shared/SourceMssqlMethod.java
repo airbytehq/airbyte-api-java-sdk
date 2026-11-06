@@ -14,7 +14,7 @@ public enum SourceMssqlMethod {
     @JsonValue
     private final String value;
 
-    private SourceMssqlMethod(String value) {
+    SourceMssqlMethod(String value) {
         this.value = value;
     }
     

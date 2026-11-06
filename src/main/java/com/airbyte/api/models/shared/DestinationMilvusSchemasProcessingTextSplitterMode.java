@@ -14,7 +14,7 @@ public enum DestinationMilvusSchemasProcessingTextSplitterMode {
     @JsonValue
     private final String value;
 
-    private DestinationMilvusSchemasProcessingTextSplitterMode(String value) {
+    DestinationMilvusSchemasProcessingTextSplitterMode(String value) {
         this.value = value;
     }
     

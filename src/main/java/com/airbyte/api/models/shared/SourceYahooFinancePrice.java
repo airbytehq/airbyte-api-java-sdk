@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceYahooFinancePrice {
 
+public class SourceYahooFinancePrice {
     /**
      * The interval of between prices queried.
      */
@@ -32,6 +31,7 @@ public class SourceYahooFinancePrice {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("range")
     private Optional<? extends Range> range;
+
 
     @JsonProperty("sourceType")
     private YahooFinancePrice sourceType;
@@ -92,9 +92,10 @@ public class SourceYahooFinancePrice {
         return tickers;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The interval of between prices queried.
@@ -104,6 +105,7 @@ public class SourceYahooFinancePrice {
         this.interval = Optional.ofNullable(interval);
         return this;
     }
+
 
     /**
      * The interval of between prices queried.
@@ -123,6 +125,7 @@ public class SourceYahooFinancePrice {
         return this;
     }
 
+
     /**
      * The range of prices to be queried.
      */
@@ -141,7 +144,6 @@ public class SourceYahooFinancePrice {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -152,18 +154,16 @@ public class SourceYahooFinancePrice {
         }
         SourceYahooFinancePrice other = (SourceYahooFinancePrice) o;
         return 
-            Objects.deepEquals(this.interval, other.interval) &&
-            Objects.deepEquals(this.range, other.range) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.tickers, other.tickers);
+            Utils.enhancedDeepEquals(this.interval, other.interval) &&
+            Utils.enhancedDeepEquals(this.range, other.range) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.tickers, other.tickers);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            interval,
-            range,
-            sourceType,
+        return Utils.enhancedHash(
+            interval, range, sourceType,
             tickers);
     }
     
@@ -175,18 +175,20 @@ public class SourceYahooFinancePrice {
                 "sourceType", sourceType,
                 "tickers", tickers);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourceYahooFinancePriceInterval> interval = Optional.empty();
- 
+
         private Optional<? extends Range> range = Optional.empty();
- 
+
         private String tickers;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The interval of between prices queried.
@@ -206,6 +208,7 @@ public class SourceYahooFinancePrice {
             return this;
         }
 
+
         /**
          * The range of prices to be queried.
          */
@@ -224,6 +227,7 @@ public class SourceYahooFinancePrice {
             return this;
         }
 
+
         /**
          * Comma-separated identifiers for the stocks to be queried. Whitespaces are allowed.
          */
@@ -232,13 +236,13 @@ public class SourceYahooFinancePrice {
             this.tickers = tickers;
             return this;
         }
-        
+
         public SourceYahooFinancePrice build() {
+
             return new SourceYahooFinancePrice(
-                interval,
-                range,
-                tickers);
+                interval, range, tickers);
         }
+
 
         private static final LazySingletonValue<YahooFinancePrice> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

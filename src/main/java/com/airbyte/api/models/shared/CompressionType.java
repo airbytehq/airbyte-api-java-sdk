@@ -14,7 +14,7 @@ public enum CompressionType {
     @JsonValue
     private final String value;
 
-    private CompressionType(String value) {
+    CompressionType(String value) {
         this.value = value;
     }
     

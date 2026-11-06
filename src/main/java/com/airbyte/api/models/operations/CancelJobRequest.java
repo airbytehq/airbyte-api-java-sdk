@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class CancelJobRequest {
 
@@ -29,9 +29,10 @@ public class CancelJobRequest {
         return jobId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public CancelJobRequest withJobId(long jobId) {
         Utils.checkNotNull(jobId, "jobId");
@@ -39,7 +40,6 @@ public class CancelJobRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -50,12 +50,12 @@ public class CancelJobRequest {
         }
         CancelJobRequest other = (CancelJobRequest) o;
         return 
-            Objects.deepEquals(this.jobId, other.jobId);
+            Utils.enhancedDeepEquals(this.jobId, other.jobId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             jobId);
     }
     
@@ -64,24 +64,28 @@ public class CancelJobRequest {
         return Utils.toString(CancelJobRequest.class,
                 "jobId", jobId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Long jobId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder jobId(long jobId) {
             Utils.checkNotNull(jobId, "jobId");
             this.jobId = jobId;
             return this;
         }
-        
+
         public CancelJobRequest build() {
+
             return new CancelJobRequest(
                 jobId);
         }
+
     }
 }

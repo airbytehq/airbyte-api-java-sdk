@@ -21,7 +21,7 @@ public enum EncryptionAlgorithm {
     @JsonValue
     private final String value;
 
-    private EncryptionAlgorithm(String value) {
+    EncryptionAlgorithm(String value) {
         this.value = value;
     }
     

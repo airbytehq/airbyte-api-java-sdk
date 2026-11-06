@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * MapperConfiguration
@@ -25,39 +24,45 @@ import java.util.Objects;
 public class MapperConfiguration {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private MapperConfiguration(TypedObject value) {
         this.value = value;
     }
 
-    public static MapperConfiguration of(Hashing value) {
+    public static MapperConfiguration of(HashingMapperConfiguration value) {
         Utils.checkNotNull(value, "value");
-        return new MapperConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Hashing>(){}));
+        return new MapperConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
-    public static MapperConfiguration of(FieldRenaming value) {
+    public static MapperConfiguration of(FieldFilteringMapperConfiguration value) {
         Utils.checkNotNull(value, "value");
-        return new MapperConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<FieldRenaming>(){}));
+        return new MapperConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
-    public static MapperConfiguration of(RowFiltering value) {
+    public static MapperConfiguration of(FieldRenamingMapperConfiguration value) {
         Utils.checkNotNull(value, "value");
-        return new MapperConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<RowFiltering>(){}));
+        return new MapperConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
-    public static MapperConfiguration of(Encryption value) {
+    public static MapperConfiguration of(RowFilteringMapperConfiguration value) {
         Utils.checkNotNull(value, "value");
-        return new MapperConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Encryption>(){}));
+        return new MapperConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static MapperConfiguration of(EncryptionMapperConfiguration value) {
+        Utils.checkNotNull(value, "value");
+        return new MapperConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
-     * <li>{@code com.airbyte.api.models.shared.Hashing}</li>
-     * <li>{@code com.airbyte.api.models.shared.FieldRenaming}</li>
-     * <li>{@code com.airbyte.api.models.shared.RowFiltering}</li>
-     * <li>{@code com.airbyte.api.models.shared.Encryption}</li>
+     * <li>{@code com.airbyte.api.models.shared.HashingMapperConfiguration}</li>
+     * <li>{@code com.airbyte.api.models.shared.FieldFilteringMapperConfiguration}</li>
+     * <li>{@code com.airbyte.api.models.shared.FieldRenamingMapperConfiguration}</li>
+     * <li>{@code com.airbyte.api.models.shared.RowFilteringMapperConfiguration}</li>
+     * <li>{@code com.airbyte.api.models.shared.EncryptionMapperConfiguration}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -73,7 +78,7 @@ public class MapperConfiguration {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -84,12 +89,12 @@ public class MapperConfiguration {
             return false;
         }
         MapperConfiguration other = (MapperConfiguration) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -97,10 +102,11 @@ public class MapperConfiguration {
 
         public _Deserializer() {
             super(MapperConfiguration.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<Encryption>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Hashing>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<FieldRenaming>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<RowFiltering>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<HashingMapperConfiguration>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<FieldFilteringMapperConfiguration>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<FieldRenamingMapperConfiguration>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<RowFilteringMapperConfiguration>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<EncryptionMapperConfiguration>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -109,6 +115,6 @@ public class MapperConfiguration {
         return Utils.toString(MapperConfiguration.class,
                 "value", value);
     }
- 
+
 }
 

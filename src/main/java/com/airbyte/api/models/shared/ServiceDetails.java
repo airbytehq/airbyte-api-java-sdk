@@ -17,7 +17,7 @@ public enum ServiceDetails {
     @JsonValue
     private final String value;
 
-    private ServiceDetails(String value) {
+    ServiceDetails(String value) {
         this.value = value;
     }
     

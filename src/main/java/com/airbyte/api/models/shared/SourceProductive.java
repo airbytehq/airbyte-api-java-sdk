@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceProductive {
 
@@ -19,10 +19,12 @@ public class SourceProductive {
     private String apiKey;
 
     /**
-     * The organization ID which could be seen from `https://app.productive.io/xxxx-xxxx/settings/api-integrations` page
+     * The organization ID which could be seen from
+     * `https://app.productive.io/xxxx-xxxx/settings/api-integrations` page
      */
     @JsonProperty("organization_id")
     private String organizationId;
+
 
     @JsonProperty("sourceType")
     private Productive sourceType;
@@ -44,7 +46,8 @@ public class SourceProductive {
     }
 
     /**
-     * The organization ID which could be seen from `https://app.productive.io/xxxx-xxxx/settings/api-integrations` page
+     * The organization ID which could be seen from
+     * `https://app.productive.io/xxxx-xxxx/settings/api-integrations` page
      */
     @JsonIgnore
     public String organizationId() {
@@ -56,9 +59,10 @@ public class SourceProductive {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceProductive withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -67,7 +71,8 @@ public class SourceProductive {
     }
 
     /**
-     * The organization ID which could be seen from `https://app.productive.io/xxxx-xxxx/settings/api-integrations` page
+     * The organization ID which could be seen from
+     * `https://app.productive.io/xxxx-xxxx/settings/api-integrations` page
      */
     public SourceProductive withOrganizationId(String organizationId) {
         Utils.checkNotNull(organizationId, "organizationId");
@@ -75,7 +80,6 @@ public class SourceProductive {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -86,17 +90,15 @@ public class SourceProductive {
         }
         SourceProductive other = (SourceProductive) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.organizationId, other.organizationId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.organizationId, other.organizationId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            organizationId,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, organizationId, sourceType);
     }
     
     @Override
@@ -106,16 +108,18 @@ public class SourceProductive {
                 "organizationId", organizationId,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String organizationId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -123,20 +127,23 @@ public class SourceProductive {
             return this;
         }
 
+
         /**
-         * The organization ID which could be seen from `https://app.productive.io/xxxx-xxxx/settings/api-integrations` page
+         * The organization ID which could be seen from
+         * `https://app.productive.io/xxxx-xxxx/settings/api-integrations` page
          */
         public Builder organizationId(String organizationId) {
             Utils.checkNotNull(organizationId, "organizationId");
             this.organizationId = organizationId;
             return this;
         }
-        
+
         public SourceProductive build() {
+
             return new SourceProductive(
-                apiKey,
-                organizationId);
+                apiKey, organizationId);
         }
+
 
         private static final LazySingletonValue<Productive> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum TvmazeSchedule {
     @JsonValue
     private final String value;
 
-    private TvmazeSchedule(String value) {
+    TvmazeSchedule(String value) {
         this.value = value;
     }
     

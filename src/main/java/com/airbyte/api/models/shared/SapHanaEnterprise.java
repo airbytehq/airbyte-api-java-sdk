@@ -14,7 +14,7 @@ public enum SapHanaEnterprise {
     @JsonValue
     private final String value;
 
-    private SapHanaEnterprise(String value) {
+    SapHanaEnterprise(String value) {
         this.value = value;
     }
     

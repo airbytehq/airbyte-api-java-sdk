@@ -14,7 +14,7 @@ public enum SourceAzureBlobStorageSchemasStreamsFormatFiletype {
     @JsonValue
     private final String value;
 
-    private SourceAzureBlobStorageSchemasStreamsFormatFiletype(String value) {
+    SourceAzureBlobStorageSchemasStreamsFormatFiletype(String value) {
         this.value = value;
     }
     

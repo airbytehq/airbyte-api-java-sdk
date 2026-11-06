@@ -2,6 +2,14 @@
 
 Number of days to use as the conversion attribution window for an engagement action.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.EngagementWindowDays;
+
+EngagementWindowDays value = EngagementWindowDays.ZERO;
+```
+
 
 ## Values
 

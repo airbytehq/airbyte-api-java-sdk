@@ -22,7 +22,7 @@ public enum GroupBy {
     @JsonValue
     private final String value;
 
-    private GroupBy(String value) {
+    GroupBy(String value) {
         this.value = value;
     }
     

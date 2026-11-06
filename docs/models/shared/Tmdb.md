@@ -1,5 +1,13 @@
 # Tmdb
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.Tmdb;
+
+Tmdb value = Tmdb.TMDB;
+```
+
 
 ## Values
 

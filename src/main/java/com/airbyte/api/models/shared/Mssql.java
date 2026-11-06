@@ -14,7 +14,7 @@ public enum Mssql {
     @JsonValue
     private final String value;
 
-    private Mssql(String value) {
+    Mssql(String value) {
         this.value = value;
     }
     

@@ -11,15 +11,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceHoorayhr {
 
     @JsonProperty("hoorayhrpassword")
     private String hoorayhrpassword;
 
+
     @JsonProperty("hoorayhrusername")
     private String hoorayhrusername;
+
 
     @JsonProperty("sourceType")
     private Hoorayhr sourceType;
@@ -50,9 +52,10 @@ public class SourceHoorayhr {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceHoorayhr withHoorayhrpassword(String hoorayhrpassword) {
         Utils.checkNotNull(hoorayhrpassword, "hoorayhrpassword");
@@ -66,7 +69,6 @@ public class SourceHoorayhr {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -77,17 +79,15 @@ public class SourceHoorayhr {
         }
         SourceHoorayhr other = (SourceHoorayhr) o;
         return 
-            Objects.deepEquals(this.hoorayhrpassword, other.hoorayhrpassword) &&
-            Objects.deepEquals(this.hoorayhrusername, other.hoorayhrusername) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.hoorayhrpassword, other.hoorayhrpassword) &&
+            Utils.enhancedDeepEquals(this.hoorayhrusername, other.hoorayhrusername) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            hoorayhrpassword,
-            hoorayhrusername,
-            sourceType);
+        return Utils.enhancedHash(
+            hoorayhrpassword, hoorayhrusername, sourceType);
     }
     
     @Override
@@ -97,16 +97,18 @@ public class SourceHoorayhr {
                 "hoorayhrusername", hoorayhrusername,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String hoorayhrpassword;
- 
+
         private String hoorayhrusername;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder hoorayhrpassword(String hoorayhrpassword) {
             Utils.checkNotNull(hoorayhrpassword, "hoorayhrpassword");
@@ -114,17 +116,19 @@ public class SourceHoorayhr {
             return this;
         }
 
+
         public Builder hoorayhrusername(String hoorayhrusername) {
             Utils.checkNotNull(hoorayhrusername, "hoorayhrusername");
             this.hoorayhrusername = hoorayhrusername;
             return this;
         }
-        
+
         public SourceHoorayhr build() {
+
             return new SourceHoorayhr(
-                hoorayhrpassword,
-                hoorayhrusername);
+                hoorayhrpassword, hoorayhrusername);
         }
+
 
         private static final LazySingletonValue<Hoorayhr> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

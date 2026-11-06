@@ -14,7 +14,7 @@ public enum Leadfeeder {
     @JsonValue
     private final String value;
 
-    private Leadfeeder(String value) {
+    Leadfeeder(String value) {
         this.value = value;
     }
     

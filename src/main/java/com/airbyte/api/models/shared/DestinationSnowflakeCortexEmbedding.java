@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationSnowflakeCortexEmbedding
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class DestinationSnowflakeCortexEmbedding {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationSnowflakeCortexEmbedding(TypedObject value) {
         this.value = value;
@@ -33,27 +32,27 @@ public class DestinationSnowflakeCortexEmbedding {
 
     public static DestinationSnowflakeCortexEmbedding of(DestinationSnowflakeCortexOpenAI value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationSnowflakeCortexEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationSnowflakeCortexOpenAI>(){}));
+        return new DestinationSnowflakeCortexEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationSnowflakeCortexEmbedding of(DestinationSnowflakeCortexCohere value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationSnowflakeCortexEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationSnowflakeCortexCohere>(){}));
+        return new DestinationSnowflakeCortexEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationSnowflakeCortexEmbedding of(DestinationSnowflakeCortexFake value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationSnowflakeCortexEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationSnowflakeCortexFake>(){}));
+        return new DestinationSnowflakeCortexEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationSnowflakeCortexEmbedding of(DestinationSnowflakeCortexAzureOpenAI value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationSnowflakeCortexEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationSnowflakeCortexAzureOpenAI>(){}));
+        return new DestinationSnowflakeCortexEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationSnowflakeCortexEmbedding of(DestinationSnowflakeCortexOpenAICompatible value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationSnowflakeCortexEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationSnowflakeCortexOpenAICompatible>(){}));
+        return new DestinationSnowflakeCortexEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -79,7 +78,7 @@ public class DestinationSnowflakeCortexEmbedding {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -90,12 +89,12 @@ public class DestinationSnowflakeCortexEmbedding {
             return false;
         }
         DestinationSnowflakeCortexEmbedding other = (DestinationSnowflakeCortexEmbedding) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -103,11 +102,11 @@ public class DestinationSnowflakeCortexEmbedding {
 
         public _Deserializer() {
             super(DestinationSnowflakeCortexEmbedding.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DestinationSnowflakeCortexOpenAICompatible>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationSnowflakeCortexAzureOpenAI>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationSnowflakeCortexCohere>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationSnowflakeCortexOpenAI>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationSnowflakeCortexFake>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationSnowflakeCortexCohere>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationSnowflakeCortexFake>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationSnowflakeCortexAzureOpenAI>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationSnowflakeCortexOpenAICompatible>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -116,6 +115,6 @@ public class DestinationSnowflakeCortexEmbedding {
         return Utils.toString(DestinationSnowflakeCortexEmbedding.class,
                 "value", value);
     }
- 
+
 }
 

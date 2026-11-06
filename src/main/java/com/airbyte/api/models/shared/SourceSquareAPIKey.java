@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceSquareAPIKey {
-
     /**
      * The API key for a Square application
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("auth_type")
     private SourceSquareSchemasAuthType authType;
@@ -45,9 +45,10 @@ public class SourceSquareAPIKey {
         return authType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The API key for a Square application
@@ -58,7 +59,6 @@ public class SourceSquareAPIKey {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceSquareAPIKey {
         }
         SourceSquareAPIKey other = (SourceSquareAPIKey) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.authType, other.authType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            authType);
+        return Utils.enhancedHash(
+            apiKey, authType);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourceSquareAPIKey {
                 "apiKey", apiKey,
                 "authType", authType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The API key for a Square application
@@ -103,11 +104,13 @@ public class SourceSquareAPIKey {
             this.apiKey = apiKey;
             return this;
         }
-        
+
         public SourceSquareAPIKey build() {
+
             return new SourceSquareAPIKey(
                 apiKey);
         }
+
 
         private static final LazySingletonValue<SourceSquareSchemasAuthType> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

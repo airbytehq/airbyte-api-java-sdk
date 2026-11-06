@@ -14,16 +14,18 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceLinkedinAdsAccessToken {
 
+public class SourceLinkedinAdsAccessToken {
     /**
-     * The access token generated for your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+     * The access token generated for your developer application. Refer to our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+     * for more information.
      */
     @JsonProperty("access_token")
     private String accessToken;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_method")
@@ -38,7 +40,9 @@ public class SourceLinkedinAdsAccessToken {
     }
 
     /**
-     * The access token generated for your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+     * The access token generated for your developer application. Refer to our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+     * for more information.
      */
     @JsonIgnore
     public String accessToken() {
@@ -51,12 +55,15 @@ public class SourceLinkedinAdsAccessToken {
         return (Optional<SourceLinkedinAdsSchemasAuthMethod>) authMethod;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The access token generated for your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+     * The access token generated for your developer application. Refer to our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+     * for more information.
      */
     public SourceLinkedinAdsAccessToken withAccessToken(String accessToken) {
         Utils.checkNotNull(accessToken, "accessToken");
@@ -64,7 +71,6 @@ public class SourceLinkedinAdsAccessToken {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -75,15 +81,14 @@ public class SourceLinkedinAdsAccessToken {
         }
         SourceLinkedinAdsAccessToken other = (SourceLinkedinAdsAccessToken) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.authMethod, other.authMethod);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.authMethod, other.authMethod);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            authMethod);
+        return Utils.enhancedHash(
+            accessToken, authMethod);
     }
     
     @Override
@@ -92,28 +97,34 @@ public class SourceLinkedinAdsAccessToken {
                 "accessToken", accessToken,
                 "authMethod", authMethod);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The access token generated for your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+         * The access token generated for your developer application. Refer to our &lt;a
+         * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+         * for more information.
          */
         public Builder accessToken(String accessToken) {
             Utils.checkNotNull(accessToken, "accessToken");
             this.accessToken = accessToken;
             return this;
         }
-        
+
         public SourceLinkedinAdsAccessToken build() {
+
             return new SourceLinkedinAdsAccessToken(
                 accessToken);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceLinkedinAdsSchemasAuthMethod>> _SINGLETON_VALUE_AuthMethod =
                 new LazySingletonValue<>(

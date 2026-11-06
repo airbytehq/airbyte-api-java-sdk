@@ -19,13 +19,14 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class DestinationS3GZIP {
 
     @JsonIgnore
     private Map<String, Object> additionalProperties;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression_type")
@@ -54,9 +55,10 @@ public class DestinationS3GZIP {
         return (Optional<DestinationS3SchemasCompressionType>) compressionType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public DestinationS3GZIP withAdditionalProperty(String key, Object value) {
@@ -64,8 +66,7 @@ public class DestinationS3GZIP {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public DestinationS3GZIP withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -78,13 +79,13 @@ public class DestinationS3GZIP {
         return this;
     }
 
+
     public DestinationS3GZIP withCompressionType(Optional<? extends DestinationS3SchemasCompressionType> compressionType) {
         Utils.checkNotNull(compressionType, "compressionType");
         this.compressionType = compressionType;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,15 +96,14 @@ public class DestinationS3GZIP {
         }
         DestinationS3GZIP other = (DestinationS3GZIP) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.compressionType, other.compressionType);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.compressionType, other.compressionType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            compressionType);
+        return Utils.enhancedHash(
+            additionalProperties, compressionType);
     }
     
     @Override
@@ -112,13 +112,14 @@ public class DestinationS3GZIP {
                 "additionalProperties", additionalProperties,
                 "compressionType", compressionType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends DestinationS3SchemasCompressionType> compressionType;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -139,6 +140,7 @@ public class DestinationS3GZIP {
             return this;
         }
 
+
         public Builder compressionType(DestinationS3SchemasCompressionType compressionType) {
             Utils.checkNotNull(compressionType, "compressionType");
             this.compressionType = Optional.ofNullable(compressionType);
@@ -150,15 +152,17 @@ public class DestinationS3GZIP {
             this.compressionType = compressionType;
             return this;
         }
-        
+
         public DestinationS3GZIP build() {
             if (compressionType == null) {
                 compressionType = _SINGLETON_VALUE_CompressionType.value();
             }
+
             return new DestinationS3GZIP(
                 compressionType)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationS3SchemasCompressionType>> _SINGLETON_VALUE_CompressionType =
                 new LazySingletonValue<>(

@@ -14,18 +14,19 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationS3OutputFormat
  * 
- * <p>Format of the data output. See &lt;a href="https://docs.airbyte.com/integrations/destinations/s3/#supported-output-schema"&gt;here&lt;/a&gt; for more details
+ * <p>Format of the data output. See <a
+ * href="https://docs.airbyte.com/integrations/destinations/s3/#supported-output-schema">here</a> for
+ * more details
  */
 @JsonDeserialize(using = DestinationS3OutputFormat._Deserializer.class)
 public class DestinationS3OutputFormat {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationS3OutputFormat(TypedObject value) {
         this.value = value;
@@ -33,22 +34,22 @@ public class DestinationS3OutputFormat {
 
     public static DestinationS3OutputFormat of(DestinationS3CSVCommaSeparatedValues value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationS3OutputFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationS3CSVCommaSeparatedValues>(){}));
+        return new DestinationS3OutputFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationS3OutputFormat of(DestinationS3JSONLinesNewlineDelimitedJSON value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationS3OutputFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationS3JSONLinesNewlineDelimitedJSON>(){}));
+        return new DestinationS3OutputFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationS3OutputFormat of(DestinationS3AvroApacheAvro value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationS3OutputFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationS3AvroApacheAvro>(){}));
+        return new DestinationS3OutputFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationS3OutputFormat of(DestinationS3ParquetColumnarStorage value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationS3OutputFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationS3ParquetColumnarStorage>(){}));
+        return new DestinationS3OutputFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -73,7 +74,7 @@ public class DestinationS3OutputFormat {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -84,12 +85,12 @@ public class DestinationS3OutputFormat {
             return false;
         }
         DestinationS3OutputFormat other = (DestinationS3OutputFormat) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -97,10 +98,10 @@ public class DestinationS3OutputFormat {
 
         public _Deserializer() {
             super(DestinationS3OutputFormat.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DestinationS3ParquetColumnarStorage>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationS3JSONLinesNewlineDelimitedJSON>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationS3CSVCommaSeparatedValues>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationS3AvroApacheAvro>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationS3JSONLinesNewlineDelimitedJSON>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationS3AvroApacheAvro>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationS3ParquetColumnarStorage>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -109,6 +110,6 @@ public class DestinationS3OutputFormat {
         return Utils.toString(DestinationS3OutputFormat.class,
                 "value", value);
     }
- 
+
 }
 

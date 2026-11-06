@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class DeleteSourceRequest {
 
@@ -28,9 +28,10 @@ public class DeleteSourceRequest {
         return sourceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public DeleteSourceRequest withSourceId(String sourceId) {
         Utils.checkNotNull(sourceId, "sourceId");
@@ -38,7 +39,6 @@ public class DeleteSourceRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -49,12 +49,12 @@ public class DeleteSourceRequest {
         }
         DeleteSourceRequest other = (DeleteSourceRequest) o;
         return 
-            Objects.deepEquals(this.sourceId, other.sourceId);
+            Utils.enhancedDeepEquals(this.sourceId, other.sourceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             sourceId);
     }
     
@@ -63,24 +63,28 @@ public class DeleteSourceRequest {
         return Utils.toString(DeleteSourceRequest.class,
                 "sourceId", sourceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String sourceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder sourceId(String sourceId) {
             Utils.checkNotNull(sourceId, "sourceId");
             this.sourceId = sourceId;
             return this;
         }
-        
+
         public DeleteSourceRequest build() {
+
             return new DeleteSourceRequest(
                 sourceId);
         }
+
     }
 }

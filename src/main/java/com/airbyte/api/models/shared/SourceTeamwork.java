@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceTeamwork {
 
@@ -29,11 +29,14 @@ public class SourceTeamwork {
     @JsonProperty("site_name")
     private String siteName;
 
+
     @JsonProperty("sourceType")
     private Teamwork sourceType;
 
+
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
+
 
     @JsonProperty("username")
     private String username;
@@ -59,7 +62,8 @@ public class SourceTeamwork {
             String siteName,
             OffsetDateTime startDate,
             String username) {
-        this(Optional.empty(), siteName, startDate, username);
+        this(Optional.empty(), siteName, startDate,
+            username);
     }
 
     @JsonIgnore
@@ -90,15 +94,17 @@ public class SourceTeamwork {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceTeamwork withPassword(String password) {
         Utils.checkNotNull(password, "password");
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     public SourceTeamwork withPassword(Optional<String> password) {
         Utils.checkNotNull(password, "password");
@@ -127,7 +133,6 @@ public class SourceTeamwork {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -138,21 +143,18 @@ public class SourceTeamwork {
         }
         SourceTeamwork other = (SourceTeamwork) o;
         return 
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.siteName, other.siteName) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.siteName, other.siteName) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            password,
-            siteName,
-            sourceType,
-            startDate,
-            username);
+        return Utils.enhancedHash(
+            password, siteName, sourceType,
+            startDate, username);
     }
     
     @Override
@@ -164,20 +166,22 @@ public class SourceTeamwork {
                 "startDate", startDate,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private String siteName;
- 
+
         private OffsetDateTime startDate;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder password(String password) {
             Utils.checkNotNull(password, "password");
@@ -191,6 +195,7 @@ public class SourceTeamwork {
             return this;
         }
 
+
         /**
          * The teamwork site name appearing at the url
          */
@@ -200,25 +205,27 @@ public class SourceTeamwork {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
 
+
         public Builder username(String username) {
             Utils.checkNotNull(username, "username");
             this.username = username;
             return this;
         }
-        
+
         public SourceTeamwork build() {
+
             return new SourceTeamwork(
-                password,
-                siteName,
-                startDate,
+                password, siteName, startDate,
                 username);
         }
+
 
         private static final LazySingletonValue<Teamwork> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

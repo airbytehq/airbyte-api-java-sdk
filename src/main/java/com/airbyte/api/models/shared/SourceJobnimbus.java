@@ -11,15 +11,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceJobnimbus {
-
     /**
-     * API key to use. Find it by logging into your JobNimbus account, navigating to settings, and creating a new API key under the API section.
+     * API key to use. Find it by logging into your JobNimbus account, navigating to settings, and creating
+     * a new API key under the API section.
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Jobnimbus sourceType;
@@ -33,7 +34,8 @@ public class SourceJobnimbus {
     }
 
     /**
-     * API key to use. Find it by logging into your JobNimbus account, navigating to settings, and creating a new API key under the API section.
+     * API key to use. Find it by logging into your JobNimbus account, navigating to settings, and creating
+     * a new API key under the API section.
      */
     @JsonIgnore
     public String apiKey() {
@@ -45,12 +47,14 @@ public class SourceJobnimbus {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * API key to use. Find it by logging into your JobNimbus account, navigating to settings, and creating a new API key under the API section.
+     * API key to use. Find it by logging into your JobNimbus account, navigating to settings, and creating
+     * a new API key under the API section.
      */
     public SourceJobnimbus withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -58,7 +62,6 @@ public class SourceJobnimbus {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +72,14 @@ public class SourceJobnimbus {
         }
         SourceJobnimbus other = (SourceJobnimbus) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, sourceType);
     }
     
     @Override
@@ -86,28 +88,33 @@ public class SourceJobnimbus {
                 "apiKey", apiKey,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * API key to use. Find it by logging into your JobNimbus account, navigating to settings, and creating a new API key under the API section.
+         * API key to use. Find it by logging into your JobNimbus account, navigating to settings, and creating
+         * a new API key under the API section.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
-        
+
         public SourceJobnimbus build() {
+
             return new SourceJobnimbus(
                 apiKey);
         }
+
 
         private static final LazySingletonValue<Jobnimbus> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum Statsig {
     @JsonValue
     private final String value;
 
-    private Statsig(String value) {
+    Statsig(String value) {
         this.value = value;
     }
     

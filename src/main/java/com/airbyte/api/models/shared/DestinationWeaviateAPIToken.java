@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -56,9 +55,10 @@ public class DestinationWeaviateAPIToken {
         return token;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API Token for the Weaviate instance
@@ -69,7 +69,6 @@ public class DestinationWeaviateAPIToken {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -80,15 +79,14 @@ public class DestinationWeaviateAPIToken {
         }
         DestinationWeaviateAPIToken other = (DestinationWeaviateAPIToken) o;
         return 
-            Objects.deepEquals(this.mode, other.mode) &&
-            Objects.deepEquals(this.token, other.token);
+            Utils.enhancedDeepEquals(this.mode, other.mode) &&
+            Utils.enhancedDeepEquals(this.token, other.token);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            mode,
-            token);
+        return Utils.enhancedHash(
+            mode, token);
     }
     
     @Override
@@ -97,14 +95,16 @@ public class DestinationWeaviateAPIToken {
                 "mode", mode,
                 "token", token);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String token;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API Token for the Weaviate instance
@@ -114,11 +114,13 @@ public class DestinationWeaviateAPIToken {
             this.token = token;
             return this;
         }
-        
+
         public DestinationWeaviateAPIToken build() {
+
             return new DestinationWeaviateAPIToken(
                 token);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationWeaviateSchemasIndexingMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

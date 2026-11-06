@@ -14,7 +14,7 @@ public enum SourceAmazonSellerPartnerAuthType {
     @JsonValue
     private final String value;
 
-    private SourceAmazonSellerPartnerAuthType(String value) {
+    SourceAmazonSellerPartnerAuthType(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum CalCom {
     @JsonValue
     private final String value;
 
-    private CalCom(String value) {
+    CalCom(String value) {
         this.value = value;
     }
     

@@ -17,11 +17,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourcePagerduty {
 
+public class SourcePagerduty {
     /**
      * Fetch pipelines updated in the last number of days
      */
@@ -44,14 +43,16 @@ public class SourcePagerduty {
     private Optional<? extends List<String>> excludeServices;
 
     /**
-     * If true, will return a subset of log entries that show only the most important changes to the incident.
+     * If true, will return a subset of log entries that show only the most important changes to the
+     * incident.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("incident_log_entries_overview")
     private Optional<Boolean> incidentLogEntriesOverview;
 
     /**
-     * Maximum number of PagerDuty API request retries to perform upon connection errors. The source will pause for an exponentially increasing number of seconds before retrying.
+     * Maximum number of PagerDuty API request retries to perform upon connection errors. The source will
+     * pause for an exponentially increasing number of seconds before retrying.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("max_retries")
@@ -70,6 +71,7 @@ public class SourcePagerduty {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("service_details")
     private Optional<? extends List<ServiceDetails>> serviceDetails;
+
 
     @JsonProperty("sourceType")
     private Pagerduty sourceType;
@@ -111,7 +113,9 @@ public class SourcePagerduty {
     
     public SourcePagerduty(
             String token) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), token);
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), token);
     }
 
     /**
@@ -140,7 +144,8 @@ public class SourcePagerduty {
     }
 
     /**
-     * If true, will return a subset of log entries that show only the most important changes to the incident.
+     * If true, will return a subset of log entries that show only the most important changes to the
+     * incident.
      */
     @JsonIgnore
     public Optional<Boolean> incidentLogEntriesOverview() {
@@ -148,7 +153,8 @@ public class SourcePagerduty {
     }
 
     /**
-     * Maximum number of PagerDuty API request retries to perform upon connection errors. The source will pause for an exponentially increasing number of seconds before retrying.
+     * Maximum number of PagerDuty API request retries to perform upon connection errors. The source will
+     * pause for an exponentially increasing number of seconds before retrying.
      */
     @JsonIgnore
     public Optional<Long> maxRetries() {
@@ -185,9 +191,10 @@ public class SourcePagerduty {
         return token;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Fetch pipelines updated in the last number of days
@@ -197,6 +204,7 @@ public class SourcePagerduty {
         this.cutoffDays = Optional.ofNullable(cutoffDays);
         return this;
     }
+
 
     /**
      * Fetch pipelines updated in the last number of days
@@ -216,6 +224,7 @@ public class SourcePagerduty {
         return this;
     }
 
+
     /**
      * A default severity category if not present
      */
@@ -234,6 +243,7 @@ public class SourcePagerduty {
         return this;
     }
 
+
     /**
      * List of PagerDuty service names to ignore incidents from. If not set, all incidents will be pulled.
      */
@@ -244,7 +254,8 @@ public class SourcePagerduty {
     }
 
     /**
-     * If true, will return a subset of log entries that show only the most important changes to the incident.
+     * If true, will return a subset of log entries that show only the most important changes to the
+     * incident.
      */
     public SourcePagerduty withIncidentLogEntriesOverview(boolean incidentLogEntriesOverview) {
         Utils.checkNotNull(incidentLogEntriesOverview, "incidentLogEntriesOverview");
@@ -252,8 +263,10 @@ public class SourcePagerduty {
         return this;
     }
 
+
     /**
-     * If true, will return a subset of log entries that show only the most important changes to the incident.
+     * If true, will return a subset of log entries that show only the most important changes to the
+     * incident.
      */
     public SourcePagerduty withIncidentLogEntriesOverview(Optional<Boolean> incidentLogEntriesOverview) {
         Utils.checkNotNull(incidentLogEntriesOverview, "incidentLogEntriesOverview");
@@ -262,7 +275,8 @@ public class SourcePagerduty {
     }
 
     /**
-     * Maximum number of PagerDuty API request retries to perform upon connection errors. The source will pause for an exponentially increasing number of seconds before retrying.
+     * Maximum number of PagerDuty API request retries to perform upon connection errors. The source will
+     * pause for an exponentially increasing number of seconds before retrying.
      */
     public SourcePagerduty withMaxRetries(long maxRetries) {
         Utils.checkNotNull(maxRetries, "maxRetries");
@@ -270,8 +284,10 @@ public class SourcePagerduty {
         return this;
     }
 
+
     /**
-     * Maximum number of PagerDuty API request retries to perform upon connection errors. The source will pause for an exponentially increasing number of seconds before retrying.
+     * Maximum number of PagerDuty API request retries to perform upon connection errors. The source will
+     * pause for an exponentially increasing number of seconds before retrying.
      */
     public SourcePagerduty withMaxRetries(Optional<Long> maxRetries) {
         Utils.checkNotNull(maxRetries, "maxRetries");
@@ -287,6 +303,7 @@ public class SourcePagerduty {
         this.pageSize = Optional.ofNullable(pageSize);
         return this;
     }
+
 
     /**
      * page size to use when querying PagerDuty API
@@ -306,6 +323,7 @@ public class SourcePagerduty {
         return this;
     }
 
+
     /**
      * List of PagerDuty service additional details to include.
      */
@@ -324,7 +342,6 @@ public class SourcePagerduty {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -335,29 +352,23 @@ public class SourcePagerduty {
         }
         SourcePagerduty other = (SourcePagerduty) o;
         return 
-            Objects.deepEquals(this.cutoffDays, other.cutoffDays) &&
-            Objects.deepEquals(this.defaultSeverity, other.defaultSeverity) &&
-            Objects.deepEquals(this.excludeServices, other.excludeServices) &&
-            Objects.deepEquals(this.incidentLogEntriesOverview, other.incidentLogEntriesOverview) &&
-            Objects.deepEquals(this.maxRetries, other.maxRetries) &&
-            Objects.deepEquals(this.pageSize, other.pageSize) &&
-            Objects.deepEquals(this.serviceDetails, other.serviceDetails) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.token, other.token);
+            Utils.enhancedDeepEquals(this.cutoffDays, other.cutoffDays) &&
+            Utils.enhancedDeepEquals(this.defaultSeverity, other.defaultSeverity) &&
+            Utils.enhancedDeepEquals(this.excludeServices, other.excludeServices) &&
+            Utils.enhancedDeepEquals(this.incidentLogEntriesOverview, other.incidentLogEntriesOverview) &&
+            Utils.enhancedDeepEquals(this.maxRetries, other.maxRetries) &&
+            Utils.enhancedDeepEquals(this.pageSize, other.pageSize) &&
+            Utils.enhancedDeepEquals(this.serviceDetails, other.serviceDetails) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.token, other.token);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            cutoffDays,
-            defaultSeverity,
-            excludeServices,
-            incidentLogEntriesOverview,
-            maxRetries,
-            pageSize,
-            serviceDetails,
-            sourceType,
-            token);
+        return Utils.enhancedHash(
+            cutoffDays, defaultSeverity, excludeServices,
+            incidentLogEntriesOverview, maxRetries, pageSize,
+            serviceDetails, sourceType, token);
     }
     
     @Override
@@ -373,28 +384,30 @@ public class SourcePagerduty {
                 "sourceType", sourceType,
                 "token", token);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Long> cutoffDays;
- 
+
         private Optional<String> defaultSeverity = Optional.empty();
- 
+
         private Optional<? extends List<String>> excludeServices = Optional.empty();
- 
+
         private Optional<Boolean> incidentLogEntriesOverview;
- 
+
         private Optional<Long> maxRetries;
- 
+
         private Optional<Long> pageSize;
- 
+
         private Optional<? extends List<ServiceDetails>> serviceDetails = Optional.empty();
- 
+
         private String token;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Fetch pipelines updated in the last number of days
@@ -414,6 +427,7 @@ public class SourcePagerduty {
             return this;
         }
 
+
         /**
          * A default severity category if not present
          */
@@ -431,6 +445,7 @@ public class SourcePagerduty {
             this.defaultSeverity = defaultSeverity;
             return this;
         }
+
 
         /**
          * List of PagerDuty service names to ignore incidents from. If not set, all incidents will be pulled.
@@ -450,8 +465,10 @@ public class SourcePagerduty {
             return this;
         }
 
+
         /**
-         * If true, will return a subset of log entries that show only the most important changes to the incident.
+         * If true, will return a subset of log entries that show only the most important changes to the
+         * incident.
          */
         public Builder incidentLogEntriesOverview(boolean incidentLogEntriesOverview) {
             Utils.checkNotNull(incidentLogEntriesOverview, "incidentLogEntriesOverview");
@@ -460,7 +477,8 @@ public class SourcePagerduty {
         }
 
         /**
-         * If true, will return a subset of log entries that show only the most important changes to the incident.
+         * If true, will return a subset of log entries that show only the most important changes to the
+         * incident.
          */
         public Builder incidentLogEntriesOverview(Optional<Boolean> incidentLogEntriesOverview) {
             Utils.checkNotNull(incidentLogEntriesOverview, "incidentLogEntriesOverview");
@@ -468,8 +486,10 @@ public class SourcePagerduty {
             return this;
         }
 
+
         /**
-         * Maximum number of PagerDuty API request retries to perform upon connection errors. The source will pause for an exponentially increasing number of seconds before retrying.
+         * Maximum number of PagerDuty API request retries to perform upon connection errors. The source will
+         * pause for an exponentially increasing number of seconds before retrying.
          */
         public Builder maxRetries(long maxRetries) {
             Utils.checkNotNull(maxRetries, "maxRetries");
@@ -478,13 +498,15 @@ public class SourcePagerduty {
         }
 
         /**
-         * Maximum number of PagerDuty API request retries to perform upon connection errors. The source will pause for an exponentially increasing number of seconds before retrying.
+         * Maximum number of PagerDuty API request retries to perform upon connection errors. The source will
+         * pause for an exponentially increasing number of seconds before retrying.
          */
         public Builder maxRetries(Optional<Long> maxRetries) {
             Utils.checkNotNull(maxRetries, "maxRetries");
             this.maxRetries = maxRetries;
             return this;
         }
+
 
         /**
          * page size to use when querying PagerDuty API
@@ -504,6 +526,7 @@ public class SourcePagerduty {
             return this;
         }
 
+
         /**
          * List of PagerDuty service additional details to include.
          */
@@ -522,6 +545,7 @@ public class SourcePagerduty {
             return this;
         }
 
+
         /**
          * API key for PagerDuty API authentication
          */
@@ -530,7 +554,7 @@ public class SourcePagerduty {
             this.token = token;
             return this;
         }
-        
+
         public SourcePagerduty build() {
             if (cutoffDays == null) {
                 cutoffDays = _SINGLETON_VALUE_CutoffDays.value();
@@ -544,16 +568,13 @@ public class SourcePagerduty {
             if (pageSize == null) {
                 pageSize = _SINGLETON_VALUE_PageSize.value();
             }
+
             return new SourcePagerduty(
-                cutoffDays,
-                defaultSeverity,
-                excludeServices,
-                incidentLogEntriesOverview,
-                maxRetries,
-                pageSize,
-                serviceDetails,
-                token);
+                cutoffDays, defaultSeverity, excludeServices,
+                incidentLogEntriesOverview, maxRetries, pageSize,
+                serviceDetails, token);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_CutoffDays =
                 new LazySingletonValue<>(

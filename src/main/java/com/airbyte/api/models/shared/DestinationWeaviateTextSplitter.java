@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationWeaviateTextSplitter
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class DestinationWeaviateTextSplitter {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationWeaviateTextSplitter(TypedObject value) {
         this.value = value;
@@ -33,17 +32,17 @@ public class DestinationWeaviateTextSplitter {
 
     public static DestinationWeaviateTextSplitter of(DestinationWeaviateBySeparator value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationWeaviateTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationWeaviateBySeparator>(){}));
+        return new DestinationWeaviateTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationWeaviateTextSplitter of(DestinationWeaviateByMarkdownHeader value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationWeaviateTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationWeaviateByMarkdownHeader>(){}));
+        return new DestinationWeaviateTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationWeaviateTextSplitter of(DestinationWeaviateByProgrammingLanguage value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationWeaviateTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationWeaviateByProgrammingLanguage>(){}));
+        return new DestinationWeaviateTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +66,7 @@ public class DestinationWeaviateTextSplitter {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +77,12 @@ public class DestinationWeaviateTextSplitter {
             return false;
         }
         DestinationWeaviateTextSplitter other = (DestinationWeaviateTextSplitter) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -92,8 +91,8 @@ public class DestinationWeaviateTextSplitter {
         public _Deserializer() {
             super(DestinationWeaviateTextSplitter.class, false,
                   TypeReferenceWithShape.of(new TypeReference<DestinationWeaviateBySeparator>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationWeaviateByProgrammingLanguage>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationWeaviateByMarkdownHeader>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationWeaviateByMarkdownHeader>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationWeaviateByProgrammingLanguage>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -102,6 +101,6 @@ public class DestinationWeaviateTextSplitter {
         return Utils.toString(DestinationWeaviateTextSplitter.class,
                 "value", value);
     }
- 
+
 }
 

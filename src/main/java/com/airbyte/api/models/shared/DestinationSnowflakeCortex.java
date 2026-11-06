@@ -14,13 +14,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * DestinationSnowflakeCortex
  * 
- * <p>The configuration model for the Vector DB based destinations. This model is used to generate the UI for the destination configuration,
+ * <p>The configuration model for the Vector DB based destinations. This model is used to generate the UI
+ * for the destination configuration,
  * as well as to provide type safety for the configuration passed to the destination.
  * 
  * <p>The configuration model is composed of four parts:
@@ -29,7 +29,8 @@ import java.util.Optional;
  * * Indexing configuration
  * * Advanced configuration
  * 
- * <p>Processing, embedding and advanced configuration are provided by this base class, while the indexing configuration is provided by the destination connector in the sub class.
+ * <p>Processing, embedding and advanced configuration are provided by this base class, while the indexing
+ * configuration is provided by the destination connector in the sub class.
  */
 public class DestinationSnowflakeCortex {
 
@@ -49,11 +50,14 @@ public class DestinationSnowflakeCortex {
     private SnowflakeConnection indexing;
 
     /**
-     * Do not store the text that gets embedded along with the vector and the metadata in the destination. If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use cases needs to be retrieved from another source.
+     * Do not store the text that gets embedded along with the vector and the metadata in the destination.
+     * If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use
+     * cases needs to be retrieved from another source.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("omit_raw_text")
     private Optional<Boolean> omitRawText;
+
 
     @JsonProperty("processing")
     private DestinationSnowflakeCortexProcessingConfigModel processing;
@@ -79,7 +83,8 @@ public class DestinationSnowflakeCortex {
             DestinationSnowflakeCortexEmbedding embedding,
             SnowflakeConnection indexing,
             DestinationSnowflakeCortexProcessingConfigModel processing) {
-        this(embedding, indexing, Optional.empty(), processing);
+        this(embedding, indexing, Optional.empty(),
+            processing);
     }
 
     @JsonIgnore
@@ -104,7 +109,9 @@ public class DestinationSnowflakeCortex {
     }
 
     /**
-     * Do not store the text that gets embedded along with the vector and the metadata in the destination. If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use cases needs to be retrieved from another source.
+     * Do not store the text that gets embedded along with the vector and the metadata in the destination.
+     * If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use
+     * cases needs to be retrieved from another source.
      */
     @JsonIgnore
     public Optional<Boolean> omitRawText() {
@@ -116,9 +123,10 @@ public class DestinationSnowflakeCortex {
         return processing;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Embedding configuration
@@ -139,7 +147,9 @@ public class DestinationSnowflakeCortex {
     }
 
     /**
-     * Do not store the text that gets embedded along with the vector and the metadata in the destination. If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use cases needs to be retrieved from another source.
+     * Do not store the text that gets embedded along with the vector and the metadata in the destination.
+     * If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use
+     * cases needs to be retrieved from another source.
      */
     public DestinationSnowflakeCortex withOmitRawText(boolean omitRawText) {
         Utils.checkNotNull(omitRawText, "omitRawText");
@@ -147,8 +157,11 @@ public class DestinationSnowflakeCortex {
         return this;
     }
 
+
     /**
-     * Do not store the text that gets embedded along with the vector and the metadata in the destination. If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use cases needs to be retrieved from another source.
+     * Do not store the text that gets embedded along with the vector and the metadata in the destination.
+     * If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use
+     * cases needs to be retrieved from another source.
      */
     public DestinationSnowflakeCortex withOmitRawText(Optional<Boolean> omitRawText) {
         Utils.checkNotNull(omitRawText, "omitRawText");
@@ -162,7 +175,6 @@ public class DestinationSnowflakeCortex {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -173,21 +185,18 @@ public class DestinationSnowflakeCortex {
         }
         DestinationSnowflakeCortex other = (DestinationSnowflakeCortex) o;
         return 
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.embedding, other.embedding) &&
-            Objects.deepEquals(this.indexing, other.indexing) &&
-            Objects.deepEquals(this.omitRawText, other.omitRawText) &&
-            Objects.deepEquals(this.processing, other.processing);
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.embedding, other.embedding) &&
+            Utils.enhancedDeepEquals(this.indexing, other.indexing) &&
+            Utils.enhancedDeepEquals(this.omitRawText, other.omitRawText) &&
+            Utils.enhancedDeepEquals(this.processing, other.processing);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            destinationType,
-            embedding,
-            indexing,
-            omitRawText,
-            processing);
+        return Utils.enhancedHash(
+            destinationType, embedding, indexing,
+            omitRawText, processing);
     }
     
     @Override
@@ -199,20 +208,22 @@ public class DestinationSnowflakeCortex {
                 "omitRawText", omitRawText,
                 "processing", processing);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private DestinationSnowflakeCortexEmbedding embedding;
- 
+
         private SnowflakeConnection indexing;
- 
+
         private Optional<Boolean> omitRawText;
- 
+
         private DestinationSnowflakeCortexProcessingConfigModel processing;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Embedding configuration
@@ -223,6 +234,7 @@ public class DestinationSnowflakeCortex {
             return this;
         }
 
+
         /**
          * Snowflake can be used to store vector data and retrieve embeddings.
          */
@@ -232,8 +244,11 @@ public class DestinationSnowflakeCortex {
             return this;
         }
 
+
         /**
-         * Do not store the text that gets embedded along with the vector and the metadata in the destination. If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use cases needs to be retrieved from another source.
+         * Do not store the text that gets embedded along with the vector and the metadata in the destination.
+         * If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use
+         * cases needs to be retrieved from another source.
          */
         public Builder omitRawText(boolean omitRawText) {
             Utils.checkNotNull(omitRawText, "omitRawText");
@@ -242,7 +257,9 @@ public class DestinationSnowflakeCortex {
         }
 
         /**
-         * Do not store the text that gets embedded along with the vector and the metadata in the destination. If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use cases needs to be retrieved from another source.
+         * Do not store the text that gets embedded along with the vector and the metadata in the destination.
+         * If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use
+         * cases needs to be retrieved from another source.
          */
         public Builder omitRawText(Optional<Boolean> omitRawText) {
             Utils.checkNotNull(omitRawText, "omitRawText");
@@ -250,22 +267,23 @@ public class DestinationSnowflakeCortex {
             return this;
         }
 
+
         public Builder processing(DestinationSnowflakeCortexProcessingConfigModel processing) {
             Utils.checkNotNull(processing, "processing");
             this.processing = processing;
             return this;
         }
-        
+
         public DestinationSnowflakeCortex build() {
             if (omitRawText == null) {
                 omitRawText = _SINGLETON_VALUE_OmitRawText.value();
             }
+
             return new DestinationSnowflakeCortex(
-                embedding,
-                indexing,
-                omitRawText,
+                embedding, indexing, omitRawText,
                 processing);
         }
+
 
         private static final LazySingletonValue<SnowflakeCortex> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

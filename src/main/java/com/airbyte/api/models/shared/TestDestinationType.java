@@ -14,7 +14,7 @@ public enum TestDestinationType {
     @JsonValue
     private final String value;
 
-    private TestDestinationType(String value) {
+    TestDestinationType(String value) {
         this.value = value;
     }
     

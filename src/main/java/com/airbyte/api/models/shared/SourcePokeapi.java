@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourcePokeapi {
-
     /**
      * Pokemon requested from the API.
      */
     @JsonProperty("pokemon_name")
     private PokemonName pokemonName;
+
 
     @JsonProperty("sourceType")
     private Pokeapi sourceType;
@@ -45,9 +45,10 @@ public class SourcePokeapi {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Pokemon requested from the API.
@@ -58,7 +59,6 @@ public class SourcePokeapi {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourcePokeapi {
         }
         SourcePokeapi other = (SourcePokeapi) o;
         return 
-            Objects.deepEquals(this.pokemonName, other.pokemonName) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.pokemonName, other.pokemonName) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            pokemonName,
-            sourceType);
+        return Utils.enhancedHash(
+            pokemonName, sourceType);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourcePokeapi {
                 "pokemonName", pokemonName,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private PokemonName pokemonName;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Pokemon requested from the API.
@@ -103,11 +104,13 @@ public class SourcePokeapi {
             this.pokemonName = pokemonName;
             return this;
         }
-        
+
         public SourcePokeapi build() {
+
             return new SourcePokeapi(
                 pokemonName);
         }
+
 
         private static final LazySingletonValue<Pokeapi> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

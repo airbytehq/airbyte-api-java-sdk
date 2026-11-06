@@ -14,11 +14,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.net.http.HttpResponse;
-import java.util.Objects;
 import java.util.Optional;
 
-public class ListUsersWithinAnOrganizationResponse implements Response {
 
+public class ListUsersWithinAnOrganizationResponse implements Response {
     /**
      * HTTP response content type for this operation
      */
@@ -59,7 +58,8 @@ public class ListUsersWithinAnOrganizationResponse implements Response {
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse) {
-        this(contentType, statusCode, rawResponse, Optional.empty());
+        this(contentType, statusCode, rawResponse,
+            Optional.empty());
     }
 
     /**
@@ -95,9 +95,10 @@ public class ListUsersWithinAnOrganizationResponse implements Response {
         return (Optional<UsersResponse>) usersResponse;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * HTTP response content type for this operation
@@ -135,6 +136,7 @@ public class ListUsersWithinAnOrganizationResponse implements Response {
         return this;
     }
 
+
     /**
      * List Users.
      */
@@ -144,7 +146,6 @@ public class ListUsersWithinAnOrganizationResponse implements Response {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -155,18 +156,16 @@ public class ListUsersWithinAnOrganizationResponse implements Response {
         }
         ListUsersWithinAnOrganizationResponse other = (ListUsersWithinAnOrganizationResponse) o;
         return 
-            Objects.deepEquals(this.contentType, other.contentType) &&
-            Objects.deepEquals(this.statusCode, other.statusCode) &&
-            Objects.deepEquals(this.rawResponse, other.rawResponse) &&
-            Objects.deepEquals(this.usersResponse, other.usersResponse);
+            Utils.enhancedDeepEquals(this.contentType, other.contentType) &&
+            Utils.enhancedDeepEquals(this.statusCode, other.statusCode) &&
+            Utils.enhancedDeepEquals(this.rawResponse, other.rawResponse) &&
+            Utils.enhancedDeepEquals(this.usersResponse, other.usersResponse);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            contentType,
-            statusCode,
-            rawResponse,
+        return Utils.enhancedHash(
+            contentType, statusCode, rawResponse,
             usersResponse);
     }
     
@@ -178,20 +177,22 @@ public class ListUsersWithinAnOrganizationResponse implements Response {
                 "rawResponse", rawResponse,
                 "usersResponse", usersResponse);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String contentType;
- 
+
         private Integer statusCode;
- 
+
         private HttpResponse<InputStream> rawResponse;
- 
+
         private Optional<? extends UsersResponse> usersResponse = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * HTTP response content type for this operation
@@ -202,6 +203,7 @@ public class ListUsersWithinAnOrganizationResponse implements Response {
             return this;
         }
 
+
         /**
          * HTTP response status code for this operation
          */
@@ -211,6 +213,7 @@ public class ListUsersWithinAnOrganizationResponse implements Response {
             return this;
         }
 
+
         /**
          * Raw HTTP response; suitable for custom response parsing
          */
@@ -219,6 +222,7 @@ public class ListUsersWithinAnOrganizationResponse implements Response {
             this.rawResponse = rawResponse;
             return this;
         }
+
 
         /**
          * List Users.
@@ -237,13 +241,13 @@ public class ListUsersWithinAnOrganizationResponse implements Response {
             this.usersResponse = usersResponse;
             return this;
         }
-        
+
         public ListUsersWithinAnOrganizationResponse build() {
+
             return new ListUsersWithinAnOrganizationResponse(
-                contentType,
-                statusCode,
-                rawResponse,
+                contentType, statusCode, rawResponse,
                 usersResponse);
         }
+
     }
 }

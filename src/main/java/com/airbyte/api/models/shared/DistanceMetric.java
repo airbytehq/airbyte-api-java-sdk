@@ -11,7 +11,8 @@ import java.util.Optional;
 /**
  * DistanceMetric
  * 
- * <p>The Distance metric used to measure similarities among vectors. This field is only used if the collection defined in the does not exist yet and is created automatically by the connector.
+ * <p>The Distance metric used to measure similarities among vectors. This field is only used if the
+ * collection defined in the does not exist yet and is created automatically by the connector.
  */
 public enum DistanceMetric {
     DOT("dot"),
@@ -21,7 +22,7 @@ public enum DistanceMetric {
     @JsonValue
     private final String value;
 
-    private DistanceMetric(String value) {
+    DistanceMetric(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum DestinationPineconeSchemasProcessingMode {
     @JsonValue
     private final String value;
 
-    private DestinationPineconeSchemasProcessingMode(String value) {
+    DestinationPineconeSchemasProcessingMode(String value) {
         this.value = value;
     }
     

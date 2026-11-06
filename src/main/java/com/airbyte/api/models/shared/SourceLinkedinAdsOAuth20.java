@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceLinkedinAdsOAuth20 {
 
@@ -24,19 +24,25 @@ public class SourceLinkedinAdsOAuth20 {
     private Optional<? extends SourceLinkedinAdsAuthMethod> authMethod;
 
     /**
-     * The client ID of your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+     * The client ID of your developer application. Refer to our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+     * for more information.
      */
     @JsonProperty("client_id")
     private String clientId;
 
     /**
-     * The client secret of your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+     * The client secret of your developer application. Refer to our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+     * for more information.
      */
     @JsonProperty("client_secret")
     private String clientSecret;
 
     /**
-     * The key to refresh the expired access token. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+     * The key to refresh the expired access token. Refer to our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+     * for more information.
      */
     @JsonProperty("refresh_token")
     private String refreshToken;
@@ -62,7 +68,9 @@ public class SourceLinkedinAdsOAuth20 {
     }
 
     /**
-     * The client ID of your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+     * The client ID of your developer application. Refer to our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+     * for more information.
      */
     @JsonIgnore
     public String clientId() {
@@ -70,7 +78,9 @@ public class SourceLinkedinAdsOAuth20 {
     }
 
     /**
-     * The client secret of your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+     * The client secret of your developer application. Refer to our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+     * for more information.
      */
     @JsonIgnore
     public String clientSecret() {
@@ -78,19 +88,24 @@ public class SourceLinkedinAdsOAuth20 {
     }
 
     /**
-     * The key to refresh the expired access token. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+     * The key to refresh the expired access token. Refer to our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+     * for more information.
      */
     @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The client ID of your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+     * The client ID of your developer application. Refer to our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+     * for more information.
      */
     public SourceLinkedinAdsOAuth20 withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -99,7 +114,9 @@ public class SourceLinkedinAdsOAuth20 {
     }
 
     /**
-     * The client secret of your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+     * The client secret of your developer application. Refer to our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+     * for more information.
      */
     public SourceLinkedinAdsOAuth20 withClientSecret(String clientSecret) {
         Utils.checkNotNull(clientSecret, "clientSecret");
@@ -108,7 +125,9 @@ public class SourceLinkedinAdsOAuth20 {
     }
 
     /**
-     * The key to refresh the expired access token. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+     * The key to refresh the expired access token. Refer to our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+     * for more information.
      */
     public SourceLinkedinAdsOAuth20 withRefreshToken(String refreshToken) {
         Utils.checkNotNull(refreshToken, "refreshToken");
@@ -116,7 +135,6 @@ public class SourceLinkedinAdsOAuth20 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -127,18 +145,16 @@ public class SourceLinkedinAdsOAuth20 {
         }
         SourceLinkedinAdsOAuth20 other = (SourceLinkedinAdsOAuth20) o;
         return 
-            Objects.deepEquals(this.authMethod, other.authMethod) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken);
+            Utils.enhancedDeepEquals(this.authMethod, other.authMethod) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authMethod,
-            clientId,
-            clientSecret,
+        return Utils.enhancedHash(
+            authMethod, clientId, clientSecret,
             refreshToken);
     }
     
@@ -150,21 +166,25 @@ public class SourceLinkedinAdsOAuth20 {
                 "clientSecret", clientSecret,
                 "refreshToken", refreshToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String refreshToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The client ID of your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+         * The client ID of your developer application. Refer to our &lt;a
+         * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+         * for more information.
          */
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -172,8 +192,11 @@ public class SourceLinkedinAdsOAuth20 {
             return this;
         }
 
+
         /**
-         * The client secret of your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+         * The client secret of your developer application. Refer to our &lt;a
+         * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+         * for more information.
          */
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
@@ -181,21 +204,24 @@ public class SourceLinkedinAdsOAuth20 {
             return this;
         }
 
+
         /**
-         * The key to refresh the expired access token. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+         * The key to refresh the expired access token. Refer to our &lt;a
+         * href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt;
+         * for more information.
          */
         public Builder refreshToken(String refreshToken) {
             Utils.checkNotNull(refreshToken, "refreshToken");
             this.refreshToken = refreshToken;
             return this;
         }
-        
+
         public SourceLinkedinAdsOAuth20 build() {
+
             return new SourceLinkedinAdsOAuth20(
-                clientId,
-                clientSecret,
-                refreshToken);
+                clientId, clientSecret, refreshToken);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceLinkedinAdsAuthMethod>> _SINGLETON_VALUE_AuthMethod =
                 new LazySingletonValue<>(

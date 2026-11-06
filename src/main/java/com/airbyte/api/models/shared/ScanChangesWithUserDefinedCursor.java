@@ -5,40 +5,93 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
+import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+import java.lang.SuppressWarnings;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
 /**
  * ScanChangesWithUserDefinedCursor
  * 
- * <p>Incrementally detects new inserts and updates using the &lt;a href="https://docs.airbyte.com/understanding-airbyte/connections/incremental-append/#user-defined-cursor"&gt;cursor column&lt;/a&gt; chosen when configuring a connection (e.g. created_at, updated_at).
+ * <p>Incrementally detects new inserts and updates using the <a
+ * href="https://docs.airbyte.com/understanding-airbyte/connections/incremental-append/#user-defined-cursor">cursor
+ * column</a> chosen when configuring a connection (e.g. created_at, updated_at).
  */
 public class ScanChangesWithUserDefinedCursor {
 
-    @JsonProperty("method")
-    private SourceMssqlSchemasMethod method;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties;
+
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("cursor_method")
+    private Optional<? extends CursorMethod> cursorMethod;
 
     @JsonCreator
-    public ScanChangesWithUserDefinedCursor() {
-        
-        this.method = Builder._SINGLETON_VALUE_Method.value();
+    public ScanChangesWithUserDefinedCursor(
+            @JsonProperty("cursor_method") Optional<? extends CursorMethod> cursorMethod) {
+        Utils.checkNotNull(cursorMethod, "cursorMethod");
+        this.additionalProperties = new HashMap<>();
+        this.cursorMethod = cursorMethod;
     }
-
-    @JsonIgnore
-    public SourceMssqlSchemasMethod method() {
-        return method;
-    }
-
-    public final static Builder builder() {
-        return new Builder();
-    }    
-
     
+    public ScanChangesWithUserDefinedCursor() {
+        this(Optional.empty());
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> additionalProperties() {
+        return additionalProperties;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<CursorMethod> cursorMethod() {
+        return (Optional<CursorMethod>) cursorMethod;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+
+    @JsonAnySetter
+    public ScanChangesWithUserDefinedCursor withAdditionalProperty(String key, Object value) {
+        // note that value can be null because of the way JsonAnySetter works
+        Utils.checkNotNull(key, "key");
+        additionalProperties.put(key, value); 
+        return this;
+    }
+    public ScanChangesWithUserDefinedCursor withAdditionalProperties(Map<String, Object> additionalProperties) {
+        Utils.checkNotNull(additionalProperties, "additionalProperties");
+        this.additionalProperties = additionalProperties;
+        return this;
+    }
+
+    public ScanChangesWithUserDefinedCursor withCursorMethod(CursorMethod cursorMethod) {
+        Utils.checkNotNull(cursorMethod, "cursorMethod");
+        this.cursorMethod = Optional.ofNullable(cursorMethod);
+        return this;
+    }
+
+
+    public ScanChangesWithUserDefinedCursor withCursorMethod(Optional<? extends CursorMethod> cursorMethod) {
+        Utils.checkNotNull(cursorMethod, "cursorMethod");
+        this.cursorMethod = cursorMethod;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -49,36 +102,78 @@ public class ScanChangesWithUserDefinedCursor {
         }
         ScanChangesWithUserDefinedCursor other = (ScanChangesWithUserDefinedCursor) o;
         return 
-            Objects.deepEquals(this.method, other.method);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.cursorMethod, other.cursorMethod);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            method);
+        return Utils.enhancedHash(
+            additionalProperties, cursorMethod);
     }
     
     @Override
     public String toString() {
         return Utils.toString(ScanChangesWithUserDefinedCursor.class,
-                "method", method);
+                "additionalProperties", additionalProperties,
+                "cursorMethod", cursorMethod);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
+        private Map<String, Object> additionalProperties = new HashMap<>();
+
+        private Optional<? extends CursorMethod> cursorMethod;
+
         private Builder() {
           // force use of static builder() method
         }
-        
-        public ScanChangesWithUserDefinedCursor build() {
-            return new ScanChangesWithUserDefinedCursor(
-                );
+
+        public Builder additionalProperty(String key, Object value) {
+            Utils.checkNotNull(key, "key");
+            // we could be strict about null values (force the user
+            // to pass `JsonNullable.of(null)`) but likely to be a bit 
+            // annoying for additional properties building so we'll 
+            // relax preconditions.
+            this.additionalProperties.put(key, value);
+            return this;
         }
 
-        private static final LazySingletonValue<SourceMssqlSchemasMethod> _SINGLETON_VALUE_Method =
+        public Builder additionalProperties(Map<String, Object> additionalProperties) {
+            Utils.checkNotNull(additionalProperties, "additionalProperties");
+            this.additionalProperties = additionalProperties;
+            return this;
+        }
+
+
+        public Builder cursorMethod(CursorMethod cursorMethod) {
+            Utils.checkNotNull(cursorMethod, "cursorMethod");
+            this.cursorMethod = Optional.ofNullable(cursorMethod);
+            return this;
+        }
+
+        public Builder cursorMethod(Optional<? extends CursorMethod> cursorMethod) {
+            Utils.checkNotNull(cursorMethod, "cursorMethod");
+            this.cursorMethod = cursorMethod;
+            return this;
+        }
+
+        public ScanChangesWithUserDefinedCursor build() {
+            if (cursorMethod == null) {
+                cursorMethod = _SINGLETON_VALUE_CursorMethod.value();
+            }
+
+            return new ScanChangesWithUserDefinedCursor(
+                cursorMethod)
+                .withAdditionalProperties(additionalProperties);
+        }
+
+
+        private static final LazySingletonValue<Optional<? extends CursorMethod>> _SINGLETON_VALUE_CursorMethod =
                 new LazySingletonValue<>(
-                        "method",
-                        "\"STANDARD\"",
-                        new TypeReference<SourceMssqlSchemasMethod>() {});
+                        "cursor_method",
+                        "\"user_defined\"",
+                        new TypeReference<Optional<? extends CursorMethod>>() {});
     }
 }

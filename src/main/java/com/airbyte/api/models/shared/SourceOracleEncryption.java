@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceOracleEncryption
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class SourceOracleEncryption {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceOracleEncryption(TypedObject value) {
         this.value = value;
@@ -33,17 +32,17 @@ public class SourceOracleEncryption {
 
     public static SourceOracleEncryption of(SourceOracleUnencrypted value) {
         Utils.checkNotNull(value, "value");
-        return new SourceOracleEncryption(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOracleUnencrypted>(){}));
+        return new SourceOracleEncryption(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceOracleEncryption of(SourceOracleNativeNetworkEncryptionNNE value) {
         Utils.checkNotNull(value, "value");
-        return new SourceOracleEncryption(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOracleNativeNetworkEncryptionNNE>(){}));
+        return new SourceOracleEncryption(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceOracleEncryption of(SourceOracleTLSEncryptedVerifyCertificate value) {
         Utils.checkNotNull(value, "value");
-        return new SourceOracleEncryption(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOracleTLSEncryptedVerifyCertificate>(){}));
+        return new SourceOracleEncryption(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +66,7 @@ public class SourceOracleEncryption {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +77,12 @@ public class SourceOracleEncryption {
             return false;
         }
         SourceOracleEncryption other = (SourceOracleEncryption) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -91,9 +90,9 @@ public class SourceOracleEncryption {
 
         public _Deserializer() {
             super(SourceOracleEncryption.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceOracleTLSEncryptedVerifyCertificate>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceOracleUnencrypted>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceOracleNativeNetworkEncryptionNNE>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceOracleUnencrypted>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceOracleTLSEncryptedVerifyCertificate>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -102,6 +101,6 @@ public class SourceOracleEncryption {
         return Utils.toString(SourceOracleEncryption.class,
                 "value", value);
     }
- 
+
 }
 

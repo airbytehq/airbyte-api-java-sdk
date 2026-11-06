@@ -15,11 +15,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceGoogleAnalyticsDataApiSchemasEnabled {
 
+public class SourceGoogleAnalyticsDataApiSchemasEnabled {
     /**
      * Optional settings for a cohort report.
      */
@@ -27,13 +26,16 @@ public class SourceGoogleAnalyticsDataApiSchemasEnabled {
     @JsonProperty("cohortReportSettings")
     private Optional<? extends CohortReportSettings> cohortReportSettings;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("cohorts")
     private Optional<? extends List<Cohorts>> cohorts;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("cohortsRange")
     private Optional<? extends CohortsRange> cohortsRange;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("enabled")
@@ -84,9 +86,10 @@ public class SourceGoogleAnalyticsDataApiSchemasEnabled {
         return (Optional<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayEnabled>) enabled;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Optional settings for a cohort report.
@@ -96,6 +99,7 @@ public class SourceGoogleAnalyticsDataApiSchemasEnabled {
         this.cohortReportSettings = Optional.ofNullable(cohortReportSettings);
         return this;
     }
+
 
     /**
      * Optional settings for a cohort report.
@@ -112,6 +116,7 @@ public class SourceGoogleAnalyticsDataApiSchemasEnabled {
         return this;
     }
 
+
     public SourceGoogleAnalyticsDataApiSchemasEnabled withCohorts(Optional<? extends List<Cohorts>> cohorts) {
         Utils.checkNotNull(cohorts, "cohorts");
         this.cohorts = cohorts;
@@ -124,13 +129,13 @@ public class SourceGoogleAnalyticsDataApiSchemasEnabled {
         return this;
     }
 
+
     public SourceGoogleAnalyticsDataApiSchemasEnabled withCohortsRange(Optional<? extends CohortsRange> cohortsRange) {
         Utils.checkNotNull(cohortsRange, "cohortsRange");
         this.cohortsRange = cohortsRange;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -141,18 +146,16 @@ public class SourceGoogleAnalyticsDataApiSchemasEnabled {
         }
         SourceGoogleAnalyticsDataApiSchemasEnabled other = (SourceGoogleAnalyticsDataApiSchemasEnabled) o;
         return 
-            Objects.deepEquals(this.cohortReportSettings, other.cohortReportSettings) &&
-            Objects.deepEquals(this.cohorts, other.cohorts) &&
-            Objects.deepEquals(this.cohortsRange, other.cohortsRange) &&
-            Objects.deepEquals(this.enabled, other.enabled);
+            Utils.enhancedDeepEquals(this.cohortReportSettings, other.cohortReportSettings) &&
+            Utils.enhancedDeepEquals(this.cohorts, other.cohorts) &&
+            Utils.enhancedDeepEquals(this.cohortsRange, other.cohortsRange) &&
+            Utils.enhancedDeepEquals(this.enabled, other.enabled);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            cohortReportSettings,
-            cohorts,
-            cohortsRange,
+        return Utils.enhancedHash(
+            cohortReportSettings, cohorts, cohortsRange,
             enabled);
     }
     
@@ -164,18 +167,20 @@ public class SourceGoogleAnalyticsDataApiSchemasEnabled {
                 "cohortsRange", cohortsRange,
                 "enabled", enabled);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends CohortReportSettings> cohortReportSettings = Optional.empty();
- 
+
         private Optional<? extends List<Cohorts>> cohorts = Optional.empty();
- 
+
         private Optional<? extends CohortsRange> cohortsRange = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Optional settings for a cohort report.
@@ -195,6 +200,7 @@ public class SourceGoogleAnalyticsDataApiSchemasEnabled {
             return this;
         }
 
+
         public Builder cohorts(List<Cohorts> cohorts) {
             Utils.checkNotNull(cohorts, "cohorts");
             this.cohorts = Optional.ofNullable(cohorts);
@@ -207,6 +213,7 @@ public class SourceGoogleAnalyticsDataApiSchemasEnabled {
             return this;
         }
 
+
         public Builder cohortsRange(CohortsRange cohortsRange) {
             Utils.checkNotNull(cohortsRange, "cohortsRange");
             this.cohortsRange = Optional.ofNullable(cohortsRange);
@@ -218,13 +225,13 @@ public class SourceGoogleAnalyticsDataApiSchemasEnabled {
             this.cohortsRange = cohortsRange;
             return this;
         }
-        
+
         public SourceGoogleAnalyticsDataApiSchemasEnabled build() {
+
             return new SourceGoogleAnalyticsDataApiSchemasEnabled(
-                cohortReportSettings,
-                cohorts,
-                cohortsRange);
+                cohortReportSettings, cohorts, cohortsRange);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayEnabled>> _SINGLETON_VALUE_Enabled =
                 new LazySingletonValue<>(

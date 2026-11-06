@@ -14,7 +14,7 @@ public enum SourceLinkedinPagesAuthMethod {
     @JsonValue
     private final String value;
 
-    private SourceLinkedinPagesAuthMethod(String value) {
+    SourceLinkedinPagesAuthMethod(String value) {
         this.value = value;
     }
     

@@ -1,5 +1,13 @@
 # DestinationAzureBlobStorageFlattening
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DestinationAzureBlobStorageFlattening;
+
+DestinationAzureBlobStorageFlattening value = DestinationAzureBlobStorageFlattening.NO_FLATTENING;
+```
+
 
 ## Values
 

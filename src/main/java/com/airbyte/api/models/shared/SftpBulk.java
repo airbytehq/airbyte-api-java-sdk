@@ -14,7 +14,7 @@ public enum SftpBulk {
     @JsonValue
     private final String value;
 
-    private SftpBulk(String value) {
+    SftpBulk(String value) {
         this.value = value;
     }
     

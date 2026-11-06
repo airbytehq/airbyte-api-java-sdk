@@ -11,13 +11,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class PatchDestinationRequest {
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private Optional<? extends DestinationPatchRequest> destinationPatchRequest;
+
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=destinationId")
     private String destinationId;
@@ -48,15 +49,17 @@ public class PatchDestinationRequest {
         return destinationId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public PatchDestinationRequest withDestinationPatchRequest(DestinationPatchRequest destinationPatchRequest) {
         Utils.checkNotNull(destinationPatchRequest, "destinationPatchRequest");
         this.destinationPatchRequest = Optional.ofNullable(destinationPatchRequest);
         return this;
     }
+
 
     public PatchDestinationRequest withDestinationPatchRequest(Optional<? extends DestinationPatchRequest> destinationPatchRequest) {
         Utils.checkNotNull(destinationPatchRequest, "destinationPatchRequest");
@@ -70,7 +73,6 @@ public class PatchDestinationRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -81,15 +83,14 @@ public class PatchDestinationRequest {
         }
         PatchDestinationRequest other = (PatchDestinationRequest) o;
         return 
-            Objects.deepEquals(this.destinationPatchRequest, other.destinationPatchRequest) &&
-            Objects.deepEquals(this.destinationId, other.destinationId);
+            Utils.enhancedDeepEquals(this.destinationPatchRequest, other.destinationPatchRequest) &&
+            Utils.enhancedDeepEquals(this.destinationId, other.destinationId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            destinationPatchRequest,
-            destinationId);
+        return Utils.enhancedHash(
+            destinationPatchRequest, destinationId);
     }
     
     @Override
@@ -98,16 +99,18 @@ public class PatchDestinationRequest {
                 "destinationPatchRequest", destinationPatchRequest,
                 "destinationId", destinationId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends DestinationPatchRequest> destinationPatchRequest = Optional.empty();
- 
+
         private String destinationId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder destinationPatchRequest(DestinationPatchRequest destinationPatchRequest) {
             Utils.checkNotNull(destinationPatchRequest, "destinationPatchRequest");
@@ -121,16 +124,18 @@ public class PatchDestinationRequest {
             return this;
         }
 
+
         public Builder destinationId(String destinationId) {
             Utils.checkNotNull(destinationId, "destinationId");
             this.destinationId = destinationId;
             return this;
         }
-        
+
         public PatchDestinationRequest build() {
+
             return new PatchDestinationRequest(
-                destinationPatchRequest,
-                destinationId);
+                destinationPatchRequest, destinationId);
         }
+
     }
 }

@@ -9,12 +9,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class OptionsList {
 
     @JsonProperty("option_name")
     private String optionName;
+
 
     @JsonProperty("option_value")
     private String optionValue;
@@ -39,9 +40,10 @@ public class OptionsList {
         return optionValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public OptionsList withOptionName(String optionName) {
         Utils.checkNotNull(optionName, "optionName");
@@ -55,7 +57,6 @@ public class OptionsList {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -66,15 +67,14 @@ public class OptionsList {
         }
         OptionsList other = (OptionsList) o;
         return 
-            Objects.deepEquals(this.optionName, other.optionName) &&
-            Objects.deepEquals(this.optionValue, other.optionValue);
+            Utils.enhancedDeepEquals(this.optionName, other.optionName) &&
+            Utils.enhancedDeepEquals(this.optionValue, other.optionValue);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            optionName,
-            optionValue);
+        return Utils.enhancedHash(
+            optionName, optionValue);
     }
     
     @Override
@@ -83,16 +83,18 @@ public class OptionsList {
                 "optionName", optionName,
                 "optionValue", optionValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String optionName;
- 
+
         private String optionValue;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder optionName(String optionName) {
             Utils.checkNotNull(optionName, "optionName");
@@ -100,16 +102,18 @@ public class OptionsList {
             return this;
         }
 
+
         public Builder optionValue(String optionValue) {
             Utils.checkNotNull(optionValue, "optionValue");
             this.optionValue = optionValue;
             return this;
         }
-        
+
         public OptionsList build() {
+
             return new OptionsList(
-                optionName,
-                optionValue);
+                optionName, optionValue);
         }
+
     }
 }

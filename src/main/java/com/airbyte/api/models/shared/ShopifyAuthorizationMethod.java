@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * ShopifyAuthorizationMethod
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class ShopifyAuthorizationMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private ShopifyAuthorizationMethod(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class ShopifyAuthorizationMethod {
 
     public static ShopifyAuthorizationMethod of(SourceShopifyOAuth20 value) {
         Utils.checkNotNull(value, "value");
-        return new ShopifyAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceShopifyOAuth20>(){}));
+        return new ShopifyAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static ShopifyAuthorizationMethod of(APIPassword value) {
         Utils.checkNotNull(value, "value");
-        return new ShopifyAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<APIPassword>(){}));
+        return new ShopifyAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class ShopifyAuthorizationMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class ShopifyAuthorizationMethod {
             return false;
         }
         ShopifyAuthorizationMethod other = (ShopifyAuthorizationMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -95,6 +94,6 @@ public class ShopifyAuthorizationMethod {
         return Utils.toString(ShopifyAuthorizationMethod.class,
                 "value", value);
     }
- 
+
 }
 

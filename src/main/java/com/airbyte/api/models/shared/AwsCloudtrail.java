@@ -14,7 +14,7 @@ public enum AwsCloudtrail {
     @JsonValue
     private final String value;
 
-    private AwsCloudtrail(String value) {
+    AwsCloudtrail(String value) {
         this.value = value;
     }
     

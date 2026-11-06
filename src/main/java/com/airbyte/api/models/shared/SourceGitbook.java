@@ -11,18 +11,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceGitbook {
-
     /**
-     * Personal access token for authenticating with the GitBook API. You can view and manage your access tokens in the Developer settings of your GitBook user account.
+     * Personal access token for authenticating with the GitBook API. You can view and manage your access
+     * tokens in the Developer settings of your GitBook user account.
      */
     @JsonProperty("access_token")
     private String accessToken;
 
+
     @JsonProperty("sourceType")
     private Gitbook sourceType;
+
 
     @JsonProperty("space_id")
     private String spaceId;
@@ -39,7 +41,8 @@ public class SourceGitbook {
     }
 
     /**
-     * Personal access token for authenticating with the GitBook API. You can view and manage your access tokens in the Developer settings of your GitBook user account.
+     * Personal access token for authenticating with the GitBook API. You can view and manage your access
+     * tokens in the Developer settings of your GitBook user account.
      */
     @JsonIgnore
     public String accessToken() {
@@ -56,12 +59,14 @@ public class SourceGitbook {
         return spaceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Personal access token for authenticating with the GitBook API. You can view and manage your access tokens in the Developer settings of your GitBook user account.
+     * Personal access token for authenticating with the GitBook API. You can view and manage your access
+     * tokens in the Developer settings of your GitBook user account.
      */
     public SourceGitbook withAccessToken(String accessToken) {
         Utils.checkNotNull(accessToken, "accessToken");
@@ -75,7 +80,6 @@ public class SourceGitbook {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -86,17 +90,15 @@ public class SourceGitbook {
         }
         SourceGitbook other = (SourceGitbook) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.spaceId, other.spaceId);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.spaceId, other.spaceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            sourceType,
-            spaceId);
+        return Utils.enhancedHash(
+            accessToken, sourceType, spaceId);
     }
     
     @Override
@@ -106,19 +108,22 @@ public class SourceGitbook {
                 "sourceType", sourceType,
                 "spaceId", spaceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private String spaceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Personal access token for authenticating with the GitBook API. You can view and manage your access tokens in the Developer settings of your GitBook user account.
+         * Personal access token for authenticating with the GitBook API. You can view and manage your access
+         * tokens in the Developer settings of your GitBook user account.
          */
         public Builder accessToken(String accessToken) {
             Utils.checkNotNull(accessToken, "accessToken");
@@ -126,17 +131,19 @@ public class SourceGitbook {
             return this;
         }
 
+
         public Builder spaceId(String spaceId) {
             Utils.checkNotNull(spaceId, "spaceId");
             this.spaceId = spaceId;
             return this;
         }
-        
+
         public SourceGitbook build() {
+
             return new SourceGitbook(
-                accessToken,
-                spaceId);
+                accessToken, spaceId);
         }
+
 
         private static final LazySingletonValue<Gitbook> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

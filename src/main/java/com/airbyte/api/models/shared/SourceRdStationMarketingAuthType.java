@@ -14,7 +14,7 @@ public enum SourceRdStationMarketingAuthType {
     @JsonValue
     private final String value;
 
-    private SourceRdStationMarketingAuthType(String value) {
+    SourceRdStationMarketingAuthType(String value) {
         this.value = value;
     }
     

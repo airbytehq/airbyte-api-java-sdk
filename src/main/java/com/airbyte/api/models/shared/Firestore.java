@@ -14,7 +14,7 @@ public enum Firestore {
     @JsonValue
     private final String value;
 
-    private Firestore(String value) {
+    Firestore(String value) {
         this.value = value;
     }
     

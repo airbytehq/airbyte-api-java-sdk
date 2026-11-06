@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourcePlanhat {
-
     /**
-     * Your Planhat &lt;a href="https://docs.planhat.com/#authentication"&gt;API Access Token&lt;/a&gt;
+     * Your Planhat <a href="https://docs.planhat.com/#authentication">API Access Token</a>
      */
     @JsonProperty("api_token")
     private String apiToken;
+
 
     @JsonProperty("sourceType")
     private Planhat sourceType;
@@ -33,7 +33,7 @@ public class SourcePlanhat {
     }
 
     /**
-     * Your Planhat &lt;a href="https://docs.planhat.com/#authentication"&gt;API Access Token&lt;/a&gt;
+     * Your Planhat <a href="https://docs.planhat.com/#authentication">API Access Token</a>
      */
     @JsonIgnore
     public String apiToken() {
@@ -45,12 +45,13 @@ public class SourcePlanhat {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Your Planhat &lt;a href="https://docs.planhat.com/#authentication"&gt;API Access Token&lt;/a&gt;
+     * Your Planhat <a href="https://docs.planhat.com/#authentication">API Access Token</a>
      */
     public SourcePlanhat withApiToken(String apiToken) {
         Utils.checkNotNull(apiToken, "apiToken");
@@ -58,7 +59,6 @@ public class SourcePlanhat {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourcePlanhat {
         }
         SourcePlanhat other = (SourcePlanhat) o;
         return 
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiToken,
-            sourceType);
+        return Utils.enhancedHash(
+            apiToken, sourceType);
     }
     
     @Override
@@ -86,28 +85,32 @@ public class SourcePlanhat {
                 "apiToken", apiToken,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Your Planhat &lt;a href="https://docs.planhat.com/#authentication"&gt;API Access Token&lt;/a&gt;
+         * Your Planhat <a href="https://docs.planhat.com/#authentication">API Access Token</a>
          */
         public Builder apiToken(String apiToken) {
             Utils.checkNotNull(apiToken, "apiToken");
             this.apiToken = apiToken;
             return this;
         }
-        
+
         public SourcePlanhat build() {
+
             return new SourcePlanhat(
                 apiToken);
         }
+
 
         private static final LazySingletonValue<Planhat> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

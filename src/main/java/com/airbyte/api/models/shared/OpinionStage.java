@@ -14,7 +14,7 @@ public enum OpinionStage {
     @JsonValue
     private final String value;
 
-    private OpinionStage(String value) {
+    OpinionStage(String value) {
         this.value = value;
     }
     

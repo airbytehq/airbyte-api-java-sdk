@@ -19,7 +19,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -32,9 +31,11 @@ public class SourceOracleEnterpriseSystemIDSID {
     @JsonIgnore
     private Map<String, Object> additionalProperties;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("connection_type")
     private Optional<? extends SourceOracleEnterpriseSchemasConnectionType> connectionType;
+
 
     @JsonProperty("sid")
     private String sid;
@@ -71,9 +72,10 @@ public class SourceOracleEnterpriseSystemIDSID {
         return sid;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceOracleEnterpriseSystemIDSID withAdditionalProperty(String key, Object value) {
@@ -81,8 +83,7 @@ public class SourceOracleEnterpriseSystemIDSID {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceOracleEnterpriseSystemIDSID withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -94,6 +95,7 @@ public class SourceOracleEnterpriseSystemIDSID {
         this.connectionType = Optional.ofNullable(connectionType);
         return this;
     }
+
 
     public SourceOracleEnterpriseSystemIDSID withConnectionType(Optional<? extends SourceOracleEnterpriseSchemasConnectionType> connectionType) {
         Utils.checkNotNull(connectionType, "connectionType");
@@ -107,7 +109,6 @@ public class SourceOracleEnterpriseSystemIDSID {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -118,17 +119,15 @@ public class SourceOracleEnterpriseSystemIDSID {
         }
         SourceOracleEnterpriseSystemIDSID other = (SourceOracleEnterpriseSystemIDSID) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.connectionType, other.connectionType) &&
-            Objects.deepEquals(this.sid, other.sid);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.connectionType, other.connectionType) &&
+            Utils.enhancedDeepEquals(this.sid, other.sid);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            connectionType,
-            sid);
+        return Utils.enhancedHash(
+            additionalProperties, connectionType, sid);
     }
     
     @Override
@@ -138,15 +137,16 @@ public class SourceOracleEnterpriseSystemIDSID {
                 "connectionType", connectionType,
                 "sid", sid);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends SourceOracleEnterpriseSchemasConnectionType> connectionType;
- 
+
         private String sid;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -167,6 +167,7 @@ public class SourceOracleEnterpriseSystemIDSID {
             return this;
         }
 
+
         public Builder connectionType(SourceOracleEnterpriseSchemasConnectionType connectionType) {
             Utils.checkNotNull(connectionType, "connectionType");
             this.connectionType = Optional.ofNullable(connectionType);
@@ -179,21 +180,23 @@ public class SourceOracleEnterpriseSystemIDSID {
             return this;
         }
 
+
         public Builder sid(String sid) {
             Utils.checkNotNull(sid, "sid");
             this.sid = sid;
             return this;
         }
-        
+
         public SourceOracleEnterpriseSystemIDSID build() {
             if (connectionType == null) {
                 connectionType = _SINGLETON_VALUE_ConnectionType.value();
             }
+
             return new SourceOracleEnterpriseSystemIDSID(
-                connectionType,
-                sid)
+                connectionType, sid)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceOracleEnterpriseSchemasConnectionType>> _SINGLETON_VALUE_ConnectionType =
                 new LazySingletonValue<>(

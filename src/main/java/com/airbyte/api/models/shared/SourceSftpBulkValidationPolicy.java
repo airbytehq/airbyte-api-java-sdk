@@ -11,7 +11,8 @@ import java.util.Optional;
 /**
  * SourceSftpBulkValidationPolicy
  * 
- * <p>The name of the validation policy that dictates sync behavior when a record does not adhere to the stream schema.
+ * <p>The name of the validation policy that dictates sync behavior when a record does not adhere to the
+ * stream schema.
  */
 public enum SourceSftpBulkValidationPolicy {
     EMIT_RECORD("Emit Record"),
@@ -21,7 +22,7 @@ public enum SourceSftpBulkValidationPolicy {
     @JsonValue
     private final String value;
 
-    private SourceSftpBulkValidationPolicy(String value) {
+    SourceSftpBulkValidationPolicy(String value) {
         this.value = value;
     }
     

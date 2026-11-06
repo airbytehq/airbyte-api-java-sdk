@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class IAMUser {
 
+public class IAMUser {
     /**
      * AWS User Access Key Id
      */
@@ -74,9 +73,10 @@ public class IAMUser {
         return (Optional<DestinationAwsDatalakeCredentialsTitle>) credentialsTitle;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * AWS User Access Key Id
@@ -96,7 +96,6 @@ public class IAMUser {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -107,17 +106,15 @@ public class IAMUser {
         }
         IAMUser other = (IAMUser) o;
         return 
-            Objects.deepEquals(this.awsAccessKeyId, other.awsAccessKeyId) &&
-            Objects.deepEquals(this.awsSecretAccessKey, other.awsSecretAccessKey) &&
-            Objects.deepEquals(this.credentialsTitle, other.credentialsTitle);
+            Utils.enhancedDeepEquals(this.awsAccessKeyId, other.awsAccessKeyId) &&
+            Utils.enhancedDeepEquals(this.awsSecretAccessKey, other.awsSecretAccessKey) &&
+            Utils.enhancedDeepEquals(this.credentialsTitle, other.credentialsTitle);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            awsAccessKeyId,
-            awsSecretAccessKey,
-            credentialsTitle);
+        return Utils.enhancedHash(
+            awsAccessKeyId, awsSecretAccessKey, credentialsTitle);
     }
     
     @Override
@@ -127,16 +124,18 @@ public class IAMUser {
                 "awsSecretAccessKey", awsSecretAccessKey,
                 "credentialsTitle", credentialsTitle);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String awsAccessKeyId;
- 
+
         private String awsSecretAccessKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * AWS User Access Key Id
@@ -147,6 +146,7 @@ public class IAMUser {
             return this;
         }
 
+
         /**
          * Secret Access Key
          */
@@ -155,12 +155,13 @@ public class IAMUser {
             this.awsSecretAccessKey = awsSecretAccessKey;
             return this;
         }
-        
+
         public IAMUser build() {
+
             return new IAMUser(
-                awsAccessKeyId,
-                awsSecretAccessKey);
+                awsAccessKeyId, awsSecretAccessKey);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationAwsDatalakeCredentialsTitle>> _SINGLETON_VALUE_CredentialsTitle =
                 new LazySingletonValue<>(

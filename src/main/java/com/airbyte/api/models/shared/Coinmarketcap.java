@@ -14,7 +14,7 @@ public enum Coinmarketcap {
     @JsonValue
     private final String value;
 
-    private Coinmarketcap(String value) {
+    Coinmarketcap(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum Gologin {
     @JsonValue
     private final String value;
 
-    private Gologin(String value) {
+    Gologin(String value) {
         this.value = value;
     }
     

@@ -2,6 +2,14 @@
 
 The Plaid environment.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.PlaidEnvironment;
+
+PlaidEnvironment value = PlaidEnvironment.SANDBOX;
+```
+
 
 ## Values
 

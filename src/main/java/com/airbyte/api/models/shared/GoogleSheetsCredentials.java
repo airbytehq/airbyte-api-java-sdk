@@ -11,20 +11,23 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class GoogleSheetsCredentials {
 
+public class GoogleSheetsCredentials {
     /**
-     * Enter your Google application's Client ID. See &lt;a href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt; for more information.
+     * Enter your Google application's Client ID. See &lt;a
+     * href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt;
+     * for more information.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_id")
     private Optional<String> clientId;
 
     /**
-     * Enter your Google application's Client Secret. See &lt;a href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt; for more information.
+     * Enter your Google application's Client Secret. See &lt;a
+     * href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt;
+     * for more information.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_secret")
@@ -45,7 +48,9 @@ public class GoogleSheetsCredentials {
     }
 
     /**
-     * Enter your Google application's Client ID. See &lt;a href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt; for more information.
+     * Enter your Google application's Client ID. See &lt;a
+     * href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt;
+     * for more information.
      */
     @JsonIgnore
     public Optional<String> clientId() {
@@ -53,19 +58,24 @@ public class GoogleSheetsCredentials {
     }
 
     /**
-     * Enter your Google application's Client Secret. See &lt;a href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt; for more information.
+     * Enter your Google application's Client Secret. See &lt;a
+     * href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt;
+     * for more information.
      */
     @JsonIgnore
     public Optional<String> clientSecret() {
         return clientSecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Enter your Google application's Client ID. See &lt;a href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt; for more information.
+     * Enter your Google application's Client ID. See &lt;a
+     * href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt;
+     * for more information.
      */
     public GoogleSheetsCredentials withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -73,8 +83,11 @@ public class GoogleSheetsCredentials {
         return this;
     }
 
+
     /**
-     * Enter your Google application's Client ID. See &lt;a href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt; for more information.
+     * Enter your Google application's Client ID. See &lt;a
+     * href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt;
+     * for more information.
      */
     public GoogleSheetsCredentials withClientId(Optional<String> clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -83,7 +96,9 @@ public class GoogleSheetsCredentials {
     }
 
     /**
-     * Enter your Google application's Client Secret. See &lt;a href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt; for more information.
+     * Enter your Google application's Client Secret. See &lt;a
+     * href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt;
+     * for more information.
      */
     public GoogleSheetsCredentials withClientSecret(String clientSecret) {
         Utils.checkNotNull(clientSecret, "clientSecret");
@@ -91,8 +106,11 @@ public class GoogleSheetsCredentials {
         return this;
     }
 
+
     /**
-     * Enter your Google application's Client Secret. See &lt;a href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt; for more information.
+     * Enter your Google application's Client Secret. See &lt;a
+     * href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt;
+     * for more information.
      */
     public GoogleSheetsCredentials withClientSecret(Optional<String> clientSecret) {
         Utils.checkNotNull(clientSecret, "clientSecret");
@@ -100,7 +118,6 @@ public class GoogleSheetsCredentials {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -111,15 +128,14 @@ public class GoogleSheetsCredentials {
         }
         GoogleSheetsCredentials other = (GoogleSheetsCredentials) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret);
+        return Utils.enhancedHash(
+            clientId, clientSecret);
     }
     
     @Override
@@ -128,19 +144,23 @@ public class GoogleSheetsCredentials {
                 "clientId", clientId,
                 "clientSecret", clientSecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> clientId = Optional.empty();
- 
+
         private Optional<String> clientSecret = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Enter your Google application's Client ID. See &lt;a href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt; for more information.
+         * Enter your Google application's Client ID. See &lt;a
+         * href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt;
+         * for more information.
          */
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -149,7 +169,9 @@ public class GoogleSheetsCredentials {
         }
 
         /**
-         * Enter your Google application's Client ID. See &lt;a href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt; for more information.
+         * Enter your Google application's Client ID. See &lt;a
+         * href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt;
+         * for more information.
          */
         public Builder clientId(Optional<String> clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -157,8 +179,11 @@ public class GoogleSheetsCredentials {
             return this;
         }
 
+
         /**
-         * Enter your Google application's Client Secret. See &lt;a href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt; for more information.
+         * Enter your Google application's Client Secret. See &lt;a
+         * href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt;
+         * for more information.
          */
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
@@ -167,18 +192,21 @@ public class GoogleSheetsCredentials {
         }
 
         /**
-         * Enter your Google application's Client Secret. See &lt;a href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt; for more information.
+         * Enter your Google application's Client Secret. See &lt;a
+         * href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt;
+         * for more information.
          */
         public Builder clientSecret(Optional<String> clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public GoogleSheetsCredentials build() {
+
             return new GoogleSheetsCredentials(
-                clientId,
-                clientSecret);
+                clientId, clientSecret);
         }
+
     }
 }

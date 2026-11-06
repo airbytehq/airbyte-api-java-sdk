@@ -14,7 +14,7 @@ public enum Openweather {
     @JsonValue
     private final String value;
 
-    private Openweather(String value) {
+    Openweather(String value) {
         this.value = value;
     }
     

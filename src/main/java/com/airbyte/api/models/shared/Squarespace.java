@@ -14,7 +14,7 @@ public enum Squarespace {
     @JsonValue
     private final String value;
 
-    private Squarespace(String value) {
+    Squarespace(String value) {
         this.value = value;
     }
     

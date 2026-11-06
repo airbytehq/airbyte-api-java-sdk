@@ -14,7 +14,7 @@ public enum Qdrant {
     @JsonValue
     private final String value;
 
-    private Qdrant(String value) {
+    Qdrant(String value) {
         this.value = value;
     }
     

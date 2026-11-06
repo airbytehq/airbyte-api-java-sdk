@@ -1,0 +1,10 @@
+# DestinationHubspot
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `credentials`                                                                              | [DestinationHubspotCredentials](../../models/shared/DestinationHubspotCredentials.md)      | :heavy_check_mark:                                                                         | Choose how to authenticate to HubSpot.                                                     |
+| `destinationType`                                                                          | [DestinationHubspotHubspot](../../models/shared/DestinationHubspotHubspot.md)              | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `objectStorageConfig`                                                                      | [Optional\<ObjectStorageConfiguration>](../../models/shared/ObjectStorageConfiguration.md) | :heavy_minus_sign:                                                                         | N/A                                                                                        |

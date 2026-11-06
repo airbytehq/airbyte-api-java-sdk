@@ -22,7 +22,7 @@ public enum NonBreakingSchemaUpdatesBehaviorEnum {
     @JsonValue
     private final String value;
 
-    private NonBreakingSchemaUpdatesBehaviorEnum(String value) {
+    NonBreakingSchemaUpdatesBehaviorEnum(String value) {
         this.value = value;
     }
     

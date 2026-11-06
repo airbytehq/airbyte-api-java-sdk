@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -25,9 +24,11 @@ public class ConnectionScheduleResponse {
     @JsonProperty("basicTiming")
     private Optional<String> basicTiming;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("cronExpression")
     private Optional<String> cronExpression;
+
 
     @JsonProperty("scheduleType")
     private ScheduleTypeWithBasicEnum scheduleType;
@@ -65,15 +66,17 @@ public class ConnectionScheduleResponse {
         return scheduleType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public ConnectionScheduleResponse withBasicTiming(String basicTiming) {
         Utils.checkNotNull(basicTiming, "basicTiming");
         this.basicTiming = Optional.ofNullable(basicTiming);
         return this;
     }
+
 
     public ConnectionScheduleResponse withBasicTiming(Optional<String> basicTiming) {
         Utils.checkNotNull(basicTiming, "basicTiming");
@@ -87,6 +90,7 @@ public class ConnectionScheduleResponse {
         return this;
     }
 
+
     public ConnectionScheduleResponse withCronExpression(Optional<String> cronExpression) {
         Utils.checkNotNull(cronExpression, "cronExpression");
         this.cronExpression = cronExpression;
@@ -99,7 +103,6 @@ public class ConnectionScheduleResponse {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -110,17 +113,15 @@ public class ConnectionScheduleResponse {
         }
         ConnectionScheduleResponse other = (ConnectionScheduleResponse) o;
         return 
-            Objects.deepEquals(this.basicTiming, other.basicTiming) &&
-            Objects.deepEquals(this.cronExpression, other.cronExpression) &&
-            Objects.deepEquals(this.scheduleType, other.scheduleType);
+            Utils.enhancedDeepEquals(this.basicTiming, other.basicTiming) &&
+            Utils.enhancedDeepEquals(this.cronExpression, other.cronExpression) &&
+            Utils.enhancedDeepEquals(this.scheduleType, other.scheduleType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            basicTiming,
-            cronExpression,
-            scheduleType);
+        return Utils.enhancedHash(
+            basicTiming, cronExpression, scheduleType);
     }
     
     @Override
@@ -130,18 +131,20 @@ public class ConnectionScheduleResponse {
                 "cronExpression", cronExpression,
                 "scheduleType", scheduleType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> basicTiming = Optional.empty();
- 
+
         private Optional<String> cronExpression = Optional.empty();
- 
+
         private ScheduleTypeWithBasicEnum scheduleType;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder basicTiming(String basicTiming) {
             Utils.checkNotNull(basicTiming, "basicTiming");
@@ -155,6 +158,7 @@ public class ConnectionScheduleResponse {
             return this;
         }
 
+
         public Builder cronExpression(String cronExpression) {
             Utils.checkNotNull(cronExpression, "cronExpression");
             this.cronExpression = Optional.ofNullable(cronExpression);
@@ -167,17 +171,18 @@ public class ConnectionScheduleResponse {
             return this;
         }
 
+
         public Builder scheduleType(ScheduleTypeWithBasicEnum scheduleType) {
             Utils.checkNotNull(scheduleType, "scheduleType");
             this.scheduleType = scheduleType;
             return this;
         }
-        
+
         public ConnectionScheduleResponse build() {
+
             return new ConnectionScheduleResponse(
-                basicTiming,
-                cronExpression,
-                scheduleType);
+                basicTiming, cronExpression, scheduleType);
         }
+
     }
 }

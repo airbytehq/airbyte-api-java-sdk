@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceCopper {
-
     /**
      * Copper API key
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Copper sourceType;
@@ -62,9 +62,10 @@ public class SourceCopper {
         return userEmail;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Copper API key
@@ -84,7 +85,6 @@ public class SourceCopper {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourceCopper {
         }
         SourceCopper other = (SourceCopper) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.userEmail, other.userEmail);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.userEmail, other.userEmail);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            userEmail);
+        return Utils.enhancedHash(
+            apiKey, sourceType, userEmail);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SourceCopper {
                 "sourceType", sourceType,
                 "userEmail", userEmail);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String userEmail;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Copper API key
@@ -135,6 +135,7 @@ public class SourceCopper {
             return this;
         }
 
+
         /**
          * user email used to login in to Copper
          */
@@ -143,12 +144,13 @@ public class SourceCopper {
             this.userEmail = userEmail;
             return this;
         }
-        
+
         public SourceCopper build() {
+
             return new SourceCopper(
-                apiKey,
-                userEmail);
+                apiKey, userEmail);
         }
+
 
         private static final LazySingletonValue<Copper> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(
