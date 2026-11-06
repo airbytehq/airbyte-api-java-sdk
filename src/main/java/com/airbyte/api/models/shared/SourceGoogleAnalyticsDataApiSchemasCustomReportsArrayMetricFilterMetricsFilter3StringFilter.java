@@ -16,8 +16,8 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3StringFilter {
 
@@ -25,12 +25,15 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMe
     @JsonProperty("caseSensitive")
     private Optional<Boolean> caseSensitive;
 
+
     @JsonProperty("filter_name")
     private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3FilterName filterName;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("matchType")
     private Optional<? extends List<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3ValidEnums>> matchType;
+
 
     @JsonProperty("value")
     private String value;
@@ -75,15 +78,17 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMe
         return value;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3StringFilter withCaseSensitive(boolean caseSensitive) {
         Utils.checkNotNull(caseSensitive, "caseSensitive");
         this.caseSensitive = Optional.ofNullable(caseSensitive);
         return this;
     }
+
 
     public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3StringFilter withCaseSensitive(Optional<Boolean> caseSensitive) {
         Utils.checkNotNull(caseSensitive, "caseSensitive");
@@ -97,6 +102,7 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMe
         return this;
     }
 
+
     public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3StringFilter withMatchType(Optional<? extends List<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3ValidEnums>> matchType) {
         Utils.checkNotNull(matchType, "matchType");
         this.matchType = matchType;
@@ -109,7 +115,6 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMe
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,18 +125,16 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMe
         }
         SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3StringFilter other = (SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3StringFilter) o;
         return 
-            Objects.deepEquals(this.caseSensitive, other.caseSensitive) &&
-            Objects.deepEquals(this.filterName, other.filterName) &&
-            Objects.deepEquals(this.matchType, other.matchType) &&
-            Objects.deepEquals(this.value, other.value);
+            Utils.enhancedDeepEquals(this.caseSensitive, other.caseSensitive) &&
+            Utils.enhancedDeepEquals(this.filterName, other.filterName) &&
+            Utils.enhancedDeepEquals(this.matchType, other.matchType) &&
+            Utils.enhancedDeepEquals(this.value, other.value);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            caseSensitive,
-            filterName,
-            matchType,
+        return Utils.enhancedHash(
+            caseSensitive, filterName, matchType,
             value);
     }
     
@@ -143,18 +146,20 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMe
                 "matchType", matchType,
                 "value", value);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> caseSensitive = Optional.empty();
- 
+
         private Optional<? extends List<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3ValidEnums>> matchType = Optional.empty();
- 
+
         private String value;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder caseSensitive(boolean caseSensitive) {
             Utils.checkNotNull(caseSensitive, "caseSensitive");
@@ -168,6 +173,7 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMe
             return this;
         }
 
+
         public Builder matchType(List<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3ValidEnums> matchType) {
             Utils.checkNotNull(matchType, "matchType");
             this.matchType = Optional.ofNullable(matchType);
@@ -180,18 +186,19 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMe
             return this;
         }
 
+
         public Builder value(String value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
             return this;
         }
-        
+
         public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3StringFilter build() {
+
             return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3StringFilter(
-                caseSensitive,
-                matchType,
-                value);
+                caseSensitive, matchType, value);
         }
+
 
         private static final LazySingletonValue<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3FilterName> _SINGLETON_VALUE_FilterName =
                 new LazySingletonValue<>(

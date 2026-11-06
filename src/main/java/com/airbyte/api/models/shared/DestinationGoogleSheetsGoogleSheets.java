@@ -14,7 +14,7 @@ public enum DestinationGoogleSheetsGoogleSheets {
     @JsonValue
     private final String value;
 
-    private DestinationGoogleSheetsGoogleSheets(String value) {
+    DestinationGoogleSheetsGoogleSheets(String value) {
         this.value = value;
     }
     

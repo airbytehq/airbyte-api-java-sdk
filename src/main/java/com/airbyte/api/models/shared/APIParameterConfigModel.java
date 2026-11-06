@@ -9,10 +9,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class APIParameterConfigModel {
-
     /**
      * The name of the unstructured API parameter to use
      */
@@ -51,9 +50,10 @@ public class APIParameterConfigModel {
         return value;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The name of the unstructured API parameter to use
@@ -73,7 +73,6 @@ public class APIParameterConfigModel {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -84,15 +83,14 @@ public class APIParameterConfigModel {
         }
         APIParameterConfigModel other = (APIParameterConfigModel) o;
         return 
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.value, other.value);
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.value, other.value);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            name,
-            value);
+        return Utils.enhancedHash(
+            name, value);
     }
     
     @Override
@@ -101,16 +99,18 @@ public class APIParameterConfigModel {
                 "name", name,
                 "value", value);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String name;
- 
+
         private String value;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The name of the unstructured API parameter to use
@@ -121,6 +121,7 @@ public class APIParameterConfigModel {
             return this;
         }
 
+
         /**
          * The value of the parameter
          */
@@ -129,11 +130,12 @@ public class APIParameterConfigModel {
             this.value = value;
             return this;
         }
-        
+
         public APIParameterConfigModel build() {
+
             return new APIParameterConfigModel(
-                name,
-                value);
+                name, value);
         }
+
     }
 }

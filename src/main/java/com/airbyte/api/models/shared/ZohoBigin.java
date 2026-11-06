@@ -14,7 +14,7 @@ public enum ZohoBigin {
     @JsonValue
     private final String value;
 
-    private ZohoBigin(String value) {
+    ZohoBigin(String value) {
         this.value = value;
     }
     

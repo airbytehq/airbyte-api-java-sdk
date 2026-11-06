@@ -13,17 +13,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceAppfollow {
 
+public class SourceAppfollow {
     /**
      * API Key provided by Appfollow
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("api_secret")
     private Optional<String> apiSecret;
+
 
     @JsonProperty("sourceType")
     private Appfollow sourceType;
@@ -53,9 +53,10 @@ public class SourceAppfollow {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API Key provided by Appfollow
@@ -66,6 +67,7 @@ public class SourceAppfollow {
         return this;
     }
 
+
     /**
      * API Key provided by Appfollow
      */
@@ -75,7 +77,6 @@ public class SourceAppfollow {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -86,15 +87,14 @@ public class SourceAppfollow {
         }
         SourceAppfollow other = (SourceAppfollow) o;
         return 
-            Objects.deepEquals(this.apiSecret, other.apiSecret) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiSecret, other.apiSecret) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiSecret,
-            sourceType);
+        return Utils.enhancedHash(
+            apiSecret, sourceType);
     }
     
     @Override
@@ -103,14 +103,16 @@ public class SourceAppfollow {
                 "apiSecret", apiSecret,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> apiSecret = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API Key provided by Appfollow
@@ -129,11 +131,13 @@ public class SourceAppfollow {
             this.apiSecret = apiSecret;
             return this;
         }
-        
+
         public SourceAppfollow build() {
+
             return new SourceAppfollow(
                 apiSecret);
         }
+
 
         private static final LazySingletonValue<Appfollow> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

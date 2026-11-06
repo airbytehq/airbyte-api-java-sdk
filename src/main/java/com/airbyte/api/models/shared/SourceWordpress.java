@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceWordpress {
 
+public class SourceWordpress {
     /**
      * The domain of the WordPress site. Example: my-wordpress-website.host.com
      */
@@ -31,6 +30,7 @@ public class SourceWordpress {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
     private Optional<String> password;
+
 
     @JsonProperty("sourceType")
     private Wordpress sourceType;
@@ -68,7 +68,8 @@ public class SourceWordpress {
     public SourceWordpress(
             String domain,
             OffsetDateTime startDate) {
-        this(domain, Optional.empty(), startDate, Optional.empty());
+        this(domain, Optional.empty(), startDate,
+            Optional.empty());
     }
 
     /**
@@ -108,9 +109,10 @@ public class SourceWordpress {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The domain of the WordPress site. Example: my-wordpress-website.host.com
@@ -129,6 +131,7 @@ public class SourceWordpress {
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     /**
      * Placeholder for basic HTTP auth password - should be set to empty string
@@ -157,6 +160,7 @@ public class SourceWordpress {
         return this;
     }
 
+
     /**
      * Placeholder for basic HTTP auth username - should be set to empty string
      */
@@ -166,7 +170,6 @@ public class SourceWordpress {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -177,21 +180,18 @@ public class SourceWordpress {
         }
         SourceWordpress other = (SourceWordpress) o;
         return 
-            Objects.deepEquals(this.domain, other.domain) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.domain, other.domain) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            domain,
-            password,
-            sourceType,
-            startDate,
-            username);
+        return Utils.enhancedHash(
+            domain, password, sourceType,
+            startDate, username);
     }
     
     @Override
@@ -203,20 +203,22 @@ public class SourceWordpress {
                 "startDate", startDate,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String domain;
- 
+
         private Optional<String> password;
- 
+
         private OffsetDateTime startDate;
- 
+
         private Optional<String> username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The domain of the WordPress site. Example: my-wordpress-website.host.com
@@ -226,6 +228,7 @@ public class SourceWordpress {
             this.domain = domain;
             return this;
         }
+
 
         /**
          * Placeholder for basic HTTP auth password - should be set to empty string
@@ -245,6 +248,7 @@ public class SourceWordpress {
             return this;
         }
 
+
         /**
          * Minimal Date to Retrieve Records when stream allow incremental.
          */
@@ -253,6 +257,7 @@ public class SourceWordpress {
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * Placeholder for basic HTTP auth username - should be set to empty string
@@ -271,7 +276,7 @@ public class SourceWordpress {
             this.username = username;
             return this;
         }
-        
+
         public SourceWordpress build() {
             if (password == null) {
                 password = _SINGLETON_VALUE_Password.value();
@@ -279,12 +284,12 @@ public class SourceWordpress {
             if (username == null) {
                 username = _SINGLETON_VALUE_Username.value();
             }
+
             return new SourceWordpress(
-                domain,
-                password,
-                startDate,
+                domain, password, startDate,
                 username);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Password =
                 new LazySingletonValue<>(

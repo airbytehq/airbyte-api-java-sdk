@@ -14,7 +14,7 @@ public enum YahooFinancePrice {
     @JsonValue
     private final String value;
 
-    private YahooFinancePrice(String value) {
+    YahooFinancePrice(String value) {
         this.value = value;
     }
     

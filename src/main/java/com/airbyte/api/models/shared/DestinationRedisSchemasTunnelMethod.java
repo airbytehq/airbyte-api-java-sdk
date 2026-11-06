@@ -19,7 +19,7 @@ public enum DestinationRedisSchemasTunnelMethod {
     @JsonValue
     private final String value;
 
-    private DestinationRedisSchemasTunnelMethod(String value) {
+    DestinationRedisSchemasTunnelMethod(String value) {
         this.value = value;
     }
     

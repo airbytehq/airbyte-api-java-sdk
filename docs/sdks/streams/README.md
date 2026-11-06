@@ -1,5 +1,4 @@
 # Streams
-(*streams()*)
 
 ## Overview
 
@@ -13,6 +12,7 @@ Get stream properties
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="getStreamProperties" method="get" path="/streams" -->
 ```java
 package hello.world;
 
@@ -45,7 +45,7 @@ public class Application {
                 .call();
 
         if (res.streamPropertiesResponse().isPresent()) {
-            // handle response
+            System.out.println(res.streamPropertiesResponse().get());
         }
     }
 }

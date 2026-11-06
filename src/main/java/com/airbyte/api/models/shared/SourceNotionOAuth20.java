@@ -11,27 +11,33 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceNotionOAuth20 {
-
     /**
-     * The Access Token received by completing the OAuth flow for your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
+     * The Access Token received by completing the OAuth flow for your Notion integration. See our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt;
+     * for more information.
      */
     @JsonProperty("access_token")
     private String accessToken;
+
 
     @JsonProperty("auth_type")
     private SourceNotionAuthType authType;
 
     /**
-     * The Client ID of your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
+     * The Client ID of your Notion integration. See our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt;
+     * for more information.
      */
     @JsonProperty("client_id")
     private String clientId;
 
     /**
-     * The Client Secret of your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
+     * The Client Secret of your Notion integration. See our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt;
+     * for more information.
      */
     @JsonProperty("client_secret")
     private String clientSecret;
@@ -51,7 +57,9 @@ public class SourceNotionOAuth20 {
     }
 
     /**
-     * The Access Token received by completing the OAuth flow for your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
+     * The Access Token received by completing the OAuth flow for your Notion integration. See our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt;
+     * for more information.
      */
     @JsonIgnore
     public String accessToken() {
@@ -64,7 +72,9 @@ public class SourceNotionOAuth20 {
     }
 
     /**
-     * The Client ID of your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
+     * The Client ID of your Notion integration. See our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt;
+     * for more information.
      */
     @JsonIgnore
     public String clientId() {
@@ -72,19 +82,24 @@ public class SourceNotionOAuth20 {
     }
 
     /**
-     * The Client Secret of your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
+     * The Client Secret of your Notion integration. See our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt;
+     * for more information.
      */
     @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The Access Token received by completing the OAuth flow for your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
+     * The Access Token received by completing the OAuth flow for your Notion integration. See our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt;
+     * for more information.
      */
     public SourceNotionOAuth20 withAccessToken(String accessToken) {
         Utils.checkNotNull(accessToken, "accessToken");
@@ -93,7 +108,9 @@ public class SourceNotionOAuth20 {
     }
 
     /**
-     * The Client ID of your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
+     * The Client ID of your Notion integration. See our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt;
+     * for more information.
      */
     public SourceNotionOAuth20 withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -102,7 +119,9 @@ public class SourceNotionOAuth20 {
     }
 
     /**
-     * The Client Secret of your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
+     * The Client Secret of your Notion integration. See our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt;
+     * for more information.
      */
     public SourceNotionOAuth20 withClientSecret(String clientSecret) {
         Utils.checkNotNull(clientSecret, "clientSecret");
@@ -110,7 +129,6 @@ public class SourceNotionOAuth20 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -121,18 +139,16 @@ public class SourceNotionOAuth20 {
         }
         SourceNotionOAuth20 other = (SourceNotionOAuth20) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            authType,
-            clientId,
+        return Utils.enhancedHash(
+            accessToken, authType, clientId,
             clientSecret);
     }
     
@@ -144,21 +160,25 @@ public class SourceNotionOAuth20 {
                 "clientId", clientId,
                 "clientSecret", clientSecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private String clientId;
- 
+
         private String clientSecret;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The Access Token received by completing the OAuth flow for your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
+         * The Access Token received by completing the OAuth flow for your Notion integration. See our &lt;a
+         * href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt;
+         * for more information.
          */
         public Builder accessToken(String accessToken) {
             Utils.checkNotNull(accessToken, "accessToken");
@@ -166,8 +186,11 @@ public class SourceNotionOAuth20 {
             return this;
         }
 
+
         /**
-         * The Client ID of your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
+         * The Client ID of your Notion integration. See our &lt;a
+         * href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt;
+         * for more information.
          */
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -175,21 +198,24 @@ public class SourceNotionOAuth20 {
             return this;
         }
 
+
         /**
-         * The Client Secret of your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
+         * The Client Secret of your Notion integration. See our &lt;a
+         * href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt;
+         * for more information.
          */
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public SourceNotionOAuth20 build() {
+
             return new SourceNotionOAuth20(
-                accessToken,
-                clientId,
-                clientSecret);
+                accessToken, clientId, clientSecret);
         }
+
 
         private static final LazySingletonValue<SourceNotionAuthType> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

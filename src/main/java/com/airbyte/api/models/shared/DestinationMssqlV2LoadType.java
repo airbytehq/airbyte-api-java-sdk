@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationMssqlV2LoadType
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class DestinationMssqlV2LoadType {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationMssqlV2LoadType(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class DestinationMssqlV2LoadType {
 
     public static DestinationMssqlV2LoadType of(DestinationMssqlV2InsertLoad value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationMssqlV2LoadType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationMssqlV2InsertLoad>(){}));
+        return new DestinationMssqlV2LoadType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationMssqlV2LoadType of(DestinationMssqlV2BulkLoad value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationMssqlV2LoadType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationMssqlV2BulkLoad>(){}));
+        return new DestinationMssqlV2LoadType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class DestinationMssqlV2LoadType {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class DestinationMssqlV2LoadType {
             return false;
         }
         DestinationMssqlV2LoadType other = (DestinationMssqlV2LoadType) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,8 +84,8 @@ public class DestinationMssqlV2LoadType {
 
         public _Deserializer() {
             super(DestinationMssqlV2LoadType.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DestinationMssqlV2BulkLoad>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationMssqlV2InsertLoad>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationMssqlV2InsertLoad>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationMssqlV2BulkLoad>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -95,6 +94,6 @@ public class DestinationMssqlV2LoadType {
         return Utils.toString(DestinationMssqlV2LoadType.class,
                 "value", value);
     }
- 
+
 }
 

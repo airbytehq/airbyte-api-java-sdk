@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceOura {
 
+public class SourceOura {
     /**
      * API Key
      */
@@ -31,6 +30,7 @@ public class SourceOura {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("end_datetime")
     private Optional<OffsetDateTime> endDatetime;
+
 
     @JsonProperty("sourceType")
     private Oura sourceType;
@@ -92,9 +92,10 @@ public class SourceOura {
         return startDatetime;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API Key
@@ -113,6 +114,7 @@ public class SourceOura {
         this.endDatetime = Optional.ofNullable(endDatetime);
         return this;
     }
+
 
     /**
      * End datetime to sync until. Default is current UTC datetime.
@@ -133,6 +135,7 @@ public class SourceOura {
         return this;
     }
 
+
     /**
      * Start datetime to sync from. Default is current UTC datetime minus 1
      * day.
@@ -143,7 +146,6 @@ public class SourceOura {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -154,18 +156,16 @@ public class SourceOura {
         }
         SourceOura other = (SourceOura) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.endDatetime, other.endDatetime) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDatetime, other.startDatetime);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.endDatetime, other.endDatetime) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDatetime, other.startDatetime);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            endDatetime,
-            sourceType,
+        return Utils.enhancedHash(
+            apiKey, endDatetime, sourceType,
             startDatetime);
     }
     
@@ -177,18 +177,20 @@ public class SourceOura {
                 "sourceType", sourceType,
                 "startDatetime", startDatetime);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<OffsetDateTime> endDatetime = Optional.empty();
- 
+
         private Optional<OffsetDateTime> startDatetime = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API Key
@@ -198,6 +200,7 @@ public class SourceOura {
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * End datetime to sync until. Default is current UTC datetime.
@@ -216,6 +219,7 @@ public class SourceOura {
             this.endDatetime = endDatetime;
             return this;
         }
+
 
         /**
          * Start datetime to sync from. Default is current UTC datetime minus 1
@@ -236,13 +240,13 @@ public class SourceOura {
             this.startDatetime = startDatetime;
             return this;
         }
-        
+
         public SourceOura build() {
+
             return new SourceOura(
-                apiKey,
-                endDatetime,
-                startDatetime);
+                apiKey, endDatetime, startDatetime);
         }
+
 
         private static final LazySingletonValue<Oura> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

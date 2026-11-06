@@ -13,22 +13,26 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * ScopedResourceRequirements
  * 
- * <p>actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
+ * <p>actor or actor definition specific resource requirements. if default is set, these are the
+ * requirements that should be set for ALL jobs run for this actor definition. it is overriden by the
+ * job type specific configurations.
+ * 
+ * <p>if not set, the platform will use defaults. these values will be overriden by configuration at the
+ * connection level.
  */
 public class ScopedResourceRequirements {
-
     /**
      * optional resource requirements to run workers (blank for unbounded allocations)
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("default")
     private Optional<? extends ResourceRequirements> default_;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("jobSpecific")
@@ -63,9 +67,10 @@ public class ScopedResourceRequirements {
         return (Optional<List<JobTypeResourceLimit>>) jobSpecific;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * optional resource requirements to run workers (blank for unbounded allocations)
@@ -75,6 +80,7 @@ public class ScopedResourceRequirements {
         this.default_ = Optional.ofNullable(default_);
         return this;
     }
+
 
     /**
      * optional resource requirements to run workers (blank for unbounded allocations)
@@ -91,13 +97,13 @@ public class ScopedResourceRequirements {
         return this;
     }
 
+
     public ScopedResourceRequirements withJobSpecific(Optional<? extends List<JobTypeResourceLimit>> jobSpecific) {
         Utils.checkNotNull(jobSpecific, "jobSpecific");
         this.jobSpecific = jobSpecific;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -108,15 +114,14 @@ public class ScopedResourceRequirements {
         }
         ScopedResourceRequirements other = (ScopedResourceRequirements) o;
         return 
-            Objects.deepEquals(this.default_, other.default_) &&
-            Objects.deepEquals(this.jobSpecific, other.jobSpecific);
+            Utils.enhancedDeepEquals(this.default_, other.default_) &&
+            Utils.enhancedDeepEquals(this.jobSpecific, other.jobSpecific);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            default_,
-            jobSpecific);
+        return Utils.enhancedHash(
+            default_, jobSpecific);
     }
     
     @Override
@@ -125,16 +130,18 @@ public class ScopedResourceRequirements {
                 "default_", default_,
                 "jobSpecific", jobSpecific);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends ResourceRequirements> default_ = Optional.empty();
- 
+
         private Optional<? extends List<JobTypeResourceLimit>> jobSpecific = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * optional resource requirements to run workers (blank for unbounded allocations)
@@ -154,6 +161,7 @@ public class ScopedResourceRequirements {
             return this;
         }
 
+
         public Builder jobSpecific(List<JobTypeResourceLimit> jobSpecific) {
             Utils.checkNotNull(jobSpecific, "jobSpecific");
             this.jobSpecific = Optional.ofNullable(jobSpecific);
@@ -165,11 +173,12 @@ public class ScopedResourceRequirements {
             this.jobSpecific = jobSpecific;
             return this;
         }
-        
+
         public ScopedResourceRequirements build() {
+
             return new ScopedResourceRequirements(
-                default_,
-                jobSpecific);
+                default_, jobSpecific);
         }
+
     }
 }

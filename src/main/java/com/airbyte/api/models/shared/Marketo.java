@@ -14,7 +14,7 @@ public enum Marketo {
     @JsonValue
     private final String value;
 
-    private Marketo(String value) {
+    Marketo(String value) {
         this.value = value;
     }
     

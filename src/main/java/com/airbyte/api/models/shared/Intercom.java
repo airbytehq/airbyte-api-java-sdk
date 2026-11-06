@@ -14,7 +14,7 @@ public enum Intercom {
     @JsonValue
     private final String value;
 
-    private Intercom(String value) {
+    Intercom(String value) {
         this.value = value;
     }
     

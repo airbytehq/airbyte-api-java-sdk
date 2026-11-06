@@ -14,7 +14,7 @@ public enum Harvest {
     @JsonValue
     private final String value;
 
-    private Harvest(String value) {
+    Harvest(String value) {
         this.value = value;
     }
     

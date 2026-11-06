@@ -12,18 +12,21 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourcePoplar {
-
     /**
-     * Your Poplar API Access Token. Generate it from the [API Credentials page](https://app.heypoplar.com/credentials) in your account. Use a production token for live data or a test token for testing purposes.
+     * Your Poplar API Access Token. Generate it from the [API Credentials
+     * page](https://app.heypoplar.com/credentials) in your account. Use a production token for live data
+     * or a test token for testing purposes.
      */
     @JsonProperty("access_token")
     private String accessToken;
 
+
     @JsonProperty("sourceType")
     private Poplar sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -40,7 +43,9 @@ public class SourcePoplar {
     }
 
     /**
-     * Your Poplar API Access Token. Generate it from the [API Credentials page](https://app.heypoplar.com/credentials) in your account. Use a production token for live data or a test token for testing purposes.
+     * Your Poplar API Access Token. Generate it from the [API Credentials
+     * page](https://app.heypoplar.com/credentials) in your account. Use a production token for live data
+     * or a test token for testing purposes.
      */
     @JsonIgnore
     public String accessToken() {
@@ -57,12 +62,15 @@ public class SourcePoplar {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Your Poplar API Access Token. Generate it from the [API Credentials page](https://app.heypoplar.com/credentials) in your account. Use a production token for live data or a test token for testing purposes.
+     * Your Poplar API Access Token. Generate it from the [API Credentials
+     * page](https://app.heypoplar.com/credentials) in your account. Use a production token for live data
+     * or a test token for testing purposes.
      */
     public SourcePoplar withAccessToken(String accessToken) {
         Utils.checkNotNull(accessToken, "accessToken");
@@ -76,7 +84,6 @@ public class SourcePoplar {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -87,17 +94,15 @@ public class SourcePoplar {
         }
         SourcePoplar other = (SourcePoplar) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            accessToken, sourceType, startDate);
     }
     
     @Override
@@ -107,19 +112,23 @@ public class SourcePoplar {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Your Poplar API Access Token. Generate it from the [API Credentials page](https://app.heypoplar.com/credentials) in your account. Use a production token for live data or a test token for testing purposes.
+         * Your Poplar API Access Token. Generate it from the [API Credentials
+         * page](https://app.heypoplar.com/credentials) in your account. Use a production token for live data
+         * or a test token for testing purposes.
          */
         public Builder accessToken(String accessToken) {
             Utils.checkNotNull(accessToken, "accessToken");
@@ -127,17 +136,19 @@ public class SourcePoplar {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourcePoplar build() {
+
             return new SourcePoplar(
-                accessToken,
-                startDate);
+                accessToken, startDate);
         }
+
 
         private static final LazySingletonValue<Poplar> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -1,5 +1,13 @@
 # DestinationTeradataAuthType
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DestinationTeradataAuthType;
+
+DestinationTeradataAuthType value = DestinationTeradataAuthType.TD2;
+```
+
 
 ## Values
 

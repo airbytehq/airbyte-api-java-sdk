@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * StorageProvider
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class StorageProvider {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private StorageProvider(TypedObject value) {
         this.value = value;
@@ -33,42 +32,42 @@ public class StorageProvider {
 
     public static StorageProvider of(HTTPSPublicWeb value) {
         Utils.checkNotNull(value, "value");
-        return new StorageProvider(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<HTTPSPublicWeb>(){}));
+        return new StorageProvider(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static StorageProvider of(GCSGoogleCloudStorage value) {
         Utils.checkNotNull(value, "value");
-        return new StorageProvider(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<GCSGoogleCloudStorage>(){}));
+        return new StorageProvider(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static StorageProvider of(S3AmazonWebServices value) {
         Utils.checkNotNull(value, "value");
-        return new StorageProvider(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<S3AmazonWebServices>(){}));
+        return new StorageProvider(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static StorageProvider of(AzBlobAzureBlobStorage value) {
         Utils.checkNotNull(value, "value");
-        return new StorageProvider(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AzBlobAzureBlobStorage>(){}));
+        return new StorageProvider(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static StorageProvider of(SSHSecureShell value) {
         Utils.checkNotNull(value, "value");
-        return new StorageProvider(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SSHSecureShell>(){}));
+        return new StorageProvider(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static StorageProvider of(SCPSecureCopyProtocol value) {
         Utils.checkNotNull(value, "value");
-        return new StorageProvider(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SCPSecureCopyProtocol>(){}));
+        return new StorageProvider(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static StorageProvider of(SFTPSecureFileTransferProtocol value) {
         Utils.checkNotNull(value, "value");
-        return new StorageProvider(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SFTPSecureFileTransferProtocol>(){}));
+        return new StorageProvider(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static StorageProvider of(LocalFilesystemLimited value) {
         Utils.checkNotNull(value, "value");
-        return new StorageProvider(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<LocalFilesystemLimited>(){}));
+        return new StorageProvider(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -97,7 +96,7 @@ public class StorageProvider {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -108,12 +107,12 @@ public class StorageProvider {
             return false;
         }
         StorageProvider other = (StorageProvider) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -121,13 +120,13 @@ public class StorageProvider {
 
         public _Deserializer() {
             super(StorageProvider.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SFTPSecureFileTransferProtocol>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SCPSecureCopyProtocol>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SSHSecureShell>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<AzBlobAzureBlobStorage>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<S3AmazonWebServices>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<GCSGoogleCloudStorage>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<HTTPSPublicWeb>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<GCSGoogleCloudStorage>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<S3AmazonWebServices>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<AzBlobAzureBlobStorage>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SSHSecureShell>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SCPSecureCopyProtocol>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SFTPSecureFileTransferProtocol>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<LocalFilesystemLimited>() {}, JsonShape.DEFAULT));
         }
     }
@@ -137,6 +136,6 @@ public class StorageProvider {
         return Utils.toString(StorageProvider.class,
                 "value", value);
     }
- 
+
 }
 

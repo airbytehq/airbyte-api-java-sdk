@@ -14,43 +14,69 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationAzureBlobStorage {
 
+public class DestinationAzureBlobStorage {
     /**
-     * The Azure blob storage account key. If you set this value, you must not set the Shared Access Signature.
+     * The Azure Blob Storage account key. If you set this value, you must not set the "Shared Access
+     * Signature", "Azure Tenant ID", "Azure Client ID", or "Azure Client Secret" fields.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("azure_blob_storage_account_key")
     private Optional<String> azureBlobStorageAccountKey;
 
     /**
-     * The name of the Azure Blob Storage Account. Read more &lt;a href="https://learn.microsoft.com/en-gb/azure/storage/blobs/storage-blobs-introduction#storage-accounts"&gt;here&lt;/a&gt;.
+     * The name of the Azure Blob Storage Account. Read more <a
+     * href="https://learn.microsoft.com/en-gb/azure/storage/blobs/storage-blobs-introduction#storage-accounts">here</a>.
      */
     @JsonProperty("azure_blob_storage_account_name")
     private String azureBlobStorageAccountName;
 
     /**
-     * The name of the Azure Blob Storage Container. Read more &lt;a href="https://learn.microsoft.com/en-gb/azure/storage/blobs/storage-blobs-introduction#containers"&gt;here&lt;/a&gt;.
+     * The name of the Azure Blob Storage Container. Read more <a
+     * href="https://learn.microsoft.com/en-gb/azure/storage/blobs/storage-blobs-introduction#containers">here</a>.
      */
     @JsonProperty("azure_blob_storage_container_name")
     private String azureBlobStorageContainerName;
 
     /**
-     * This is Azure Blob Storage endpoint domain name. Leave default value (or leave it empty if run container from command line) to use Microsoft native from example.
+     * This is Azure Blob Storage endpoint domain name. Leave default value (or leave it empty if run
+     * container from command line) to use Microsoft native from example.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("azure_blob_storage_endpoint_domain_name")
     private Optional<String> azureBlobStorageEndpointDomainName;
 
     /**
-     * The amount of megabytes after which the connector should spill the records in a new blob object. Make sure to configure size greater than individual records. Enter 0 if not applicable.
+     * The amount of megabytes after which the connector should spill the records in a new blob object.
+     * Make sure to configure size greater than individual records. Enter 0 if not applicable.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("azure_blob_storage_spill_size")
     private Optional<Long> azureBlobStorageSpillSize;
+
+    /**
+     * The Azure Active Directory (Entra ID) client ID. Required for Entra ID authentication.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("azure_client_id")
+    private Optional<String> azureClientId;
+
+    /**
+     * The Azure Active Directory (Entra ID) client secret. Required for Entra ID authentication.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("azure_client_secret")
+    private Optional<String> azureClientSecret;
+
+    /**
+     * The Azure Active Directory (Entra ID) tenant ID. Required for Entra ID authentication.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("azure_tenant_id")
+    private Optional<String> azureTenantId;
+
 
     @JsonProperty("destinationType")
     private DestinationAzureBlobStorageAzureBlobStorage destinationType;
@@ -62,7 +88,11 @@ public class DestinationAzureBlobStorage {
     private OutputFormat format;
 
     /**
-     * A shared access signature (SAS) provides secure delegated access to resources in your storage account. Read more &lt;a href="https://learn.microsoft.com/en-gb/azure/storage/common/storage-sas-overview?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&amp;bc=%2Fazure%2Fstorage%2Fblobs%2Fbreadcrumb%2Ftoc.json"&gt;here&lt;/a&gt;. If you set this value, you must not set the account key.
+     * A shared access signature (SAS) provides secure delegated access to resources in your storage
+     * account. Read more <a
+     * href="https://learn.microsoft.com/en-gb/azure/storage/common/storage-sas-overview?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&bc=%2Fazure%2Fstorage%2Fblobs%2Fbreadcrumb%2Ftoc.json">here</a>.
+     * If you set this value, you must not set the "Azure Blob Storage Account Key", "Azure Tenant ID",
+     * "Azure Client ID", or "Azure Client Secret" fields.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("shared_access_signature")
@@ -75,6 +105,9 @@ public class DestinationAzureBlobStorage {
             @JsonProperty("azure_blob_storage_container_name") String azureBlobStorageContainerName,
             @JsonProperty("azure_blob_storage_endpoint_domain_name") Optional<String> azureBlobStorageEndpointDomainName,
             @JsonProperty("azure_blob_storage_spill_size") Optional<Long> azureBlobStorageSpillSize,
+            @JsonProperty("azure_client_id") Optional<String> azureClientId,
+            @JsonProperty("azure_client_secret") Optional<String> azureClientSecret,
+            @JsonProperty("azure_tenant_id") Optional<String> azureTenantId,
             @JsonProperty("format") OutputFormat format,
             @JsonProperty("shared_access_signature") Optional<String> sharedAccessSignature) {
         Utils.checkNotNull(azureBlobStorageAccountKey, "azureBlobStorageAccountKey");
@@ -82,6 +115,9 @@ public class DestinationAzureBlobStorage {
         Utils.checkNotNull(azureBlobStorageContainerName, "azureBlobStorageContainerName");
         Utils.checkNotNull(azureBlobStorageEndpointDomainName, "azureBlobStorageEndpointDomainName");
         Utils.checkNotNull(azureBlobStorageSpillSize, "azureBlobStorageSpillSize");
+        Utils.checkNotNull(azureClientId, "azureClientId");
+        Utils.checkNotNull(azureClientSecret, "azureClientSecret");
+        Utils.checkNotNull(azureTenantId, "azureTenantId");
         Utils.checkNotNull(format, "format");
         Utils.checkNotNull(sharedAccessSignature, "sharedAccessSignature");
         this.azureBlobStorageAccountKey = azureBlobStorageAccountKey;
@@ -89,6 +125,9 @@ public class DestinationAzureBlobStorage {
         this.azureBlobStorageContainerName = azureBlobStorageContainerName;
         this.azureBlobStorageEndpointDomainName = azureBlobStorageEndpointDomainName;
         this.azureBlobStorageSpillSize = azureBlobStorageSpillSize;
+        this.azureClientId = azureClientId;
+        this.azureClientSecret = azureClientSecret;
+        this.azureTenantId = azureTenantId;
         this.destinationType = Builder._SINGLETON_VALUE_DestinationType.value();
         this.format = format;
         this.sharedAccessSignature = sharedAccessSignature;
@@ -98,11 +137,15 @@ public class DestinationAzureBlobStorage {
             String azureBlobStorageAccountName,
             String azureBlobStorageContainerName,
             OutputFormat format) {
-        this(Optional.empty(), azureBlobStorageAccountName, azureBlobStorageContainerName, Optional.empty(), Optional.empty(), format, Optional.empty());
+        this(Optional.empty(), azureBlobStorageAccountName, azureBlobStorageContainerName,
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), format,
+            Optional.empty());
     }
 
     /**
-     * The Azure blob storage account key. If you set this value, you must not set the Shared Access Signature.
+     * The Azure Blob Storage account key. If you set this value, you must not set the "Shared Access
+     * Signature", "Azure Tenant ID", "Azure Client ID", or "Azure Client Secret" fields.
      */
     @JsonIgnore
     public Optional<String> azureBlobStorageAccountKey() {
@@ -110,7 +153,8 @@ public class DestinationAzureBlobStorage {
     }
 
     /**
-     * The name of the Azure Blob Storage Account. Read more &lt;a href="https://learn.microsoft.com/en-gb/azure/storage/blobs/storage-blobs-introduction#storage-accounts"&gt;here&lt;/a&gt;.
+     * The name of the Azure Blob Storage Account. Read more <a
+     * href="https://learn.microsoft.com/en-gb/azure/storage/blobs/storage-blobs-introduction#storage-accounts">here</a>.
      */
     @JsonIgnore
     public String azureBlobStorageAccountName() {
@@ -118,7 +162,8 @@ public class DestinationAzureBlobStorage {
     }
 
     /**
-     * The name of the Azure Blob Storage Container. Read more &lt;a href="https://learn.microsoft.com/en-gb/azure/storage/blobs/storage-blobs-introduction#containers"&gt;here&lt;/a&gt;.
+     * The name of the Azure Blob Storage Container. Read more <a
+     * href="https://learn.microsoft.com/en-gb/azure/storage/blobs/storage-blobs-introduction#containers">here</a>.
      */
     @JsonIgnore
     public String azureBlobStorageContainerName() {
@@ -126,7 +171,8 @@ public class DestinationAzureBlobStorage {
     }
 
     /**
-     * This is Azure Blob Storage endpoint domain name. Leave default value (or leave it empty if run container from command line) to use Microsoft native from example.
+     * This is Azure Blob Storage endpoint domain name. Leave default value (or leave it empty if run
+     * container from command line) to use Microsoft native from example.
      */
     @JsonIgnore
     public Optional<String> azureBlobStorageEndpointDomainName() {
@@ -134,11 +180,36 @@ public class DestinationAzureBlobStorage {
     }
 
     /**
-     * The amount of megabytes after which the connector should spill the records in a new blob object. Make sure to configure size greater than individual records. Enter 0 if not applicable.
+     * The amount of megabytes after which the connector should spill the records in a new blob object.
+     * Make sure to configure size greater than individual records. Enter 0 if not applicable.
      */
     @JsonIgnore
     public Optional<Long> azureBlobStorageSpillSize() {
         return azureBlobStorageSpillSize;
+    }
+
+    /**
+     * The Azure Active Directory (Entra ID) client ID. Required for Entra ID authentication.
+     */
+    @JsonIgnore
+    public Optional<String> azureClientId() {
+        return azureClientId;
+    }
+
+    /**
+     * The Azure Active Directory (Entra ID) client secret. Required for Entra ID authentication.
+     */
+    @JsonIgnore
+    public Optional<String> azureClientSecret() {
+        return azureClientSecret;
+    }
+
+    /**
+     * The Azure Active Directory (Entra ID) tenant ID. Required for Entra ID authentication.
+     */
+    @JsonIgnore
+    public Optional<String> azureTenantId() {
+        return azureTenantId;
     }
 
     @JsonIgnore
@@ -155,19 +226,25 @@ public class DestinationAzureBlobStorage {
     }
 
     /**
-     * A shared access signature (SAS) provides secure delegated access to resources in your storage account. Read more &lt;a href="https://learn.microsoft.com/en-gb/azure/storage/common/storage-sas-overview?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&amp;bc=%2Fazure%2Fstorage%2Fblobs%2Fbreadcrumb%2Ftoc.json"&gt;here&lt;/a&gt;. If you set this value, you must not set the account key.
+     * A shared access signature (SAS) provides secure delegated access to resources in your storage
+     * account. Read more <a
+     * href="https://learn.microsoft.com/en-gb/azure/storage/common/storage-sas-overview?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&bc=%2Fazure%2Fstorage%2Fblobs%2Fbreadcrumb%2Ftoc.json">here</a>.
+     * If you set this value, you must not set the "Azure Blob Storage Account Key", "Azure Tenant ID",
+     * "Azure Client ID", or "Azure Client Secret" fields.
      */
     @JsonIgnore
     public Optional<String> sharedAccessSignature() {
         return sharedAccessSignature;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The Azure blob storage account key. If you set this value, you must not set the Shared Access Signature.
+     * The Azure Blob Storage account key. If you set this value, you must not set the "Shared Access
+     * Signature", "Azure Tenant ID", "Azure Client ID", or "Azure Client Secret" fields.
      */
     public DestinationAzureBlobStorage withAzureBlobStorageAccountKey(String azureBlobStorageAccountKey) {
         Utils.checkNotNull(azureBlobStorageAccountKey, "azureBlobStorageAccountKey");
@@ -175,8 +252,10 @@ public class DestinationAzureBlobStorage {
         return this;
     }
 
+
     /**
-     * The Azure blob storage account key. If you set this value, you must not set the Shared Access Signature.
+     * The Azure Blob Storage account key. If you set this value, you must not set the "Shared Access
+     * Signature", "Azure Tenant ID", "Azure Client ID", or "Azure Client Secret" fields.
      */
     public DestinationAzureBlobStorage withAzureBlobStorageAccountKey(Optional<String> azureBlobStorageAccountKey) {
         Utils.checkNotNull(azureBlobStorageAccountKey, "azureBlobStorageAccountKey");
@@ -185,7 +264,8 @@ public class DestinationAzureBlobStorage {
     }
 
     /**
-     * The name of the Azure Blob Storage Account. Read more &lt;a href="https://learn.microsoft.com/en-gb/azure/storage/blobs/storage-blobs-introduction#storage-accounts"&gt;here&lt;/a&gt;.
+     * The name of the Azure Blob Storage Account. Read more <a
+     * href="https://learn.microsoft.com/en-gb/azure/storage/blobs/storage-blobs-introduction#storage-accounts">here</a>.
      */
     public DestinationAzureBlobStorage withAzureBlobStorageAccountName(String azureBlobStorageAccountName) {
         Utils.checkNotNull(azureBlobStorageAccountName, "azureBlobStorageAccountName");
@@ -194,7 +274,8 @@ public class DestinationAzureBlobStorage {
     }
 
     /**
-     * The name of the Azure Blob Storage Container. Read more &lt;a href="https://learn.microsoft.com/en-gb/azure/storage/blobs/storage-blobs-introduction#containers"&gt;here&lt;/a&gt;.
+     * The name of the Azure Blob Storage Container. Read more <a
+     * href="https://learn.microsoft.com/en-gb/azure/storage/blobs/storage-blobs-introduction#containers">here</a>.
      */
     public DestinationAzureBlobStorage withAzureBlobStorageContainerName(String azureBlobStorageContainerName) {
         Utils.checkNotNull(azureBlobStorageContainerName, "azureBlobStorageContainerName");
@@ -203,7 +284,8 @@ public class DestinationAzureBlobStorage {
     }
 
     /**
-     * This is Azure Blob Storage endpoint domain name. Leave default value (or leave it empty if run container from command line) to use Microsoft native from example.
+     * This is Azure Blob Storage endpoint domain name. Leave default value (or leave it empty if run
+     * container from command line) to use Microsoft native from example.
      */
     public DestinationAzureBlobStorage withAzureBlobStorageEndpointDomainName(String azureBlobStorageEndpointDomainName) {
         Utils.checkNotNull(azureBlobStorageEndpointDomainName, "azureBlobStorageEndpointDomainName");
@@ -211,8 +293,10 @@ public class DestinationAzureBlobStorage {
         return this;
     }
 
+
     /**
-     * This is Azure Blob Storage endpoint domain name. Leave default value (or leave it empty if run container from command line) to use Microsoft native from example.
+     * This is Azure Blob Storage endpoint domain name. Leave default value (or leave it empty if run
+     * container from command line) to use Microsoft native from example.
      */
     public DestinationAzureBlobStorage withAzureBlobStorageEndpointDomainName(Optional<String> azureBlobStorageEndpointDomainName) {
         Utils.checkNotNull(azureBlobStorageEndpointDomainName, "azureBlobStorageEndpointDomainName");
@@ -221,7 +305,8 @@ public class DestinationAzureBlobStorage {
     }
 
     /**
-     * The amount of megabytes after which the connector should spill the records in a new blob object. Make sure to configure size greater than individual records. Enter 0 if not applicable.
+     * The amount of megabytes after which the connector should spill the records in a new blob object.
+     * Make sure to configure size greater than individual records. Enter 0 if not applicable.
      */
     public DestinationAzureBlobStorage withAzureBlobStorageSpillSize(long azureBlobStorageSpillSize) {
         Utils.checkNotNull(azureBlobStorageSpillSize, "azureBlobStorageSpillSize");
@@ -229,12 +314,71 @@ public class DestinationAzureBlobStorage {
         return this;
     }
 
+
     /**
-     * The amount of megabytes after which the connector should spill the records in a new blob object. Make sure to configure size greater than individual records. Enter 0 if not applicable.
+     * The amount of megabytes after which the connector should spill the records in a new blob object.
+     * Make sure to configure size greater than individual records. Enter 0 if not applicable.
      */
     public DestinationAzureBlobStorage withAzureBlobStorageSpillSize(Optional<Long> azureBlobStorageSpillSize) {
         Utils.checkNotNull(azureBlobStorageSpillSize, "azureBlobStorageSpillSize");
         this.azureBlobStorageSpillSize = azureBlobStorageSpillSize;
+        return this;
+    }
+
+    /**
+     * The Azure Active Directory (Entra ID) client ID. Required for Entra ID authentication.
+     */
+    public DestinationAzureBlobStorage withAzureClientId(String azureClientId) {
+        Utils.checkNotNull(azureClientId, "azureClientId");
+        this.azureClientId = Optional.ofNullable(azureClientId);
+        return this;
+    }
+
+
+    /**
+     * The Azure Active Directory (Entra ID) client ID. Required for Entra ID authentication.
+     */
+    public DestinationAzureBlobStorage withAzureClientId(Optional<String> azureClientId) {
+        Utils.checkNotNull(azureClientId, "azureClientId");
+        this.azureClientId = azureClientId;
+        return this;
+    }
+
+    /**
+     * The Azure Active Directory (Entra ID) client secret. Required for Entra ID authentication.
+     */
+    public DestinationAzureBlobStorage withAzureClientSecret(String azureClientSecret) {
+        Utils.checkNotNull(azureClientSecret, "azureClientSecret");
+        this.azureClientSecret = Optional.ofNullable(azureClientSecret);
+        return this;
+    }
+
+
+    /**
+     * The Azure Active Directory (Entra ID) client secret. Required for Entra ID authentication.
+     */
+    public DestinationAzureBlobStorage withAzureClientSecret(Optional<String> azureClientSecret) {
+        Utils.checkNotNull(azureClientSecret, "azureClientSecret");
+        this.azureClientSecret = azureClientSecret;
+        return this;
+    }
+
+    /**
+     * The Azure Active Directory (Entra ID) tenant ID. Required for Entra ID authentication.
+     */
+    public DestinationAzureBlobStorage withAzureTenantId(String azureTenantId) {
+        Utils.checkNotNull(azureTenantId, "azureTenantId");
+        this.azureTenantId = Optional.ofNullable(azureTenantId);
+        return this;
+    }
+
+
+    /**
+     * The Azure Active Directory (Entra ID) tenant ID. Required for Entra ID authentication.
+     */
+    public DestinationAzureBlobStorage withAzureTenantId(Optional<String> azureTenantId) {
+        Utils.checkNotNull(azureTenantId, "azureTenantId");
+        this.azureTenantId = azureTenantId;
         return this;
     }
 
@@ -248,7 +392,11 @@ public class DestinationAzureBlobStorage {
     }
 
     /**
-     * A shared access signature (SAS) provides secure delegated access to resources in your storage account. Read more &lt;a href="https://learn.microsoft.com/en-gb/azure/storage/common/storage-sas-overview?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&amp;bc=%2Fazure%2Fstorage%2Fblobs%2Fbreadcrumb%2Ftoc.json"&gt;here&lt;/a&gt;. If you set this value, you must not set the account key.
+     * A shared access signature (SAS) provides secure delegated access to resources in your storage
+     * account. Read more <a
+     * href="https://learn.microsoft.com/en-gb/azure/storage/common/storage-sas-overview?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&bc=%2Fazure%2Fstorage%2Fblobs%2Fbreadcrumb%2Ftoc.json">here</a>.
+     * If you set this value, you must not set the "Azure Blob Storage Account Key", "Azure Tenant ID",
+     * "Azure Client ID", or "Azure Client Secret" fields.
      */
     public DestinationAzureBlobStorage withSharedAccessSignature(String sharedAccessSignature) {
         Utils.checkNotNull(sharedAccessSignature, "sharedAccessSignature");
@@ -256,8 +404,13 @@ public class DestinationAzureBlobStorage {
         return this;
     }
 
+
     /**
-     * A shared access signature (SAS) provides secure delegated access to resources in your storage account. Read more &lt;a href="https://learn.microsoft.com/en-gb/azure/storage/common/storage-sas-overview?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&amp;bc=%2Fazure%2Fstorage%2Fblobs%2Fbreadcrumb%2Ftoc.json"&gt;here&lt;/a&gt;. If you set this value, you must not set the account key.
+     * A shared access signature (SAS) provides secure delegated access to resources in your storage
+     * account. Read more <a
+     * href="https://learn.microsoft.com/en-gb/azure/storage/common/storage-sas-overview?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&bc=%2Fazure%2Fstorage%2Fblobs%2Fbreadcrumb%2Ftoc.json">here</a>.
+     * If you set this value, you must not set the "Azure Blob Storage Account Key", "Azure Tenant ID",
+     * "Azure Client ID", or "Azure Client Secret" fields.
      */
     public DestinationAzureBlobStorage withSharedAccessSignature(Optional<String> sharedAccessSignature) {
         Utils.checkNotNull(sharedAccessSignature, "sharedAccessSignature");
@@ -265,7 +418,6 @@ public class DestinationAzureBlobStorage {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -276,27 +428,26 @@ public class DestinationAzureBlobStorage {
         }
         DestinationAzureBlobStorage other = (DestinationAzureBlobStorage) o;
         return 
-            Objects.deepEquals(this.azureBlobStorageAccountKey, other.azureBlobStorageAccountKey) &&
-            Objects.deepEquals(this.azureBlobStorageAccountName, other.azureBlobStorageAccountName) &&
-            Objects.deepEquals(this.azureBlobStorageContainerName, other.azureBlobStorageContainerName) &&
-            Objects.deepEquals(this.azureBlobStorageEndpointDomainName, other.azureBlobStorageEndpointDomainName) &&
-            Objects.deepEquals(this.azureBlobStorageSpillSize, other.azureBlobStorageSpillSize) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.format, other.format) &&
-            Objects.deepEquals(this.sharedAccessSignature, other.sharedAccessSignature);
+            Utils.enhancedDeepEquals(this.azureBlobStorageAccountKey, other.azureBlobStorageAccountKey) &&
+            Utils.enhancedDeepEquals(this.azureBlobStorageAccountName, other.azureBlobStorageAccountName) &&
+            Utils.enhancedDeepEquals(this.azureBlobStorageContainerName, other.azureBlobStorageContainerName) &&
+            Utils.enhancedDeepEquals(this.azureBlobStorageEndpointDomainName, other.azureBlobStorageEndpointDomainName) &&
+            Utils.enhancedDeepEquals(this.azureBlobStorageSpillSize, other.azureBlobStorageSpillSize) &&
+            Utils.enhancedDeepEquals(this.azureClientId, other.azureClientId) &&
+            Utils.enhancedDeepEquals(this.azureClientSecret, other.azureClientSecret) &&
+            Utils.enhancedDeepEquals(this.azureTenantId, other.azureTenantId) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.format, other.format) &&
+            Utils.enhancedDeepEquals(this.sharedAccessSignature, other.sharedAccessSignature);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            azureBlobStorageAccountKey,
-            azureBlobStorageAccountName,
-            azureBlobStorageContainerName,
-            azureBlobStorageEndpointDomainName,
-            azureBlobStorageSpillSize,
-            destinationType,
-            format,
-            sharedAccessSignature);
+        return Utils.enhancedHash(
+            azureBlobStorageAccountKey, azureBlobStorageAccountName, azureBlobStorageContainerName,
+            azureBlobStorageEndpointDomainName, azureBlobStorageSpillSize, azureClientId,
+            azureClientSecret, azureTenantId, destinationType,
+            format, sharedAccessSignature);
     }
     
     @Override
@@ -307,33 +458,45 @@ public class DestinationAzureBlobStorage {
                 "azureBlobStorageContainerName", azureBlobStorageContainerName,
                 "azureBlobStorageEndpointDomainName", azureBlobStorageEndpointDomainName,
                 "azureBlobStorageSpillSize", azureBlobStorageSpillSize,
+                "azureClientId", azureClientId,
+                "azureClientSecret", azureClientSecret,
+                "azureTenantId", azureTenantId,
                 "destinationType", destinationType,
                 "format", format,
                 "sharedAccessSignature", sharedAccessSignature);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> azureBlobStorageAccountKey = Optional.empty();
- 
+
         private String azureBlobStorageAccountName;
- 
+
         private String azureBlobStorageContainerName;
- 
+
         private Optional<String> azureBlobStorageEndpointDomainName = Optional.empty();
- 
+
         private Optional<Long> azureBlobStorageSpillSize;
- 
+
+        private Optional<String> azureClientId = Optional.empty();
+
+        private Optional<String> azureClientSecret = Optional.empty();
+
+        private Optional<String> azureTenantId = Optional.empty();
+
         private OutputFormat format;
- 
+
         private Optional<String> sharedAccessSignature = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The Azure blob storage account key. If you set this value, you must not set the Shared Access Signature.
+         * The Azure Blob Storage account key. If you set this value, you must not set the "Shared Access
+         * Signature", "Azure Tenant ID", "Azure Client ID", or "Azure Client Secret" fields.
          */
         public Builder azureBlobStorageAccountKey(String azureBlobStorageAccountKey) {
             Utils.checkNotNull(azureBlobStorageAccountKey, "azureBlobStorageAccountKey");
@@ -342,7 +505,8 @@ public class DestinationAzureBlobStorage {
         }
 
         /**
-         * The Azure blob storage account key. If you set this value, you must not set the Shared Access Signature.
+         * The Azure Blob Storage account key. If you set this value, you must not set the "Shared Access
+         * Signature", "Azure Tenant ID", "Azure Client ID", or "Azure Client Secret" fields.
          */
         public Builder azureBlobStorageAccountKey(Optional<String> azureBlobStorageAccountKey) {
             Utils.checkNotNull(azureBlobStorageAccountKey, "azureBlobStorageAccountKey");
@@ -350,8 +514,10 @@ public class DestinationAzureBlobStorage {
             return this;
         }
 
+
         /**
-         * The name of the Azure Blob Storage Account. Read more &lt;a href="https://learn.microsoft.com/en-gb/azure/storage/blobs/storage-blobs-introduction#storage-accounts"&gt;here&lt;/a&gt;.
+         * The name of the Azure Blob Storage Account. Read more <a
+         * href="https://learn.microsoft.com/en-gb/azure/storage/blobs/storage-blobs-introduction#storage-accounts">here</a>.
          */
         public Builder azureBlobStorageAccountName(String azureBlobStorageAccountName) {
             Utils.checkNotNull(azureBlobStorageAccountName, "azureBlobStorageAccountName");
@@ -359,8 +525,10 @@ public class DestinationAzureBlobStorage {
             return this;
         }
 
+
         /**
-         * The name of the Azure Blob Storage Container. Read more &lt;a href="https://learn.microsoft.com/en-gb/azure/storage/blobs/storage-blobs-introduction#containers"&gt;here&lt;/a&gt;.
+         * The name of the Azure Blob Storage Container. Read more <a
+         * href="https://learn.microsoft.com/en-gb/azure/storage/blobs/storage-blobs-introduction#containers">here</a>.
          */
         public Builder azureBlobStorageContainerName(String azureBlobStorageContainerName) {
             Utils.checkNotNull(azureBlobStorageContainerName, "azureBlobStorageContainerName");
@@ -368,8 +536,10 @@ public class DestinationAzureBlobStorage {
             return this;
         }
 
+
         /**
-         * This is Azure Blob Storage endpoint domain name. Leave default value (or leave it empty if run container from command line) to use Microsoft native from example.
+         * This is Azure Blob Storage endpoint domain name. Leave default value (or leave it empty if run
+         * container from command line) to use Microsoft native from example.
          */
         public Builder azureBlobStorageEndpointDomainName(String azureBlobStorageEndpointDomainName) {
             Utils.checkNotNull(azureBlobStorageEndpointDomainName, "azureBlobStorageEndpointDomainName");
@@ -378,7 +548,8 @@ public class DestinationAzureBlobStorage {
         }
 
         /**
-         * This is Azure Blob Storage endpoint domain name. Leave default value (or leave it empty if run container from command line) to use Microsoft native from example.
+         * This is Azure Blob Storage endpoint domain name. Leave default value (or leave it empty if run
+         * container from command line) to use Microsoft native from example.
          */
         public Builder azureBlobStorageEndpointDomainName(Optional<String> azureBlobStorageEndpointDomainName) {
             Utils.checkNotNull(azureBlobStorageEndpointDomainName, "azureBlobStorageEndpointDomainName");
@@ -386,8 +557,10 @@ public class DestinationAzureBlobStorage {
             return this;
         }
 
+
         /**
-         * The amount of megabytes after which the connector should spill the records in a new blob object. Make sure to configure size greater than individual records. Enter 0 if not applicable.
+         * The amount of megabytes after which the connector should spill the records in a new blob object.
+         * Make sure to configure size greater than individual records. Enter 0 if not applicable.
          */
         public Builder azureBlobStorageSpillSize(long azureBlobStorageSpillSize) {
             Utils.checkNotNull(azureBlobStorageSpillSize, "azureBlobStorageSpillSize");
@@ -396,13 +569,72 @@ public class DestinationAzureBlobStorage {
         }
 
         /**
-         * The amount of megabytes after which the connector should spill the records in a new blob object. Make sure to configure size greater than individual records. Enter 0 if not applicable.
+         * The amount of megabytes after which the connector should spill the records in a new blob object.
+         * Make sure to configure size greater than individual records. Enter 0 if not applicable.
          */
         public Builder azureBlobStorageSpillSize(Optional<Long> azureBlobStorageSpillSize) {
             Utils.checkNotNull(azureBlobStorageSpillSize, "azureBlobStorageSpillSize");
             this.azureBlobStorageSpillSize = azureBlobStorageSpillSize;
             return this;
         }
+
+
+        /**
+         * The Azure Active Directory (Entra ID) client ID. Required for Entra ID authentication.
+         */
+        public Builder azureClientId(String azureClientId) {
+            Utils.checkNotNull(azureClientId, "azureClientId");
+            this.azureClientId = Optional.ofNullable(azureClientId);
+            return this;
+        }
+
+        /**
+         * The Azure Active Directory (Entra ID) client ID. Required for Entra ID authentication.
+         */
+        public Builder azureClientId(Optional<String> azureClientId) {
+            Utils.checkNotNull(azureClientId, "azureClientId");
+            this.azureClientId = azureClientId;
+            return this;
+        }
+
+
+        /**
+         * The Azure Active Directory (Entra ID) client secret. Required for Entra ID authentication.
+         */
+        public Builder azureClientSecret(String azureClientSecret) {
+            Utils.checkNotNull(azureClientSecret, "azureClientSecret");
+            this.azureClientSecret = Optional.ofNullable(azureClientSecret);
+            return this;
+        }
+
+        /**
+         * The Azure Active Directory (Entra ID) client secret. Required for Entra ID authentication.
+         */
+        public Builder azureClientSecret(Optional<String> azureClientSecret) {
+            Utils.checkNotNull(azureClientSecret, "azureClientSecret");
+            this.azureClientSecret = azureClientSecret;
+            return this;
+        }
+
+
+        /**
+         * The Azure Active Directory (Entra ID) tenant ID. Required for Entra ID authentication.
+         */
+        public Builder azureTenantId(String azureTenantId) {
+            Utils.checkNotNull(azureTenantId, "azureTenantId");
+            this.azureTenantId = Optional.ofNullable(azureTenantId);
+            return this;
+        }
+
+        /**
+         * The Azure Active Directory (Entra ID) tenant ID. Required for Entra ID authentication.
+         */
+        public Builder azureTenantId(Optional<String> azureTenantId) {
+            Utils.checkNotNull(azureTenantId, "azureTenantId");
+            this.azureTenantId = azureTenantId;
+            return this;
+        }
+
 
         /**
          * Format of the data output.
@@ -413,8 +645,13 @@ public class DestinationAzureBlobStorage {
             return this;
         }
 
+
         /**
-         * A shared access signature (SAS) provides secure delegated access to resources in your storage account. Read more &lt;a href="https://learn.microsoft.com/en-gb/azure/storage/common/storage-sas-overview?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&amp;bc=%2Fazure%2Fstorage%2Fblobs%2Fbreadcrumb%2Ftoc.json"&gt;here&lt;/a&gt;. If you set this value, you must not set the account key.
+         * A shared access signature (SAS) provides secure delegated access to resources in your storage
+         * account. Read more <a
+         * href="https://learn.microsoft.com/en-gb/azure/storage/common/storage-sas-overview?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&bc=%2Fazure%2Fstorage%2Fblobs%2Fbreadcrumb%2Ftoc.json">here</a>.
+         * If you set this value, you must not set the "Azure Blob Storage Account Key", "Azure Tenant ID",
+         * "Azure Client ID", or "Azure Client Secret" fields.
          */
         public Builder sharedAccessSignature(String sharedAccessSignature) {
             Utils.checkNotNull(sharedAccessSignature, "sharedAccessSignature");
@@ -423,27 +660,30 @@ public class DestinationAzureBlobStorage {
         }
 
         /**
-         * A shared access signature (SAS) provides secure delegated access to resources in your storage account. Read more &lt;a href="https://learn.microsoft.com/en-gb/azure/storage/common/storage-sas-overview?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&amp;bc=%2Fazure%2Fstorage%2Fblobs%2Fbreadcrumb%2Ftoc.json"&gt;here&lt;/a&gt;. If you set this value, you must not set the account key.
+         * A shared access signature (SAS) provides secure delegated access to resources in your storage
+         * account. Read more <a
+         * href="https://learn.microsoft.com/en-gb/azure/storage/common/storage-sas-overview?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&bc=%2Fazure%2Fstorage%2Fblobs%2Fbreadcrumb%2Ftoc.json">here</a>.
+         * If you set this value, you must not set the "Azure Blob Storage Account Key", "Azure Tenant ID",
+         * "Azure Client ID", or "Azure Client Secret" fields.
          */
         public Builder sharedAccessSignature(Optional<String> sharedAccessSignature) {
             Utils.checkNotNull(sharedAccessSignature, "sharedAccessSignature");
             this.sharedAccessSignature = sharedAccessSignature;
             return this;
         }
-        
+
         public DestinationAzureBlobStorage build() {
             if (azureBlobStorageSpillSize == null) {
                 azureBlobStorageSpillSize = _SINGLETON_VALUE_AzureBlobStorageSpillSize.value();
             }
+
             return new DestinationAzureBlobStorage(
-                azureBlobStorageAccountKey,
-                azureBlobStorageAccountName,
-                azureBlobStorageContainerName,
-                azureBlobStorageEndpointDomainName,
-                azureBlobStorageSpillSize,
-                format,
+                azureBlobStorageAccountKey, azureBlobStorageAccountName, azureBlobStorageContainerName,
+                azureBlobStorageEndpointDomainName, azureBlobStorageSpillSize, azureClientId,
+                azureClientSecret, azureTenantId, format,
                 sharedAccessSignature);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_AzureBlobStorageSpillSize =
                 new LazySingletonValue<>(

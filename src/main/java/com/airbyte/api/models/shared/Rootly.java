@@ -14,7 +14,7 @@ public enum Rootly {
     @JsonValue
     private final String value;
 
-    private Rootly(String value) {
+    Rootly(String value) {
         this.value = value;
     }
     

@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class DeleteConnectionRequest {
 
@@ -28,9 +28,10 @@ public class DeleteConnectionRequest {
         return connectionId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public DeleteConnectionRequest withConnectionId(String connectionId) {
         Utils.checkNotNull(connectionId, "connectionId");
@@ -38,7 +39,6 @@ public class DeleteConnectionRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -49,12 +49,12 @@ public class DeleteConnectionRequest {
         }
         DeleteConnectionRequest other = (DeleteConnectionRequest) o;
         return 
-            Objects.deepEquals(this.connectionId, other.connectionId);
+            Utils.enhancedDeepEquals(this.connectionId, other.connectionId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             connectionId);
     }
     
@@ -63,24 +63,28 @@ public class DeleteConnectionRequest {
         return Utils.toString(DeleteConnectionRequest.class,
                 "connectionId", connectionId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String connectionId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder connectionId(String connectionId) {
             Utils.checkNotNull(connectionId, "connectionId");
             this.connectionId = connectionId;
             return this;
         }
-        
+
         public DeleteConnectionRequest build() {
+
             return new DeleteConnectionRequest(
                 connectionId);
         }
+
     }
 }

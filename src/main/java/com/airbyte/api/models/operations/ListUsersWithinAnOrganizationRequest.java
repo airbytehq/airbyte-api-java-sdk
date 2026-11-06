@@ -11,11 +11,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class ListUsersWithinAnOrganizationRequest {
 
+public class ListUsersWithinAnOrganizationRequest {
     /**
      * List of user emails to filter by
      */
@@ -27,6 +26,7 @@ public class ListUsersWithinAnOrganizationRequest {
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=ids")
     private Optional<? extends List<String>> ids;
+
 
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=organizationId")
     private String organizationId;
@@ -72,9 +72,10 @@ public class ListUsersWithinAnOrganizationRequest {
         return organizationId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * List of user emails to filter by
@@ -84,6 +85,7 @@ public class ListUsersWithinAnOrganizationRequest {
         this.emails = Optional.ofNullable(emails);
         return this;
     }
+
 
     /**
      * List of user emails to filter by
@@ -103,6 +105,7 @@ public class ListUsersWithinAnOrganizationRequest {
         return this;
     }
 
+
     /**
      * List of user IDs to filter by
      */
@@ -118,7 +121,6 @@ public class ListUsersWithinAnOrganizationRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -129,17 +131,15 @@ public class ListUsersWithinAnOrganizationRequest {
         }
         ListUsersWithinAnOrganizationRequest other = (ListUsersWithinAnOrganizationRequest) o;
         return 
-            Objects.deepEquals(this.emails, other.emails) &&
-            Objects.deepEquals(this.ids, other.ids) &&
-            Objects.deepEquals(this.organizationId, other.organizationId);
+            Utils.enhancedDeepEquals(this.emails, other.emails) &&
+            Utils.enhancedDeepEquals(this.ids, other.ids) &&
+            Utils.enhancedDeepEquals(this.organizationId, other.organizationId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            emails,
-            ids,
-            organizationId);
+        return Utils.enhancedHash(
+            emails, ids, organizationId);
     }
     
     @Override
@@ -149,18 +149,20 @@ public class ListUsersWithinAnOrganizationRequest {
                 "ids", ids,
                 "organizationId", organizationId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends List<String>> emails = Optional.empty();
- 
+
         private Optional<? extends List<String>> ids = Optional.empty();
- 
+
         private String organizationId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * List of user emails to filter by
@@ -180,6 +182,7 @@ public class ListUsersWithinAnOrganizationRequest {
             return this;
         }
 
+
         /**
          * List of user IDs to filter by
          */
@@ -198,17 +201,18 @@ public class ListUsersWithinAnOrganizationRequest {
             return this;
         }
 
+
         public Builder organizationId(String organizationId) {
             Utils.checkNotNull(organizationId, "organizationId");
             this.organizationId = organizationId;
             return this;
         }
-        
+
         public ListUsersWithinAnOrganizationRequest build() {
+
             return new ListUsersWithinAnOrganizationRequest(
-                emails,
-                ids,
-                organizationId);
+                emails, ids, organizationId);
         }
+
     }
 }

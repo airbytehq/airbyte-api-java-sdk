@@ -2,6 +2,14 @@
 
 Note - Different targets have different attribute enum requirements, please refer actions sections in https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Welcome.html
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.TheTargetedActionResourceForTheFetch;
+
+TheTargetedActionResourceForTheFetch value = TheTargetedActionResourceForTheFetch.GET_QUEUE_ATTRIBUTES;
+```
+
 
 ## Values
 

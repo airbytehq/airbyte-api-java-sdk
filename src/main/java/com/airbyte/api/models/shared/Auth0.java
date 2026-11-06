@@ -14,7 +14,7 @@ public enum Auth0 {
     @JsonValue
     private final String value;
 
-    private Auth0(String value) {
+    Auth0(String value) {
         this.value = value;
     }
     

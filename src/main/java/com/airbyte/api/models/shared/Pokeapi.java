@@ -14,7 +14,7 @@ public enum Pokeapi {
     @JsonValue
     private final String value;
 
-    private Pokeapi(String value) {
+    Pokeapi(String value) {
         this.value = value;
     }
     

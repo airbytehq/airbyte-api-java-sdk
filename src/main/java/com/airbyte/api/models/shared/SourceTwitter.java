@@ -14,13 +14,14 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceTwitter {
 
+public class SourceTwitter {
     /**
-     * App only Bearer Token. See the &lt;a href="https://developer.twitter.com/en/docs/authentication/oauth-2-0/bearer-tokens"&gt;docs&lt;/a&gt; for more information on how to obtain this token.
+     * App only Bearer Token. See the <a
+     * href="https://developer.twitter.com/en/docs/authentication/oauth-2-0/bearer-tokens">docs</a> for
+     * more information on how to obtain this token.
      */
     @JsonProperty("api_key")
     private String apiKey;
@@ -33,10 +34,13 @@ public class SourceTwitter {
     private Optional<OffsetDateTime> endDate;
 
     /**
-     * Query for matching Tweets. You can learn how to build this query by reading &lt;a href="https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/build-a-query"&gt; build a query guide &lt;/a&gt;.
+     * Query for matching Tweets. You can learn how to build this query by reading <a
+     * href="https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/build-a-query">
+     * build a query guide </a>.
      */
     @JsonProperty("query")
     private String query;
+
 
     @JsonProperty("sourceType")
     private Twitter sourceType;
@@ -68,11 +72,14 @@ public class SourceTwitter {
     public SourceTwitter(
             String apiKey,
             String query) {
-        this(apiKey, Optional.empty(), query, Optional.empty());
+        this(apiKey, Optional.empty(), query,
+            Optional.empty());
     }
 
     /**
-     * App only Bearer Token. See the &lt;a href="https://developer.twitter.com/en/docs/authentication/oauth-2-0/bearer-tokens"&gt;docs&lt;/a&gt; for more information on how to obtain this token.
+     * App only Bearer Token. See the <a
+     * href="https://developer.twitter.com/en/docs/authentication/oauth-2-0/bearer-tokens">docs</a> for
+     * more information on how to obtain this token.
      */
     @JsonIgnore
     public String apiKey() {
@@ -88,7 +95,9 @@ public class SourceTwitter {
     }
 
     /**
-     * Query for matching Tweets. You can learn how to build this query by reading &lt;a href="https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/build-a-query"&gt; build a query guide &lt;/a&gt;.
+     * Query for matching Tweets. You can learn how to build this query by reading <a
+     * href="https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/build-a-query">
+     * build a query guide </a>.
      */
     @JsonIgnore
     public String query() {
@@ -108,12 +117,15 @@ public class SourceTwitter {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * App only Bearer Token. See the &lt;a href="https://developer.twitter.com/en/docs/authentication/oauth-2-0/bearer-tokens"&gt;docs&lt;/a&gt; for more information on how to obtain this token.
+     * App only Bearer Token. See the <a
+     * href="https://developer.twitter.com/en/docs/authentication/oauth-2-0/bearer-tokens">docs</a> for
+     * more information on how to obtain this token.
      */
     public SourceTwitter withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -130,6 +142,7 @@ public class SourceTwitter {
         return this;
     }
 
+
     /**
      * The end date for retrieving tweets must be a minimum of 10 seconds prior to the request time.
      */
@@ -140,7 +153,9 @@ public class SourceTwitter {
     }
 
     /**
-     * Query for matching Tweets. You can learn how to build this query by reading &lt;a href="https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/build-a-query"&gt; build a query guide &lt;/a&gt;.
+     * Query for matching Tweets. You can learn how to build this query by reading <a
+     * href="https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/build-a-query">
+     * build a query guide </a>.
      */
     public SourceTwitter withQuery(String query) {
         Utils.checkNotNull(query, "query");
@@ -157,6 +172,7 @@ public class SourceTwitter {
         return this;
     }
 
+
     /**
      * The start date for retrieving tweets cannot be more than 7 days in the past.
      */
@@ -166,7 +182,6 @@ public class SourceTwitter {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -177,21 +192,18 @@ public class SourceTwitter {
         }
         SourceTwitter other = (SourceTwitter) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.query, other.query) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.query, other.query) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            endDate,
-            query,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKey, endDate, query,
+            sourceType, startDate);
     }
     
     @Override
@@ -203,29 +215,34 @@ public class SourceTwitter {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<OffsetDateTime> endDate = Optional.empty();
- 
+
         private String query;
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * App only Bearer Token. See the &lt;a href="https://developer.twitter.com/en/docs/authentication/oauth-2-0/bearer-tokens"&gt;docs&lt;/a&gt; for more information on how to obtain this token.
+         * App only Bearer Token. See the <a
+         * href="https://developer.twitter.com/en/docs/authentication/oauth-2-0/bearer-tokens">docs</a> for
+         * more information on how to obtain this token.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * The end date for retrieving tweets must be a minimum of 10 seconds prior to the request time.
@@ -245,14 +262,18 @@ public class SourceTwitter {
             return this;
         }
 
+
         /**
-         * Query for matching Tweets. You can learn how to build this query by reading &lt;a href="https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/build-a-query"&gt; build a query guide &lt;/a&gt;.
+         * Query for matching Tweets. You can learn how to build this query by reading <a
+         * href="https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/build-a-query">
+         * build a query guide </a>.
          */
         public Builder query(String query) {
             Utils.checkNotNull(query, "query");
             this.query = query;
             return this;
         }
+
 
         /**
          * The start date for retrieving tweets cannot be more than 7 days in the past.
@@ -271,14 +292,14 @@ public class SourceTwitter {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceTwitter build() {
+
             return new SourceTwitter(
-                apiKey,
-                endDate,
-                query,
+                apiKey, endDate, query,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Twitter> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

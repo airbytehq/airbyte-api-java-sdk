@@ -34,7 +34,7 @@ public enum DestinationPgvectorLanguage {
     @JsonValue
     private final String value;
 
-    private DestinationPgvectorLanguage(String value) {
+    DestinationPgvectorLanguage(String value) {
         this.value = value;
     }
     

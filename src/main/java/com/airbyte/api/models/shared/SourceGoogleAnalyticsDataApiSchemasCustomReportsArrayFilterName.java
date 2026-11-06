@@ -14,7 +14,7 @@ public enum SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayFilterName {
     @JsonValue
     private final String value;
 
-    private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayFilterName(String value) {
+    SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayFilterName(String value) {
         this.value = value;
     }
     

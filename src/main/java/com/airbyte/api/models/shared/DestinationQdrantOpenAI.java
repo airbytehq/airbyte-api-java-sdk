@@ -14,19 +14,20 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * DestinationQdrantOpenAI
  * 
- * <p>Use the OpenAI API to embed text. This option is using the text-embedding-ada-002 model with 1536 embedding dimensions.
+ * <p>Use the OpenAI API to embed text. This option is using the text-embedding-ada-002 model with 1536
+ * embedding dimensions.
  */
 public class DestinationQdrantOpenAI {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
     private Optional<? extends DestinationQdrantMode> mode;
+
 
     @JsonProperty("openai_key")
     private String openaiKey;
@@ -50,9 +51,10 @@ public class DestinationQdrantOpenAI {
         return openaiKey;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public DestinationQdrantOpenAI withOpenaiKey(String openaiKey) {
         Utils.checkNotNull(openaiKey, "openaiKey");
@@ -60,7 +62,6 @@ public class DestinationQdrantOpenAI {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -71,15 +72,14 @@ public class DestinationQdrantOpenAI {
         }
         DestinationQdrantOpenAI other = (DestinationQdrantOpenAI) o;
         return 
-            Objects.deepEquals(this.mode, other.mode) &&
-            Objects.deepEquals(this.openaiKey, other.openaiKey);
+            Utils.enhancedDeepEquals(this.mode, other.mode) &&
+            Utils.enhancedDeepEquals(this.openaiKey, other.openaiKey);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            mode,
-            openaiKey);
+        return Utils.enhancedHash(
+            mode, openaiKey);
     }
     
     @Override
@@ -88,25 +88,29 @@ public class DestinationQdrantOpenAI {
                 "mode", mode,
                 "openaiKey", openaiKey);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String openaiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder openaiKey(String openaiKey) {
             Utils.checkNotNull(openaiKey, "openaiKey");
             this.openaiKey = openaiKey;
             return this;
         }
-        
+
         public DestinationQdrantOpenAI build() {
+
             return new DestinationQdrantOpenAI(
                 openaiKey);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationQdrantMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

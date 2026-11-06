@@ -20,7 +20,7 @@ public enum TimePeriod {
     @JsonValue
     private final String value;
 
-    private TimePeriod(String value) {
+    TimePeriod(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum Fulcrum {
     @JsonValue
     private final String value;
 
-    private Fulcrum(String value) {
+    Fulcrum(String value) {
         this.value = value;
     }
     

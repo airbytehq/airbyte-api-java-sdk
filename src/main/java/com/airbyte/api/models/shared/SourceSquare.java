@@ -16,11 +16,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.LocalDate;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceSquare {
 
+public class SourceSquare {
     /**
      * Choose how to authenticate to Square.
      */
@@ -42,11 +41,13 @@ public class SourceSquare {
     @JsonProperty("is_sandbox")
     private Optional<Boolean> isSandbox;
 
+
     @JsonProperty("sourceType")
     private Square sourceType;
 
     /**
-     * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated. If not set, all data will be replicated.
+     * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated. If not set, all
+     * data will be replicated.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
@@ -70,7 +71,8 @@ public class SourceSquare {
     }
     
     public SourceSquare() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -104,16 +106,18 @@ public class SourceSquare {
     }
 
     /**
-     * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated. If not set, all data will be replicated.
+     * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated. If not set, all
+     * data will be replicated.
      */
     @JsonIgnore
     public Optional<LocalDate> startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Choose how to authenticate to Square.
@@ -123,6 +127,7 @@ public class SourceSquare {
         this.credentials = Optional.ofNullable(credentials);
         return this;
     }
+
 
     /**
      * Choose how to authenticate to Square.
@@ -142,6 +147,7 @@ public class SourceSquare {
         return this;
     }
 
+
     /**
      * In some streams there is an option to include deleted objects (Items, Categories, Discounts, Taxes)
      */
@@ -160,6 +166,7 @@ public class SourceSquare {
         return this;
     }
 
+
     /**
      * Determines whether to use the sandbox or production environment.
      */
@@ -170,7 +177,8 @@ public class SourceSquare {
     }
 
     /**
-     * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated. If not set, all data will be replicated.
+     * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated. If not set, all
+     * data will be replicated.
      */
     public SourceSquare withStartDate(LocalDate startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -178,8 +186,10 @@ public class SourceSquare {
         return this;
     }
 
+
     /**
-     * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated. If not set, all data will be replicated.
+     * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated. If not set, all
+     * data will be replicated.
      */
     public SourceSquare withStartDate(Optional<LocalDate> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -187,7 +197,6 @@ public class SourceSquare {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -198,21 +207,18 @@ public class SourceSquare {
         }
         SourceSquare other = (SourceSquare) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.includeDeletedObjects, other.includeDeletedObjects) &&
-            Objects.deepEquals(this.isSandbox, other.isSandbox) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.includeDeletedObjects, other.includeDeletedObjects) &&
+            Utils.enhancedDeepEquals(this.isSandbox, other.isSandbox) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            includeDeletedObjects,
-            isSandbox,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            credentials, includeDeletedObjects, isSandbox,
+            sourceType, startDate);
     }
     
     @Override
@@ -224,20 +230,22 @@ public class SourceSquare {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourceSquareAuthentication> credentials = Optional.empty();
- 
+
         private Optional<Boolean> includeDeletedObjects;
- 
+
         private Optional<Boolean> isSandbox;
- 
+
         private Optional<LocalDate> startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Choose how to authenticate to Square.
@@ -257,6 +265,7 @@ public class SourceSquare {
             return this;
         }
 
+
         /**
          * In some streams there is an option to include deleted objects (Items, Categories, Discounts, Taxes)
          */
@@ -274,6 +283,7 @@ public class SourceSquare {
             this.includeDeletedObjects = includeDeletedObjects;
             return this;
         }
+
 
         /**
          * Determines whether to use the sandbox or production environment.
@@ -293,8 +303,10 @@ public class SourceSquare {
             return this;
         }
 
+
         /**
-         * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated. If not set, all data will be replicated.
+         * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated. If not set, all
+         * data will be replicated.
          */
         public Builder startDate(LocalDate startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -303,14 +315,15 @@ public class SourceSquare {
         }
 
         /**
-         * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated. If not set, all data will be replicated.
+         * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated. If not set, all
+         * data will be replicated.
          */
         public Builder startDate(Optional<LocalDate> startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceSquare build() {
             if (includeDeletedObjects == null) {
                 includeDeletedObjects = _SINGLETON_VALUE_IncludeDeletedObjects.value();
@@ -321,12 +334,12 @@ public class SourceSquare {
             if (startDate == null) {
                 startDate = _SINGLETON_VALUE_StartDate.value();
             }
+
             return new SourceSquare(
-                credentials,
-                includeDeletedObjects,
-                isSandbox,
+                credentials, includeDeletedObjects, isSandbox,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_IncludeDeletedObjects =
                 new LazySingletonValue<>(

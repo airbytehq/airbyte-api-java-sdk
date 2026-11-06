@@ -2,6 +2,14 @@
 
 Please choose the environment
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceZohoCrmEnvironment;
+
+SourceZohoCrmEnvironment value = SourceZohoCrmEnvironment.PRODUCTION;
+```
+
 
 ## Values
 

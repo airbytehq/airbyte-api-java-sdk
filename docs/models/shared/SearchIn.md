@@ -1,5 +1,13 @@
 # SearchIn
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SearchIn;
+
+SearchIn value = SearchIn.TITLE;
+```
+
 
 ## Values
 

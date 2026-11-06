@@ -14,7 +14,7 @@ public enum Square {
     @JsonValue
     private final String value;
 
-    private Square(String value) {
+    Square(String value) {
         this.value = value;
     }
     

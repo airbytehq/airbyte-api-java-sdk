@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceSalesflare {
-
     /**
      * Enter you api key like this : Bearer YOUR_API_KEY
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Salesflare sourceType;
@@ -45,9 +45,10 @@ public class SourceSalesflare {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Enter you api key like this : Bearer YOUR_API_KEY
@@ -58,7 +59,6 @@ public class SourceSalesflare {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceSalesflare {
         }
         SourceSalesflare other = (SourceSalesflare) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, sourceType);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourceSalesflare {
                 "apiKey", apiKey,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Enter you api key like this : Bearer YOUR_API_KEY
@@ -103,11 +104,13 @@ public class SourceSalesflare {
             this.apiKey = apiKey;
             return this;
         }
-        
+
         public SourceSalesflare build() {
+
             return new SourceSalesflare(
                 apiKey);
         }
+
 
         private static final LazySingletonValue<Salesflare> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

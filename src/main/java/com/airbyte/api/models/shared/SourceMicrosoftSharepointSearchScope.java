@@ -11,7 +11,9 @@ import java.util.Optional;
 /**
  * SourceMicrosoftSharepointSearchScope
  * 
- * <p>Specifies the location(s) to search for files. Valid options are 'ACCESSIBLE_DRIVES' for all SharePoint drives the user can access, 'SHARED_ITEMS' for shared items the user has access to, and 'ALL' to search both.
+ * <p>Specifies the location(s) to search for files. Valid options are 'ACCESSIBLE_DRIVES' for all
+ * SharePoint drives the user can access, 'SHARED_ITEMS' for shared items the user has access to, and
+ * 'ALL' to search both.
  */
 public enum SourceMicrosoftSharepointSearchScope {
     ACCESSIBLE_DRIVES("ACCESSIBLE_DRIVES"),
@@ -21,7 +23,7 @@ public enum SourceMicrosoftSharepointSearchScope {
     @JsonValue
     private final String value;
 
-    private SourceMicrosoftSharepointSearchScope(String value) {
+    SourceMicrosoftSharepointSearchScope(String value) {
         this.value = value;
     }
     

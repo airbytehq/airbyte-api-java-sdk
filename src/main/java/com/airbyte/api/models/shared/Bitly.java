@@ -14,7 +14,7 @@ public enum Bitly {
     @JsonValue
     private final String value;
 
-    private Bitly(String value) {
+    Bitly(String value) {
         this.value = value;
     }
     

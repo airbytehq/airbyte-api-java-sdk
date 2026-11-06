@@ -14,7 +14,7 @@ public enum Bigquery {
     @JsonValue
     private final String value;
 
-    private Bigquery(String value) {
+    Bigquery(String value) {
         this.value = value;
     }
     

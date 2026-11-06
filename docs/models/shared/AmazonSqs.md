@@ -1,5 +1,13 @@
 # AmazonSqs
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.AmazonSqs;
+
+AmazonSqs value = AmazonSqs.AMAZON_SQS;
+```
+
 
 ## Values
 

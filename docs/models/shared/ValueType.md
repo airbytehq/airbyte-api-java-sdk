@@ -1,5 +1,13 @@
 # ValueType
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.ValueType;
+
+ValueType value = ValueType.INT64_VALUE;
+```
+
 
 ## Values
 

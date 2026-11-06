@@ -18,8 +18,8 @@ import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -39,20 +39,23 @@ public class SelfManagedReplicaSet {
     @JsonProperty("auth_source")
     private Optional<String> authSource;
 
+
     @JsonProperty("cluster_type")
     private SourceMongodbV2ClusterType clusterType;
 
     /**
-     * The connection string of the cluster that you want to replicate.  https://www.mongodb.com/docs/manual/reference/connection-string/#find-your-self-hosted-deployment-s-connection-string for more information.
+     * The connection string of the cluster that you want to replicate.
+     * https://www.mongodb.com/docs/manual/reference/connection-string/#find-your-self-hosted-deployment-s-connection-string
+     * for more information.
      */
     @JsonProperty("connection_string")
     private String connectionString;
 
     /**
-     * The name of the MongoDB database that contains the collection(s) to replicate.
+     * The names of the MongoDB databases that contain the collection(s) to replicate.
      */
-    @JsonProperty("database")
-    private String database;
+    @JsonProperty("databases")
+    private List<String> databases;
 
     /**
      * The password associated with this username.
@@ -79,13 +82,13 @@ public class SelfManagedReplicaSet {
     public SelfManagedReplicaSet(
             @JsonProperty("auth_source") Optional<String> authSource,
             @JsonProperty("connection_string") String connectionString,
-            @JsonProperty("database") String database,
+            @JsonProperty("databases") List<String> databases,
             @JsonProperty("password") Optional<String> password,
             @JsonProperty("schema_enforced") Optional<Boolean> schemaEnforced,
             @JsonProperty("username") Optional<String> username) {
         Utils.checkNotNull(authSource, "authSource");
         Utils.checkNotNull(connectionString, "connectionString");
-        Utils.checkNotNull(database, "database");
+        Utils.checkNotNull(databases, "databases");
         Utils.checkNotNull(password, "password");
         Utils.checkNotNull(schemaEnforced, "schemaEnforced");
         Utils.checkNotNull(username, "username");
@@ -93,7 +96,7 @@ public class SelfManagedReplicaSet {
         this.authSource = authSource;
         this.clusterType = Builder._SINGLETON_VALUE_ClusterType.value();
         this.connectionString = connectionString;
-        this.database = database;
+        this.databases = databases;
         this.password = password;
         this.schemaEnforced = schemaEnforced;
         this.username = username;
@@ -101,8 +104,9 @@ public class SelfManagedReplicaSet {
     
     public SelfManagedReplicaSet(
             String connectionString,
-            String database) {
-        this(Optional.empty(), connectionString, database, Optional.empty(), Optional.empty(), Optional.empty());
+            List<String> databases) {
+        this(Optional.empty(), connectionString, databases,
+            Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     @JsonAnyGetter
@@ -124,7 +128,9 @@ public class SelfManagedReplicaSet {
     }
 
     /**
-     * The connection string of the cluster that you want to replicate.  https://www.mongodb.com/docs/manual/reference/connection-string/#find-your-self-hosted-deployment-s-connection-string for more information.
+     * The connection string of the cluster that you want to replicate.
+     * https://www.mongodb.com/docs/manual/reference/connection-string/#find-your-self-hosted-deployment-s-connection-string
+     * for more information.
      */
     @JsonIgnore
     public String connectionString() {
@@ -132,11 +138,11 @@ public class SelfManagedReplicaSet {
     }
 
     /**
-     * The name of the MongoDB database that contains the collection(s) to replicate.
+     * The names of the MongoDB databases that contain the collection(s) to replicate.
      */
     @JsonIgnore
-    public String database() {
-        return database;
+    public List<String> databases() {
+        return databases;
     }
 
     /**
@@ -163,9 +169,10 @@ public class SelfManagedReplicaSet {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SelfManagedReplicaSet withAdditionalProperty(String key, Object value) {
@@ -173,8 +180,7 @@ public class SelfManagedReplicaSet {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SelfManagedReplicaSet withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -190,6 +196,7 @@ public class SelfManagedReplicaSet {
         return this;
     }
 
+
     /**
      * The authentication source where the user information is stored.
      */
@@ -200,7 +207,9 @@ public class SelfManagedReplicaSet {
     }
 
     /**
-     * The connection string of the cluster that you want to replicate.  https://www.mongodb.com/docs/manual/reference/connection-string/#find-your-self-hosted-deployment-s-connection-string for more information.
+     * The connection string of the cluster that you want to replicate.
+     * https://www.mongodb.com/docs/manual/reference/connection-string/#find-your-self-hosted-deployment-s-connection-string
+     * for more information.
      */
     public SelfManagedReplicaSet withConnectionString(String connectionString) {
         Utils.checkNotNull(connectionString, "connectionString");
@@ -209,11 +218,11 @@ public class SelfManagedReplicaSet {
     }
 
     /**
-     * The name of the MongoDB database that contains the collection(s) to replicate.
+     * The names of the MongoDB databases that contain the collection(s) to replicate.
      */
-    public SelfManagedReplicaSet withDatabase(String database) {
-        Utils.checkNotNull(database, "database");
-        this.database = database;
+    public SelfManagedReplicaSet withDatabases(List<String> databases) {
+        Utils.checkNotNull(databases, "databases");
+        this.databases = databases;
         return this;
     }
 
@@ -225,6 +234,7 @@ public class SelfManagedReplicaSet {
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     /**
      * The password associated with this username.
@@ -244,6 +254,7 @@ public class SelfManagedReplicaSet {
         return this;
     }
 
+
     /**
      * When enabled, syncs will validate and structure records against the stream's schema.
      */
@@ -262,6 +273,7 @@ public class SelfManagedReplicaSet {
         return this;
     }
 
+
     /**
      * The username which is used to access the database.
      */
@@ -271,7 +283,6 @@ public class SelfManagedReplicaSet {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -282,27 +293,22 @@ public class SelfManagedReplicaSet {
         }
         SelfManagedReplicaSet other = (SelfManagedReplicaSet) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.authSource, other.authSource) &&
-            Objects.deepEquals(this.clusterType, other.clusterType) &&
-            Objects.deepEquals(this.connectionString, other.connectionString) &&
-            Objects.deepEquals(this.database, other.database) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.schemaEnforced, other.schemaEnforced) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.authSource, other.authSource) &&
+            Utils.enhancedDeepEquals(this.clusterType, other.clusterType) &&
+            Utils.enhancedDeepEquals(this.connectionString, other.connectionString) &&
+            Utils.enhancedDeepEquals(this.databases, other.databases) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.schemaEnforced, other.schemaEnforced) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            authSource,
-            clusterType,
-            connectionString,
-            database,
-            password,
-            schemaEnforced,
-            username);
+        return Utils.enhancedHash(
+            additionalProperties, authSource, clusterType,
+            connectionString, databases, password,
+            schemaEnforced, username);
     }
     
     @Override
@@ -312,28 +318,29 @@ public class SelfManagedReplicaSet {
                 "authSource", authSource,
                 "clusterType", clusterType,
                 "connectionString", connectionString,
-                "database", database,
+                "databases", databases,
                 "password", password,
                 "schemaEnforced", schemaEnforced,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<String> authSource;
- 
+
         private String connectionString;
- 
-        private String database;
- 
+
+        private List<String> databases;
+
         private Optional<String> password = Optional.empty();
- 
+
         private Optional<Boolean> schemaEnforced;
- 
+
         private Optional<String> username = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -354,6 +361,7 @@ public class SelfManagedReplicaSet {
             return this;
         }
 
+
         /**
          * The authentication source where the user information is stored.
          */
@@ -372,8 +380,11 @@ public class SelfManagedReplicaSet {
             return this;
         }
 
+
         /**
-         * The connection string of the cluster that you want to replicate.  https://www.mongodb.com/docs/manual/reference/connection-string/#find-your-self-hosted-deployment-s-connection-string for more information.
+         * The connection string of the cluster that you want to replicate.
+         * https://www.mongodb.com/docs/manual/reference/connection-string/#find-your-self-hosted-deployment-s-connection-string
+         * for more information.
          */
         public Builder connectionString(String connectionString) {
             Utils.checkNotNull(connectionString, "connectionString");
@@ -381,14 +392,16 @@ public class SelfManagedReplicaSet {
             return this;
         }
 
+
         /**
-         * The name of the MongoDB database that contains the collection(s) to replicate.
+         * The names of the MongoDB databases that contain the collection(s) to replicate.
          */
-        public Builder database(String database) {
-            Utils.checkNotNull(database, "database");
-            this.database = database;
+        public Builder databases(List<String> databases) {
+            Utils.checkNotNull(databases, "databases");
+            this.databases = databases;
             return this;
         }
+
 
         /**
          * The password associated with this username.
@@ -408,6 +421,7 @@ public class SelfManagedReplicaSet {
             return this;
         }
 
+
         /**
          * When enabled, syncs will validate and structure records against the stream's schema.
          */
@@ -426,6 +440,7 @@ public class SelfManagedReplicaSet {
             return this;
         }
 
+
         /**
          * The username which is used to access the database.
          */
@@ -443,7 +458,7 @@ public class SelfManagedReplicaSet {
             this.username = username;
             return this;
         }
-        
+
         public SelfManagedReplicaSet build() {
             if (authSource == null) {
                 authSource = _SINGLETON_VALUE_AuthSource.value();
@@ -451,15 +466,13 @@ public class SelfManagedReplicaSet {
             if (schemaEnforced == null) {
                 schemaEnforced = _SINGLETON_VALUE_SchemaEnforced.value();
             }
+
             return new SelfManagedReplicaSet(
-                authSource,
-                connectionString,
-                database,
-                password,
-                schemaEnforced,
-                username)
+                authSource, connectionString, databases,
+                password, schemaEnforced, username)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_AuthSource =
                 new LazySingletonValue<>(

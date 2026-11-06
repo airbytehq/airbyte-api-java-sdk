@@ -14,7 +14,7 @@ public enum SourceQuickbooksAuthType {
     @JsonValue
     private final String value;
 
-    private SourceQuickbooksAuthType(String value) {
+    SourceQuickbooksAuthType(String value) {
         this.value = value;
     }
     

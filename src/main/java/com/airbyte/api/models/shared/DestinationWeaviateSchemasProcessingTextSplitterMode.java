@@ -14,7 +14,7 @@ public enum DestinationWeaviateSchemasProcessingTextSplitterMode {
     @JsonValue
     private final String value;
 
-    private DestinationWeaviateSchemasProcessingTextSplitterMode(String value) {
+    DestinationWeaviateSchemasProcessingTextSplitterMode(String value) {
         this.value = value;
     }
     

@@ -16,11 +16,10 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.time.LocalDate;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceNasa {
 
+public class SourceNasa {
     /**
      * API access key used to retrieve data from the NASA APOD API.
      */
@@ -28,38 +27,48 @@ public class SourceNasa {
     private String apiKey;
 
     /**
-     * Indicates whether concept tags should be returned with the rest of the response.  The concept tags are not necessarily included in the explanation, but rather derived from common search tags that are associated with the description text. (Better than just pure text search.) Defaults to False.
+     * Indicates whether concept tags should be returned with the rest of the response. The concept tags
+     * are not necessarily included in the explanation, but rather derived from common search tags that are
+     * associated with the description text. (Better than just pure text search.) Defaults to False.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("concept_tags")
     private Optional<Boolean> conceptTags;
 
     /**
-     * A positive integer, no greater than 100. If this is specified then `count` randomly  chosen images will be returned in a JSON array. Cannot be used in conjunction with  `date` or `start_date` and `end_date`.
+     * A positive integer, no greater than 100. If this is specified then `count` randomly  chosen images
+     * will be returned in a JSON array. Cannot be used in conjunction with  `date` or `start_date` and
+     * `end_date`.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("count")
     private Optional<Long> count;
 
     /**
-     * Indicates that end of a date range. If `start_date` is specified without an `end_date` then `end_date` defaults to the current date.
+     * Indicates that end of a date range. If `start_date` is specified without an `end_date` then
+     * `end_date` defaults to the current date.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("end_date")
     private Optional<LocalDate> endDate;
 
+
     @JsonProperty("sourceType")
     private Nasa sourceType;
 
     /**
-     * Indicates the start of a date range. All images in the range from `start_date` to  `end_date` will be returned in a JSON array. Must be after 1995-06-16, the first day an APOD picture was posted. There are no images for tomorrow available through this API.
+     * Indicates the start of a date range. All images in the range from `start_date` to  `end_date` will
+     * be returned in a JSON array. Must be after 1995-06-16, the first day an APOD picture was posted.
+     * 
+     * <p>There are no images for tomorrow available through this API.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
     private Optional<LocalDate> startDate;
 
     /**
-     * Indicates whether the API should return a thumbnail image URL for video files. If set to True, the API returns URL of video thumbnail. If an APOD is not a video, this parameter is ignored.
+     * Indicates whether the API should return a thumbnail image URL for video files. If set to True, the
+     * API returns URL of video thumbnail. If an APOD is not a video, this parameter is ignored.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("thumbs")
@@ -90,7 +99,8 @@ public class SourceNasa {
     
     public SourceNasa(
             String apiKey) {
-        this(apiKey, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(apiKey, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -102,7 +112,9 @@ public class SourceNasa {
     }
 
     /**
-     * Indicates whether concept tags should be returned with the rest of the response.  The concept tags are not necessarily included in the explanation, but rather derived from common search tags that are associated with the description text. (Better than just pure text search.) Defaults to False.
+     * Indicates whether concept tags should be returned with the rest of the response. The concept tags
+     * are not necessarily included in the explanation, but rather derived from common search tags that are
+     * associated with the description text. (Better than just pure text search.) Defaults to False.
      */
     @JsonIgnore
     public Optional<Boolean> conceptTags() {
@@ -110,7 +122,9 @@ public class SourceNasa {
     }
 
     /**
-     * A positive integer, no greater than 100. If this is specified then `count` randomly  chosen images will be returned in a JSON array. Cannot be used in conjunction with  `date` or `start_date` and `end_date`.
+     * A positive integer, no greater than 100. If this is specified then `count` randomly  chosen images
+     * will be returned in a JSON array. Cannot be used in conjunction with  `date` or `start_date` and
+     * `end_date`.
      */
     @JsonIgnore
     public Optional<Long> count() {
@@ -118,7 +132,8 @@ public class SourceNasa {
     }
 
     /**
-     * Indicates that end of a date range. If `start_date` is specified without an `end_date` then `end_date` defaults to the current date.
+     * Indicates that end of a date range. If `start_date` is specified without an `end_date` then
+     * `end_date` defaults to the current date.
      */
     @JsonIgnore
     public Optional<LocalDate> endDate() {
@@ -131,7 +146,10 @@ public class SourceNasa {
     }
 
     /**
-     * Indicates the start of a date range. All images in the range from `start_date` to  `end_date` will be returned in a JSON array. Must be after 1995-06-16, the first day an APOD picture was posted. There are no images for tomorrow available through this API.
+     * Indicates the start of a date range. All images in the range from `start_date` to  `end_date` will
+     * be returned in a JSON array. Must be after 1995-06-16, the first day an APOD picture was posted.
+     * 
+     * <p>There are no images for tomorrow available through this API.
      */
     @JsonIgnore
     public Optional<LocalDate> startDate() {
@@ -139,16 +157,18 @@ public class SourceNasa {
     }
 
     /**
-     * Indicates whether the API should return a thumbnail image URL for video files. If set to True, the API returns URL of video thumbnail. If an APOD is not a video, this parameter is ignored.
+     * Indicates whether the API should return a thumbnail image URL for video files. If set to True, the
+     * API returns URL of video thumbnail. If an APOD is not a video, this parameter is ignored.
      */
     @JsonIgnore
     public Optional<Boolean> thumbs() {
         return thumbs;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API access key used to retrieve data from the NASA APOD API.
@@ -160,7 +180,9 @@ public class SourceNasa {
     }
 
     /**
-     * Indicates whether concept tags should be returned with the rest of the response.  The concept tags are not necessarily included in the explanation, but rather derived from common search tags that are associated with the description text. (Better than just pure text search.) Defaults to False.
+     * Indicates whether concept tags should be returned with the rest of the response. The concept tags
+     * are not necessarily included in the explanation, but rather derived from common search tags that are
+     * associated with the description text. (Better than just pure text search.) Defaults to False.
      */
     public SourceNasa withConceptTags(boolean conceptTags) {
         Utils.checkNotNull(conceptTags, "conceptTags");
@@ -168,8 +190,11 @@ public class SourceNasa {
         return this;
     }
 
+
     /**
-     * Indicates whether concept tags should be returned with the rest of the response.  The concept tags are not necessarily included in the explanation, but rather derived from common search tags that are associated with the description text. (Better than just pure text search.) Defaults to False.
+     * Indicates whether concept tags should be returned with the rest of the response. The concept tags
+     * are not necessarily included in the explanation, but rather derived from common search tags that are
+     * associated with the description text. (Better than just pure text search.) Defaults to False.
      */
     public SourceNasa withConceptTags(Optional<Boolean> conceptTags) {
         Utils.checkNotNull(conceptTags, "conceptTags");
@@ -178,7 +203,9 @@ public class SourceNasa {
     }
 
     /**
-     * A positive integer, no greater than 100. If this is specified then `count` randomly  chosen images will be returned in a JSON array. Cannot be used in conjunction with  `date` or `start_date` and `end_date`.
+     * A positive integer, no greater than 100. If this is specified then `count` randomly  chosen images
+     * will be returned in a JSON array. Cannot be used in conjunction with  `date` or `start_date` and
+     * `end_date`.
      */
     public SourceNasa withCount(long count) {
         Utils.checkNotNull(count, "count");
@@ -186,8 +213,11 @@ public class SourceNasa {
         return this;
     }
 
+
     /**
-     * A positive integer, no greater than 100. If this is specified then `count` randomly  chosen images will be returned in a JSON array. Cannot be used in conjunction with  `date` or `start_date` and `end_date`.
+     * A positive integer, no greater than 100. If this is specified then `count` randomly  chosen images
+     * will be returned in a JSON array. Cannot be used in conjunction with  `date` or `start_date` and
+     * `end_date`.
      */
     public SourceNasa withCount(Optional<Long> count) {
         Utils.checkNotNull(count, "count");
@@ -196,7 +226,8 @@ public class SourceNasa {
     }
 
     /**
-     * Indicates that end of a date range. If `start_date` is specified without an `end_date` then `end_date` defaults to the current date.
+     * Indicates that end of a date range. If `start_date` is specified without an `end_date` then
+     * `end_date` defaults to the current date.
      */
     public SourceNasa withEndDate(LocalDate endDate) {
         Utils.checkNotNull(endDate, "endDate");
@@ -204,8 +235,10 @@ public class SourceNasa {
         return this;
     }
 
+
     /**
-     * Indicates that end of a date range. If `start_date` is specified without an `end_date` then `end_date` defaults to the current date.
+     * Indicates that end of a date range. If `start_date` is specified without an `end_date` then
+     * `end_date` defaults to the current date.
      */
     public SourceNasa withEndDate(Optional<LocalDate> endDate) {
         Utils.checkNotNull(endDate, "endDate");
@@ -214,7 +247,10 @@ public class SourceNasa {
     }
 
     /**
-     * Indicates the start of a date range. All images in the range from `start_date` to  `end_date` will be returned in a JSON array. Must be after 1995-06-16, the first day an APOD picture was posted. There are no images for tomorrow available through this API.
+     * Indicates the start of a date range. All images in the range from `start_date` to  `end_date` will
+     * be returned in a JSON array. Must be after 1995-06-16, the first day an APOD picture was posted.
+     * 
+     * <p>There are no images for tomorrow available through this API.
      */
     public SourceNasa withStartDate(LocalDate startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -222,8 +258,12 @@ public class SourceNasa {
         return this;
     }
 
+
     /**
-     * Indicates the start of a date range. All images in the range from `start_date` to  `end_date` will be returned in a JSON array. Must be after 1995-06-16, the first day an APOD picture was posted. There are no images for tomorrow available through this API.
+     * Indicates the start of a date range. All images in the range from `start_date` to  `end_date` will
+     * be returned in a JSON array. Must be after 1995-06-16, the first day an APOD picture was posted.
+     * 
+     * <p>There are no images for tomorrow available through this API.
      */
     public SourceNasa withStartDate(Optional<LocalDate> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -232,7 +272,8 @@ public class SourceNasa {
     }
 
     /**
-     * Indicates whether the API should return a thumbnail image URL for video files. If set to True, the API returns URL of video thumbnail. If an APOD is not a video, this parameter is ignored.
+     * Indicates whether the API should return a thumbnail image URL for video files. If set to True, the
+     * API returns URL of video thumbnail. If an APOD is not a video, this parameter is ignored.
      */
     public SourceNasa withThumbs(boolean thumbs) {
         Utils.checkNotNull(thumbs, "thumbs");
@@ -240,8 +281,10 @@ public class SourceNasa {
         return this;
     }
 
+
     /**
-     * Indicates whether the API should return a thumbnail image URL for video files. If set to True, the API returns URL of video thumbnail. If an APOD is not a video, this parameter is ignored.
+     * Indicates whether the API should return a thumbnail image URL for video files. If set to True, the
+     * API returns URL of video thumbnail. If an APOD is not a video, this parameter is ignored.
      */
     public SourceNasa withThumbs(Optional<Boolean> thumbs) {
         Utils.checkNotNull(thumbs, "thumbs");
@@ -249,7 +292,6 @@ public class SourceNasa {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -260,24 +302,20 @@ public class SourceNasa {
         }
         SourceNasa other = (SourceNasa) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.conceptTags, other.conceptTags) &&
-            Objects.deepEquals(this.count, other.count) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.thumbs, other.thumbs);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.conceptTags, other.conceptTags) &&
+            Utils.enhancedDeepEquals(this.count, other.count) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.thumbs, other.thumbs);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            conceptTags,
-            count,
-            endDate,
-            sourceType,
-            startDate,
+        return Utils.enhancedHash(
+            apiKey, conceptTags, count,
+            endDate, sourceType, startDate,
             thumbs);
     }
     
@@ -292,24 +330,26 @@ public class SourceNasa {
                 "startDate", startDate,
                 "thumbs", thumbs);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<Boolean> conceptTags;
- 
+
         private Optional<Long> count = Optional.empty();
- 
+
         private Optional<LocalDate> endDate = Optional.empty();
- 
+
         private Optional<LocalDate> startDate = Optional.empty();
- 
+
         private Optional<Boolean> thumbs;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API access key used to retrieve data from the NASA APOD API.
@@ -320,8 +360,11 @@ public class SourceNasa {
             return this;
         }
 
+
         /**
-         * Indicates whether concept tags should be returned with the rest of the response.  The concept tags are not necessarily included in the explanation, but rather derived from common search tags that are associated with the description text. (Better than just pure text search.) Defaults to False.
+         * Indicates whether concept tags should be returned with the rest of the response. The concept tags
+         * are not necessarily included in the explanation, but rather derived from common search tags that are
+         * associated with the description text. (Better than just pure text search.) Defaults to False.
          */
         public Builder conceptTags(boolean conceptTags) {
             Utils.checkNotNull(conceptTags, "conceptTags");
@@ -330,7 +373,9 @@ public class SourceNasa {
         }
 
         /**
-         * Indicates whether concept tags should be returned with the rest of the response.  The concept tags are not necessarily included in the explanation, but rather derived from common search tags that are associated with the description text. (Better than just pure text search.) Defaults to False.
+         * Indicates whether concept tags should be returned with the rest of the response. The concept tags
+         * are not necessarily included in the explanation, but rather derived from common search tags that are
+         * associated with the description text. (Better than just pure text search.) Defaults to False.
          */
         public Builder conceptTags(Optional<Boolean> conceptTags) {
             Utils.checkNotNull(conceptTags, "conceptTags");
@@ -338,8 +383,11 @@ public class SourceNasa {
             return this;
         }
 
+
         /**
-         * A positive integer, no greater than 100. If this is specified then `count` randomly  chosen images will be returned in a JSON array. Cannot be used in conjunction with  `date` or `start_date` and `end_date`.
+         * A positive integer, no greater than 100. If this is specified then `count` randomly  chosen images
+         * will be returned in a JSON array. Cannot be used in conjunction with  `date` or `start_date` and
+         * `end_date`.
          */
         public Builder count(long count) {
             Utils.checkNotNull(count, "count");
@@ -348,7 +396,9 @@ public class SourceNasa {
         }
 
         /**
-         * A positive integer, no greater than 100. If this is specified then `count` randomly  chosen images will be returned in a JSON array. Cannot be used in conjunction with  `date` or `start_date` and `end_date`.
+         * A positive integer, no greater than 100. If this is specified then `count` randomly  chosen images
+         * will be returned in a JSON array. Cannot be used in conjunction with  `date` or `start_date` and
+         * `end_date`.
          */
         public Builder count(Optional<Long> count) {
             Utils.checkNotNull(count, "count");
@@ -356,8 +406,10 @@ public class SourceNasa {
             return this;
         }
 
+
         /**
-         * Indicates that end of a date range. If `start_date` is specified without an `end_date` then `end_date` defaults to the current date.
+         * Indicates that end of a date range. If `start_date` is specified without an `end_date` then
+         * `end_date` defaults to the current date.
          */
         public Builder endDate(LocalDate endDate) {
             Utils.checkNotNull(endDate, "endDate");
@@ -366,7 +418,8 @@ public class SourceNasa {
         }
 
         /**
-         * Indicates that end of a date range. If `start_date` is specified without an `end_date` then `end_date` defaults to the current date.
+         * Indicates that end of a date range. If `start_date` is specified without an `end_date` then
+         * `end_date` defaults to the current date.
          */
         public Builder endDate(Optional<LocalDate> endDate) {
             Utils.checkNotNull(endDate, "endDate");
@@ -374,8 +427,12 @@ public class SourceNasa {
             return this;
         }
 
+
         /**
-         * Indicates the start of a date range. All images in the range from `start_date` to  `end_date` will be returned in a JSON array. Must be after 1995-06-16, the first day an APOD picture was posted. There are no images for tomorrow available through this API.
+         * Indicates the start of a date range. All images in the range from `start_date` to  `end_date` will
+         * be returned in a JSON array. Must be after 1995-06-16, the first day an APOD picture was posted.
+         * 
+         * <p>There are no images for tomorrow available through this API.
          */
         public Builder startDate(LocalDate startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -384,7 +441,10 @@ public class SourceNasa {
         }
 
         /**
-         * Indicates the start of a date range. All images in the range from `start_date` to  `end_date` will be returned in a JSON array. Must be after 1995-06-16, the first day an APOD picture was posted. There are no images for tomorrow available through this API.
+         * Indicates the start of a date range. All images in the range from `start_date` to  `end_date` will
+         * be returned in a JSON array. Must be after 1995-06-16, the first day an APOD picture was posted.
+         * 
+         * <p>There are no images for tomorrow available through this API.
          */
         public Builder startDate(Optional<LocalDate> startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -392,8 +452,10 @@ public class SourceNasa {
             return this;
         }
 
+
         /**
-         * Indicates whether the API should return a thumbnail image URL for video files. If set to True, the API returns URL of video thumbnail. If an APOD is not a video, this parameter is ignored.
+         * Indicates whether the API should return a thumbnail image URL for video files. If set to True, the
+         * API returns URL of video thumbnail. If an APOD is not a video, this parameter is ignored.
          */
         public Builder thumbs(boolean thumbs) {
             Utils.checkNotNull(thumbs, "thumbs");
@@ -402,14 +464,15 @@ public class SourceNasa {
         }
 
         /**
-         * Indicates whether the API should return a thumbnail image URL for video files. If set to True, the API returns URL of video thumbnail. If an APOD is not a video, this parameter is ignored.
+         * Indicates whether the API should return a thumbnail image URL for video files. If set to True, the
+         * API returns URL of video thumbnail. If an APOD is not a video, this parameter is ignored.
          */
         public Builder thumbs(Optional<Boolean> thumbs) {
             Utils.checkNotNull(thumbs, "thumbs");
             this.thumbs = thumbs;
             return this;
         }
-        
+
         public SourceNasa build() {
             if (conceptTags == null) {
                 conceptTags = _SINGLETON_VALUE_ConceptTags.value();
@@ -417,14 +480,12 @@ public class SourceNasa {
             if (thumbs == null) {
                 thumbs = _SINGLETON_VALUE_Thumbs.value();
             }
+
             return new SourceNasa(
-                apiKey,
-                conceptTags,
-                count,
-                endDate,
-                startDate,
-                thumbs);
+                apiKey, conceptTags, count,
+                endDate, startDate, thumbs);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_ConceptTags =
                 new LazySingletonValue<>(

@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceKeka {
 
@@ -30,11 +30,14 @@ public class SourceKeka {
     @JsonProperty("client_secret")
     private String clientSecret;
 
+
     @JsonProperty("grant_type")
     private String grantType;
 
+
     @JsonProperty("scope")
     private String scope;
+
 
     @JsonProperty("sourceType")
     private Keka sourceType;
@@ -95,9 +98,10 @@ public class SourceKeka {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceKeka withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -135,7 +139,6 @@ public class SourceKeka {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -146,23 +149,19 @@ public class SourceKeka {
         }
         SourceKeka other = (SourceKeka) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.grantType, other.grantType) &&
-            Objects.deepEquals(this.scope, other.scope) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.grantType, other.grantType) &&
+            Utils.enhancedDeepEquals(this.scope, other.scope) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            clientId,
-            clientSecret,
-            grantType,
-            scope,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, clientId, clientSecret,
+            grantType, scope, sourceType);
     }
     
     @Override
@@ -175,28 +174,31 @@ public class SourceKeka {
                 "scope", scope,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String grantType;
- 
+
         private String scope;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Your client identifier for authentication.
@@ -207,6 +209,7 @@ public class SourceKeka {
             return this;
         }
 
+
         /**
          * Your client secret for secure authentication.
          */
@@ -216,26 +219,27 @@ public class SourceKeka {
             return this;
         }
 
+
         public Builder grantType(String grantType) {
             Utils.checkNotNull(grantType, "grantType");
             this.grantType = grantType;
             return this;
         }
 
+
         public Builder scope(String scope) {
             Utils.checkNotNull(scope, "scope");
             this.scope = scope;
             return this;
         }
-        
+
         public SourceKeka build() {
+
             return new SourceKeka(
-                apiKey,
-                clientId,
-                clientSecret,
-                grantType,
-                scope);
+                apiKey, clientId, clientSecret,
+                grantType, scope);
         }
+
 
         private static final LazySingletonValue<Keka> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

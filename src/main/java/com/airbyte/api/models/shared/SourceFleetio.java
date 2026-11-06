@@ -11,15 +11,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceFleetio {
 
     @JsonProperty("account_token")
     private String accountToken;
 
+
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Fleetio sourceType;
@@ -50,9 +52,10 @@ public class SourceFleetio {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceFleetio withAccountToken(String accountToken) {
         Utils.checkNotNull(accountToken, "accountToken");
@@ -66,7 +69,6 @@ public class SourceFleetio {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -77,17 +79,15 @@ public class SourceFleetio {
         }
         SourceFleetio other = (SourceFleetio) o;
         return 
-            Objects.deepEquals(this.accountToken, other.accountToken) &&
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.accountToken, other.accountToken) &&
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountToken,
-            apiKey,
-            sourceType);
+        return Utils.enhancedHash(
+            accountToken, apiKey, sourceType);
     }
     
     @Override
@@ -97,16 +97,18 @@ public class SourceFleetio {
                 "apiKey", apiKey,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accountToken;
- 
+
         private String apiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder accountToken(String accountToken) {
             Utils.checkNotNull(accountToken, "accountToken");
@@ -114,17 +116,19 @@ public class SourceFleetio {
             return this;
         }
 
+
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
-        
+
         public SourceFleetio build() {
+
             return new SourceFleetio(
-                accountToken,
-                apiKey);
+                accountToken, apiKey);
         }
+
 
         private static final LazySingletonValue<Fleetio> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

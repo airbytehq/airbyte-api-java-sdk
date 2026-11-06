@@ -14,16 +14,16 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceGcsAuthenticateViaGoogleOAuth {
 
+public class SourceGcsAuthenticateViaGoogleOAuth {
     /**
      * Access Token
      */
     @JsonProperty("access_token")
     private String accessToken;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
@@ -102,9 +102,10 @@ public class SourceGcsAuthenticateViaGoogleOAuth {
         return refreshToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Access Token
@@ -142,7 +143,6 @@ public class SourceGcsAuthenticateViaGoogleOAuth {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -153,21 +153,18 @@ public class SourceGcsAuthenticateViaGoogleOAuth {
         }
         SourceGcsAuthenticateViaGoogleOAuth other = (SourceGcsAuthenticateViaGoogleOAuth) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            authType,
-            clientId,
-            clientSecret,
-            refreshToken);
+        return Utils.enhancedHash(
+            accessToken, authType, clientId,
+            clientSecret, refreshToken);
     }
     
     @Override
@@ -179,20 +176,22 @@ public class SourceGcsAuthenticateViaGoogleOAuth {
                 "clientSecret", clientSecret,
                 "refreshToken", refreshToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String refreshToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Access Token
@@ -203,6 +202,7 @@ public class SourceGcsAuthenticateViaGoogleOAuth {
             return this;
         }
 
+
         /**
          * Client ID
          */
@@ -211,6 +211,7 @@ public class SourceGcsAuthenticateViaGoogleOAuth {
             this.clientId = clientId;
             return this;
         }
+
 
         /**
          * Client Secret
@@ -221,6 +222,7 @@ public class SourceGcsAuthenticateViaGoogleOAuth {
             return this;
         }
 
+
         /**
          * Access Token
          */
@@ -229,14 +231,14 @@ public class SourceGcsAuthenticateViaGoogleOAuth {
             this.refreshToken = refreshToken;
             return this;
         }
-        
+
         public SourceGcsAuthenticateViaGoogleOAuth build() {
+
             return new SourceGcsAuthenticateViaGoogleOAuth(
-                accessToken,
-                clientId,
-                clientSecret,
+                accessToken, clientId, clientSecret,
                 refreshToken);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceGcsAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

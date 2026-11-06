@@ -14,7 +14,7 @@ public enum SourceOracleEnterpriseEncryptionMethod {
     @JsonValue
     private final String value;
 
-    private SourceOracleEnterpriseEncryptionMethod(String value) {
+    SourceOracleEnterpriseEncryptionMethod(String value) {
         this.value = value;
     }
     

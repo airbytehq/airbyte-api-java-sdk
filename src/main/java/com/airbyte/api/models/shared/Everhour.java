@@ -14,7 +14,7 @@ public enum Everhour {
     @JsonValue
     private final String value;
 
-    private Everhour(String value) {
+    Everhour(String value) {
         this.value = value;
     }
     

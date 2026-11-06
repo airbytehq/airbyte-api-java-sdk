@@ -11,15 +11,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class AuthenticateViaAPIKey {
-
     /**
-     * API Key for making authenticated requests. More instruction on how to find this value in our &lt;a href="https://docs.airbyte.com/integrations/sources/salesloft#setup-guide"&gt;docs&lt;/a&gt;
+     * API Key for making authenticated requests. More instruction on how to find this value in our <a
+     * href="https://docs.airbyte.com/integrations/sources/salesloft#setup-guide">docs</a>
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("auth_type")
     private SourceSalesloftSchemasAuthType authType;
@@ -33,7 +34,8 @@ public class AuthenticateViaAPIKey {
     }
 
     /**
-     * API Key for making authenticated requests. More instruction on how to find this value in our &lt;a href="https://docs.airbyte.com/integrations/sources/salesloft#setup-guide"&gt;docs&lt;/a&gt;
+     * API Key for making authenticated requests. More instruction on how to find this value in our <a
+     * href="https://docs.airbyte.com/integrations/sources/salesloft#setup-guide">docs</a>
      */
     @JsonIgnore
     public String apiKey() {
@@ -45,12 +47,14 @@ public class AuthenticateViaAPIKey {
         return authType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * API Key for making authenticated requests. More instruction on how to find this value in our &lt;a href="https://docs.airbyte.com/integrations/sources/salesloft#setup-guide"&gt;docs&lt;/a&gt;
+     * API Key for making authenticated requests. More instruction on how to find this value in our <a
+     * href="https://docs.airbyte.com/integrations/sources/salesloft#setup-guide">docs</a>
      */
     public AuthenticateViaAPIKey withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -58,7 +62,6 @@ public class AuthenticateViaAPIKey {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +72,14 @@ public class AuthenticateViaAPIKey {
         }
         AuthenticateViaAPIKey other = (AuthenticateViaAPIKey) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.authType, other.authType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            authType);
+        return Utils.enhancedHash(
+            apiKey, authType);
     }
     
     @Override
@@ -86,28 +88,33 @@ public class AuthenticateViaAPIKey {
                 "apiKey", apiKey,
                 "authType", authType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * API Key for making authenticated requests. More instruction on how to find this value in our &lt;a href="https://docs.airbyte.com/integrations/sources/salesloft#setup-guide"&gt;docs&lt;/a&gt;
+         * API Key for making authenticated requests. More instruction on how to find this value in our <a
+         * href="https://docs.airbyte.com/integrations/sources/salesloft#setup-guide">docs</a>
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
-        
+
         public AuthenticateViaAPIKey build() {
+
             return new AuthenticateViaAPIKey(
                 apiKey);
         }
+
 
         private static final LazySingletonValue<SourceSalesloftSchemasAuthType> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

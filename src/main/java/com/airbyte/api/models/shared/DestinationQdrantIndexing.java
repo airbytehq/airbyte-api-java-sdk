@@ -15,7 +15,6 @@ import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -24,7 +23,6 @@ import java.util.Optional;
  * <p>Indexing configuration
  */
 public class DestinationQdrantIndexing {
-
     /**
      * Method to authenticate with the Qdrant Instance
      */
@@ -39,7 +37,8 @@ public class DestinationQdrantIndexing {
     private String collection;
 
     /**
-     * The Distance metric used to measure similarities among vectors. This field is only used if the collection defined in the does not exist yet and is created automatically by the connector.
+     * The Distance metric used to measure similarities among vectors. This field is only used if the
+     * collection defined in the does not exist yet and is created automatically by the connector.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("distance_metric")
@@ -90,7 +89,8 @@ public class DestinationQdrantIndexing {
     public DestinationQdrantIndexing(
             String collection,
             String url) {
-        this(Optional.empty(), collection, Optional.empty(), Optional.empty(), Optional.empty(), url);
+        this(Optional.empty(), collection, Optional.empty(),
+            Optional.empty(), Optional.empty(), url);
     }
 
     /**
@@ -111,7 +111,8 @@ public class DestinationQdrantIndexing {
     }
 
     /**
-     * The Distance metric used to measure similarities among vectors. This field is only used if the collection defined in the does not exist yet and is created automatically by the connector.
+     * The Distance metric used to measure similarities among vectors. This field is only used if the
+     * collection defined in the does not exist yet and is created automatically by the connector.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -143,9 +144,10 @@ public class DestinationQdrantIndexing {
         return url;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Method to authenticate with the Qdrant Instance
@@ -155,6 +157,7 @@ public class DestinationQdrantIndexing {
         this.authMethod = Optional.ofNullable(authMethod);
         return this;
     }
+
 
     /**
      * Method to authenticate with the Qdrant Instance
@@ -175,7 +178,8 @@ public class DestinationQdrantIndexing {
     }
 
     /**
-     * The Distance metric used to measure similarities among vectors. This field is only used if the collection defined in the does not exist yet and is created automatically by the connector.
+     * The Distance metric used to measure similarities among vectors. This field is only used if the
+     * collection defined in the does not exist yet and is created automatically by the connector.
      */
     public DestinationQdrantIndexing withDistanceMetric(DistanceMetric distanceMetric) {
         Utils.checkNotNull(distanceMetric, "distanceMetric");
@@ -183,8 +187,10 @@ public class DestinationQdrantIndexing {
         return this;
     }
 
+
     /**
-     * The Distance metric used to measure similarities among vectors. This field is only used if the collection defined in the does not exist yet and is created automatically by the connector.
+     * The Distance metric used to measure similarities among vectors. This field is only used if the
+     * collection defined in the does not exist yet and is created automatically by the connector.
      */
     public DestinationQdrantIndexing withDistanceMetric(Optional<? extends DistanceMetric> distanceMetric) {
         Utils.checkNotNull(distanceMetric, "distanceMetric");
@@ -200,6 +206,7 @@ public class DestinationQdrantIndexing {
         this.preferGrpc = Optional.ofNullable(preferGrpc);
         return this;
     }
+
 
     /**
      * Whether to prefer gRPC over HTTP. Set to true for Qdrant cloud clusters
@@ -219,6 +226,7 @@ public class DestinationQdrantIndexing {
         return this;
     }
 
+
     /**
      * The field in the payload that contains the embedded text
      */
@@ -237,7 +245,6 @@ public class DestinationQdrantIndexing {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -248,23 +255,19 @@ public class DestinationQdrantIndexing {
         }
         DestinationQdrantIndexing other = (DestinationQdrantIndexing) o;
         return 
-            Objects.deepEquals(this.authMethod, other.authMethod) &&
-            Objects.deepEquals(this.collection, other.collection) &&
-            Objects.deepEquals(this.distanceMetric, other.distanceMetric) &&
-            Objects.deepEquals(this.preferGrpc, other.preferGrpc) &&
-            Objects.deepEquals(this.textField, other.textField) &&
-            Objects.deepEquals(this.url, other.url);
+            Utils.enhancedDeepEquals(this.authMethod, other.authMethod) &&
+            Utils.enhancedDeepEquals(this.collection, other.collection) &&
+            Utils.enhancedDeepEquals(this.distanceMetric, other.distanceMetric) &&
+            Utils.enhancedDeepEquals(this.preferGrpc, other.preferGrpc) &&
+            Utils.enhancedDeepEquals(this.textField, other.textField) &&
+            Utils.enhancedDeepEquals(this.url, other.url);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authMethod,
-            collection,
-            distanceMetric,
-            preferGrpc,
-            textField,
-            url);
+        return Utils.enhancedHash(
+            authMethod, collection, distanceMetric,
+            preferGrpc, textField, url);
     }
     
     @Override
@@ -277,24 +280,26 @@ public class DestinationQdrantIndexing {
                 "textField", textField,
                 "url", url);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends DestinationQdrantAuthenticationMethod> authMethod = Optional.empty();
- 
+
         private String collection;
- 
+
         private Optional<? extends DistanceMetric> distanceMetric;
- 
+
         private Optional<Boolean> preferGrpc;
- 
+
         private Optional<String> textField;
- 
+
         private String url;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Method to authenticate with the Qdrant Instance
@@ -314,6 +319,7 @@ public class DestinationQdrantIndexing {
             return this;
         }
 
+
         /**
          * The collection to load data into
          */
@@ -323,8 +329,10 @@ public class DestinationQdrantIndexing {
             return this;
         }
 
+
         /**
-         * The Distance metric used to measure similarities among vectors. This field is only used if the collection defined in the does not exist yet and is created automatically by the connector.
+         * The Distance metric used to measure similarities among vectors. This field is only used if the
+         * collection defined in the does not exist yet and is created automatically by the connector.
          */
         public Builder distanceMetric(DistanceMetric distanceMetric) {
             Utils.checkNotNull(distanceMetric, "distanceMetric");
@@ -333,13 +341,15 @@ public class DestinationQdrantIndexing {
         }
 
         /**
-         * The Distance metric used to measure similarities among vectors. This field is only used if the collection defined in the does not exist yet and is created automatically by the connector.
+         * The Distance metric used to measure similarities among vectors. This field is only used if the
+         * collection defined in the does not exist yet and is created automatically by the connector.
          */
         public Builder distanceMetric(Optional<? extends DistanceMetric> distanceMetric) {
             Utils.checkNotNull(distanceMetric, "distanceMetric");
             this.distanceMetric = distanceMetric;
             return this;
         }
+
 
         /**
          * Whether to prefer gRPC over HTTP. Set to true for Qdrant cloud clusters
@@ -359,6 +369,7 @@ public class DestinationQdrantIndexing {
             return this;
         }
 
+
         /**
          * The field in the payload that contains the embedded text
          */
@@ -377,6 +388,7 @@ public class DestinationQdrantIndexing {
             return this;
         }
 
+
         /**
          * Public Endpoint of the Qdrant cluser
          */
@@ -385,7 +397,7 @@ public class DestinationQdrantIndexing {
             this.url = url;
             return this;
         }
-        
+
         public DestinationQdrantIndexing build() {
             if (distanceMetric == null) {
                 distanceMetric = _SINGLETON_VALUE_DistanceMetric.value();
@@ -396,14 +408,12 @@ public class DestinationQdrantIndexing {
             if (textField == null) {
                 textField = _SINGLETON_VALUE_TextField.value();
             }
+
             return new DestinationQdrantIndexing(
-                authMethod,
-                collection,
-                distanceMetric,
-                preferGrpc,
-                textField,
-                url);
+                authMethod, collection, distanceMetric,
+                preferGrpc, textField, url);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DistanceMetric>> _SINGLETON_VALUE_DistanceMetric =
                 new LazySingletonValue<>(

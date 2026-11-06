@@ -16,29 +16,33 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationPostgres {
 
+public class DestinationPostgres {
     /**
      * Name of the database.
      */
     @JsonProperty("database")
     private String database;
 
+
     @JsonProperty("destinationType")
     private Postgres destinationType;
 
     /**
-     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there
+     * are no guarantees that other metadata columns will remain the same in future versions
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("disable_type_dedupe")
     private Optional<Boolean> disableTypeDedupe;
 
     /**
-     * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.). Use with caution. This option is intended for usecases which can easily rebuild the dependent objects.
+     * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.).
+     * 
+     * <p>Use with caution. This option is intended for usecases which can easily rebuild the dependent
+     * objects.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("drop_cascade")
@@ -51,7 +55,9 @@ public class DestinationPostgres {
     private String host;
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("jdbc_url_params")
@@ -79,7 +85,8 @@ public class DestinationPostgres {
     private Optional<String> rawDataSchema;
 
     /**
-     * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
+     * The default schema tables are written to if the source does not specify a namespace. The usual value
+     * for this field is "public".
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("schema")
@@ -93,28 +100,37 @@ public class DestinationPostgres {
     private Optional<Boolean> ssl;
 
     /**
-     * SSL connection modes. 
-     *  &lt;b&gt;disable&lt;/b&gt; - Chose this mode to disable encryption of communication between Airbyte and destination database
-     *  &lt;b&gt;allow&lt;/b&gt; - Chose this mode to enable encryption only when required by the source database
-     *  &lt;b&gt;prefer&lt;/b&gt; - Chose this mode to allow unencrypted connection only if the source database does not support encryption
-     *  &lt;b&gt;require&lt;/b&gt; - Chose this mode to always require encryption. If the source database server does not support encryption, connection will fail
-     *   &lt;b&gt;verify-ca&lt;/b&gt; - Chose this mode to always require encryption and to verify that the source database server has a valid SSL certificate
-     *   &lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Chose this mode to always require encryption and to verify the identity of the source database server
-     *  See more information - &lt;a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"&gt; in the docs&lt;/a&gt;.
+     * SSL connection modes.
+     * <b>disable</b> - Chose this mode to disable encryption of communication between Airbyte and
+     * destination database
+     * <b>allow</b> - Chose this mode to enable encryption only when required by the source database
+     * <b>prefer</b> - Chose this mode to allow unencrypted connection only if the source database does not
+     * support encryption
+     * <b>require</b> - Chose this mode to always require encryption. If the source database server does
+     * not support encryption, connection will fail
+     * <b>verify-ca</b> - Chose this mode to always require encryption and to verify that the source
+     * database server has a valid SSL certificate
+     * <b>verify-full</b> - This is the most secure mode. Chose this mode to always require encryption and
+     * to verify the identity of the source database server
+     * See more information - <a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"> in
+     * the docs</a>.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("ssl_mode")
     private Optional<? extends SSLModes> sslMode;
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
     private Optional<? extends DestinationPostgresSSHTunnelMethod> tunnelMethod;
 
     /**
-     * Create numeric columns as unconstrained DECIMAL instead of NUMBER(38, 9). This will allow increased precision in numeric values. (this is disabled by default for backwards compatibility, but is recommended to enable)
+     * Create numeric columns as unconstrained DECIMAL instead of NUMBER(38, 9). This will allow increased
+     * precision in numeric values. (this is disabled by default for backwards compatibility, but is
+     * recommended to enable)
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("unconstrained_number")
@@ -177,7 +193,11 @@ public class DestinationPostgres {
             String database,
             String host,
             String username) {
-        this(database, Optional.empty(), Optional.empty(), host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+        this(database, Optional.empty(), Optional.empty(),
+            host, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), username);
     }
 
     /**
@@ -194,7 +214,8 @@ public class DestinationPostgres {
     }
 
     /**
-     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there
+     * are no guarantees that other metadata columns will remain the same in future versions
      */
     @JsonIgnore
     public Optional<Boolean> disableTypeDedupe() {
@@ -202,7 +223,10 @@ public class DestinationPostgres {
     }
 
     /**
-     * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.). Use with caution. This option is intended for usecases which can easily rebuild the dependent objects.
+     * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.).
+     * 
+     * <p>Use with caution. This option is intended for usecases which can easily rebuild the dependent
+     * objects.
      */
     @JsonIgnore
     public Optional<Boolean> dropCascade() {
@@ -218,7 +242,9 @@ public class DestinationPostgres {
     }
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     @JsonIgnore
     public Optional<String> jdbcUrlParams() {
@@ -250,7 +276,8 @@ public class DestinationPostgres {
     }
 
     /**
-     * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
+     * The default schema tables are written to if the source does not specify a namespace. The usual value
+     * for this field is "public".
      */
     @JsonIgnore
     public Optional<String> schema() {
@@ -266,14 +293,20 @@ public class DestinationPostgres {
     }
 
     /**
-     * SSL connection modes. 
-     *  &lt;b&gt;disable&lt;/b&gt; - Chose this mode to disable encryption of communication between Airbyte and destination database
-     *  &lt;b&gt;allow&lt;/b&gt; - Chose this mode to enable encryption only when required by the source database
-     *  &lt;b&gt;prefer&lt;/b&gt; - Chose this mode to allow unencrypted connection only if the source database does not support encryption
-     *  &lt;b&gt;require&lt;/b&gt; - Chose this mode to always require encryption. If the source database server does not support encryption, connection will fail
-     *   &lt;b&gt;verify-ca&lt;/b&gt; - Chose this mode to always require encryption and to verify that the source database server has a valid SSL certificate
-     *   &lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Chose this mode to always require encryption and to verify the identity of the source database server
-     *  See more information - &lt;a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"&gt; in the docs&lt;/a&gt;.
+     * SSL connection modes.
+     * <b>disable</b> - Chose this mode to disable encryption of communication between Airbyte and
+     * destination database
+     * <b>allow</b> - Chose this mode to enable encryption only when required by the source database
+     * <b>prefer</b> - Chose this mode to allow unencrypted connection only if the source database does not
+     * support encryption
+     * <b>require</b> - Chose this mode to always require encryption. If the source database server does
+     * not support encryption, connection will fail
+     * <b>verify-ca</b> - Chose this mode to always require encryption and to verify that the source
+     * database server has a valid SSL certificate
+     * <b>verify-full</b> - This is the most secure mode. Chose this mode to always require encryption and
+     * to verify the identity of the source database server
+     * See more information - <a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"> in
+     * the docs</a>.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -282,7 +315,8 @@ public class DestinationPostgres {
     }
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -291,7 +325,9 @@ public class DestinationPostgres {
     }
 
     /**
-     * Create numeric columns as unconstrained DECIMAL instead of NUMBER(38, 9). This will allow increased precision in numeric values. (this is disabled by default for backwards compatibility, but is recommended to enable)
+     * Create numeric columns as unconstrained DECIMAL instead of NUMBER(38, 9). This will allow increased
+     * precision in numeric values. (this is disabled by default for backwards compatibility, but is
+     * recommended to enable)
      */
     @JsonIgnore
     public Optional<Boolean> unconstrainedNumber() {
@@ -306,9 +342,10 @@ public class DestinationPostgres {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Name of the database.
@@ -320,7 +357,8 @@ public class DestinationPostgres {
     }
 
     /**
-     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there
+     * are no guarantees that other metadata columns will remain the same in future versions
      */
     public DestinationPostgres withDisableTypeDedupe(boolean disableTypeDedupe) {
         Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
@@ -328,8 +366,10 @@ public class DestinationPostgres {
         return this;
     }
 
+
     /**
-     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there
+     * are no guarantees that other metadata columns will remain the same in future versions
      */
     public DestinationPostgres withDisableTypeDedupe(Optional<Boolean> disableTypeDedupe) {
         Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
@@ -338,7 +378,10 @@ public class DestinationPostgres {
     }
 
     /**
-     * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.). Use with caution. This option is intended for usecases which can easily rebuild the dependent objects.
+     * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.).
+     * 
+     * <p>Use with caution. This option is intended for usecases which can easily rebuild the dependent
+     * objects.
      */
     public DestinationPostgres withDropCascade(boolean dropCascade) {
         Utils.checkNotNull(dropCascade, "dropCascade");
@@ -346,8 +389,12 @@ public class DestinationPostgres {
         return this;
     }
 
+
     /**
-     * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.). Use with caution. This option is intended for usecases which can easily rebuild the dependent objects.
+     * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.).
+     * 
+     * <p>Use with caution. This option is intended for usecases which can easily rebuild the dependent
+     * objects.
      */
     public DestinationPostgres withDropCascade(Optional<Boolean> dropCascade) {
         Utils.checkNotNull(dropCascade, "dropCascade");
@@ -365,7 +412,9 @@ public class DestinationPostgres {
     }
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     public DestinationPostgres withJdbcUrlParams(String jdbcUrlParams) {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -373,8 +422,11 @@ public class DestinationPostgres {
         return this;
     }
 
+
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     public DestinationPostgres withJdbcUrlParams(Optional<String> jdbcUrlParams) {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -390,6 +442,7 @@ public class DestinationPostgres {
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     /**
      * Password associated with the username.
@@ -409,6 +462,7 @@ public class DestinationPostgres {
         return this;
     }
 
+
     /**
      * Port of the database.
      */
@@ -427,6 +481,7 @@ public class DestinationPostgres {
         return this;
     }
 
+
     /**
      * The schema to write raw tables into
      */
@@ -437,7 +492,8 @@ public class DestinationPostgres {
     }
 
     /**
-     * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
+     * The default schema tables are written to if the source does not specify a namespace. The usual value
+     * for this field is "public".
      */
     public DestinationPostgres withSchema(String schema) {
         Utils.checkNotNull(schema, "schema");
@@ -445,8 +501,10 @@ public class DestinationPostgres {
         return this;
     }
 
+
     /**
-     * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
+     * The default schema tables are written to if the source does not specify a namespace. The usual value
+     * for this field is "public".
      */
     public DestinationPostgres withSchema(Optional<String> schema) {
         Utils.checkNotNull(schema, "schema");
@@ -463,6 +521,7 @@ public class DestinationPostgres {
         return this;
     }
 
+
     /**
      * Encrypt data using SSL. When activating SSL, please select one of the connection modes.
      */
@@ -473,14 +532,20 @@ public class DestinationPostgres {
     }
 
     /**
-     * SSL connection modes. 
-     *  &lt;b&gt;disable&lt;/b&gt; - Chose this mode to disable encryption of communication between Airbyte and destination database
-     *  &lt;b&gt;allow&lt;/b&gt; - Chose this mode to enable encryption only when required by the source database
-     *  &lt;b&gt;prefer&lt;/b&gt; - Chose this mode to allow unencrypted connection only if the source database does not support encryption
-     *  &lt;b&gt;require&lt;/b&gt; - Chose this mode to always require encryption. If the source database server does not support encryption, connection will fail
-     *   &lt;b&gt;verify-ca&lt;/b&gt; - Chose this mode to always require encryption and to verify that the source database server has a valid SSL certificate
-     *   &lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Chose this mode to always require encryption and to verify the identity of the source database server
-     *  See more information - &lt;a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"&gt; in the docs&lt;/a&gt;.
+     * SSL connection modes.
+     * <b>disable</b> - Chose this mode to disable encryption of communication between Airbyte and
+     * destination database
+     * <b>allow</b> - Chose this mode to enable encryption only when required by the source database
+     * <b>prefer</b> - Chose this mode to allow unencrypted connection only if the source database does not
+     * support encryption
+     * <b>require</b> - Chose this mode to always require encryption. If the source database server does
+     * not support encryption, connection will fail
+     * <b>verify-ca</b> - Chose this mode to always require encryption and to verify that the source
+     * database server has a valid SSL certificate
+     * <b>verify-full</b> - This is the most secure mode. Chose this mode to always require encryption and
+     * to verify the identity of the source database server
+     * See more information - <a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"> in
+     * the docs</a>.
      */
     public DestinationPostgres withSslMode(SSLModes sslMode) {
         Utils.checkNotNull(sslMode, "sslMode");
@@ -488,15 +553,22 @@ public class DestinationPostgres {
         return this;
     }
 
+
     /**
-     * SSL connection modes. 
-     *  &lt;b&gt;disable&lt;/b&gt; - Chose this mode to disable encryption of communication between Airbyte and destination database
-     *  &lt;b&gt;allow&lt;/b&gt; - Chose this mode to enable encryption only when required by the source database
-     *  &lt;b&gt;prefer&lt;/b&gt; - Chose this mode to allow unencrypted connection only if the source database does not support encryption
-     *  &lt;b&gt;require&lt;/b&gt; - Chose this mode to always require encryption. If the source database server does not support encryption, connection will fail
-     *   &lt;b&gt;verify-ca&lt;/b&gt; - Chose this mode to always require encryption and to verify that the source database server has a valid SSL certificate
-     *   &lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Chose this mode to always require encryption and to verify the identity of the source database server
-     *  See more information - &lt;a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"&gt; in the docs&lt;/a&gt;.
+     * SSL connection modes.
+     * <b>disable</b> - Chose this mode to disable encryption of communication between Airbyte and
+     * destination database
+     * <b>allow</b> - Chose this mode to enable encryption only when required by the source database
+     * <b>prefer</b> - Chose this mode to allow unencrypted connection only if the source database does not
+     * support encryption
+     * <b>require</b> - Chose this mode to always require encryption. If the source database server does
+     * not support encryption, connection will fail
+     * <b>verify-ca</b> - Chose this mode to always require encryption and to verify that the source
+     * database server has a valid SSL certificate
+     * <b>verify-full</b> - This is the most secure mode. Chose this mode to always require encryption and
+     * to verify the identity of the source database server
+     * See more information - <a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"> in
+     * the docs</a>.
      */
     public DestinationPostgres withSslMode(Optional<? extends SSLModes> sslMode) {
         Utils.checkNotNull(sslMode, "sslMode");
@@ -505,7 +577,8 @@ public class DestinationPostgres {
     }
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     public DestinationPostgres withTunnelMethod(DestinationPostgresSSHTunnelMethod tunnelMethod) {
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -513,8 +586,10 @@ public class DestinationPostgres {
         return this;
     }
 
+
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     public DestinationPostgres withTunnelMethod(Optional<? extends DestinationPostgresSSHTunnelMethod> tunnelMethod) {
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -523,7 +598,9 @@ public class DestinationPostgres {
     }
 
     /**
-     * Create numeric columns as unconstrained DECIMAL instead of NUMBER(38, 9). This will allow increased precision in numeric values. (this is disabled by default for backwards compatibility, but is recommended to enable)
+     * Create numeric columns as unconstrained DECIMAL instead of NUMBER(38, 9). This will allow increased
+     * precision in numeric values. (this is disabled by default for backwards compatibility, but is
+     * recommended to enable)
      */
     public DestinationPostgres withUnconstrainedNumber(boolean unconstrainedNumber) {
         Utils.checkNotNull(unconstrainedNumber, "unconstrainedNumber");
@@ -531,8 +608,11 @@ public class DestinationPostgres {
         return this;
     }
 
+
     /**
-     * Create numeric columns as unconstrained DECIMAL instead of NUMBER(38, 9). This will allow increased precision in numeric values. (this is disabled by default for backwards compatibility, but is recommended to enable)
+     * Create numeric columns as unconstrained DECIMAL instead of NUMBER(38, 9). This will allow increased
+     * precision in numeric values. (this is disabled by default for backwards compatibility, but is
+     * recommended to enable)
      */
     public DestinationPostgres withUnconstrainedNumber(Optional<Boolean> unconstrainedNumber) {
         Utils.checkNotNull(unconstrainedNumber, "unconstrainedNumber");
@@ -549,7 +629,6 @@ public class DestinationPostgres {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -560,41 +639,31 @@ public class DestinationPostgres {
         }
         DestinationPostgres other = (DestinationPostgres) o;
         return 
-            Objects.deepEquals(this.database, other.database) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.disableTypeDedupe, other.disableTypeDedupe) &&
-            Objects.deepEquals(this.dropCascade, other.dropCascade) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.rawDataSchema, other.rawDataSchema) &&
-            Objects.deepEquals(this.schema, other.schema) &&
-            Objects.deepEquals(this.ssl, other.ssl) &&
-            Objects.deepEquals(this.sslMode, other.sslMode) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
-            Objects.deepEquals(this.unconstrainedNumber, other.unconstrainedNumber) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.database, other.database) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.disableTypeDedupe, other.disableTypeDedupe) &&
+            Utils.enhancedDeepEquals(this.dropCascade, other.dropCascade) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.rawDataSchema, other.rawDataSchema) &&
+            Utils.enhancedDeepEquals(this.schema, other.schema) &&
+            Utils.enhancedDeepEquals(this.ssl, other.ssl) &&
+            Utils.enhancedDeepEquals(this.sslMode, other.sslMode) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.unconstrainedNumber, other.unconstrainedNumber) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            database,
-            destinationType,
-            disableTypeDedupe,
-            dropCascade,
-            host,
-            jdbcUrlParams,
-            password,
-            port,
-            rawDataSchema,
-            schema,
-            ssl,
-            sslMode,
-            tunnelMethod,
-            unconstrainedNumber,
-            username);
+        return Utils.enhancedHash(
+            database, destinationType, disableTypeDedupe,
+            dropCascade, host, jdbcUrlParams,
+            password, port, rawDataSchema,
+            schema, ssl, sslMode,
+            tunnelMethod, unconstrainedNumber, username);
     }
     
     @Override
@@ -616,40 +685,42 @@ public class DestinationPostgres {
                 "unconstrainedNumber", unconstrainedNumber,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String database;
- 
+
         private Optional<Boolean> disableTypeDedupe;
- 
+
         private Optional<Boolean> dropCascade;
- 
+
         private String host;
- 
+
         private Optional<String> jdbcUrlParams = Optional.empty();
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private Optional<Long> port;
- 
+
         private Optional<String> rawDataSchema = Optional.empty();
- 
+
         private Optional<String> schema;
- 
+
         private Optional<Boolean> ssl;
- 
+
         private Optional<? extends SSLModes> sslMode = Optional.empty();
- 
+
         private Optional<? extends DestinationPostgresSSHTunnelMethod> tunnelMethod = Optional.empty();
- 
+
         private Optional<Boolean> unconstrainedNumber;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Name of the database.
@@ -660,8 +731,10 @@ public class DestinationPostgres {
             return this;
         }
 
+
         /**
-         * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+         * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there
+         * are no guarantees that other metadata columns will remain the same in future versions
          */
         public Builder disableTypeDedupe(boolean disableTypeDedupe) {
             Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
@@ -670,7 +743,8 @@ public class DestinationPostgres {
         }
 
         /**
-         * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+         * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there
+         * are no guarantees that other metadata columns will remain the same in future versions
          */
         public Builder disableTypeDedupe(Optional<Boolean> disableTypeDedupe) {
             Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
@@ -678,8 +752,12 @@ public class DestinationPostgres {
             return this;
         }
 
+
         /**
-         * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.). Use with caution. This option is intended for usecases which can easily rebuild the dependent objects.
+         * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.).
+         * 
+         * <p>Use with caution. This option is intended for usecases which can easily rebuild the dependent
+         * objects.
          */
         public Builder dropCascade(boolean dropCascade) {
             Utils.checkNotNull(dropCascade, "dropCascade");
@@ -688,13 +766,17 @@ public class DestinationPostgres {
         }
 
         /**
-         * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.). Use with caution. This option is intended for usecases which can easily rebuild the dependent objects.
+         * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.).
+         * 
+         * <p>Use with caution. This option is intended for usecases which can easily rebuild the dependent
+         * objects.
          */
         public Builder dropCascade(Optional<Boolean> dropCascade) {
             Utils.checkNotNull(dropCascade, "dropCascade");
             this.dropCascade = dropCascade;
             return this;
         }
+
 
         /**
          * Hostname of the database.
@@ -705,8 +787,11 @@ public class DestinationPostgres {
             return this;
         }
 
+
         /**
-         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+         * 'key=value' pairs separated by the symbol '&amp;'. (example:
+         * key1=value1&amp;key2=value2&amp;key3=value3).
          */
         public Builder jdbcUrlParams(String jdbcUrlParams) {
             Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -715,13 +800,16 @@ public class DestinationPostgres {
         }
 
         /**
-         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+         * 'key=value' pairs separated by the symbol '&amp;'. (example:
+         * key1=value1&amp;key2=value2&amp;key3=value3).
          */
         public Builder jdbcUrlParams(Optional<String> jdbcUrlParams) {
             Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
             this.jdbcUrlParams = jdbcUrlParams;
             return this;
         }
+
 
         /**
          * Password associated with the username.
@@ -741,6 +829,7 @@ public class DestinationPostgres {
             return this;
         }
 
+
         /**
          * Port of the database.
          */
@@ -758,6 +847,7 @@ public class DestinationPostgres {
             this.port = port;
             return this;
         }
+
 
         /**
          * The schema to write raw tables into
@@ -777,8 +867,10 @@ public class DestinationPostgres {
             return this;
         }
 
+
         /**
-         * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
+         * The default schema tables are written to if the source does not specify a namespace. The usual value
+         * for this field is "public".
          */
         public Builder schema(String schema) {
             Utils.checkNotNull(schema, "schema");
@@ -787,13 +879,15 @@ public class DestinationPostgres {
         }
 
         /**
-         * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
+         * The default schema tables are written to if the source does not specify a namespace. The usual value
+         * for this field is "public".
          */
         public Builder schema(Optional<String> schema) {
             Utils.checkNotNull(schema, "schema");
             this.schema = schema;
             return this;
         }
+
 
         /**
          * Encrypt data using SSL. When activating SSL, please select one of the connection modes.
@@ -813,15 +907,22 @@ public class DestinationPostgres {
             return this;
         }
 
+
         /**
-         * SSL connection modes. 
-         *  &lt;b&gt;disable&lt;/b&gt; - Chose this mode to disable encryption of communication between Airbyte and destination database
-         *  &lt;b&gt;allow&lt;/b&gt; - Chose this mode to enable encryption only when required by the source database
-         *  &lt;b&gt;prefer&lt;/b&gt; - Chose this mode to allow unencrypted connection only if the source database does not support encryption
-         *  &lt;b&gt;require&lt;/b&gt; - Chose this mode to always require encryption. If the source database server does not support encryption, connection will fail
-         *   &lt;b&gt;verify-ca&lt;/b&gt; - Chose this mode to always require encryption and to verify that the source database server has a valid SSL certificate
-         *   &lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Chose this mode to always require encryption and to verify the identity of the source database server
-         *  See more information - &lt;a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"&gt; in the docs&lt;/a&gt;.
+         * SSL connection modes.
+         * <b>disable</b> - Chose this mode to disable encryption of communication between Airbyte and
+         * destination database
+         * <b>allow</b> - Chose this mode to enable encryption only when required by the source database
+         * <b>prefer</b> - Chose this mode to allow unencrypted connection only if the source database does not
+         * support encryption
+         * <b>require</b> - Chose this mode to always require encryption. If the source database server does
+         * not support encryption, connection will fail
+         * <b>verify-ca</b> - Chose this mode to always require encryption and to verify that the source
+         * database server has a valid SSL certificate
+         * <b>verify-full</b> - This is the most secure mode. Chose this mode to always require encryption and
+         * to verify the identity of the source database server
+         * See more information - <a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"> in
+         * the docs</a>.
          */
         public Builder sslMode(SSLModes sslMode) {
             Utils.checkNotNull(sslMode, "sslMode");
@@ -830,14 +931,20 @@ public class DestinationPostgres {
         }
 
         /**
-         * SSL connection modes. 
-         *  &lt;b&gt;disable&lt;/b&gt; - Chose this mode to disable encryption of communication between Airbyte and destination database
-         *  &lt;b&gt;allow&lt;/b&gt; - Chose this mode to enable encryption only when required by the source database
-         *  &lt;b&gt;prefer&lt;/b&gt; - Chose this mode to allow unencrypted connection only if the source database does not support encryption
-         *  &lt;b&gt;require&lt;/b&gt; - Chose this mode to always require encryption. If the source database server does not support encryption, connection will fail
-         *   &lt;b&gt;verify-ca&lt;/b&gt; - Chose this mode to always require encryption and to verify that the source database server has a valid SSL certificate
-         *   &lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Chose this mode to always require encryption and to verify the identity of the source database server
-         *  See more information - &lt;a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"&gt; in the docs&lt;/a&gt;.
+         * SSL connection modes.
+         * <b>disable</b> - Chose this mode to disable encryption of communication between Airbyte and
+         * destination database
+         * <b>allow</b> - Chose this mode to enable encryption only when required by the source database
+         * <b>prefer</b> - Chose this mode to allow unencrypted connection only if the source database does not
+         * support encryption
+         * <b>require</b> - Chose this mode to always require encryption. If the source database server does
+         * not support encryption, connection will fail
+         * <b>verify-ca</b> - Chose this mode to always require encryption and to verify that the source
+         * database server has a valid SSL certificate
+         * <b>verify-full</b> - This is the most secure mode. Chose this mode to always require encryption and
+         * to verify the identity of the source database server
+         * See more information - <a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"> in
+         * the docs</a>.
          */
         public Builder sslMode(Optional<? extends SSLModes> sslMode) {
             Utils.checkNotNull(sslMode, "sslMode");
@@ -845,8 +952,10 @@ public class DestinationPostgres {
             return this;
         }
 
+
         /**
-         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+         * authentication to use.
          */
         public Builder tunnelMethod(DestinationPostgresSSHTunnelMethod tunnelMethod) {
             Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -855,7 +964,8 @@ public class DestinationPostgres {
         }
 
         /**
-         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+         * authentication to use.
          */
         public Builder tunnelMethod(Optional<? extends DestinationPostgresSSHTunnelMethod> tunnelMethod) {
             Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -863,8 +973,11 @@ public class DestinationPostgres {
             return this;
         }
 
+
         /**
-         * Create numeric columns as unconstrained DECIMAL instead of NUMBER(38, 9). This will allow increased precision in numeric values. (this is disabled by default for backwards compatibility, but is recommended to enable)
+         * Create numeric columns as unconstrained DECIMAL instead of NUMBER(38, 9). This will allow increased
+         * precision in numeric values. (this is disabled by default for backwards compatibility, but is
+         * recommended to enable)
          */
         public Builder unconstrainedNumber(boolean unconstrainedNumber) {
             Utils.checkNotNull(unconstrainedNumber, "unconstrainedNumber");
@@ -873,13 +986,16 @@ public class DestinationPostgres {
         }
 
         /**
-         * Create numeric columns as unconstrained DECIMAL instead of NUMBER(38, 9). This will allow increased precision in numeric values. (this is disabled by default for backwards compatibility, but is recommended to enable)
+         * Create numeric columns as unconstrained DECIMAL instead of NUMBER(38, 9). This will allow increased
+         * precision in numeric values. (this is disabled by default for backwards compatibility, but is
+         * recommended to enable)
          */
         public Builder unconstrainedNumber(Optional<Boolean> unconstrainedNumber) {
             Utils.checkNotNull(unconstrainedNumber, "unconstrainedNumber");
             this.unconstrainedNumber = unconstrainedNumber;
             return this;
         }
+
 
         /**
          * Username to use to access the database.
@@ -889,7 +1005,7 @@ public class DestinationPostgres {
             this.username = username;
             return this;
         }
-        
+
         public DestinationPostgres build() {
             if (disableTypeDedupe == null) {
                 disableTypeDedupe = _SINGLETON_VALUE_DisableTypeDedupe.value();
@@ -909,22 +1025,15 @@ public class DestinationPostgres {
             if (unconstrainedNumber == null) {
                 unconstrainedNumber = _SINGLETON_VALUE_UnconstrainedNumber.value();
             }
+
             return new DestinationPostgres(
-                database,
-                disableTypeDedupe,
-                dropCascade,
-                host,
-                jdbcUrlParams,
-                password,
-                port,
-                rawDataSchema,
-                schema,
-                ssl,
-                sslMode,
-                tunnelMethod,
-                unconstrainedNumber,
-                username);
+                database, disableTypeDedupe, dropCascade,
+                host, jdbcUrlParams, password,
+                port, rawDataSchema, schema,
+                ssl, sslMode, tunnelMethod,
+                unconstrainedNumber, username);
         }
+
 
         private static final LazySingletonValue<Postgres> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum SourceMssqlSchemasSSLMethodSSLMethodSSLMethod {
     @JsonValue
     private final String value;
 
-    private SourceMssqlSchemasSSLMethodSSLMethodSSLMethod(String value) {
+    SourceMssqlSchemasSSLMethodSSLMethodSSLMethod(String value) {
         this.value = value;
     }
     

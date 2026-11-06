@@ -14,7 +14,7 @@ public enum HighLevel {
     @JsonValue
     private final String value;
 
-    private HighLevel(String value) {
+    HighLevel(String value) {
         this.value = value;
     }
     

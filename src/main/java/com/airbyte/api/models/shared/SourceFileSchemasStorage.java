@@ -14,7 +14,7 @@ public enum SourceFileSchemasStorage {
     @JsonValue
     private final String value;
 
-    private SourceFileSchemasStorage(String value) {
+    SourceFileSchemasStorage(String value) {
         this.value = value;
     }
     

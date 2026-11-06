@@ -10,7 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * OrganizationsResponse
@@ -34,9 +33,10 @@ public class OrganizationsResponse {
         return data;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public OrganizationsResponse withData(List<OrganizationResponse> data) {
         Utils.checkNotNull(data, "data");
@@ -44,7 +44,6 @@ public class OrganizationsResponse {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -55,12 +54,12 @@ public class OrganizationsResponse {
         }
         OrganizationsResponse other = (OrganizationsResponse) o;
         return 
-            Objects.deepEquals(this.data, other.data);
+            Utils.enhancedDeepEquals(this.data, other.data);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             data);
     }
     
@@ -69,24 +68,28 @@ public class OrganizationsResponse {
         return Utils.toString(OrganizationsResponse.class,
                 "data", data);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private List<OrganizationResponse> data;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder data(List<OrganizationResponse> data) {
             Utils.checkNotNull(data, "data");
             this.data = data;
             return this;
         }
-        
+
         public OrganizationsResponse build() {
+
             return new OrganizationsResponse(
                 data);
         }
+
     }
 }

@@ -12,21 +12,23 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceRecruitee {
-
     /**
-     * Recruitee API Key. See &lt;a href="https://docs.recruitee.com/reference/getting-started#generate-api-token"&gt;here&lt;/a&gt;.
+     * Recruitee API Key. See <a
+     * href="https://docs.recruitee.com/reference/getting-started#generate-api-token">here</a>.
      */
     @JsonProperty("api_key")
     private String apiKey;
 
     /**
-     * Recruitee Company ID. You can also find this ID on the &lt;a href="https://app.recruitee.com/#/settings/api_tokens"&gt;Recruitee API tokens page&lt;/a&gt;.
+     * Recruitee Company ID. You can also find this ID on the <a
+     * href="https://app.recruitee.com/#/settings/api_tokens">Recruitee API tokens page</a>.
      */
     @JsonProperty("company_id")
     private long companyId;
+
 
     @JsonProperty("sourceType")
     private Recruitee sourceType;
@@ -43,7 +45,8 @@ public class SourceRecruitee {
     }
 
     /**
-     * Recruitee API Key. See &lt;a href="https://docs.recruitee.com/reference/getting-started#generate-api-token"&gt;here&lt;/a&gt;.
+     * Recruitee API Key. See <a
+     * href="https://docs.recruitee.com/reference/getting-started#generate-api-token">here</a>.
      */
     @JsonIgnore
     public String apiKey() {
@@ -51,7 +54,8 @@ public class SourceRecruitee {
     }
 
     /**
-     * Recruitee Company ID. You can also find this ID on the &lt;a href="https://app.recruitee.com/#/settings/api_tokens"&gt;Recruitee API tokens page&lt;/a&gt;.
+     * Recruitee Company ID. You can also find this ID on the <a
+     * href="https://app.recruitee.com/#/settings/api_tokens">Recruitee API tokens page</a>.
      */
     @JsonIgnore
     public long companyId() {
@@ -63,12 +67,14 @@ public class SourceRecruitee {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Recruitee API Key. See &lt;a href="https://docs.recruitee.com/reference/getting-started#generate-api-token"&gt;here&lt;/a&gt;.
+     * Recruitee API Key. See <a
+     * href="https://docs.recruitee.com/reference/getting-started#generate-api-token">here</a>.
      */
     public SourceRecruitee withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -77,7 +83,8 @@ public class SourceRecruitee {
     }
 
     /**
-     * Recruitee Company ID. You can also find this ID on the &lt;a href="https://app.recruitee.com/#/settings/api_tokens"&gt;Recruitee API tokens page&lt;/a&gt;.
+     * Recruitee Company ID. You can also find this ID on the <a
+     * href="https://app.recruitee.com/#/settings/api_tokens">Recruitee API tokens page</a>.
      */
     public SourceRecruitee withCompanyId(long companyId) {
         Utils.checkNotNull(companyId, "companyId");
@@ -85,7 +92,6 @@ public class SourceRecruitee {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -96,17 +102,15 @@ public class SourceRecruitee {
         }
         SourceRecruitee other = (SourceRecruitee) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.companyId, other.companyId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.companyId, other.companyId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            companyId,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, companyId, sourceType);
     }
     
     @Override
@@ -116,19 +120,22 @@ public class SourceRecruitee {
                 "companyId", companyId,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Long companyId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Recruitee API Key. See &lt;a href="https://docs.recruitee.com/reference/getting-started#generate-api-token"&gt;here&lt;/a&gt;.
+         * Recruitee API Key. See <a
+         * href="https://docs.recruitee.com/reference/getting-started#generate-api-token">here</a>.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -136,20 +143,23 @@ public class SourceRecruitee {
             return this;
         }
 
+
         /**
-         * Recruitee Company ID. You can also find this ID on the &lt;a href="https://app.recruitee.com/#/settings/api_tokens"&gt;Recruitee API tokens page&lt;/a&gt;.
+         * Recruitee Company ID. You can also find this ID on the <a
+         * href="https://app.recruitee.com/#/settings/api_tokens">Recruitee API tokens page</a>.
          */
         public Builder companyId(long companyId) {
             Utils.checkNotNull(companyId, "companyId");
             this.companyId = companyId;
             return this;
         }
-        
+
         public SourceRecruitee build() {
+
             return new SourceRecruitee(
-                apiKey,
-                companyId);
+                apiKey, companyId);
         }
+
 
         private static final LazySingletonValue<Recruitee> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

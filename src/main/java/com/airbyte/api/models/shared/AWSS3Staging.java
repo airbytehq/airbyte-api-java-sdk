@@ -15,18 +15,22 @@ import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * AWSS3Staging
  * 
- * <p>&lt;i&gt;(recommended)&lt;/i&gt; Uploads data to S3 and then uses a COPY to insert the data into Redshift. COPY is recommended for production workloads for better speed and scalability. See &lt;a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html"&gt;AWS docs&lt;/a&gt; for more details.
+ * <p><i>(recommended)</i> Uploads data to S3 and then uses a COPY to insert the data into Redshift. COPY
+ * is recommended for production workloads for better speed and scalability. See <a
+ * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html">AWS docs</a> for
+ * more details.
  */
 public class AWSS3Staging {
-
     /**
-     * This ID grants access to the above S3 staging bucket. Airbyte requires Read and Write permissions to the given bucket. See &lt;a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys"&gt;AWS docs&lt;/a&gt; on how to generate an access key ID and secret access key.
+     * This ID grants access to the above S3 staging bucket. Airbyte requires Read and Write permissions to
+     * the given bucket. See <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys">AWS
+     * docs</a> on how to generate an access key ID and secret access key.
      */
     @JsonProperty("access_key_id")
     private String accessKeyId;
@@ -38,11 +42,14 @@ public class AWSS3Staging {
     @JsonProperty("file_name_pattern")
     private Optional<String> fileNamePattern;
 
+
     @JsonProperty("method")
     private DestinationRedshiftMethod method;
 
     /**
-     * Whether to delete the staging files from S3 after completing the sync. See &lt;a href="https://docs.airbyte.com/integrations/destinations/redshift/#:~:text=the%20root%20directory.-,Purge%20Staging%20Data,-Whether%20to%20delete"&gt; docs&lt;/a&gt; for details.
+     * Whether to delete the staging files from S3 after completing the sync. See <a
+     * href="https://docs.airbyte.com/integrations/destinations/redshift/#:~:text=the%20root%20directory.-,Purge%20Staging%20Data,-Whether%20to%20delete">
+     * docs</a> for details.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("purge_staging_data")
@@ -55,7 +62,10 @@ public class AWSS3Staging {
     private String s3BucketName;
 
     /**
-     * The directory under the S3 bucket where data will be written. If not provided, then defaults to the root directory. See &lt;a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/defining-bucket-names-data-lakes/faq.html#:~:text=be%20globally%20unique.-,For%20S3%20bucket%20paths,-%2C%20you%20can%20use"&gt;path's name recommendations&lt;/a&gt; for more details.
+     * The directory under the S3 bucket where data will be written. If not provided, then defaults to the
+     * root directory. See <a
+     * href="https://docs.aws.amazon.com/prescriptive-guidance/latest/defining-bucket-names-data-lakes/faq.html#:~:text=be%20globally%20unique.-,For%20S3%20bucket%20paths,-%2C%20you%20can%20use">path's
+     * name recommendations</a> for more details.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("s3_bucket_path")
@@ -69,7 +79,9 @@ public class AWSS3Staging {
     private Optional<? extends DestinationRedshiftS3BucketRegion> s3BucketRegion;
 
     /**
-     * The corresponding secret to the above access key id. See &lt;a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys"&gt;AWS docs&lt;/a&gt; on how to generate an access key ID and secret access key.
+     * The corresponding secret to the above access key id. See <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys">AWS
+     * docs</a> on how to generate an access key ID and secret access key.
      */
     @JsonProperty("secret_access_key")
     private String secretAccessKey;
@@ -104,11 +116,16 @@ public class AWSS3Staging {
             String accessKeyId,
             String s3BucketName,
             String secretAccessKey) {
-        this(accessKeyId, Optional.empty(), Optional.empty(), s3BucketName, Optional.empty(), Optional.empty(), secretAccessKey);
+        this(accessKeyId, Optional.empty(), Optional.empty(),
+            s3BucketName, Optional.empty(), Optional.empty(),
+            secretAccessKey);
     }
 
     /**
-     * This ID grants access to the above S3 staging bucket. Airbyte requires Read and Write permissions to the given bucket. See &lt;a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys"&gt;AWS docs&lt;/a&gt; on how to generate an access key ID and secret access key.
+     * This ID grants access to the above S3 staging bucket. Airbyte requires Read and Write permissions to
+     * the given bucket. See <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys">AWS
+     * docs</a> on how to generate an access key ID and secret access key.
      */
     @JsonIgnore
     public String accessKeyId() {
@@ -129,7 +146,9 @@ public class AWSS3Staging {
     }
 
     /**
-     * Whether to delete the staging files from S3 after completing the sync. See &lt;a href="https://docs.airbyte.com/integrations/destinations/redshift/#:~:text=the%20root%20directory.-,Purge%20Staging%20Data,-Whether%20to%20delete"&gt; docs&lt;/a&gt; for details.
+     * Whether to delete the staging files from S3 after completing the sync. See <a
+     * href="https://docs.airbyte.com/integrations/destinations/redshift/#:~:text=the%20root%20directory.-,Purge%20Staging%20Data,-Whether%20to%20delete">
+     * docs</a> for details.
      */
     @JsonIgnore
     public Optional<Boolean> purgeStagingData() {
@@ -145,7 +164,10 @@ public class AWSS3Staging {
     }
 
     /**
-     * The directory under the S3 bucket where data will be written. If not provided, then defaults to the root directory. See &lt;a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/defining-bucket-names-data-lakes/faq.html#:~:text=be%20globally%20unique.-,For%20S3%20bucket%20paths,-%2C%20you%20can%20use"&gt;path's name recommendations&lt;/a&gt; for more details.
+     * The directory under the S3 bucket where data will be written. If not provided, then defaults to the
+     * root directory. See <a
+     * href="https://docs.aws.amazon.com/prescriptive-guidance/latest/defining-bucket-names-data-lakes/faq.html#:~:text=be%20globally%20unique.-,For%20S3%20bucket%20paths,-%2C%20you%20can%20use">path's
+     * name recommendations</a> for more details.
      */
     @JsonIgnore
     public Optional<String> s3BucketPath() {
@@ -162,19 +184,25 @@ public class AWSS3Staging {
     }
 
     /**
-     * The corresponding secret to the above access key id. See &lt;a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys"&gt;AWS docs&lt;/a&gt; on how to generate an access key ID and secret access key.
+     * The corresponding secret to the above access key id. See <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys">AWS
+     * docs</a> on how to generate an access key ID and secret access key.
      */
     @JsonIgnore
     public String secretAccessKey() {
         return secretAccessKey;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * This ID grants access to the above S3 staging bucket. Airbyte requires Read and Write permissions to the given bucket. See &lt;a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys"&gt;AWS docs&lt;/a&gt; on how to generate an access key ID and secret access key.
+     * This ID grants access to the above S3 staging bucket. Airbyte requires Read and Write permissions to
+     * the given bucket. See <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys">AWS
+     * docs</a> on how to generate an access key ID and secret access key.
      */
     public AWSS3Staging withAccessKeyId(String accessKeyId) {
         Utils.checkNotNull(accessKeyId, "accessKeyId");
@@ -191,6 +219,7 @@ public class AWSS3Staging {
         return this;
     }
 
+
     /**
      * The pattern allows you to set the file-name format for the S3 staging file(s)
      */
@@ -201,7 +230,9 @@ public class AWSS3Staging {
     }
 
     /**
-     * Whether to delete the staging files from S3 after completing the sync. See &lt;a href="https://docs.airbyte.com/integrations/destinations/redshift/#:~:text=the%20root%20directory.-,Purge%20Staging%20Data,-Whether%20to%20delete"&gt; docs&lt;/a&gt; for details.
+     * Whether to delete the staging files from S3 after completing the sync. See <a
+     * href="https://docs.airbyte.com/integrations/destinations/redshift/#:~:text=the%20root%20directory.-,Purge%20Staging%20Data,-Whether%20to%20delete">
+     * docs</a> for details.
      */
     public AWSS3Staging withPurgeStagingData(boolean purgeStagingData) {
         Utils.checkNotNull(purgeStagingData, "purgeStagingData");
@@ -209,8 +240,11 @@ public class AWSS3Staging {
         return this;
     }
 
+
     /**
-     * Whether to delete the staging files from S3 after completing the sync. See &lt;a href="https://docs.airbyte.com/integrations/destinations/redshift/#:~:text=the%20root%20directory.-,Purge%20Staging%20Data,-Whether%20to%20delete"&gt; docs&lt;/a&gt; for details.
+     * Whether to delete the staging files from S3 after completing the sync. See <a
+     * href="https://docs.airbyte.com/integrations/destinations/redshift/#:~:text=the%20root%20directory.-,Purge%20Staging%20Data,-Whether%20to%20delete">
+     * docs</a> for details.
      */
     public AWSS3Staging withPurgeStagingData(Optional<Boolean> purgeStagingData) {
         Utils.checkNotNull(purgeStagingData, "purgeStagingData");
@@ -228,7 +262,10 @@ public class AWSS3Staging {
     }
 
     /**
-     * The directory under the S3 bucket where data will be written. If not provided, then defaults to the root directory. See &lt;a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/defining-bucket-names-data-lakes/faq.html#:~:text=be%20globally%20unique.-,For%20S3%20bucket%20paths,-%2C%20you%20can%20use"&gt;path's name recommendations&lt;/a&gt; for more details.
+     * The directory under the S3 bucket where data will be written. If not provided, then defaults to the
+     * root directory. See <a
+     * href="https://docs.aws.amazon.com/prescriptive-guidance/latest/defining-bucket-names-data-lakes/faq.html#:~:text=be%20globally%20unique.-,For%20S3%20bucket%20paths,-%2C%20you%20can%20use">path's
+     * name recommendations</a> for more details.
      */
     public AWSS3Staging withS3BucketPath(String s3BucketPath) {
         Utils.checkNotNull(s3BucketPath, "s3BucketPath");
@@ -236,8 +273,12 @@ public class AWSS3Staging {
         return this;
     }
 
+
     /**
-     * The directory under the S3 bucket where data will be written. If not provided, then defaults to the root directory. See &lt;a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/defining-bucket-names-data-lakes/faq.html#:~:text=be%20globally%20unique.-,For%20S3%20bucket%20paths,-%2C%20you%20can%20use"&gt;path's name recommendations&lt;/a&gt; for more details.
+     * The directory under the S3 bucket where data will be written. If not provided, then defaults to the
+     * root directory. See <a
+     * href="https://docs.aws.amazon.com/prescriptive-guidance/latest/defining-bucket-names-data-lakes/faq.html#:~:text=be%20globally%20unique.-,For%20S3%20bucket%20paths,-%2C%20you%20can%20use">path's
+     * name recommendations</a> for more details.
      */
     public AWSS3Staging withS3BucketPath(Optional<String> s3BucketPath) {
         Utils.checkNotNull(s3BucketPath, "s3BucketPath");
@@ -254,6 +295,7 @@ public class AWSS3Staging {
         return this;
     }
 
+
     /**
      * The region of the S3 staging bucket.
      */
@@ -264,7 +306,9 @@ public class AWSS3Staging {
     }
 
     /**
-     * The corresponding secret to the above access key id. See &lt;a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys"&gt;AWS docs&lt;/a&gt; on how to generate an access key ID and secret access key.
+     * The corresponding secret to the above access key id. See <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys">AWS
+     * docs</a> on how to generate an access key ID and secret access key.
      */
     public AWSS3Staging withSecretAccessKey(String secretAccessKey) {
         Utils.checkNotNull(secretAccessKey, "secretAccessKey");
@@ -272,7 +316,6 @@ public class AWSS3Staging {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -283,27 +326,22 @@ public class AWSS3Staging {
         }
         AWSS3Staging other = (AWSS3Staging) o;
         return 
-            Objects.deepEquals(this.accessKeyId, other.accessKeyId) &&
-            Objects.deepEquals(this.fileNamePattern, other.fileNamePattern) &&
-            Objects.deepEquals(this.method, other.method) &&
-            Objects.deepEquals(this.purgeStagingData, other.purgeStagingData) &&
-            Objects.deepEquals(this.s3BucketName, other.s3BucketName) &&
-            Objects.deepEquals(this.s3BucketPath, other.s3BucketPath) &&
-            Objects.deepEquals(this.s3BucketRegion, other.s3BucketRegion) &&
-            Objects.deepEquals(this.secretAccessKey, other.secretAccessKey);
+            Utils.enhancedDeepEquals(this.accessKeyId, other.accessKeyId) &&
+            Utils.enhancedDeepEquals(this.fileNamePattern, other.fileNamePattern) &&
+            Utils.enhancedDeepEquals(this.method, other.method) &&
+            Utils.enhancedDeepEquals(this.purgeStagingData, other.purgeStagingData) &&
+            Utils.enhancedDeepEquals(this.s3BucketName, other.s3BucketName) &&
+            Utils.enhancedDeepEquals(this.s3BucketPath, other.s3BucketPath) &&
+            Utils.enhancedDeepEquals(this.s3BucketRegion, other.s3BucketRegion) &&
+            Utils.enhancedDeepEquals(this.secretAccessKey, other.secretAccessKey);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessKeyId,
-            fileNamePattern,
-            method,
-            purgeStagingData,
-            s3BucketName,
-            s3BucketPath,
-            s3BucketRegion,
-            secretAccessKey);
+        return Utils.enhancedHash(
+            accessKeyId, fileNamePattern, method,
+            purgeStagingData, s3BucketName, s3BucketPath,
+            s3BucketRegion, secretAccessKey);
     }
     
     @Override
@@ -318,35 +356,41 @@ public class AWSS3Staging {
                 "s3BucketRegion", s3BucketRegion,
                 "secretAccessKey", secretAccessKey);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessKeyId;
- 
+
         private Optional<String> fileNamePattern = Optional.empty();
- 
+
         private Optional<Boolean> purgeStagingData;
- 
+
         private String s3BucketName;
- 
+
         private Optional<String> s3BucketPath = Optional.empty();
- 
+
         private Optional<? extends DestinationRedshiftS3BucketRegion> s3BucketRegion;
- 
+
         private String secretAccessKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * This ID grants access to the above S3 staging bucket. Airbyte requires Read and Write permissions to the given bucket. See &lt;a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys"&gt;AWS docs&lt;/a&gt; on how to generate an access key ID and secret access key.
+         * This ID grants access to the above S3 staging bucket. Airbyte requires Read and Write permissions to
+         * the given bucket. See <a
+         * href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys">AWS
+         * docs</a> on how to generate an access key ID and secret access key.
          */
         public Builder accessKeyId(String accessKeyId) {
             Utils.checkNotNull(accessKeyId, "accessKeyId");
             this.accessKeyId = accessKeyId;
             return this;
         }
+
 
         /**
          * The pattern allows you to set the file-name format for the S3 staging file(s)
@@ -366,8 +410,11 @@ public class AWSS3Staging {
             return this;
         }
 
+
         /**
-         * Whether to delete the staging files from S3 after completing the sync. See &lt;a href="https://docs.airbyte.com/integrations/destinations/redshift/#:~:text=the%20root%20directory.-,Purge%20Staging%20Data,-Whether%20to%20delete"&gt; docs&lt;/a&gt; for details.
+         * Whether to delete the staging files from S3 after completing the sync. See <a
+         * href="https://docs.airbyte.com/integrations/destinations/redshift/#:~:text=the%20root%20directory.-,Purge%20Staging%20Data,-Whether%20to%20delete">
+         * docs</a> for details.
          */
         public Builder purgeStagingData(boolean purgeStagingData) {
             Utils.checkNotNull(purgeStagingData, "purgeStagingData");
@@ -376,13 +423,16 @@ public class AWSS3Staging {
         }
 
         /**
-         * Whether to delete the staging files from S3 after completing the sync. See &lt;a href="https://docs.airbyte.com/integrations/destinations/redshift/#:~:text=the%20root%20directory.-,Purge%20Staging%20Data,-Whether%20to%20delete"&gt; docs&lt;/a&gt; for details.
+         * Whether to delete the staging files from S3 after completing the sync. See <a
+         * href="https://docs.airbyte.com/integrations/destinations/redshift/#:~:text=the%20root%20directory.-,Purge%20Staging%20Data,-Whether%20to%20delete">
+         * docs</a> for details.
          */
         public Builder purgeStagingData(Optional<Boolean> purgeStagingData) {
             Utils.checkNotNull(purgeStagingData, "purgeStagingData");
             this.purgeStagingData = purgeStagingData;
             return this;
         }
+
 
         /**
          * The name of the staging S3 bucket.
@@ -393,8 +443,12 @@ public class AWSS3Staging {
             return this;
         }
 
+
         /**
-         * The directory under the S3 bucket where data will be written. If not provided, then defaults to the root directory. See &lt;a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/defining-bucket-names-data-lakes/faq.html#:~:text=be%20globally%20unique.-,For%20S3%20bucket%20paths,-%2C%20you%20can%20use"&gt;path's name recommendations&lt;/a&gt; for more details.
+         * The directory under the S3 bucket where data will be written. If not provided, then defaults to the
+         * root directory. See <a
+         * href="https://docs.aws.amazon.com/prescriptive-guidance/latest/defining-bucket-names-data-lakes/faq.html#:~:text=be%20globally%20unique.-,For%20S3%20bucket%20paths,-%2C%20you%20can%20use">path's
+         * name recommendations</a> for more details.
          */
         public Builder s3BucketPath(String s3BucketPath) {
             Utils.checkNotNull(s3BucketPath, "s3BucketPath");
@@ -403,13 +457,17 @@ public class AWSS3Staging {
         }
 
         /**
-         * The directory under the S3 bucket where data will be written. If not provided, then defaults to the root directory. See &lt;a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/defining-bucket-names-data-lakes/faq.html#:~:text=be%20globally%20unique.-,For%20S3%20bucket%20paths,-%2C%20you%20can%20use"&gt;path's name recommendations&lt;/a&gt; for more details.
+         * The directory under the S3 bucket where data will be written. If not provided, then defaults to the
+         * root directory. See <a
+         * href="https://docs.aws.amazon.com/prescriptive-guidance/latest/defining-bucket-names-data-lakes/faq.html#:~:text=be%20globally%20unique.-,For%20S3%20bucket%20paths,-%2C%20you%20can%20use">path's
+         * name recommendations</a> for more details.
          */
         public Builder s3BucketPath(Optional<String> s3BucketPath) {
             Utils.checkNotNull(s3BucketPath, "s3BucketPath");
             this.s3BucketPath = s3BucketPath;
             return this;
         }
+
 
         /**
          * The region of the S3 staging bucket.
@@ -429,15 +487,18 @@ public class AWSS3Staging {
             return this;
         }
 
+
         /**
-         * The corresponding secret to the above access key id. See &lt;a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys"&gt;AWS docs&lt;/a&gt; on how to generate an access key ID and secret access key.
+         * The corresponding secret to the above access key id. See <a
+         * href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys">AWS
+         * docs</a> on how to generate an access key ID and secret access key.
          */
         public Builder secretAccessKey(String secretAccessKey) {
             Utils.checkNotNull(secretAccessKey, "secretAccessKey");
             this.secretAccessKey = secretAccessKey;
             return this;
         }
-        
+
         public AWSS3Staging build() {
             if (purgeStagingData == null) {
                 purgeStagingData = _SINGLETON_VALUE_PurgeStagingData.value();
@@ -445,15 +506,13 @@ public class AWSS3Staging {
             if (s3BucketRegion == null) {
                 s3BucketRegion = _SINGLETON_VALUE_S3BucketRegion.value();
             }
+
             return new AWSS3Staging(
-                accessKeyId,
-                fileNamePattern,
-                purgeStagingData,
-                s3BucketName,
-                s3BucketPath,
-                s3BucketRegion,
+                accessKeyId, fileNamePattern, purgeStagingData,
+                s3BucketName, s3BucketPath, s3BucketRegion,
                 secretAccessKey);
         }
+
 
         private static final LazySingletonValue<DestinationRedshiftMethod> _SINGLETON_VALUE_Method =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum Salesflare {
     @JsonValue
     private final String value;
 
-    private Salesflare(String value) {
+    Salesflare(String value) {
         this.value = value;
     }
     

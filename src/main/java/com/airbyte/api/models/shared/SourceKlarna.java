@@ -14,13 +14,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceKlarna {
 
+public class SourceKlarna {
     /**
-     * A string which is associated with your Merchant ID and is used to authorize use of Klarna's APIs (https://developers.klarna.com/api/#authentication)
+     * A string which is associated with your Merchant ID and is used to authorize use of Klarna's APIs
+     * (https://developers.klarna.com/api/#authentication)
      */
     @JsonProperty("password")
     private String password;
@@ -33,16 +33,19 @@ public class SourceKlarna {
     private Optional<Boolean> playground;
 
     /**
-     * Base url region (For playground eu https://docs.klarna.com/klarna-payments/api/payments-api/#tag/API-URLs). Supported 'eu', 'na', 'oc'
+     * Base url region (For playground eu
+     * https://docs.klarna.com/klarna-payments/api/payments-api/#tag/API-URLs). Supported 'eu', 'na', 'oc'
      */
     @JsonProperty("region")
     private SourceKlarnaRegion region;
+
 
     @JsonProperty("sourceType")
     private Klarna sourceType;
 
     /**
-     * Consists of your Merchant ID (eid) - a unique number that identifies your e-store, combined with a random string (https://developers.klarna.com/api/#authentication)
+     * Consists of your Merchant ID (eid) - a unique number that identifies your e-store, combined with a
+     * random string (https://developers.klarna.com/api/#authentication)
      */
     @JsonProperty("username")
     private String username;
@@ -68,11 +71,13 @@ public class SourceKlarna {
             String password,
             SourceKlarnaRegion region,
             String username) {
-        this(password, Optional.empty(), region, username);
+        this(password, Optional.empty(), region,
+            username);
     }
 
     /**
-     * A string which is associated with your Merchant ID and is used to authorize use of Klarna's APIs (https://developers.klarna.com/api/#authentication)
+     * A string which is associated with your Merchant ID and is used to authorize use of Klarna's APIs
+     * (https://developers.klarna.com/api/#authentication)
      */
     @JsonIgnore
     public String password() {
@@ -88,7 +93,8 @@ public class SourceKlarna {
     }
 
     /**
-     * Base url region (For playground eu https://docs.klarna.com/klarna-payments/api/payments-api/#tag/API-URLs). Supported 'eu', 'na', 'oc'
+     * Base url region (For playground eu
+     * https://docs.klarna.com/klarna-payments/api/payments-api/#tag/API-URLs). Supported 'eu', 'na', 'oc'
      */
     @JsonIgnore
     public SourceKlarnaRegion region() {
@@ -101,19 +107,22 @@ public class SourceKlarna {
     }
 
     /**
-     * Consists of your Merchant ID (eid) - a unique number that identifies your e-store, combined with a random string (https://developers.klarna.com/api/#authentication)
+     * Consists of your Merchant ID (eid) - a unique number that identifies your e-store, combined with a
+     * random string (https://developers.klarna.com/api/#authentication)
      */
     @JsonIgnore
     public String username() {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * A string which is associated with your Merchant ID and is used to authorize use of Klarna's APIs (https://developers.klarna.com/api/#authentication)
+     * A string which is associated with your Merchant ID and is used to authorize use of Klarna's APIs
+     * (https://developers.klarna.com/api/#authentication)
      */
     public SourceKlarna withPassword(String password) {
         Utils.checkNotNull(password, "password");
@@ -130,6 +139,7 @@ public class SourceKlarna {
         return this;
     }
 
+
     /**
      * Propertie defining if connector is used against playground or production environment
      */
@@ -140,7 +150,8 @@ public class SourceKlarna {
     }
 
     /**
-     * Base url region (For playground eu https://docs.klarna.com/klarna-payments/api/payments-api/#tag/API-URLs). Supported 'eu', 'na', 'oc'
+     * Base url region (For playground eu
+     * https://docs.klarna.com/klarna-payments/api/payments-api/#tag/API-URLs). Supported 'eu', 'na', 'oc'
      */
     public SourceKlarna withRegion(SourceKlarnaRegion region) {
         Utils.checkNotNull(region, "region");
@@ -149,7 +160,8 @@ public class SourceKlarna {
     }
 
     /**
-     * Consists of your Merchant ID (eid) - a unique number that identifies your e-store, combined with a random string (https://developers.klarna.com/api/#authentication)
+     * Consists of your Merchant ID (eid) - a unique number that identifies your e-store, combined with a
+     * random string (https://developers.klarna.com/api/#authentication)
      */
     public SourceKlarna withUsername(String username) {
         Utils.checkNotNull(username, "username");
@@ -157,7 +169,6 @@ public class SourceKlarna {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -168,21 +179,18 @@ public class SourceKlarna {
         }
         SourceKlarna other = (SourceKlarna) o;
         return 
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.playground, other.playground) &&
-            Objects.deepEquals(this.region, other.region) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.playground, other.playground) &&
+            Utils.enhancedDeepEquals(this.region, other.region) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            password,
-            playground,
-            region,
-            sourceType,
-            username);
+        return Utils.enhancedHash(
+            password, playground, region,
+            sourceType, username);
     }
     
     @Override
@@ -194,29 +202,33 @@ public class SourceKlarna {
                 "sourceType", sourceType,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String password;
- 
+
         private Optional<Boolean> playground;
- 
+
         private SourceKlarnaRegion region;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * A string which is associated with your Merchant ID and is used to authorize use of Klarna's APIs (https://developers.klarna.com/api/#authentication)
+         * A string which is associated with your Merchant ID and is used to authorize use of Klarna's APIs
+         * (https://developers.klarna.com/api/#authentication)
          */
         public Builder password(String password) {
             Utils.checkNotNull(password, "password");
             this.password = password;
             return this;
         }
+
 
         /**
          * Propertie defining if connector is used against playground or production environment
@@ -236,8 +248,10 @@ public class SourceKlarna {
             return this;
         }
 
+
         /**
-         * Base url region (For playground eu https://docs.klarna.com/klarna-payments/api/payments-api/#tag/API-URLs). Supported 'eu', 'na', 'oc'
+         * Base url region (For playground eu
+         * https://docs.klarna.com/klarna-payments/api/payments-api/#tag/API-URLs). Supported 'eu', 'na', 'oc'
          */
         public Builder region(SourceKlarnaRegion region) {
             Utils.checkNotNull(region, "region");
@@ -245,25 +259,27 @@ public class SourceKlarna {
             return this;
         }
 
+
         /**
-         * Consists of your Merchant ID (eid) - a unique number that identifies your e-store, combined with a random string (https://developers.klarna.com/api/#authentication)
+         * Consists of your Merchant ID (eid) - a unique number that identifies your e-store, combined with a
+         * random string (https://developers.klarna.com/api/#authentication)
          */
         public Builder username(String username) {
             Utils.checkNotNull(username, "username");
             this.username = username;
             return this;
         }
-        
+
         public SourceKlarna build() {
             if (playground == null) {
                 playground = _SINGLETON_VALUE_Playground.value();
             }
+
             return new SourceKlarna(
-                password,
-                playground,
-                region,
+                password, playground, region,
                 username);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_Playground =
                 new LazySingletonValue<>(

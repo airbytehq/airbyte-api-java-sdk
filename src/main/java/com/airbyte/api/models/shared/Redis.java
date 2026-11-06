@@ -14,7 +14,7 @@ public enum Redis {
     @JsonValue
     private final String value;
 
-    private Redis(String value) {
+    Redis(String value) {
         this.value = value;
     }
     

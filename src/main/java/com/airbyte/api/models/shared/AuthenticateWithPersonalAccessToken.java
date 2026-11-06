@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class AuthenticateWithPersonalAccessToken {
 
+public class AuthenticateWithPersonalAccessToken {
     /**
      * PAT Credentials
      */
@@ -27,7 +26,8 @@ public class AuthenticateWithPersonalAccessToken {
     private Optional<? extends SourceAsanaSchemasCredentialsTitle> optionTitle;
 
     /**
-     * Asana Personal Access Token (generate yours &lt;a href="https://app.asana.com/0/developer-console"&gt;here&lt;/a&gt;).
+     * Asana Personal Access Token (generate yours <a
+     * href="https://app.asana.com/0/developer-console">here</a>).
      */
     @JsonProperty("personal_access_token")
     private String personalAccessToken;
@@ -50,19 +50,22 @@ public class AuthenticateWithPersonalAccessToken {
     }
 
     /**
-     * Asana Personal Access Token (generate yours &lt;a href="https://app.asana.com/0/developer-console"&gt;here&lt;/a&gt;).
+     * Asana Personal Access Token (generate yours <a
+     * href="https://app.asana.com/0/developer-console">here</a>).
      */
     @JsonIgnore
     public String personalAccessToken() {
         return personalAccessToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Asana Personal Access Token (generate yours &lt;a href="https://app.asana.com/0/developer-console"&gt;here&lt;/a&gt;).
+     * Asana Personal Access Token (generate yours <a
+     * href="https://app.asana.com/0/developer-console">here</a>).
      */
     public AuthenticateWithPersonalAccessToken withPersonalAccessToken(String personalAccessToken) {
         Utils.checkNotNull(personalAccessToken, "personalAccessToken");
@@ -70,7 +73,6 @@ public class AuthenticateWithPersonalAccessToken {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -81,15 +83,14 @@ public class AuthenticateWithPersonalAccessToken {
         }
         AuthenticateWithPersonalAccessToken other = (AuthenticateWithPersonalAccessToken) o;
         return 
-            Objects.deepEquals(this.optionTitle, other.optionTitle) &&
-            Objects.deepEquals(this.personalAccessToken, other.personalAccessToken);
+            Utils.enhancedDeepEquals(this.optionTitle, other.optionTitle) &&
+            Utils.enhancedDeepEquals(this.personalAccessToken, other.personalAccessToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            optionTitle,
-            personalAccessToken);
+        return Utils.enhancedHash(
+            optionTitle, personalAccessToken);
     }
     
     @Override
@@ -98,28 +99,33 @@ public class AuthenticateWithPersonalAccessToken {
                 "optionTitle", optionTitle,
                 "personalAccessToken", personalAccessToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String personalAccessToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Asana Personal Access Token (generate yours &lt;a href="https://app.asana.com/0/developer-console"&gt;here&lt;/a&gt;).
+         * Asana Personal Access Token (generate yours <a
+         * href="https://app.asana.com/0/developer-console">here</a>).
          */
         public Builder personalAccessToken(String personalAccessToken) {
             Utils.checkNotNull(personalAccessToken, "personalAccessToken");
             this.personalAccessToken = personalAccessToken;
             return this;
         }
-        
+
         public AuthenticateWithPersonalAccessToken build() {
+
             return new AuthenticateWithPersonalAccessToken(
                 personalAccessToken);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceAsanaSchemasCredentialsTitle>> _SINGLETON_VALUE_OptionTitle =
                 new LazySingletonValue<>(

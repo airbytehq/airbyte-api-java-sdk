@@ -14,19 +14,20 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceFile {
 
+public class SourceFile {
     /**
-     * The Name of the final table to replicate this file into (should include letters, numbers dash and underscores only).
+     * The Name of the final table to replicate this file into (should include letters, numbers dash and
+     * underscores only).
      */
     @JsonProperty("dataset_name")
     private String datasetName;
 
     /**
-     * The Format of the file which should be replicated (Warning: some formats may be experimental, please refer to the docs).
+     * The Format of the file which should be replicated (Warning: some formats may be experimental, please
+     * refer to the docs).
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("format")
@@ -39,11 +40,13 @@ public class SourceFile {
     private StorageProvider provider;
 
     /**
-     * This should be a string in JSON format. It depends on the chosen file format to provide additional options and tune its behavior.
+     * This should be a string in JSON format. It depends on the chosen file format to provide additional
+     * options and tune its behavior.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("reader_options")
     private Optional<String> readerOptions;
+
 
     @JsonProperty("sourceType")
     private File sourceType;
@@ -78,11 +81,13 @@ public class SourceFile {
             String datasetName,
             StorageProvider provider,
             String url) {
-        this(datasetName, Optional.empty(), provider, Optional.empty(), url);
+        this(datasetName, Optional.empty(), provider,
+            Optional.empty(), url);
     }
 
     /**
-     * The Name of the final table to replicate this file into (should include letters, numbers dash and underscores only).
+     * The Name of the final table to replicate this file into (should include letters, numbers dash and
+     * underscores only).
      */
     @JsonIgnore
     public String datasetName() {
@@ -90,7 +95,8 @@ public class SourceFile {
     }
 
     /**
-     * The Format of the file which should be replicated (Warning: some formats may be experimental, please refer to the docs).
+     * The Format of the file which should be replicated (Warning: some formats may be experimental, please
+     * refer to the docs).
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -107,7 +113,8 @@ public class SourceFile {
     }
 
     /**
-     * This should be a string in JSON format. It depends on the chosen file format to provide additional options and tune its behavior.
+     * This should be a string in JSON format. It depends on the chosen file format to provide additional
+     * options and tune its behavior.
      */
     @JsonIgnore
     public Optional<String> readerOptions() {
@@ -127,12 +134,14 @@ public class SourceFile {
         return url;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The Name of the final table to replicate this file into (should include letters, numbers dash and underscores only).
+     * The Name of the final table to replicate this file into (should include letters, numbers dash and
+     * underscores only).
      */
     public SourceFile withDatasetName(String datasetName) {
         Utils.checkNotNull(datasetName, "datasetName");
@@ -141,7 +150,8 @@ public class SourceFile {
     }
 
     /**
-     * The Format of the file which should be replicated (Warning: some formats may be experimental, please refer to the docs).
+     * The Format of the file which should be replicated (Warning: some formats may be experimental, please
+     * refer to the docs).
      */
     public SourceFile withFormat(FileFormat format) {
         Utils.checkNotNull(format, "format");
@@ -149,8 +159,10 @@ public class SourceFile {
         return this;
     }
 
+
     /**
-     * The Format of the file which should be replicated (Warning: some formats may be experimental, please refer to the docs).
+     * The Format of the file which should be replicated (Warning: some formats may be experimental, please
+     * refer to the docs).
      */
     public SourceFile withFormat(Optional<? extends FileFormat> format) {
         Utils.checkNotNull(format, "format");
@@ -168,7 +180,8 @@ public class SourceFile {
     }
 
     /**
-     * This should be a string in JSON format. It depends on the chosen file format to provide additional options and tune its behavior.
+     * This should be a string in JSON format. It depends on the chosen file format to provide additional
+     * options and tune its behavior.
      */
     public SourceFile withReaderOptions(String readerOptions) {
         Utils.checkNotNull(readerOptions, "readerOptions");
@@ -176,8 +189,10 @@ public class SourceFile {
         return this;
     }
 
+
     /**
-     * This should be a string in JSON format. It depends on the chosen file format to provide additional options and tune its behavior.
+     * This should be a string in JSON format. It depends on the chosen file format to provide additional
+     * options and tune its behavior.
      */
     public SourceFile withReaderOptions(Optional<String> readerOptions) {
         Utils.checkNotNull(readerOptions, "readerOptions");
@@ -194,7 +209,6 @@ public class SourceFile {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -205,23 +219,19 @@ public class SourceFile {
         }
         SourceFile other = (SourceFile) o;
         return 
-            Objects.deepEquals(this.datasetName, other.datasetName) &&
-            Objects.deepEquals(this.format, other.format) &&
-            Objects.deepEquals(this.provider, other.provider) &&
-            Objects.deepEquals(this.readerOptions, other.readerOptions) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.url, other.url);
+            Utils.enhancedDeepEquals(this.datasetName, other.datasetName) &&
+            Utils.enhancedDeepEquals(this.format, other.format) &&
+            Utils.enhancedDeepEquals(this.provider, other.provider) &&
+            Utils.enhancedDeepEquals(this.readerOptions, other.readerOptions) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.url, other.url);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            datasetName,
-            format,
-            provider,
-            readerOptions,
-            sourceType,
-            url);
+        return Utils.enhancedHash(
+            datasetName, format, provider,
+            readerOptions, sourceType, url);
     }
     
     @Override
@@ -234,25 +244,28 @@ public class SourceFile {
                 "sourceType", sourceType,
                 "url", url);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String datasetName;
- 
+
         private Optional<? extends FileFormat> format;
- 
+
         private StorageProvider provider;
- 
+
         private Optional<String> readerOptions = Optional.empty();
- 
+
         private String url;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The Name of the final table to replicate this file into (should include letters, numbers dash and underscores only).
+         * The Name of the final table to replicate this file into (should include letters, numbers dash and
+         * underscores only).
          */
         public Builder datasetName(String datasetName) {
             Utils.checkNotNull(datasetName, "datasetName");
@@ -260,8 +273,10 @@ public class SourceFile {
             return this;
         }
 
+
         /**
-         * The Format of the file which should be replicated (Warning: some formats may be experimental, please refer to the docs).
+         * The Format of the file which should be replicated (Warning: some formats may be experimental, please
+         * refer to the docs).
          */
         public Builder format(FileFormat format) {
             Utils.checkNotNull(format, "format");
@@ -270,13 +285,15 @@ public class SourceFile {
         }
 
         /**
-         * The Format of the file which should be replicated (Warning: some formats may be experimental, please refer to the docs).
+         * The Format of the file which should be replicated (Warning: some formats may be experimental, please
+         * refer to the docs).
          */
         public Builder format(Optional<? extends FileFormat> format) {
             Utils.checkNotNull(format, "format");
             this.format = format;
             return this;
         }
+
 
         /**
          * The storage Provider or Location of the file(s) which should be replicated.
@@ -287,8 +304,10 @@ public class SourceFile {
             return this;
         }
 
+
         /**
-         * This should be a string in JSON format. It depends on the chosen file format to provide additional options and tune its behavior.
+         * This should be a string in JSON format. It depends on the chosen file format to provide additional
+         * options and tune its behavior.
          */
         public Builder readerOptions(String readerOptions) {
             Utils.checkNotNull(readerOptions, "readerOptions");
@@ -297,13 +316,15 @@ public class SourceFile {
         }
 
         /**
-         * This should be a string in JSON format. It depends on the chosen file format to provide additional options and tune its behavior.
+         * This should be a string in JSON format. It depends on the chosen file format to provide additional
+         * options and tune its behavior.
          */
         public Builder readerOptions(Optional<String> readerOptions) {
             Utils.checkNotNull(readerOptions, "readerOptions");
             this.readerOptions = readerOptions;
             return this;
         }
+
 
         /**
          * The URL path to access the file which should be replicated.
@@ -313,18 +334,17 @@ public class SourceFile {
             this.url = url;
             return this;
         }
-        
+
         public SourceFile build() {
             if (format == null) {
                 format = _SINGLETON_VALUE_Format.value();
             }
+
             return new SourceFile(
-                datasetName,
-                format,
-                provider,
-                readerOptions,
-                url);
+                datasetName, format, provider,
+                readerOptions, url);
         }
+
 
         private static final LazySingletonValue<Optional<? extends FileFormat>> _SINGLETON_VALUE_Format =
                 new LazySingletonValue<>(

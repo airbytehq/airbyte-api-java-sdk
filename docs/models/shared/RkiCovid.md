@@ -1,5 +1,13 @@
 # RkiCovid
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.RkiCovid;
+
+RkiCovid value = RkiCovid.RKI_COVID;
+```
+
 
 ## Values
 

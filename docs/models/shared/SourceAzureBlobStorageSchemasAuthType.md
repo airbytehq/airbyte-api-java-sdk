@@ -1,5 +1,13 @@
 # SourceAzureBlobStorageSchemasAuthType
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceAzureBlobStorageSchemasAuthType;
+
+SourceAzureBlobStorageSchemasAuthType value = SourceAzureBlobStorageSchemasAuthType.CLIENT_CREDENTIALS;
+```
+
 
 ## Values
 

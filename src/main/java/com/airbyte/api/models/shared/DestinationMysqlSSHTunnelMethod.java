@@ -14,18 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationMysqlSSHTunnelMethod
  * 
- * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+ * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+ * authentication to use.
  */
 @JsonDeserialize(using = DestinationMysqlSSHTunnelMethod._Deserializer.class)
 public class DestinationMysqlSSHTunnelMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationMysqlSSHTunnelMethod(TypedObject value) {
         this.value = value;
@@ -33,17 +33,17 @@ public class DestinationMysqlSSHTunnelMethod {
 
     public static DestinationMysqlSSHTunnelMethod of(DestinationMysqlNoTunnel value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationMysqlSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationMysqlNoTunnel>(){}));
+        return new DestinationMysqlSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationMysqlSSHTunnelMethod of(DestinationMysqlSSHKeyAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationMysqlSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationMysqlSSHKeyAuthentication>(){}));
+        return new DestinationMysqlSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationMysqlSSHTunnelMethod of(DestinationMysqlPasswordAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationMysqlSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationMysqlPasswordAuthentication>(){}));
+        return new DestinationMysqlSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +67,7 @@ public class DestinationMysqlSSHTunnelMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +78,12 @@ public class DestinationMysqlSSHTunnelMethod {
             return false;
         }
         DestinationMysqlSSHTunnelMethod other = (DestinationMysqlSSHTunnelMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -91,9 +91,9 @@ public class DestinationMysqlSSHTunnelMethod {
 
         public _Deserializer() {
             super(DestinationMysqlSSHTunnelMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DestinationMysqlPasswordAuthentication>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationMysqlNoTunnel>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationMysqlSSHKeyAuthentication>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationMysqlNoTunnel>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationMysqlPasswordAuthentication>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -102,6 +102,6 @@ public class DestinationMysqlSSHTunnelMethod {
         return Utils.toString(DestinationMysqlSSHTunnelMethod.class,
                 "value", value);
     }
- 
+
 }
 

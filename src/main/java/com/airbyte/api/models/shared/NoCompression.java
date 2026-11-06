@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class NoCompression {
 
@@ -40,9 +40,10 @@ public class NoCompression {
         return (Optional<Codec>) codec;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public NoCompression withCodec(Codec codec) {
         Utils.checkNotNull(codec, "codec");
@@ -50,13 +51,13 @@ public class NoCompression {
         return this;
     }
 
+
     public NoCompression withCodec(Optional<? extends Codec> codec) {
         Utils.checkNotNull(codec, "codec");
         this.codec = codec;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -67,12 +68,12 @@ public class NoCompression {
         }
         NoCompression other = (NoCompression) o;
         return 
-            Objects.deepEquals(this.codec, other.codec);
+            Utils.enhancedDeepEquals(this.codec, other.codec);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             codec);
     }
     
@@ -81,14 +82,16 @@ public class NoCompression {
         return Utils.toString(NoCompression.class,
                 "codec", codec);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends Codec> codec;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder codec(Codec codec) {
             Utils.checkNotNull(codec, "codec");
@@ -101,14 +104,16 @@ public class NoCompression {
             this.codec = codec;
             return this;
         }
-        
+
         public NoCompression build() {
             if (codec == null) {
                 codec = _SINGLETON_VALUE_Codec.value();
             }
+
             return new NoCompression(
                 codec);
         }
+
 
         private static final LazySingletonValue<Optional<? extends Codec>> _SINGLETON_VALUE_Codec =
                 new LazySingletonValue<>(

@@ -16,7 +16,7 @@ public enum In {
     @JsonValue
     private final String value;
 
-    private In(String value) {
+    In(String value) {
         this.value = value;
     }
     

@@ -24,7 +24,7 @@ public enum TimeFrame {
     @JsonValue
     private final String value;
 
-    private TimeFrame(String value) {
+    TimeFrame(String value) {
         this.value = value;
     }
     

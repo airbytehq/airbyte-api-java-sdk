@@ -10,8 +10,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class GetDestinationRequest {
 
@@ -19,7 +19,9 @@ public class GetDestinationRequest {
     private String destinationId;
 
     /**
-     * Rather than return *** for secret properties include the secret coordinate information
+     * Rather than return *** for secret properties include the secret coordinate information. Coordinates
+     * are opaque pointers, not secret values, and resolving one requires access to the secret storage that
+     * holds it. They are not stable: a coordinate changes when the secret is rewritten.
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeSecretCoordinates")
     private Optional<Boolean> includeSecretCoordinates;
@@ -45,16 +47,19 @@ public class GetDestinationRequest {
     }
 
     /**
-     * Rather than return *** for secret properties include the secret coordinate information
+     * Rather than return *** for secret properties include the secret coordinate information. Coordinates
+     * are opaque pointers, not secret values, and resolving one requires access to the secret storage that
+     * holds it. They are not stable: a coordinate changes when the secret is rewritten.
      */
     @JsonIgnore
     public Optional<Boolean> includeSecretCoordinates() {
         return includeSecretCoordinates;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public GetDestinationRequest withDestinationId(String destinationId) {
         Utils.checkNotNull(destinationId, "destinationId");
@@ -63,7 +68,9 @@ public class GetDestinationRequest {
     }
 
     /**
-     * Rather than return *** for secret properties include the secret coordinate information
+     * Rather than return *** for secret properties include the secret coordinate information. Coordinates
+     * are opaque pointers, not secret values, and resolving one requires access to the secret storage that
+     * holds it. They are not stable: a coordinate changes when the secret is rewritten.
      */
     public GetDestinationRequest withIncludeSecretCoordinates(boolean includeSecretCoordinates) {
         Utils.checkNotNull(includeSecretCoordinates, "includeSecretCoordinates");
@@ -71,8 +78,11 @@ public class GetDestinationRequest {
         return this;
     }
 
+
     /**
-     * Rather than return *** for secret properties include the secret coordinate information
+     * Rather than return *** for secret properties include the secret coordinate information. Coordinates
+     * are opaque pointers, not secret values, and resolving one requires access to the secret storage that
+     * holds it. They are not stable: a coordinate changes when the secret is rewritten.
      */
     public GetDestinationRequest withIncludeSecretCoordinates(Optional<Boolean> includeSecretCoordinates) {
         Utils.checkNotNull(includeSecretCoordinates, "includeSecretCoordinates");
@@ -80,7 +90,6 @@ public class GetDestinationRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -91,15 +100,14 @@ public class GetDestinationRequest {
         }
         GetDestinationRequest other = (GetDestinationRequest) o;
         return 
-            Objects.deepEquals(this.destinationId, other.destinationId) &&
-            Objects.deepEquals(this.includeSecretCoordinates, other.includeSecretCoordinates);
+            Utils.enhancedDeepEquals(this.destinationId, other.destinationId) &&
+            Utils.enhancedDeepEquals(this.includeSecretCoordinates, other.includeSecretCoordinates);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            destinationId,
-            includeSecretCoordinates);
+        return Utils.enhancedHash(
+            destinationId, includeSecretCoordinates);
     }
     
     @Override
@@ -108,16 +116,18 @@ public class GetDestinationRequest {
                 "destinationId", destinationId,
                 "includeSecretCoordinates", includeSecretCoordinates);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String destinationId;
- 
+
         private Optional<Boolean> includeSecretCoordinates = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder destinationId(String destinationId) {
             Utils.checkNotNull(destinationId, "destinationId");
@@ -125,8 +135,11 @@ public class GetDestinationRequest {
             return this;
         }
 
+
         /**
-         * Rather than return *** for secret properties include the secret coordinate information
+         * Rather than return *** for secret properties include the secret coordinate information. Coordinates
+         * are opaque pointers, not secret values, and resolving one requires access to the secret storage that
+         * holds it. They are not stable: a coordinate changes when the secret is rewritten.
          */
         public Builder includeSecretCoordinates(boolean includeSecretCoordinates) {
             Utils.checkNotNull(includeSecretCoordinates, "includeSecretCoordinates");
@@ -135,18 +148,21 @@ public class GetDestinationRequest {
         }
 
         /**
-         * Rather than return *** for secret properties include the secret coordinate information
+         * Rather than return *** for secret properties include the secret coordinate information. Coordinates
+         * are opaque pointers, not secret values, and resolving one requires access to the secret storage that
+         * holds it. They are not stable: a coordinate changes when the secret is rewritten.
          */
         public Builder includeSecretCoordinates(Optional<Boolean> includeSecretCoordinates) {
             Utils.checkNotNull(includeSecretCoordinates, "includeSecretCoordinates");
             this.includeSecretCoordinates = includeSecretCoordinates;
             return this;
         }
-        
+
         public GetDestinationRequest build() {
+
             return new GetDestinationRequest(
-                destinationId,
-                includeSecretCoordinates);
+                destinationId, includeSecretCoordinates);
         }
+
     }
 }

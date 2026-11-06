@@ -14,7 +14,7 @@ public enum MicrosoftLists {
     @JsonValue
     private final String value;
 
-    private MicrosoftLists(String value) {
+    MicrosoftLists(String value) {
         this.value = value;
     }
     

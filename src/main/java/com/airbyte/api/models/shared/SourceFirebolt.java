@@ -13,11 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceFirebolt {
 
+public class SourceFirebolt {
     /**
      * Firebolt account to login.
      */
@@ -55,6 +54,7 @@ public class SourceFirebolt {
     @JsonProperty("host")
     private Optional<String> host;
 
+
     @JsonProperty("sourceType")
     private SourceFireboltFirebolt sourceType;
 
@@ -87,7 +87,8 @@ public class SourceFirebolt {
             String clientSecret,
             String database,
             String engine) {
-        this(account, clientId, clientSecret, database, engine, Optional.empty());
+        this(account, clientId, clientSecret,
+            database, engine, Optional.empty());
     }
 
     /**
@@ -143,9 +144,10 @@ public class SourceFirebolt {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Firebolt account to login.
@@ -201,6 +203,7 @@ public class SourceFirebolt {
         return this;
     }
 
+
     /**
      * The host name of your Firebolt database.
      */
@@ -210,7 +213,6 @@ public class SourceFirebolt {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -221,24 +223,20 @@ public class SourceFirebolt {
         }
         SourceFirebolt other = (SourceFirebolt) o;
         return 
-            Objects.deepEquals(this.account, other.account) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.database, other.database) &&
-            Objects.deepEquals(this.engine, other.engine) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.account, other.account) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.database, other.database) &&
+            Utils.enhancedDeepEquals(this.engine, other.engine) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            account,
-            clientId,
-            clientSecret,
-            database,
-            engine,
-            host,
+        return Utils.enhancedHash(
+            account, clientId, clientSecret,
+            database, engine, host,
             sourceType);
     }
     
@@ -253,24 +251,26 @@ public class SourceFirebolt {
                 "host", host,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String account;
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String database;
- 
+
         private String engine;
- 
+
         private Optional<String> host = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Firebolt account to login.
@@ -281,6 +281,7 @@ public class SourceFirebolt {
             return this;
         }
 
+
         /**
          * Firebolt service account ID.
          */
@@ -289,6 +290,7 @@ public class SourceFirebolt {
             this.clientId = clientId;
             return this;
         }
+
 
         /**
          * Firebolt secret, corresponding to the service account ID.
@@ -299,6 +301,7 @@ public class SourceFirebolt {
             return this;
         }
 
+
         /**
          * The database to connect to.
          */
@@ -308,6 +311,7 @@ public class SourceFirebolt {
             return this;
         }
 
+
         /**
          * Engine name to connect to.
          */
@@ -316,6 +320,7 @@ public class SourceFirebolt {
             this.engine = engine;
             return this;
         }
+
 
         /**
          * The host name of your Firebolt database.
@@ -334,16 +339,14 @@ public class SourceFirebolt {
             this.host = host;
             return this;
         }
-        
+
         public SourceFirebolt build() {
+
             return new SourceFirebolt(
-                account,
-                clientId,
-                clientSecret,
-                database,
-                engine,
-                host);
+                account, clientId, clientSecret,
+                database, engine, host);
         }
+
 
         private static final LazySingletonValue<SourceFireboltFirebolt> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(
