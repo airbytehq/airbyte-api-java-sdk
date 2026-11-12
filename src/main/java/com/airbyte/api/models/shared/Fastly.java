@@ -14,7 +14,7 @@ public enum Fastly {
     @JsonValue
     private final String value;
 
-    private Fastly(String value) {
+    Fastly(String value) {
         this.value = value;
     }
     

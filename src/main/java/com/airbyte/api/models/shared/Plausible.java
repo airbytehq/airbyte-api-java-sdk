@@ -14,7 +14,7 @@ public enum Plausible {
     @JsonValue
     private final String value;
 
-    private Plausible(String value) {
+    Plausible(String value) {
         this.value = value;
     }
     

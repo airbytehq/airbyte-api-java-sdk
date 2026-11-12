@@ -14,7 +14,7 @@ public enum Freshcaller {
     @JsonValue
     private final String value;
 
-    private Freshcaller(String value) {
+    Freshcaller(String value) {
         this.value = value;
     }
     

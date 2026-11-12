@@ -14,7 +14,7 @@ public enum Assemblyai {
     @JsonValue
     private final String value;
 
-    private Assemblyai(String value) {
+    Assemblyai(String value) {
         this.value = value;
     }
     

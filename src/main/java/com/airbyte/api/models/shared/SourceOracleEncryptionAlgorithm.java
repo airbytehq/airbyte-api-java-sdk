@@ -21,7 +21,7 @@ public enum SourceOracleEncryptionAlgorithm {
     @JsonValue
     private final String value;
 
-    private SourceOracleEncryptionAlgorithm(String value) {
+    SourceOracleEncryptionAlgorithm(String value) {
         this.value = value;
     }
     

@@ -15,11 +15,10 @@ import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourcePocket {
 
+public class SourcePocket {
     /**
      * The user's Pocket access token.
      */
@@ -81,6 +80,7 @@ public class SourcePocket {
     @JsonProperty("sort")
     private Optional<? extends SourcePocketSortBy> sort;
 
+
     @JsonProperty("sourceType")
     private Pocket sourceType;
 
@@ -139,7 +139,10 @@ public class SourcePocket {
     public SourcePocket(
             String accessToken,
             String consumerKey) {
-        this(accessToken, consumerKey, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(accessToken, consumerKey, Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty());
     }
 
     /**
@@ -239,9 +242,10 @@ public class SourcePocket {
         return tag;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The user's Pocket access token.
@@ -270,6 +274,7 @@ public class SourcePocket {
         return this;
     }
 
+
     /**
      * Select the content type of the items to retrieve.
      */
@@ -287,6 +292,7 @@ public class SourcePocket {
         this.detailType = Optional.ofNullable(detailType);
         return this;
     }
+
 
     /**
      * Select the granularity of the information about each item.
@@ -306,6 +312,7 @@ public class SourcePocket {
         return this;
     }
 
+
     /**
      * Only return items from a particular `domain`.
      */
@@ -323,6 +330,7 @@ public class SourcePocket {
         this.favorite = Optional.ofNullable(favorite);
         return this;
     }
+
 
     /**
      * Retrieve only favorited items.
@@ -342,6 +350,7 @@ public class SourcePocket {
         return this;
     }
 
+
     /**
      * Only return items whose title or url contain the `search` string.
      */
@@ -359,6 +368,7 @@ public class SourcePocket {
         this.since = Optional.ofNullable(since);
         return this;
     }
+
 
     /**
      * Only return items modified since the given timestamp.
@@ -378,6 +388,7 @@ public class SourcePocket {
         return this;
     }
 
+
     /**
      * Sort retrieved items by the given criteria.
      */
@@ -395,6 +406,7 @@ public class SourcePocket {
         this.state = Optional.ofNullable(state);
         return this;
     }
+
 
     /**
      * Select the state of the items to retrieve.
@@ -414,6 +426,7 @@ public class SourcePocket {
         return this;
     }
 
+
     /**
      * Return only items tagged with this tag name. Use _untagged_ for retrieving only untagged items.
      */
@@ -423,7 +436,6 @@ public class SourcePocket {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -434,35 +446,27 @@ public class SourcePocket {
         }
         SourcePocket other = (SourcePocket) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.consumerKey, other.consumerKey) &&
-            Objects.deepEquals(this.contentType, other.contentType) &&
-            Objects.deepEquals(this.detailType, other.detailType) &&
-            Objects.deepEquals(this.domain, other.domain) &&
-            Objects.deepEquals(this.favorite, other.favorite) &&
-            Objects.deepEquals(this.search, other.search) &&
-            Objects.deepEquals(this.since, other.since) &&
-            Objects.deepEquals(this.sort, other.sort) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.state, other.state) &&
-            Objects.deepEquals(this.tag, other.tag);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.consumerKey, other.consumerKey) &&
+            Utils.enhancedDeepEquals(this.contentType, other.contentType) &&
+            Utils.enhancedDeepEquals(this.detailType, other.detailType) &&
+            Utils.enhancedDeepEquals(this.domain, other.domain) &&
+            Utils.enhancedDeepEquals(this.favorite, other.favorite) &&
+            Utils.enhancedDeepEquals(this.search, other.search) &&
+            Utils.enhancedDeepEquals(this.since, other.since) &&
+            Utils.enhancedDeepEquals(this.sort, other.sort) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.state, other.state) &&
+            Utils.enhancedDeepEquals(this.tag, other.tag);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            consumerKey,
-            contentType,
-            detailType,
-            domain,
-            favorite,
-            search,
-            since,
-            sort,
-            sourceType,
-            state,
-            tag);
+        return Utils.enhancedHash(
+            accessToken, consumerKey, contentType,
+            detailType, domain, favorite,
+            search, since, sort,
+            sourceType, state, tag);
     }
     
     @Override
@@ -481,34 +485,36 @@ public class SourcePocket {
                 "state", state,
                 "tag", tag);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private String consumerKey;
- 
+
         private Optional<? extends ContentType> contentType = Optional.empty();
- 
+
         private Optional<? extends DetailType> detailType = Optional.empty();
- 
+
         private Optional<String> domain = Optional.empty();
- 
+
         private Optional<Boolean> favorite;
- 
+
         private Optional<String> search = Optional.empty();
- 
+
         private Optional<String> since = Optional.empty();
- 
+
         private Optional<? extends SourcePocketSortBy> sort = Optional.empty();
- 
+
         private Optional<? extends State> state = Optional.empty();
- 
+
         private Optional<String> tag = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The user's Pocket access token.
@@ -519,6 +525,7 @@ public class SourcePocket {
             return this;
         }
 
+
         /**
          * Your application's Consumer Key.
          */
@@ -527,6 +534,7 @@ public class SourcePocket {
             this.consumerKey = consumerKey;
             return this;
         }
+
 
         /**
          * Select the content type of the items to retrieve.
@@ -546,6 +554,7 @@ public class SourcePocket {
             return this;
         }
 
+
         /**
          * Select the granularity of the information about each item.
          */
@@ -563,6 +572,7 @@ public class SourcePocket {
             this.detailType = detailType;
             return this;
         }
+
 
         /**
          * Only return items from a particular `domain`.
@@ -582,6 +592,7 @@ public class SourcePocket {
             return this;
         }
 
+
         /**
          * Retrieve only favorited items.
          */
@@ -599,6 +610,7 @@ public class SourcePocket {
             this.favorite = favorite;
             return this;
         }
+
 
         /**
          * Only return items whose title or url contain the `search` string.
@@ -618,6 +630,7 @@ public class SourcePocket {
             return this;
         }
 
+
         /**
          * Only return items modified since the given timestamp.
          */
@@ -635,6 +648,7 @@ public class SourcePocket {
             this.since = since;
             return this;
         }
+
 
         /**
          * Sort retrieved items by the given criteria.
@@ -654,6 +668,7 @@ public class SourcePocket {
             return this;
         }
 
+
         /**
          * Select the state of the items to retrieve.
          */
@@ -672,6 +687,7 @@ public class SourcePocket {
             return this;
         }
 
+
         /**
          * Return only items tagged with this tag name. Use _untagged_ for retrieving only untagged items.
          */
@@ -689,24 +705,19 @@ public class SourcePocket {
             this.tag = tag;
             return this;
         }
-        
+
         public SourcePocket build() {
             if (favorite == null) {
                 favorite = _SINGLETON_VALUE_Favorite.value();
             }
+
             return new SourcePocket(
-                accessToken,
-                consumerKey,
-                contentType,
-                detailType,
-                domain,
-                favorite,
-                search,
-                since,
-                sort,
-                state,
-                tag);
+                accessToken, consumerKey, contentType,
+                detailType, domain, favorite,
+                search, since, sort,
+                state, tag);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_Favorite =
                 new LazySingletonValue<>(

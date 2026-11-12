@@ -11,15 +11,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceInflowinventory {
 
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonProperty("companyid")
     private String companyid;
+
 
     @JsonProperty("sourceType")
     private Inflowinventory sourceType;
@@ -50,9 +52,10 @@ public class SourceInflowinventory {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceInflowinventory withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -66,7 +69,6 @@ public class SourceInflowinventory {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -77,17 +79,15 @@ public class SourceInflowinventory {
         }
         SourceInflowinventory other = (SourceInflowinventory) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.companyid, other.companyid) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.companyid, other.companyid) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            companyid,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, companyid, sourceType);
     }
     
     @Override
@@ -97,16 +97,18 @@ public class SourceInflowinventory {
                 "companyid", companyid,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String companyid;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -114,17 +116,19 @@ public class SourceInflowinventory {
             return this;
         }
 
+
         public Builder companyid(String companyid) {
             Utils.checkNotNull(companyid, "companyid");
             this.companyid = companyid;
             return this;
         }
-        
+
         public SourceInflowinventory build() {
+
             return new SourceInflowinventory(
-                apiKey,
-                companyid);
+                apiKey, companyid);
         }
+
 
         private static final LazySingletonValue<Inflowinventory> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

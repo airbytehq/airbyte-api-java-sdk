@@ -21,7 +21,7 @@ public enum SourceVitallyStatus {
     @JsonValue
     private final String value;
 
-    private SourceVitallyStatus(String value) {
+    SourceVitallyStatus(String value) {
         this.value = value;
     }
     

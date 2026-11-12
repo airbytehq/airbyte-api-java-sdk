@@ -13,20 +13,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceTrackPms {
 
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("api_secret")
     private Optional<String> apiSecret;
 
+
     @JsonProperty("customer_domain")
     private String customerDomain;
+
 
     @JsonProperty("sourceType")
     private TrackPms sourceType;
@@ -71,9 +74,10 @@ public class SourceTrackPms {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceTrackPms withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -87,6 +91,7 @@ public class SourceTrackPms {
         return this;
     }
 
+
     public SourceTrackPms withApiSecret(Optional<String> apiSecret) {
         Utils.checkNotNull(apiSecret, "apiSecret");
         this.apiSecret = apiSecret;
@@ -99,7 +104,6 @@ public class SourceTrackPms {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -110,18 +114,16 @@ public class SourceTrackPms {
         }
         SourceTrackPms other = (SourceTrackPms) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.apiSecret, other.apiSecret) &&
-            Objects.deepEquals(this.customerDomain, other.customerDomain) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.apiSecret, other.apiSecret) &&
+            Utils.enhancedDeepEquals(this.customerDomain, other.customerDomain) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            apiSecret,
-            customerDomain,
+        return Utils.enhancedHash(
+            apiKey, apiSecret, customerDomain,
             sourceType);
     }
     
@@ -133,24 +135,27 @@ public class SourceTrackPms {
                 "customerDomain", customerDomain,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> apiSecret = Optional.empty();
- 
+
         private String customerDomain;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         public Builder apiSecret(String apiSecret) {
             Utils.checkNotNull(apiSecret, "apiSecret");
@@ -164,18 +169,19 @@ public class SourceTrackPms {
             return this;
         }
 
+
         public Builder customerDomain(String customerDomain) {
             Utils.checkNotNull(customerDomain, "customerDomain");
             this.customerDomain = customerDomain;
             return this;
         }
-        
+
         public SourceTrackPms build() {
+
             return new SourceTrackPms(
-                apiKey,
-                apiSecret,
-                customerDomain);
+                apiKey, apiSecret, customerDomain);
         }
+
 
         private static final LazySingletonValue<TrackPms> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

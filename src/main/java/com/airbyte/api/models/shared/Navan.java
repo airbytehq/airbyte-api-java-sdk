@@ -14,7 +14,7 @@ public enum Navan {
     @JsonValue
     private final String value;
 
-    private Navan(String value) {
+    Navan(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum SourceSftpBulkSchemasAuthType {
     @JsonValue
     private final String value;
 
-    private SourceSftpBulkSchemasAuthType(String value) {
+    SourceSftpBulkSchemasAuthType(String value) {
         this.value = value;
     }
     

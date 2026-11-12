@@ -12,15 +12,17 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourcePennylane {
 
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonProperty("sourceType")
     private Pennylane sourceType;
+
 
     @JsonProperty("start_time")
     private OffsetDateTime startTime;
@@ -51,9 +53,10 @@ public class SourcePennylane {
         return startTime;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourcePennylane withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -67,7 +70,6 @@ public class SourcePennylane {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,17 +80,15 @@ public class SourcePennylane {
         }
         SourcePennylane other = (SourcePennylane) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startTime, other.startTime);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startTime, other.startTime);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            startTime);
+        return Utils.enhancedHash(
+            apiKey, sourceType, startTime);
     }
     
     @Override
@@ -98,16 +98,18 @@ public class SourcePennylane {
                 "sourceType", sourceType,
                 "startTime", startTime);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private OffsetDateTime startTime;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -115,17 +117,19 @@ public class SourcePennylane {
             return this;
         }
 
+
         public Builder startTime(OffsetDateTime startTime) {
             Utils.checkNotNull(startTime, "startTime");
             this.startTime = startTime;
             return this;
         }
-        
+
         public SourcePennylane build() {
+
             return new SourcePennylane(
-                apiKey,
-                startTime);
+                apiKey, startTime);
         }
+
 
         private static final LazySingletonValue<Pennylane> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum Blogger {
     @JsonValue
     private final String value;
 
-    private Blogger(String value) {
+    Blogger(String value) {
         this.value = value;
     }
     

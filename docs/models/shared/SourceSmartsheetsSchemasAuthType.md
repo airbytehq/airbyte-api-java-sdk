@@ -1,5 +1,13 @@
 # SourceSmartsheetsSchemasAuthType
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceSmartsheetsSchemasAuthType;
+
+SourceSmartsheetsSchemasAuthType value = SourceSmartsheetsSchemasAuthType.ACCESS_TOKEN;
+```
+
 
 ## Values
 

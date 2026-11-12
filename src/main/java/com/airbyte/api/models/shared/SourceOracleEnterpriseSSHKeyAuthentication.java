@@ -20,7 +20,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -34,7 +33,8 @@ public class SourceOracleEnterpriseSSHKeyAuthentication {
     private Map<String, Object> additionalProperties;
 
     /**
-     * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM -f myuser_rsa )
+     * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM
+     * -f myuser_rsa )
      */
     @JsonProperty("ssh_key")
     private String sshKey;
@@ -44,6 +44,7 @@ public class SourceOracleEnterpriseSSHKeyAuthentication {
      */
     @JsonProperty("tunnel_host")
     private String tunnelHost;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
@@ -86,7 +87,8 @@ public class SourceOracleEnterpriseSSHKeyAuthentication {
             String sshKey,
             String tunnelHost,
             String tunnelUser) {
-        this(sshKey, tunnelHost, Optional.empty(), Optional.empty(), tunnelUser);
+        this(sshKey, tunnelHost, Optional.empty(),
+            Optional.empty(), tunnelUser);
     }
 
     @JsonAnyGetter
@@ -95,7 +97,8 @@ public class SourceOracleEnterpriseSSHKeyAuthentication {
     }
 
     /**
-     * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM -f myuser_rsa )
+     * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM
+     * -f myuser_rsa )
      */
     @JsonIgnore
     public String sshKey() {
@@ -132,9 +135,10 @@ public class SourceOracleEnterpriseSSHKeyAuthentication {
         return tunnelUser;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceOracleEnterpriseSSHKeyAuthentication withAdditionalProperty(String key, Object value) {
@@ -142,8 +146,7 @@ public class SourceOracleEnterpriseSSHKeyAuthentication {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceOracleEnterpriseSSHKeyAuthentication withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -151,7 +154,8 @@ public class SourceOracleEnterpriseSSHKeyAuthentication {
     }
 
     /**
-     * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM -f myuser_rsa )
+     * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM
+     * -f myuser_rsa )
      */
     public SourceOracleEnterpriseSSHKeyAuthentication withSshKey(String sshKey) {
         Utils.checkNotNull(sshKey, "sshKey");
@@ -174,6 +178,7 @@ public class SourceOracleEnterpriseSSHKeyAuthentication {
         return this;
     }
 
+
     public SourceOracleEnterpriseSSHKeyAuthentication withTunnelMethod(Optional<? extends SourceOracleEnterpriseSchemasTunnelMethod> tunnelMethod) {
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
         this.tunnelMethod = tunnelMethod;
@@ -188,6 +193,7 @@ public class SourceOracleEnterpriseSSHKeyAuthentication {
         this.tunnelPort = Optional.ofNullable(tunnelPort);
         return this;
     }
+
 
     /**
      * Port on the proxy/jump server that accepts inbound ssh connections.
@@ -207,7 +213,6 @@ public class SourceOracleEnterpriseSSHKeyAuthentication {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -218,23 +223,19 @@ public class SourceOracleEnterpriseSSHKeyAuthentication {
         }
         SourceOracleEnterpriseSSHKeyAuthentication other = (SourceOracleEnterpriseSSHKeyAuthentication) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.sshKey, other.sshKey) &&
-            Objects.deepEquals(this.tunnelHost, other.tunnelHost) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
-            Objects.deepEquals(this.tunnelPort, other.tunnelPort) &&
-            Objects.deepEquals(this.tunnelUser, other.tunnelUser);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.sshKey, other.sshKey) &&
+            Utils.enhancedDeepEquals(this.tunnelHost, other.tunnelHost) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.tunnelPort, other.tunnelPort) &&
+            Utils.enhancedDeepEquals(this.tunnelUser, other.tunnelUser);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            sshKey,
-            tunnelHost,
-            tunnelMethod,
-            tunnelPort,
-            tunnelUser);
+        return Utils.enhancedHash(
+            additionalProperties, sshKey, tunnelHost,
+            tunnelMethod, tunnelPort, tunnelUser);
     }
     
     @Override
@@ -247,21 +248,22 @@ public class SourceOracleEnterpriseSSHKeyAuthentication {
                 "tunnelPort", tunnelPort,
                 "tunnelUser", tunnelUser);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private String sshKey;
- 
+
         private String tunnelHost;
- 
+
         private Optional<? extends SourceOracleEnterpriseSchemasTunnelMethod> tunnelMethod;
- 
+
         private Optional<Long> tunnelPort;
- 
+
         private String tunnelUser;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -282,14 +284,17 @@ public class SourceOracleEnterpriseSSHKeyAuthentication {
             return this;
         }
 
+
         /**
-         * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM -f myuser_rsa )
+         * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM
+         * -f myuser_rsa )
          */
         public Builder sshKey(String sshKey) {
             Utils.checkNotNull(sshKey, "sshKey");
             this.sshKey = sshKey;
             return this;
         }
+
 
         /**
          * Hostname of the jump server host that allows inbound ssh tunnel.
@@ -299,6 +304,7 @@ public class SourceOracleEnterpriseSSHKeyAuthentication {
             this.tunnelHost = tunnelHost;
             return this;
         }
+
 
         public Builder tunnelMethod(SourceOracleEnterpriseSchemasTunnelMethod tunnelMethod) {
             Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -311,6 +317,7 @@ public class SourceOracleEnterpriseSSHKeyAuthentication {
             this.tunnelMethod = tunnelMethod;
             return this;
         }
+
 
         /**
          * Port on the proxy/jump server that accepts inbound ssh connections.
@@ -330,6 +337,7 @@ public class SourceOracleEnterpriseSSHKeyAuthentication {
             return this;
         }
 
+
         /**
          * OS-level username for logging into the jump server host
          */
@@ -338,7 +346,7 @@ public class SourceOracleEnterpriseSSHKeyAuthentication {
             this.tunnelUser = tunnelUser;
             return this;
         }
-        
+
         public SourceOracleEnterpriseSSHKeyAuthentication build() {
             if (tunnelMethod == null) {
                 tunnelMethod = _SINGLETON_VALUE_TunnelMethod.value();
@@ -346,14 +354,13 @@ public class SourceOracleEnterpriseSSHKeyAuthentication {
             if (tunnelPort == null) {
                 tunnelPort = _SINGLETON_VALUE_TunnelPort.value();
             }
+
             return new SourceOracleEnterpriseSSHKeyAuthentication(
-                sshKey,
-                tunnelHost,
-                tunnelMethod,
-                tunnelPort,
-                tunnelUser)
+                sshKey, tunnelHost, tunnelMethod,
+                tunnelPort, tunnelUser)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceOracleEnterpriseSchemasTunnelMethod>> _SINGLETON_VALUE_TunnelMethod =
                 new LazySingletonValue<>(

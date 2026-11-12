@@ -11,7 +11,8 @@ import java.util.Optional;
 /**
  * GCSBucketRegion
  * 
- * <p>Select a Region of the GCS Bucket. Read more &lt;a href="https://cloud.google.com/storage/docs/locations"&gt;here&lt;/a&gt;.
+ * <p>Select a Region of the GCS Bucket. Read more <a
+ * href="https://cloud.google.com/storage/docs/locations">here</a>.
  */
 public enum GCSBucketRegion {
     NORTHAMERICA_NORTHEAST1("northamerica-northeast1"),
@@ -53,7 +54,7 @@ public enum GCSBucketRegion {
     @JsonValue
     private final String value;
 
-    private GCSBucketRegion(String value) {
+    GCSBucketRegion(String value) {
         this.value = value;
     }
     

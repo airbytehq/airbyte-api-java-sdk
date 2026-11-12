@@ -14,7 +14,7 @@ public enum Box {
     @JsonValue
     private final String value;
 
-    private Box(String value) {
+    Box(String value) {
         this.value = value;
     }
     

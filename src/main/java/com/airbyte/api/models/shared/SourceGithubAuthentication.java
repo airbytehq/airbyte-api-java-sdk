@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceGithubAuthentication
@@ -25,26 +24,26 @@ import java.util.Objects;
 public class SourceGithubAuthentication {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceGithubAuthentication(TypedObject value) {
         this.value = value;
     }
 
-    public static SourceGithubAuthentication of(OAuth value) {
+    public static SourceGithubAuthentication of(SourceGithubOAuth value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGithubAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<OAuth>(){}));
+        return new SourceGithubAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceGithubAuthentication of(SourceGithubPersonalAccessToken value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGithubAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGithubPersonalAccessToken>(){}));
+        return new SourceGithubAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
-     * <li>{@code com.airbyte.api.models.shared.OAuth}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceGithubOAuth}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceGithubPersonalAccessToken}</li>
      * </ul>
      * 
@@ -61,7 +60,7 @@ public class SourceGithubAuthentication {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class SourceGithubAuthentication {
             return false;
         }
         SourceGithubAuthentication other = (SourceGithubAuthentication) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,7 +84,7 @@ public class SourceGithubAuthentication {
 
         public _Deserializer() {
             super(SourceGithubAuthentication.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<OAuth>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGithubOAuth>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceGithubPersonalAccessToken>() {}, JsonShape.DEFAULT));
         }
     }
@@ -95,6 +94,6 @@ public class SourceGithubAuthentication {
         return Utils.toString(SourceGithubAuthentication.class,
                 "value", value);
     }
- 
+
 }
 

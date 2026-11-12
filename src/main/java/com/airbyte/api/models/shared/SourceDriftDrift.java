@@ -14,7 +14,7 @@ public enum SourceDriftDrift {
     @JsonValue
     private final String value;
 
-    private SourceDriftDrift(String value) {
+    SourceDriftDrift(String value) {
         this.value = value;
     }
     

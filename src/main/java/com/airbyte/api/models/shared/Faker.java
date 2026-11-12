@@ -14,7 +14,7 @@ public enum Faker {
     @JsonValue
     private final String value;
 
-    private Faker(String value) {
+    Faker(String value) {
         this.value = value;
     }
     

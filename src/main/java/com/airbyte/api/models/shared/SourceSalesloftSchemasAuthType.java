@@ -14,7 +14,7 @@ public enum SourceSalesloftSchemasAuthType {
     @JsonValue
     private final String value;
 
-    private SourceSalesloftSchemasAuthType(String value) {
+    SourceSalesloftSchemasAuthType(String value) {
         this.value = value;
     }
     

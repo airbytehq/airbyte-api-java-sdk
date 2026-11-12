@@ -2,6 +2,14 @@
 
 enum that describes the different types of jobs that the platform runs.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.JobType;
+
+JobType value = JobType.GET_SPEC;
+```
+
 
 ## Values
 

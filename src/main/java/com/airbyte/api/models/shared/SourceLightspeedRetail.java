@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceLightspeedRetail {
-
     /**
      * API key or access token
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private LightspeedRetail sourceType;
@@ -62,9 +62,10 @@ public class SourceLightspeedRetail {
         return subdomain;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API key or access token
@@ -84,7 +85,6 @@ public class SourceLightspeedRetail {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourceLightspeedRetail {
         }
         SourceLightspeedRetail other = (SourceLightspeedRetail) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.subdomain, other.subdomain);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.subdomain, other.subdomain);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            subdomain);
+        return Utils.enhancedHash(
+            apiKey, sourceType, subdomain);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SourceLightspeedRetail {
                 "sourceType", sourceType,
                 "subdomain", subdomain);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String subdomain;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API key or access token
@@ -135,6 +135,7 @@ public class SourceLightspeedRetail {
             return this;
         }
 
+
         /**
          * The subdomain for the retailer, e.g., 'example' in 'example.retail.lightspeed.app'.
          */
@@ -143,12 +144,13 @@ public class SourceLightspeedRetail {
             this.subdomain = subdomain;
             return this;
         }
-        
+
         public SourceLightspeedRetail build() {
+
             return new SourceLightspeedRetail(
-                apiKey,
-                subdomain);
+                apiKey, subdomain);
         }
+
 
         private static final LazySingletonValue<LightspeedRetail> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

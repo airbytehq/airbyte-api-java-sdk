@@ -1,5 +1,13 @@
 # SourceSapHanaEnterpriseSchemasEncryptionMethod
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceSapHanaEnterpriseSchemasEncryptionMethod;
+
+SourceSapHanaEnterpriseSchemasEncryptionMethod value = SourceSapHanaEnterpriseSchemasEncryptionMethod.CLIENT_NNE;
+```
+
 
 ## Values
 

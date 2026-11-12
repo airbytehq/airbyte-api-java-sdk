@@ -14,7 +14,7 @@ public enum ReplyIo {
     @JsonValue
     private final String value;
 
-    private ReplyIo(String value) {
+    ReplyIo(String value) {
         this.value = value;
     }
     

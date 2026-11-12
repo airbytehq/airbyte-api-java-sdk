@@ -13,21 +13,25 @@ import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
-import java.util.Objects;
+
 
 public class SourceGoogleForms {
 
     @JsonProperty("client_id")
     private String clientId;
 
+
     @JsonProperty("client_refresh_token")
     private String clientRefreshToken;
+
 
     @JsonProperty("client_secret")
     private String clientSecret;
 
+
     @JsonProperty("form_id")
     private List<Object> formId;
+
 
     @JsonProperty("sourceType")
     private GoogleForms sourceType;
@@ -74,9 +78,10 @@ public class SourceGoogleForms {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceGoogleForms withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -102,7 +107,6 @@ public class SourceGoogleForms {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,21 +117,18 @@ public class SourceGoogleForms {
         }
         SourceGoogleForms other = (SourceGoogleForms) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientRefreshToken, other.clientRefreshToken) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.formId, other.formId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientRefreshToken, other.clientRefreshToken) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.formId, other.formId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientRefreshToken,
-            clientSecret,
-            formId,
-            sourceType);
+        return Utils.enhancedHash(
+            clientId, clientRefreshToken, clientSecret,
+            formId, sourceType);
     }
     
     @Override
@@ -139,20 +140,22 @@ public class SourceGoogleForms {
                 "formId", formId,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientRefreshToken;
- 
+
         private String clientSecret;
- 
+
         private List<Object> formId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -160,11 +163,13 @@ public class SourceGoogleForms {
             return this;
         }
 
+
         public Builder clientRefreshToken(String clientRefreshToken) {
             Utils.checkNotNull(clientRefreshToken, "clientRefreshToken");
             this.clientRefreshToken = clientRefreshToken;
             return this;
         }
+
 
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
@@ -172,19 +177,20 @@ public class SourceGoogleForms {
             return this;
         }
 
+
         public Builder formId(List<Object> formId) {
             Utils.checkNotNull(formId, "formId");
             this.formId = formId;
             return this;
         }
-        
+
         public SourceGoogleForms build() {
+
             return new SourceGoogleForms(
-                clientId,
-                clientRefreshToken,
-                clientSecret,
+                clientId, clientRefreshToken, clientSecret,
                 formId);
         }
+
 
         private static final LazySingletonValue<GoogleForms> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

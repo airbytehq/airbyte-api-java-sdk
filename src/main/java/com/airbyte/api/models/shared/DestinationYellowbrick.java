@@ -16,16 +16,16 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationYellowbrick {
 
+public class DestinationYellowbrick {
     /**
      * Name of the database.
      */
     @JsonProperty("database")
     private String database;
+
 
     @JsonProperty("destinationType")
     private Yellowbrick destinationType;
@@ -37,7 +37,9 @@ public class DestinationYellowbrick {
     private String host;
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("jdbc_url_params")
@@ -58,7 +60,8 @@ public class DestinationYellowbrick {
     private Optional<Long> port;
 
     /**
-     * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
+     * The default schema tables are written to if the source does not specify a namespace. The usual value
+     * for this field is "public".
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("schema")
@@ -72,21 +75,28 @@ public class DestinationYellowbrick {
     private Optional<Boolean> ssl;
 
     /**
-     * SSL connection modes. 
-     *  &lt;b&gt;disable&lt;/b&gt; - Chose this mode to disable encryption of communication between Airbyte and destination database
-     *  &lt;b&gt;allow&lt;/b&gt; - Chose this mode to enable encryption only when required by the source database
-     *  &lt;b&gt;prefer&lt;/b&gt; - Chose this mode to allow unencrypted connection only if the source database does not support encryption
-     *  &lt;b&gt;require&lt;/b&gt; - Chose this mode to always require encryption. If the source database server does not support encryption, connection will fail
-     *   &lt;b&gt;verify-ca&lt;/b&gt; - Chose this mode to always require encryption and to verify that the source database server has a valid SSL certificate
-     *   &lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Chose this mode to always require encryption and to verify the identity of the source database server
-     *  See more information - &lt;a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"&gt; in the docs&lt;/a&gt;.
+     * SSL connection modes.
+     * <b>disable</b> - Chose this mode to disable encryption of communication between Airbyte and
+     * destination database
+     * <b>allow</b> - Chose this mode to enable encryption only when required by the source database
+     * <b>prefer</b> - Chose this mode to allow unencrypted connection only if the source database does not
+     * support encryption
+     * <b>require</b> - Chose this mode to always require encryption. If the source database server does
+     * not support encryption, connection will fail
+     * <b>verify-ca</b> - Chose this mode to always require encryption and to verify that the source
+     * database server has a valid SSL certificate
+     * <b>verify-full</b> - This is the most secure mode. Chose this mode to always require encryption and
+     * to verify the identity of the source database server
+     * See more information - <a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"> in
+     * the docs</a>.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("ssl_mode")
     private Optional<? extends DestinationYellowbrickSSLModes> sslMode;
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
@@ -137,7 +147,10 @@ public class DestinationYellowbrick {
             String database,
             String host,
             String username) {
-        this(database, host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+        this(database, host, Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            username);
     }
 
     /**
@@ -162,7 +175,9 @@ public class DestinationYellowbrick {
     }
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     @JsonIgnore
     public Optional<String> jdbcUrlParams() {
@@ -186,7 +201,8 @@ public class DestinationYellowbrick {
     }
 
     /**
-     * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
+     * The default schema tables are written to if the source does not specify a namespace. The usual value
+     * for this field is "public".
      */
     @JsonIgnore
     public Optional<String> schema() {
@@ -202,14 +218,20 @@ public class DestinationYellowbrick {
     }
 
     /**
-     * SSL connection modes. 
-     *  &lt;b&gt;disable&lt;/b&gt; - Chose this mode to disable encryption of communication between Airbyte and destination database
-     *  &lt;b&gt;allow&lt;/b&gt; - Chose this mode to enable encryption only when required by the source database
-     *  &lt;b&gt;prefer&lt;/b&gt; - Chose this mode to allow unencrypted connection only if the source database does not support encryption
-     *  &lt;b&gt;require&lt;/b&gt; - Chose this mode to always require encryption. If the source database server does not support encryption, connection will fail
-     *   &lt;b&gt;verify-ca&lt;/b&gt; - Chose this mode to always require encryption and to verify that the source database server has a valid SSL certificate
-     *   &lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Chose this mode to always require encryption and to verify the identity of the source database server
-     *  See more information - &lt;a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"&gt; in the docs&lt;/a&gt;.
+     * SSL connection modes.
+     * <b>disable</b> - Chose this mode to disable encryption of communication between Airbyte and
+     * destination database
+     * <b>allow</b> - Chose this mode to enable encryption only when required by the source database
+     * <b>prefer</b> - Chose this mode to allow unencrypted connection only if the source database does not
+     * support encryption
+     * <b>require</b> - Chose this mode to always require encryption. If the source database server does
+     * not support encryption, connection will fail
+     * <b>verify-ca</b> - Chose this mode to always require encryption and to verify that the source
+     * database server has a valid SSL certificate
+     * <b>verify-full</b> - This is the most secure mode. Chose this mode to always require encryption and
+     * to verify the identity of the source database server
+     * See more information - <a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"> in
+     * the docs</a>.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -218,7 +240,8 @@ public class DestinationYellowbrick {
     }
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -234,9 +257,10 @@ public class DestinationYellowbrick {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Name of the database.
@@ -257,7 +281,9 @@ public class DestinationYellowbrick {
     }
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     public DestinationYellowbrick withJdbcUrlParams(String jdbcUrlParams) {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -265,8 +291,11 @@ public class DestinationYellowbrick {
         return this;
     }
 
+
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     public DestinationYellowbrick withJdbcUrlParams(Optional<String> jdbcUrlParams) {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -282,6 +311,7 @@ public class DestinationYellowbrick {
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     /**
      * Password associated with the username.
@@ -301,6 +331,7 @@ public class DestinationYellowbrick {
         return this;
     }
 
+
     /**
      * Port of the database.
      */
@@ -311,7 +342,8 @@ public class DestinationYellowbrick {
     }
 
     /**
-     * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
+     * The default schema tables are written to if the source does not specify a namespace. The usual value
+     * for this field is "public".
      */
     public DestinationYellowbrick withSchema(String schema) {
         Utils.checkNotNull(schema, "schema");
@@ -319,8 +351,10 @@ public class DestinationYellowbrick {
         return this;
     }
 
+
     /**
-     * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
+     * The default schema tables are written to if the source does not specify a namespace. The usual value
+     * for this field is "public".
      */
     public DestinationYellowbrick withSchema(Optional<String> schema) {
         Utils.checkNotNull(schema, "schema");
@@ -337,6 +371,7 @@ public class DestinationYellowbrick {
         return this;
     }
 
+
     /**
      * Encrypt data using SSL. When activating SSL, please select one of the connection modes.
      */
@@ -347,14 +382,20 @@ public class DestinationYellowbrick {
     }
 
     /**
-     * SSL connection modes. 
-     *  &lt;b&gt;disable&lt;/b&gt; - Chose this mode to disable encryption of communication between Airbyte and destination database
-     *  &lt;b&gt;allow&lt;/b&gt; - Chose this mode to enable encryption only when required by the source database
-     *  &lt;b&gt;prefer&lt;/b&gt; - Chose this mode to allow unencrypted connection only if the source database does not support encryption
-     *  &lt;b&gt;require&lt;/b&gt; - Chose this mode to always require encryption. If the source database server does not support encryption, connection will fail
-     *   &lt;b&gt;verify-ca&lt;/b&gt; - Chose this mode to always require encryption and to verify that the source database server has a valid SSL certificate
-     *   &lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Chose this mode to always require encryption and to verify the identity of the source database server
-     *  See more information - &lt;a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"&gt; in the docs&lt;/a&gt;.
+     * SSL connection modes.
+     * <b>disable</b> - Chose this mode to disable encryption of communication between Airbyte and
+     * destination database
+     * <b>allow</b> - Chose this mode to enable encryption only when required by the source database
+     * <b>prefer</b> - Chose this mode to allow unencrypted connection only if the source database does not
+     * support encryption
+     * <b>require</b> - Chose this mode to always require encryption. If the source database server does
+     * not support encryption, connection will fail
+     * <b>verify-ca</b> - Chose this mode to always require encryption and to verify that the source
+     * database server has a valid SSL certificate
+     * <b>verify-full</b> - This is the most secure mode. Chose this mode to always require encryption and
+     * to verify the identity of the source database server
+     * See more information - <a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"> in
+     * the docs</a>.
      */
     public DestinationYellowbrick withSslMode(DestinationYellowbrickSSLModes sslMode) {
         Utils.checkNotNull(sslMode, "sslMode");
@@ -362,15 +403,22 @@ public class DestinationYellowbrick {
         return this;
     }
 
+
     /**
-     * SSL connection modes. 
-     *  &lt;b&gt;disable&lt;/b&gt; - Chose this mode to disable encryption of communication between Airbyte and destination database
-     *  &lt;b&gt;allow&lt;/b&gt; - Chose this mode to enable encryption only when required by the source database
-     *  &lt;b&gt;prefer&lt;/b&gt; - Chose this mode to allow unencrypted connection only if the source database does not support encryption
-     *  &lt;b&gt;require&lt;/b&gt; - Chose this mode to always require encryption. If the source database server does not support encryption, connection will fail
-     *   &lt;b&gt;verify-ca&lt;/b&gt; - Chose this mode to always require encryption and to verify that the source database server has a valid SSL certificate
-     *   &lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Chose this mode to always require encryption and to verify the identity of the source database server
-     *  See more information - &lt;a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"&gt; in the docs&lt;/a&gt;.
+     * SSL connection modes.
+     * <b>disable</b> - Chose this mode to disable encryption of communication between Airbyte and
+     * destination database
+     * <b>allow</b> - Chose this mode to enable encryption only when required by the source database
+     * <b>prefer</b> - Chose this mode to allow unencrypted connection only if the source database does not
+     * support encryption
+     * <b>require</b> - Chose this mode to always require encryption. If the source database server does
+     * not support encryption, connection will fail
+     * <b>verify-ca</b> - Chose this mode to always require encryption and to verify that the source
+     * database server has a valid SSL certificate
+     * <b>verify-full</b> - This is the most secure mode. Chose this mode to always require encryption and
+     * to verify the identity of the source database server
+     * See more information - <a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"> in
+     * the docs</a>.
      */
     public DestinationYellowbrick withSslMode(Optional<? extends DestinationYellowbrickSSLModes> sslMode) {
         Utils.checkNotNull(sslMode, "sslMode");
@@ -379,7 +427,8 @@ public class DestinationYellowbrick {
     }
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     public DestinationYellowbrick withTunnelMethod(DestinationYellowbrickSSHTunnelMethod tunnelMethod) {
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -387,8 +436,10 @@ public class DestinationYellowbrick {
         return this;
     }
 
+
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     public DestinationYellowbrick withTunnelMethod(Optional<? extends DestinationYellowbrickSSHTunnelMethod> tunnelMethod) {
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -405,7 +456,6 @@ public class DestinationYellowbrick {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -416,33 +466,26 @@ public class DestinationYellowbrick {
         }
         DestinationYellowbrick other = (DestinationYellowbrick) o;
         return 
-            Objects.deepEquals(this.database, other.database) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.schema, other.schema) &&
-            Objects.deepEquals(this.ssl, other.ssl) &&
-            Objects.deepEquals(this.sslMode, other.sslMode) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.database, other.database) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.schema, other.schema) &&
+            Utils.enhancedDeepEquals(this.ssl, other.ssl) &&
+            Utils.enhancedDeepEquals(this.sslMode, other.sslMode) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            database,
-            destinationType,
-            host,
-            jdbcUrlParams,
-            password,
-            port,
-            schema,
-            ssl,
-            sslMode,
-            tunnelMethod,
-            username);
+        return Utils.enhancedHash(
+            database, destinationType, host,
+            jdbcUrlParams, password, port,
+            schema, ssl, sslMode,
+            tunnelMethod, username);
     }
     
     @Override
@@ -460,32 +503,34 @@ public class DestinationYellowbrick {
                 "tunnelMethod", tunnelMethod,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String database;
- 
+
         private String host;
- 
+
         private Optional<String> jdbcUrlParams = Optional.empty();
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private Optional<Long> port;
- 
+
         private Optional<String> schema;
- 
+
         private Optional<Boolean> ssl;
- 
+
         private Optional<? extends DestinationYellowbrickSSLModes> sslMode = Optional.empty();
- 
+
         private Optional<? extends DestinationYellowbrickSSHTunnelMethod> tunnelMethod = Optional.empty();
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Name of the database.
@@ -496,6 +541,7 @@ public class DestinationYellowbrick {
             return this;
         }
 
+
         /**
          * Hostname of the database.
          */
@@ -505,8 +551,11 @@ public class DestinationYellowbrick {
             return this;
         }
 
+
         /**
-         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+         * 'key=value' pairs separated by the symbol '&amp;'. (example:
+         * key1=value1&amp;key2=value2&amp;key3=value3).
          */
         public Builder jdbcUrlParams(String jdbcUrlParams) {
             Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -515,13 +564,16 @@ public class DestinationYellowbrick {
         }
 
         /**
-         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+         * 'key=value' pairs separated by the symbol '&amp;'. (example:
+         * key1=value1&amp;key2=value2&amp;key3=value3).
          */
         public Builder jdbcUrlParams(Optional<String> jdbcUrlParams) {
             Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
             this.jdbcUrlParams = jdbcUrlParams;
             return this;
         }
+
 
         /**
          * Password associated with the username.
@@ -541,6 +593,7 @@ public class DestinationYellowbrick {
             return this;
         }
 
+
         /**
          * Port of the database.
          */
@@ -559,8 +612,10 @@ public class DestinationYellowbrick {
             return this;
         }
 
+
         /**
-         * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
+         * The default schema tables are written to if the source does not specify a namespace. The usual value
+         * for this field is "public".
          */
         public Builder schema(String schema) {
             Utils.checkNotNull(schema, "schema");
@@ -569,13 +624,15 @@ public class DestinationYellowbrick {
         }
 
         /**
-         * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
+         * The default schema tables are written to if the source does not specify a namespace. The usual value
+         * for this field is "public".
          */
         public Builder schema(Optional<String> schema) {
             Utils.checkNotNull(schema, "schema");
             this.schema = schema;
             return this;
         }
+
 
         /**
          * Encrypt data using SSL. When activating SSL, please select one of the connection modes.
@@ -595,15 +652,22 @@ public class DestinationYellowbrick {
             return this;
         }
 
+
         /**
-         * SSL connection modes. 
-         *  &lt;b&gt;disable&lt;/b&gt; - Chose this mode to disable encryption of communication between Airbyte and destination database
-         *  &lt;b&gt;allow&lt;/b&gt; - Chose this mode to enable encryption only when required by the source database
-         *  &lt;b&gt;prefer&lt;/b&gt; - Chose this mode to allow unencrypted connection only if the source database does not support encryption
-         *  &lt;b&gt;require&lt;/b&gt; - Chose this mode to always require encryption. If the source database server does not support encryption, connection will fail
-         *   &lt;b&gt;verify-ca&lt;/b&gt; - Chose this mode to always require encryption and to verify that the source database server has a valid SSL certificate
-         *   &lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Chose this mode to always require encryption and to verify the identity of the source database server
-         *  See more information - &lt;a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"&gt; in the docs&lt;/a&gt;.
+         * SSL connection modes.
+         * <b>disable</b> - Chose this mode to disable encryption of communication between Airbyte and
+         * destination database
+         * <b>allow</b> - Chose this mode to enable encryption only when required by the source database
+         * <b>prefer</b> - Chose this mode to allow unencrypted connection only if the source database does not
+         * support encryption
+         * <b>require</b> - Chose this mode to always require encryption. If the source database server does
+         * not support encryption, connection will fail
+         * <b>verify-ca</b> - Chose this mode to always require encryption and to verify that the source
+         * database server has a valid SSL certificate
+         * <b>verify-full</b> - This is the most secure mode. Chose this mode to always require encryption and
+         * to verify the identity of the source database server
+         * See more information - <a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"> in
+         * the docs</a>.
          */
         public Builder sslMode(DestinationYellowbrickSSLModes sslMode) {
             Utils.checkNotNull(sslMode, "sslMode");
@@ -612,14 +676,20 @@ public class DestinationYellowbrick {
         }
 
         /**
-         * SSL connection modes. 
-         *  &lt;b&gt;disable&lt;/b&gt; - Chose this mode to disable encryption of communication between Airbyte and destination database
-         *  &lt;b&gt;allow&lt;/b&gt; - Chose this mode to enable encryption only when required by the source database
-         *  &lt;b&gt;prefer&lt;/b&gt; - Chose this mode to allow unencrypted connection only if the source database does not support encryption
-         *  &lt;b&gt;require&lt;/b&gt; - Chose this mode to always require encryption. If the source database server does not support encryption, connection will fail
-         *   &lt;b&gt;verify-ca&lt;/b&gt; - Chose this mode to always require encryption and to verify that the source database server has a valid SSL certificate
-         *   &lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Chose this mode to always require encryption and to verify the identity of the source database server
-         *  See more information - &lt;a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"&gt; in the docs&lt;/a&gt;.
+         * SSL connection modes.
+         * <b>disable</b> - Chose this mode to disable encryption of communication between Airbyte and
+         * destination database
+         * <b>allow</b> - Chose this mode to enable encryption only when required by the source database
+         * <b>prefer</b> - Chose this mode to allow unencrypted connection only if the source database does not
+         * support encryption
+         * <b>require</b> - Chose this mode to always require encryption. If the source database server does
+         * not support encryption, connection will fail
+         * <b>verify-ca</b> - Chose this mode to always require encryption and to verify that the source
+         * database server has a valid SSL certificate
+         * <b>verify-full</b> - This is the most secure mode. Chose this mode to always require encryption and
+         * to verify the identity of the source database server
+         * See more information - <a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"> in
+         * the docs</a>.
          */
         public Builder sslMode(Optional<? extends DestinationYellowbrickSSLModes> sslMode) {
             Utils.checkNotNull(sslMode, "sslMode");
@@ -627,8 +697,10 @@ public class DestinationYellowbrick {
             return this;
         }
 
+
         /**
-         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+         * authentication to use.
          */
         public Builder tunnelMethod(DestinationYellowbrickSSHTunnelMethod tunnelMethod) {
             Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -637,13 +709,15 @@ public class DestinationYellowbrick {
         }
 
         /**
-         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+         * authentication to use.
          */
         public Builder tunnelMethod(Optional<? extends DestinationYellowbrickSSHTunnelMethod> tunnelMethod) {
             Utils.checkNotNull(tunnelMethod, "tunnelMethod");
             this.tunnelMethod = tunnelMethod;
             return this;
         }
+
 
         /**
          * Username to use to access the database.
@@ -653,7 +727,7 @@ public class DestinationYellowbrick {
             this.username = username;
             return this;
         }
-        
+
         public DestinationYellowbrick build() {
             if (port == null) {
                 port = _SINGLETON_VALUE_Port.value();
@@ -664,18 +738,14 @@ public class DestinationYellowbrick {
             if (ssl == null) {
                 ssl = _SINGLETON_VALUE_Ssl.value();
             }
+
             return new DestinationYellowbrick(
-                database,
-                host,
-                jdbcUrlParams,
-                password,
-                port,
-                schema,
-                ssl,
-                sslMode,
-                tunnelMethod,
+                database, host, jdbcUrlParams,
+                password, port, schema,
+                ssl, sslMode, tunnelMethod,
                 username);
         }
+
 
         private static final LazySingletonValue<Yellowbrick> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

@@ -13,14 +13,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeValueWhichWillBeAppendedOnTheRequestBody {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("attribute_key")
     private Optional<String> attributeKey;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("attribute_value")
@@ -50,15 +51,17 @@ public class FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeVal
         return attributeValue;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeValueWhichWillBeAppendedOnTheRequestBody withAttributeKey(String attributeKey) {
         Utils.checkNotNull(attributeKey, "attributeKey");
         this.attributeKey = Optional.ofNullable(attributeKey);
         return this;
     }
+
 
     public FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeValueWhichWillBeAppendedOnTheRequestBody withAttributeKey(Optional<String> attributeKey) {
         Utils.checkNotNull(attributeKey, "attributeKey");
@@ -72,13 +75,13 @@ public class FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeVal
         return this;
     }
 
+
     public FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeValueWhichWillBeAppendedOnTheRequestBody withAttributeValue(Optional<String> attributeValue) {
         Utils.checkNotNull(attributeValue, "attributeValue");
         this.attributeValue = attributeValue;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -89,15 +92,14 @@ public class FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeVal
         }
         FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeValueWhichWillBeAppendedOnTheRequestBody other = (FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeValueWhichWillBeAppendedOnTheRequestBody) o;
         return 
-            Objects.deepEquals(this.attributeKey, other.attributeKey) &&
-            Objects.deepEquals(this.attributeValue, other.attributeValue);
+            Utils.enhancedDeepEquals(this.attributeKey, other.attributeKey) &&
+            Utils.enhancedDeepEquals(this.attributeValue, other.attributeValue);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            attributeKey,
-            attributeValue);
+        return Utils.enhancedHash(
+            attributeKey, attributeValue);
     }
     
     @Override
@@ -106,16 +108,18 @@ public class FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeVal
                 "attributeKey", attributeKey,
                 "attributeValue", attributeValue);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> attributeKey;
- 
+
         private Optional<String> attributeValue;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder attributeKey(String attributeKey) {
             Utils.checkNotNull(attributeKey, "attributeKey");
@@ -129,6 +133,7 @@ public class FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeVal
             return this;
         }
 
+
         public Builder attributeValue(String attributeValue) {
             Utils.checkNotNull(attributeValue, "attributeValue");
             this.attributeValue = Optional.ofNullable(attributeValue);
@@ -140,7 +145,7 @@ public class FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeVal
             this.attributeValue = attributeValue;
             return this;
         }
-        
+
         public FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeValueWhichWillBeAppendedOnTheRequestBody build() {
             if (attributeKey == null) {
                 attributeKey = _SINGLETON_VALUE_AttributeKey.value();
@@ -148,10 +153,11 @@ public class FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeVal
             if (attributeValue == null) {
                 attributeValue = _SINGLETON_VALUE_AttributeValue.value();
             }
+
             return new FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeValueWhichWillBeAppendedOnTheRequestBody(
-                attributeKey,
-                attributeValue);
+                attributeKey, attributeValue);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_AttributeKey =
                 new LazySingletonValue<>(

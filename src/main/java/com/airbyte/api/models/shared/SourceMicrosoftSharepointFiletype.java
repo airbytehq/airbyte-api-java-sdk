@@ -14,7 +14,7 @@ public enum SourceMicrosoftSharepointFiletype {
     @JsonValue
     private final String value;
 
-    private SourceMicrosoftSharepointFiletype(String value) {
+    SourceMicrosoftSharepointFiletype(String value) {
         this.value = value;
     }
     

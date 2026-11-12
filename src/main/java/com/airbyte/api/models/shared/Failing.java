@@ -20,8 +20,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class Failing {
 
@@ -33,6 +33,7 @@ public class Failing {
      */
     @JsonProperty("num_messages")
     private long numMessages;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("test_destination_type")
@@ -73,9 +74,10 @@ public class Failing {
         return (Optional<DestinationDevNullSchemasTestDestinationTestDestinationType>) testDestinationType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public Failing withAdditionalProperty(String key, Object value) {
@@ -83,8 +85,7 @@ public class Failing {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public Failing withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -106,13 +107,13 @@ public class Failing {
         return this;
     }
 
+
     public Failing withTestDestinationType(Optional<? extends DestinationDevNullSchemasTestDestinationTestDestinationType> testDestinationType) {
         Utils.checkNotNull(testDestinationType, "testDestinationType");
         this.testDestinationType = testDestinationType;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -123,17 +124,15 @@ public class Failing {
         }
         Failing other = (Failing) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.numMessages, other.numMessages) &&
-            Objects.deepEquals(this.testDestinationType, other.testDestinationType);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.numMessages, other.numMessages) &&
+            Utils.enhancedDeepEquals(this.testDestinationType, other.testDestinationType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            numMessages,
-            testDestinationType);
+        return Utils.enhancedHash(
+            additionalProperties, numMessages, testDestinationType);
     }
     
     @Override
@@ -143,15 +142,16 @@ public class Failing {
                 "numMessages", numMessages,
                 "testDestinationType", testDestinationType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Long numMessages;
- 
+
         private Optional<? extends DestinationDevNullSchemasTestDestinationTestDestinationType> testDestinationType;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -172,6 +172,7 @@ public class Failing {
             return this;
         }
 
+
         /**
          * Number of messages after which to fail.
          */
@@ -180,6 +181,7 @@ public class Failing {
             this.numMessages = numMessages;
             return this;
         }
+
 
         public Builder testDestinationType(DestinationDevNullSchemasTestDestinationTestDestinationType testDestinationType) {
             Utils.checkNotNull(testDestinationType, "testDestinationType");
@@ -192,16 +194,17 @@ public class Failing {
             this.testDestinationType = testDestinationType;
             return this;
         }
-        
+
         public Failing build() {
             if (testDestinationType == null) {
                 testDestinationType = _SINGLETON_VALUE_TestDestinationType.value();
             }
+
             return new Failing(
-                numMessages,
-                testDestinationType)
+                numMessages, testDestinationType)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationDevNullSchemasTestDestinationTestDestinationType>> _SINGLETON_VALUE_TestDestinationType =
                 new LazySingletonValue<>(

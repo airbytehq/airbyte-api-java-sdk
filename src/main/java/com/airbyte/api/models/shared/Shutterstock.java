@@ -14,7 +14,7 @@ public enum Shutterstock {
     @JsonValue
     private final String value;
 
-    private Shutterstock(String value) {
+    Shutterstock(String value) {
         this.value = value;
     }
     

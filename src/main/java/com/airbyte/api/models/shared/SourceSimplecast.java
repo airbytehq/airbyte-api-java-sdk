@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceSimplecast {
-
     /**
      * API token to use. Find it at your Private Apps page on the Simplecast dashboard.
      */
     @JsonProperty("api_token")
     private String apiToken;
+
 
     @JsonProperty("sourceType")
     private Simplecast sourceType;
@@ -45,9 +45,10 @@ public class SourceSimplecast {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API token to use. Find it at your Private Apps page on the Simplecast dashboard.
@@ -58,7 +59,6 @@ public class SourceSimplecast {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceSimplecast {
         }
         SourceSimplecast other = (SourceSimplecast) o;
         return 
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiToken,
-            sourceType);
+        return Utils.enhancedHash(
+            apiToken, sourceType);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourceSimplecast {
                 "apiToken", apiToken,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API token to use. Find it at your Private Apps page on the Simplecast dashboard.
@@ -103,11 +104,13 @@ public class SourceSimplecast {
             this.apiToken = apiToken;
             return this;
         }
-        
+
         public SourceSimplecast build() {
+
             return new SourceSimplecast(
                 apiToken);
         }
+
 
         private static final LazySingletonValue<Simplecast> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

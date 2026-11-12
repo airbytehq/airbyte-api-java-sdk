@@ -22,7 +22,7 @@ public enum DataSource {
     @JsonValue
     private final String value;
 
-    private DataSource(String value) {
+    DataSource(String value) {
         this.value = value;
     }
     

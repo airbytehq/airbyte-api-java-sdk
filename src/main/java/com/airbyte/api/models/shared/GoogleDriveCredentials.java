@@ -11,11 +11,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class GoogleDriveCredentials {
 
+public class GoogleDriveCredentials {
     /**
      * Client ID for the Google Drive API
      */
@@ -60,9 +59,10 @@ public class GoogleDriveCredentials {
         return clientSecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Client ID for the Google Drive API
@@ -72,6 +72,7 @@ public class GoogleDriveCredentials {
         this.clientId = Optional.ofNullable(clientId);
         return this;
     }
+
 
     /**
      * Client ID for the Google Drive API
@@ -91,6 +92,7 @@ public class GoogleDriveCredentials {
         return this;
     }
 
+
     /**
      * Client Secret for the Google Drive API
      */
@@ -100,7 +102,6 @@ public class GoogleDriveCredentials {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -111,15 +112,14 @@ public class GoogleDriveCredentials {
         }
         GoogleDriveCredentials other = (GoogleDriveCredentials) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret);
+        return Utils.enhancedHash(
+            clientId, clientSecret);
     }
     
     @Override
@@ -128,16 +128,18 @@ public class GoogleDriveCredentials {
                 "clientId", clientId,
                 "clientSecret", clientSecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> clientId = Optional.empty();
- 
+
         private Optional<String> clientSecret = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Client ID for the Google Drive API
@@ -157,6 +159,7 @@ public class GoogleDriveCredentials {
             return this;
         }
 
+
         /**
          * Client Secret for the Google Drive API
          */
@@ -174,11 +177,12 @@ public class GoogleDriveCredentials {
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public GoogleDriveCredentials build() {
+
             return new GoogleDriveCredentials(
-                clientId,
-                clientSecret);
+                clientId, clientSecret);
         }
+
     }
 }

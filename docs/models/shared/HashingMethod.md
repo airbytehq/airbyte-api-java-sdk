@@ -2,6 +2,14 @@
 
 The hashing algorithm to use.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.HashingMethod;
+
+HashingMethod value = HashingMethod.MD2;
+```
+
 
 ## Values
 

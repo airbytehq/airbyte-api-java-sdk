@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 /**
  * JobCreateRequest
@@ -50,9 +49,10 @@ public class JobCreateRequest {
         return jobType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public JobCreateRequest withConnectionId(String connectionId) {
         Utils.checkNotNull(connectionId, "connectionId");
@@ -69,7 +69,6 @@ public class JobCreateRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -80,15 +79,14 @@ public class JobCreateRequest {
         }
         JobCreateRequest other = (JobCreateRequest) o;
         return 
-            Objects.deepEquals(this.connectionId, other.connectionId) &&
-            Objects.deepEquals(this.jobType, other.jobType);
+            Utils.enhancedDeepEquals(this.connectionId, other.connectionId) &&
+            Utils.enhancedDeepEquals(this.jobType, other.jobType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            connectionId,
-            jobType);
+        return Utils.enhancedHash(
+            connectionId, jobType);
     }
     
     @Override
@@ -97,22 +95,25 @@ public class JobCreateRequest {
                 "connectionId", connectionId,
                 "jobType", jobType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String connectionId;
- 
+
         private JobTypeEnum jobType;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder connectionId(String connectionId) {
             Utils.checkNotNull(connectionId, "connectionId");
             this.connectionId = connectionId;
             return this;
         }
+
 
         /**
          * Enum that describes the different types of jobs that the platform runs.
@@ -122,11 +123,12 @@ public class JobCreateRequest {
             this.jobType = jobType;
             return this;
         }
-        
+
         public JobCreateRequest build() {
+
             return new JobCreateRequest(
-                connectionId,
-                jobType);
+                connectionId, jobType);
         }
+
     }
 }

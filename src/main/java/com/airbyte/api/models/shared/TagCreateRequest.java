@@ -9,15 +9,17 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class TagCreateRequest {
 
     @JsonProperty("color")
     private String color;
 
+
     @JsonProperty("name")
     private String name;
+
 
     @JsonProperty("workspaceId")
     private String workspaceId;
@@ -50,9 +52,10 @@ public class TagCreateRequest {
         return workspaceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public TagCreateRequest withColor(String color) {
         Utils.checkNotNull(color, "color");
@@ -72,7 +75,6 @@ public class TagCreateRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -83,17 +85,15 @@ public class TagCreateRequest {
         }
         TagCreateRequest other = (TagCreateRequest) o;
         return 
-            Objects.deepEquals(this.color, other.color) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.workspaceId, other.workspaceId);
+            Utils.enhancedDeepEquals(this.color, other.color) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.workspaceId, other.workspaceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            color,
-            name,
-            workspaceId);
+        return Utils.enhancedHash(
+            color, name, workspaceId);
     }
     
     @Override
@@ -103,18 +103,20 @@ public class TagCreateRequest {
                 "name", name,
                 "workspaceId", workspaceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String color;
- 
+
         private String name;
- 
+
         private String workspaceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder color(String color) {
             Utils.checkNotNull(color, "color");
@@ -122,23 +124,25 @@ public class TagCreateRequest {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = name;
             return this;
         }
 
+
         public Builder workspaceId(String workspaceId) {
             Utils.checkNotNull(workspaceId, "workspaceId");
             this.workspaceId = workspaceId;
             return this;
         }
-        
+
         public TagCreateRequest build() {
+
             return new TagCreateRequest(
-                color,
-                name,
-                workspaceId);
+                color, name, workspaceId);
         }
+
     }
 }

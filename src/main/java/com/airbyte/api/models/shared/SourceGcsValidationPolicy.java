@@ -11,7 +11,8 @@ import java.util.Optional;
 /**
  * SourceGcsValidationPolicy
  * 
- * <p>The name of the validation policy that dictates sync behavior when a record does not adhere to the stream schema.
+ * <p>The name of the validation policy that dictates sync behavior when a record does not adhere to the
+ * stream schema.
  */
 public enum SourceGcsValidationPolicy {
     EMIT_RECORD("Emit Record"),
@@ -21,7 +22,7 @@ public enum SourceGcsValidationPolicy {
     @JsonValue
     private final String value;
 
-    private SourceGcsValidationPolicy(String value) {
+    SourceGcsValidationPolicy(String value) {
         this.value = value;
     }
     

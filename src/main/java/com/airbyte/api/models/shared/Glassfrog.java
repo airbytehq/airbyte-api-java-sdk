@@ -14,7 +14,7 @@ public enum Glassfrog {
     @JsonValue
     private final String value;
 
-    private Glassfrog(String value) {
+    Glassfrog(String value) {
         this.value = value;
     }
     

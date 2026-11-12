@@ -34,7 +34,7 @@ public enum DestinationPineconeLanguage {
     @JsonValue
     private final String value;
 
-    private DestinationPineconeLanguage(String value) {
+    DestinationPineconeLanguage(String value) {
         this.value = value;
     }
     

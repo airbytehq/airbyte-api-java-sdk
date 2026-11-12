@@ -14,7 +14,7 @@ public enum Mailosaur {
     @JsonValue
     private final String value;
 
-    private Mailosaur(String value) {
+    Mailosaur(String value) {
         this.value = value;
     }
     

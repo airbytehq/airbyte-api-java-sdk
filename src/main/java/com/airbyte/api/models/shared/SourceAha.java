@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceAha {
-
     /**
      * API Key
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Aha sourceType;
@@ -62,9 +62,10 @@ public class SourceAha {
         return url;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API Key
@@ -84,7 +85,6 @@ public class SourceAha {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourceAha {
         }
         SourceAha other = (SourceAha) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.url, other.url);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.url, other.url);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            url);
+        return Utils.enhancedHash(
+            apiKey, sourceType, url);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SourceAha {
                 "sourceType", sourceType,
                 "url", url);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String url;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API Key
@@ -135,6 +135,7 @@ public class SourceAha {
             return this;
         }
 
+
         /**
          * URL
          */
@@ -143,12 +144,13 @@ public class SourceAha {
             this.url = url;
             return this;
         }
-        
+
         public SourceAha build() {
+
             return new SourceAha(
-                apiKey,
-                url);
+                apiKey, url);
         }
+
 
         private static final LazySingletonValue<Aha> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

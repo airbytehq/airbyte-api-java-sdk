@@ -11,15 +11,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class OAuth2Recommended {
 
     @JsonProperty("auth_type")
-    private DestinationDatabricksAuthType authType;
+    private DestinationDatabricksSchemasAuthType authType;
+
 
     @JsonProperty("client_id")
     private String clientId;
+
 
     @JsonProperty("secret")
     private String secret;
@@ -36,7 +38,7 @@ public class OAuth2Recommended {
     }
 
     @JsonIgnore
-    public DestinationDatabricksAuthType authType() {
+    public DestinationDatabricksSchemasAuthType authType() {
         return authType;
     }
 
@@ -50,9 +52,10 @@ public class OAuth2Recommended {
         return secret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public OAuth2Recommended withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -66,7 +69,6 @@ public class OAuth2Recommended {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -77,17 +79,15 @@ public class OAuth2Recommended {
         }
         OAuth2Recommended other = (OAuth2Recommended) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.secret, other.secret);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.secret, other.secret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            clientId,
-            secret);
+        return Utils.enhancedHash(
+            authType, clientId, secret);
     }
     
     @Override
@@ -97,16 +97,18 @@ public class OAuth2Recommended {
                 "clientId", clientId,
                 "secret", secret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String secret;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -114,22 +116,24 @@ public class OAuth2Recommended {
             return this;
         }
 
+
         public Builder secret(String secret) {
             Utils.checkNotNull(secret, "secret");
             this.secret = secret;
             return this;
         }
-        
+
         public OAuth2Recommended build() {
+
             return new OAuth2Recommended(
-                clientId,
-                secret);
+                clientId, secret);
         }
 
-        private static final LazySingletonValue<DestinationDatabricksAuthType> _SINGLETON_VALUE_AuthType =
+
+        private static final LazySingletonValue<DestinationDatabricksSchemasAuthType> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(
                         "auth_type",
                         "\"OAUTH\"",
-                        new TypeReference<DestinationDatabricksAuthType>() {});
+                        new TypeReference<DestinationDatabricksSchemasAuthType>() {});
     }
 }

@@ -3,6 +3,14 @@
 Time-series data point interval. Required for intraday endpoints.
 
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.Interval;
+
+Interval value = Interval.ONEMIN;
+```
+
 
 ## Values
 

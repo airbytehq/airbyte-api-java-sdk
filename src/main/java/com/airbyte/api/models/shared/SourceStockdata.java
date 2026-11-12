@@ -18,13 +18,14 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceStockdata {
 
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("filter_entities")
@@ -37,11 +38,14 @@ public class SourceStockdata {
     @JsonProperty("industries")
     private Optional<? extends List<Object>> industries;
 
+
     @JsonProperty("sourceType")
     private Stockdata sourceType;
 
+
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("symbols")
@@ -70,7 +74,8 @@ public class SourceStockdata {
     public SourceStockdata(
             String apiKey,
             OffsetDateTime startDate) {
-        this(apiKey, Optional.empty(), Optional.empty(), startDate, Optional.empty());
+        this(apiKey, Optional.empty(), Optional.empty(),
+            startDate, Optional.empty());
     }
 
     @JsonIgnore
@@ -108,9 +113,10 @@ public class SourceStockdata {
         return (Optional<List<Object>>) symbols;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceStockdata withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -123,6 +129,7 @@ public class SourceStockdata {
         this.filterEntities = Optional.ofNullable(filterEntities);
         return this;
     }
+
 
     public SourceStockdata withFilterEntities(Optional<Boolean> filterEntities) {
         Utils.checkNotNull(filterEntities, "filterEntities");
@@ -138,6 +145,7 @@ public class SourceStockdata {
         this.industries = Optional.ofNullable(industries);
         return this;
     }
+
 
     /**
      * Specify the industries of entities which have been identified within the article.
@@ -160,13 +168,13 @@ public class SourceStockdata {
         return this;
     }
 
+
     public SourceStockdata withSymbols(Optional<? extends List<Object>> symbols) {
         Utils.checkNotNull(symbols, "symbols");
         this.symbols = symbols;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -177,23 +185,19 @@ public class SourceStockdata {
         }
         SourceStockdata other = (SourceStockdata) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.filterEntities, other.filterEntities) &&
-            Objects.deepEquals(this.industries, other.industries) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.symbols, other.symbols);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.filterEntities, other.filterEntities) &&
+            Utils.enhancedDeepEquals(this.industries, other.industries) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.symbols, other.symbols);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            filterEntities,
-            industries,
-            sourceType,
-            startDate,
-            symbols);
+        return Utils.enhancedHash(
+            apiKey, filterEntities, industries,
+            sourceType, startDate, symbols);
     }
     
     @Override
@@ -206,28 +210,31 @@ public class SourceStockdata {
                 "startDate", startDate,
                 "symbols", symbols);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<Boolean> filterEntities;
- 
+
         private Optional<? extends List<Object>> industries = Optional.empty();
- 
+
         private OffsetDateTime startDate;
- 
+
         private Optional<? extends List<Object>> symbols = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         public Builder filterEntities(boolean filterEntities) {
             Utils.checkNotNull(filterEntities, "filterEntities");
@@ -240,6 +247,7 @@ public class SourceStockdata {
             this.filterEntities = filterEntities;
             return this;
         }
+
 
         /**
          * Specify the industries of entities which have been identified within the article.
@@ -259,11 +267,13 @@ public class SourceStockdata {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
+
 
         public Builder symbols(List<Object> symbols) {
             Utils.checkNotNull(symbols, "symbols");
@@ -276,18 +286,17 @@ public class SourceStockdata {
             this.symbols = symbols;
             return this;
         }
-        
+
         public SourceStockdata build() {
             if (filterEntities == null) {
                 filterEntities = _SINGLETON_VALUE_FilterEntities.value();
             }
+
             return new SourceStockdata(
-                apiKey,
-                filterEntities,
-                industries,
-                startDate,
-                symbols);
+                apiKey, filterEntities, industries,
+                startDate, symbols);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_FilterEntities =
                 new LazySingletonValue<>(

@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceGcsFromCSV {
 
@@ -25,7 +25,6 @@ public class SourceGcsFromCSV {
 
     @JsonCreator
     public SourceGcsFromCSV() {
-        
         this.headerDefinitionType = Builder._SINGLETON_VALUE_HeaderDefinitionType.value();
     }
 
@@ -35,11 +34,11 @@ public class SourceGcsFromCSV {
         return (Optional<SourceGcsHeaderDefinitionType>) headerDefinitionType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -50,12 +49,12 @@ public class SourceGcsFromCSV {
         }
         SourceGcsFromCSV other = (SourceGcsFromCSV) o;
         return 
-            Objects.deepEquals(this.headerDefinitionType, other.headerDefinitionType);
+            Utils.enhancedDeepEquals(this.headerDefinitionType, other.headerDefinitionType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             headerDefinitionType);
     }
     
@@ -64,17 +63,20 @@ public class SourceGcsFromCSV {
         return Utils.toString(SourceGcsFromCSV.class,
                 "headerDefinitionType", headerDefinitionType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public SourceGcsFromCSV build() {
+
             return new SourceGcsFromCSV(
                 );
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceGcsHeaderDefinitionType>> _SINGLETON_VALUE_HeaderDefinitionType =
                 new LazySingletonValue<>(

@@ -20,7 +20,7 @@ public enum APIHost {
     @JsonValue
     private final String value;
 
-    private APIHost(String value) {
+    APIHost(String value) {
         this.value = value;
     }
     

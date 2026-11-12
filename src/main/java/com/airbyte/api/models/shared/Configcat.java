@@ -14,7 +14,7 @@ public enum Configcat {
     @JsonValue
     private final String value;
 
-    private Configcat(String value) {
+    Configcat(String value) {
         this.value = value;
     }
     

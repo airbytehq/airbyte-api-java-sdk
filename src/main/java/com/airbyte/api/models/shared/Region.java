@@ -11,7 +11,9 @@ import java.util.Optional;
 /**
  * Region
  * 
- * <p>Region to pull data from (EU/NA/FE). See &lt;a href="https://advertising.amazon.com/API/docs/en-us/info/api-overview#api-endpoints"&gt;docs&lt;/a&gt; for more details.
+ * <p>Region to pull data from (EU/NA/FE). See <a
+ * href="https://advertising.amazon.com/API/docs/en-us/info/api-overview#api-endpoints">docs</a> for
+ * more details.
  */
 public enum Region {
     NA("NA"),
@@ -21,7 +23,7 @@ public enum Region {
     @JsonValue
     private final String value;
 
-    private Region(String value) {
+    Region(String value) {
         this.value = value;
     }
     

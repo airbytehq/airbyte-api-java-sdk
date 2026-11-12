@@ -12,15 +12,17 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
-import java.util.Objects;
+
 
 public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayNumericFilter {
 
     @JsonProperty("filter_name")
     private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter1ExpressionsFilterFilterName filterName;
 
+
     @JsonProperty("operation")
     private List<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter1ExpressionsValidEnums> operation;
+
 
     @JsonProperty("value")
     private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayValue value;
@@ -51,9 +53,10 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayNumericFilter 
         return value;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayNumericFilter withOperation(List<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter1ExpressionsValidEnums> operation) {
         Utils.checkNotNull(operation, "operation");
@@ -67,7 +70,6 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayNumericFilter 
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,17 +80,15 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayNumericFilter 
         }
         SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayNumericFilter other = (SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayNumericFilter) o;
         return 
-            Objects.deepEquals(this.filterName, other.filterName) &&
-            Objects.deepEquals(this.operation, other.operation) &&
-            Objects.deepEquals(this.value, other.value);
+            Utils.enhancedDeepEquals(this.filterName, other.filterName) &&
+            Utils.enhancedDeepEquals(this.operation, other.operation) &&
+            Utils.enhancedDeepEquals(this.value, other.value);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            filterName,
-            operation,
-            value);
+        return Utils.enhancedHash(
+            filterName, operation, value);
     }
     
     @Override
@@ -98,16 +98,18 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayNumericFilter 
                 "operation", operation,
                 "value", value);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private List<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter1ExpressionsValidEnums> operation;
- 
+
         private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayValue value;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder operation(List<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter1ExpressionsValidEnums> operation) {
             Utils.checkNotNull(operation, "operation");
@@ -115,17 +117,19 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayNumericFilter 
             return this;
         }
 
+
         public Builder value(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayValue value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
             return this;
         }
-        
+
         public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayNumericFilter build() {
+
             return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayNumericFilter(
-                operation,
-                value);
+                operation, value);
         }
+
 
         private static final LazySingletonValue<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter1ExpressionsFilterFilterName> _SINGLETON_VALUE_FilterName =
                 new LazySingletonValue<>(

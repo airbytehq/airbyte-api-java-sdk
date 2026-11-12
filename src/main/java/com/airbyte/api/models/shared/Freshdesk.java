@@ -14,7 +14,7 @@ public enum Freshdesk {
     @JsonValue
     private final String value;
 
-    private Freshdesk(String value) {
+    Freshdesk(String value) {
         this.value = value;
     }
     

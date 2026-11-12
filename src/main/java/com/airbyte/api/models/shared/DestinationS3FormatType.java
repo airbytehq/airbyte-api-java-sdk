@@ -14,7 +14,7 @@ public enum DestinationS3FormatType {
     @JsonValue
     private final String value;
 
-    private DestinationS3FormatType(String value) {
+    DestinationS3FormatType(String value) {
         this.value = value;
     }
     

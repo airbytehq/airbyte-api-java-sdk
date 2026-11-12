@@ -2,6 +2,14 @@
 
 Subset of `PermissionType` (removing `instance_admin`), could be used in public-api.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.PublicPermissionType;
+
+PublicPermissionType value = PublicPermissionType.ORGANIZATION_ADMIN;
+```
+
 
 ## Values
 

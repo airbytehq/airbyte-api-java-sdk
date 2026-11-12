@@ -14,7 +14,7 @@ public enum Okta {
     @JsonValue
     private final String value;
 
-    private Okta(String value) {
+    Okta(String value) {
         this.value = value;
     }
     

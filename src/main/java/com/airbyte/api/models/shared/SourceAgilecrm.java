@@ -11,12 +11,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceAgilecrm {
-
     /**
-     * API key to use. Find it at Admin Settings -&gt; API &amp; Analytics -&gt; API Key in your Agile CRM account.
+     * API key to use. Find it at Admin Settings -&gt; API &amp; Analytics -&gt; API Key in your Agile CRM
+     * account.
      */
     @JsonProperty("api_key")
     private String apiKey;
@@ -32,6 +32,7 @@ public class SourceAgilecrm {
      */
     @JsonProperty("email")
     private String email;
+
 
     @JsonProperty("sourceType")
     private Agilecrm sourceType;
@@ -51,7 +52,8 @@ public class SourceAgilecrm {
     }
 
     /**
-     * API key to use. Find it at Admin Settings -&gt; API &amp; Analytics -&gt; API Key in your Agile CRM account.
+     * API key to use. Find it at Admin Settings -&gt; API &amp; Analytics -&gt; API Key in your Agile CRM
+     * account.
      */
     @JsonIgnore
     public String apiKey() {
@@ -79,12 +81,14 @@ public class SourceAgilecrm {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * API key to use. Find it at Admin Settings -&gt; API &amp; Analytics -&gt; API Key in your Agile CRM account.
+     * API key to use. Find it at Admin Settings -&gt; API &amp; Analytics -&gt; API Key in your Agile CRM
+     * account.
      */
     public SourceAgilecrm withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -110,7 +114,6 @@ public class SourceAgilecrm {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -121,18 +124,16 @@ public class SourceAgilecrm {
         }
         SourceAgilecrm other = (SourceAgilecrm) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.domain, other.domain) &&
-            Objects.deepEquals(this.email, other.email) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.domain, other.domain) &&
+            Utils.enhancedDeepEquals(this.email, other.email) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            domain,
-            email,
+        return Utils.enhancedHash(
+            apiKey, domain, email,
             sourceType);
     }
     
@@ -144,27 +145,31 @@ public class SourceAgilecrm {
                 "email", email,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String domain;
- 
+
         private String email;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * API key to use. Find it at Admin Settings -&gt; API &amp; Analytics -&gt; API Key in your Agile CRM account.
+         * API key to use. Find it at Admin Settings -&gt; API &amp; Analytics -&gt; API Key in your Agile CRM
+         * account.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * The specific subdomain for your Agile CRM account
@@ -175,6 +180,7 @@ public class SourceAgilecrm {
             return this;
         }
 
+
         /**
          * Your Agile CRM account email address. This is used as the username for authentication.
          */
@@ -183,13 +189,13 @@ public class SourceAgilecrm {
             this.email = email;
             return this;
         }
-        
+
         public SourceAgilecrm build() {
+
             return new SourceAgilecrm(
-                apiKey,
-                domain,
-                email);
+                apiKey, domain, email);
         }
+
 
         private static final LazySingletonValue<Agilecrm> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum SourceS3SchemasDeliveryType {
     @JsonValue
     private final String value;
 
-    private SourceS3SchemasDeliveryType(String value) {
+    SourceS3SchemasDeliveryType(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum Braintree {
     @JsonValue
     private final String value;
 
-    private Braintree(String value) {
+    Braintree(String value) {
         this.value = value;
     }
     

@@ -1,5 +1,13 @@
 # Flattening
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.Flattening;
+
+Flattening value = Flattening.NO_FLATTENING;
+```
+
 
 ## Values
 

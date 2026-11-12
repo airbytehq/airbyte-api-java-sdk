@@ -14,7 +14,7 @@ public enum SourceDynamodbDynamodb {
     @JsonValue
     private final String value;
 
-    private SourceDynamodbDynamodb(String value) {
+    SourceDynamodbDynamodb(String value) {
         this.value = value;
     }
     

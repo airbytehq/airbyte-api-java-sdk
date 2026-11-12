@@ -14,7 +14,7 @@ public enum Datascope {
     @JsonValue
     private final String value;
 
-    private Datascope(String value) {
+    Datascope(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum SourceGcsSchemasStreamsHeaderDefinitionType {
     @JsonValue
     private final String value;
 
-    private SourceGcsSchemasStreamsHeaderDefinitionType(String value) {
+    SourceGcsSchemasStreamsHeaderDefinitionType(String value) {
         this.value = value;
     }
     

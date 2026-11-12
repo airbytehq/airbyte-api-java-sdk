@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceMicrosoftTeamsAuthenticationMechanism
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class SourceMicrosoftTeamsAuthenticationMechanism {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceMicrosoftTeamsAuthenticationMechanism(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class SourceMicrosoftTeamsAuthenticationMechanism {
 
     public static SourceMicrosoftTeamsAuthenticationMechanism of(AuthenticateViaMicrosoftOAuth20 value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMicrosoftTeamsAuthenticationMechanism(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AuthenticateViaMicrosoftOAuth20>(){}));
+        return new SourceMicrosoftTeamsAuthenticationMechanism(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceMicrosoftTeamsAuthenticationMechanism of(AuthenticateViaMicrosoft value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMicrosoftTeamsAuthenticationMechanism(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AuthenticateViaMicrosoft>(){}));
+        return new SourceMicrosoftTeamsAuthenticationMechanism(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class SourceMicrosoftTeamsAuthenticationMechanism {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class SourceMicrosoftTeamsAuthenticationMechanism {
             return false;
         }
         SourceMicrosoftTeamsAuthenticationMechanism other = (SourceMicrosoftTeamsAuthenticationMechanism) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -95,6 +94,6 @@ public class SourceMicrosoftTeamsAuthenticationMechanism {
         return Utils.toString(SourceMicrosoftTeamsAuthenticationMechanism.class,
                 "value", value);
     }
- 
+
 }
 

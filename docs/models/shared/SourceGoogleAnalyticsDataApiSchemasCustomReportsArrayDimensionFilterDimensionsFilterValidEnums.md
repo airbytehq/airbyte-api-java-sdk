@@ -1,5 +1,13 @@
 # SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterValidEnums
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterValidEnums;
+
+SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterValidEnums value = SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterValidEnums.MATCH_TYPE_UNSPECIFIED;
+```
+
 
 ## Values
 

@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceTiktokMarketingOAuth20 {
 
+public class SourceTiktokMarketingOAuth20 {
     /**
      * Long-term Authorized Access Token.
      */
@@ -37,6 +36,7 @@ public class SourceTiktokMarketingOAuth20 {
      */
     @JsonProperty("app_id")
     private String appId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
@@ -69,7 +69,8 @@ public class SourceTiktokMarketingOAuth20 {
             String accessToken,
             String appId,
             String secret) {
-        this(accessToken, Optional.empty(), appId, secret);
+        this(accessToken, Optional.empty(), appId,
+            secret);
     }
 
     /**
@@ -110,9 +111,10 @@ public class SourceTiktokMarketingOAuth20 {
         return secret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Long-term Authorized Access Token.
@@ -131,6 +133,7 @@ public class SourceTiktokMarketingOAuth20 {
         this.advertiserId = Optional.ofNullable(advertiserId);
         return this;
     }
+
 
     /**
      * The Advertiser ID to filter reports and streams. Let this empty to retrieve all.
@@ -159,7 +162,6 @@ public class SourceTiktokMarketingOAuth20 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -170,21 +172,18 @@ public class SourceTiktokMarketingOAuth20 {
         }
         SourceTiktokMarketingOAuth20 other = (SourceTiktokMarketingOAuth20) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.advertiserId, other.advertiserId) &&
-            Objects.deepEquals(this.appId, other.appId) &&
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.secret, other.secret);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.advertiserId, other.advertiserId) &&
+            Utils.enhancedDeepEquals(this.appId, other.appId) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.secret, other.secret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            advertiserId,
-            appId,
-            authType,
-            secret);
+        return Utils.enhancedHash(
+            accessToken, advertiserId, appId,
+            authType, secret);
     }
     
     @Override
@@ -196,20 +195,22 @@ public class SourceTiktokMarketingOAuth20 {
                 "authType", authType,
                 "secret", secret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private Optional<String> advertiserId = Optional.empty();
- 
+
         private String appId;
- 
+
         private String secret;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Long-term Authorized Access Token.
@@ -219,6 +220,7 @@ public class SourceTiktokMarketingOAuth20 {
             this.accessToken = accessToken;
             return this;
         }
+
 
         /**
          * The Advertiser ID to filter reports and streams. Let this empty to retrieve all.
@@ -238,6 +240,7 @@ public class SourceTiktokMarketingOAuth20 {
             return this;
         }
 
+
         /**
          * The Developer Application App ID.
          */
@@ -247,6 +250,7 @@ public class SourceTiktokMarketingOAuth20 {
             return this;
         }
 
+
         /**
          * The Developer Application Secret.
          */
@@ -255,14 +259,14 @@ public class SourceTiktokMarketingOAuth20 {
             this.secret = secret;
             return this;
         }
-        
+
         public SourceTiktokMarketingOAuth20 build() {
+
             return new SourceTiktokMarketingOAuth20(
-                accessToken,
-                advertiserId,
-                appId,
+                accessToken, advertiserId, appId,
                 secret);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceTiktokMarketingAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

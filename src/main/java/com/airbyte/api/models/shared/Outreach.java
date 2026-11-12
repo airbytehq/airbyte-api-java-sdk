@@ -14,7 +14,7 @@ public enum Outreach {
     @JsonValue
     private final String value;
 
-    private Outreach(String value) {
+    Outreach(String value) {
         this.value = value;
     }
     

@@ -11,7 +11,9 @@ import java.util.Optional;
 /**
  * DefinitionOfConversionCountInReports
  * 
- * <p>The definition of conversion count in reports. See &lt;a href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown"&gt;the docs&lt;/a&gt;.
+ * <p>The definition of conversion count in reports. See <a
+ * href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown">the
+ * docs</a>.
  */
 public enum DefinitionOfConversionCountInReports {
     CLICK_VIEW_TIME("click/view_time"),
@@ -20,7 +22,7 @@ public enum DefinitionOfConversionCountInReports {
     @JsonValue
     private final String value;
 
-    private DefinitionOfConversionCountInReports(String value) {
+    DefinitionOfConversionCountInReports(String value) {
         this.value = value;
     }
     

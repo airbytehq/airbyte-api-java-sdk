@@ -14,7 +14,7 @@ public enum Gnews {
     @JsonValue
     private final String value;
 
-    private Gnews(String value) {
+    Gnews(String value) {
         this.value = value;
     }
     

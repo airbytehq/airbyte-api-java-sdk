@@ -12,8 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class FacebookMarketing {
 
@@ -38,9 +38,10 @@ public class FacebookMarketing {
         return (Optional<FacebookMarketingCredentials>) credentials;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public FacebookMarketing withCredentials(FacebookMarketingCredentials credentials) {
         Utils.checkNotNull(credentials, "credentials");
@@ -48,13 +49,13 @@ public class FacebookMarketing {
         return this;
     }
 
+
     public FacebookMarketing withCredentials(Optional<? extends FacebookMarketingCredentials> credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = credentials;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -65,12 +66,12 @@ public class FacebookMarketing {
         }
         FacebookMarketing other = (FacebookMarketing) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             credentials);
     }
     
@@ -79,14 +80,16 @@ public class FacebookMarketing {
         return Utils.toString(FacebookMarketing.class,
                 "credentials", credentials);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends FacebookMarketingCredentials> credentials = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder credentials(FacebookMarketingCredentials credentials) {
             Utils.checkNotNull(credentials, "credentials");
@@ -99,10 +102,12 @@ public class FacebookMarketing {
             this.credentials = credentials;
             return this;
         }
-        
+
         public FacebookMarketing build() {
+
             return new FacebookMarketing(
                 credentials);
         }
+
     }
 }

@@ -13,8 +13,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceAzureTable {
 
@@ -22,7 +22,9 @@ public class SourceAzureTable {
     private AzureTable sourceType;
 
     /**
-     * Azure Table Storage Access Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/azure-table"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+     * Azure Table Storage Access Key. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/azure-table">docs</a> for more information on
+     * how to obtain this key.
      */
     @JsonProperty("storage_access_key")
     private String storageAccessKey;
@@ -34,7 +36,9 @@ public class SourceAzureTable {
     private String storageAccountName;
 
     /**
-     * Azure Table Storage service account URL suffix. See the &lt;a href="https://docs.airbyte.com/integrations/sources/azure-table"&gt;docs&lt;/a&gt; for more information on how to obtain endpoint suffix
+     * Azure Table Storage service account URL suffix. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/azure-table">docs</a> for more information on
+     * how to obtain endpoint suffix
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("storage_endpoint_suffix")
@@ -66,7 +70,9 @@ public class SourceAzureTable {
     }
 
     /**
-     * Azure Table Storage Access Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/azure-table"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+     * Azure Table Storage Access Key. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/azure-table">docs</a> for more information on
+     * how to obtain this key.
      */
     @JsonIgnore
     public String storageAccessKey() {
@@ -82,19 +88,24 @@ public class SourceAzureTable {
     }
 
     /**
-     * Azure Table Storage service account URL suffix. See the &lt;a href="https://docs.airbyte.com/integrations/sources/azure-table"&gt;docs&lt;/a&gt; for more information on how to obtain endpoint suffix
+     * Azure Table Storage service account URL suffix. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/azure-table">docs</a> for more information on
+     * how to obtain endpoint suffix
      */
     @JsonIgnore
     public Optional<String> storageEndpointSuffix() {
         return storageEndpointSuffix;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Azure Table Storage Access Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/azure-table"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+     * Azure Table Storage Access Key. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/azure-table">docs</a> for more information on
+     * how to obtain this key.
      */
     public SourceAzureTable withStorageAccessKey(String storageAccessKey) {
         Utils.checkNotNull(storageAccessKey, "storageAccessKey");
@@ -112,7 +123,9 @@ public class SourceAzureTable {
     }
 
     /**
-     * Azure Table Storage service account URL suffix. See the &lt;a href="https://docs.airbyte.com/integrations/sources/azure-table"&gt;docs&lt;/a&gt; for more information on how to obtain endpoint suffix
+     * Azure Table Storage service account URL suffix. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/azure-table">docs</a> for more information on
+     * how to obtain endpoint suffix
      */
     public SourceAzureTable withStorageEndpointSuffix(String storageEndpointSuffix) {
         Utils.checkNotNull(storageEndpointSuffix, "storageEndpointSuffix");
@@ -120,8 +133,11 @@ public class SourceAzureTable {
         return this;
     }
 
+
     /**
-     * Azure Table Storage service account URL suffix. See the &lt;a href="https://docs.airbyte.com/integrations/sources/azure-table"&gt;docs&lt;/a&gt; for more information on how to obtain endpoint suffix
+     * Azure Table Storage service account URL suffix. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/azure-table">docs</a> for more information on
+     * how to obtain endpoint suffix
      */
     public SourceAzureTable withStorageEndpointSuffix(Optional<String> storageEndpointSuffix) {
         Utils.checkNotNull(storageEndpointSuffix, "storageEndpointSuffix");
@@ -129,7 +145,6 @@ public class SourceAzureTable {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -140,18 +155,16 @@ public class SourceAzureTable {
         }
         SourceAzureTable other = (SourceAzureTable) o;
         return 
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.storageAccessKey, other.storageAccessKey) &&
-            Objects.deepEquals(this.storageAccountName, other.storageAccountName) &&
-            Objects.deepEquals(this.storageEndpointSuffix, other.storageEndpointSuffix);
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.storageAccessKey, other.storageAccessKey) &&
+            Utils.enhancedDeepEquals(this.storageAccountName, other.storageAccountName) &&
+            Utils.enhancedDeepEquals(this.storageEndpointSuffix, other.storageEndpointSuffix);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            sourceType,
-            storageAccessKey,
-            storageAccountName,
+        return Utils.enhancedHash(
+            sourceType, storageAccessKey, storageAccountName,
             storageEndpointSuffix);
     }
     
@@ -163,27 +176,32 @@ public class SourceAzureTable {
                 "storageAccountName", storageAccountName,
                 "storageEndpointSuffix", storageEndpointSuffix);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String storageAccessKey;
- 
+
         private String storageAccountName;
- 
+
         private Optional<String> storageEndpointSuffix;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Azure Table Storage Access Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/azure-table"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+         * Azure Table Storage Access Key. See the <a
+         * href="https://docs.airbyte.com/integrations/sources/azure-table">docs</a> for more information on
+         * how to obtain this key.
          */
         public Builder storageAccessKey(String storageAccessKey) {
             Utils.checkNotNull(storageAccessKey, "storageAccessKey");
             this.storageAccessKey = storageAccessKey;
             return this;
         }
+
 
         /**
          * The name of your storage account.
@@ -194,8 +212,11 @@ public class SourceAzureTable {
             return this;
         }
 
+
         /**
-         * Azure Table Storage service account URL suffix. See the &lt;a href="https://docs.airbyte.com/integrations/sources/azure-table"&gt;docs&lt;/a&gt; for more information on how to obtain endpoint suffix
+         * Azure Table Storage service account URL suffix. See the <a
+         * href="https://docs.airbyte.com/integrations/sources/azure-table">docs</a> for more information on
+         * how to obtain endpoint suffix
          */
         public Builder storageEndpointSuffix(String storageEndpointSuffix) {
             Utils.checkNotNull(storageEndpointSuffix, "storageEndpointSuffix");
@@ -204,23 +225,25 @@ public class SourceAzureTable {
         }
 
         /**
-         * Azure Table Storage service account URL suffix. See the &lt;a href="https://docs.airbyte.com/integrations/sources/azure-table"&gt;docs&lt;/a&gt; for more information on how to obtain endpoint suffix
+         * Azure Table Storage service account URL suffix. See the <a
+         * href="https://docs.airbyte.com/integrations/sources/azure-table">docs</a> for more information on
+         * how to obtain endpoint suffix
          */
         public Builder storageEndpointSuffix(Optional<String> storageEndpointSuffix) {
             Utils.checkNotNull(storageEndpointSuffix, "storageEndpointSuffix");
             this.storageEndpointSuffix = storageEndpointSuffix;
             return this;
         }
-        
+
         public SourceAzureTable build() {
             if (storageEndpointSuffix == null) {
                 storageEndpointSuffix = _SINGLETON_VALUE_StorageEndpointSuffix.value();
             }
+
             return new SourceAzureTable(
-                storageAccessKey,
-                storageAccountName,
-                storageEndpointSuffix);
+                storageAccessKey, storageAccountName, storageEndpointSuffix);
         }
+
 
         private static final LazySingletonValue<AzureTable> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum SourceShopifyShopify {
     @JsonValue
     private final String value;
 
-    private SourceShopifyShopify(String value) {
+    SourceShopifyShopify(String value) {
         this.value = value;
     }
     

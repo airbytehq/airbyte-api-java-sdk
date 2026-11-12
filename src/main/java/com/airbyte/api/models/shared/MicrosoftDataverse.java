@@ -14,7 +14,7 @@ public enum MicrosoftDataverse {
     @JsonValue
     private final String value;
 
-    private MicrosoftDataverse(String value) {
+    MicrosoftDataverse(String value) {
         this.value = value;
     }
     

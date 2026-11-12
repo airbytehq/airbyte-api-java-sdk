@@ -14,18 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationMongodbSSHTunnelMethod
  * 
- * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+ * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+ * authentication to use.
  */
 @JsonDeserialize(using = DestinationMongodbSSHTunnelMethod._Deserializer.class)
 public class DestinationMongodbSSHTunnelMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationMongodbSSHTunnelMethod(TypedObject value) {
         this.value = value;
@@ -33,17 +33,17 @@ public class DestinationMongodbSSHTunnelMethod {
 
     public static DestinationMongodbSSHTunnelMethod of(DestinationMongodbNoTunnel value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationMongodbSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationMongodbNoTunnel>(){}));
+        return new DestinationMongodbSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationMongodbSSHTunnelMethod of(DestinationMongodbSSHKeyAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationMongodbSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationMongodbSSHKeyAuthentication>(){}));
+        return new DestinationMongodbSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationMongodbSSHTunnelMethod of(DestinationMongodbPasswordAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationMongodbSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationMongodbPasswordAuthentication>(){}));
+        return new DestinationMongodbSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +67,7 @@ public class DestinationMongodbSSHTunnelMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +78,12 @@ public class DestinationMongodbSSHTunnelMethod {
             return false;
         }
         DestinationMongodbSSHTunnelMethod other = (DestinationMongodbSSHTunnelMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -91,9 +91,9 @@ public class DestinationMongodbSSHTunnelMethod {
 
         public _Deserializer() {
             super(DestinationMongodbSSHTunnelMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DestinationMongodbPasswordAuthentication>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationMongodbNoTunnel>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationMongodbSSHKeyAuthentication>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationMongodbNoTunnel>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationMongodbPasswordAuthentication>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -102,6 +102,6 @@ public class DestinationMongodbSSHTunnelMethod {
         return Utils.toString(DestinationMongodbSSHTunnelMethod.class,
                 "value", value);
     }
- 
+
 }
 

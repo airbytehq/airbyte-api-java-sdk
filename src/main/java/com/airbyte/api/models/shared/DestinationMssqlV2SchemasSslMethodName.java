@@ -14,7 +14,7 @@ public enum DestinationMssqlV2SchemasSslMethodName {
     @JsonValue
     private final String value;
 
-    private DestinationMssqlV2SchemasSslMethodName(String value) {
+    DestinationMssqlV2SchemasSslMethodName(String value) {
         this.value = value;
     }
     

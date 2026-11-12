@@ -15,7 +15,7 @@ public enum ScopeType {
     @JsonValue
     private final String value;
 
-    private ScopeType(String value) {
+    ScopeType(String value) {
         this.value = value;
     }
     

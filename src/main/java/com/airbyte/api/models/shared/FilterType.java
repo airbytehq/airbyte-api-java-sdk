@@ -14,7 +14,7 @@ public enum FilterType {
     @JsonValue
     private final String value;
 
-    private FilterType(String value) {
+    FilterType(String value) {
         this.value = value;
     }
     

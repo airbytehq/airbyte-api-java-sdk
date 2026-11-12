@@ -14,7 +14,7 @@ public enum Serpstat {
     @JsonValue
     private final String value;
 
-    private Serpstat(String value) {
+    Serpstat(String value) {
         this.value = value;
     }
     

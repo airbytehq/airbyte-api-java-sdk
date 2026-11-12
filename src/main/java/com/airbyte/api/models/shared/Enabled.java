@@ -13,17 +13,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class Enabled {
 
+public class Enabled {
     /**
      * Name of the "deleted at" column.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("column")
     private Optional<String> column;
+
 
     @JsonProperty("deletion_mode")
     private SourceFaunaDeletionMode deletionMode;
@@ -53,9 +53,10 @@ public class Enabled {
         return deletionMode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Name of the "deleted at" column.
@@ -66,6 +67,7 @@ public class Enabled {
         return this;
     }
 
+
     /**
      * Name of the "deleted at" column.
      */
@@ -75,7 +77,6 @@ public class Enabled {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -86,15 +87,14 @@ public class Enabled {
         }
         Enabled other = (Enabled) o;
         return 
-            Objects.deepEquals(this.column, other.column) &&
-            Objects.deepEquals(this.deletionMode, other.deletionMode);
+            Utils.enhancedDeepEquals(this.column, other.column) &&
+            Utils.enhancedDeepEquals(this.deletionMode, other.deletionMode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            column,
-            deletionMode);
+        return Utils.enhancedHash(
+            column, deletionMode);
     }
     
     @Override
@@ -103,14 +103,16 @@ public class Enabled {
                 "column", column,
                 "deletionMode", deletionMode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> column;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Name of the "deleted at" column.
@@ -129,14 +131,16 @@ public class Enabled {
             this.column = column;
             return this;
         }
-        
+
         public Enabled build() {
             if (column == null) {
                 column = _SINGLETON_VALUE_Column.value();
             }
+
             return new Enabled(
                 column);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Column =
                 new LazySingletonValue<>(

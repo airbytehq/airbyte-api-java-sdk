@@ -14,7 +14,7 @@ public enum Appfigures {
     @JsonValue
     private final String value;
 
-    private Appfigures(String value) {
+    Appfigures(String value) {
         this.value = value;
     }
     

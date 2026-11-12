@@ -13,52 +13,60 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceGutendex {
 
+public class SourceGutendex {
     /**
-     * (Optional) Defines the maximum birth year of the authors. Books by authors born after the end year will not be returned. Supports both positive (CE) or negative (BCE) integer values
+     * (Optional) Defines the maximum birth year of the authors. Books by authors born after the end year
+     * will not be returned. Supports both positive (CE) or negative (BCE) integer values
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("author_year_end")
     private Optional<String> authorYearEnd;
 
     /**
-     * (Optional) Defines the minimum birth year of the authors. Books by authors born prior to the start year will not be returned. Supports both positive (CE) or negative (BCE) integer values
+     * (Optional) Defines the minimum birth year of the authors. Books by authors born prior to the start
+     * year will not be returned. Supports both positive (CE) or negative (BCE) integer values
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("author_year_start")
     private Optional<String> authorYearStart;
 
     /**
-     * (Optional) Use this to find books with a certain copyright status - true for books with existing copyrights, false for books in the public domain in the USA, or null for books with no available copyright information.
+     * (Optional) Use this to find books with a certain copyright status - true for books with existing
+     * copyrights, false for books in the public domain in the USA, or null for books with no available
+     * copyright information.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("copyright")
     private Optional<String> copyright;
 
     /**
-     * (Optional) Use this to find books in any of a list of languages. They must be comma-separated, two-character language codes.
+     * (Optional) Use this to find books in any of a list of languages. They must be comma-separated,
+     * two-character language codes.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("languages")
     private Optional<String> languages;
 
     /**
-     * (Optional) Use this to search author names and book titles with given words. They must be separated by a space (i.e. %20 in URL-encoded format) and are case-insensitive.
+     * (Optional) Use this to search author names and book titles with given words. They must be separated
+     * by a space (i.e. %20 in URL-encoded format) and are case-insensitive.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("search")
     private Optional<String> search;
 
     /**
-     * (Optional) Use this to sort books - ascending for Project Gutenberg ID numbers from lowest to highest, descending for IDs highest to lowest, or popular (the default) for most popular to least popular by number of downloads.
+     * (Optional) Use this to sort books - ascending for Project Gutenberg ID numbers from lowest to
+     * highest, descending for IDs highest to lowest, or popular (the default) for most popular to least
+     * popular by number of downloads.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sort")
     private Optional<String> sort;
+
 
     @JsonProperty("sourceType")
     private Gutendex sourceType;
@@ -97,11 +105,14 @@ public class SourceGutendex {
     }
     
     public SourceGutendex() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     /**
-     * (Optional) Defines the maximum birth year of the authors. Books by authors born after the end year will not be returned. Supports both positive (CE) or negative (BCE) integer values
+     * (Optional) Defines the maximum birth year of the authors. Books by authors born after the end year
+     * will not be returned. Supports both positive (CE) or negative (BCE) integer values
      */
     @JsonIgnore
     public Optional<String> authorYearEnd() {
@@ -109,7 +120,8 @@ public class SourceGutendex {
     }
 
     /**
-     * (Optional) Defines the minimum birth year of the authors. Books by authors born prior to the start year will not be returned. Supports both positive (CE) or negative (BCE) integer values
+     * (Optional) Defines the minimum birth year of the authors. Books by authors born prior to the start
+     * year will not be returned. Supports both positive (CE) or negative (BCE) integer values
      */
     @JsonIgnore
     public Optional<String> authorYearStart() {
@@ -117,7 +129,9 @@ public class SourceGutendex {
     }
 
     /**
-     * (Optional) Use this to find books with a certain copyright status - true for books with existing copyrights, false for books in the public domain in the USA, or null for books with no available copyright information.
+     * (Optional) Use this to find books with a certain copyright status - true for books with existing
+     * copyrights, false for books in the public domain in the USA, or null for books with no available
+     * copyright information.
      */
     @JsonIgnore
     public Optional<String> copyright() {
@@ -125,7 +139,8 @@ public class SourceGutendex {
     }
 
     /**
-     * (Optional) Use this to find books in any of a list of languages. They must be comma-separated, two-character language codes.
+     * (Optional) Use this to find books in any of a list of languages. They must be comma-separated,
+     * two-character language codes.
      */
     @JsonIgnore
     public Optional<String> languages() {
@@ -133,7 +148,8 @@ public class SourceGutendex {
     }
 
     /**
-     * (Optional) Use this to search author names and book titles with given words. They must be separated by a space (i.e. %20 in URL-encoded format) and are case-insensitive.
+     * (Optional) Use this to search author names and book titles with given words. They must be separated
+     * by a space (i.e. %20 in URL-encoded format) and are case-insensitive.
      */
     @JsonIgnore
     public Optional<String> search() {
@@ -141,7 +157,9 @@ public class SourceGutendex {
     }
 
     /**
-     * (Optional) Use this to sort books - ascending for Project Gutenberg ID numbers from lowest to highest, descending for IDs highest to lowest, or popular (the default) for most popular to least popular by number of downloads.
+     * (Optional) Use this to sort books - ascending for Project Gutenberg ID numbers from lowest to
+     * highest, descending for IDs highest to lowest, or popular (the default) for most popular to least
+     * popular by number of downloads.
      */
     @JsonIgnore
     public Optional<String> sort() {
@@ -161,12 +179,14 @@ public class SourceGutendex {
         return topic;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * (Optional) Defines the maximum birth year of the authors. Books by authors born after the end year will not be returned. Supports both positive (CE) or negative (BCE) integer values
+     * (Optional) Defines the maximum birth year of the authors. Books by authors born after the end year
+     * will not be returned. Supports both positive (CE) or negative (BCE) integer values
      */
     public SourceGutendex withAuthorYearEnd(String authorYearEnd) {
         Utils.checkNotNull(authorYearEnd, "authorYearEnd");
@@ -174,8 +194,10 @@ public class SourceGutendex {
         return this;
     }
 
+
     /**
-     * (Optional) Defines the maximum birth year of the authors. Books by authors born after the end year will not be returned. Supports both positive (CE) or negative (BCE) integer values
+     * (Optional) Defines the maximum birth year of the authors. Books by authors born after the end year
+     * will not be returned. Supports both positive (CE) or negative (BCE) integer values
      */
     public SourceGutendex withAuthorYearEnd(Optional<String> authorYearEnd) {
         Utils.checkNotNull(authorYearEnd, "authorYearEnd");
@@ -184,7 +206,8 @@ public class SourceGutendex {
     }
 
     /**
-     * (Optional) Defines the minimum birth year of the authors. Books by authors born prior to the start year will not be returned. Supports both positive (CE) or negative (BCE) integer values
+     * (Optional) Defines the minimum birth year of the authors. Books by authors born prior to the start
+     * year will not be returned. Supports both positive (CE) or negative (BCE) integer values
      */
     public SourceGutendex withAuthorYearStart(String authorYearStart) {
         Utils.checkNotNull(authorYearStart, "authorYearStart");
@@ -192,8 +215,10 @@ public class SourceGutendex {
         return this;
     }
 
+
     /**
-     * (Optional) Defines the minimum birth year of the authors. Books by authors born prior to the start year will not be returned. Supports both positive (CE) or negative (BCE) integer values
+     * (Optional) Defines the minimum birth year of the authors. Books by authors born prior to the start
+     * year will not be returned. Supports both positive (CE) or negative (BCE) integer values
      */
     public SourceGutendex withAuthorYearStart(Optional<String> authorYearStart) {
         Utils.checkNotNull(authorYearStart, "authorYearStart");
@@ -202,7 +227,9 @@ public class SourceGutendex {
     }
 
     /**
-     * (Optional) Use this to find books with a certain copyright status - true for books with existing copyrights, false for books in the public domain in the USA, or null for books with no available copyright information.
+     * (Optional) Use this to find books with a certain copyright status - true for books with existing
+     * copyrights, false for books in the public domain in the USA, or null for books with no available
+     * copyright information.
      */
     public SourceGutendex withCopyright(String copyright) {
         Utils.checkNotNull(copyright, "copyright");
@@ -210,8 +237,11 @@ public class SourceGutendex {
         return this;
     }
 
+
     /**
-     * (Optional) Use this to find books with a certain copyright status - true for books with existing copyrights, false for books in the public domain in the USA, or null for books with no available copyright information.
+     * (Optional) Use this to find books with a certain copyright status - true for books with existing
+     * copyrights, false for books in the public domain in the USA, or null for books with no available
+     * copyright information.
      */
     public SourceGutendex withCopyright(Optional<String> copyright) {
         Utils.checkNotNull(copyright, "copyright");
@@ -220,7 +250,8 @@ public class SourceGutendex {
     }
 
     /**
-     * (Optional) Use this to find books in any of a list of languages. They must be comma-separated, two-character language codes.
+     * (Optional) Use this to find books in any of a list of languages. They must be comma-separated,
+     * two-character language codes.
      */
     public SourceGutendex withLanguages(String languages) {
         Utils.checkNotNull(languages, "languages");
@@ -228,8 +259,10 @@ public class SourceGutendex {
         return this;
     }
 
+
     /**
-     * (Optional) Use this to find books in any of a list of languages. They must be comma-separated, two-character language codes.
+     * (Optional) Use this to find books in any of a list of languages. They must be comma-separated,
+     * two-character language codes.
      */
     public SourceGutendex withLanguages(Optional<String> languages) {
         Utils.checkNotNull(languages, "languages");
@@ -238,7 +271,8 @@ public class SourceGutendex {
     }
 
     /**
-     * (Optional) Use this to search author names and book titles with given words. They must be separated by a space (i.e. %20 in URL-encoded format) and are case-insensitive.
+     * (Optional) Use this to search author names and book titles with given words. They must be separated
+     * by a space (i.e. %20 in URL-encoded format) and are case-insensitive.
      */
     public SourceGutendex withSearch(String search) {
         Utils.checkNotNull(search, "search");
@@ -246,8 +280,10 @@ public class SourceGutendex {
         return this;
     }
 
+
     /**
-     * (Optional) Use this to search author names and book titles with given words. They must be separated by a space (i.e. %20 in URL-encoded format) and are case-insensitive.
+     * (Optional) Use this to search author names and book titles with given words. They must be separated
+     * by a space (i.e. %20 in URL-encoded format) and are case-insensitive.
      */
     public SourceGutendex withSearch(Optional<String> search) {
         Utils.checkNotNull(search, "search");
@@ -256,7 +292,9 @@ public class SourceGutendex {
     }
 
     /**
-     * (Optional) Use this to sort books - ascending for Project Gutenberg ID numbers from lowest to highest, descending for IDs highest to lowest, or popular (the default) for most popular to least popular by number of downloads.
+     * (Optional) Use this to sort books - ascending for Project Gutenberg ID numbers from lowest to
+     * highest, descending for IDs highest to lowest, or popular (the default) for most popular to least
+     * popular by number of downloads.
      */
     public SourceGutendex withSort(String sort) {
         Utils.checkNotNull(sort, "sort");
@@ -264,8 +302,11 @@ public class SourceGutendex {
         return this;
     }
 
+
     /**
-     * (Optional) Use this to sort books - ascending for Project Gutenberg ID numbers from lowest to highest, descending for IDs highest to lowest, or popular (the default) for most popular to least popular by number of downloads.
+     * (Optional) Use this to sort books - ascending for Project Gutenberg ID numbers from lowest to
+     * highest, descending for IDs highest to lowest, or popular (the default) for most popular to least
+     * popular by number of downloads.
      */
     public SourceGutendex withSort(Optional<String> sort) {
         Utils.checkNotNull(sort, "sort");
@@ -282,6 +323,7 @@ public class SourceGutendex {
         return this;
     }
 
+
     /**
      * (Optional) Use this to search for a case-insensitive key-phrase in books' bookshelves or subjects.
      */
@@ -291,7 +333,6 @@ public class SourceGutendex {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -302,27 +343,22 @@ public class SourceGutendex {
         }
         SourceGutendex other = (SourceGutendex) o;
         return 
-            Objects.deepEquals(this.authorYearEnd, other.authorYearEnd) &&
-            Objects.deepEquals(this.authorYearStart, other.authorYearStart) &&
-            Objects.deepEquals(this.copyright, other.copyright) &&
-            Objects.deepEquals(this.languages, other.languages) &&
-            Objects.deepEquals(this.search, other.search) &&
-            Objects.deepEquals(this.sort, other.sort) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.topic, other.topic);
+            Utils.enhancedDeepEquals(this.authorYearEnd, other.authorYearEnd) &&
+            Utils.enhancedDeepEquals(this.authorYearStart, other.authorYearStart) &&
+            Utils.enhancedDeepEquals(this.copyright, other.copyright) &&
+            Utils.enhancedDeepEquals(this.languages, other.languages) &&
+            Utils.enhancedDeepEquals(this.search, other.search) &&
+            Utils.enhancedDeepEquals(this.sort, other.sort) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.topic, other.topic);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authorYearEnd,
-            authorYearStart,
-            copyright,
-            languages,
-            search,
-            sort,
-            sourceType,
-            topic);
+        return Utils.enhancedHash(
+            authorYearEnd, authorYearStart, copyright,
+            languages, search, sort,
+            sourceType, topic);
     }
     
     @Override
@@ -337,29 +373,32 @@ public class SourceGutendex {
                 "sourceType", sourceType,
                 "topic", topic);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> authorYearEnd = Optional.empty();
- 
+
         private Optional<String> authorYearStart = Optional.empty();
- 
+
         private Optional<String> copyright = Optional.empty();
- 
+
         private Optional<String> languages = Optional.empty();
- 
+
         private Optional<String> search = Optional.empty();
- 
+
         private Optional<String> sort = Optional.empty();
- 
+
         private Optional<String> topic = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * (Optional) Defines the maximum birth year of the authors. Books by authors born after the end year will not be returned. Supports both positive (CE) or negative (BCE) integer values
+         * (Optional) Defines the maximum birth year of the authors. Books by authors born after the end year
+         * will not be returned. Supports both positive (CE) or negative (BCE) integer values
          */
         public Builder authorYearEnd(String authorYearEnd) {
             Utils.checkNotNull(authorYearEnd, "authorYearEnd");
@@ -368,7 +407,8 @@ public class SourceGutendex {
         }
 
         /**
-         * (Optional) Defines the maximum birth year of the authors. Books by authors born after the end year will not be returned. Supports both positive (CE) or negative (BCE) integer values
+         * (Optional) Defines the maximum birth year of the authors. Books by authors born after the end year
+         * will not be returned. Supports both positive (CE) or negative (BCE) integer values
          */
         public Builder authorYearEnd(Optional<String> authorYearEnd) {
             Utils.checkNotNull(authorYearEnd, "authorYearEnd");
@@ -376,8 +416,10 @@ public class SourceGutendex {
             return this;
         }
 
+
         /**
-         * (Optional) Defines the minimum birth year of the authors. Books by authors born prior to the start year will not be returned. Supports both positive (CE) or negative (BCE) integer values
+         * (Optional) Defines the minimum birth year of the authors. Books by authors born prior to the start
+         * year will not be returned. Supports both positive (CE) or negative (BCE) integer values
          */
         public Builder authorYearStart(String authorYearStart) {
             Utils.checkNotNull(authorYearStart, "authorYearStart");
@@ -386,7 +428,8 @@ public class SourceGutendex {
         }
 
         /**
-         * (Optional) Defines the minimum birth year of the authors. Books by authors born prior to the start year will not be returned. Supports both positive (CE) or negative (BCE) integer values
+         * (Optional) Defines the minimum birth year of the authors. Books by authors born prior to the start
+         * year will not be returned. Supports both positive (CE) or negative (BCE) integer values
          */
         public Builder authorYearStart(Optional<String> authorYearStart) {
             Utils.checkNotNull(authorYearStart, "authorYearStart");
@@ -394,8 +437,11 @@ public class SourceGutendex {
             return this;
         }
 
+
         /**
-         * (Optional) Use this to find books with a certain copyright status - true for books with existing copyrights, false for books in the public domain in the USA, or null for books with no available copyright information.
+         * (Optional) Use this to find books with a certain copyright status - true for books with existing
+         * copyrights, false for books in the public domain in the USA, or null for books with no available
+         * copyright information.
          */
         public Builder copyright(String copyright) {
             Utils.checkNotNull(copyright, "copyright");
@@ -404,7 +450,9 @@ public class SourceGutendex {
         }
 
         /**
-         * (Optional) Use this to find books with a certain copyright status - true for books with existing copyrights, false for books in the public domain in the USA, or null for books with no available copyright information.
+         * (Optional) Use this to find books with a certain copyright status - true for books with existing
+         * copyrights, false for books in the public domain in the USA, or null for books with no available
+         * copyright information.
          */
         public Builder copyright(Optional<String> copyright) {
             Utils.checkNotNull(copyright, "copyright");
@@ -412,8 +460,10 @@ public class SourceGutendex {
             return this;
         }
 
+
         /**
-         * (Optional) Use this to find books in any of a list of languages. They must be comma-separated, two-character language codes.
+         * (Optional) Use this to find books in any of a list of languages. They must be comma-separated,
+         * two-character language codes.
          */
         public Builder languages(String languages) {
             Utils.checkNotNull(languages, "languages");
@@ -422,7 +472,8 @@ public class SourceGutendex {
         }
 
         /**
-         * (Optional) Use this to find books in any of a list of languages. They must be comma-separated, two-character language codes.
+         * (Optional) Use this to find books in any of a list of languages. They must be comma-separated,
+         * two-character language codes.
          */
         public Builder languages(Optional<String> languages) {
             Utils.checkNotNull(languages, "languages");
@@ -430,8 +481,10 @@ public class SourceGutendex {
             return this;
         }
 
+
         /**
-         * (Optional) Use this to search author names and book titles with given words. They must be separated by a space (i.e. %20 in URL-encoded format) and are case-insensitive.
+         * (Optional) Use this to search author names and book titles with given words. They must be separated
+         * by a space (i.e. %20 in URL-encoded format) and are case-insensitive.
          */
         public Builder search(String search) {
             Utils.checkNotNull(search, "search");
@@ -440,7 +493,8 @@ public class SourceGutendex {
         }
 
         /**
-         * (Optional) Use this to search author names and book titles with given words. They must be separated by a space (i.e. %20 in URL-encoded format) and are case-insensitive.
+         * (Optional) Use this to search author names and book titles with given words. They must be separated
+         * by a space (i.e. %20 in URL-encoded format) and are case-insensitive.
          */
         public Builder search(Optional<String> search) {
             Utils.checkNotNull(search, "search");
@@ -448,8 +502,11 @@ public class SourceGutendex {
             return this;
         }
 
+
         /**
-         * (Optional) Use this to sort books - ascending for Project Gutenberg ID numbers from lowest to highest, descending for IDs highest to lowest, or popular (the default) for most popular to least popular by number of downloads.
+         * (Optional) Use this to sort books - ascending for Project Gutenberg ID numbers from lowest to
+         * highest, descending for IDs highest to lowest, or popular (the default) for most popular to least
+         * popular by number of downloads.
          */
         public Builder sort(String sort) {
             Utils.checkNotNull(sort, "sort");
@@ -458,13 +515,16 @@ public class SourceGutendex {
         }
 
         /**
-         * (Optional) Use this to sort books - ascending for Project Gutenberg ID numbers from lowest to highest, descending for IDs highest to lowest, or popular (the default) for most popular to least popular by number of downloads.
+         * (Optional) Use this to sort books - ascending for Project Gutenberg ID numbers from lowest to
+         * highest, descending for IDs highest to lowest, or popular (the default) for most popular to least
+         * popular by number of downloads.
          */
         public Builder sort(Optional<String> sort) {
             Utils.checkNotNull(sort, "sort");
             this.sort = sort;
             return this;
         }
+
 
         /**
          * (Optional) Use this to search for a case-insensitive key-phrase in books' bookshelves or subjects.
@@ -483,17 +543,15 @@ public class SourceGutendex {
             this.topic = topic;
             return this;
         }
-        
+
         public SourceGutendex build() {
+
             return new SourceGutendex(
-                authorYearEnd,
-                authorYearStart,
-                copyright,
-                languages,
-                search,
-                sort,
+                authorYearEnd, authorYearStart, copyright,
+                languages, search, sort,
                 topic);
         }
+
 
         private static final LazySingletonValue<Gutendex> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

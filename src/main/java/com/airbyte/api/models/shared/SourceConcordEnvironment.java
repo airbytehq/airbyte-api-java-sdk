@@ -20,7 +20,7 @@ public enum SourceConcordEnvironment {
     @JsonValue
     private final String value;
 
-    private SourceConcordEnvironment(String value) {
+    SourceConcordEnvironment(String value) {
         this.value = value;
     }
     

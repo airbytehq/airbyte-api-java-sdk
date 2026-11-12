@@ -19,7 +19,7 @@ public enum DestinationRedshiftSchemasTunnelMethod {
     @JsonValue
     private final String value;
 
-    private DestinationRedshiftSchemasTunnelMethod(String value) {
+    DestinationRedshiftSchemasTunnelMethod(String value) {
         this.value = value;
     }
     

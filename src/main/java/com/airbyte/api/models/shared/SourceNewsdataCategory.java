@@ -24,7 +24,7 @@ public enum SourceNewsdataCategory {
     @JsonValue
     private final String value;
 
-    private SourceNewsdataCategory(String value) {
+    SourceNewsdataCategory(String value) {
         this.value = value;
     }
     

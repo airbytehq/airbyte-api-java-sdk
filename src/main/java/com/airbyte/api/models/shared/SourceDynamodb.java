@@ -15,12 +15,11 @@ import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class SourceDynamodb {
 
+public class SourceDynamodb {
     /**
      * Credentials for the service
      */
@@ -56,6 +55,7 @@ public class SourceDynamodb {
     @JsonProperty("reserved_attribute_names")
     private Optional<String> reservedAttributeNames;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceType")
     private Optional<? extends SourceDynamodbDynamodb> sourceType;
@@ -81,7 +81,8 @@ public class SourceDynamodb {
     }
     
     public SourceDynamodb() {
-        this(JsonNullable.undefined(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(JsonNullable.undefined(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty());
     }
 
     /**
@@ -132,9 +133,10 @@ public class SourceDynamodb {
         return (Optional<SourceDynamodbDynamodb>) sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Credentials for the service
@@ -163,6 +165,7 @@ public class SourceDynamodb {
         return this;
     }
 
+
     /**
      * the URL of the Dynamodb database
      */
@@ -180,6 +183,7 @@ public class SourceDynamodb {
         this.ignoreMissingReadPermissionsTables = Optional.ofNullable(ignoreMissingReadPermissionsTables);
         return this;
     }
+
 
     /**
      * Ignore tables with missing scan/read permissions
@@ -199,6 +203,7 @@ public class SourceDynamodb {
         return this;
     }
 
+
     /**
      * The region of the Dynamodb database
      */
@@ -217,6 +222,7 @@ public class SourceDynamodb {
         return this;
     }
 
+
     /**
      * Comma separated reserved attribute names present in your tables
      */
@@ -226,7 +232,6 @@ public class SourceDynamodb {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -237,23 +242,19 @@ public class SourceDynamodb {
         }
         SourceDynamodb other = (SourceDynamodb) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.endpoint, other.endpoint) &&
-            Objects.deepEquals(this.ignoreMissingReadPermissionsTables, other.ignoreMissingReadPermissionsTables) &&
-            Objects.deepEquals(this.region, other.region) &&
-            Objects.deepEquals(this.reservedAttributeNames, other.reservedAttributeNames) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.endpoint, other.endpoint) &&
+            Utils.enhancedDeepEquals(this.ignoreMissingReadPermissionsTables, other.ignoreMissingReadPermissionsTables) &&
+            Utils.enhancedDeepEquals(this.region, other.region) &&
+            Utils.enhancedDeepEquals(this.reservedAttributeNames, other.reservedAttributeNames) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            endpoint,
-            ignoreMissingReadPermissionsTables,
-            region,
-            reservedAttributeNames,
-            sourceType);
+        return Utils.enhancedHash(
+            credentials, endpoint, ignoreMissingReadPermissionsTables,
+            region, reservedAttributeNames, sourceType);
     }
     
     @Override
@@ -266,22 +267,24 @@ public class SourceDynamodb {
                 "reservedAttributeNames", reservedAttributeNames,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends SourceDynamodbCredentials> credentials = JsonNullable.undefined();
- 
+
         private Optional<String> endpoint;
- 
+
         private Optional<Boolean> ignoreMissingReadPermissionsTables;
- 
+
         private Optional<? extends SourceDynamodbDynamodbRegion> region;
- 
+
         private Optional<String> reservedAttributeNames = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Credentials for the service
@@ -301,6 +304,7 @@ public class SourceDynamodb {
             return this;
         }
 
+
         /**
          * the URL of the Dynamodb database
          */
@@ -318,6 +322,7 @@ public class SourceDynamodb {
             this.endpoint = endpoint;
             return this;
         }
+
 
         /**
          * Ignore tables with missing scan/read permissions
@@ -337,6 +342,7 @@ public class SourceDynamodb {
             return this;
         }
 
+
         /**
          * The region of the Dynamodb database
          */
@@ -355,6 +361,7 @@ public class SourceDynamodb {
             return this;
         }
 
+
         /**
          * Comma separated reserved attribute names present in your tables
          */
@@ -372,7 +379,7 @@ public class SourceDynamodb {
             this.reservedAttributeNames = reservedAttributeNames;
             return this;
         }
-        
+
         public SourceDynamodb build() {
             if (endpoint == null) {
                 endpoint = _SINGLETON_VALUE_Endpoint.value();
@@ -383,13 +390,12 @@ public class SourceDynamodb {
             if (region == null) {
                 region = _SINGLETON_VALUE_Region.value();
             }
+
             return new SourceDynamodb(
-                credentials,
-                endpoint,
-                ignoreMissingReadPermissionsTables,
-                region,
-                reservedAttributeNames);
+                credentials, endpoint, ignoreMissingReadPermissionsTables,
+                region, reservedAttributeNames);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Endpoint =
                 new LazySingletonValue<>(

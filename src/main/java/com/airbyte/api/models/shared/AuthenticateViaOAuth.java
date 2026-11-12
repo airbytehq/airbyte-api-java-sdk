@@ -12,15 +12,15 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class AuthenticateViaOAuth {
-
     /**
      * Access Token for making authenticated requests.
      */
     @JsonProperty("access_token")
     private String accessToken;
+
 
     @JsonProperty("auth_type")
     private SourceSalesloftAuthType authType;
@@ -114,9 +114,10 @@ public class AuthenticateViaOAuth {
         return tokenExpiryDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Access Token for making authenticated requests.
@@ -163,7 +164,6 @@ public class AuthenticateViaOAuth {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -174,23 +174,19 @@ public class AuthenticateViaOAuth {
         }
         AuthenticateViaOAuth other = (AuthenticateViaOAuth) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken) &&
-            Objects.deepEquals(this.tokenExpiryDate, other.tokenExpiryDate);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.tokenExpiryDate, other.tokenExpiryDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            authType,
-            clientId,
-            clientSecret,
-            refreshToken,
-            tokenExpiryDate);
+        return Utils.enhancedHash(
+            accessToken, authType, clientId,
+            clientSecret, refreshToken, tokenExpiryDate);
     }
     
     @Override
@@ -203,22 +199,24 @@ public class AuthenticateViaOAuth {
                 "refreshToken", refreshToken,
                 "tokenExpiryDate", tokenExpiryDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String refreshToken;
- 
+
         private OffsetDateTime tokenExpiryDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Access Token for making authenticated requests.
@@ -229,6 +227,7 @@ public class AuthenticateViaOAuth {
             return this;
         }
 
+
         /**
          * The Client ID of your Salesloft developer application.
          */
@@ -237,6 +236,7 @@ public class AuthenticateViaOAuth {
             this.clientId = clientId;
             return this;
         }
+
 
         /**
          * The Client Secret of your Salesloft developer application.
@@ -247,6 +247,7 @@ public class AuthenticateViaOAuth {
             return this;
         }
 
+
         /**
          * The token for obtaining a new access token.
          */
@@ -256,6 +257,7 @@ public class AuthenticateViaOAuth {
             return this;
         }
 
+
         /**
          * The date-time when the access token should be refreshed.
          */
@@ -264,15 +266,14 @@ public class AuthenticateViaOAuth {
             this.tokenExpiryDate = tokenExpiryDate;
             return this;
         }
-        
+
         public AuthenticateViaOAuth build() {
+
             return new AuthenticateViaOAuth(
-                accessToken,
-                clientId,
-                clientSecret,
-                refreshToken,
-                tokenExpiryDate);
+                accessToken, clientId, clientSecret,
+                refreshToken, tokenExpiryDate);
         }
+
 
         private static final LazySingletonValue<SourceSalesloftAuthType> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

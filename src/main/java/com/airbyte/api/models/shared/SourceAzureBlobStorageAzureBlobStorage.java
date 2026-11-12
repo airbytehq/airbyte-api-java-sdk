@@ -14,7 +14,7 @@ public enum SourceAzureBlobStorageAzureBlobStorage {
     @JsonValue
     private final String value;
 
-    private SourceAzureBlobStorageAzureBlobStorage(String value) {
+    SourceAzureBlobStorageAzureBlobStorage(String value) {
         this.value = value;
     }
     

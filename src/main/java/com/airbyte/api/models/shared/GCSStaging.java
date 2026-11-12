@@ -5,33 +5,44 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
+import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 /**
  * GCSStaging
  * 
- * <p>Writes large batches of records to a file, uploads the file to GCS, then uses COPY INTO to load your data into BigQuery.
+ * <p>Writes large batches of records to a file, uploads the file to GCS, then uses COPY INTO to load your
+ * data into BigQuery.
  */
 public class GCSStaging {
 
+    @JsonIgnore
+    private Map<String, Object> additionalProperties;
+
     /**
-     * An HMAC key is a type of credential and can be associated with a service account or a user account in Cloud Storage. Read more &lt;a href="https://cloud.google.com/storage/docs/authentication/hmackeys"&gt;here&lt;/a&gt;.
+     * An HMAC key is a type of credential and can be associated with a service account or a user account
+     * in Cloud Storage. Read more <a
+     * href="https://cloud.google.com/storage/docs/authentication/hmackeys">here</a>.
      */
     @JsonProperty("credential")
     private Credential credential;
 
     /**
-     * The name of the GCS bucket. Read more &lt;a href="https://cloud.google.com/storage/docs/naming-buckets"&gt;here&lt;/a&gt;.
+     * The name of the GCS bucket. Read more <a
+     * href="https://cloud.google.com/storage/docs/naming-buckets">here</a>.
      */
     @JsonProperty("gcs_bucket_name")
     private String gcsBucketName;
@@ -43,41 +54,56 @@ public class GCSStaging {
     private String gcsBucketPath;
 
     /**
-     * This upload method is supposed to temporary store records in GCS bucket. By this select you can chose if these records should be removed from GCS when migration has finished. The default "Delete all tmp files from GCS" value is used if not set explicitly.
+     * This upload method is supposed to temporary store records in GCS bucket. By this select you can
+     * chose if these records should be removed from GCS when migration has finished. The default "Delete
+     * all tmp files from GCS" value is used if not set explicitly.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("keep_files_in_gcs-bucket")
-    private Optional<? extends GCSTmpFilesAfterwardProcessing> keepFilesInGcsBucket;
+    private Optional<? extends GCSTmpFilesPostProcessing> keepFilesInGcsBucket;
 
+
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("method")
-    private DestinationBigqueryMethod method;
+    private Optional<? extends DestinationBigqueryMethod> method;
 
     @JsonCreator
     public GCSStaging(
             @JsonProperty("credential") Credential credential,
             @JsonProperty("gcs_bucket_name") String gcsBucketName,
             @JsonProperty("gcs_bucket_path") String gcsBucketPath,
-            @JsonProperty("keep_files_in_gcs-bucket") Optional<? extends GCSTmpFilesAfterwardProcessing> keepFilesInGcsBucket) {
+            @JsonProperty("keep_files_in_gcs-bucket") Optional<? extends GCSTmpFilesPostProcessing> keepFilesInGcsBucket,
+            @JsonProperty("method") Optional<? extends DestinationBigqueryMethod> method) {
         Utils.checkNotNull(credential, "credential");
         Utils.checkNotNull(gcsBucketName, "gcsBucketName");
         Utils.checkNotNull(gcsBucketPath, "gcsBucketPath");
         Utils.checkNotNull(keepFilesInGcsBucket, "keepFilesInGcsBucket");
+        Utils.checkNotNull(method, "method");
+        this.additionalProperties = new HashMap<>();
         this.credential = credential;
         this.gcsBucketName = gcsBucketName;
         this.gcsBucketPath = gcsBucketPath;
         this.keepFilesInGcsBucket = keepFilesInGcsBucket;
-        this.method = Builder._SINGLETON_VALUE_Method.value();
+        this.method = method;
     }
     
     public GCSStaging(
             Credential credential,
             String gcsBucketName,
             String gcsBucketPath) {
-        this(credential, gcsBucketName, gcsBucketPath, Optional.empty());
+        this(credential, gcsBucketName, gcsBucketPath,
+            Optional.empty(), Optional.empty());
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> additionalProperties() {
+        return additionalProperties;
     }
 
     /**
-     * An HMAC key is a type of credential and can be associated with a service account or a user account in Cloud Storage. Read more &lt;a href="https://cloud.google.com/storage/docs/authentication/hmackeys"&gt;here&lt;/a&gt;.
+     * An HMAC key is a type of credential and can be associated with a service account or a user account
+     * in Cloud Storage. Read more <a
+     * href="https://cloud.google.com/storage/docs/authentication/hmackeys">here</a>.
      */
     @JsonIgnore
     public Credential credential() {
@@ -85,7 +111,8 @@ public class GCSStaging {
     }
 
     /**
-     * The name of the GCS bucket. Read more &lt;a href="https://cloud.google.com/storage/docs/naming-buckets"&gt;here&lt;/a&gt;.
+     * The name of the GCS bucket. Read more <a
+     * href="https://cloud.google.com/storage/docs/naming-buckets">here</a>.
      */
     @JsonIgnore
     public String gcsBucketName() {
@@ -101,25 +128,44 @@ public class GCSStaging {
     }
 
     /**
-     * This upload method is supposed to temporary store records in GCS bucket. By this select you can chose if these records should be removed from GCS when migration has finished. The default "Delete all tmp files from GCS" value is used if not set explicitly.
+     * This upload method is supposed to temporary store records in GCS bucket. By this select you can
+     * chose if these records should be removed from GCS when migration has finished. The default "Delete
+     * all tmp files from GCS" value is used if not set explicitly.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<GCSTmpFilesAfterwardProcessing> keepFilesInGcsBucket() {
-        return (Optional<GCSTmpFilesAfterwardProcessing>) keepFilesInGcsBucket;
+    public Optional<GCSTmpFilesPostProcessing> keepFilesInGcsBucket() {
+        return (Optional<GCSTmpFilesPostProcessing>) keepFilesInGcsBucket;
     }
 
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public DestinationBigqueryMethod method() {
-        return method;
+    public Optional<DestinationBigqueryMethod> method() {
+        return (Optional<DestinationBigqueryMethod>) method;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
+
+    @JsonAnySetter
+    public GCSStaging withAdditionalProperty(String key, Object value) {
+        // note that value can be null because of the way JsonAnySetter works
+        Utils.checkNotNull(key, "key");
+        additionalProperties.put(key, value); 
+        return this;
+    }
+    public GCSStaging withAdditionalProperties(Map<String, Object> additionalProperties) {
+        Utils.checkNotNull(additionalProperties, "additionalProperties");
+        this.additionalProperties = additionalProperties;
+        return this;
+    }
 
     /**
-     * An HMAC key is a type of credential and can be associated with a service account or a user account in Cloud Storage. Read more &lt;a href="https://cloud.google.com/storage/docs/authentication/hmackeys"&gt;here&lt;/a&gt;.
+     * An HMAC key is a type of credential and can be associated with a service account or a user account
+     * in Cloud Storage. Read more <a
+     * href="https://cloud.google.com/storage/docs/authentication/hmackeys">here</a>.
      */
     public GCSStaging withCredential(Credential credential) {
         Utils.checkNotNull(credential, "credential");
@@ -128,7 +174,8 @@ public class GCSStaging {
     }
 
     /**
-     * The name of the GCS bucket. Read more &lt;a href="https://cloud.google.com/storage/docs/naming-buckets"&gt;here&lt;/a&gt;.
+     * The name of the GCS bucket. Read more <a
+     * href="https://cloud.google.com/storage/docs/naming-buckets">here</a>.
      */
     public GCSStaging withGcsBucketName(String gcsBucketName) {
         Utils.checkNotNull(gcsBucketName, "gcsBucketName");
@@ -146,24 +193,41 @@ public class GCSStaging {
     }
 
     /**
-     * This upload method is supposed to temporary store records in GCS bucket. By this select you can chose if these records should be removed from GCS when migration has finished. The default "Delete all tmp files from GCS" value is used if not set explicitly.
+     * This upload method is supposed to temporary store records in GCS bucket. By this select you can
+     * chose if these records should be removed from GCS when migration has finished. The default "Delete
+     * all tmp files from GCS" value is used if not set explicitly.
      */
-    public GCSStaging withKeepFilesInGcsBucket(GCSTmpFilesAfterwardProcessing keepFilesInGcsBucket) {
+    public GCSStaging withKeepFilesInGcsBucket(GCSTmpFilesPostProcessing keepFilesInGcsBucket) {
         Utils.checkNotNull(keepFilesInGcsBucket, "keepFilesInGcsBucket");
         this.keepFilesInGcsBucket = Optional.ofNullable(keepFilesInGcsBucket);
         return this;
     }
 
+
     /**
-     * This upload method is supposed to temporary store records in GCS bucket. By this select you can chose if these records should be removed from GCS when migration has finished. The default "Delete all tmp files from GCS" value is used if not set explicitly.
+     * This upload method is supposed to temporary store records in GCS bucket. By this select you can
+     * chose if these records should be removed from GCS when migration has finished. The default "Delete
+     * all tmp files from GCS" value is used if not set explicitly.
      */
-    public GCSStaging withKeepFilesInGcsBucket(Optional<? extends GCSTmpFilesAfterwardProcessing> keepFilesInGcsBucket) {
+    public GCSStaging withKeepFilesInGcsBucket(Optional<? extends GCSTmpFilesPostProcessing> keepFilesInGcsBucket) {
         Utils.checkNotNull(keepFilesInGcsBucket, "keepFilesInGcsBucket");
         this.keepFilesInGcsBucket = keepFilesInGcsBucket;
         return this;
     }
 
-    
+    public GCSStaging withMethod(DestinationBigqueryMethod method) {
+        Utils.checkNotNull(method, "method");
+        this.method = Optional.ofNullable(method);
+        return this;
+    }
+
+
+    public GCSStaging withMethod(Optional<? extends DestinationBigqueryMethod> method) {
+        Utils.checkNotNull(method, "method");
+        this.method = method;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -174,49 +238,72 @@ public class GCSStaging {
         }
         GCSStaging other = (GCSStaging) o;
         return 
-            Objects.deepEquals(this.credential, other.credential) &&
-            Objects.deepEquals(this.gcsBucketName, other.gcsBucketName) &&
-            Objects.deepEquals(this.gcsBucketPath, other.gcsBucketPath) &&
-            Objects.deepEquals(this.keepFilesInGcsBucket, other.keepFilesInGcsBucket) &&
-            Objects.deepEquals(this.method, other.method);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.credential, other.credential) &&
+            Utils.enhancedDeepEquals(this.gcsBucketName, other.gcsBucketName) &&
+            Utils.enhancedDeepEquals(this.gcsBucketPath, other.gcsBucketPath) &&
+            Utils.enhancedDeepEquals(this.keepFilesInGcsBucket, other.keepFilesInGcsBucket) &&
+            Utils.enhancedDeepEquals(this.method, other.method);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credential,
-            gcsBucketName,
-            gcsBucketPath,
-            keepFilesInGcsBucket,
-            method);
+        return Utils.enhancedHash(
+            additionalProperties, credential, gcsBucketName,
+            gcsBucketPath, keepFilesInGcsBucket, method);
     }
     
     @Override
     public String toString() {
         return Utils.toString(GCSStaging.class,
+                "additionalProperties", additionalProperties,
                 "credential", credential,
                 "gcsBucketName", gcsBucketName,
                 "gcsBucketPath", gcsBucketPath,
                 "keepFilesInGcsBucket", keepFilesInGcsBucket,
                 "method", method);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
+        private Map<String, Object> additionalProperties = new HashMap<>();
+
         private Credential credential;
- 
+
         private String gcsBucketName;
- 
+
         private String gcsBucketPath;
- 
-        private Optional<? extends GCSTmpFilesAfterwardProcessing> keepFilesInGcsBucket;
-        
+
+        private Optional<? extends GCSTmpFilesPostProcessing> keepFilesInGcsBucket;
+
+        private Optional<? extends DestinationBigqueryMethod> method;
+
         private Builder() {
           // force use of static builder() method
         }
 
+        public Builder additionalProperty(String key, Object value) {
+            Utils.checkNotNull(key, "key");
+            // we could be strict about null values (force the user
+            // to pass `JsonNullable.of(null)`) but likely to be a bit 
+            // annoying for additional properties building so we'll 
+            // relax preconditions.
+            this.additionalProperties.put(key, value);
+            return this;
+        }
+
+        public Builder additionalProperties(Map<String, Object> additionalProperties) {
+            Utils.checkNotNull(additionalProperties, "additionalProperties");
+            this.additionalProperties = additionalProperties;
+            return this;
+        }
+
+
         /**
-         * An HMAC key is a type of credential and can be associated with a service account or a user account in Cloud Storage. Read more &lt;a href="https://cloud.google.com/storage/docs/authentication/hmackeys"&gt;here&lt;/a&gt;.
+         * An HMAC key is a type of credential and can be associated with a service account or a user account
+         * in Cloud Storage. Read more <a
+         * href="https://cloud.google.com/storage/docs/authentication/hmackeys">here</a>.
          */
         public Builder credential(Credential credential) {
             Utils.checkNotNull(credential, "credential");
@@ -224,14 +311,17 @@ public class GCSStaging {
             return this;
         }
 
+
         /**
-         * The name of the GCS bucket. Read more &lt;a href="https://cloud.google.com/storage/docs/naming-buckets"&gt;here&lt;/a&gt;.
+         * The name of the GCS bucket. Read more <a
+         * href="https://cloud.google.com/storage/docs/naming-buckets">here</a>.
          */
         public Builder gcsBucketName(String gcsBucketName) {
             Utils.checkNotNull(gcsBucketName, "gcsBucketName");
             this.gcsBucketName = gcsBucketName;
             return this;
         }
+
 
         /**
          * Directory under the GCS bucket where data will be written.
@@ -242,45 +332,67 @@ public class GCSStaging {
             return this;
         }
 
+
         /**
-         * This upload method is supposed to temporary store records in GCS bucket. By this select you can chose if these records should be removed from GCS when migration has finished. The default "Delete all tmp files from GCS" value is used if not set explicitly.
+         * This upload method is supposed to temporary store records in GCS bucket. By this select you can
+         * chose if these records should be removed from GCS when migration has finished. The default "Delete
+         * all tmp files from GCS" value is used if not set explicitly.
          */
-        public Builder keepFilesInGcsBucket(GCSTmpFilesAfterwardProcessing keepFilesInGcsBucket) {
+        public Builder keepFilesInGcsBucket(GCSTmpFilesPostProcessing keepFilesInGcsBucket) {
             Utils.checkNotNull(keepFilesInGcsBucket, "keepFilesInGcsBucket");
             this.keepFilesInGcsBucket = Optional.ofNullable(keepFilesInGcsBucket);
             return this;
         }
 
         /**
-         * This upload method is supposed to temporary store records in GCS bucket. By this select you can chose if these records should be removed from GCS when migration has finished. The default "Delete all tmp files from GCS" value is used if not set explicitly.
+         * This upload method is supposed to temporary store records in GCS bucket. By this select you can
+         * chose if these records should be removed from GCS when migration has finished. The default "Delete
+         * all tmp files from GCS" value is used if not set explicitly.
          */
-        public Builder keepFilesInGcsBucket(Optional<? extends GCSTmpFilesAfterwardProcessing> keepFilesInGcsBucket) {
+        public Builder keepFilesInGcsBucket(Optional<? extends GCSTmpFilesPostProcessing> keepFilesInGcsBucket) {
             Utils.checkNotNull(keepFilesInGcsBucket, "keepFilesInGcsBucket");
             this.keepFilesInGcsBucket = keepFilesInGcsBucket;
             return this;
         }
-        
+
+
+        public Builder method(DestinationBigqueryMethod method) {
+            Utils.checkNotNull(method, "method");
+            this.method = Optional.ofNullable(method);
+            return this;
+        }
+
+        public Builder method(Optional<? extends DestinationBigqueryMethod> method) {
+            Utils.checkNotNull(method, "method");
+            this.method = method;
+            return this;
+        }
+
         public GCSStaging build() {
             if (keepFilesInGcsBucket == null) {
                 keepFilesInGcsBucket = _SINGLETON_VALUE_KeepFilesInGcsBucket.value();
             }
+            if (method == null) {
+                method = _SINGLETON_VALUE_Method.value();
+            }
+
             return new GCSStaging(
-                credential,
-                gcsBucketName,
-                gcsBucketPath,
-                keepFilesInGcsBucket);
+                credential, gcsBucketName, gcsBucketPath,
+                keepFilesInGcsBucket, method)
+                .withAdditionalProperties(additionalProperties);
         }
 
-        private static final LazySingletonValue<Optional<? extends GCSTmpFilesAfterwardProcessing>> _SINGLETON_VALUE_KeepFilesInGcsBucket =
+
+        private static final LazySingletonValue<Optional<? extends GCSTmpFilesPostProcessing>> _SINGLETON_VALUE_KeepFilesInGcsBucket =
                 new LazySingletonValue<>(
                         "keep_files_in_gcs-bucket",
                         "\"Delete all tmp files from GCS\"",
-                        new TypeReference<Optional<? extends GCSTmpFilesAfterwardProcessing>>() {});
+                        new TypeReference<Optional<? extends GCSTmpFilesPostProcessing>>() {});
 
-        private static final LazySingletonValue<DestinationBigqueryMethod> _SINGLETON_VALUE_Method =
+        private static final LazySingletonValue<Optional<? extends DestinationBigqueryMethod>> _SINGLETON_VALUE_Method =
                 new LazySingletonValue<>(
                         "method",
                         "\"GCS Staging\"",
-                        new TypeReference<DestinationBigqueryMethod>() {});
+                        new TypeReference<Optional<? extends DestinationBigqueryMethod>>() {});
     }
 }

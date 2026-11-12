@@ -14,7 +14,7 @@ public enum Nytimes {
     @JsonValue
     private final String value;
 
-    private Nytimes(String value) {
+    Nytimes(String value) {
         this.value = value;
     }
     

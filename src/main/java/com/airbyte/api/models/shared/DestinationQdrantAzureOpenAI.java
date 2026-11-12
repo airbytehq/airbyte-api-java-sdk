@@ -14,34 +14,37 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * DestinationQdrantAzureOpenAI
  * 
- * <p>Use the Azure-hosted OpenAI API to embed text. This option is using the text-embedding-ada-002 model with 1536 embedding dimensions.
+ * <p>Use the Azure-hosted OpenAI API to embed text. This option is using the text-embedding-ada-002 model
+ * with 1536 embedding dimensions.
  */
 public class DestinationQdrantAzureOpenAI {
-
     /**
-     * The base URL for your Azure OpenAI resource.  You can find this in the Azure portal under your Azure OpenAI resource
+     * The base URL for your Azure OpenAI resource. You can find this in the Azure portal under your Azure
+     * OpenAI resource
      */
     @JsonProperty("api_base")
     private String apiBase;
 
     /**
-     * The deployment for your Azure OpenAI resource.  You can find this in the Azure portal under your Azure OpenAI resource
+     * The deployment for your Azure OpenAI resource. You can find this in the Azure portal under your
+     * Azure OpenAI resource
      */
     @JsonProperty("deployment")
     private String deployment;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
     private Optional<? extends DestinationQdrantSchemasEmbeddingEmbeddingMode> mode;
 
     /**
-     * The API key for your Azure OpenAI resource.  You can find this in the Azure portal under your Azure OpenAI resource
+     * The API key for your Azure OpenAI resource. You can find this in the Azure portal under your Azure
+     * OpenAI resource
      */
     @JsonProperty("openai_key")
     private String openaiKey;
@@ -61,7 +64,8 @@ public class DestinationQdrantAzureOpenAI {
     }
 
     /**
-     * The base URL for your Azure OpenAI resource.  You can find this in the Azure portal under your Azure OpenAI resource
+     * The base URL for your Azure OpenAI resource. You can find this in the Azure portal under your Azure
+     * OpenAI resource
      */
     @JsonIgnore
     public String apiBase() {
@@ -69,7 +73,8 @@ public class DestinationQdrantAzureOpenAI {
     }
 
     /**
-     * The deployment for your Azure OpenAI resource.  You can find this in the Azure portal under your Azure OpenAI resource
+     * The deployment for your Azure OpenAI resource. You can find this in the Azure portal under your
+     * Azure OpenAI resource
      */
     @JsonIgnore
     public String deployment() {
@@ -83,19 +88,22 @@ public class DestinationQdrantAzureOpenAI {
     }
 
     /**
-     * The API key for your Azure OpenAI resource.  You can find this in the Azure portal under your Azure OpenAI resource
+     * The API key for your Azure OpenAI resource. You can find this in the Azure portal under your Azure
+     * OpenAI resource
      */
     @JsonIgnore
     public String openaiKey() {
         return openaiKey;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The base URL for your Azure OpenAI resource.  You can find this in the Azure portal under your Azure OpenAI resource
+     * The base URL for your Azure OpenAI resource. You can find this in the Azure portal under your Azure
+     * OpenAI resource
      */
     public DestinationQdrantAzureOpenAI withApiBase(String apiBase) {
         Utils.checkNotNull(apiBase, "apiBase");
@@ -104,7 +112,8 @@ public class DestinationQdrantAzureOpenAI {
     }
 
     /**
-     * The deployment for your Azure OpenAI resource.  You can find this in the Azure portal under your Azure OpenAI resource
+     * The deployment for your Azure OpenAI resource. You can find this in the Azure portal under your
+     * Azure OpenAI resource
      */
     public DestinationQdrantAzureOpenAI withDeployment(String deployment) {
         Utils.checkNotNull(deployment, "deployment");
@@ -113,7 +122,8 @@ public class DestinationQdrantAzureOpenAI {
     }
 
     /**
-     * The API key for your Azure OpenAI resource.  You can find this in the Azure portal under your Azure OpenAI resource
+     * The API key for your Azure OpenAI resource. You can find this in the Azure portal under your Azure
+     * OpenAI resource
      */
     public DestinationQdrantAzureOpenAI withOpenaiKey(String openaiKey) {
         Utils.checkNotNull(openaiKey, "openaiKey");
@@ -121,7 +131,6 @@ public class DestinationQdrantAzureOpenAI {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -132,18 +141,16 @@ public class DestinationQdrantAzureOpenAI {
         }
         DestinationQdrantAzureOpenAI other = (DestinationQdrantAzureOpenAI) o;
         return 
-            Objects.deepEquals(this.apiBase, other.apiBase) &&
-            Objects.deepEquals(this.deployment, other.deployment) &&
-            Objects.deepEquals(this.mode, other.mode) &&
-            Objects.deepEquals(this.openaiKey, other.openaiKey);
+            Utils.enhancedDeepEquals(this.apiBase, other.apiBase) &&
+            Utils.enhancedDeepEquals(this.deployment, other.deployment) &&
+            Utils.enhancedDeepEquals(this.mode, other.mode) &&
+            Utils.enhancedDeepEquals(this.openaiKey, other.openaiKey);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiBase,
-            deployment,
-            mode,
+        return Utils.enhancedHash(
+            apiBase, deployment, mode,
             openaiKey);
     }
     
@@ -155,21 +162,24 @@ public class DestinationQdrantAzureOpenAI {
                 "mode", mode,
                 "openaiKey", openaiKey);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiBase;
- 
+
         private String deployment;
- 
+
         private String openaiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The base URL for your Azure OpenAI resource.  You can find this in the Azure portal under your Azure OpenAI resource
+         * The base URL for your Azure OpenAI resource. You can find this in the Azure portal under your Azure
+         * OpenAI resource
          */
         public Builder apiBase(String apiBase) {
             Utils.checkNotNull(apiBase, "apiBase");
@@ -177,8 +187,10 @@ public class DestinationQdrantAzureOpenAI {
             return this;
         }
 
+
         /**
-         * The deployment for your Azure OpenAI resource.  You can find this in the Azure portal under your Azure OpenAI resource
+         * The deployment for your Azure OpenAI resource. You can find this in the Azure portal under your
+         * Azure OpenAI resource
          */
         public Builder deployment(String deployment) {
             Utils.checkNotNull(deployment, "deployment");
@@ -186,21 +198,23 @@ public class DestinationQdrantAzureOpenAI {
             return this;
         }
 
+
         /**
-         * The API key for your Azure OpenAI resource.  You can find this in the Azure portal under your Azure OpenAI resource
+         * The API key for your Azure OpenAI resource. You can find this in the Azure portal under your Azure
+         * OpenAI resource
          */
         public Builder openaiKey(String openaiKey) {
             Utils.checkNotNull(openaiKey, "openaiKey");
             this.openaiKey = openaiKey;
             return this;
         }
-        
+
         public DestinationQdrantAzureOpenAI build() {
+
             return new DestinationQdrantAzureOpenAI(
-                apiBase,
-                deployment,
-                openaiKey);
+                apiBase, deployment, openaiKey);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationQdrantSchemasEmbeddingEmbeddingMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

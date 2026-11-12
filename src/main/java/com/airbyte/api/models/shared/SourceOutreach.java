@@ -12,10 +12,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceOutreach {
-
     /**
      * The Client ID of your Outreach developer application.
      */
@@ -29,7 +28,8 @@ public class SourceOutreach {
     private String clientSecret;
 
     /**
-     * A Redirect URI is the location where the authorization server sends the user once the app has been successfully authorized and granted an authorization code or access token.
+     * A Redirect URI is the location where the authorization server sends the user once the app has been
+     * successfully authorized and granted an authorization code or access token.
      */
     @JsonProperty("redirect_uri")
     private String redirectUri;
@@ -40,11 +40,13 @@ public class SourceOutreach {
     @JsonProperty("refresh_token")
     private String refreshToken;
 
+
     @JsonProperty("sourceType")
     private Outreach sourceType;
 
     /**
-     * The date from which you'd like to replicate data for Outreach API, in the format YYYY-MM-DDT00:00:00.000Z. All data generated after this date will be replicated.
+     * The date from which you'd like to replicate data for Outreach API, in the format
+     * YYYY-MM-DDT00:00:00.000Z. All data generated after this date will be replicated.
      */
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -86,7 +88,8 @@ public class SourceOutreach {
     }
 
     /**
-     * A Redirect URI is the location where the authorization server sends the user once the app has been successfully authorized and granted an authorization code or access token.
+     * A Redirect URI is the location where the authorization server sends the user once the app has been
+     * successfully authorized and granted an authorization code or access token.
      */
     @JsonIgnore
     public String redirectUri() {
@@ -107,16 +110,18 @@ public class SourceOutreach {
     }
 
     /**
-     * The date from which you'd like to replicate data for Outreach API, in the format YYYY-MM-DDT00:00:00.000Z. All data generated after this date will be replicated.
+     * The date from which you'd like to replicate data for Outreach API, in the format
+     * YYYY-MM-DDT00:00:00.000Z. All data generated after this date will be replicated.
      */
     @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Client ID of your Outreach developer application.
@@ -137,7 +142,8 @@ public class SourceOutreach {
     }
 
     /**
-     * A Redirect URI is the location where the authorization server sends the user once the app has been successfully authorized and granted an authorization code or access token.
+     * A Redirect URI is the location where the authorization server sends the user once the app has been
+     * successfully authorized and granted an authorization code or access token.
      */
     public SourceOutreach withRedirectUri(String redirectUri) {
         Utils.checkNotNull(redirectUri, "redirectUri");
@@ -155,7 +161,8 @@ public class SourceOutreach {
     }
 
     /**
-     * The date from which you'd like to replicate data for Outreach API, in the format YYYY-MM-DDT00:00:00.000Z. All data generated after this date will be replicated.
+     * The date from which you'd like to replicate data for Outreach API, in the format
+     * YYYY-MM-DDT00:00:00.000Z. All data generated after this date will be replicated.
      */
     public SourceOutreach withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -163,7 +170,6 @@ public class SourceOutreach {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -174,23 +180,19 @@ public class SourceOutreach {
         }
         SourceOutreach other = (SourceOutreach) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.redirectUri, other.redirectUri) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.redirectUri, other.redirectUri) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            redirectUri,
-            refreshToken,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            clientId, clientSecret, redirectUri,
+            refreshToken, sourceType, startDate);
     }
     
     @Override
@@ -203,22 +205,24 @@ public class SourceOutreach {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String redirectUri;
- 
+
         private String refreshToken;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Client ID of your Outreach developer application.
@@ -229,6 +233,7 @@ public class SourceOutreach {
             return this;
         }
 
+
         /**
          * The Client Secret of your Outreach developer application.
          */
@@ -238,14 +243,17 @@ public class SourceOutreach {
             return this;
         }
 
+
         /**
-         * A Redirect URI is the location where the authorization server sends the user once the app has been successfully authorized and granted an authorization code or access token.
+         * A Redirect URI is the location where the authorization server sends the user once the app has been
+         * successfully authorized and granted an authorization code or access token.
          */
         public Builder redirectUri(String redirectUri) {
             Utils.checkNotNull(redirectUri, "redirectUri");
             this.redirectUri = redirectUri;
             return this;
         }
+
 
         /**
          * The token for obtaining the new access token.
@@ -256,23 +264,24 @@ public class SourceOutreach {
             return this;
         }
 
+
         /**
-         * The date from which you'd like to replicate data for Outreach API, in the format YYYY-MM-DDT00:00:00.000Z. All data generated after this date will be replicated.
+         * The date from which you'd like to replicate data for Outreach API, in the format
+         * YYYY-MM-DDT00:00:00.000Z. All data generated after this date will be replicated.
          */
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceOutreach build() {
+
             return new SourceOutreach(
-                clientId,
-                clientSecret,
-                redirectUri,
-                refreshToken,
-                startDate);
+                clientId, clientSecret, redirectUri,
+                refreshToken, startDate);
         }
+
 
         private static final LazySingletonValue<Outreach> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

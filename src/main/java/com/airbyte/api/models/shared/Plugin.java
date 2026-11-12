@@ -19,7 +19,7 @@ public enum Plugin {
     @JsonValue
     private final String value;
 
-    private Plugin(String value) {
+    Plugin(String value) {
         this.value = value;
     }
     

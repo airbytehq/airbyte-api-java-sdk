@@ -1,5 +1,13 @@
 # DestinationMilvusSchemasIndexingAuthAuthenticationMode
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DestinationMilvusSchemasIndexingAuthAuthenticationMode;
+
+DestinationMilvusSchemasIndexingAuthAuthenticationMode value = DestinationMilvusSchemasIndexingAuthAuthenticationMode.NO_AUTH;
+```
+
 
 ## Values
 

@@ -20,7 +20,7 @@ public enum AWSEnvironment {
     @JsonValue
     private final String value;
 
-    private AWSEnvironment(String value) {
+    AWSEnvironment(String value) {
         this.value = value;
     }
     

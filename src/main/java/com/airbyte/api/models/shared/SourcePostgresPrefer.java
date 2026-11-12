@@ -16,7 +16,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * SourcePostgresPrefer
@@ -28,12 +27,12 @@ public class SourcePostgresPrefer {
     @JsonIgnore
     private Map<String, Object> additionalProperties;
 
+
     @JsonProperty("mode")
     private SourcePostgresSchemasSslModeMode mode;
 
     @JsonCreator
     public SourcePostgresPrefer() {
-        
         this.additionalProperties = new HashMap<>();
         this.mode = Builder._SINGLETON_VALUE_Mode.value();
     }
@@ -48,9 +47,10 @@ public class SourcePostgresPrefer {
         return mode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourcePostgresPrefer withAdditionalProperty(String key, Object value) {
@@ -58,15 +58,13 @@ public class SourcePostgresPrefer {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourcePostgresPrefer withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -77,15 +75,14 @@ public class SourcePostgresPrefer {
         }
         SourcePostgresPrefer other = (SourcePostgresPrefer) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.mode, other.mode);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.mode, other.mode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            mode);
+        return Utils.enhancedHash(
+            additionalProperties, mode);
     }
     
     @Override
@@ -94,11 +91,12 @@ public class SourcePostgresPrefer {
                 "additionalProperties", additionalProperties,
                 "mode", mode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -118,12 +116,14 @@ public class SourcePostgresPrefer {
             this.additionalProperties = additionalProperties;
             return this;
         }
-        
+
         public SourcePostgresPrefer build() {
+
             return new SourcePostgresPrefer(
                 )
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<SourcePostgresSchemasSslModeMode> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

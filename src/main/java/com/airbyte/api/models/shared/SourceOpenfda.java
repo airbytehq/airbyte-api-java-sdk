@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceOpenfda {
 
@@ -20,7 +20,6 @@ public class SourceOpenfda {
 
     @JsonCreator
     public SourceOpenfda() {
-        
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
 
@@ -29,11 +28,11 @@ public class SourceOpenfda {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -44,12 +43,12 @@ public class SourceOpenfda {
         }
         SourceOpenfda other = (SourceOpenfda) o;
         return 
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             sourceType);
     }
     
@@ -58,17 +57,20 @@ public class SourceOpenfda {
         return Utils.toString(SourceOpenfda.class,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public SourceOpenfda build() {
+
             return new SourceOpenfda(
                 );
         }
+
 
         private static final LazySingletonValue<Openfda> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

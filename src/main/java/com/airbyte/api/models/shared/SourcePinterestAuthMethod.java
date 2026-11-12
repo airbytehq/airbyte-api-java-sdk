@@ -14,7 +14,7 @@ public enum SourcePinterestAuthMethod {
     @JsonValue
     private final String value;
 
-    private SourcePinterestAuthMethod(String value) {
+    SourcePinterestAuthMethod(String value) {
         this.value = value;
     }
     

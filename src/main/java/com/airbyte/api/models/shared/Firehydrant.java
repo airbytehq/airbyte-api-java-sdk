@@ -14,7 +14,7 @@ public enum Firehydrant {
     @JsonValue
     private final String value;
 
-    private Firehydrant(String value) {
+    Firehydrant(String value) {
         this.value = value;
     }
     

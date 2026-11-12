@@ -14,7 +14,7 @@ public enum Simfin {
     @JsonValue
     private final String value;
 
-    private Simfin(String value) {
+    Simfin(String value) {
         this.value = value;
     }
     

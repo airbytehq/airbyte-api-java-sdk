@@ -14,7 +14,7 @@ public enum Payfit {
     @JsonValue
     private final String value;
 
-    private Payfit(String value) {
+    Payfit(String value) {
         this.value = value;
     }
     
