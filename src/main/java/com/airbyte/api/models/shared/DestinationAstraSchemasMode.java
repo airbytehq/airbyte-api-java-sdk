@@ -14,7 +14,7 @@ public enum DestinationAstraSchemasMode {
     @JsonValue
     private final String value;
 
-    private DestinationAstraSchemasMode(String value) {
+    DestinationAstraSchemasMode(String value) {
         this.value = value;
     }
     

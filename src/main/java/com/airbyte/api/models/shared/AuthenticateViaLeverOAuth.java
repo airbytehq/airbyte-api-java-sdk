@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class AuthenticateViaLeverOAuth {
 
@@ -92,9 +92,10 @@ public class AuthenticateViaLeverOAuth {
         return refreshToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Client ID of your Lever Hiring developer application.
@@ -104,6 +105,7 @@ public class AuthenticateViaLeverOAuth {
         this.clientId = Optional.ofNullable(clientId);
         return this;
     }
+
 
     /**
      * The Client ID of your Lever Hiring developer application.
@@ -123,6 +125,7 @@ public class AuthenticateViaLeverOAuth {
         return this;
     }
 
+
     /**
      * The Client Secret of your Lever Hiring developer application.
      */
@@ -141,7 +144,6 @@ public class AuthenticateViaLeverOAuth {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -152,18 +154,16 @@ public class AuthenticateViaLeverOAuth {
         }
         AuthenticateViaLeverOAuth other = (AuthenticateViaLeverOAuth) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            clientId,
-            clientSecret,
+        return Utils.enhancedHash(
+            authType, clientId, clientSecret,
             refreshToken);
     }
     
@@ -175,18 +175,20 @@ public class AuthenticateViaLeverOAuth {
                 "clientSecret", clientSecret,
                 "refreshToken", refreshToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> clientId = Optional.empty();
- 
+
         private Optional<String> clientSecret = Optional.empty();
- 
+
         private String refreshToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Client ID of your Lever Hiring developer application.
@@ -206,6 +208,7 @@ public class AuthenticateViaLeverOAuth {
             return this;
         }
 
+
         /**
          * The Client Secret of your Lever Hiring developer application.
          */
@@ -224,6 +227,7 @@ public class AuthenticateViaLeverOAuth {
             return this;
         }
 
+
         /**
          * The token for obtaining new access token.
          */
@@ -232,13 +236,13 @@ public class AuthenticateViaLeverOAuth {
             this.refreshToken = refreshToken;
             return this;
         }
-        
+
         public AuthenticateViaLeverOAuth build() {
+
             return new AuthenticateViaLeverOAuth(
-                clientId,
-                clientSecret,
-                refreshToken);
+                clientId, clientSecret, refreshToken);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceLeverHiringAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

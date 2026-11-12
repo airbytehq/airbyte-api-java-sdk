@@ -14,7 +14,7 @@ public enum SourceMysqlTunnelMethod {
     @JsonValue
     private final String value;
 
-    private SourceMysqlTunnelMethod(String value) {
+    SourceMysqlTunnelMethod(String value) {
         this.value = value;
     }
     

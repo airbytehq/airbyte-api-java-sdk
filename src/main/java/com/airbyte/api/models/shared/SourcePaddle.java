@@ -15,13 +15,13 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourcePaddle {
 
+public class SourcePaddle {
     /**
-     * Your Paddle API key. You can generate it by navigating to Paddle &gt; Developer tools &gt; Authentication &gt; Generate API key. Treat this key like a password and keep it secure.
+     * Your Paddle API key. You can generate it by navigating to Paddle &gt; Developer tools &gt;
+     * Authentication &gt; Generate API key. Treat this key like a password and keep it secure.
      */
     @JsonProperty("api_key")
     private String apiKey;
@@ -33,8 +33,10 @@ public class SourcePaddle {
     @JsonProperty("environment")
     private Optional<? extends SourcePaddleEnvironment> environment;
 
+
     @JsonProperty("sourceType")
     private Paddle sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -60,7 +62,8 @@ public class SourcePaddle {
     }
 
     /**
-     * Your Paddle API key. You can generate it by navigating to Paddle &gt; Developer tools &gt; Authentication &gt; Generate API key. Treat this key like a password and keep it secure.
+     * Your Paddle API key. You can generate it by navigating to Paddle &gt; Developer tools &gt;
+     * Authentication &gt; Generate API key. Treat this key like a password and keep it secure.
      */
     @JsonIgnore
     public String apiKey() {
@@ -86,12 +89,14 @@ public class SourcePaddle {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Your Paddle API key. You can generate it by navigating to Paddle &gt; Developer tools &gt; Authentication &gt; Generate API key. Treat this key like a password and keep it secure.
+     * Your Paddle API key. You can generate it by navigating to Paddle &gt; Developer tools &gt;
+     * Authentication &gt; Generate API key. Treat this key like a password and keep it secure.
      */
     public SourcePaddle withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -108,6 +113,7 @@ public class SourcePaddle {
         return this;
     }
 
+
     /**
      * The environment for the Paddle API, either 'sandbox' or 'live'.
      */
@@ -123,7 +129,6 @@ public class SourcePaddle {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -134,18 +139,16 @@ public class SourcePaddle {
         }
         SourcePaddle other = (SourcePaddle) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.environment, other.environment) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.environment, other.environment) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            environment,
-            sourceType,
+        return Utils.enhancedHash(
+            apiKey, environment, sourceType,
             startDate);
     }
     
@@ -157,27 +160,31 @@ public class SourcePaddle {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<? extends SourcePaddleEnvironment> environment;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Your Paddle API key. You can generate it by navigating to Paddle &gt; Developer tools &gt; Authentication &gt; Generate API key. Treat this key like a password and keep it secure.
+         * Your Paddle API key. You can generate it by navigating to Paddle &gt; Developer tools &gt;
+         * Authentication &gt; Generate API key. Treat this key like a password and keep it secure.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * The environment for the Paddle API, either 'sandbox' or 'live'.
@@ -197,21 +204,22 @@ public class SourcePaddle {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourcePaddle build() {
             if (environment == null) {
                 environment = _SINGLETON_VALUE_Environment.value();
             }
+
             return new SourcePaddle(
-                apiKey,
-                environment,
-                startDate);
+                apiKey, environment, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourcePaddleEnvironment>> _SINGLETON_VALUE_Environment =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum AccessTokenIsRequiredForAuthenticationRequests {
     @JsonValue
     private final String value;
 
-    private AccessTokenIsRequiredForAuthenticationRequests(String value) {
+    AccessTokenIsRequiredForAuthenticationRequests(String value) {
         this.value = value;
     }
     

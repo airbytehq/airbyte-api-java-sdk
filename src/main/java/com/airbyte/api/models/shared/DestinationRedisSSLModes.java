@@ -14,19 +14,19 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationRedisSSLModes
  * 
- * <p>SSL connection modes. 
- *   &lt;li&gt;&lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Always require encryption and verifies the identity of the source database server
+ * <p>SSL connection modes.
+ * <li><b>verify-full</b> - This is the most secure mode. Always require encryption and verifies the
+ * identity of the source database server
  */
 @JsonDeserialize(using = DestinationRedisSSLModes._Deserializer.class)
 public class DestinationRedisSSLModes {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationRedisSSLModes(TypedObject value) {
         this.value = value;
@@ -34,12 +34,12 @@ public class DestinationRedisSSLModes {
 
     public static DestinationRedisSSLModes of(DestinationRedisDisable value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationRedisSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationRedisDisable>(){}));
+        return new DestinationRedisSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationRedisSSLModes of(DestinationRedisVerifyFull value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationRedisSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationRedisVerifyFull>(){}));
+        return new DestinationRedisSSLModes(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -62,7 +62,7 @@ public class DestinationRedisSSLModes {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -73,12 +73,12 @@ public class DestinationRedisSSLModes {
             return false;
         }
         DestinationRedisSSLModes other = (DestinationRedisSSLModes) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -86,8 +86,8 @@ public class DestinationRedisSSLModes {
 
         public _Deserializer() {
             super(DestinationRedisSSLModes.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DestinationRedisVerifyFull>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationRedisDisable>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationRedisDisable>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationRedisVerifyFull>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -96,6 +96,6 @@ public class DestinationRedisSSLModes {
         return Utils.toString(DestinationRedisSSLModes.class,
                 "value", value);
     }
- 
+
 }
 

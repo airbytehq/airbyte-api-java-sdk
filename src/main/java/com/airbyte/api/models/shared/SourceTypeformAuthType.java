@@ -14,7 +14,7 @@ public enum SourceTypeformAuthType {
     @JsonValue
     private final String value;
 
-    private SourceTypeformAuthType(String value) {
+    SourceTypeformAuthType(String value) {
         this.value = value;
     }
     

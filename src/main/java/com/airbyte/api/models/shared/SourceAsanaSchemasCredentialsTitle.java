@@ -19,7 +19,7 @@ public enum SourceAsanaSchemasCredentialsTitle {
     @JsonValue
     private final String value;
 
-    private SourceAsanaSchemasCredentialsTitle(String value) {
+    SourceAsanaSchemasCredentialsTitle(String value) {
         this.value = value;
     }
     

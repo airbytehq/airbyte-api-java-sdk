@@ -17,11 +17,10 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceFinnhub {
 
+public class SourceFinnhub {
     /**
      * The API key to use for authentication
      */
@@ -42,11 +41,14 @@ public class SourceFinnhub {
     @JsonProperty("market_news_category")
     private Optional<? extends MarketNewsCategory> marketNewsCategory;
 
+
     @JsonProperty("sourceType")
     private Finnhub sourceType;
 
+
     @JsonProperty("start_date_2")
     private OffsetDateTime startDate2;
+
 
     @JsonProperty("symbols")
     private List<Object> symbols;
@@ -75,7 +77,8 @@ public class SourceFinnhub {
             String apiKey,
             OffsetDateTime startDate2,
             List<Object> symbols) {
-        this(apiKey, Optional.empty(), Optional.empty(), startDate2, symbols);
+        this(apiKey, Optional.empty(), Optional.empty(),
+            startDate2, symbols);
     }
 
     /**
@@ -118,9 +121,10 @@ public class SourceFinnhub {
         return symbols;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The API key to use for authentication
@@ -140,6 +144,7 @@ public class SourceFinnhub {
         return this;
     }
 
+
     /**
      * More info: https://finnhub.io/docs/api/stock-symbols
      */
@@ -157,6 +162,7 @@ public class SourceFinnhub {
         this.marketNewsCategory = Optional.ofNullable(marketNewsCategory);
         return this;
     }
+
 
     /**
      * This parameter can be 1 of the following values general, forex, crypto, merger.
@@ -179,7 +185,6 @@ public class SourceFinnhub {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -190,23 +195,19 @@ public class SourceFinnhub {
         }
         SourceFinnhub other = (SourceFinnhub) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.exchange, other.exchange) &&
-            Objects.deepEquals(this.marketNewsCategory, other.marketNewsCategory) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate2, other.startDate2) &&
-            Objects.deepEquals(this.symbols, other.symbols);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.exchange, other.exchange) &&
+            Utils.enhancedDeepEquals(this.marketNewsCategory, other.marketNewsCategory) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate2, other.startDate2) &&
+            Utils.enhancedDeepEquals(this.symbols, other.symbols);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            exchange,
-            marketNewsCategory,
-            sourceType,
-            startDate2,
-            symbols);
+        return Utils.enhancedHash(
+            apiKey, exchange, marketNewsCategory,
+            sourceType, startDate2, symbols);
     }
     
     @Override
@@ -219,22 +220,24 @@ public class SourceFinnhub {
                 "startDate2", startDate2,
                 "symbols", symbols);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> exchange;
- 
+
         private Optional<? extends MarketNewsCategory> marketNewsCategory;
- 
+
         private OffsetDateTime startDate2;
- 
+
         private List<Object> symbols;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The API key to use for authentication
@@ -244,6 +247,7 @@ public class SourceFinnhub {
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * More info: https://finnhub.io/docs/api/stock-symbols
@@ -263,6 +267,7 @@ public class SourceFinnhub {
             return this;
         }
 
+
         /**
          * This parameter can be 1 of the following values general, forex, crypto, merger.
          */
@@ -281,18 +286,20 @@ public class SourceFinnhub {
             return this;
         }
 
+
         public Builder startDate2(OffsetDateTime startDate2) {
             Utils.checkNotNull(startDate2, "startDate2");
             this.startDate2 = startDate2;
             return this;
         }
 
+
         public Builder symbols(List<Object> symbols) {
             Utils.checkNotNull(symbols, "symbols");
             this.symbols = symbols;
             return this;
         }
-        
+
         public SourceFinnhub build() {
             if (exchange == null) {
                 exchange = _SINGLETON_VALUE_Exchange.value();
@@ -300,13 +307,12 @@ public class SourceFinnhub {
             if (marketNewsCategory == null) {
                 marketNewsCategory = _SINGLETON_VALUE_MarketNewsCategory.value();
             }
+
             return new SourceFinnhub(
-                apiKey,
-                exchange,
-                marketNewsCategory,
-                startDate2,
-                symbols);
+                apiKey, exchange, marketNewsCategory,
+                startDate2, symbols);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Exchange =
                 new LazySingletonValue<>(

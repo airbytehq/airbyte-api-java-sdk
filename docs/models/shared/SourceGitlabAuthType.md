@@ -1,5 +1,13 @@
 # SourceGitlabAuthType
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceGitlabAuthType;
+
+SourceGitlabAuthType value = SourceGitlabAuthType.OAUTH20;
+```
+
 
 ## Values
 

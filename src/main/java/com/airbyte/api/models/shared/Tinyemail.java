@@ -14,7 +14,7 @@ public enum Tinyemail {
     @JsonValue
     private final String value;
 
-    private Tinyemail(String value) {
+    Tinyemail(String value) {
         this.value = value;
     }
     

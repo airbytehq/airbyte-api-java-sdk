@@ -19,7 +19,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -31,6 +30,7 @@ public class SourceOracleEnterpriseNoTunnel {
 
     @JsonIgnore
     private Map<String, Object> additionalProperties;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
@@ -59,9 +59,10 @@ public class SourceOracleEnterpriseNoTunnel {
         return (Optional<SourceOracleEnterpriseTunnelMethod>) tunnelMethod;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceOracleEnterpriseNoTunnel withAdditionalProperty(String key, Object value) {
@@ -69,8 +70,7 @@ public class SourceOracleEnterpriseNoTunnel {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceOracleEnterpriseNoTunnel withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -83,13 +83,13 @@ public class SourceOracleEnterpriseNoTunnel {
         return this;
     }
 
+
     public SourceOracleEnterpriseNoTunnel withTunnelMethod(Optional<? extends SourceOracleEnterpriseTunnelMethod> tunnelMethod) {
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
         this.tunnelMethod = tunnelMethod;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,15 +100,14 @@ public class SourceOracleEnterpriseNoTunnel {
         }
         SourceOracleEnterpriseNoTunnel other = (SourceOracleEnterpriseNoTunnel) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            tunnelMethod);
+        return Utils.enhancedHash(
+            additionalProperties, tunnelMethod);
     }
     
     @Override
@@ -117,13 +116,14 @@ public class SourceOracleEnterpriseNoTunnel {
                 "additionalProperties", additionalProperties,
                 "tunnelMethod", tunnelMethod);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends SourceOracleEnterpriseTunnelMethod> tunnelMethod;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -144,6 +144,7 @@ public class SourceOracleEnterpriseNoTunnel {
             return this;
         }
 
+
         public Builder tunnelMethod(SourceOracleEnterpriseTunnelMethod tunnelMethod) {
             Utils.checkNotNull(tunnelMethod, "tunnelMethod");
             this.tunnelMethod = Optional.ofNullable(tunnelMethod);
@@ -155,15 +156,17 @@ public class SourceOracleEnterpriseNoTunnel {
             this.tunnelMethod = tunnelMethod;
             return this;
         }
-        
+
         public SourceOracleEnterpriseNoTunnel build() {
             if (tunnelMethod == null) {
                 tunnelMethod = _SINGLETON_VALUE_TunnelMethod.value();
             }
+
             return new SourceOracleEnterpriseNoTunnel(
                 tunnelMethod)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceOracleEnterpriseTunnelMethod>> _SINGLETON_VALUE_TunnelMethod =
                 new LazySingletonValue<>(

@@ -19,8 +19,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceReddit {
 
@@ -55,8 +55,10 @@ public class SourceReddit {
     @JsonProperty("query")
     private Optional<String> query;
 
+
     @JsonProperty("sourceType")
     private Reddit sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -97,7 +99,9 @@ public class SourceReddit {
     public SourceReddit(
             String apiKey,
             OffsetDateTime startDate) {
-        this(apiKey, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), startDate, Optional.empty());
+        this(apiKey, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), startDate,
+            Optional.empty());
     }
 
     @JsonIgnore
@@ -156,9 +160,10 @@ public class SourceReddit {
         return (Optional<List<Object>>) subreddits;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceReddit withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -174,6 +179,7 @@ public class SourceReddit {
         this.exact = Optional.ofNullable(exact);
         return this;
     }
+
 
     /**
      * Specifies exact keyword and reduces distractions
@@ -193,6 +199,7 @@ public class SourceReddit {
         return this;
     }
 
+
     /**
      * Includes mature content
      */
@@ -211,6 +218,7 @@ public class SourceReddit {
         return this;
     }
 
+
     /**
      * Max records per page limit
      */
@@ -228,6 +236,7 @@ public class SourceReddit {
         this.query = Optional.ofNullable(query);
         return this;
     }
+
 
     /**
      * Specifies the query for searching in reddits and subreddits
@@ -253,6 +262,7 @@ public class SourceReddit {
         return this;
     }
 
+
     /**
      * Subreddits for exploration
      */
@@ -262,7 +272,6 @@ public class SourceReddit {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -273,27 +282,22 @@ public class SourceReddit {
         }
         SourceReddit other = (SourceReddit) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.exact, other.exact) &&
-            Objects.deepEquals(this.includeOver18, other.includeOver18) &&
-            Objects.deepEquals(this.limit, other.limit) &&
-            Objects.deepEquals(this.query, other.query) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.subreddits, other.subreddits);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.exact, other.exact) &&
+            Utils.enhancedDeepEquals(this.includeOver18, other.includeOver18) &&
+            Utils.enhancedDeepEquals(this.limit, other.limit) &&
+            Utils.enhancedDeepEquals(this.query, other.query) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.subreddits, other.subreddits);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            exact,
-            includeOver18,
-            limit,
-            query,
-            sourceType,
-            startDate,
-            subreddits);
+        return Utils.enhancedHash(
+            apiKey, exact, includeOver18,
+            limit, query, sourceType,
+            startDate, subreddits);
     }
     
     @Override
@@ -308,32 +312,35 @@ public class SourceReddit {
                 "startDate", startDate,
                 "subreddits", subreddits);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<Boolean> exact = Optional.empty();
- 
+
         private Optional<Boolean> includeOver18;
- 
+
         private Optional<Double> limit;
- 
+
         private Optional<String> query;
- 
+
         private OffsetDateTime startDate;
- 
+
         private Optional<? extends List<Object>> subreddits = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Specifies exact keyword and reduces distractions
@@ -353,6 +360,7 @@ public class SourceReddit {
             return this;
         }
 
+
         /**
          * Includes mature content
          */
@@ -370,6 +378,7 @@ public class SourceReddit {
             this.includeOver18 = includeOver18;
             return this;
         }
+
 
         /**
          * Max records per page limit
@@ -389,6 +398,7 @@ public class SourceReddit {
             return this;
         }
 
+
         /**
          * Specifies the query for searching in reddits and subreddits
          */
@@ -407,11 +417,13 @@ public class SourceReddit {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * Subreddits for exploration
@@ -430,7 +442,7 @@ public class SourceReddit {
             this.subreddits = subreddits;
             return this;
         }
-        
+
         public SourceReddit build() {
             if (includeOver18 == null) {
                 includeOver18 = _SINGLETON_VALUE_IncludeOver18.value();
@@ -441,15 +453,13 @@ public class SourceReddit {
             if (query == null) {
                 query = _SINGLETON_VALUE_Query.value();
             }
+
             return new SourceReddit(
-                apiKey,
-                exact,
-                includeOver18,
-                limit,
-                query,
-                startDate,
+                apiKey, exact, includeOver18,
+                limit, query, startDate,
                 subreddits);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_IncludeOver18 =
                 new LazySingletonValue<>(
@@ -460,7 +470,7 @@ public class SourceReddit {
         private static final LazySingletonValue<Optional<Double>> _SINGLETON_VALUE_Limit =
                 new LazySingletonValue<>(
                         "limit",
-                        "\"1000\"",
+                        "1000",
                         new TypeReference<Optional<Double>>() {});
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Query =

@@ -14,7 +14,7 @@ public enum Poplar {
     @JsonValue
     private final String value;
 
-    private Poplar(String value) {
+    Poplar(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum SourceLinkedinAdsLinkedinAds {
     @JsonValue
     private final String value;
 
-    private SourceLinkedinAdsLinkedinAds(String value) {
+    SourceLinkedinAdsLinkedinAds(String value) {
         this.value = value;
     }
     

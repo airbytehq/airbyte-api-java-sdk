@@ -5,6 +5,7 @@ package com.airbyte.api.utils;
 
 import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.Deque;
@@ -23,9 +24,22 @@ public final class Security {
         // prevent instantiation
     }
     
-    public static HTTPRequest configureSecurity(HTTPRequest request, Object security) throws Exception {
+    public static HTTPRequest configureSecurity(HTTPRequest request, Object security, String... allowedFields) throws Exception {
         if (security != null) {
-            Field[] fields = security.getClass().getDeclaredFields();
+            Field[] fields;
+            if (allowedFields.length > 0) {
+                List<Field> ordered = new ArrayList<>();
+                for (String name : allowedFields) {
+                    try {
+                        ordered.add(security.getClass().getDeclaredField(name));
+                    } catch (NoSuchFieldException e) {
+                        // skip unknown fields
+                    }
+                }
+                fields = ordered.toArray(new Field[0]);
+            } else {
+                fields = security.getClass().getDeclaredFields();
+            }
 
             for (Field field : fields) {
                 field.setAccessible(true);
@@ -41,12 +55,18 @@ public final class Security {
 
                 if (securityMetadata.option) {
                     parseSecurityOption(request, value);
+                    if (!securityMetadata.composite) {
+                        return request;
+                    }
                 } else if (securityMetadata.scheme) {
                     if ((securityMetadata.subtype != null && securityMetadata.subtype.equals("basic"))
                             && Types.getType(value.getClass()) != Types.OBJECT) {
                         parseSecurityScheme(request, securityMetadata, security);
                     } else {
                         parseSecurityScheme(request, securityMetadata, value);
+                    }
+                    if (!securityMetadata.composite) {
+                        return request;
                     }
                 }
             }
@@ -71,7 +91,12 @@ public final class Security {
                 continue;
             }
 
-            parseSecurityScheme(request, securityMetadata, value);
+            if (securityMetadata.subtype != null && securityMetadata.subtype.equals("basic")
+                    && Types.getType(value.getClass()) != Types.OBJECT) {
+                parseSecurityScheme(request, securityMetadata, option);
+            } else {
+                parseSecurityScheme(request, securityMetadata, value);
+            }
         }
     }
 
@@ -141,8 +166,11 @@ public final class Security {
                     case "bearer":
                         request.addHeader(securityMetadata.name, Utils.prefixBearer(Utils.valToString(value)));
                         break;
+                    case "basic":
+                        request.addHeader(securityMetadata.name, Utils.valToString(value));
+                        break;
                     case "custom":
-                        // customers are expected to consume the security object and transform requests 
+                        // customers are expected to consume the security object and transform requests
                         // in their own BeforeRequest hook.
                         break;
                     default:

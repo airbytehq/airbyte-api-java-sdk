@@ -18,8 +18,8 @@ import java.lang.SuppressWarnings;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceNewsdataIo {
 
@@ -34,14 +34,16 @@ public class SourceNewsdataIo {
     private Optional<? extends List<Object>> categories;
 
     /**
-     * Search the news articles from a specific country. You can add up to 5 countries in a single query. Example: au, jp, br
+     * Search the news articles from a specific country. You can add up to 5 countries in a single query.
+     * Example: au, jp, br
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("countries")
     private Optional<? extends List<Object>> countries;
 
     /**
-     * Search the news articles for specific domains or news sources. You can add up to 5 domains in a single query.
+     * Search the news articles for specific domains or news sources. You can add up to 5 domains in a
+     * single query.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("domains")
@@ -62,14 +64,17 @@ public class SourceNewsdataIo {
     private Optional<? extends List<Object>> languages;
 
     /**
-     * Search news articles for specific keywords or phrases present in the news title, content, URL, meta keywords and meta description.
+     * Search news articles for specific keywords or phrases present in the news title, content, URL, meta
+     * keywords and meta description.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("search_query")
     private Optional<String> searchQuery;
 
+
     @JsonProperty("sourceType")
     private NewsdataIo sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -106,7 +111,9 @@ public class SourceNewsdataIo {
     public SourceNewsdataIo(
             String apiKey,
             OffsetDateTime startDate) {
-        this(apiKey, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), startDate);
+        this(apiKey, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), startDate);
     }
 
     @JsonIgnore
@@ -124,7 +131,8 @@ public class SourceNewsdataIo {
     }
 
     /**
-     * Search the news articles from a specific country. You can add up to 5 countries in a single query. Example: au, jp, br
+     * Search the news articles from a specific country. You can add up to 5 countries in a single query.
+     * Example: au, jp, br
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -133,7 +141,8 @@ public class SourceNewsdataIo {
     }
 
     /**
-     * Search the news articles for specific domains or news sources. You can add up to 5 domains in a single query.
+     * Search the news articles for specific domains or news sources. You can add up to 5 domains in a
+     * single query.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -159,7 +168,8 @@ public class SourceNewsdataIo {
     }
 
     /**
-     * Search news articles for specific keywords or phrases present in the news title, content, URL, meta keywords and meta description.
+     * Search news articles for specific keywords or phrases present in the news title, content, URL, meta
+     * keywords and meta description.
      */
     @JsonIgnore
     public Optional<String> searchQuery() {
@@ -176,9 +186,10 @@ public class SourceNewsdataIo {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceNewsdataIo withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -195,6 +206,7 @@ public class SourceNewsdataIo {
         return this;
     }
 
+
     /**
      * Search the news articles for a specific category. You can add up to 5 categories in a single query.
      */
@@ -205,7 +217,8 @@ public class SourceNewsdataIo {
     }
 
     /**
-     * Search the news articles from a specific country. You can add up to 5 countries in a single query. Example: au, jp, br
+     * Search the news articles from a specific country. You can add up to 5 countries in a single query.
+     * Example: au, jp, br
      */
     public SourceNewsdataIo withCountries(List<Object> countries) {
         Utils.checkNotNull(countries, "countries");
@@ -213,8 +226,10 @@ public class SourceNewsdataIo {
         return this;
     }
 
+
     /**
-     * Search the news articles from a specific country. You can add up to 5 countries in a single query. Example: au, jp, br
+     * Search the news articles from a specific country. You can add up to 5 countries in a single query.
+     * Example: au, jp, br
      */
     public SourceNewsdataIo withCountries(Optional<? extends List<Object>> countries) {
         Utils.checkNotNull(countries, "countries");
@@ -223,7 +238,8 @@ public class SourceNewsdataIo {
     }
 
     /**
-     * Search the news articles for specific domains or news sources. You can add up to 5 domains in a single query.
+     * Search the news articles for specific domains or news sources. You can add up to 5 domains in a
+     * single query.
      */
     public SourceNewsdataIo withDomains(List<Object> domains) {
         Utils.checkNotNull(domains, "domains");
@@ -231,8 +247,10 @@ public class SourceNewsdataIo {
         return this;
     }
 
+
     /**
-     * Search the news articles for specific domains or news sources. You can add up to 5 domains in a single query.
+     * Search the news articles for specific domains or news sources. You can add up to 5 domains in a
+     * single query.
      */
     public SourceNewsdataIo withDomains(Optional<? extends List<Object>> domains) {
         Utils.checkNotNull(domains, "domains");
@@ -248,6 +266,7 @@ public class SourceNewsdataIo {
         this.endDate = Optional.ofNullable(endDate);
         return this;
     }
+
 
     /**
      * Choose an end date. Now UTC is default value
@@ -267,6 +286,7 @@ public class SourceNewsdataIo {
         return this;
     }
 
+
     /**
      * Search the news articles for a specific language. You can add up to 5 languages in a single query.
      */
@@ -277,7 +297,8 @@ public class SourceNewsdataIo {
     }
 
     /**
-     * Search news articles for specific keywords or phrases present in the news title, content, URL, meta keywords and meta description.
+     * Search news articles for specific keywords or phrases present in the news title, content, URL, meta
+     * keywords and meta description.
      */
     public SourceNewsdataIo withSearchQuery(String searchQuery) {
         Utils.checkNotNull(searchQuery, "searchQuery");
@@ -285,8 +306,10 @@ public class SourceNewsdataIo {
         return this;
     }
 
+
     /**
-     * Search news articles for specific keywords or phrases present in the news title, content, URL, meta keywords and meta description.
+     * Search news articles for specific keywords or phrases present in the news title, content, URL, meta
+     * keywords and meta description.
      */
     public SourceNewsdataIo withSearchQuery(Optional<String> searchQuery) {
         Utils.checkNotNull(searchQuery, "searchQuery");
@@ -300,7 +323,6 @@ public class SourceNewsdataIo {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -311,29 +333,23 @@ public class SourceNewsdataIo {
         }
         SourceNewsdataIo other = (SourceNewsdataIo) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.categories, other.categories) &&
-            Objects.deepEquals(this.countries, other.countries) &&
-            Objects.deepEquals(this.domains, other.domains) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.languages, other.languages) &&
-            Objects.deepEquals(this.searchQuery, other.searchQuery) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.categories, other.categories) &&
+            Utils.enhancedDeepEquals(this.countries, other.countries) &&
+            Utils.enhancedDeepEquals(this.domains, other.domains) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.languages, other.languages) &&
+            Utils.enhancedDeepEquals(this.searchQuery, other.searchQuery) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            categories,
-            countries,
-            domains,
-            endDate,
-            languages,
-            searchQuery,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKey, categories, countries,
+            domains, endDate, languages,
+            searchQuery, sourceType, startDate);
     }
     
     @Override
@@ -349,34 +365,37 @@ public class SourceNewsdataIo {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<? extends List<Object>> categories = Optional.empty();
- 
+
         private Optional<? extends List<Object>> countries = Optional.empty();
- 
+
         private Optional<? extends List<Object>> domains = Optional.empty();
- 
+
         private Optional<LocalDate> endDate = Optional.empty();
- 
+
         private Optional<? extends List<Object>> languages = Optional.empty();
- 
+
         private Optional<String> searchQuery = Optional.empty();
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Search the news articles for a specific category. You can add up to 5 categories in a single query.
@@ -396,8 +415,10 @@ public class SourceNewsdataIo {
             return this;
         }
 
+
         /**
-         * Search the news articles from a specific country. You can add up to 5 countries in a single query. Example: au, jp, br
+         * Search the news articles from a specific country. You can add up to 5 countries in a single query.
+         * Example: au, jp, br
          */
         public Builder countries(List<Object> countries) {
             Utils.checkNotNull(countries, "countries");
@@ -406,7 +427,8 @@ public class SourceNewsdataIo {
         }
 
         /**
-         * Search the news articles from a specific country. You can add up to 5 countries in a single query. Example: au, jp, br
+         * Search the news articles from a specific country. You can add up to 5 countries in a single query.
+         * Example: au, jp, br
          */
         public Builder countries(Optional<? extends List<Object>> countries) {
             Utils.checkNotNull(countries, "countries");
@@ -414,8 +436,10 @@ public class SourceNewsdataIo {
             return this;
         }
 
+
         /**
-         * Search the news articles for specific domains or news sources. You can add up to 5 domains in a single query.
+         * Search the news articles for specific domains or news sources. You can add up to 5 domains in a
+         * single query.
          */
         public Builder domains(List<Object> domains) {
             Utils.checkNotNull(domains, "domains");
@@ -424,13 +448,15 @@ public class SourceNewsdataIo {
         }
 
         /**
-         * Search the news articles for specific domains or news sources. You can add up to 5 domains in a single query.
+         * Search the news articles for specific domains or news sources. You can add up to 5 domains in a
+         * single query.
          */
         public Builder domains(Optional<? extends List<Object>> domains) {
             Utils.checkNotNull(domains, "domains");
             this.domains = domains;
             return this;
         }
+
 
         /**
          * Choose an end date. Now UTC is default value
@@ -450,6 +476,7 @@ public class SourceNewsdataIo {
             return this;
         }
 
+
         /**
          * Search the news articles for a specific language. You can add up to 5 languages in a single query.
          */
@@ -468,8 +495,10 @@ public class SourceNewsdataIo {
             return this;
         }
 
+
         /**
-         * Search news articles for specific keywords or phrases present in the news title, content, URL, meta keywords and meta description.
+         * Search news articles for specific keywords or phrases present in the news title, content, URL, meta
+         * keywords and meta description.
          */
         public Builder searchQuery(String searchQuery) {
             Utils.checkNotNull(searchQuery, "searchQuery");
@@ -478,7 +507,8 @@ public class SourceNewsdataIo {
         }
 
         /**
-         * Search news articles for specific keywords or phrases present in the news title, content, URL, meta keywords and meta description.
+         * Search news articles for specific keywords or phrases present in the news title, content, URL, meta
+         * keywords and meta description.
          */
         public Builder searchQuery(Optional<String> searchQuery) {
             Utils.checkNotNull(searchQuery, "searchQuery");
@@ -486,23 +516,21 @@ public class SourceNewsdataIo {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceNewsdataIo build() {
+
             return new SourceNewsdataIo(
-                apiKey,
-                categories,
-                countries,
-                domains,
-                endDate,
-                languages,
-                searchQuery,
-                startDate);
+                apiKey, categories, countries,
+                domains, endDate, languages,
+                searchQuery, startDate);
         }
+
 
         private static final LazySingletonValue<NewsdataIo> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

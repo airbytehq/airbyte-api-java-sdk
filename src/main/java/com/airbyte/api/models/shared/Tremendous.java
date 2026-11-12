@@ -14,7 +14,7 @@ public enum Tremendous {
     @JsonValue
     private final String value;
 
-    private Tremendous(String value) {
+    Tremendous(String value) {
         this.value = value;
     }
     

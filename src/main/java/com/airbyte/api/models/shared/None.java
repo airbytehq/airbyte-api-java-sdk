@@ -5,40 +5,87 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
+import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+import java.lang.SuppressWarnings;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
-/**
- * None
- * 
- * <p>No authentication will be used
- */
+
 public class None {
 
-    @JsonProperty("method")
-    private DestinationElasticsearchMethod method;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties;
+
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("storage_type")
+    private Optional<? extends StorageType> storageType;
 
     @JsonCreator
-    public None() {
-        
-        this.method = Builder._SINGLETON_VALUE_Method.value();
+    public None(
+            @JsonProperty("storage_type") Optional<? extends StorageType> storageType) {
+        Utils.checkNotNull(storageType, "storageType");
+        this.additionalProperties = new HashMap<>();
+        this.storageType = storageType;
     }
-
-    @JsonIgnore
-    public DestinationElasticsearchMethod method() {
-        return method;
-    }
-
-    public final static Builder builder() {
-        return new Builder();
-    }    
-
     
+    public None() {
+        this(Optional.empty());
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> additionalProperties() {
+        return additionalProperties;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<StorageType> storageType() {
+        return (Optional<StorageType>) storageType;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+
+    @JsonAnySetter
+    public None withAdditionalProperty(String key, Object value) {
+        // note that value can be null because of the way JsonAnySetter works
+        Utils.checkNotNull(key, "key");
+        additionalProperties.put(key, value); 
+        return this;
+    }
+    public None withAdditionalProperties(Map<String, Object> additionalProperties) {
+        Utils.checkNotNull(additionalProperties, "additionalProperties");
+        this.additionalProperties = additionalProperties;
+        return this;
+    }
+
+    public None withStorageType(StorageType storageType) {
+        Utils.checkNotNull(storageType, "storageType");
+        this.storageType = Optional.ofNullable(storageType);
+        return this;
+    }
+
+
+    public None withStorageType(Optional<? extends StorageType> storageType) {
+        Utils.checkNotNull(storageType, "storageType");
+        this.storageType = storageType;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -49,36 +96,78 @@ public class None {
         }
         None other = (None) o;
         return 
-            Objects.deepEquals(this.method, other.method);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.storageType, other.storageType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            method);
+        return Utils.enhancedHash(
+            additionalProperties, storageType);
     }
     
     @Override
     public String toString() {
         return Utils.toString(None.class,
-                "method", method);
+                "additionalProperties", additionalProperties,
+                "storageType", storageType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
+        private Map<String, Object> additionalProperties = new HashMap<>();
+
+        private Optional<? extends StorageType> storageType;
+
         private Builder() {
           // force use of static builder() method
         }
-        
-        public None build() {
-            return new None(
-                );
+
+        public Builder additionalProperty(String key, Object value) {
+            Utils.checkNotNull(key, "key");
+            // we could be strict about null values (force the user
+            // to pass `JsonNullable.of(null)`) but likely to be a bit 
+            // annoying for additional properties building so we'll 
+            // relax preconditions.
+            this.additionalProperties.put(key, value);
+            return this;
         }
 
-        private static final LazySingletonValue<DestinationElasticsearchMethod> _SINGLETON_VALUE_Method =
+        public Builder additionalProperties(Map<String, Object> additionalProperties) {
+            Utils.checkNotNull(additionalProperties, "additionalProperties");
+            this.additionalProperties = additionalProperties;
+            return this;
+        }
+
+
+        public Builder storageType(StorageType storageType) {
+            Utils.checkNotNull(storageType, "storageType");
+            this.storageType = Optional.ofNullable(storageType);
+            return this;
+        }
+
+        public Builder storageType(Optional<? extends StorageType> storageType) {
+            Utils.checkNotNull(storageType, "storageType");
+            this.storageType = storageType;
+            return this;
+        }
+
+        public None build() {
+            if (storageType == null) {
+                storageType = _SINGLETON_VALUE_StorageType.value();
+            }
+
+            return new None(
+                storageType)
+                .withAdditionalProperties(additionalProperties);
+        }
+
+
+        private static final LazySingletonValue<Optional<? extends StorageType>> _SINGLETON_VALUE_StorageType =
                 new LazySingletonValue<>(
-                        "method",
-                        "\"none\"",
-                        new TypeReference<DestinationElasticsearchMethod>() {});
+                        "storage_type",
+                        "\"None\"",
+                        new TypeReference<Optional<? extends StorageType>>() {});
     }
 }

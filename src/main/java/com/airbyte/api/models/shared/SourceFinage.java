@@ -17,8 +17,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceFinage {
 
@@ -32,8 +32,10 @@ public class SourceFinage {
     @JsonProperty("period")
     private Optional<String> period;
 
+
     @JsonProperty("sourceType")
     private Finage sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -50,6 +52,7 @@ public class SourceFinage {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tech_indicator_type")
     private Optional<? extends TechnicalIndicatorType> techIndicatorType;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("time")
@@ -102,7 +105,9 @@ public class SourceFinage {
             String apiKey,
             OffsetDateTime startDate,
             List<Object> symbols) {
-        this(apiKey, Optional.empty(), startDate, symbols, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(apiKey, Optional.empty(), startDate,
+            symbols, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty());
     }
 
     @JsonIgnore
@@ -169,9 +174,10 @@ public class SourceFinage {
         return (Optional<TimePeriod>) timePeriod;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceFinage withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -187,6 +193,7 @@ public class SourceFinage {
         this.period = Optional.ofNullable(period);
         return this;
     }
+
 
     /**
      * Time period. Default is 10
@@ -221,6 +228,7 @@ public class SourceFinage {
         return this;
     }
 
+
     /**
      * One of DEMA, EMA, SMA, WMA, RSI, TEMA, Williams, ADX
      */
@@ -236,6 +244,7 @@ public class SourceFinage {
         return this;
     }
 
+
     public SourceFinage withTime(Optional<? extends TimeInterval> time) {
         Utils.checkNotNull(time, "time");
         this.time = time;
@@ -250,6 +259,7 @@ public class SourceFinage {
         this.timeAggregates = Optional.ofNullable(timeAggregates);
         return this;
     }
+
 
     /**
      * Size of the time
@@ -269,6 +279,7 @@ public class SourceFinage {
         return this;
     }
 
+
     /**
      * Time Period for cash flow stmts
      */
@@ -278,7 +289,6 @@ public class SourceFinage {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -289,29 +299,23 @@ public class SourceFinage {
         }
         SourceFinage other = (SourceFinage) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.period, other.period) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.symbols, other.symbols) &&
-            Objects.deepEquals(this.techIndicatorType, other.techIndicatorType) &&
-            Objects.deepEquals(this.time, other.time) &&
-            Objects.deepEquals(this.timeAggregates, other.timeAggregates) &&
-            Objects.deepEquals(this.timePeriod, other.timePeriod);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.period, other.period) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.symbols, other.symbols) &&
+            Utils.enhancedDeepEquals(this.techIndicatorType, other.techIndicatorType) &&
+            Utils.enhancedDeepEquals(this.time, other.time) &&
+            Utils.enhancedDeepEquals(this.timeAggregates, other.timeAggregates) &&
+            Utils.enhancedDeepEquals(this.timePeriod, other.timePeriod);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            period,
-            sourceType,
-            startDate,
-            symbols,
-            techIndicatorType,
-            time,
-            timeAggregates,
-            timePeriod);
+        return Utils.enhancedHash(
+            apiKey, period, sourceType,
+            startDate, symbols, techIndicatorType,
+            time, timeAggregates, timePeriod);
     }
     
     @Override
@@ -327,34 +331,37 @@ public class SourceFinage {
                 "timeAggregates", timeAggregates,
                 "timePeriod", timePeriod);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> period = Optional.empty();
- 
+
         private OffsetDateTime startDate;
- 
+
         private List<Object> symbols;
- 
+
         private Optional<? extends TechnicalIndicatorType> techIndicatorType;
- 
+
         private Optional<? extends TimeInterval> time;
- 
+
         private Optional<? extends TimeAggregates> timeAggregates;
- 
+
         private Optional<? extends TimePeriod> timePeriod = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Time period. Default is 10
@@ -374,11 +381,13 @@ public class SourceFinage {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * List of symbols
@@ -388,6 +397,7 @@ public class SourceFinage {
             this.symbols = symbols;
             return this;
         }
+
 
         /**
          * One of DEMA, EMA, SMA, WMA, RSI, TEMA, Williams, ADX
@@ -407,6 +417,7 @@ public class SourceFinage {
             return this;
         }
 
+
         public Builder time(TimeInterval time) {
             Utils.checkNotNull(time, "time");
             this.time = Optional.ofNullable(time);
@@ -418,6 +429,7 @@ public class SourceFinage {
             this.time = time;
             return this;
         }
+
 
         /**
          * Size of the time
@@ -437,6 +449,7 @@ public class SourceFinage {
             return this;
         }
 
+
         /**
          * Time Period for cash flow stmts
          */
@@ -454,7 +467,7 @@ public class SourceFinage {
             this.timePeriod = timePeriod;
             return this;
         }
-        
+
         public SourceFinage build() {
             if (techIndicatorType == null) {
                 techIndicatorType = _SINGLETON_VALUE_TechIndicatorType.value();
@@ -465,16 +478,13 @@ public class SourceFinage {
             if (timeAggregates == null) {
                 timeAggregates = _SINGLETON_VALUE_TimeAggregates.value();
             }
+
             return new SourceFinage(
-                apiKey,
-                period,
-                startDate,
-                symbols,
-                techIndicatorType,
-                time,
-                timeAggregates,
-                timePeriod);
+                apiKey, period, startDate,
+                symbols, techIndicatorType, time,
+                timeAggregates, timePeriod);
         }
+
 
         private static final LazySingletonValue<Finage> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

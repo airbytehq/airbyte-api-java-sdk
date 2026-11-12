@@ -14,13 +14,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = SourceZendeskSunshineAuthorizationMethod._Deserializer.class)
 public class SourceZendeskSunshineAuthorizationMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceZendeskSunshineAuthorizationMethod(TypedObject value) {
         this.value = value;
@@ -28,12 +27,12 @@ public class SourceZendeskSunshineAuthorizationMethod {
 
     public static SourceZendeskSunshineAuthorizationMethod of(SourceZendeskSunshineOAuth20 value) {
         Utils.checkNotNull(value, "value");
-        return new SourceZendeskSunshineAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZendeskSunshineOAuth20>(){}));
+        return new SourceZendeskSunshineAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceZendeskSunshineAuthorizationMethod of(SourceZendeskSunshineAPIToken value) {
         Utils.checkNotNull(value, "value");
-        return new SourceZendeskSunshineAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZendeskSunshineAPIToken>(){}));
+        return new SourceZendeskSunshineAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -56,7 +55,7 @@ public class SourceZendeskSunshineAuthorizationMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -67,12 +66,12 @@ public class SourceZendeskSunshineAuthorizationMethod {
             return false;
         }
         SourceZendeskSunshineAuthorizationMethod other = (SourceZendeskSunshineAuthorizationMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -90,6 +89,6 @@ public class SourceZendeskSunshineAuthorizationMethod {
         return Utils.toString(SourceZendeskSunshineAuthorizationMethod.class,
                 "value", value);
     }
- 
+
 }
 

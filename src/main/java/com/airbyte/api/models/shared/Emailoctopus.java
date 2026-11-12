@@ -14,7 +14,7 @@ public enum Emailoctopus {
     @JsonValue
     private final String value;
 
-    private Emailoctopus(String value) {
+    Emailoctopus(String value) {
         this.value = value;
     }
     

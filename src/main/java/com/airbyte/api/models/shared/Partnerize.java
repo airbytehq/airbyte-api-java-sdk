@@ -14,7 +14,7 @@ public enum Partnerize {
     @JsonValue
     private final String value;
 
-    private Partnerize(String value) {
+    Partnerize(String value) {
         this.value = value;
     }
     

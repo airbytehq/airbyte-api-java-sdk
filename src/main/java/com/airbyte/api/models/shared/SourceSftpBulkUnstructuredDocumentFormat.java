@@ -15,7 +15,6 @@ import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -37,14 +36,20 @@ public class SourceSftpBulkUnstructuredDocumentFormat {
     private Optional<? extends SourceSftpBulkProcessing> processing;
 
     /**
-     * If true, skip files that cannot be parsed and pass the error message along as the _ab_source_file_parse_error field. If false, fail the sync.
+     * If true, skip files that cannot be parsed and pass the error message along as the
+     * _ab_source_file_parse_error field. If false, fail the sync.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("skip_unprocessable_files")
     private Optional<Boolean> skipUnprocessableFiles;
 
     /**
-     * The strategy used to parse documents. `fast` extracts text directly from the document which doesn't work for all files. `ocr_only` is more reliable, but slower. `hi_res` is the most reliable, but requires an API key and a hosted instance of unstructured and can't be used with local mode. See the unstructured.io documentation for more details: https://unstructured-io.github.io/unstructured/core/partition.html#partition-pdf
+     * The strategy used to parse documents. `fast` extracts text directly from the document which doesn't
+     * work for all files. `ocr_only` is more reliable, but slower.
+     * 
+     * <p>`hi_res` is the most reliable, but requires an API key and a hosted instance of unstructured and
+     * can't be used with local mode. See the unstructured.io documentation for more details:
+     * https://unstructured-io.github.io/unstructured/core/partition.html#partition-pdf
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("strategy")
@@ -84,7 +89,8 @@ public class SourceSftpBulkUnstructuredDocumentFormat {
     }
 
     /**
-     * If true, skip files that cannot be parsed and pass the error message along as the _ab_source_file_parse_error field. If false, fail the sync.
+     * If true, skip files that cannot be parsed and pass the error message along as the
+     * _ab_source_file_parse_error field. If false, fail the sync.
      */
     @JsonIgnore
     public Optional<Boolean> skipUnprocessableFiles() {
@@ -92,7 +98,12 @@ public class SourceSftpBulkUnstructuredDocumentFormat {
     }
 
     /**
-     * The strategy used to parse documents. `fast` extracts text directly from the document which doesn't work for all files. `ocr_only` is more reliable, but slower. `hi_res` is the most reliable, but requires an API key and a hosted instance of unstructured and can't be used with local mode. See the unstructured.io documentation for more details: https://unstructured-io.github.io/unstructured/core/partition.html#partition-pdf
+     * The strategy used to parse documents. `fast` extracts text directly from the document which doesn't
+     * work for all files. `ocr_only` is more reliable, but slower.
+     * 
+     * <p>`hi_res` is the most reliable, but requires an API key and a hosted instance of unstructured and
+     * can't be used with local mode. See the unstructured.io documentation for more details:
+     * https://unstructured-io.github.io/unstructured/core/partition.html#partition-pdf
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -100,9 +111,10 @@ public class SourceSftpBulkUnstructuredDocumentFormat {
         return (Optional<SourceSftpBulkParsingStrategy>) strategy;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Processing configuration
@@ -112,6 +124,7 @@ public class SourceSftpBulkUnstructuredDocumentFormat {
         this.processing = Optional.ofNullable(processing);
         return this;
     }
+
 
     /**
      * Processing configuration
@@ -123,7 +136,8 @@ public class SourceSftpBulkUnstructuredDocumentFormat {
     }
 
     /**
-     * If true, skip files that cannot be parsed and pass the error message along as the _ab_source_file_parse_error field. If false, fail the sync.
+     * If true, skip files that cannot be parsed and pass the error message along as the
+     * _ab_source_file_parse_error field. If false, fail the sync.
      */
     public SourceSftpBulkUnstructuredDocumentFormat withSkipUnprocessableFiles(boolean skipUnprocessableFiles) {
         Utils.checkNotNull(skipUnprocessableFiles, "skipUnprocessableFiles");
@@ -131,8 +145,10 @@ public class SourceSftpBulkUnstructuredDocumentFormat {
         return this;
     }
 
+
     /**
-     * If true, skip files that cannot be parsed and pass the error message along as the _ab_source_file_parse_error field. If false, fail the sync.
+     * If true, skip files that cannot be parsed and pass the error message along as the
+     * _ab_source_file_parse_error field. If false, fail the sync.
      */
     public SourceSftpBulkUnstructuredDocumentFormat withSkipUnprocessableFiles(Optional<Boolean> skipUnprocessableFiles) {
         Utils.checkNotNull(skipUnprocessableFiles, "skipUnprocessableFiles");
@@ -141,7 +157,12 @@ public class SourceSftpBulkUnstructuredDocumentFormat {
     }
 
     /**
-     * The strategy used to parse documents. `fast` extracts text directly from the document which doesn't work for all files. `ocr_only` is more reliable, but slower. `hi_res` is the most reliable, but requires an API key and a hosted instance of unstructured and can't be used with local mode. See the unstructured.io documentation for more details: https://unstructured-io.github.io/unstructured/core/partition.html#partition-pdf
+     * The strategy used to parse documents. `fast` extracts text directly from the document which doesn't
+     * work for all files. `ocr_only` is more reliable, but slower.
+     * 
+     * <p>`hi_res` is the most reliable, but requires an API key and a hosted instance of unstructured and
+     * can't be used with local mode. See the unstructured.io documentation for more details:
+     * https://unstructured-io.github.io/unstructured/core/partition.html#partition-pdf
      */
     public SourceSftpBulkUnstructuredDocumentFormat withStrategy(SourceSftpBulkParsingStrategy strategy) {
         Utils.checkNotNull(strategy, "strategy");
@@ -149,8 +170,14 @@ public class SourceSftpBulkUnstructuredDocumentFormat {
         return this;
     }
 
+
     /**
-     * The strategy used to parse documents. `fast` extracts text directly from the document which doesn't work for all files. `ocr_only` is more reliable, but slower. `hi_res` is the most reliable, but requires an API key and a hosted instance of unstructured and can't be used with local mode. See the unstructured.io documentation for more details: https://unstructured-io.github.io/unstructured/core/partition.html#partition-pdf
+     * The strategy used to parse documents. `fast` extracts text directly from the document which doesn't
+     * work for all files. `ocr_only` is more reliable, but slower.
+     * 
+     * <p>`hi_res` is the most reliable, but requires an API key and a hosted instance of unstructured and
+     * can't be used with local mode. See the unstructured.io documentation for more details:
+     * https://unstructured-io.github.io/unstructured/core/partition.html#partition-pdf
      */
     public SourceSftpBulkUnstructuredDocumentFormat withStrategy(Optional<? extends SourceSftpBulkParsingStrategy> strategy) {
         Utils.checkNotNull(strategy, "strategy");
@@ -158,7 +185,6 @@ public class SourceSftpBulkUnstructuredDocumentFormat {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -169,18 +195,16 @@ public class SourceSftpBulkUnstructuredDocumentFormat {
         }
         SourceSftpBulkUnstructuredDocumentFormat other = (SourceSftpBulkUnstructuredDocumentFormat) o;
         return 
-            Objects.deepEquals(this.filetype, other.filetype) &&
-            Objects.deepEquals(this.processing, other.processing) &&
-            Objects.deepEquals(this.skipUnprocessableFiles, other.skipUnprocessableFiles) &&
-            Objects.deepEquals(this.strategy, other.strategy);
+            Utils.enhancedDeepEquals(this.filetype, other.filetype) &&
+            Utils.enhancedDeepEquals(this.processing, other.processing) &&
+            Utils.enhancedDeepEquals(this.skipUnprocessableFiles, other.skipUnprocessableFiles) &&
+            Utils.enhancedDeepEquals(this.strategy, other.strategy);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            filetype,
-            processing,
-            skipUnprocessableFiles,
+        return Utils.enhancedHash(
+            filetype, processing, skipUnprocessableFiles,
             strategy);
     }
     
@@ -192,18 +216,20 @@ public class SourceSftpBulkUnstructuredDocumentFormat {
                 "skipUnprocessableFiles", skipUnprocessableFiles,
                 "strategy", strategy);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourceSftpBulkProcessing> processing = Optional.empty();
- 
+
         private Optional<Boolean> skipUnprocessableFiles;
- 
+
         private Optional<? extends SourceSftpBulkParsingStrategy> strategy;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Processing configuration
@@ -223,8 +249,10 @@ public class SourceSftpBulkUnstructuredDocumentFormat {
             return this;
         }
 
+
         /**
-         * If true, skip files that cannot be parsed and pass the error message along as the _ab_source_file_parse_error field. If false, fail the sync.
+         * If true, skip files that cannot be parsed and pass the error message along as the
+         * _ab_source_file_parse_error field. If false, fail the sync.
          */
         public Builder skipUnprocessableFiles(boolean skipUnprocessableFiles) {
             Utils.checkNotNull(skipUnprocessableFiles, "skipUnprocessableFiles");
@@ -233,7 +261,8 @@ public class SourceSftpBulkUnstructuredDocumentFormat {
         }
 
         /**
-         * If true, skip files that cannot be parsed and pass the error message along as the _ab_source_file_parse_error field. If false, fail the sync.
+         * If true, skip files that cannot be parsed and pass the error message along as the
+         * _ab_source_file_parse_error field. If false, fail the sync.
          */
         public Builder skipUnprocessableFiles(Optional<Boolean> skipUnprocessableFiles) {
             Utils.checkNotNull(skipUnprocessableFiles, "skipUnprocessableFiles");
@@ -241,8 +270,14 @@ public class SourceSftpBulkUnstructuredDocumentFormat {
             return this;
         }
 
+
         /**
-         * The strategy used to parse documents. `fast` extracts text directly from the document which doesn't work for all files. `ocr_only` is more reliable, but slower. `hi_res` is the most reliable, but requires an API key and a hosted instance of unstructured and can't be used with local mode. See the unstructured.io documentation for more details: https://unstructured-io.github.io/unstructured/core/partition.html#partition-pdf
+         * The strategy used to parse documents. `fast` extracts text directly from the document which doesn't
+         * work for all files. `ocr_only` is more reliable, but slower.
+         * 
+         * <p>`hi_res` is the most reliable, but requires an API key and a hosted instance of unstructured and
+         * can't be used with local mode. See the unstructured.io documentation for more details:
+         * https://unstructured-io.github.io/unstructured/core/partition.html#partition-pdf
          */
         public Builder strategy(SourceSftpBulkParsingStrategy strategy) {
             Utils.checkNotNull(strategy, "strategy");
@@ -251,14 +286,19 @@ public class SourceSftpBulkUnstructuredDocumentFormat {
         }
 
         /**
-         * The strategy used to parse documents. `fast` extracts text directly from the document which doesn't work for all files. `ocr_only` is more reliable, but slower. `hi_res` is the most reliable, but requires an API key and a hosted instance of unstructured and can't be used with local mode. See the unstructured.io documentation for more details: https://unstructured-io.github.io/unstructured/core/partition.html#partition-pdf
+         * The strategy used to parse documents. `fast` extracts text directly from the document which doesn't
+         * work for all files. `ocr_only` is more reliable, but slower.
+         * 
+         * <p>`hi_res` is the most reliable, but requires an API key and a hosted instance of unstructured and
+         * can't be used with local mode. See the unstructured.io documentation for more details:
+         * https://unstructured-io.github.io/unstructured/core/partition.html#partition-pdf
          */
         public Builder strategy(Optional<? extends SourceSftpBulkParsingStrategy> strategy) {
             Utils.checkNotNull(strategy, "strategy");
             this.strategy = strategy;
             return this;
         }
-        
+
         public SourceSftpBulkUnstructuredDocumentFormat build() {
             if (skipUnprocessableFiles == null) {
                 skipUnprocessableFiles = _SINGLETON_VALUE_SkipUnprocessableFiles.value();
@@ -266,11 +306,11 @@ public class SourceSftpBulkUnstructuredDocumentFormat {
             if (strategy == null) {
                 strategy = _SINGLETON_VALUE_Strategy.value();
             }
+
             return new SourceSftpBulkUnstructuredDocumentFormat(
-                processing,
-                skipUnprocessableFiles,
-                strategy);
+                processing, skipUnprocessableFiles, strategy);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceSftpBulkSchemasStreamsFormatFormatFiletype>> _SINGLETON_VALUE_Filetype =
                 new LazySingletonValue<>(

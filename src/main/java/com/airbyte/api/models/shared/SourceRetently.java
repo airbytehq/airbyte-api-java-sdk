@@ -14,17 +14,17 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceRetently {
 
+public class SourceRetently {
     /**
      * Choose how to authenticate to Retently
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     private Optional<? extends SourceRetentlyAuthenticationMechanism> credentials;
+
 
     @JsonProperty("sourceType")
     private Retently sourceType;
@@ -55,9 +55,10 @@ public class SourceRetently {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Choose how to authenticate to Retently
@@ -68,6 +69,7 @@ public class SourceRetently {
         return this;
     }
 
+
     /**
      * Choose how to authenticate to Retently
      */
@@ -77,7 +79,6 @@ public class SourceRetently {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -88,15 +89,14 @@ public class SourceRetently {
         }
         SourceRetently other = (SourceRetently) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            sourceType);
+        return Utils.enhancedHash(
+            credentials, sourceType);
     }
     
     @Override
@@ -105,14 +105,16 @@ public class SourceRetently {
                 "credentials", credentials,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourceRetentlyAuthenticationMechanism> credentials = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Choose how to authenticate to Retently
@@ -131,11 +133,13 @@ public class SourceRetently {
             this.credentials = credentials;
             return this;
         }
-        
+
         public SourceRetently build() {
+
             return new SourceRetently(
                 credentials);
         }
+
 
         private static final LazySingletonValue<Retently> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

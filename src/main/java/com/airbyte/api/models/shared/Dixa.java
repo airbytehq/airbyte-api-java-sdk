@@ -14,7 +14,7 @@ public enum Dixa {
     @JsonValue
     private final String value;
 
-    private Dixa(String value) {
+    Dixa(String value) {
         this.value = value;
     }
     

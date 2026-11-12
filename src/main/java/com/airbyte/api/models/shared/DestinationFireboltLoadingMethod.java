@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationFireboltLoadingMethod
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class DestinationFireboltLoadingMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationFireboltLoadingMethod(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class DestinationFireboltLoadingMethod {
 
     public static DestinationFireboltLoadingMethod of(SQLInserts value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationFireboltLoadingMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SQLInserts>(){}));
+        return new DestinationFireboltLoadingMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationFireboltLoadingMethod of(ExternalTableViaS3 value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationFireboltLoadingMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ExternalTableViaS3>(){}));
+        return new DestinationFireboltLoadingMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class DestinationFireboltLoadingMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class DestinationFireboltLoadingMethod {
             return false;
         }
         DestinationFireboltLoadingMethod other = (DestinationFireboltLoadingMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,8 +84,8 @@ public class DestinationFireboltLoadingMethod {
 
         public _Deserializer() {
             super(DestinationFireboltLoadingMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<ExternalTableViaS3>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SQLInserts>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SQLInserts>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<ExternalTableViaS3>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -95,6 +94,6 @@ public class DestinationFireboltLoadingMethod {
         return Utils.toString(DestinationFireboltLoadingMethod.class,
                 "value", value);
     }
- 
+
 }
 

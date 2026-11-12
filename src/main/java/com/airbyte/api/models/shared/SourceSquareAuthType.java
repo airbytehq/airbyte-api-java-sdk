@@ -14,7 +14,7 @@ public enum SourceSquareAuthType {
     @JsonValue
     private final String value;
 
-    private SourceSquareAuthType(String value) {
+    SourceSquareAuthType(String value) {
         this.value = value;
     }
     

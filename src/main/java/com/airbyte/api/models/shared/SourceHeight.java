@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceHeight {
 
@@ -29,8 +29,10 @@ public class SourceHeight {
     @JsonProperty("search_query")
     private Optional<String> searchQuery;
 
+
     @JsonProperty("sourceType")
     private Height sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -78,9 +80,10 @@ public class SourceHeight {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceHeight withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -97,6 +100,7 @@ public class SourceHeight {
         return this;
     }
 
+
     /**
      * Search query to be used with search stream
      */
@@ -112,7 +116,6 @@ public class SourceHeight {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -123,18 +126,16 @@ public class SourceHeight {
         }
         SourceHeight other = (SourceHeight) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.searchQuery, other.searchQuery) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.searchQuery, other.searchQuery) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            searchQuery,
-            sourceType,
+        return Utils.enhancedHash(
+            apiKey, searchQuery, sourceType,
             startDate);
     }
     
@@ -146,24 +147,27 @@ public class SourceHeight {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> searchQuery;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Search query to be used with search stream
@@ -183,21 +187,22 @@ public class SourceHeight {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceHeight build() {
             if (searchQuery == null) {
                 searchQuery = _SINGLETON_VALUE_SearchQuery.value();
             }
+
             return new SourceHeight(
-                apiKey,
-                searchQuery,
-                startDate);
+                apiKey, searchQuery, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_SearchQuery =
                 new LazySingletonValue<>(

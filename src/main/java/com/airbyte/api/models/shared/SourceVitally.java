@@ -13,11 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceVitally {
 
+public class SourceVitally {
     /**
      * Basic Auth Header
      */
@@ -26,7 +25,8 @@ public class SourceVitally {
     private Optional<String> basicAuthHeader;
 
     /**
-     * Provide only the domain part, like https://{your-domain}.rest.vitally.io/.  Keep empty if you don't have a subdomain.
+     * Provide only the subdomain part, like https://{your-custom-subdomain}.rest.vitally.io/. Keep empty
+     * if you don't have a subdomain.
      */
     @JsonProperty("domain")
     private String domain;
@@ -36,6 +36,7 @@ public class SourceVitally {
      */
     @JsonProperty("secret_token")
     private String secretToken;
+
 
     @JsonProperty("sourceType")
     private Vitally sourceType;
@@ -67,7 +68,8 @@ public class SourceVitally {
             String domain,
             String secretToken,
             SourceVitallyStatus status) {
-        this(Optional.empty(), domain, secretToken, status);
+        this(Optional.empty(), domain, secretToken,
+            status);
     }
 
     /**
@@ -79,7 +81,8 @@ public class SourceVitally {
     }
 
     /**
-     * Provide only the domain part, like https://{your-domain}.rest.vitally.io/.  Keep empty if you don't have a subdomain.
+     * Provide only the subdomain part, like https://{your-custom-subdomain}.rest.vitally.io/. Keep empty
+     * if you don't have a subdomain.
      */
     @JsonIgnore
     public String domain() {
@@ -107,9 +110,10 @@ public class SourceVitally {
         return status;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Basic Auth Header
@@ -119,6 +123,7 @@ public class SourceVitally {
         this.basicAuthHeader = Optional.ofNullable(basicAuthHeader);
         return this;
     }
+
 
     /**
      * Basic Auth Header
@@ -130,7 +135,8 @@ public class SourceVitally {
     }
 
     /**
-     * Provide only the domain part, like https://{your-domain}.rest.vitally.io/.  Keep empty if you don't have a subdomain.
+     * Provide only the subdomain part, like https://{your-custom-subdomain}.rest.vitally.io/. Keep empty
+     * if you don't have a subdomain.
      */
     public SourceVitally withDomain(String domain) {
         Utils.checkNotNull(domain, "domain");
@@ -156,7 +162,6 @@ public class SourceVitally {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -167,21 +172,18 @@ public class SourceVitally {
         }
         SourceVitally other = (SourceVitally) o;
         return 
-            Objects.deepEquals(this.basicAuthHeader, other.basicAuthHeader) &&
-            Objects.deepEquals(this.domain, other.domain) &&
-            Objects.deepEquals(this.secretToken, other.secretToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.status, other.status);
+            Utils.enhancedDeepEquals(this.basicAuthHeader, other.basicAuthHeader) &&
+            Utils.enhancedDeepEquals(this.domain, other.domain) &&
+            Utils.enhancedDeepEquals(this.secretToken, other.secretToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.status, other.status);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            basicAuthHeader,
-            domain,
-            secretToken,
-            sourceType,
-            status);
+        return Utils.enhancedHash(
+            basicAuthHeader, domain, secretToken,
+            sourceType, status);
     }
     
     @Override
@@ -193,20 +195,22 @@ public class SourceVitally {
                 "sourceType", sourceType,
                 "status", status);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> basicAuthHeader = Optional.empty();
- 
+
         private String domain;
- 
+
         private String secretToken;
- 
+
         private SourceVitallyStatus status;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Basic Auth Header
@@ -226,14 +230,17 @@ public class SourceVitally {
             return this;
         }
 
+
         /**
-         * Provide only the domain part, like https://{your-domain}.rest.vitally.io/.  Keep empty if you don't have a subdomain.
+         * Provide only the subdomain part, like https://{your-custom-subdomain}.rest.vitally.io/. Keep empty
+         * if you don't have a subdomain.
          */
         public Builder domain(String domain) {
             Utils.checkNotNull(domain, "domain");
             this.domain = domain;
             return this;
         }
+
 
         /**
          * sk_live_secret_token
@@ -244,6 +251,7 @@ public class SourceVitally {
             return this;
         }
 
+
         /**
          * Status of the Vitally accounts. One of the following values; active, churned, activeOrChurned.
          */
@@ -252,14 +260,14 @@ public class SourceVitally {
             this.status = status;
             return this;
         }
-        
+
         public SourceVitally build() {
+
             return new SourceVitally(
-                basicAuthHeader,
-                domain,
-                secretToken,
+                basicAuthHeader, domain, secretToken,
                 status);
         }
+
 
         private static final LazySingletonValue<Vitally> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

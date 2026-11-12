@@ -2,6 +2,14 @@
 
 The compression algorithm used to compress data pages.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DestinationGcsCompressionCodec;
+
+DestinationGcsCompressionCodec value = DestinationGcsCompressionCodec.UNCOMPRESSED;
+```
+
 
 ## Values
 

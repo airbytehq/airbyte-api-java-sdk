@@ -14,7 +14,7 @@ public enum Safetyculture {
     @JsonValue
     private final String value;
 
-    private Safetyculture(String value) {
+    Safetyculture(String value) {
         this.value = value;
     }
     

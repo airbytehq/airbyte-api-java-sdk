@@ -14,7 +14,7 @@ public enum HuggingFaceDatasets {
     @JsonValue
     private final String value;
 
-    private HuggingFaceDatasets(String value) {
+    HuggingFaceDatasets(String value) {
         this.value = value;
     }
     

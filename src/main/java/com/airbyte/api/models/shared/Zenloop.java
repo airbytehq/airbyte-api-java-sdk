@@ -14,7 +14,7 @@ public enum Zenloop {
     @JsonValue
     private final String value;
 
-    private Zenloop(String value) {
+    Zenloop(String value) {
         this.value = value;
     }
     

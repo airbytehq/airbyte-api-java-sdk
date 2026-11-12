@@ -14,26 +14,29 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceAppcues {
 
+public class SourceAppcues {
     /**
      * Account ID of Appcues found in account settings page (https://studio.appcues.com/settings/account)
      */
     @JsonProperty("account_id")
     private String accountId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
     private Optional<String> password;
 
+
     @JsonProperty("sourceType")
     private Appcues sourceType;
 
+
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
+
 
     @JsonProperty("username")
     private String username;
@@ -59,7 +62,8 @@ public class SourceAppcues {
             String accountId,
             OffsetDateTime startDate,
             String username) {
-        this(accountId, Optional.empty(), startDate, username);
+        this(accountId, Optional.empty(), startDate,
+            username);
     }
 
     /**
@@ -90,9 +94,10 @@ public class SourceAppcues {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Account ID of Appcues found in account settings page (https://studio.appcues.com/settings/account)
@@ -108,6 +113,7 @@ public class SourceAppcues {
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     public SourceAppcues withPassword(Optional<String> password) {
         Utils.checkNotNull(password, "password");
@@ -127,7 +133,6 @@ public class SourceAppcues {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -138,21 +143,18 @@ public class SourceAppcues {
         }
         SourceAppcues other = (SourceAppcues) o;
         return 
-            Objects.deepEquals(this.accountId, other.accountId) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.accountId, other.accountId) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountId,
-            password,
-            sourceType,
-            startDate,
-            username);
+        return Utils.enhancedHash(
+            accountId, password, sourceType,
+            startDate, username);
     }
     
     @Override
@@ -164,20 +166,22 @@ public class SourceAppcues {
                 "startDate", startDate,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accountId;
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private OffsetDateTime startDate;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Account ID of Appcues found in account settings page (https://studio.appcues.com/settings/account)
@@ -187,6 +191,7 @@ public class SourceAppcues {
             this.accountId = accountId;
             return this;
         }
+
 
         public Builder password(String password) {
             Utils.checkNotNull(password, "password");
@@ -200,25 +205,27 @@ public class SourceAppcues {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
 
+
         public Builder username(String username) {
             Utils.checkNotNull(username, "username");
             this.username = username;
             return this;
         }
-        
+
         public SourceAppcues build() {
+
             return new SourceAppcues(
-                accountId,
-                password,
-                startDate,
+                accountId, password, startDate,
                 username);
         }
+
 
         private static final LazySingletonValue<Appcues> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

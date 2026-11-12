@@ -14,7 +14,7 @@ public enum DestinationMongodbSchemasAuthorization {
     @JsonValue
     private final String value;
 
-    private DestinationMongodbSchemasAuthorization(String value) {
+    DestinationMongodbSchemasAuthorization(String value) {
         this.value = value;
     }
     

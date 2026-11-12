@@ -13,7 +13,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -22,13 +21,13 @@ import java.util.Optional;
  * <p>OAuth2.0
  */
 public class SourceShopifyOAuth20 {
-
     /**
      * The Access Token for making authenticated requests.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("access_token")
     private Optional<String> accessToken;
+
 
     @JsonProperty("auth_method")
     private SourceShopifyAuthMethod authMethod;
@@ -94,9 +93,10 @@ public class SourceShopifyOAuth20 {
         return clientSecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Access Token for making authenticated requests.
@@ -106,6 +106,7 @@ public class SourceShopifyOAuth20 {
         this.accessToken = Optional.ofNullable(accessToken);
         return this;
     }
+
 
     /**
      * The Access Token for making authenticated requests.
@@ -125,6 +126,7 @@ public class SourceShopifyOAuth20 {
         return this;
     }
 
+
     /**
      * The Client ID of the Shopify developer application.
      */
@@ -143,6 +145,7 @@ public class SourceShopifyOAuth20 {
         return this;
     }
 
+
     /**
      * The Client Secret of the Shopify developer application.
      */
@@ -152,7 +155,6 @@ public class SourceShopifyOAuth20 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -163,18 +165,16 @@ public class SourceShopifyOAuth20 {
         }
         SourceShopifyOAuth20 other = (SourceShopifyOAuth20) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.authMethod, other.authMethod) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.authMethod, other.authMethod) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            authMethod,
-            clientId,
+        return Utils.enhancedHash(
+            accessToken, authMethod, clientId,
             clientSecret);
     }
     
@@ -186,18 +186,20 @@ public class SourceShopifyOAuth20 {
                 "clientId", clientId,
                 "clientSecret", clientSecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> accessToken = Optional.empty();
- 
+
         private Optional<String> clientId = Optional.empty();
- 
+
         private Optional<String> clientSecret = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Access Token for making authenticated requests.
@@ -217,6 +219,7 @@ public class SourceShopifyOAuth20 {
             return this;
         }
 
+
         /**
          * The Client ID of the Shopify developer application.
          */
@@ -235,6 +238,7 @@ public class SourceShopifyOAuth20 {
             return this;
         }
 
+
         /**
          * The Client Secret of the Shopify developer application.
          */
@@ -252,13 +256,13 @@ public class SourceShopifyOAuth20 {
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public SourceShopifyOAuth20 build() {
+
             return new SourceShopifyOAuth20(
-                accessToken,
-                clientId,
-                clientSecret);
+                accessToken, clientId, clientSecret);
         }
+
 
         private static final LazySingletonValue<SourceShopifyAuthMethod> _SINGLETON_VALUE_AuthMethod =
                 new LazySingletonValue<>(

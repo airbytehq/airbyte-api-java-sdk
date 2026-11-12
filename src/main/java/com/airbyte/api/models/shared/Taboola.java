@@ -14,7 +14,7 @@ public enum Taboola {
     @JsonValue
     private final String value;
 
-    private Taboola(String value) {
+    Taboola(String value) {
         this.value = value;
     }
     

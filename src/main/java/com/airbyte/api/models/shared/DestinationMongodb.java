@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationMongodb {
 
+public class DestinationMongodb {
     /**
      * Authorization type.
      */
@@ -31,6 +30,7 @@ public class DestinationMongodb {
     @JsonProperty("database")
     private String database;
 
+
     @JsonProperty("destinationType")
     private Mongodb destinationType;
 
@@ -42,7 +42,8 @@ public class DestinationMongodb {
     private Optional<? extends MongoDbInstanceType> instanceType;
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
@@ -68,7 +69,8 @@ public class DestinationMongodb {
     public DestinationMongodb(
             AuthorizationType authType,
             String database) {
-        this(authType, database, Optional.empty(), Optional.empty());
+        this(authType, database, Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -102,7 +104,8 @@ public class DestinationMongodb {
     }
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -110,9 +113,10 @@ public class DestinationMongodb {
         return (Optional<DestinationMongodbSSHTunnelMethod>) tunnelMethod;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Authorization type.
@@ -141,6 +145,7 @@ public class DestinationMongodb {
         return this;
     }
 
+
     /**
      * MongoDb instance to connect to. For MongoDB Atlas and Replica Set TLS connection is used by default.
      */
@@ -151,7 +156,8 @@ public class DestinationMongodb {
     }
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     public DestinationMongodb withTunnelMethod(DestinationMongodbSSHTunnelMethod tunnelMethod) {
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -159,8 +165,10 @@ public class DestinationMongodb {
         return this;
     }
 
+
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     public DestinationMongodb withTunnelMethod(Optional<? extends DestinationMongodbSSHTunnelMethod> tunnelMethod) {
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -168,7 +176,6 @@ public class DestinationMongodb {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -179,21 +186,18 @@ public class DestinationMongodb {
         }
         DestinationMongodb other = (DestinationMongodb) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.database, other.database) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.instanceType, other.instanceType) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.database, other.database) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.instanceType, other.instanceType) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            database,
-            destinationType,
-            instanceType,
-            tunnelMethod);
+        return Utils.enhancedHash(
+            authType, database, destinationType,
+            instanceType, tunnelMethod);
     }
     
     @Override
@@ -205,20 +209,22 @@ public class DestinationMongodb {
                 "instanceType", instanceType,
                 "tunnelMethod", tunnelMethod);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private AuthorizationType authType;
- 
+
         private String database;
- 
+
         private Optional<? extends MongoDbInstanceType> instanceType = Optional.empty();
- 
+
         private Optional<? extends DestinationMongodbSSHTunnelMethod> tunnelMethod = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Authorization type.
@@ -229,6 +235,7 @@ public class DestinationMongodb {
             return this;
         }
 
+
         /**
          * Name of the database.
          */
@@ -237,6 +244,7 @@ public class DestinationMongodb {
             this.database = database;
             return this;
         }
+
 
         /**
          * MongoDb instance to connect to. For MongoDB Atlas and Replica Set TLS connection is used by default.
@@ -256,8 +264,10 @@ public class DestinationMongodb {
             return this;
         }
 
+
         /**
-         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+         * authentication to use.
          */
         public Builder tunnelMethod(DestinationMongodbSSHTunnelMethod tunnelMethod) {
             Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -266,21 +276,22 @@ public class DestinationMongodb {
         }
 
         /**
-         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+         * authentication to use.
          */
         public Builder tunnelMethod(Optional<? extends DestinationMongodbSSHTunnelMethod> tunnelMethod) {
             Utils.checkNotNull(tunnelMethod, "tunnelMethod");
             this.tunnelMethod = tunnelMethod;
             return this;
         }
-        
+
         public DestinationMongodb build() {
+
             return new DestinationMongodb(
-                authType,
-                database,
-                instanceType,
+                authType, database, instanceType,
                 tunnelMethod);
         }
+
 
         private static final LazySingletonValue<Mongodb> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

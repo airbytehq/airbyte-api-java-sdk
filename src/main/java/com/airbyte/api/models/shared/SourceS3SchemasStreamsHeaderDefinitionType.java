@@ -14,7 +14,7 @@ public enum SourceS3SchemasStreamsHeaderDefinitionType {
     @JsonValue
     private final String value;
 
-    private SourceS3SchemasStreamsHeaderDefinitionType(String value) {
+    SourceS3SchemasStreamsHeaderDefinitionType(String value) {
         this.value = value;
     }
     

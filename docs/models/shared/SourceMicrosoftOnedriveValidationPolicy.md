@@ -2,6 +2,14 @@
 
 The name of the validation policy that dictates sync behavior when a record does not adhere to the stream schema.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceMicrosoftOnedriveValidationPolicy;
+
+SourceMicrosoftOnedriveValidationPolicy value = SourceMicrosoftOnedriveValidationPolicy.EMIT_RECORD;
+```
+
 
 ## Values
 

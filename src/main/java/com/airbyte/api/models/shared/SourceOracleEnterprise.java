@@ -17,13 +17,15 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceOracleEnterprise {
 
+public class SourceOracleEnterprise {
     /**
-     * When this feature is enabled, during schema discovery the connector will query each table or view individually to check access privileges and inaccessible tables, views, or columns therein will be removed. In large schemas, this might cause schema discovery to take too long, in which case it might be advisable to disable this feature.
+     * When this feature is enabled, during schema discovery the connector will query each table or view
+     * individually to check access privileges and inaccessible tables, views, or columns therein will be
+     * removed. In large schemas, this might cause schema discovery to take too long, in which case it
+     * might be advisable to disable this feature.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("check_privileges")
@@ -68,7 +70,9 @@ public class SourceOracleEnterprise {
     private String host;
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("jdbc_url_params")
@@ -84,8 +88,9 @@ public class SourceOracleEnterprise {
     /**
      * Port of the database.
      * Oracle Corporations recommends the following port numbers:
-     * 1521 - Default listening port for client connections to the listener. 
-     * 2484 - Recommended and officially registered listening port for client connections to the listener using TCP/IP with SSL.
+     * 1521 - Default listening port for client connections to the listener.
+     * 2484 - Recommended and officially registered listening port for client connections to the listener
+     * using TCP/IP with SSL.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("port")
@@ -98,11 +103,21 @@ public class SourceOracleEnterprise {
     @JsonProperty("schemas")
     private Optional<? extends List<String>> schemas;
 
+
     @JsonProperty("sourceType")
     private OracleEnterprise sourceType;
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Inclusion filters for table selection per schema. If no filters are specified for a schema, all
+     * tables in that schema will be synced.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("table_filters")
+    private Optional<? extends List<TableFilter>> tableFilters;
+
+    /**
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     @JsonProperty("tunnel_method")
     private SourceOracleEnterpriseSSHTunnelMethod tunnelMethod;
@@ -126,6 +141,7 @@ public class SourceOracleEnterprise {
             @JsonProperty("password") Optional<String> password,
             @JsonProperty("port") Optional<Long> port,
             @JsonProperty("schemas") Optional<? extends List<String>> schemas,
+            @JsonProperty("table_filters") Optional<? extends List<TableFilter>> tableFilters,
             @JsonProperty("tunnel_method") SourceOracleEnterpriseSSHTunnelMethod tunnelMethod,
             @JsonProperty("username") String username) {
         Utils.checkNotNull(checkPrivileges, "checkPrivileges");
@@ -139,6 +155,7 @@ public class SourceOracleEnterprise {
         Utils.checkNotNull(password, "password");
         Utils.checkNotNull(port, "port");
         Utils.checkNotNull(schemas, "schemas");
+        Utils.checkNotNull(tableFilters, "tableFilters");
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
         Utils.checkNotNull(username, "username");
         this.checkPrivileges = checkPrivileges;
@@ -153,6 +170,7 @@ public class SourceOracleEnterprise {
         this.port = port;
         this.schemas = schemas;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
+        this.tableFilters = tableFilters;
         this.tunnelMethod = tunnelMethod;
         this.username = username;
     }
@@ -164,11 +182,18 @@ public class SourceOracleEnterprise {
             String host,
             SourceOracleEnterpriseSSHTunnelMethod tunnelMethod,
             String username) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), connectionData, cursor, encryption, host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), tunnelMethod, username);
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            connectionData, cursor, encryption,
+            host, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            tunnelMethod, username);
     }
 
     /**
-     * When this feature is enabled, during schema discovery the connector will query each table or view individually to check access privileges and inaccessible tables, views, or columns therein will be removed. In large schemas, this might cause schema discovery to take too long, in which case it might be advisable to disable this feature.
+     * When this feature is enabled, during schema discovery the connector will query each table or view
+     * individually to check access privileges and inaccessible tables, views, or columns therein will be
+     * removed. In large schemas, this might cause schema discovery to take too long, in which case it
+     * might be advisable to disable this feature.
      */
     @JsonIgnore
     public Optional<Boolean> checkPrivileges() {
@@ -224,7 +249,9 @@ public class SourceOracleEnterprise {
     }
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     @JsonIgnore
     public Optional<String> jdbcUrlParams() {
@@ -242,8 +269,9 @@ public class SourceOracleEnterprise {
     /**
      * Port of the database.
      * Oracle Corporations recommends the following port numbers:
-     * 1521 - Default listening port for client connections to the listener. 
-     * 2484 - Recommended and officially registered listening port for client connections to the listener using TCP/IP with SSL.
+     * 1521 - Default listening port for client connections to the listener.
+     * 2484 - Recommended and officially registered listening port for client connections to the listener
+     * using TCP/IP with SSL.
      */
     @JsonIgnore
     public Optional<Long> port() {
@@ -265,7 +293,18 @@ public class SourceOracleEnterprise {
     }
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Inclusion filters for table selection per schema. If no filters are specified for a schema, all
+     * tables in that schema will be synced.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<List<TableFilter>> tableFilters() {
+        return (Optional<List<TableFilter>>) tableFilters;
+    }
+
+    /**
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     @JsonIgnore
     public SourceOracleEnterpriseSSHTunnelMethod tunnelMethod() {
@@ -280,12 +319,16 @@ public class SourceOracleEnterprise {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * When this feature is enabled, during schema discovery the connector will query each table or view individually to check access privileges and inaccessible tables, views, or columns therein will be removed. In large schemas, this might cause schema discovery to take too long, in which case it might be advisable to disable this feature.
+     * When this feature is enabled, during schema discovery the connector will query each table or view
+     * individually to check access privileges and inaccessible tables, views, or columns therein will be
+     * removed. In large schemas, this might cause schema discovery to take too long, in which case it
+     * might be advisable to disable this feature.
      */
     public SourceOracleEnterprise withCheckPrivileges(boolean checkPrivileges) {
         Utils.checkNotNull(checkPrivileges, "checkPrivileges");
@@ -293,8 +336,12 @@ public class SourceOracleEnterprise {
         return this;
     }
 
+
     /**
-     * When this feature is enabled, during schema discovery the connector will query each table or view individually to check access privileges and inaccessible tables, views, or columns therein will be removed. In large schemas, this might cause schema discovery to take too long, in which case it might be advisable to disable this feature.
+     * When this feature is enabled, during schema discovery the connector will query each table or view
+     * individually to check access privileges and inaccessible tables, views, or columns therein will be
+     * removed. In large schemas, this might cause schema discovery to take too long, in which case it
+     * might be advisable to disable this feature.
      */
     public SourceOracleEnterprise withCheckPrivileges(Optional<Boolean> checkPrivileges) {
         Utils.checkNotNull(checkPrivileges, "checkPrivileges");
@@ -310,6 +357,7 @@ public class SourceOracleEnterprise {
         this.checkpointTargetIntervalSeconds = Optional.ofNullable(checkpointTargetIntervalSeconds);
         return this;
     }
+
 
     /**
      * How often (in seconds) a stream should checkpoint, when possible.
@@ -328,6 +376,7 @@ public class SourceOracleEnterprise {
         this.concurrency = Optional.ofNullable(concurrency);
         return this;
     }
+
 
     /**
      * Maximum number of concurrent queries to the database.
@@ -375,7 +424,9 @@ public class SourceOracleEnterprise {
     }
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     public SourceOracleEnterprise withJdbcUrlParams(String jdbcUrlParams) {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -383,8 +434,11 @@ public class SourceOracleEnterprise {
         return this;
     }
 
+
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     public SourceOracleEnterprise withJdbcUrlParams(Optional<String> jdbcUrlParams) {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -401,6 +455,7 @@ public class SourceOracleEnterprise {
         return this;
     }
 
+
     /**
      * The password associated with the username.
      */
@@ -413,8 +468,9 @@ public class SourceOracleEnterprise {
     /**
      * Port of the database.
      * Oracle Corporations recommends the following port numbers:
-     * 1521 - Default listening port for client connections to the listener. 
-     * 2484 - Recommended and officially registered listening port for client connections to the listener using TCP/IP with SSL.
+     * 1521 - Default listening port for client connections to the listener.
+     * 2484 - Recommended and officially registered listening port for client connections to the listener
+     * using TCP/IP with SSL.
      */
     public SourceOracleEnterprise withPort(long port) {
         Utils.checkNotNull(port, "port");
@@ -422,11 +478,13 @@ public class SourceOracleEnterprise {
         return this;
     }
 
+
     /**
      * Port of the database.
      * Oracle Corporations recommends the following port numbers:
-     * 1521 - Default listening port for client connections to the listener. 
-     * 2484 - Recommended and officially registered listening port for client connections to the listener using TCP/IP with SSL.
+     * 1521 - Default listening port for client connections to the listener.
+     * 2484 - Recommended and officially registered listening port for client connections to the listener
+     * using TCP/IP with SSL.
      */
     public SourceOracleEnterprise withPort(Optional<Long> port) {
         Utils.checkNotNull(port, "port");
@@ -443,6 +501,7 @@ public class SourceOracleEnterprise {
         return this;
     }
 
+
     /**
      * The list of schemas to sync from. Defaults to user. Case sensitive.
      */
@@ -453,7 +512,29 @@ public class SourceOracleEnterprise {
     }
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Inclusion filters for table selection per schema. If no filters are specified for a schema, all
+     * tables in that schema will be synced.
+     */
+    public SourceOracleEnterprise withTableFilters(List<TableFilter> tableFilters) {
+        Utils.checkNotNull(tableFilters, "tableFilters");
+        this.tableFilters = Optional.ofNullable(tableFilters);
+        return this;
+    }
+
+
+    /**
+     * Inclusion filters for table selection per schema. If no filters are specified for a schema, all
+     * tables in that schema will be synced.
+     */
+    public SourceOracleEnterprise withTableFilters(Optional<? extends List<TableFilter>> tableFilters) {
+        Utils.checkNotNull(tableFilters, "tableFilters");
+        this.tableFilters = tableFilters;
+        return this;
+    }
+
+    /**
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     public SourceOracleEnterprise withTunnelMethod(SourceOracleEnterpriseSSHTunnelMethod tunnelMethod) {
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -470,7 +551,6 @@ public class SourceOracleEnterprise {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -481,39 +561,31 @@ public class SourceOracleEnterprise {
         }
         SourceOracleEnterprise other = (SourceOracleEnterprise) o;
         return 
-            Objects.deepEquals(this.checkPrivileges, other.checkPrivileges) &&
-            Objects.deepEquals(this.checkpointTargetIntervalSeconds, other.checkpointTargetIntervalSeconds) &&
-            Objects.deepEquals(this.concurrency, other.concurrency) &&
-            Objects.deepEquals(this.connectionData, other.connectionData) &&
-            Objects.deepEquals(this.cursor, other.cursor) &&
-            Objects.deepEquals(this.encryption, other.encryption) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.schemas, other.schemas) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.checkPrivileges, other.checkPrivileges) &&
+            Utils.enhancedDeepEquals(this.checkpointTargetIntervalSeconds, other.checkpointTargetIntervalSeconds) &&
+            Utils.enhancedDeepEquals(this.concurrency, other.concurrency) &&
+            Utils.enhancedDeepEquals(this.connectionData, other.connectionData) &&
+            Utils.enhancedDeepEquals(this.cursor, other.cursor) &&
+            Utils.enhancedDeepEquals(this.encryption, other.encryption) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.schemas, other.schemas) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.tableFilters, other.tableFilters) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            checkPrivileges,
-            checkpointTargetIntervalSeconds,
-            concurrency,
-            connectionData,
-            cursor,
-            encryption,
-            host,
-            jdbcUrlParams,
-            password,
-            port,
-            schemas,
-            sourceType,
-            tunnelMethod,
-            username);
+        return Utils.enhancedHash(
+            checkPrivileges, checkpointTargetIntervalSeconds, concurrency,
+            connectionData, cursor, encryption,
+            host, jdbcUrlParams, password,
+            port, schemas, sourceType,
+            tableFilters, tunnelMethod, username);
     }
     
     @Override
@@ -531,44 +603,52 @@ public class SourceOracleEnterprise {
                 "port", port,
                 "schemas", schemas,
                 "sourceType", sourceType,
+                "tableFilters", tableFilters,
                 "tunnelMethod", tunnelMethod,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> checkPrivileges;
- 
+
         private Optional<Long> checkpointTargetIntervalSeconds;
- 
+
         private Optional<Long> concurrency;
- 
+
         private SourceOracleEnterpriseConnectBy connectionData;
- 
+
         private SourceOracleEnterpriseUpdateMethod cursor;
- 
+
         private SourceOracleEnterpriseEncryption encryption;
- 
+
         private String host;
- 
+
         private Optional<String> jdbcUrlParams = Optional.empty();
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private Optional<Long> port;
- 
+
         private Optional<? extends List<String>> schemas = Optional.empty();
- 
+
+        private Optional<? extends List<TableFilter>> tableFilters = Optional.empty();
+
         private SourceOracleEnterpriseSSHTunnelMethod tunnelMethod;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * When this feature is enabled, during schema discovery the connector will query each table or view individually to check access privileges and inaccessible tables, views, or columns therein will be removed. In large schemas, this might cause schema discovery to take too long, in which case it might be advisable to disable this feature.
+         * When this feature is enabled, during schema discovery the connector will query each table or view
+         * individually to check access privileges and inaccessible tables, views, or columns therein will be
+         * removed. In large schemas, this might cause schema discovery to take too long, in which case it
+         * might be advisable to disable this feature.
          */
         public Builder checkPrivileges(boolean checkPrivileges) {
             Utils.checkNotNull(checkPrivileges, "checkPrivileges");
@@ -577,13 +657,17 @@ public class SourceOracleEnterprise {
         }
 
         /**
-         * When this feature is enabled, during schema discovery the connector will query each table or view individually to check access privileges and inaccessible tables, views, or columns therein will be removed. In large schemas, this might cause schema discovery to take too long, in which case it might be advisable to disable this feature.
+         * When this feature is enabled, during schema discovery the connector will query each table or view
+         * individually to check access privileges and inaccessible tables, views, or columns therein will be
+         * removed. In large schemas, this might cause schema discovery to take too long, in which case it
+         * might be advisable to disable this feature.
          */
         public Builder checkPrivileges(Optional<Boolean> checkPrivileges) {
             Utils.checkNotNull(checkPrivileges, "checkPrivileges");
             this.checkPrivileges = checkPrivileges;
             return this;
         }
+
 
         /**
          * How often (in seconds) a stream should checkpoint, when possible.
@@ -603,6 +687,7 @@ public class SourceOracleEnterprise {
             return this;
         }
 
+
         /**
          * Maximum number of concurrent queries to the database.
          */
@@ -621,6 +706,7 @@ public class SourceOracleEnterprise {
             return this;
         }
 
+
         /**
          * The scheme by which to establish a database connection.
          */
@@ -629,6 +715,7 @@ public class SourceOracleEnterprise {
             this.connectionData = connectionData;
             return this;
         }
+
 
         /**
          * Configures how data is extracted from the database.
@@ -639,6 +726,7 @@ public class SourceOracleEnterprise {
             return this;
         }
 
+
         /**
          * The encryption method with is used when communicating with the database.
          */
@@ -647,6 +735,7 @@ public class SourceOracleEnterprise {
             this.encryption = encryption;
             return this;
         }
+
 
         /**
          * Hostname of the database.
@@ -657,8 +746,11 @@ public class SourceOracleEnterprise {
             return this;
         }
 
+
         /**
-         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+         * 'key=value' pairs separated by the symbol '&amp;'. (example:
+         * key1=value1&amp;key2=value2&amp;key3=value3).
          */
         public Builder jdbcUrlParams(String jdbcUrlParams) {
             Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -667,13 +759,16 @@ public class SourceOracleEnterprise {
         }
 
         /**
-         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+         * 'key=value' pairs separated by the symbol '&amp;'. (example:
+         * key1=value1&amp;key2=value2&amp;key3=value3).
          */
         public Builder jdbcUrlParams(Optional<String> jdbcUrlParams) {
             Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
             this.jdbcUrlParams = jdbcUrlParams;
             return this;
         }
+
 
         /**
          * The password associated with the username.
@@ -693,11 +788,13 @@ public class SourceOracleEnterprise {
             return this;
         }
 
+
         /**
          * Port of the database.
          * Oracle Corporations recommends the following port numbers:
-         * 1521 - Default listening port for client connections to the listener. 
-         * 2484 - Recommended and officially registered listening port for client connections to the listener using TCP/IP with SSL.
+         * 1521 - Default listening port for client connections to the listener.
+         * 2484 - Recommended and officially registered listening port for client connections to the listener
+         * using TCP/IP with SSL.
          */
         public Builder port(long port) {
             Utils.checkNotNull(port, "port");
@@ -708,14 +805,16 @@ public class SourceOracleEnterprise {
         /**
          * Port of the database.
          * Oracle Corporations recommends the following port numbers:
-         * 1521 - Default listening port for client connections to the listener. 
-         * 2484 - Recommended and officially registered listening port for client connections to the listener using TCP/IP with SSL.
+         * 1521 - Default listening port for client connections to the listener.
+         * 2484 - Recommended and officially registered listening port for client connections to the listener
+         * using TCP/IP with SSL.
          */
         public Builder port(Optional<Long> port) {
             Utils.checkNotNull(port, "port");
             this.port = port;
             return this;
         }
+
 
         /**
          * The list of schemas to sync from. Defaults to user. Case sensitive.
@@ -735,14 +834,38 @@ public class SourceOracleEnterprise {
             return this;
         }
 
+
         /**
-         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+         * Inclusion filters for table selection per schema. If no filters are specified for a schema, all
+         * tables in that schema will be synced.
+         */
+        public Builder tableFilters(List<TableFilter> tableFilters) {
+            Utils.checkNotNull(tableFilters, "tableFilters");
+            this.tableFilters = Optional.ofNullable(tableFilters);
+            return this;
+        }
+
+        /**
+         * Inclusion filters for table selection per schema. If no filters are specified for a schema, all
+         * tables in that schema will be synced.
+         */
+        public Builder tableFilters(Optional<? extends List<TableFilter>> tableFilters) {
+            Utils.checkNotNull(tableFilters, "tableFilters");
+            this.tableFilters = tableFilters;
+            return this;
+        }
+
+
+        /**
+         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+         * authentication to use.
          */
         public Builder tunnelMethod(SourceOracleEnterpriseSSHTunnelMethod tunnelMethod) {
             Utils.checkNotNull(tunnelMethod, "tunnelMethod");
             this.tunnelMethod = tunnelMethod;
             return this;
         }
+
 
         /**
          * The username which is used to access the database.
@@ -752,7 +875,7 @@ public class SourceOracleEnterprise {
             this.username = username;
             return this;
         }
-        
+
         public SourceOracleEnterprise build() {
             if (checkPrivileges == null) {
                 checkPrivileges = _SINGLETON_VALUE_CheckPrivileges.value();
@@ -766,21 +889,15 @@ public class SourceOracleEnterprise {
             if (port == null) {
                 port = _SINGLETON_VALUE_Port.value();
             }
+
             return new SourceOracleEnterprise(
-                checkPrivileges,
-                checkpointTargetIntervalSeconds,
-                concurrency,
-                connectionData,
-                cursor,
-                encryption,
-                host,
-                jdbcUrlParams,
-                password,
-                port,
-                schemas,
-                tunnelMethod,
-                username);
+                checkPrivileges, checkpointTargetIntervalSeconds, concurrency,
+                connectionData, cursor, encryption,
+                host, jdbcUrlParams, password,
+                port, schemas, tableFilters,
+                tunnelMethod, username);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_CheckPrivileges =
                 new LazySingletonValue<>(

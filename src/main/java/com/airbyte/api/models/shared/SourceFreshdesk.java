@@ -14,14 +14,16 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
+import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceFreshdesk {
 
+public class SourceFreshdesk {
     /**
-     * Freshdesk API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/freshdesk"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+     * Freshdesk API Key. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/freshdesk">docs</a> for more information on how
+     * to obtain this key.
      */
     @JsonProperty("api_key")
     private String apiKey;
@@ -40,17 +42,27 @@ public class SourceFreshdesk {
     private Optional<Long> lookbackWindowInDays;
 
     /**
-     * The number of requests per minute that this source allowed to use. There is a rate limit of 50 requests per minute per app per account.
+     * Rate Limit Plan for API Budget
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("rate_limit_plan")
+    private Optional<? extends RateLimitPlan> rateLimitPlan;
+
+    /**
+     * The number of requests per minute that this source allowed to use. There is a rate limit of 50
+     * requests per minute per app per account.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("requests_per_minute")
     private Optional<Long> requestsPerMinute;
 
+
     @JsonProperty("sourceType")
     private Freshdesk sourceType;
 
     /**
-     * UTC date and time. Any data created after this date will be replicated. If this parameter is not set, all data will be replicated.
+     * UTC date and time. Any data created after this date will be replicated. If this parameter is not
+     * set, all data will be replicated.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
@@ -61,16 +73,19 @@ public class SourceFreshdesk {
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("domain") String domain,
             @JsonProperty("lookback_window_in_days") Optional<Long> lookbackWindowInDays,
+            @JsonProperty("rate_limit_plan") Optional<? extends RateLimitPlan> rateLimitPlan,
             @JsonProperty("requests_per_minute") Optional<Long> requestsPerMinute,
             @JsonProperty("start_date") Optional<OffsetDateTime> startDate) {
         Utils.checkNotNull(apiKey, "apiKey");
         Utils.checkNotNull(domain, "domain");
         Utils.checkNotNull(lookbackWindowInDays, "lookbackWindowInDays");
+        Utils.checkNotNull(rateLimitPlan, "rateLimitPlan");
         Utils.checkNotNull(requestsPerMinute, "requestsPerMinute");
         Utils.checkNotNull(startDate, "startDate");
         this.apiKey = apiKey;
         this.domain = domain;
         this.lookbackWindowInDays = lookbackWindowInDays;
+        this.rateLimitPlan = rateLimitPlan;
         this.requestsPerMinute = requestsPerMinute;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
@@ -79,11 +94,14 @@ public class SourceFreshdesk {
     public SourceFreshdesk(
             String apiKey,
             String domain) {
-        this(apiKey, domain, Optional.empty(), Optional.empty(), Optional.empty());
+        this(apiKey, domain, Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
-     * Freshdesk API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/freshdesk"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+     * Freshdesk API Key. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/freshdesk">docs</a> for more information on how
+     * to obtain this key.
      */
     @JsonIgnore
     public String apiKey() {
@@ -107,7 +125,17 @@ public class SourceFreshdesk {
     }
 
     /**
-     * The number of requests per minute that this source allowed to use. There is a rate limit of 50 requests per minute per app per account.
+     * Rate Limit Plan for API Budget
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<RateLimitPlan> rateLimitPlan() {
+        return (Optional<RateLimitPlan>) rateLimitPlan;
+    }
+
+    /**
+     * The number of requests per minute that this source allowed to use. There is a rate limit of 50
+     * requests per minute per app per account.
      */
     @JsonIgnore
     public Optional<Long> requestsPerMinute() {
@@ -120,19 +148,23 @@ public class SourceFreshdesk {
     }
 
     /**
-     * UTC date and time. Any data created after this date will be replicated. If this parameter is not set, all data will be replicated.
+     * UTC date and time. Any data created after this date will be replicated. If this parameter is not
+     * set, all data will be replicated.
      */
     @JsonIgnore
     public Optional<OffsetDateTime> startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Freshdesk API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/freshdesk"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+     * Freshdesk API Key. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/freshdesk">docs</a> for more information on how
+     * to obtain this key.
      */
     public SourceFreshdesk withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -158,6 +190,7 @@ public class SourceFreshdesk {
         return this;
     }
 
+
     /**
      * Number of days for lookback window for the stream Satisfaction Ratings
      */
@@ -168,7 +201,27 @@ public class SourceFreshdesk {
     }
 
     /**
-     * The number of requests per minute that this source allowed to use. There is a rate limit of 50 requests per minute per app per account.
+     * Rate Limit Plan for API Budget
+     */
+    public SourceFreshdesk withRateLimitPlan(RateLimitPlan rateLimitPlan) {
+        Utils.checkNotNull(rateLimitPlan, "rateLimitPlan");
+        this.rateLimitPlan = Optional.ofNullable(rateLimitPlan);
+        return this;
+    }
+
+
+    /**
+     * Rate Limit Plan for API Budget
+     */
+    public SourceFreshdesk withRateLimitPlan(Optional<? extends RateLimitPlan> rateLimitPlan) {
+        Utils.checkNotNull(rateLimitPlan, "rateLimitPlan");
+        this.rateLimitPlan = rateLimitPlan;
+        return this;
+    }
+
+    /**
+     * The number of requests per minute that this source allowed to use. There is a rate limit of 50
+     * requests per minute per app per account.
      */
     public SourceFreshdesk withRequestsPerMinute(long requestsPerMinute) {
         Utils.checkNotNull(requestsPerMinute, "requestsPerMinute");
@@ -176,8 +229,10 @@ public class SourceFreshdesk {
         return this;
     }
 
+
     /**
-     * The number of requests per minute that this source allowed to use. There is a rate limit of 50 requests per minute per app per account.
+     * The number of requests per minute that this source allowed to use. There is a rate limit of 50
+     * requests per minute per app per account.
      */
     public SourceFreshdesk withRequestsPerMinute(Optional<Long> requestsPerMinute) {
         Utils.checkNotNull(requestsPerMinute, "requestsPerMinute");
@@ -186,7 +241,8 @@ public class SourceFreshdesk {
     }
 
     /**
-     * UTC date and time. Any data created after this date will be replicated. If this parameter is not set, all data will be replicated.
+     * UTC date and time. Any data created after this date will be replicated. If this parameter is not
+     * set, all data will be replicated.
      */
     public SourceFreshdesk withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -194,8 +250,10 @@ public class SourceFreshdesk {
         return this;
     }
 
+
     /**
-     * UTC date and time. Any data created after this date will be replicated. If this parameter is not set, all data will be replicated.
+     * UTC date and time. Any data created after this date will be replicated. If this parameter is not
+     * set, all data will be replicated.
      */
     public SourceFreshdesk withStartDate(Optional<OffsetDateTime> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -203,7 +261,6 @@ public class SourceFreshdesk {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -214,22 +271,20 @@ public class SourceFreshdesk {
         }
         SourceFreshdesk other = (SourceFreshdesk) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.domain, other.domain) &&
-            Objects.deepEquals(this.lookbackWindowInDays, other.lookbackWindowInDays) &&
-            Objects.deepEquals(this.requestsPerMinute, other.requestsPerMinute) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.domain, other.domain) &&
+            Utils.enhancedDeepEquals(this.lookbackWindowInDays, other.lookbackWindowInDays) &&
+            Utils.enhancedDeepEquals(this.rateLimitPlan, other.rateLimitPlan) &&
+            Utils.enhancedDeepEquals(this.requestsPerMinute, other.requestsPerMinute) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            domain,
-            lookbackWindowInDays,
-            requestsPerMinute,
-            sourceType,
+        return Utils.enhancedHash(
+            apiKey, domain, lookbackWindowInDays,
+            rateLimitPlan, requestsPerMinute, sourceType,
             startDate);
     }
     
@@ -239,35 +294,43 @@ public class SourceFreshdesk {
                 "apiKey", apiKey,
                 "domain", domain,
                 "lookbackWindowInDays", lookbackWindowInDays,
+                "rateLimitPlan", rateLimitPlan,
                 "requestsPerMinute", requestsPerMinute,
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String domain;
- 
+
         private Optional<Long> lookbackWindowInDays;
- 
+
+        private Optional<? extends RateLimitPlan> rateLimitPlan = Optional.empty();
+
         private Optional<Long> requestsPerMinute = Optional.empty();
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Freshdesk API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/freshdesk"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+         * Freshdesk API Key. See the <a
+         * href="https://docs.airbyte.com/integrations/sources/freshdesk">docs</a> for more information on how
+         * to obtain this key.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Freshdesk domain
@@ -277,6 +340,7 @@ public class SourceFreshdesk {
             this.domain = domain;
             return this;
         }
+
 
         /**
          * Number of days for lookback window for the stream Satisfaction Ratings
@@ -296,8 +360,29 @@ public class SourceFreshdesk {
             return this;
         }
 
+
         /**
-         * The number of requests per minute that this source allowed to use. There is a rate limit of 50 requests per minute per app per account.
+         * Rate Limit Plan for API Budget
+         */
+        public Builder rateLimitPlan(RateLimitPlan rateLimitPlan) {
+            Utils.checkNotNull(rateLimitPlan, "rateLimitPlan");
+            this.rateLimitPlan = Optional.ofNullable(rateLimitPlan);
+            return this;
+        }
+
+        /**
+         * Rate Limit Plan for API Budget
+         */
+        public Builder rateLimitPlan(Optional<? extends RateLimitPlan> rateLimitPlan) {
+            Utils.checkNotNull(rateLimitPlan, "rateLimitPlan");
+            this.rateLimitPlan = rateLimitPlan;
+            return this;
+        }
+
+
+        /**
+         * The number of requests per minute that this source allowed to use. There is a rate limit of 50
+         * requests per minute per app per account.
          */
         public Builder requestsPerMinute(long requestsPerMinute) {
             Utils.checkNotNull(requestsPerMinute, "requestsPerMinute");
@@ -306,7 +391,8 @@ public class SourceFreshdesk {
         }
 
         /**
-         * The number of requests per minute that this source allowed to use. There is a rate limit of 50 requests per minute per app per account.
+         * The number of requests per minute that this source allowed to use. There is a rate limit of 50
+         * requests per minute per app per account.
          */
         public Builder requestsPerMinute(Optional<Long> requestsPerMinute) {
             Utils.checkNotNull(requestsPerMinute, "requestsPerMinute");
@@ -314,8 +400,10 @@ public class SourceFreshdesk {
             return this;
         }
 
+
         /**
-         * UTC date and time. Any data created after this date will be replicated. If this parameter is not set, all data will be replicated.
+         * UTC date and time. Any data created after this date will be replicated. If this parameter is not
+         * set, all data will be replicated.
          */
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -324,25 +412,25 @@ public class SourceFreshdesk {
         }
 
         /**
-         * UTC date and time. Any data created after this date will be replicated. If this parameter is not set, all data will be replicated.
+         * UTC date and time. Any data created after this date will be replicated. If this parameter is not
+         * set, all data will be replicated.
          */
         public Builder startDate(Optional<OffsetDateTime> startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceFreshdesk build() {
             if (lookbackWindowInDays == null) {
                 lookbackWindowInDays = _SINGLETON_VALUE_LookbackWindowInDays.value();
             }
+
             return new SourceFreshdesk(
-                apiKey,
-                domain,
-                lookbackWindowInDays,
-                requestsPerMinute,
-                startDate);
+                apiKey, domain, lookbackWindowInDays,
+                rateLimitPlan, requestsPerMinute, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_LookbackWindowInDays =
                 new LazySingletonValue<>(

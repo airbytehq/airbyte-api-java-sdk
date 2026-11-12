@@ -14,7 +14,7 @@ public enum Signnow {
     @JsonValue
     private final String value;
 
-    private Signnow(String value) {
+    Signnow(String value) {
         this.value = value;
     }
     

@@ -18,7 +18,7 @@ public enum Categories {
     @JsonValue
     private final String value;
 
-    private Categories(String value) {
+    Categories(String value) {
         this.value = value;
     }
     

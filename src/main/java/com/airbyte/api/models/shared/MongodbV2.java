@@ -14,7 +14,7 @@ public enum MongodbV2 {
     @JsonValue
     private final String value;
 
-    private MongodbV2(String value) {
+    MongodbV2(String value) {
         this.value = value;
     }
     

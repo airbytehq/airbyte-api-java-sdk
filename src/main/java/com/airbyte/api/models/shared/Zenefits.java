@@ -14,7 +14,7 @@ public enum Zenefits {
     @JsonValue
     private final String value;
 
-    private Zenefits(String value) {
+    Zenefits(String value) {
         this.value = value;
     }
     

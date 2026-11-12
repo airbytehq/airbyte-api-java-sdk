@@ -14,7 +14,7 @@ public enum Circleci {
     @JsonValue
     private final String value;
 
-    private Circleci(String value) {
+    Circleci(String value) {
         this.value = value;
     }
     

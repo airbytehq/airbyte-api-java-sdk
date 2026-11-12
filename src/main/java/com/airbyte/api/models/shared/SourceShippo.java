@@ -12,18 +12,19 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceShippo {
-
     /**
      * The bearer token used for making requests
      */
     @JsonProperty("shippo_token")
     private String shippoToken;
 
+
     @JsonProperty("sourceType")
     private Shippo sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -57,9 +58,10 @@ public class SourceShippo {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The bearer token used for making requests
@@ -76,7 +78,6 @@ public class SourceShippo {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -87,17 +88,15 @@ public class SourceShippo {
         }
         SourceShippo other = (SourceShippo) o;
         return 
-            Objects.deepEquals(this.shippoToken, other.shippoToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.shippoToken, other.shippoToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            shippoToken,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            shippoToken, sourceType, startDate);
     }
     
     @Override
@@ -107,16 +106,18 @@ public class SourceShippo {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String shippoToken;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The bearer token used for making requests
@@ -127,17 +128,19 @@ public class SourceShippo {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceShippo build() {
+
             return new SourceShippo(
-                shippoToken,
-                startDate);
+                shippoToken, startDate);
         }
+
 
         private static final LazySingletonValue<Shippo> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

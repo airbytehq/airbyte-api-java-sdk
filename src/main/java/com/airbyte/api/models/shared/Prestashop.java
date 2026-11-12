@@ -14,7 +14,7 @@ public enum Prestashop {
     @JsonValue
     private final String value;
 
-    private Prestashop(String value) {
+    Prestashop(String value) {
         this.value = value;
     }
     

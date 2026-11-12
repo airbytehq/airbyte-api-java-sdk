@@ -11,18 +11,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceCalCom {
-
     /**
      * API key to use. Find it at https://cal.com/account
      */
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonProperty("orgId")
     private String orgId;
+
 
     @JsonProperty("sourceType")
     private CalCom sourceType;
@@ -56,9 +57,10 @@ public class SourceCalCom {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API key to use. Find it at https://cal.com/account
@@ -75,7 +77,6 @@ public class SourceCalCom {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -86,17 +87,15 @@ public class SourceCalCom {
         }
         SourceCalCom other = (SourceCalCom) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.orgId, other.orgId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.orgId, other.orgId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            orgId,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, orgId, sourceType);
     }
     
     @Override
@@ -106,16 +105,18 @@ public class SourceCalCom {
                 "orgId", orgId,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String orgId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API key to use. Find it at https://cal.com/account
@@ -126,17 +127,19 @@ public class SourceCalCom {
             return this;
         }
 
+
         public Builder orgId(String orgId) {
             Utils.checkNotNull(orgId, "orgId");
             this.orgId = orgId;
             return this;
         }
-        
+
         public SourceCalCom build() {
+
             return new SourceCalCom(
-                apiKey,
-                orgId);
+                apiKey, orgId);
         }
+
 
         private static final LazySingletonValue<CalCom> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

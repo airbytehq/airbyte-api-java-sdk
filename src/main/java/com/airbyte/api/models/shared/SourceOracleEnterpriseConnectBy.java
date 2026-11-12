@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceOracleEnterpriseConnectBy
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class SourceOracleEnterpriseConnectBy {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceOracleEnterpriseConnectBy(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class SourceOracleEnterpriseConnectBy {
 
     public static SourceOracleEnterpriseConnectBy of(SourceOracleEnterpriseServiceName value) {
         Utils.checkNotNull(value, "value");
-        return new SourceOracleEnterpriseConnectBy(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOracleEnterpriseServiceName>(){}));
+        return new SourceOracleEnterpriseConnectBy(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceOracleEnterpriseConnectBy of(SourceOracleEnterpriseSystemIDSID value) {
         Utils.checkNotNull(value, "value");
-        return new SourceOracleEnterpriseConnectBy(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOracleEnterpriseSystemIDSID>(){}));
+        return new SourceOracleEnterpriseConnectBy(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class SourceOracleEnterpriseConnectBy {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class SourceOracleEnterpriseConnectBy {
             return false;
         }
         SourceOracleEnterpriseConnectBy other = (SourceOracleEnterpriseConnectBy) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,8 +84,8 @@ public class SourceOracleEnterpriseConnectBy {
 
         public _Deserializer() {
             super(SourceOracleEnterpriseConnectBy.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceOracleEnterpriseSystemIDSID>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceOracleEnterpriseServiceName>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceOracleEnterpriseServiceName>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceOracleEnterpriseSystemIDSID>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -95,6 +94,6 @@ public class SourceOracleEnterpriseConnectBy {
         return Utils.toString(SourceOracleEnterpriseConnectBy.class,
                 "value", value);
     }
- 
+
 }
 

@@ -14,7 +14,7 @@ public enum DestinationYellowbrickSchemasSslModeMode {
     @JsonValue
     private final String value;
 
-    private DestinationYellowbrickSchemasSslModeMode(String value) {
+    DestinationYellowbrickSchemasSslModeMode(String value) {
         this.value = value;
     }
     

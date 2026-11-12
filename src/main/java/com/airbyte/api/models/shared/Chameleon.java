@@ -14,7 +14,7 @@ public enum Chameleon {
     @JsonValue
     private final String value;
 
-    private Chameleon(String value) {
+    Chameleon(String value) {
         this.value = value;
     }
     

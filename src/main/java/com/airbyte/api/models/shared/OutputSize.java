@@ -20,7 +20,7 @@ public enum OutputSize {
     @JsonValue
     private final String value;
 
-    private OutputSize(String value) {
+    OutputSize(String value) {
         this.value = value;
     }
     

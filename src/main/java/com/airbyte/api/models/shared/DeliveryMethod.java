@@ -14,13 +14,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = DeliveryMethod._Deserializer.class)
 public class DeliveryMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DeliveryMethod(TypedObject value) {
         this.value = value;
@@ -28,17 +27,17 @@ public class DeliveryMethod {
 
     public static DeliveryMethod of(ReplicateRecords value) {
         Utils.checkNotNull(value, "value");
-        return new DeliveryMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ReplicateRecords>(){}));
+        return new DeliveryMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DeliveryMethod of(CopyRawFiles value) {
         Utils.checkNotNull(value, "value");
-        return new DeliveryMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<CopyRawFiles>(){}));
+        return new DeliveryMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DeliveryMethod of(ReplicatePermissionsACL value) {
         Utils.checkNotNull(value, "value");
-        return new DeliveryMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ReplicatePermissionsACL>(){}));
+        return new DeliveryMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -62,7 +61,7 @@ public class DeliveryMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -73,12 +72,12 @@ public class DeliveryMethod {
             return false;
         }
         DeliveryMethod other = (DeliveryMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -86,9 +85,9 @@ public class DeliveryMethod {
 
         public _Deserializer() {
             super(DeliveryMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<ReplicatePermissionsACL>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<ReplicateRecords>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<CopyRawFiles>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<ReplicateRecords>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<ReplicatePermissionsACL>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -97,6 +96,6 @@ public class DeliveryMethod {
         return Utils.toString(DeliveryMethod.class,
                 "value", value);
     }
- 
+
 }
 

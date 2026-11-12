@@ -14,7 +14,7 @@ public enum Persistiq {
     @JsonValue
     private final String value;
 
-    private Persistiq(String value) {
+    Persistiq(String value) {
         this.value = value;
     }
     

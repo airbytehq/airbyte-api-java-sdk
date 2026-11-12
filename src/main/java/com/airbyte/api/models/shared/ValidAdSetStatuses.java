@@ -25,7 +25,7 @@ public enum ValidAdSetStatuses {
     @JsonValue
     private final String value;
 
-    private ValidAdSetStatuses(String value) {
+    ValidAdSetStatuses(String value) {
         this.value = value;
     }
     

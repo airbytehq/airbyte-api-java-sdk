@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * LoadType
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class LoadType {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private LoadType(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class LoadType {
 
     public static LoadType of(InsertLoad value) {
         Utils.checkNotNull(value, "value");
-        return new LoadType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<InsertLoad>(){}));
+        return new LoadType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static LoadType of(BulkLoad value) {
         Utils.checkNotNull(value, "value");
-        return new LoadType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<BulkLoad>(){}));
+        return new LoadType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class LoadType {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class LoadType {
             return false;
         }
         LoadType other = (LoadType) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,8 +84,8 @@ public class LoadType {
 
         public _Deserializer() {
             super(LoadType.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<BulkLoad>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<InsertLoad>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<InsertLoad>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<BulkLoad>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -95,6 +94,6 @@ public class LoadType {
         return Utils.toString(LoadType.class,
                 "value", value);
     }
- 
+
 }
 

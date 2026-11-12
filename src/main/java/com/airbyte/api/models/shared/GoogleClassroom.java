@@ -14,7 +14,7 @@ public enum GoogleClassroom {
     @JsonValue
     private final String value;
 
-    private GoogleClassroom(String value) {
+    GoogleClassroom(String value) {
         this.value = value;
     }
     

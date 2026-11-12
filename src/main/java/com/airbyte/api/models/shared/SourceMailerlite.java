@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceMailerlite {
-
     /**
-     * Your API Token. See &lt;a href="https://developers.mailerlite.com/docs/#authentication"&gt;here&lt;/a&gt;.
+     * Your API Token. See <a href="https://developers.mailerlite.com/docs/#authentication">here</a>.
      */
     @JsonProperty("api_token")
     private String apiToken;
+
 
     @JsonProperty("sourceType")
     private Mailerlite sourceType;
@@ -33,7 +33,7 @@ public class SourceMailerlite {
     }
 
     /**
-     * Your API Token. See &lt;a href="https://developers.mailerlite.com/docs/#authentication"&gt;here&lt;/a&gt;.
+     * Your API Token. See <a href="https://developers.mailerlite.com/docs/#authentication">here</a>.
      */
     @JsonIgnore
     public String apiToken() {
@@ -45,12 +45,13 @@ public class SourceMailerlite {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Your API Token. See &lt;a href="https://developers.mailerlite.com/docs/#authentication"&gt;here&lt;/a&gt;.
+     * Your API Token. See <a href="https://developers.mailerlite.com/docs/#authentication">here</a>.
      */
     public SourceMailerlite withApiToken(String apiToken) {
         Utils.checkNotNull(apiToken, "apiToken");
@@ -58,7 +59,6 @@ public class SourceMailerlite {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceMailerlite {
         }
         SourceMailerlite other = (SourceMailerlite) o;
         return 
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiToken,
-            sourceType);
+        return Utils.enhancedHash(
+            apiToken, sourceType);
     }
     
     @Override
@@ -86,28 +85,32 @@ public class SourceMailerlite {
                 "apiToken", apiToken,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Your API Token. See &lt;a href="https://developers.mailerlite.com/docs/#authentication"&gt;here&lt;/a&gt;.
+         * Your API Token. See <a href="https://developers.mailerlite.com/docs/#authentication">here</a>.
          */
         public Builder apiToken(String apiToken) {
             Utils.checkNotNull(apiToken, "apiToken");
             this.apiToken = apiToken;
             return this;
         }
-        
+
         public SourceMailerlite build() {
+
             return new SourceMailerlite(
                 apiToken);
         }
+
 
         private static final LazySingletonValue<Mailerlite> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -3,18 +3,23 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
 import com.airbyte.api.models.shared.SourceCreateRequest;
+import com.airbyte.api.operations.CreateSource;
+import com.airbyte.api.utils.Headers;
 import com.airbyte.api.utils.Utils;
-import java.lang.Exception;
 import java.util.Optional;
 
 public class CreateSourceRequestBuilder {
 
     private Optional<? extends SourceCreateRequest> request = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallCreateSource sdk;
+    private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
-    public CreateSourceRequestBuilder(SDKMethodInterfaces.MethodCallCreateSource sdk) {
-        this.sdk = sdk;
+    public CreateSourceRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
                 
     public CreateSourceRequestBuilder request(SourceCreateRequest request) {
@@ -29,9 +34,11 @@ public class CreateSourceRequestBuilder {
         return this;
     }
 
-    public CreateSourceResponse call() throws Exception {
+    public CreateSourceResponse call() {
+        
+        RequestOperation<Optional<? extends SourceCreateRequest>, CreateSourceResponse> operation
+              = new CreateSource.Sync(sdkConfiguration, _headers);
 
-        return sdk.createSource(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

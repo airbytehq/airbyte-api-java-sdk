@@ -14,7 +14,7 @@ public enum Redshift {
     @JsonValue
     private final String value;
 
-    private Redshift(String value) {
+    Redshift(String value) {
         this.value = value;
     }
     

@@ -16,76 +16,96 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationSnowflake {
 
+public class DestinationSnowflake {
+    /**
+     * Whether to execute CDC deletions as hard deletes (i.e. propagate source deletions to the
+     * destination), or soft deletes (i.e. leave a tombstone record in the destination).
+     * 
+     * <p>Defaults to hard deletes.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("cdc_deletion_mode")
+    private Optional<? extends DestinationSnowflakeCDCDeletionMode> cdcDeletionMode;
+
+    /**
+     * Determines the type of authentication that should be used.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     private Optional<? extends AuthorizationMethod> credentials;
 
     /**
-     * Enter the name of the &lt;a href="https://docs.snowflake.com/en/sql-reference/ddl-database.html#database-schema-share-ddl"&gt;database&lt;/a&gt; you want to sync data into
+     * Enter the name of the <a
+     * href="https://docs.snowflake.com/en/sql-reference/ddl-database.html#database-schema-share-ddl">database</a>
+     * you want to sync data into
      */
     @JsonProperty("database")
     private String database;
 
+
     @JsonProperty("destinationType")
-    private DestinationSnowflakeSnowflake destinationType;
+    private Snowflake destinationType;
 
     /**
-     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+     * Write the legacy "raw tables" format, to enable backwards compatibility with older versions of this
+     * connector.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("disable_type_dedupe")
     private Optional<Boolean> disableTypeDedupe;
 
     /**
-     * Enter your Snowflake account's &lt;a href="https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#using-an-account-locator-as-an-identifier"&gt;locator&lt;/a&gt; (in the format &lt;account_locator&gt;.&lt;region&gt;.&lt;cloud&gt;.snowflakecomputing.com)
+     * Enter your Snowflake account's <a
+     * href="https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#using-an-account-locator-as-an-identifier">locator</a>
+     * (in the format &lt;account_locator&gt;.&lt;region&gt;.&lt;cloud&gt;.snowflakecomputing.com)
      */
     @JsonProperty("host")
     private String host;
 
     /**
-     * Enter the additional properties to pass to the JDBC URL string when connecting to the database (formatted as key=value pairs separated by the symbol &amp;). Example: key1=value1&amp;key2=value2&amp;key3=value3
+     * Enter the additional properties to pass to the JDBC URL string when connecting to the database
+     * (formatted as key=value pairs separated by the symbol &amp;). Example:
+     * key1=value1&amp;key2=value2&amp;key3=value3
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("jdbc_url_params")
     private Optional<String> jdbcUrlParams;
 
     /**
-     * The schema to write raw tables into (default: airbyte_internal)
+     * Airbyte will use this dataset for various internal tables. In legacy raw tables mode, the raw tables
+     * will be stored in this dataset. Defaults to "airbyte_internal".
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("raw_data_schema")
     private Optional<String> rawDataSchema;
 
     /**
-     * The number of days of Snowflake Time Travel to enable on the tables. See &lt;a href="https://docs.snowflake.com/en/user-guide/data-time-travel#data-retention-period"&gt;Snowflake's documentation&lt;/a&gt; for more information. Setting a nonzero value will incur increased storage costs in your Snowflake instance.
+     * The number of days of Snowflake Time Travel to enable on the tables. See <a
+     * href="https://docs.snowflake.com/en/user-guide/data-time-travel#data-retention-period">Snowflake's
+     * documentation</a> for more information. Setting a nonzero value will incur increased storage costs
+     * in your Snowflake instance.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("retention_period_days")
     private Optional<Long> retentionPeriodDays;
 
     /**
-     * Enter the &lt;a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#roles"&gt;role&lt;/a&gt; that you want to use to access Snowflake
+     * Enter the <a
+     * href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#roles">role</a>
+     * that you want to use to access Snowflake
      */
     @JsonProperty("role")
     private String role;
 
     /**
-     * Enter the name of the default &lt;a href="https://docs.snowflake.com/en/sql-reference/ddl-database.html#database-schema-share-ddl"&gt;schema&lt;/a&gt;
+     * Enter the name of the default <a
+     * href="https://docs.snowflake.com/en/sql-reference/ddl-database.html#database-schema-share-ddl">schema</a>
      */
     @JsonProperty("schema")
     private String schema;
-
-    /**
-     * Use MERGE for de-duplication of final tables. This option no effect if Final tables are disabled or Sync mode is not DEDUPE
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("use_merge_for_upsert")
-    private Optional<Boolean> useMergeForUpsert;
 
     /**
      * Enter the name of the user you want to use to access the database
@@ -94,13 +114,16 @@ public class DestinationSnowflake {
     private String username;
 
     /**
-     * Enter the name of the &lt;a href="https://docs.snowflake.com/en/user-guide/warehouses-overview.html#overview-of-warehouses"&gt;warehouse&lt;/a&gt; that you want to use as a compute cluster
+     * Enter the name of the <a
+     * href="https://docs.snowflake.com/en/user-guide/warehouses-overview.html#overview-of-warehouses">warehouse</a>
+     * that you want to use as a compute cluster
      */
     @JsonProperty("warehouse")
     private String warehouse;
 
     @JsonCreator
     public DestinationSnowflake(
+            @JsonProperty("cdc_deletion_mode") Optional<? extends DestinationSnowflakeCDCDeletionMode> cdcDeletionMode,
             @JsonProperty("credentials") Optional<? extends AuthorizationMethod> credentials,
             @JsonProperty("database") String database,
             @JsonProperty("disable_type_dedupe") Optional<Boolean> disableTypeDedupe,
@@ -110,9 +133,9 @@ public class DestinationSnowflake {
             @JsonProperty("retention_period_days") Optional<Long> retentionPeriodDays,
             @JsonProperty("role") String role,
             @JsonProperty("schema") String schema,
-            @JsonProperty("use_merge_for_upsert") Optional<Boolean> useMergeForUpsert,
             @JsonProperty("username") String username,
             @JsonProperty("warehouse") String warehouse) {
+        Utils.checkNotNull(cdcDeletionMode, "cdcDeletionMode");
         Utils.checkNotNull(credentials, "credentials");
         Utils.checkNotNull(database, "database");
         Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
@@ -122,9 +145,9 @@ public class DestinationSnowflake {
         Utils.checkNotNull(retentionPeriodDays, "retentionPeriodDays");
         Utils.checkNotNull(role, "role");
         Utils.checkNotNull(schema, "schema");
-        Utils.checkNotNull(useMergeForUpsert, "useMergeForUpsert");
         Utils.checkNotNull(username, "username");
         Utils.checkNotNull(warehouse, "warehouse");
+        this.cdcDeletionMode = cdcDeletionMode;
         this.credentials = credentials;
         this.database = database;
         this.destinationType = Builder._SINGLETON_VALUE_DestinationType.value();
@@ -135,7 +158,6 @@ public class DestinationSnowflake {
         this.retentionPeriodDays = retentionPeriodDays;
         this.role = role;
         this.schema = schema;
-        this.useMergeForUpsert = useMergeForUpsert;
         this.username = username;
         this.warehouse = warehouse;
     }
@@ -147,9 +169,27 @@ public class DestinationSnowflake {
             String schema,
             String username,
             String warehouse) {
-        this(Optional.empty(), database, Optional.empty(), host, Optional.empty(), Optional.empty(), Optional.empty(), role, schema, Optional.empty(), username, warehouse);
+        this(Optional.empty(), Optional.empty(), database,
+            Optional.empty(), host, Optional.empty(),
+            Optional.empty(), Optional.empty(), role,
+            schema, username, warehouse);
     }
 
+    /**
+     * Whether to execute CDC deletions as hard deletes (i.e. propagate source deletions to the
+     * destination), or soft deletes (i.e. leave a tombstone record in the destination).
+     * 
+     * <p>Defaults to hard deletes.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationSnowflakeCDCDeletionMode> cdcDeletionMode() {
+        return (Optional<DestinationSnowflakeCDCDeletionMode>) cdcDeletionMode;
+    }
+
+    /**
+     * Determines the type of authentication that should be used.
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public Optional<AuthorizationMethod> credentials() {
@@ -157,7 +197,9 @@ public class DestinationSnowflake {
     }
 
     /**
-     * Enter the name of the &lt;a href="https://docs.snowflake.com/en/sql-reference/ddl-database.html#database-schema-share-ddl"&gt;database&lt;/a&gt; you want to sync data into
+     * Enter the name of the <a
+     * href="https://docs.snowflake.com/en/sql-reference/ddl-database.html#database-schema-share-ddl">database</a>
+     * you want to sync data into
      */
     @JsonIgnore
     public String database() {
@@ -165,12 +207,13 @@ public class DestinationSnowflake {
     }
 
     @JsonIgnore
-    public DestinationSnowflakeSnowflake destinationType() {
+    public Snowflake destinationType() {
         return destinationType;
     }
 
     /**
-     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+     * Write the legacy "raw tables" format, to enable backwards compatibility with older versions of this
+     * connector.
      */
     @JsonIgnore
     public Optional<Boolean> disableTypeDedupe() {
@@ -178,7 +221,9 @@ public class DestinationSnowflake {
     }
 
     /**
-     * Enter your Snowflake account's &lt;a href="https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#using-an-account-locator-as-an-identifier"&gt;locator&lt;/a&gt; (in the format &lt;account_locator&gt;.&lt;region&gt;.&lt;cloud&gt;.snowflakecomputing.com)
+     * Enter your Snowflake account's <a
+     * href="https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#using-an-account-locator-as-an-identifier">locator</a>
+     * (in the format &lt;account_locator&gt;.&lt;region&gt;.&lt;cloud&gt;.snowflakecomputing.com)
      */
     @JsonIgnore
     public String host() {
@@ -186,7 +231,9 @@ public class DestinationSnowflake {
     }
 
     /**
-     * Enter the additional properties to pass to the JDBC URL string when connecting to the database (formatted as key=value pairs separated by the symbol &amp;). Example: key1=value1&amp;key2=value2&amp;key3=value3
+     * Enter the additional properties to pass to the JDBC URL string when connecting to the database
+     * (formatted as key=value pairs separated by the symbol &amp;). Example:
+     * key1=value1&amp;key2=value2&amp;key3=value3
      */
     @JsonIgnore
     public Optional<String> jdbcUrlParams() {
@@ -194,7 +241,8 @@ public class DestinationSnowflake {
     }
 
     /**
-     * The schema to write raw tables into (default: airbyte_internal)
+     * Airbyte will use this dataset for various internal tables. In legacy raw tables mode, the raw tables
+     * will be stored in this dataset. Defaults to "airbyte_internal".
      */
     @JsonIgnore
     public Optional<String> rawDataSchema() {
@@ -202,7 +250,10 @@ public class DestinationSnowflake {
     }
 
     /**
-     * The number of days of Snowflake Time Travel to enable on the tables. See &lt;a href="https://docs.snowflake.com/en/user-guide/data-time-travel#data-retention-period"&gt;Snowflake's documentation&lt;/a&gt; for more information. Setting a nonzero value will incur increased storage costs in your Snowflake instance.
+     * The number of days of Snowflake Time Travel to enable on the tables. See <a
+     * href="https://docs.snowflake.com/en/user-guide/data-time-travel#data-retention-period">Snowflake's
+     * documentation</a> for more information. Setting a nonzero value will incur increased storage costs
+     * in your Snowflake instance.
      */
     @JsonIgnore
     public Optional<Long> retentionPeriodDays() {
@@ -210,7 +261,9 @@ public class DestinationSnowflake {
     }
 
     /**
-     * Enter the &lt;a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#roles"&gt;role&lt;/a&gt; that you want to use to access Snowflake
+     * Enter the <a
+     * href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#roles">role</a>
+     * that you want to use to access Snowflake
      */
     @JsonIgnore
     public String role() {
@@ -218,19 +271,12 @@ public class DestinationSnowflake {
     }
 
     /**
-     * Enter the name of the default &lt;a href="https://docs.snowflake.com/en/sql-reference/ddl-database.html#database-schema-share-ddl"&gt;schema&lt;/a&gt;
+     * Enter the name of the default <a
+     * href="https://docs.snowflake.com/en/sql-reference/ddl-database.html#database-schema-share-ddl">schema</a>
      */
     @JsonIgnore
     public String schema() {
         return schema;
-    }
-
-    /**
-     * Use MERGE for de-duplication of final tables. This option no effect if Final tables are disabled or Sync mode is not DEDUPE
-     */
-    @JsonIgnore
-    public Optional<Boolean> useMergeForUpsert() {
-        return useMergeForUpsert;
     }
 
     /**
@@ -242,23 +288,58 @@ public class DestinationSnowflake {
     }
 
     /**
-     * Enter the name of the &lt;a href="https://docs.snowflake.com/en/user-guide/warehouses-overview.html#overview-of-warehouses"&gt;warehouse&lt;/a&gt; that you want to use as a compute cluster
+     * Enter the name of the <a
+     * href="https://docs.snowflake.com/en/user-guide/warehouses-overview.html#overview-of-warehouses">warehouse</a>
+     * that you want to use as a compute cluster
      */
     @JsonIgnore
     public String warehouse() {
         return warehouse;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
+
+    /**
+     * Whether to execute CDC deletions as hard deletes (i.e. propagate source deletions to the
+     * destination), or soft deletes (i.e. leave a tombstone record in the destination).
+     * 
+     * <p>Defaults to hard deletes.
+     */
+    public DestinationSnowflake withCdcDeletionMode(DestinationSnowflakeCDCDeletionMode cdcDeletionMode) {
+        Utils.checkNotNull(cdcDeletionMode, "cdcDeletionMode");
+        this.cdcDeletionMode = Optional.ofNullable(cdcDeletionMode);
+        return this;
+    }
+
+
+    /**
+     * Whether to execute CDC deletions as hard deletes (i.e. propagate source deletions to the
+     * destination), or soft deletes (i.e. leave a tombstone record in the destination).
+     * 
+     * <p>Defaults to hard deletes.
+     */
+    public DestinationSnowflake withCdcDeletionMode(Optional<? extends DestinationSnowflakeCDCDeletionMode> cdcDeletionMode) {
+        Utils.checkNotNull(cdcDeletionMode, "cdcDeletionMode");
+        this.cdcDeletionMode = cdcDeletionMode;
+        return this;
+    }
+
+    /**
+     * Determines the type of authentication that should be used.
+     */
     public DestinationSnowflake withCredentials(AuthorizationMethod credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = Optional.ofNullable(credentials);
         return this;
     }
 
+
+    /**
+     * Determines the type of authentication that should be used.
+     */
     public DestinationSnowflake withCredentials(Optional<? extends AuthorizationMethod> credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = credentials;
@@ -266,7 +347,9 @@ public class DestinationSnowflake {
     }
 
     /**
-     * Enter the name of the &lt;a href="https://docs.snowflake.com/en/sql-reference/ddl-database.html#database-schema-share-ddl"&gt;database&lt;/a&gt; you want to sync data into
+     * Enter the name of the <a
+     * href="https://docs.snowflake.com/en/sql-reference/ddl-database.html#database-schema-share-ddl">database</a>
+     * you want to sync data into
      */
     public DestinationSnowflake withDatabase(String database) {
         Utils.checkNotNull(database, "database");
@@ -275,7 +358,8 @@ public class DestinationSnowflake {
     }
 
     /**
-     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+     * Write the legacy "raw tables" format, to enable backwards compatibility with older versions of this
+     * connector.
      */
     public DestinationSnowflake withDisableTypeDedupe(boolean disableTypeDedupe) {
         Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
@@ -283,8 +367,10 @@ public class DestinationSnowflake {
         return this;
     }
 
+
     /**
-     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+     * Write the legacy "raw tables" format, to enable backwards compatibility with older versions of this
+     * connector.
      */
     public DestinationSnowflake withDisableTypeDedupe(Optional<Boolean> disableTypeDedupe) {
         Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
@@ -293,7 +379,9 @@ public class DestinationSnowflake {
     }
 
     /**
-     * Enter your Snowflake account's &lt;a href="https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#using-an-account-locator-as-an-identifier"&gt;locator&lt;/a&gt; (in the format &lt;account_locator&gt;.&lt;region&gt;.&lt;cloud&gt;.snowflakecomputing.com)
+     * Enter your Snowflake account's <a
+     * href="https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#using-an-account-locator-as-an-identifier">locator</a>
+     * (in the format &lt;account_locator&gt;.&lt;region&gt;.&lt;cloud&gt;.snowflakecomputing.com)
      */
     public DestinationSnowflake withHost(String host) {
         Utils.checkNotNull(host, "host");
@@ -302,7 +390,9 @@ public class DestinationSnowflake {
     }
 
     /**
-     * Enter the additional properties to pass to the JDBC URL string when connecting to the database (formatted as key=value pairs separated by the symbol &amp;). Example: key1=value1&amp;key2=value2&amp;key3=value3
+     * Enter the additional properties to pass to the JDBC URL string when connecting to the database
+     * (formatted as key=value pairs separated by the symbol &amp;). Example:
+     * key1=value1&amp;key2=value2&amp;key3=value3
      */
     public DestinationSnowflake withJdbcUrlParams(String jdbcUrlParams) {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -310,8 +400,11 @@ public class DestinationSnowflake {
         return this;
     }
 
+
     /**
-     * Enter the additional properties to pass to the JDBC URL string when connecting to the database (formatted as key=value pairs separated by the symbol &amp;). Example: key1=value1&amp;key2=value2&amp;key3=value3
+     * Enter the additional properties to pass to the JDBC URL string when connecting to the database
+     * (formatted as key=value pairs separated by the symbol &amp;). Example:
+     * key1=value1&amp;key2=value2&amp;key3=value3
      */
     public DestinationSnowflake withJdbcUrlParams(Optional<String> jdbcUrlParams) {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -320,7 +413,8 @@ public class DestinationSnowflake {
     }
 
     /**
-     * The schema to write raw tables into (default: airbyte_internal)
+     * Airbyte will use this dataset for various internal tables. In legacy raw tables mode, the raw tables
+     * will be stored in this dataset. Defaults to "airbyte_internal".
      */
     public DestinationSnowflake withRawDataSchema(String rawDataSchema) {
         Utils.checkNotNull(rawDataSchema, "rawDataSchema");
@@ -328,8 +422,10 @@ public class DestinationSnowflake {
         return this;
     }
 
+
     /**
-     * The schema to write raw tables into (default: airbyte_internal)
+     * Airbyte will use this dataset for various internal tables. In legacy raw tables mode, the raw tables
+     * will be stored in this dataset. Defaults to "airbyte_internal".
      */
     public DestinationSnowflake withRawDataSchema(Optional<String> rawDataSchema) {
         Utils.checkNotNull(rawDataSchema, "rawDataSchema");
@@ -338,7 +434,10 @@ public class DestinationSnowflake {
     }
 
     /**
-     * The number of days of Snowflake Time Travel to enable on the tables. See &lt;a href="https://docs.snowflake.com/en/user-guide/data-time-travel#data-retention-period"&gt;Snowflake's documentation&lt;/a&gt; for more information. Setting a nonzero value will incur increased storage costs in your Snowflake instance.
+     * The number of days of Snowflake Time Travel to enable on the tables. See <a
+     * href="https://docs.snowflake.com/en/user-guide/data-time-travel#data-retention-period">Snowflake's
+     * documentation</a> for more information. Setting a nonzero value will incur increased storage costs
+     * in your Snowflake instance.
      */
     public DestinationSnowflake withRetentionPeriodDays(long retentionPeriodDays) {
         Utils.checkNotNull(retentionPeriodDays, "retentionPeriodDays");
@@ -346,8 +445,12 @@ public class DestinationSnowflake {
         return this;
     }
 
+
     /**
-     * The number of days of Snowflake Time Travel to enable on the tables. See &lt;a href="https://docs.snowflake.com/en/user-guide/data-time-travel#data-retention-period"&gt;Snowflake's documentation&lt;/a&gt; for more information. Setting a nonzero value will incur increased storage costs in your Snowflake instance.
+     * The number of days of Snowflake Time Travel to enable on the tables. See <a
+     * href="https://docs.snowflake.com/en/user-guide/data-time-travel#data-retention-period">Snowflake's
+     * documentation</a> for more information. Setting a nonzero value will incur increased storage costs
+     * in your Snowflake instance.
      */
     public DestinationSnowflake withRetentionPeriodDays(Optional<Long> retentionPeriodDays) {
         Utils.checkNotNull(retentionPeriodDays, "retentionPeriodDays");
@@ -356,7 +459,9 @@ public class DestinationSnowflake {
     }
 
     /**
-     * Enter the &lt;a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#roles"&gt;role&lt;/a&gt; that you want to use to access Snowflake
+     * Enter the <a
+     * href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#roles">role</a>
+     * that you want to use to access Snowflake
      */
     public DestinationSnowflake withRole(String role) {
         Utils.checkNotNull(role, "role");
@@ -365,29 +470,12 @@ public class DestinationSnowflake {
     }
 
     /**
-     * Enter the name of the default &lt;a href="https://docs.snowflake.com/en/sql-reference/ddl-database.html#database-schema-share-ddl"&gt;schema&lt;/a&gt;
+     * Enter the name of the default <a
+     * href="https://docs.snowflake.com/en/sql-reference/ddl-database.html#database-schema-share-ddl">schema</a>
      */
     public DestinationSnowflake withSchema(String schema) {
         Utils.checkNotNull(schema, "schema");
         this.schema = schema;
-        return this;
-    }
-
-    /**
-     * Use MERGE for de-duplication of final tables. This option no effect if Final tables are disabled or Sync mode is not DEDUPE
-     */
-    public DestinationSnowflake withUseMergeForUpsert(boolean useMergeForUpsert) {
-        Utils.checkNotNull(useMergeForUpsert, "useMergeForUpsert");
-        this.useMergeForUpsert = Optional.ofNullable(useMergeForUpsert);
-        return this;
-    }
-
-    /**
-     * Use MERGE for de-duplication of final tables. This option no effect if Final tables are disabled or Sync mode is not DEDUPE
-     */
-    public DestinationSnowflake withUseMergeForUpsert(Optional<Boolean> useMergeForUpsert) {
-        Utils.checkNotNull(useMergeForUpsert, "useMergeForUpsert");
-        this.useMergeForUpsert = useMergeForUpsert;
         return this;
     }
 
@@ -401,7 +489,9 @@ public class DestinationSnowflake {
     }
 
     /**
-     * Enter the name of the &lt;a href="https://docs.snowflake.com/en/user-guide/warehouses-overview.html#overview-of-warehouses"&gt;warehouse&lt;/a&gt; that you want to use as a compute cluster
+     * Enter the name of the <a
+     * href="https://docs.snowflake.com/en/user-guide/warehouses-overview.html#overview-of-warehouses">warehouse</a>
+     * that you want to use as a compute cluster
      */
     public DestinationSnowflake withWarehouse(String warehouse) {
         Utils.checkNotNull(warehouse, "warehouse");
@@ -409,7 +499,6 @@ public class DestinationSnowflake {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -420,42 +509,35 @@ public class DestinationSnowflake {
         }
         DestinationSnowflake other = (DestinationSnowflake) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.database, other.database) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.disableTypeDedupe, other.disableTypeDedupe) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
-            Objects.deepEquals(this.rawDataSchema, other.rawDataSchema) &&
-            Objects.deepEquals(this.retentionPeriodDays, other.retentionPeriodDays) &&
-            Objects.deepEquals(this.role, other.role) &&
-            Objects.deepEquals(this.schema, other.schema) &&
-            Objects.deepEquals(this.useMergeForUpsert, other.useMergeForUpsert) &&
-            Objects.deepEquals(this.username, other.username) &&
-            Objects.deepEquals(this.warehouse, other.warehouse);
+            Utils.enhancedDeepEquals(this.cdcDeletionMode, other.cdcDeletionMode) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.database, other.database) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.disableTypeDedupe, other.disableTypeDedupe) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
+            Utils.enhancedDeepEquals(this.rawDataSchema, other.rawDataSchema) &&
+            Utils.enhancedDeepEquals(this.retentionPeriodDays, other.retentionPeriodDays) &&
+            Utils.enhancedDeepEquals(this.role, other.role) &&
+            Utils.enhancedDeepEquals(this.schema, other.schema) &&
+            Utils.enhancedDeepEquals(this.username, other.username) &&
+            Utils.enhancedDeepEquals(this.warehouse, other.warehouse);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            database,
-            destinationType,
-            disableTypeDedupe,
-            host,
-            jdbcUrlParams,
-            rawDataSchema,
-            retentionPeriodDays,
-            role,
-            schema,
-            useMergeForUpsert,
-            username,
+        return Utils.enhancedHash(
+            cdcDeletionMode, credentials, database,
+            destinationType, disableTypeDedupe, host,
+            jdbcUrlParams, rawDataSchema, retentionPeriodDays,
+            role, schema, username,
             warehouse);
     }
     
     @Override
     public String toString() {
         return Utils.toString(DestinationSnowflake.class,
+                "cdcDeletionMode", cdcDeletionMode,
                 "credentials", credentials,
                 "database", database,
                 "destinationType", destinationType,
@@ -466,55 +548,90 @@ public class DestinationSnowflake {
                 "retentionPeriodDays", retentionPeriodDays,
                 "role", role,
                 "schema", schema,
-                "useMergeForUpsert", useMergeForUpsert,
                 "username", username,
                 "warehouse", warehouse);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
+        private Optional<? extends DestinationSnowflakeCDCDeletionMode> cdcDeletionMode;
+
         private Optional<? extends AuthorizationMethod> credentials = Optional.empty();
- 
+
         private String database;
- 
-        private Optional<Boolean> disableTypeDedupe;
- 
+
+        private Optional<Boolean> disableTypeDedupe = Optional.empty();
+
         private String host;
- 
+
         private Optional<String> jdbcUrlParams = Optional.empty();
- 
+
         private Optional<String> rawDataSchema = Optional.empty();
- 
-        private Optional<Long> retentionPeriodDays;
- 
+
+        private Optional<Long> retentionPeriodDays = Optional.empty();
+
         private String role;
- 
+
         private String schema;
- 
-        private Optional<Boolean> useMergeForUpsert;
- 
+
         private String username;
- 
+
         private String warehouse;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
+        /**
+         * Whether to execute CDC deletions as hard deletes (i.e. propagate source deletions to the
+         * destination), or soft deletes (i.e. leave a tombstone record in the destination).
+         * 
+         * <p>Defaults to hard deletes.
+         */
+        public Builder cdcDeletionMode(DestinationSnowflakeCDCDeletionMode cdcDeletionMode) {
+            Utils.checkNotNull(cdcDeletionMode, "cdcDeletionMode");
+            this.cdcDeletionMode = Optional.ofNullable(cdcDeletionMode);
+            return this;
+        }
+
+        /**
+         * Whether to execute CDC deletions as hard deletes (i.e. propagate source deletions to the
+         * destination), or soft deletes (i.e. leave a tombstone record in the destination).
+         * 
+         * <p>Defaults to hard deletes.
+         */
+        public Builder cdcDeletionMode(Optional<? extends DestinationSnowflakeCDCDeletionMode> cdcDeletionMode) {
+            Utils.checkNotNull(cdcDeletionMode, "cdcDeletionMode");
+            this.cdcDeletionMode = cdcDeletionMode;
+            return this;
+        }
+
+
+        /**
+         * Determines the type of authentication that should be used.
+         */
         public Builder credentials(AuthorizationMethod credentials) {
             Utils.checkNotNull(credentials, "credentials");
             this.credentials = Optional.ofNullable(credentials);
             return this;
         }
 
+        /**
+         * Determines the type of authentication that should be used.
+         */
         public Builder credentials(Optional<? extends AuthorizationMethod> credentials) {
             Utils.checkNotNull(credentials, "credentials");
             this.credentials = credentials;
             return this;
         }
 
+
         /**
-         * Enter the name of the &lt;a href="https://docs.snowflake.com/en/sql-reference/ddl-database.html#database-schema-share-ddl"&gt;database&lt;/a&gt; you want to sync data into
+         * Enter the name of the <a
+         * href="https://docs.snowflake.com/en/sql-reference/ddl-database.html#database-schema-share-ddl">database</a>
+         * you want to sync data into
          */
         public Builder database(String database) {
             Utils.checkNotNull(database, "database");
@@ -522,8 +639,10 @@ public class DestinationSnowflake {
             return this;
         }
 
+
         /**
-         * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+         * Write the legacy "raw tables" format, to enable backwards compatibility with older versions of this
+         * connector.
          */
         public Builder disableTypeDedupe(boolean disableTypeDedupe) {
             Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
@@ -532,7 +651,8 @@ public class DestinationSnowflake {
         }
 
         /**
-         * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+         * Write the legacy "raw tables" format, to enable backwards compatibility with older versions of this
+         * connector.
          */
         public Builder disableTypeDedupe(Optional<Boolean> disableTypeDedupe) {
             Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
@@ -540,8 +660,11 @@ public class DestinationSnowflake {
             return this;
         }
 
+
         /**
-         * Enter your Snowflake account's &lt;a href="https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#using-an-account-locator-as-an-identifier"&gt;locator&lt;/a&gt; (in the format &lt;account_locator&gt;.&lt;region&gt;.&lt;cloud&gt;.snowflakecomputing.com)
+         * Enter your Snowflake account's <a
+         * href="https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#using-an-account-locator-as-an-identifier">locator</a>
+         * (in the format &lt;account_locator&gt;.&lt;region&gt;.&lt;cloud&gt;.snowflakecomputing.com)
          */
         public Builder host(String host) {
             Utils.checkNotNull(host, "host");
@@ -549,8 +672,11 @@ public class DestinationSnowflake {
             return this;
         }
 
+
         /**
-         * Enter the additional properties to pass to the JDBC URL string when connecting to the database (formatted as key=value pairs separated by the symbol &amp;). Example: key1=value1&amp;key2=value2&amp;key3=value3
+         * Enter the additional properties to pass to the JDBC URL string when connecting to the database
+         * (formatted as key=value pairs separated by the symbol &amp;). Example:
+         * key1=value1&amp;key2=value2&amp;key3=value3
          */
         public Builder jdbcUrlParams(String jdbcUrlParams) {
             Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -559,7 +685,9 @@ public class DestinationSnowflake {
         }
 
         /**
-         * Enter the additional properties to pass to the JDBC URL string when connecting to the database (formatted as key=value pairs separated by the symbol &amp;). Example: key1=value1&amp;key2=value2&amp;key3=value3
+         * Enter the additional properties to pass to the JDBC URL string when connecting to the database
+         * (formatted as key=value pairs separated by the symbol &amp;). Example:
+         * key1=value1&amp;key2=value2&amp;key3=value3
          */
         public Builder jdbcUrlParams(Optional<String> jdbcUrlParams) {
             Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -567,8 +695,10 @@ public class DestinationSnowflake {
             return this;
         }
 
+
         /**
-         * The schema to write raw tables into (default: airbyte_internal)
+         * Airbyte will use this dataset for various internal tables. In legacy raw tables mode, the raw tables
+         * will be stored in this dataset. Defaults to "airbyte_internal".
          */
         public Builder rawDataSchema(String rawDataSchema) {
             Utils.checkNotNull(rawDataSchema, "rawDataSchema");
@@ -577,7 +707,8 @@ public class DestinationSnowflake {
         }
 
         /**
-         * The schema to write raw tables into (default: airbyte_internal)
+         * Airbyte will use this dataset for various internal tables. In legacy raw tables mode, the raw tables
+         * will be stored in this dataset. Defaults to "airbyte_internal".
          */
         public Builder rawDataSchema(Optional<String> rawDataSchema) {
             Utils.checkNotNull(rawDataSchema, "rawDataSchema");
@@ -585,8 +716,12 @@ public class DestinationSnowflake {
             return this;
         }
 
+
         /**
-         * The number of days of Snowflake Time Travel to enable on the tables. See &lt;a href="https://docs.snowflake.com/en/user-guide/data-time-travel#data-retention-period"&gt;Snowflake's documentation&lt;/a&gt; for more information. Setting a nonzero value will incur increased storage costs in your Snowflake instance.
+         * The number of days of Snowflake Time Travel to enable on the tables. See <a
+         * href="https://docs.snowflake.com/en/user-guide/data-time-travel#data-retention-period">Snowflake's
+         * documentation</a> for more information. Setting a nonzero value will incur increased storage costs
+         * in your Snowflake instance.
          */
         public Builder retentionPeriodDays(long retentionPeriodDays) {
             Utils.checkNotNull(retentionPeriodDays, "retentionPeriodDays");
@@ -595,7 +730,10 @@ public class DestinationSnowflake {
         }
 
         /**
-         * The number of days of Snowflake Time Travel to enable on the tables. See &lt;a href="https://docs.snowflake.com/en/user-guide/data-time-travel#data-retention-period"&gt;Snowflake's documentation&lt;/a&gt; for more information. Setting a nonzero value will incur increased storage costs in your Snowflake instance.
+         * The number of days of Snowflake Time Travel to enable on the tables. See <a
+         * href="https://docs.snowflake.com/en/user-guide/data-time-travel#data-retention-period">Snowflake's
+         * documentation</a> for more information. Setting a nonzero value will incur increased storage costs
+         * in your Snowflake instance.
          */
         public Builder retentionPeriodDays(Optional<Long> retentionPeriodDays) {
             Utils.checkNotNull(retentionPeriodDays, "retentionPeriodDays");
@@ -603,8 +741,11 @@ public class DestinationSnowflake {
             return this;
         }
 
+
         /**
-         * Enter the &lt;a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#roles"&gt;role&lt;/a&gt; that you want to use to access Snowflake
+         * Enter the <a
+         * href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#roles">role</a>
+         * that you want to use to access Snowflake
          */
         public Builder role(String role) {
             Utils.checkNotNull(role, "role");
@@ -612,8 +753,10 @@ public class DestinationSnowflake {
             return this;
         }
 
+
         /**
-         * Enter the name of the default &lt;a href="https://docs.snowflake.com/en/sql-reference/ddl-database.html#database-schema-share-ddl"&gt;schema&lt;/a&gt;
+         * Enter the name of the default <a
+         * href="https://docs.snowflake.com/en/sql-reference/ddl-database.html#database-schema-share-ddl">schema</a>
          */
         public Builder schema(String schema) {
             Utils.checkNotNull(schema, "schema");
@@ -621,23 +764,6 @@ public class DestinationSnowflake {
             return this;
         }
 
-        /**
-         * Use MERGE for de-duplication of final tables. This option no effect if Final tables are disabled or Sync mode is not DEDUPE
-         */
-        public Builder useMergeForUpsert(boolean useMergeForUpsert) {
-            Utils.checkNotNull(useMergeForUpsert, "useMergeForUpsert");
-            this.useMergeForUpsert = Optional.ofNullable(useMergeForUpsert);
-            return this;
-        }
-
-        /**
-         * Use MERGE for de-duplication of final tables. This option no effect if Final tables are disabled or Sync mode is not DEDUPE
-         */
-        public Builder useMergeForUpsert(Optional<Boolean> useMergeForUpsert) {
-            Utils.checkNotNull(useMergeForUpsert, "useMergeForUpsert");
-            this.useMergeForUpsert = useMergeForUpsert;
-            return this;
-        }
 
         /**
          * Enter the name of the user you want to use to access the database
@@ -648,62 +774,41 @@ public class DestinationSnowflake {
             return this;
         }
 
+
         /**
-         * Enter the name of the &lt;a href="https://docs.snowflake.com/en/user-guide/warehouses-overview.html#overview-of-warehouses"&gt;warehouse&lt;/a&gt; that you want to use as a compute cluster
+         * Enter the name of the <a
+         * href="https://docs.snowflake.com/en/user-guide/warehouses-overview.html#overview-of-warehouses">warehouse</a>
+         * that you want to use as a compute cluster
          */
         public Builder warehouse(String warehouse) {
             Utils.checkNotNull(warehouse, "warehouse");
             this.warehouse = warehouse;
             return this;
         }
-        
+
         public DestinationSnowflake build() {
-            if (disableTypeDedupe == null) {
-                disableTypeDedupe = _SINGLETON_VALUE_DisableTypeDedupe.value();
+            if (cdcDeletionMode == null) {
+                cdcDeletionMode = _SINGLETON_VALUE_CdcDeletionMode.value();
             }
-            if (retentionPeriodDays == null) {
-                retentionPeriodDays = _SINGLETON_VALUE_RetentionPeriodDays.value();
-            }
-            if (useMergeForUpsert == null) {
-                useMergeForUpsert = _SINGLETON_VALUE_UseMergeForUpsert.value();
-            }
+
             return new DestinationSnowflake(
-                credentials,
-                database,
-                disableTypeDedupe,
-                host,
-                jdbcUrlParams,
-                rawDataSchema,
-                retentionPeriodDays,
-                role,
-                schema,
-                useMergeForUpsert,
-                username,
-                warehouse);
+                cdcDeletionMode, credentials, database,
+                disableTypeDedupe, host, jdbcUrlParams,
+                rawDataSchema, retentionPeriodDays, role,
+                schema, username, warehouse);
         }
 
-        private static final LazySingletonValue<DestinationSnowflakeSnowflake> _SINGLETON_VALUE_DestinationType =
+
+        private static final LazySingletonValue<Optional<? extends DestinationSnowflakeCDCDeletionMode>> _SINGLETON_VALUE_CdcDeletionMode =
+                new LazySingletonValue<>(
+                        "cdc_deletion_mode",
+                        "\"Hard delete\"",
+                        new TypeReference<Optional<? extends DestinationSnowflakeCDCDeletionMode>>() {});
+
+        private static final LazySingletonValue<Snowflake> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(
                         "destinationType",
                         "\"snowflake\"",
-                        new TypeReference<DestinationSnowflakeSnowflake>() {});
-
-        private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_DisableTypeDedupe =
-                new LazySingletonValue<>(
-                        "disable_type_dedupe",
-                        "false",
-                        new TypeReference<Optional<Boolean>>() {});
-
-        private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_RetentionPeriodDays =
-                new LazySingletonValue<>(
-                        "retention_period_days",
-                        "1",
-                        new TypeReference<Optional<Long>>() {});
-
-        private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_UseMergeForUpsert =
-                new LazySingletonValue<>(
-                        "use_merge_for_upsert",
-                        "false",
-                        new TypeReference<Optional<Boolean>>() {});
+                        new TypeReference<Snowflake>() {});
     }
 }

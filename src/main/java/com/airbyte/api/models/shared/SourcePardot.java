@@ -15,11 +15,10 @@ import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourcePardot {
 
+public class SourcePardot {
     /**
      * The Consumer Key that can be found when viewing your app in Salesforce
      */
@@ -33,18 +32,12 @@ public class SourcePardot {
     private String clientSecret;
 
     /**
-     * Whether or not the the app is in a Salesforce sandbox. If you do not know what this, assume it is false.
+     * Whether or not the the app is in a Salesforce sandbox. If you do not know what this, assume it is
+     * false.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("is_sandbox")
     private Optional<Boolean> isSandbox;
-
-    /**
-     * The maximum number of records to return per request
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("page_size")
-    private Optional<String> pageSize;
 
     /**
      * Pardot Business ID, can be found at Setup &gt; Pardot &gt; Pardot Account Setup
@@ -53,16 +46,21 @@ public class SourcePardot {
     private String pardotBusinessUnitId;
 
     /**
-     * Salesforce Refresh Token used for Airbyte to access your Salesforce account. If you don't know what this is, follow this &lt;a href="https://medium.com/@bpmmendis94/obtain-access-refresh-tokens-from-salesforce-rest-api-a324fe4ccd9b"&gt;guide&lt;/a&gt; to retrieve it.
+     * Salesforce Refresh Token used for Airbyte to access your Salesforce account. If you don't know what
+     * this is, follow this <a
+     * href="https://medium.com/@bpmmendis94/obtain-access-refresh-tokens-from-salesforce-rest-api-a324fe4ccd9b">guide</a>
+     * to retrieve it.
      */
     @JsonProperty("refresh_token")
     private String refreshToken;
+
 
     @JsonProperty("sourceType")
     private Pardot sourceType;
 
     /**
-     * UTC date and time in the format 2000-01-01T00:00:00Z. Any data before this date will not be replicated. Defaults to the year Pardot was released.
+     * UTC date and time in the format 2000-01-01T00:00:00Z. Any data before this date will not be
+     * replicated. Defaults to the year Pardot was released.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
@@ -73,21 +71,18 @@ public class SourcePardot {
             @JsonProperty("client_id") String clientId,
             @JsonProperty("client_secret") String clientSecret,
             @JsonProperty("is_sandbox") Optional<Boolean> isSandbox,
-            @JsonProperty("page_size") Optional<String> pageSize,
             @JsonProperty("pardot_business_unit_id") String pardotBusinessUnitId,
             @JsonProperty("refresh_token") String refreshToken,
             @JsonProperty("start_date") Optional<OffsetDateTime> startDate) {
         Utils.checkNotNull(clientId, "clientId");
         Utils.checkNotNull(clientSecret, "clientSecret");
         Utils.checkNotNull(isSandbox, "isSandbox");
-        Utils.checkNotNull(pageSize, "pageSize");
         Utils.checkNotNull(pardotBusinessUnitId, "pardotBusinessUnitId");
         Utils.checkNotNull(refreshToken, "refreshToken");
         Utils.checkNotNull(startDate, "startDate");
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.isSandbox = isSandbox;
-        this.pageSize = pageSize;
         this.pardotBusinessUnitId = pardotBusinessUnitId;
         this.refreshToken = refreshToken;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
@@ -99,7 +94,8 @@ public class SourcePardot {
             String clientSecret,
             String pardotBusinessUnitId,
             String refreshToken) {
-        this(clientId, clientSecret, Optional.empty(), Optional.empty(), pardotBusinessUnitId, refreshToken, Optional.empty());
+        this(clientId, clientSecret, Optional.empty(),
+            pardotBusinessUnitId, refreshToken, Optional.empty());
     }
 
     /**
@@ -119,19 +115,12 @@ public class SourcePardot {
     }
 
     /**
-     * Whether or not the the app is in a Salesforce sandbox. If you do not know what this, assume it is false.
+     * Whether or not the the app is in a Salesforce sandbox. If you do not know what this, assume it is
+     * false.
      */
     @JsonIgnore
     public Optional<Boolean> isSandbox() {
         return isSandbox;
-    }
-
-    /**
-     * The maximum number of records to return per request
-     */
-    @JsonIgnore
-    public Optional<String> pageSize() {
-        return pageSize;
     }
 
     /**
@@ -143,7 +132,10 @@ public class SourcePardot {
     }
 
     /**
-     * Salesforce Refresh Token used for Airbyte to access your Salesforce account. If you don't know what this is, follow this &lt;a href="https://medium.com/@bpmmendis94/obtain-access-refresh-tokens-from-salesforce-rest-api-a324fe4ccd9b"&gt;guide&lt;/a&gt; to retrieve it.
+     * Salesforce Refresh Token used for Airbyte to access your Salesforce account. If you don't know what
+     * this is, follow this <a
+     * href="https://medium.com/@bpmmendis94/obtain-access-refresh-tokens-from-salesforce-rest-api-a324fe4ccd9b">guide</a>
+     * to retrieve it.
      */
     @JsonIgnore
     public String refreshToken() {
@@ -156,16 +148,18 @@ public class SourcePardot {
     }
 
     /**
-     * UTC date and time in the format 2000-01-01T00:00:00Z. Any data before this date will not be replicated. Defaults to the year Pardot was released.
+     * UTC date and time in the format 2000-01-01T00:00:00Z. Any data before this date will not be
+     * replicated. Defaults to the year Pardot was released.
      */
     @JsonIgnore
     public Optional<OffsetDateTime> startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Consumer Key that can be found when viewing your app in Salesforce
@@ -186,7 +180,8 @@ public class SourcePardot {
     }
 
     /**
-     * Whether or not the the app is in a Salesforce sandbox. If you do not know what this, assume it is false.
+     * Whether or not the the app is in a Salesforce sandbox. If you do not know what this, assume it is
+     * false.
      */
     public SourcePardot withIsSandbox(boolean isSandbox) {
         Utils.checkNotNull(isSandbox, "isSandbox");
@@ -194,30 +189,14 @@ public class SourcePardot {
         return this;
     }
 
+
     /**
-     * Whether or not the the app is in a Salesforce sandbox. If you do not know what this, assume it is false.
+     * Whether or not the the app is in a Salesforce sandbox. If you do not know what this, assume it is
+     * false.
      */
     public SourcePardot withIsSandbox(Optional<Boolean> isSandbox) {
         Utils.checkNotNull(isSandbox, "isSandbox");
         this.isSandbox = isSandbox;
-        return this;
-    }
-
-    /**
-     * The maximum number of records to return per request
-     */
-    public SourcePardot withPageSize(String pageSize) {
-        Utils.checkNotNull(pageSize, "pageSize");
-        this.pageSize = Optional.ofNullable(pageSize);
-        return this;
-    }
-
-    /**
-     * The maximum number of records to return per request
-     */
-    public SourcePardot withPageSize(Optional<String> pageSize) {
-        Utils.checkNotNull(pageSize, "pageSize");
-        this.pageSize = pageSize;
         return this;
     }
 
@@ -231,7 +210,10 @@ public class SourcePardot {
     }
 
     /**
-     * Salesforce Refresh Token used for Airbyte to access your Salesforce account. If you don't know what this is, follow this &lt;a href="https://medium.com/@bpmmendis94/obtain-access-refresh-tokens-from-salesforce-rest-api-a324fe4ccd9b"&gt;guide&lt;/a&gt; to retrieve it.
+     * Salesforce Refresh Token used for Airbyte to access your Salesforce account. If you don't know what
+     * this is, follow this <a
+     * href="https://medium.com/@bpmmendis94/obtain-access-refresh-tokens-from-salesforce-rest-api-a324fe4ccd9b">guide</a>
+     * to retrieve it.
      */
     public SourcePardot withRefreshToken(String refreshToken) {
         Utils.checkNotNull(refreshToken, "refreshToken");
@@ -240,7 +222,8 @@ public class SourcePardot {
     }
 
     /**
-     * UTC date and time in the format 2000-01-01T00:00:00Z. Any data before this date will not be replicated. Defaults to the year Pardot was released.
+     * UTC date and time in the format 2000-01-01T00:00:00Z. Any data before this date will not be
+     * replicated. Defaults to the year Pardot was released.
      */
     public SourcePardot withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -248,8 +231,10 @@ public class SourcePardot {
         return this;
     }
 
+
     /**
-     * UTC date and time in the format 2000-01-01T00:00:00Z. Any data before this date will not be replicated. Defaults to the year Pardot was released.
+     * UTC date and time in the format 2000-01-01T00:00:00Z. Any data before this date will not be
+     * replicated. Defaults to the year Pardot was released.
      */
     public SourcePardot withStartDate(Optional<OffsetDateTime> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -257,7 +242,6 @@ public class SourcePardot {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -268,26 +252,20 @@ public class SourcePardot {
         }
         SourcePardot other = (SourcePardot) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.isSandbox, other.isSandbox) &&
-            Objects.deepEquals(this.pageSize, other.pageSize) &&
-            Objects.deepEquals(this.pardotBusinessUnitId, other.pardotBusinessUnitId) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.isSandbox, other.isSandbox) &&
+            Utils.enhancedDeepEquals(this.pardotBusinessUnitId, other.pardotBusinessUnitId) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            isSandbox,
-            pageSize,
-            pardotBusinessUnitId,
-            refreshToken,
-            sourceType,
+        return Utils.enhancedHash(
+            clientId, clientSecret, isSandbox,
+            pardotBusinessUnitId, refreshToken, sourceType,
             startDate);
     }
     
@@ -297,32 +275,31 @@ public class SourcePardot {
                 "clientId", clientId,
                 "clientSecret", clientSecret,
                 "isSandbox", isSandbox,
-                "pageSize", pageSize,
                 "pardotBusinessUnitId", pardotBusinessUnitId,
                 "refreshToken", refreshToken,
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private Optional<Boolean> isSandbox;
- 
-        private Optional<String> pageSize;
- 
+
         private String pardotBusinessUnitId;
- 
+
         private String refreshToken;
- 
+
         private Optional<OffsetDateTime> startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Consumer Key that can be found when viewing your app in Salesforce
@@ -333,6 +310,7 @@ public class SourcePardot {
             return this;
         }
 
+
         /**
          * The Consumer Secret that can be found when viewing your app in Salesforce
          */
@@ -342,8 +320,10 @@ public class SourcePardot {
             return this;
         }
 
+
         /**
-         * Whether or not the the app is in a Salesforce sandbox. If you do not know what this, assume it is false.
+         * Whether or not the the app is in a Salesforce sandbox. If you do not know what this, assume it is
+         * false.
          */
         public Builder isSandbox(boolean isSandbox) {
             Utils.checkNotNull(isSandbox, "isSandbox");
@@ -352,7 +332,8 @@ public class SourcePardot {
         }
 
         /**
-         * Whether or not the the app is in a Salesforce sandbox. If you do not know what this, assume it is false.
+         * Whether or not the the app is in a Salesforce sandbox. If you do not know what this, assume it is
+         * false.
          */
         public Builder isSandbox(Optional<Boolean> isSandbox) {
             Utils.checkNotNull(isSandbox, "isSandbox");
@@ -360,23 +341,6 @@ public class SourcePardot {
             return this;
         }
 
-        /**
-         * The maximum number of records to return per request
-         */
-        public Builder pageSize(String pageSize) {
-            Utils.checkNotNull(pageSize, "pageSize");
-            this.pageSize = Optional.ofNullable(pageSize);
-            return this;
-        }
-
-        /**
-         * The maximum number of records to return per request
-         */
-        public Builder pageSize(Optional<String> pageSize) {
-            Utils.checkNotNull(pageSize, "pageSize");
-            this.pageSize = pageSize;
-            return this;
-        }
 
         /**
          * Pardot Business ID, can be found at Setup &gt; Pardot &gt; Pardot Account Setup
@@ -387,8 +351,12 @@ public class SourcePardot {
             return this;
         }
 
+
         /**
-         * Salesforce Refresh Token used for Airbyte to access your Salesforce account. If you don't know what this is, follow this &lt;a href="https://medium.com/@bpmmendis94/obtain-access-refresh-tokens-from-salesforce-rest-api-a324fe4ccd9b"&gt;guide&lt;/a&gt; to retrieve it.
+         * Salesforce Refresh Token used for Airbyte to access your Salesforce account. If you don't know what
+         * this is, follow this <a
+         * href="https://medium.com/@bpmmendis94/obtain-access-refresh-tokens-from-salesforce-rest-api-a324fe4ccd9b">guide</a>
+         * to retrieve it.
          */
         public Builder refreshToken(String refreshToken) {
             Utils.checkNotNull(refreshToken, "refreshToken");
@@ -396,8 +364,10 @@ public class SourcePardot {
             return this;
         }
 
+
         /**
-         * UTC date and time in the format 2000-01-01T00:00:00Z. Any data before this date will not be replicated. Defaults to the year Pardot was released.
+         * UTC date and time in the format 2000-01-01T00:00:00Z. Any data before this date will not be
+         * replicated. Defaults to the year Pardot was released.
          */
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -406,45 +376,34 @@ public class SourcePardot {
         }
 
         /**
-         * UTC date and time in the format 2000-01-01T00:00:00Z. Any data before this date will not be replicated. Defaults to the year Pardot was released.
+         * UTC date and time in the format 2000-01-01T00:00:00Z. Any data before this date will not be
+         * replicated. Defaults to the year Pardot was released.
          */
         public Builder startDate(Optional<OffsetDateTime> startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourcePardot build() {
             if (isSandbox == null) {
                 isSandbox = _SINGLETON_VALUE_IsSandbox.value();
             }
-            if (pageSize == null) {
-                pageSize = _SINGLETON_VALUE_PageSize.value();
-            }
             if (startDate == null) {
                 startDate = _SINGLETON_VALUE_StartDate.value();
             }
+
             return new SourcePardot(
-                clientId,
-                clientSecret,
-                isSandbox,
-                pageSize,
-                pardotBusinessUnitId,
-                refreshToken,
-                startDate);
+                clientId, clientSecret, isSandbox,
+                pardotBusinessUnitId, refreshToken, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_IsSandbox =
                 new LazySingletonValue<>(
                         "is_sandbox",
                         "false",
                         new TypeReference<Optional<Boolean>>() {});
-
-        private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_PageSize =
-                new LazySingletonValue<>(
-                        "page_size",
-                        "\"1000\"",
-                        new TypeReference<Optional<String>>() {});
 
         private static final LazySingletonValue<Pardot> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

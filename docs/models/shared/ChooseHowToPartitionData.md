@@ -2,6 +2,14 @@
 
 Partition data by cursor fields when a cursor field is a date
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.ChooseHowToPartitionData;
+
+ChooseHowToPartitionData value = ChooseHowToPartitionData.NO_PARTITIONING;
+```
+
 
 ## Values
 

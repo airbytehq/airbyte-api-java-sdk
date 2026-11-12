@@ -20,7 +20,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -33,12 +32,16 @@ public class FirstNEntries {
     @JsonIgnore
     private Map<String, Object> additionalProperties;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("logging_type")
     private Optional<? extends LoggingType> loggingType;
 
     /**
-     * Number of entries to log. This destination is for testing only. So it won't make sense to log infinitely. The maximum is 1,000 entries.
+     * Number of entries to log. This destination is for testing only. So it won't make sense to log
+     * infinitely.
+     * 
+     * <p>The maximum is 1,000 entries.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("max_entry_count")
@@ -71,16 +74,20 @@ public class FirstNEntries {
     }
 
     /**
-     * Number of entries to log. This destination is for testing only. So it won't make sense to log infinitely. The maximum is 1,000 entries.
+     * Number of entries to log. This destination is for testing only. So it won't make sense to log
+     * infinitely.
+     * 
+     * <p>The maximum is 1,000 entries.
      */
     @JsonIgnore
     public Optional<Double> maxEntryCount() {
         return maxEntryCount;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public FirstNEntries withAdditionalProperty(String key, Object value) {
@@ -88,8 +95,7 @@ public class FirstNEntries {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public FirstNEntries withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -102,6 +108,7 @@ public class FirstNEntries {
         return this;
     }
 
+
     public FirstNEntries withLoggingType(Optional<? extends LoggingType> loggingType) {
         Utils.checkNotNull(loggingType, "loggingType");
         this.loggingType = loggingType;
@@ -109,7 +116,10 @@ public class FirstNEntries {
     }
 
     /**
-     * Number of entries to log. This destination is for testing only. So it won't make sense to log infinitely. The maximum is 1,000 entries.
+     * Number of entries to log. This destination is for testing only. So it won't make sense to log
+     * infinitely.
+     * 
+     * <p>The maximum is 1,000 entries.
      */
     public FirstNEntries withMaxEntryCount(double maxEntryCount) {
         Utils.checkNotNull(maxEntryCount, "maxEntryCount");
@@ -117,8 +127,12 @@ public class FirstNEntries {
         return this;
     }
 
+
     /**
-     * Number of entries to log. This destination is for testing only. So it won't make sense to log infinitely. The maximum is 1,000 entries.
+     * Number of entries to log. This destination is for testing only. So it won't make sense to log
+     * infinitely.
+     * 
+     * <p>The maximum is 1,000 entries.
      */
     public FirstNEntries withMaxEntryCount(Optional<Double> maxEntryCount) {
         Utils.checkNotNull(maxEntryCount, "maxEntryCount");
@@ -126,7 +140,6 @@ public class FirstNEntries {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -137,17 +150,15 @@ public class FirstNEntries {
         }
         FirstNEntries other = (FirstNEntries) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.loggingType, other.loggingType) &&
-            Objects.deepEquals(this.maxEntryCount, other.maxEntryCount);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.loggingType, other.loggingType) &&
+            Utils.enhancedDeepEquals(this.maxEntryCount, other.maxEntryCount);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            loggingType,
-            maxEntryCount);
+        return Utils.enhancedHash(
+            additionalProperties, loggingType, maxEntryCount);
     }
     
     @Override
@@ -157,15 +168,16 @@ public class FirstNEntries {
                 "loggingType", loggingType,
                 "maxEntryCount", maxEntryCount);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends LoggingType> loggingType;
- 
+
         private Optional<Double> maxEntryCount;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -186,6 +198,7 @@ public class FirstNEntries {
             return this;
         }
 
+
         public Builder loggingType(LoggingType loggingType) {
             Utils.checkNotNull(loggingType, "loggingType");
             this.loggingType = Optional.ofNullable(loggingType);
@@ -198,8 +211,12 @@ public class FirstNEntries {
             return this;
         }
 
+
         /**
-         * Number of entries to log. This destination is for testing only. So it won't make sense to log infinitely. The maximum is 1,000 entries.
+         * Number of entries to log. This destination is for testing only. So it won't make sense to log
+         * infinitely.
+         * 
+         * <p>The maximum is 1,000 entries.
          */
         public Builder maxEntryCount(double maxEntryCount) {
             Utils.checkNotNull(maxEntryCount, "maxEntryCount");
@@ -208,14 +225,17 @@ public class FirstNEntries {
         }
 
         /**
-         * Number of entries to log. This destination is for testing only. So it won't make sense to log infinitely. The maximum is 1,000 entries.
+         * Number of entries to log. This destination is for testing only. So it won't make sense to log
+         * infinitely.
+         * 
+         * <p>The maximum is 1,000 entries.
          */
         public Builder maxEntryCount(Optional<Double> maxEntryCount) {
             Utils.checkNotNull(maxEntryCount, "maxEntryCount");
             this.maxEntryCount = maxEntryCount;
             return this;
         }
-        
+
         public FirstNEntries build() {
             if (loggingType == null) {
                 loggingType = _SINGLETON_VALUE_LoggingType.value();
@@ -223,11 +243,12 @@ public class FirstNEntries {
             if (maxEntryCount == null) {
                 maxEntryCount = _SINGLETON_VALUE_MaxEntryCount.value();
             }
+
             return new FirstNEntries(
-                loggingType,
-                maxEntryCount)
+                loggingType, maxEntryCount)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends LoggingType>> _SINGLETON_VALUE_LoggingType =
                 new LazySingletonValue<>(

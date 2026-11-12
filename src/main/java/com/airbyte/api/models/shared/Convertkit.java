@@ -14,7 +14,7 @@ public enum Convertkit {
     @JsonValue
     private final String value;
 
-    private Convertkit(String value) {
+    Convertkit(String value) {
         this.value = value;
     }
     

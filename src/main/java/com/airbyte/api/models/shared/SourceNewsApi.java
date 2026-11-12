@@ -15,11 +15,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceNewsApi {
 
+public class SourceNewsApi {
     /**
      * API Key
      */
@@ -82,7 +81,7 @@ public class SourceNewsApi {
     private Optional<? extends List<SearchIn>> searchIn;
 
     /**
-     * Search query. See https://newsapi.org/docs/endpoints/everything for 
+     * Search query. See https://newsapi.org/docs/endpoints/everything for
      * information.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -96,6 +95,7 @@ public class SourceNewsApi {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sort_by")
     private Optional<? extends SortBy> sortBy;
+
 
     @JsonProperty("sourceType")
     private NewsApi sourceType;
@@ -161,7 +161,10 @@ public class SourceNewsApi {
     
     public SourceNewsApi(
             String apiKey) {
-        this(apiKey, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(apiKey, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -241,7 +244,7 @@ public class SourceNewsApi {
     }
 
     /**
-     * Search query. See https://newsapi.org/docs/endpoints/everything for 
+     * Search query. See https://newsapi.org/docs/endpoints/everything for
      * information.
      */
     @JsonIgnore
@@ -285,9 +288,10 @@ public class SourceNewsApi {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API Key
@@ -307,6 +311,7 @@ public class SourceNewsApi {
         return this;
     }
 
+
     /**
      * The category you want to get top headlines for.
      */
@@ -325,6 +330,7 @@ public class SourceNewsApi {
         this.country = Optional.ofNullable(country);
         return this;
     }
+
 
     /**
      * The 2-letter ISO 3166-1 code of the country you want to get headlines
@@ -346,6 +352,7 @@ public class SourceNewsApi {
         return this;
     }
 
+
     /**
      * A comma-seperated string of domains (eg bbc.co.uk, techcrunch.com,
      * engadget.com) to restrict the search to.
@@ -365,6 +372,7 @@ public class SourceNewsApi {
         this.endDate = Optional.ofNullable(endDate);
         return this;
     }
+
 
     /**
      * A date and optional time for the newest article allowed. This should
@@ -386,6 +394,7 @@ public class SourceNewsApi {
         return this;
     }
 
+
     /**
      * A comma-seperated string of domains (eg bbc.co.uk, techcrunch.com,
      * engadget.com) to remove from the results.
@@ -405,6 +414,7 @@ public class SourceNewsApi {
         this.language = Optional.ofNullable(language);
         return this;
     }
+
 
     /**
      * The 2-letter ISO-639-1 code of the language you want to get headlines
@@ -426,6 +436,7 @@ public class SourceNewsApi {
         return this;
     }
 
+
     /**
      * Where to apply search query. Possible values are: title, description,
      * content.
@@ -437,7 +448,7 @@ public class SourceNewsApi {
     }
 
     /**
-     * Search query. See https://newsapi.org/docs/endpoints/everything for 
+     * Search query. See https://newsapi.org/docs/endpoints/everything for
      * information.
      */
     public SourceNewsApi withSearchQuery(String searchQuery) {
@@ -446,8 +457,9 @@ public class SourceNewsApi {
         return this;
     }
 
+
     /**
-     * Search query. See https://newsapi.org/docs/endpoints/everything for 
+     * Search query. See https://newsapi.org/docs/endpoints/everything for
      * information.
      */
     public SourceNewsApi withSearchQuery(Optional<String> searchQuery) {
@@ -465,6 +477,7 @@ public class SourceNewsApi {
         this.sortBy = Optional.ofNullable(sortBy);
         return this;
     }
+
 
     /**
      * The order to sort the articles in. Possible options: relevancy,
@@ -488,6 +501,7 @@ public class SourceNewsApi {
         return this;
     }
 
+
     /**
      * Identifiers (maximum 20) for the news sources or blogs you want
      * headlines from. Use the `/sources` endpoint to locate these
@@ -510,6 +524,7 @@ public class SourceNewsApi {
         return this;
     }
 
+
     /**
      * A date and optional time for the oldest article allowed. This should
      * be in ISO 8601 format.
@@ -520,7 +535,6 @@ public class SourceNewsApi {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -531,36 +545,28 @@ public class SourceNewsApi {
         }
         SourceNewsApi other = (SourceNewsApi) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.category, other.category) &&
-            Objects.deepEquals(this.country, other.country) &&
-            Objects.deepEquals(this.domains, other.domains) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.excludeDomains, other.excludeDomains) &&
-            Objects.deepEquals(this.language, other.language) &&
-            Objects.deepEquals(this.searchIn, other.searchIn) &&
-            Objects.deepEquals(this.searchQuery, other.searchQuery) &&
-            Objects.deepEquals(this.sortBy, other.sortBy) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.sources, other.sources) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.category, other.category) &&
+            Utils.enhancedDeepEquals(this.country, other.country) &&
+            Utils.enhancedDeepEquals(this.domains, other.domains) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.excludeDomains, other.excludeDomains) &&
+            Utils.enhancedDeepEquals(this.language, other.language) &&
+            Utils.enhancedDeepEquals(this.searchIn, other.searchIn) &&
+            Utils.enhancedDeepEquals(this.searchQuery, other.searchQuery) &&
+            Utils.enhancedDeepEquals(this.sortBy, other.sortBy) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.sources, other.sources) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            category,
-            country,
-            domains,
-            endDate,
-            excludeDomains,
-            language,
-            searchIn,
-            searchQuery,
-            sortBy,
-            sourceType,
-            sources,
+        return Utils.enhancedHash(
+            apiKey, category, country,
+            domains, endDate, excludeDomains,
+            language, searchIn, searchQuery,
+            sortBy, sourceType, sources,
             startDate);
     }
     
@@ -581,36 +587,38 @@ public class SourceNewsApi {
                 "sources", sources,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<? extends Category> category;
- 
+
         private Optional<? extends Country> country;
- 
+
         private Optional<? extends List<String>> domains = Optional.empty();
- 
+
         private Optional<String> endDate = Optional.empty();
- 
+
         private Optional<? extends List<String>> excludeDomains = Optional.empty();
- 
+
         private Optional<? extends Language> language = Optional.empty();
- 
+
         private Optional<? extends List<SearchIn>> searchIn = Optional.empty();
- 
+
         private Optional<String> searchQuery = Optional.empty();
- 
+
         private Optional<? extends SortBy> sortBy;
- 
+
         private Optional<? extends List<String>> sources = Optional.empty();
- 
+
         private Optional<String> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API Key
@@ -620,6 +628,7 @@ public class SourceNewsApi {
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * The category you want to get top headlines for.
@@ -638,6 +647,7 @@ public class SourceNewsApi {
             this.category = category;
             return this;
         }
+
 
         /**
          * The 2-letter ISO 3166-1 code of the country you want to get headlines
@@ -659,6 +669,7 @@ public class SourceNewsApi {
             return this;
         }
 
+
         /**
          * A comma-seperated string of domains (eg bbc.co.uk, techcrunch.com,
          * engadget.com) to restrict the search to.
@@ -678,6 +689,7 @@ public class SourceNewsApi {
             this.domains = domains;
             return this;
         }
+
 
         /**
          * A date and optional time for the newest article allowed. This should
@@ -699,6 +711,7 @@ public class SourceNewsApi {
             return this;
         }
 
+
         /**
          * A comma-seperated string of domains (eg bbc.co.uk, techcrunch.com,
          * engadget.com) to remove from the results.
@@ -718,6 +731,7 @@ public class SourceNewsApi {
             this.excludeDomains = excludeDomains;
             return this;
         }
+
 
         /**
          * The 2-letter ISO-639-1 code of the language you want to get headlines
@@ -739,6 +753,7 @@ public class SourceNewsApi {
             return this;
         }
 
+
         /**
          * Where to apply search query. Possible values are: title, description,
          * content.
@@ -759,8 +774,9 @@ public class SourceNewsApi {
             return this;
         }
 
+
         /**
-         * Search query. See https://newsapi.org/docs/endpoints/everything for 
+         * Search query. See https://newsapi.org/docs/endpoints/everything for
          * information.
          */
         public Builder searchQuery(String searchQuery) {
@@ -770,7 +786,7 @@ public class SourceNewsApi {
         }
 
         /**
-         * Search query. See https://newsapi.org/docs/endpoints/everything for 
+         * Search query. See https://newsapi.org/docs/endpoints/everything for
          * information.
          */
         public Builder searchQuery(Optional<String> searchQuery) {
@@ -778,6 +794,7 @@ public class SourceNewsApi {
             this.searchQuery = searchQuery;
             return this;
         }
+
 
         /**
          * The order to sort the articles in. Possible options: relevancy,
@@ -798,6 +815,7 @@ public class SourceNewsApi {
             this.sortBy = sortBy;
             return this;
         }
+
 
         /**
          * Identifiers (maximum 20) for the news sources or blogs you want
@@ -823,6 +841,7 @@ public class SourceNewsApi {
             return this;
         }
 
+
         /**
          * A date and optional time for the oldest article allowed. This should
          * be in ISO 8601 format.
@@ -842,7 +861,7 @@ public class SourceNewsApi {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceNewsApi build() {
             if (category == null) {
                 category = _SINGLETON_VALUE_Category.value();
@@ -853,20 +872,14 @@ public class SourceNewsApi {
             if (sortBy == null) {
                 sortBy = _SINGLETON_VALUE_SortBy.value();
             }
+
             return new SourceNewsApi(
-                apiKey,
-                category,
-                country,
-                domains,
-                endDate,
-                excludeDomains,
-                language,
-                searchIn,
-                searchQuery,
-                sortBy,
-                sources,
-                startDate);
+                apiKey, category, country,
+                domains, endDate, excludeDomains,
+                language, searchIn, searchQuery,
+                sortBy, sources, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<? extends Category>> _SINGLETON_VALUE_Category =
                 new LazySingletonValue<>(

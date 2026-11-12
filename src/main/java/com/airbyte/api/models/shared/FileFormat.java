@@ -11,7 +11,8 @@ import java.util.Optional;
 /**
  * FileFormat
  * 
- * <p>The Format of the file which should be replicated (Warning: some formats may be experimental, please refer to the docs).
+ * <p>The Format of the file which should be replicated (Warning: some formats may be experimental, please
+ * refer to the docs).
  */
 public enum FileFormat {
     CSV("csv"),
@@ -27,7 +28,7 @@ public enum FileFormat {
     @JsonValue
     private final String value;
 
-    private FileFormat(String value) {
+    FileFormat(String value) {
         this.value = value;
     }
     

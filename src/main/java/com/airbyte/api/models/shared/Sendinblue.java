@@ -14,7 +14,7 @@ public enum Sendinblue {
     @JsonValue
     private final String value;
 
-    private Sendinblue(String value) {
+    Sendinblue(String value) {
         this.value = value;
     }
     

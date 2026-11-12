@@ -14,7 +14,7 @@ public enum Kissmetrics {
     @JsonValue
     private final String value;
 
-    private Kissmetrics(String value) {
+    Kissmetrics(String value) {
         this.value = value;
     }
     

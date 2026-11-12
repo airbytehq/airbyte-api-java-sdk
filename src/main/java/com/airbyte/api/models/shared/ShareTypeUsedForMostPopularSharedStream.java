@@ -19,7 +19,7 @@ public enum ShareTypeUsedForMostPopularSharedStream {
     @JsonValue
     private final String value;
 
-    private ShareTypeUsedForMostPopularSharedStream(String value) {
+    ShareTypeUsedForMostPopularSharedStream(String value) {
         this.value = value;
     }
     

@@ -1,5 +1,13 @@
 # DestinationMssqlName
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DestinationMssqlName;
+
+DestinationMssqlName value = DestinationMssqlName.ENCRYPTED_TRUST_SERVER_CERTIFICATE;
+```
+
 
 ## Values
 

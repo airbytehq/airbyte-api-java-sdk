@@ -21,7 +21,7 @@ public enum GranularityForGeoLocationRegion {
     @JsonValue
     private final String value;
 
-    private GranularityForGeoLocationRegion(String value) {
+    GranularityForGeoLocationRegion(String value) {
         this.value = value;
     }
     

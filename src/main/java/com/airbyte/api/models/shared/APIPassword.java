@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 /**
  * APIPassword
@@ -19,12 +18,12 @@ import java.util.Objects;
  * <p>API Password Auth
  */
 public class APIPassword {
-
     /**
      * The API Password for your private application in the `Shopify` store.
      */
     @JsonProperty("api_password")
     private String apiPassword;
+
 
     @JsonProperty("auth_method")
     private SourceShopifySchemasAuthMethod authMethod;
@@ -50,9 +49,10 @@ public class APIPassword {
         return authMethod;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The API Password for your private application in the `Shopify` store.
@@ -63,7 +63,6 @@ public class APIPassword {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -74,15 +73,14 @@ public class APIPassword {
         }
         APIPassword other = (APIPassword) o;
         return 
-            Objects.deepEquals(this.apiPassword, other.apiPassword) &&
-            Objects.deepEquals(this.authMethod, other.authMethod);
+            Utils.enhancedDeepEquals(this.apiPassword, other.apiPassword) &&
+            Utils.enhancedDeepEquals(this.authMethod, other.authMethod);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiPassword,
-            authMethod);
+        return Utils.enhancedHash(
+            apiPassword, authMethod);
     }
     
     @Override
@@ -91,14 +89,16 @@ public class APIPassword {
                 "apiPassword", apiPassword,
                 "authMethod", authMethod);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiPassword;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The API Password for your private application in the `Shopify` store.
@@ -108,11 +108,13 @@ public class APIPassword {
             this.apiPassword = apiPassword;
             return this;
         }
-        
+
         public APIPassword build() {
+
             return new APIPassword(
                 apiPassword);
         }
+
 
         private static final LazySingletonValue<SourceShopifySchemasAuthMethod> _SINGLETON_VALUE_AuthMethod =
                 new LazySingletonValue<>(

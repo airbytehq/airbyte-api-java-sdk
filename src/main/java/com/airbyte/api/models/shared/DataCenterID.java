@@ -20,7 +20,7 @@ public enum DataCenterID {
     @JsonValue
     private final String value;
 
-    private DataCenterID(String value) {
+    DataCenterID(String value) {
         this.value = value;
     }
     

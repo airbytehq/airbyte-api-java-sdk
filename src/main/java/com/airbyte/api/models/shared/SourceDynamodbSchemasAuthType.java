@@ -14,7 +14,7 @@ public enum SourceDynamodbSchemasAuthType {
     @JsonValue
     private final String value;
 
-    private SourceDynamodbSchemasAuthType(String value) {
+    SourceDynamodbSchemasAuthType(String value) {
         this.value = value;
     }
     

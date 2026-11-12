@@ -25,6 +25,7 @@ import com.airbyte.api.utils.Hook.AfterError;
 import com.airbyte.api.utils.Hook.AfterErrorContext;
 import com.airbyte.api.utils.Hook.BeforeRequest;
 import com.airbyte.api.utils.Hook.BeforeRequestContext;
+import com.airbyte.api.utils.Hook.HookContext;
 import com.airbyte.api.utils.Hook.SdkInit;
 import com.airbyte.api.utils.Hook.SdkInitData;
 import com.airbyte.api.utils.SessionManager;
@@ -54,8 +55,7 @@ public final class ClientCredentialsHook implements SdkInit, BeforeRequest, Afte
 
     @Override
     public HttpRequest beforeRequest(BeforeRequestContext context, HttpRequest request) throws Exception {
-        if (!context.oauthScopes().isPresent()) {
-            // OAuth2 not in use (scopes must be defined, and can be an empty array)
+        if (isHookDisabled(context)) {
             return request;
         }
         final Credentials credentials;
@@ -65,7 +65,8 @@ public final class ClientCredentialsHook implements SdkInit, BeforeRequest, Afte
         } else {
             return request;
         }
-        Session<Credentials> session = sessions.getSession(credentials, context.oauthScopes(),
+        List<String> requiredScopes = getRequiredScopes(credentials, context);
+        Session<Credentials> session = sessions.getSession(credentials, requiredScopes,
                 scopes -> doTokenRequest(context.baseUrl(), client, credentials, scopes, Constants.HAS_CLIENT_CREDENTIALS_BASIC));
         return Helpers.copy(request) //
                 // overwrites any previous value
@@ -76,10 +77,15 @@ public final class ClientCredentialsHook implements SdkInit, BeforeRequest, Afte
     @Override
     public HttpResponse<InputStream> afterError(AfterErrorContext context, Optional<HttpResponse<InputStream>> response,
             Optional<Exception> error) throws Exception {
+        if (isHookDisabled(context)) {
+            if (error.isPresent()) {
+                throw error.get();
+            }
+            return response.get();
+        }
+
         if (error.isPresent()) {
             throw error.get();
-        } else if (!context.oauthScopes().isPresent()) {
-            return response.get();
         }
 
         Optional<Credentials> credentials = credentials(context.securitySource());
@@ -89,9 +95,25 @@ public final class ClientCredentialsHook implements SdkInit, BeforeRequest, Afte
 
         if (response.get().statusCode() == HttpURLConnection.HTTP_UNAUTHORIZED) {
             String sessionKey = credentials.get().sessionKey();
-            sessions.remove(sessionKey);
+            List<String> requiredScopes = getRequiredScopes(credentials.get(), context);
+            String scopeKey = getScopeKey(requiredScopes);
+            sessions.removeSession(sessionKey, scopeKey);
         }
         return response.get();
+    }
+
+    private static String getScopeKey(List<String> scopes) {
+        if (scopes == null || scopes.isEmpty()) {
+            return "";
+        }
+
+        List<String> sortedScopes = new java.util.ArrayList<>(scopes);
+        sortedScopes.sort(String::compareTo);
+        return String.join("&", sortedScopes);
+    }
+
+    private static Boolean isHookDisabled(HookContext context) {
+        return !context.oauthScopes().isPresent();
     }
 
     private static Session<Credentials> doTokenRequest(String baseUrl, HTTPClient client, Credentials credentials,
@@ -121,14 +143,16 @@ public final class ClientCredentialsHook implements SdkInit, BeforeRequest, Afte
         final String clientId;
         final String clientSecret;
         final String tokenUrl;
+        final List<String> scopes;
 
-        Credentials(String clientId, String clientSecret, String tokenUrl) {
+        Credentials(String clientId, String clientSecret, String tokenUrl, List<String> scopes) {
             Utils.checkNotNull(clientId, "clientId");
             Utils.checkNotNull(clientSecret, "clientSecret");
             Utils.checkNotNull(tokenUrl, "tokenUrl");
             this.clientId = clientId;
             this.clientSecret = clientSecret;
             this.tokenUrl = tokenUrl;
+            this.scopes = scopes;
         }
 
         @Override
@@ -145,28 +169,30 @@ public final class ClientCredentialsHook implements SdkInit, BeforeRequest, Afte
         if (security == null) {
             return Optional.empty();
         }
-        
-        // To find credentials we use reflection-based inspection of the SpeakeasyMetadata 
+
+        // To find credentials we use reflection-based inspection of the SpeakeasyMetadata
         // annotated fields in the object graph of `security`.
 
-        // Look recursively for a non-empty complex field (not just a String) that holds 
+        // Look recursively for a non-empty complex field (not just a String) that holds
         // client credentials and use the first one found. If present then is nested security
         // and we treat the field value as the security object when we search for the client credentials specific fields.
-        
-        Object sec = Security.findComplexObjectWithNonEmptyAnnotatedField(security, 
+
+        Object sec = Security.findComplexObjectWithNonEmptyAnnotatedField(security,
                         "\\bscheme=true\\b",
-                        "\\btype=oauth2\\b", 
+                        "\\btype=oauth2\\b",
                         "\\bsubtype=client_credentials\\b")
                     .orElse(security);
 
         Optional<String> clientId = oauth2FieldValue(sec, "clientID");
         Optional<String> clientSecret = oauth2FieldValue(sec, "clientSecret");
-        // tokenURL is not annotated so it doesn't get automatically serialized in some languages
-        Optional<String> tokenUrl = fieldValue(sec, "tokenURL");
+        Optional<String> tokenUrl = fieldValue(sec, "tokenURL", String.class);
+        @SuppressWarnings("unchecked") // prevent generic type erasure warning
+        List<String> scopes = (List<String>) fieldValue(sec, "scopes", List.class).orElse(null);
+
         if (clientId.isEmpty() || clientSecret.isEmpty() || tokenUrl.isEmpty()) {
             return Optional.empty();
         } else {
-            return Optional.of(new Credentials(clientId.get(), clientSecret.get(), tokenUrl.get()));
+            return Optional.of(new Credentials(clientId.get(), clientSecret.get(), tokenUrl.get(), scopes));
         }
     }
 
@@ -175,18 +201,28 @@ public final class ClientCredentialsHook implements SdkInit, BeforeRequest, Afte
     }
 
     @SuppressWarnings("unchecked")
-    private static Optional<String> fieldValue(Object o, String fieldName) {
+    private static <T> Optional<T> fieldValue(Object o, String fieldName, Class<T> type) {
         try {
             Field field = o.getClass().getDeclaredField(fieldName);
             field.setAccessible(true);
             Object value = field.get(o);
             if (value instanceof Optional) {
-                return (Optional<String>) value;
+                Optional<T> optionalValue = (Optional<T>) value;
+                return optionalValue.isPresent() ? optionalValue : Optional.empty();
+            } else if (type.isInstance(value)) {
+                return Optional.of((T) value);
             } else {
-                return Optional.of((String) value);
+                return Optional.empty();
             }
         } catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
             return Optional.empty();
         }
+    }
+
+    private static List<String> getRequiredScopes(Credentials credentials, HookContext context) {
+        if (credentials.scopes != null) {
+            return credentials.scopes;
+        }
+        return context.oauthScopes().orElse(List.of());
     }
 }

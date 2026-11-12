@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class DestinationMongodbNoTunnel {
-
     /**
      * No ssh tunnel needed to connect to database
      */
@@ -23,7 +22,6 @@ public class DestinationMongodbNoTunnel {
 
     @JsonCreator
     public DestinationMongodbNoTunnel() {
-        
         this.tunnelMethod = Builder._SINGLETON_VALUE_TunnelMethod.value();
     }
 
@@ -35,11 +33,11 @@ public class DestinationMongodbNoTunnel {
         return tunnelMethod;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -50,12 +48,12 @@ public class DestinationMongodbNoTunnel {
         }
         DestinationMongodbNoTunnel other = (DestinationMongodbNoTunnel) o;
         return 
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod);
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             tunnelMethod);
     }
     
@@ -64,17 +62,20 @@ public class DestinationMongodbNoTunnel {
         return Utils.toString(DestinationMongodbNoTunnel.class,
                 "tunnelMethod", tunnelMethod);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public DestinationMongodbNoTunnel build() {
+
             return new DestinationMongodbNoTunnel(
                 );
         }
+
 
         private static final LazySingletonValue<DestinationMongodbTunnelMethod> _SINGLETON_VALUE_TunnelMethod =
                 new LazySingletonValue<>(

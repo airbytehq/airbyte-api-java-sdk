@@ -14,7 +14,7 @@ public enum Flexport {
     @JsonValue
     private final String value;
 
-    private Flexport(String value) {
+    Flexport(String value) {
         this.value = value;
     }
     

@@ -14,18 +14,20 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceGoogleDirectoryGoogleCredentials
  * 
- * <p>Google APIs use the OAuth 2.0 protocol for authentication and authorization. The Source supports &lt;a href="https://developers.google.com/identity/protocols/oauth2#webserver" target="_blank"&gt;Web server application&lt;/a&gt; and &lt;a href="https://developers.google.com/identity/protocols/oauth2#serviceaccount" target="_blank"&gt;Service accounts&lt;/a&gt; scenarios.
+ * <p>Google APIs use the OAuth 2.0 protocol for authentication and authorization. The Source supports <a
+ * href="https://developers.google.com/identity/protocols/oauth2#webserver">Web server application</a>
+ * and <a href="https://developers.google.com/identity/protocols/oauth2#serviceaccount">Service
+ * accounts</a> scenarios.
  */
 @JsonDeserialize(using = SourceGoogleDirectoryGoogleCredentials._Deserializer.class)
 public class SourceGoogleDirectoryGoogleCredentials {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceGoogleDirectoryGoogleCredentials(TypedObject value) {
         this.value = value;
@@ -33,12 +35,12 @@ public class SourceGoogleDirectoryGoogleCredentials {
 
     public static SourceGoogleDirectoryGoogleCredentials of(SignInViaGoogleOAuth value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleDirectoryGoogleCredentials(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SignInViaGoogleOAuth>(){}));
+        return new SourceGoogleDirectoryGoogleCredentials(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceGoogleDirectoryGoogleCredentials of(ServiceAccountKey value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleDirectoryGoogleCredentials(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ServiceAccountKey>(){}));
+        return new SourceGoogleDirectoryGoogleCredentials(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +63,7 @@ public class SourceGoogleDirectoryGoogleCredentials {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +74,12 @@ public class SourceGoogleDirectoryGoogleCredentials {
             return false;
         }
         SourceGoogleDirectoryGoogleCredentials other = (SourceGoogleDirectoryGoogleCredentials) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -95,6 +97,6 @@ public class SourceGoogleDirectoryGoogleCredentials {
         return Utils.toString(SourceGoogleDirectoryGoogleCredentials.class,
                 "value", value);
     }
- 
+
 }
 
